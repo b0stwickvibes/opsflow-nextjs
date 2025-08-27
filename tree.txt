@@ -1,0 +1,415 @@
+.
+├── .dependency-cruiser.cjs
+├── .DS_Store
+├── .env
+├── .env.example
+├── .env.local
+├── .gitignore
+├── .vercel
+│   ├── project.json
+│   └── README.txt
+├── .vscode
+│   └── tasks.json
+├── app
+│   ├── .DS_Store
+│   ├── [...notFound]
+│   │   └── page.tsx
+│   ├── api
+│   │   └── temperature
+│   │       └── route.ts
+│   ├── company
+│   │   ├── .DS_Store
+│   │   ├── about
+│   │   │   ├── metadata.ts
+│   │   │   └── page.tsx
+│   │   └── contact
+│   │       ├── metadata.ts
+│   │       └── page.tsx
+│   ├── dashboard
+│   │   └── page.tsx
+│   ├── globals.css
+│   ├── layout.tsx
+│   ├── metadata.ts
+│   ├── not-found.tsx
+│   ├── page.tsx
+│   ├── pricing
+│   │   ├── metadata.ts
+│   │   └── page.tsx
+│   ├── product
+│   │   ├── .DS_Store
+│   │   └── features
+│   │       ├── error.tsx
+│   │       ├── metadata.ts
+│   │       └── page.tsx
+│   ├── sign-in
+│   │   └── page.tsx
+│   └── sign-up
+│       └── page.tsx
+├── check-deps.js
+├── components
+│   ├── .DS_Store
+│   ├── blocks
+│   │   ├── .DS_Store
+│   │   ├── docs
+│   │   │   └── CodeBlock.tsx
+│   │   ├── feature
+│   │   │   └── .DS_Store
+│   │   ├── help
+│   │   │   └── TicketCard.tsx
+│   │   ├── heroes
+│   │   │   ├── CompanyHero.tsx
+│   │   │   ├── index.ts
+│   │   │   ├── MarketingHero.tsx
+│   │   │   ├── ProductHero.tsx
+│   │   │   └── RestaurantHero.tsx
+│   │   ├── index.ts
+│   │   ├── stats
+│   │   │   └── .DS_Store
+│   │   └── support
+│   │       ├── CategoryGrid.tsx
+│   │       └── SupportSearch.tsx
+│   ├── BrowserCompatibilityProvider.tsx
+│   ├── domain
+│   │   ├── .DS_Store
+│   │   ├── contact
+│   │   │   ├── ContactFAQ.tsx
+│   │   │   ├── ContactMethods.tsx
+│   │   │   ├── ContactOffices.tsx
+│   │   │   └── index.ts
+│   │   ├── pricing
+│   │   │   ├── index.ts
+│   │   │   ├── PricingTable.tsx
+│   │   │   └── ROICalculator.tsx
+│   │   └── restaurant
+│   │       ├── index.ts
+│   │       ├── RestaurantFeatureGrid.tsx
+│   │       ├── RestaurantPricingTable.tsx
+│   │       └── RestaurantSuccessMetrics.tsx
+│   ├── icons
+│   │   └── plus-signs.tsx
+│   ├── layout
+│   │   ├── logo.tsx
+│   │   └── restaurant-nav.tsx
+│   ├── magicui
+│   │   ├── marquee.tsx
+│   │   ├── meteors.tsx
+│   │   └── particles.tsx
+│   ├── pages
+│   ├── sections
+│   │   ├── .DS_Store
+│   │   └── heroes
+│   │       └── index.ts
+│   ├── shared
+│   │   ├── .DS_Store
+│   │   ├── data-display
+│   │   │   ├── .DS_Store
+│   │   │   ├── CardSection.tsx
+│   │   │   ├── FAQSection.tsx
+│   │   │   ├── FeatureCard.tsx
+│   │   │   ├── index.ts
+│   │   │   └── Testimonials.tsx
+│   │   ├── feedback
+│   │   │   ├── BackToTop.tsx
+│   │   │   ├── ErrorDisplay.tsx
+│   │   │   ├── index.ts
+│   │   │   └── Skeletons.tsx
+│   │   ├── forms
+│   │   │   ├── index.ts
+│   │   │   ├── RestaurantContactForm.tsx
+│   │   │   └── RestaurantInquiryForm.tsx
+│   │   └── layout
+│   │       ├── Footer.tsx
+│   │       ├── index.ts
+│   │       ├── MarketingCTA.tsx
+│   │       └── Navbar.tsx
+│   ├── site
+│   │   └── ErrorDisplay.tsx
+│   ├── theme-provider.tsx
+│   └── ui
+│       ├── .DS_Store
+│       ├── accordion.tsx
+│       ├── alert.tsx
+│       ├── animated-counter.tsx
+│       ├── avatar.tsx
+│       ├── badge.tsx
+│       ├── breadcrumb.tsx
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── checkbox.tsx
+│       ├── command.tsx
+│       ├── dialog.tsx
+│       ├── diamonds.tsx
+│       ├── dropdown-menu.tsx
+│       ├── fade-in.tsx
+│       ├── form.tsx
+│       ├── hover-card.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       ├── loading-spinner.tsx
+│       ├── moving-border.tsx
+│       ├── navigation-menu.tsx
+│       ├── plus-signs-with-svg.tsx
+│       ├── plus-signs.tsx
+│       ├── popover.tsx
+│       ├── progress.tsx
+│       ├── radio-group.tsx
+│       ├── ripple-effect.tsx
+│       ├── scroll-area.tsx
+│       ├── search-input.tsx
+│       ├── select.tsx
+│       ├── separator.tsx
+│       ├── sheet.tsx
+│       ├── skeleton.tsx
+│       ├── switch.tsx
+│       ├── table.tsx
+│       ├── tabs.tsx
+│       ├── textarea.tsx
+│       ├── theme-toggle.tsx
+│       ├── toast.tsx
+│       ├── toaster.tsx
+│       └── use-toast.tsx
+├── components.json
+├── dep-report.html
+├── ENTERPRISE-FILE-STRUCTURE.md
+├── ENTERPRISE-IMPLEMENTATION-STATUS.md
+├── FeatureComparison.tsx
+├── hooks
+│   ├── use-media-query.ts
+│   └── use-toast.ts
+├── integration-plan.md
+├── lib
+│   ├── .DS_Store
+│   ├── analytics.ts
+│   ├── api
+│   ├── audit.ts
+│   ├── auth.ts
+│   ├── config
+│   ├── hooks
+│   ├── pricing-backup
+│   │   ├── index.ts
+│   │   ├── pricing-analytics.ts
+│   │   └── pricing-logic.ts
+│   ├── prisma.ts
+│   ├── real-time.ts
+│   ├── style-system
+│   │   └── layout-differentiation.ts
+│   ├── utils
+│   ├── utils.ts
+│   └── validations
+├── middleware.ts
+├── next-env.d.ts
+├── NEXT-STEPS.md
+├── next.config.js
+├── next.config.mjs
+├── package-lock.json
+├── package.json
+├── PHASE-1-ERROR-STATUS.md
+├── postcss.config.js
+├── prisma
+│   └── schema.prisma
+├── Project Notes
+│   ├── .DS_Store
+│   ├── BLOCK_CODES.md
+│   ├── OpsFlow-AI-V2_Full_Blueprint.md
+│   ├── opsflow-claude-protocol.md
+│   └── PROJECT_COMPLETION_SUMMARY.md
+├── public
+│   └── images
+├── README.md
+├── SCALER-INTEGRATION.md
+├── scaler-nextjs-template
+│   ├── .DS_Store
+│   ├── scalar-nextjs-template-1.1.0
+│   │   ├── .DS_Store
+│   │   ├── .gitignore
+│   │   ├── .prettierrc
+│   │   ├── .vscode
+│   │   │   └── settings.json
+│   │   ├── components.json
+│   │   ├── eslint.config.mjs
+│   │   ├── LICENSE
+│   │   ├── next.config.ts
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   ├── postcss.config.mjs
+│   │   ├── public
+│   │   │   ├── .DS_Store
+│   │   │   ├── favicon
+│   │   │   │   ├── apple-touch-icon.png
+│   │   │   │   ├── favicon-96x96.png
+│   │   │   │   ├── favicon.ico
+│   │   │   │   ├── favicon.svg
+│   │   │   │   ├── site.webmanifest
+│   │   │   │   ├── web-app-manifest-192x192.png
+│   │   │   │   └── web-app-manifest-512x512.png
+│   │   │   ├── images
+│   │   │   │   ├── .DS_Store
+│   │   │   │   ├── blog
+│   │   │   │   ├── contact
+│   │   │   │   ├── landing
+│   │   │   │   ├── product
+│   │   │   │   └── testimonials
+│   │   │   ├── layout
+│   │   │   │   ├── logo-icon.svg
+│   │   │   │   └── logo-wordmark.svg
+│   │   │   └── og-image.jpg
+│   │   ├── README.md
+│   │   ├── src
+│   │   │   ├── .DS_Store
+│   │   │   ├── app
+│   │   │   │   ├── .DS_Store
+│   │   │   │   ├── about
+│   │   │   │   ├── blog
+│   │   │   │   ├── contact
+│   │   │   │   ├── faq
+│   │   │   │   ├── favicon.ico
+│   │   │   │   ├── forgot-password
+│   │   │   │   ├── globals.css
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── login
+│   │   │   │   ├── not-found.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── privacy-policy
+│   │   │   │   ├── product
+│   │   │   │   ├── roadmap
+│   │   │   │   ├── signup
+│   │   │   │   └── terms-of-service
+│   │   │   ├── blog
+│   │   │   │   ├── blog-1.mdx
+│   │   │   │   ├── blog-10.mdx
+│   │   │   │   ├── blog-11.mdx
+│   │   │   │   ├── blog-12.mdx
+│   │   │   │   ├── blog-13.mdx
+│   │   │   │   ├── blog-14.mdx
+│   │   │   │   ├── blog-15.mdx
+│   │   │   │   ├── blog-2.mdx
+│   │   │   │   ├── blog-3.mdx
+│   │   │   │   ├── blog-4.mdx
+│   │   │   │   ├── blog-5.mdx
+│   │   │   │   ├── blog-6.mdx
+│   │   │   │   ├── blog-7.mdx
+│   │   │   │   ├── blog-8.mdx
+│   │   │   │   └── blog-9.mdx
+│   │   │   ├── components
+│   │   │   │   ├── .DS_Store
+│   │   │   │   ├── icons
+│   │   │   │   ├── layout
+│   │   │   │   ├── magicui
+│   │   │   │   ├── sections
+│   │   │   │   ├── styleglide-provider.tsx
+│   │   │   │   ├── theme-provider.tsx
+│   │   │   │   ├── theme-toggle.tsx
+│   │   │   │   └── ui
+│   │   │   ├── constants
+│   │   │   │   └── external-links.ts
+│   │   │   ├── hooks
+│   │   │   │   └── use-media-query.ts
+│   │   │   └── lib
+│   │   │       ├── blog.ts
+│   │   │       ├── posts.ts
+│   │   │       └── utils.ts
+│   │   └── tsconfig.json
+│   └── Scalar.fig
+├── SCALER-SAFETY-PROTOCOL.md
+├── scripts
+│   └── audit-integrity.sh
+├── SVG
+├── tailwind.config.js
+├── tree.txt
+├── tsconfig.json
+├── types
+│   ├── .DS_Store
+│   ├── api
+│   ├── api.ts
+│   └── restaurant.ts
+└── unused-components-backup
+    ├── .DS_Store
+    ├── contact-alt
+    │   └── page.tsx
+    ├── contact-comparison
+    │   └── page.tsx
+    ├── contact.backup
+    │   └── page.tsx
+    ├── enhanced.backup
+    │   ├── .DS_Store
+    │   ├── EnhancedButton.tsx
+    │   ├── EnhancedHero.tsx.backup
+    │   └── HeroFeature.tsx
+    ├── error-boundary.backup
+    ├── Feature261.tsx
+    ├── features-loading-broken
+    ├── hooks.backup
+    │   ├── api
+    │   ├── use-media-query.ts
+    │   ├── use-toast.ts
+    │   └── useFeatures.ts
+    ├── lib.backup
+    │   ├── .DS_Store
+    │   ├── analytics
+    │   │   └── index.ts
+    │   ├── animation.ts
+    │   ├── api
+    │   │   └── client.ts
+    │   ├── auth
+    │   ├── constants.ts
+    │   ├── data
+    │   │   └── features.ts
+    │   ├── pricing
+    │   │   ├── pricing-analytics.ts
+    │   │   └── pricing-logic.ts
+    │   ├── style-system
+    │   │   ├── component-auditor.ts
+    │   │   ├── design-tokens.ts
+    │   │   ├── index.ts
+    │   │   ├── integration-example.ts
+    │   │   ├── layout-differentiation.ts
+    │   │   ├── README.md
+    │   │   └── style-guards.ts
+    │   ├── utils
+    │   │   ├── browser-detection.js
+    │   │   └── features.ts
+    │   └── utils.ts
+    ├── numbered-heroes-backup
+    │   ├── Hero159.tsx
+    │   ├── Hero196.tsx
+    │   ├── Hero201.tsx
+    │   ├── Hero218.tsx
+    │   ├── Hero223.tsx
+    │   └── Hero232.tsx
+    ├── old-MarketingHero.tsx
+    ├── sections-heroes-duplicate
+    │   ├── ContactHero.tsx
+    │   ├── CustomContactHero.tsx
+    │   ├── index.ts
+    │   ├── MarketingHero.tsx
+    │   ├── ProductHero.tsx
+    │   └── RestaurantHero.tsx
+    ├── sections.backup
+    │   ├── .DS_Store
+    │   ├── AdvancedOperationsSection.tsx
+    │   ├── CTA.tsx
+    │   ├── FeatureCategoriesSection.tsx
+    │   ├── features
+    │   │   ├── CustomContactSection.tsx
+    │   │   ├── CustomCtaSection.tsx
+    │   │   ├── CustomTeamSection.tsx
+    │   │   ├── FeatureHighlights.tsx
+    │   │   ├── index.ts
+    │   │   └── RestaurantFeatures.tsx
+    │   ├── Hero.tsx
+    │   ├── index.ts
+    │   ├── integrations
+    │   │   ├── index.ts
+    │   │   └── IntegrationPartners.tsx
+    │   ├── IntegrationsGrid.tsx
+    │   ├── InteractiveDemoSection.tsx
+    │   ├── LocationSecuritySection.tsx
+    │   ├── RoleBasedDemos.tsx
+    │   ├── TemplatesLibrary.tsx
+    │   └── testimonials
+    │       ├── index.ts
+    │       └── RestaurantTestimonials.tsx
+    └── site-empty
+        └── .DS_Store
+
+115 directories, 298 files

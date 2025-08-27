@@ -16,6 +16,7 @@ interface ActionButton {
 interface ProductHeroProps {
   title: string;
   description?: string;
+  subtitle?: string;
   badge?: string;
   children?: ReactNode;
   className?: string;
@@ -24,17 +25,17 @@ interface ProductHeroProps {
   secondaryAction?: ActionButton;
 }
 
-export function ProductHero({
+const ProductHero = ({
   title,
   description,
+  subtitle,
   badge,
   children,
   className = '',
   productIcon,
   primaryAction = { text: "Try Demo", href: "/product/demo" },
   secondaryAction = { text: "View Features", href: "/product/features" }
-}: ProductHeroProps) {
-  // Register component layout
+}: ProductHeroProps) => {
   useEffect(() => {
     registerComponentLayout('ProductHero', 'product');
   }, []);
@@ -66,11 +67,7 @@ export function ProductHero({
             {title}
           </h1>
           
-          {description && (
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              {description}
-            </p>
-          )}
+          {(description ?? subtitle) && (<p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">{description ?? subtitle}</p>)}
           
           {children || (
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
@@ -108,4 +105,6 @@ export function ProductHero({
       </div>
     </section>
   );
-}
+};
+
+export default ProductHero;

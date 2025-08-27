@@ -8,13 +8,9 @@ export * from './heroes';
 // export * from './features';
 
 // Stats Components
-export * from './stats';
 
 // Support Components  
-export * from './support';
 
 // Documentation Components
-export * from './docs';
 
 // Help Components
-export * from './help';

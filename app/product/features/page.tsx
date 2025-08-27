@@ -1,4 +1,4 @@
-import { ProductHero } from "@/components/sections/heroes";
+import { ProductHero } from "@/components/blocks/heroes";
 import { RestaurantFeatureGrid } from "@/components/domain/restaurant";
 import { MarketingCTA } from "@/components/shared/layout";
 

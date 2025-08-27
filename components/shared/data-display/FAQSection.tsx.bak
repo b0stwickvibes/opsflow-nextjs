@@ -1,28 +1,16 @@
 import React from "react";
-
 type QA = { q: string; a: React.ReactNode };
-type QAAlt = { question: string; answer: React.ReactNode };
-
-type Props = React.HTMLAttributes<HTMLElement> & {
-  items?: Array<QA | QAAlt>;
-  title?: string;
-  subtitle?: string;
-};
-
-export function FAQSection({ items = [], title, subtitle, ...rest }: Props) {
-  const normalized: QA[] = (items as Array<any>).map((it) =>
-    "q" in it ? it : { q: it.question, a: it.answer }
-  );
-
+type AnyProps = { [key: string]: any; items?: QA[]; title?: string; subtitle?: string };
+export function FAQSection({ items = [], title, subtitle, ...rest }: AnyProps) {
   return (
     <section {...rest}>
       {title ? <h2 className="text-2xl font-semibold">{title}</h2> : null}
       {subtitle ? <p className="mt-1 text-muted-foreground">{subtitle}</p> : null}
       <div className="mt-4 space-y-3">
-        {normalized.length === 0 ? (
+        {items.length === 0 ? (
           <div className="text-muted-foreground text-sm">FAQ placeholder</div>
         ) : (
-          normalized.map((it, i) => (
+          items.map((it, i) => (
             <details key={i} className="p-4 border rounded-lg">
               <summary className="cursor-pointer font-medium">{it.q}</summary>
               <div className="mt-2 text-sm text-muted-foreground">{it.a}</div>
@@ -33,5 +21,4 @@ export function FAQSection({ items = [], title, subtitle, ...rest }: Props) {
     </section>
   );
 }
-
 export default FAQSection;

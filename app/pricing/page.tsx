@@ -48,7 +48,7 @@ export default function PricingPage() {
         <MarketingHero
           title="Simple, Transparent Pricing"
           description="Choose the plan that fits your restaurant operations. 14-day free trial, no credit card."
-          align="center"
+
         />
       </div>
 
@@ -73,7 +73,7 @@ export default function PricingPage() {
       <div className="container mx-auto px-4 sm:px-6">
         <FAQSection
           title="Pricing Questions"
-          description="Common questions about our plans and billing"
+          subtitle="Common questions about our plans and billing"
           items={restaurantFaqItems}
         />
       </div>

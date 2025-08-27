@@ -1,5 +1,4 @@
-export { FAQSection } from "./FAQSection";
-// Shared: Data Display Components  
-export { Testimonials } from './Testimonials';
-export { FeatureCard } from './FeatureCard';
+export { FeatureComparison } from './FeatureComparison';
 export { CardSection } from './CardSection';
+export { Testimonials } from './Testimonials';
+export { FAQSection } from './FAQSection';
