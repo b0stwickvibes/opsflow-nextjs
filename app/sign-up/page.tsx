@@ -1,4 +1,3 @@
-import { SignUp } from "@clerk/nextjs";
 
 export default function SignUpPage() {
   return (
@@ -12,16 +11,9 @@ export default function SignUpPage() {
             Start managing your restaurant operations today
           </p>
         </div>
-        <SignUp
-          appearance={{
-            elements: {
-              formButtonPrimary: "bg-primary hover:bg-primary/90",
-              card: "shadow-none border",
-              headerTitle: "hidden",
-              headerSubtitle: "hidden"
-            }
-          }}
-        />
+        <div className="rounded border p-6 text-center">
+          Sign-up functionality is not yet configured.
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import { SignIn } from "@clerk/nextjs";
 
 export default function SignInPage() {
   return (
@@ -12,16 +11,9 @@ export default function SignInPage() {
             Sign in to your restaurant operations dashboard
           </p>
         </div>
-        <SignIn
-          appearance={{
-            elements: {
-              formButtonPrimary: "bg-primary hover:bg-primary/90",
-              card: "shadow-none border",
-              headerTitle: "hidden",
-              headerSubtitle: "hidden"
-            }
-          }}
-        />
+        <div className="rounded border p-6 text-center">
+          Sign-in functionality is not yet configured.
+        </div>
       </div>
     </div>
   );
