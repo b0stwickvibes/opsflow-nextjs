@@ -1,0 +1,383 @@
+// Enterprise-ready OpsFlow Database Schema
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================================================
+// TENANT & ORGANIZATION MANAGEMENT
+// ============================================================================
+
+model Tenant {
+  id              String   @id @default(cuid())
+  name            String
+  domain          String?  @unique
+  subdomain       String   @unique
+  subscriptionTier SubscriptionTier @default(STARTER)
+  complianceLevel ComplianceLevel @default(BASIC)
+  status          TenantStatus @default(ACTIVE)
+  maxLocations    Int      @default(1)
+  maxUsers        Int      @default(5)
+  maxSensors      Int      @default(10)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relationships
+  users           User[]
+  locations       Location[]
+  subscriptions   Subscription[]
+  auditLogs      AuditLog[]
+  complianceRecords ComplianceRecord[]
+  
+  @@map("tenants")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  tenantId    String
+  clerkId     String   @unique // Clerk authentication ID
+  email       String   @unique
+  firstName   String
+  lastName    String
+  role        UserRole @default(STAFF)
+  status      UserStatus @default(ACTIVE)
+  lastLogin   DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relationships
+  tenant           Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  temperatureReads TemperatureReading[]
+  auditLogs       AuditLog[]
+  complianceRecords ComplianceRecord[]
+  locations       UserLocation[]
+  
+  @@index([tenantId])
+  @@map("users")
+}
+
+// User-Location many-to-many relationship for access control
+model UserLocation {
+  id         String @id @default(cuid())
+  userId     String
+  locationId String
+  
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  location Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  
+  @@unique([userId, locationId])
+  @@map("user_locations")
+}
+
+// ============================================================================
+// SUBSCRIPTION & BILLING
+// ============================================================================
+
+model Subscription {
+  id            String           @id @default(cuid())
+  tenantId      String
+  tier          SubscriptionTier
+  status        SubscriptionStatus @default(ACTIVE)
+  stripeId      String?          @unique
+  currentPeriodStart DateTime
+  currentPeriodEnd   DateTime
+  trialEndsAt   DateTime?
+  cancelAtEnd   Boolean         @default(false)
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  
+  tenant        Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  
+  @@index([tenantId])
+  @@map("subscriptions")
+}
+
+// ============================================================================
+// LOCATIONS & PHYSICAL INFRASTRUCTURE
+// ============================================================================
+
+model Location {
+  id          String   @id @default(cuid())
+  tenantId    String
+  name        String
+  type        LocationType @default(RESTAURANT)
+  address     String
+  city        String
+  state       String
+  zipCode     String
+  country     String   @default("US")
+  timezone    String   @default("America/New_York")
+  status      LocationStatus @default(ACTIVE)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  // Relationships
+  tenant           Tenant @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  sensors          Sensor[]
+  temperatureReads TemperatureReading[]
+  complianceRecords ComplianceRecord[]
+  users           UserLocation[]
+  
+  @@index([tenantId])
+  @@map("locations")
+}
+
+model Sensor {
+  id          String     @id @default(cuid())
+  locationId  String
+  tenantId    String     // Denormalized for faster queries
+  name        String
+  type        SensorType @default(TEMPERATURE)
+  serialNumber String    @unique
+  manufacturer String?
+  model       String?
+  status      SensorStatus @default(ACTIVE)
+  calibratedAt DateTime?
+  batteryLevel Float?    // 0.0 to 1.0
+  firmwareVersion String?
+  installDate DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  
+  // Relationships
+  location         Location @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  temperatureReads TemperatureReading[]
+  
+  @@index([tenantId])
+  @@index([locationId])
+  @@map("sensors")
+}
+
+// ============================================================================
+// TEMPERATURE MONITORING & IoT DATA
+// ============================================================================
+
+model TemperatureReading {
+  id               String    @id @default(cuid())
+  tenantId         String    // Denormalized for performance
+  locationId       String
+  sensorId         String
+  userId           String?   // User who recorded manual reading
+  temperature      Float
+  humidity         Float?
+  alertTriggered   Boolean   @default(false)
+  alertLevel       AlertLevel?
+  thresholdMin     Float
+  thresholdMax     Float
+  complianceStatus ComplianceStatus @default(COMPLIANT)
+  recordedAt       DateTime  @default(now())
+  
+  // Audit trail
+  createdAt        DateTime  @default(now())
+  
+  // Relationships
+  sensor           Sensor    @relation(fields: [sensorId], references: [id], onDelete: Cascade)
+  location         Location  @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  user            User?     @relation(fields: [userId], references: [id])
+  
+  @@index([tenantId, recordedAt])
+  @@index([sensorId, recordedAt])
+  @@index([locationId, recordedAt])
+  @@index([alertTriggered, recordedAt])
+  @@map("temperature_readings")
+}
+
+// ============================================================================
+// COMPLIANCE & AUDIT MANAGEMENT
+// ============================================================================
+
+model ComplianceRecord {
+  id               String          @id @default(cuid())
+  tenantId         String
+  locationId       String
+  userId           String
+  type             ComplianceType  @default(HACCP)
+  status           ComplianceStatus @default(COMPLIANT)
+  criticalControlPoint String?
+  measurement      Float?
+  criticalLimit    Json?           // { min: number, max: number }
+  correctiveAction String?
+  verificationMethod String?
+  verifiedBy       String?
+  verifiedAt       DateTime?
+  recordedAt       DateTime        @default(now())
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  
+  // Relationships
+  tenant          Tenant          @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  location         Location        @relation(fields: [locationId], references: [id], onDelete: Cascade)
+  user            User            @relation(fields: [userId], references: [id])
+  
+  @@index([tenantId, recordedAt])
+  @@index([locationId, type])
+  @@map("compliance_records")
+}
+
+// ============================================================================
+// AUDIT LOGGING & SECURITY
+// ============================================================================
+
+model AuditLog {
+  id          String     @id @default(cuid())
+  tenantId    String
+  userId      String?
+  action      AuditAction
+  resource    String     // e.g., "temperature_reading", "user", "location"
+  resourceId  String?    // ID of the affected resource
+  oldValues   Json?      // Previous state (for updates)
+  newValues   Json?      // New state (for creates/updates)
+  ipAddress   String?
+  userAgent   String?
+  outcome     AuditOutcome @default(SUCCESS)
+  riskLevel   RiskLevel  @default(LOW)
+  metadata    Json?      // Additional context
+  timestamp   DateTime   @default(now())
+  
+  // Relationships
+  tenant      Tenant     @relation(fields: [tenantId], references: [id], onDelete: Cascade)
+  user        User?      @relation(fields: [userId], references: [id])
+  
+  @@index([tenantId, timestamp])
+  @@index([action, timestamp])
+  @@index([resource, resourceId])
+  @@index([riskLevel, timestamp])
+  @@map("audit_logs")
+}
+
+// ============================================================================
+// ENUMS
+// ============================================================================
+
+enum SubscriptionTier {
+  STARTER
+  PROFESSIONAL
+  ENTERPRISE
+}
+
+enum ComplianceLevel {
+  BASIC
+  HACCP
+  SOC2
+  ISO22000
+}
+
+enum TenantStatus {
+  ACTIVE
+  SUSPENDED
+  CANCELLED
+}
+
+enum UserRole {
+  SUPER_ADMIN      // Platform admin
+  TENANT_ADMIN     // Organization admin
+  LOCATION_MANAGER // Location manager
+  COMPLIANCE_OFFICER // Compliance specialist
+  MANAGER          // General manager
+  STAFF           // Regular staff
+  AUDITOR         // Read-only auditor
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+  SUSPENDED
+  PENDING_VERIFICATION
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  TRIALING
+  PAST_DUE
+  CANCELLED
+  UNPAID
+}
+
+enum LocationType {
+  RESTAURANT
+  COFFEE_SHOP
+  HOTEL
+  BAR
+  FOOD_TRUCK
+  CATERING
+  WAREHOUSE
+  OTHER
+}
+
+enum LocationStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+}
+
+enum SensorType {
+  TEMPERATURE
+  HUMIDITY
+  PRESSURE
+  CO2
+  PH
+  OTHER
+}
+
+enum SensorStatus {
+  ACTIVE
+  INACTIVE
+  MAINTENANCE
+  FAULT
+  CALIBRATION_REQUIRED
+}
+
+enum AlertLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum ComplianceStatus {
+  COMPLIANT
+  WARNING
+  NON_COMPLIANT
+  UNDER_REVIEW
+}
+
+enum ComplianceType {
+  HACCP
+  FDA
+  USDA
+  LOCAL_HEALTH
+  INTERNAL
+  SOC2
+  ISO22000
+}
+
+enum AuditAction {
+  CREATE
+  READ
+  UPDATE
+  DELETE
+  LOGIN
+  LOGOUT
+  EXPORT
+  IMPORT
+  APPROVE
+  REJECT
+}
+
+enum AuditOutcome {
+  SUCCESS
+  FAILURE
+  BLOCKED
+  WARNING
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}

@@ -1,0 +1,1 @@
+export { IntegrationPartners } from './IntegrationPartners';

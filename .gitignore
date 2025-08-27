@@ -1,0 +1,12 @@
+node_modules/
+.next/
+.DS_Store
+.env*
+*.log
+opsflow_snapshot_*.tar.gz
+*.tar.gz
+.next/
+node_modules/
+.DS_Store
+.env*
+*.log
