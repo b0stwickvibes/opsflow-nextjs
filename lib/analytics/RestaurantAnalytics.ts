@@ -56,8 +56,8 @@ class RestaurantAnalytics {
     if (this.isInitialized) return;
 
     // Google Analytics 4 setup
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('config', process.env.NEXT_PUBLIC_GA_ID || 'GA_MEASUREMENT_ID', {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('config', process.env.NEXT_PUBLIC_GA_ID || 'GA_MEASUREMENT_ID', {
         page_title: document.title,
         page_location: window.location.href,
         custom_map: {
@@ -78,8 +78,8 @@ class RestaurantAnalytics {
     this.userId = userId;
     this.organizationId = organizationId;
 
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('config', process.env.NEXT_PUBLIC_GA_ID || 'GA_MEASUREMENT_ID', {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('config', process.env.NEXT_PUBLIC_GA_ID || 'GA_MEASUREMENT_ID', {
         user_id: userId,
         custom_map: {
           organization_id: organizationId,
@@ -158,8 +158,8 @@ class RestaurantAnalytics {
     });
 
     // Google Analytics pageview
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'page_view', {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', 'page_view', {
         page_title: title || document.title,
         page_location: window.location.href
       });
@@ -188,8 +188,8 @@ class RestaurantAnalytics {
 
   private sendEvent(event: AnalyticsEvent) {
     // Google Analytics
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', event.event, {
+    if (typeof window !== 'undefined' && 'gtag' in window) {
+      (window as any).gtag('event', event.event, {
         event_category: event.properties?.category,
         event_label: event.properties?.action,
         value: event.value,
