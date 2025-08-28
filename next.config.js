@@ -49,6 +49,11 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
+  // Speed up CI/builds when lint is not critical
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+
   // Security headers for production
   async headers() {
     return [

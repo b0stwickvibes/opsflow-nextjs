@@ -7,6 +7,7 @@ const RoleShowcase = dynamic(() => import("@/components/domain/roles/RoleShowcas
 const TemplatesPromo = dynamic(() => import("@/components/domain/templates/TemplatesPromo"));
 const LocationSecurityShowcase = dynamic(() => import("@/components/domain/security/LocationSecurityShowcase"));
 const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"));
+const InteractiveDemoCTA = dynamic(() => import("@/components/domain/product/InteractiveDemoCTA"));
 
 export default function ProductFeaturesPage() {
   return (
@@ -16,6 +17,9 @@ export default function ProductFeaturesPage() {
 
       {/* Feature Categories */}
       <FeatureCategoryGrid />
+
+      {/* Interactive Demo CTA */}
+      <InteractiveDemoCTA />
 
       {/* Advanced Operations */}
       <AdvancedOps />
