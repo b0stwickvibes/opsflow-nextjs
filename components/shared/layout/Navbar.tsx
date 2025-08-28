@@ -296,7 +296,9 @@ export function Navbar() {
     }
 
     // Only open dropdown if mouse is directly over nav item or inside dropdown
-    const navElements = dropdownNavItems.map(item => document.querySelector(`[data-nav-item="${item}"]`)).filter(Boolean);
+    const navElements = dropdownNavItems
+      .map(item => document.querySelector(`[data-nav-item="${item}"]`))
+      .filter(Boolean) as Element[];
     let hoveredDropdown: string | null = null;
     for (let i = 0; i < navElements.length; i++) {
       const el = navElements[i];
