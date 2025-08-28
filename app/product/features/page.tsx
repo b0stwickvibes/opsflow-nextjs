@@ -1,10 +1,12 @@
+import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
 import FeaturesHero from "@/components/blocks/heroes/FeaturesHero";
-import FeatureCategoryGrid from "@/components/domain/product/FeatureCategoryGrid";
-import AdvancedOps from "@/components/domain/product/AdvancedOps";
-import RoleShowcase from "@/components/domain/roles/RoleShowcase";
-import TemplatesPromo from "@/components/domain/templates/TemplatesPromo";
-import IntegrationPartners from "@/components/shared/layout/IntegrationPartners";
+const FeatureCategoryGrid = dynamic(() => import("@/components/domain/product/FeatureCategoryGrid"));
+const AdvancedOps = dynamic(() => import("@/components/domain/product/AdvancedOps"));
+const RoleShowcase = dynamic(() => import("@/components/domain/roles/RoleShowcase"));
+const TemplatesPromo = dynamic(() => import("@/components/domain/templates/TemplatesPromo"));
+const LocationSecurityShowcase = dynamic(() => import("@/components/domain/security/LocationSecurityShowcase"));
+const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"));
 
 export default function ProductFeaturesPage() {
   return (
@@ -17,6 +19,9 @@ export default function ProductFeaturesPage() {
 
       {/* Advanced Operations */}
       <AdvancedOps />
+
+      {/* Location-Based Security */}
+      <LocationSecurityShowcase />
 
       {/* Role-based demos */}
       <RoleShowcase />

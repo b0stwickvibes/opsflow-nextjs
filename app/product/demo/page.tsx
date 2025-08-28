@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { DemoHero } from "@/components/blocks/heroes/DemoHero";
+import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
-import IntegrationPartners from "@/components/shared/layout/IntegrationPartners";
-import { DemoFeatures, DemoMetrics, DemoBooking } from "@/components/domain/demo";
+const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"));
+const DemoFeatures = dynamic(() => import("@/components/domain/demo").then(m => m.DemoFeatures));
+const DemoMetrics = dynamic(() => import("@/components/domain/demo").then(m => m.DemoMetrics));
+const DemoBooking = dynamic(() => import("@/components/domain/demo").then(m => m.DemoBooking));
 
 export const metadata: Metadata = {
   title: "Product Demo — OpsFlow AI",
