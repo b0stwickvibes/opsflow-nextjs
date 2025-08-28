@@ -36,6 +36,8 @@
   "exclude": [
     "node_modules",
     "unused-components-backup/**/*",
-    "scaler-nextjs-template/**/*"
+    "scaler-nextjs-template/**/*",
+    "Templates-Folder/**/*",
+    "templates/**/*"
   ]
 }
