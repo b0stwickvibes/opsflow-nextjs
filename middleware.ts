@@ -18,9 +18,22 @@ const isAdminRoute = createRouteMatcher([
   "/api/admin(.*)"
 ]);
 
+// Clerk auth routes should be public and bypass special logic
+const isAuthRoute = createRouteMatcher([
+  "/sign-in(.*)",
+  "/sign-up(.*)",
+  "/sso-callback(.*)",
+  "/oauth(.*)"
+]);
+
 export default clerkMiddleware(async (auth, req) => {
   // Get authentication info
   const { userId, orgRole } = await auth();
+
+  // Bypass for Clerk auth routes to avoid any chance of loops
+  if (isAuthRoute(req)) {
+    return;
+  }
 
   // Protect authenticated routes
   if (isProtectedRoute(req)) {
