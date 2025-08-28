@@ -201,8 +201,8 @@ export function trackPricingEvent(event: {
   metadata?: Record<string, any>;
 }) {
   // Restaurant operations analytics tracking
-  if (typeof window !== 'undefined' && window.gtag) {
-    window.gtag('event', event.event, {
+  if (typeof window !== 'undefined' && 'gtag' in window) {
+    (window as any).gtag('event', event.event, {
       event_category: 'pricing',
       tier: event.tier,
       billing_period: event.billingPeriod,
