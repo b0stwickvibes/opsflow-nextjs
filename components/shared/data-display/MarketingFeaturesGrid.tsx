@@ -1,16 +1,21 @@
-interface Feature {
+interface FeatureItem {
   title: string;
   description?: string;
   icon?: React.ReactNode;
 }
 
-interface FeaturesProps {
+interface MarketingFeaturesGridProps {
   heading?: string;
   subheading?: string;
-  items: Feature[];
+  items: FeatureItem[];
 }
 
-export function Features({ heading, subheading, items }: FeaturesProps) {
+/**
+ * MarketingFeaturesGrid
+ * Purpose: Generic features grid for marketing pages.
+ * Used in: Homepage, generic product/solution pages
+ */
+export function MarketingFeaturesGrid({ heading, subheading, items }: MarketingFeaturesGridProps) {
   return (
     <section className="py-12 md:py-16">
       <div className="container mx-auto px-4 sm:px-6">

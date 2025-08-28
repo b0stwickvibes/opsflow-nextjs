@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
 import FeaturesHero from "@/components/blocks/heroes/FeaturesHero";
 const FeatureCategoryGrid = dynamic(() => import("@/components/domain/product/FeatureCategoryGrid"));
+const FeatureStats = dynamic(() => import("@/components/domain/product/FeatureStats"));
 const AdvancedOps = dynamic(() => import("@/components/domain/product/AdvancedOps"));
 const RoleShowcase = dynamic(() => import("@/components/domain/roles/RoleShowcase"));
 const TemplatesPromo = dynamic(() => import("@/components/domain/templates/TemplatesPromo"));
@@ -17,6 +18,9 @@ export default function ProductFeaturesPage() {
 
       {/* Feature Categories */}
       <FeatureCategoryGrid />
+
+      {/* Stats */}
+      <FeatureStats />
 
       {/* Interactive Demo CTA */}
       <InteractiveDemoCTA />

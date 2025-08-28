@@ -1,4 +1,5 @@
-import { CTA, Features, Hero, Logos, Testimonials } from "@/components/landing";
+import { MarketingCTA, MarketingHero } from "@/components/shared/layout";
+import { MarketingBrandLogos, MarketingFeaturesGrid, Testimonials } from "@/components/shared/data-display";
 
 export const metadata = {
   title: "Landing Preview",
@@ -8,15 +9,16 @@ export const metadata = {
 export default function LandingPreviewPage() {
   return (
     <div className="-mt-12 -mx-6 overflow-x-hidden">
-      <Hero
-        eyebrow="New"
-        title="Your New Landing Page"
-        subtitle="Paste Figma copy and assets into these sections. We'll swap this into / when approved."
-        primaryCta={{ href: "/pricing", text: "Get Started" }}
-        secondaryCta={{ href: "/product/demo", text: "Watch Demo" }}
-      />
+      <div className="container mx-auto px-4 sm:px-6">
+        <MarketingHero
+          title="Your New Landing Page"
+          description="Paste Figma copy and assets into these sections. We'll swap this into / when approved."
+          badge="Preview"
+          showDashboardPreview={false}
+        />
+      </div>
 
-      <Logos
+      <MarketingBrandLogos
         heading="Trusted by forward-thinking teams"
         items={[
           { src: "/logos/toast.svg", alt: "Toast" },
@@ -28,7 +30,7 @@ export default function LandingPreviewPage() {
         ]}
       />
 
-      <Features
+      <MarketingFeaturesGrid
         heading="What’s included"
         subheading="Replace with feature blocks from Figma"
         items={[
@@ -50,13 +52,14 @@ export default function LandingPreviewPage() {
         ]}
       />
 
-      <CTA
-        title="Ready to go live?"
-        description="Once this looks right, we’ll replace the homepage (/) with this layout."
-        href="/pricing"
-        buttonText="Start Free Trial"
-      />
+      <div className="container mx-auto px-4 sm:px-6 py-16">
+        <MarketingCTA
+          title="Ready to go live?"
+          description="Once this looks right, we’ll replace the homepage (/) with this layout."
+          primaryAction={{ text: "Start Free Trial", href: "/pricing" }}
+          secondaryAction={{ text: "Schedule Demo", href: "/product/demo" }}
+        />
+      </div>
     </div>
   );
 }
-

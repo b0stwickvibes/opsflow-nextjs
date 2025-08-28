@@ -4,12 +4,17 @@ interface LogoItem {
   href?: string;
 }
 
-interface LogosProps {
+interface MarketingBrandLogosProps {
   heading?: string;
   items: LogoItem[];
 }
 
-export function Logos({ heading, items }: LogosProps) {
+/**
+ * MarketingBrandLogos
+ * Purpose: Simple logo grid for partner/brand trust.
+ * Used in: Marketing pages (home, product, about)
+ */
+export function MarketingBrandLogos({ heading, items }: MarketingBrandLogosProps) {
   return (
     <section className="py-8 md:py-10">
       <div className="container mx-auto px-4 sm:px-6">
@@ -21,6 +26,7 @@ export function Logos({ heading, items }: LogosProps) {
         <div className="grid grid-cols-2 items-center gap-6 sm:grid-cols-3 md:grid-cols-6">
           {items.map((logo, i) => {
             const img = (
+              // eslint-disable-next-line @next/next/no-img-element
               <img
                 src={logo.src}
                 alt={logo.alt}
