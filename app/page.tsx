@@ -2,10 +2,11 @@
  * Homepage - Restaurant operations platform
  */
 
-import { MarketingHero } from "@/components/shared/layout"
+import { MarketingHero } from "@/components/blocks/heroes"
 import { RestaurantFeatureGrid } from "@/components/domain/restaurant"
 import { Testimonials } from "@/components/shared/data-display"
 import { MarketingCTA } from "@/components/shared/layout"
+import { CustomerMarquee } from "@/components/enhanced/CustomerMarquee"
 
 export default function HomePage() {
   return (
@@ -24,33 +25,24 @@ export default function HomePage() {
         <RestaurantFeatureGrid />
       </div>
       
+      {/* Customer Marquee */}
+      <CustomerMarquee />
+      
       {/* Restaurant Testimonials */}
       <div className="container mx-auto px-4 sm:px-6 py-16">
         <Testimonials
-          testimonials={[
+          items={[
             {
-              content: "OpsFlow cut our temp-log time by 60% and boosted HACCP compliance.",
-              author: {
-                name: "Sarah M.",
-                title: "GM",
-                company: "The Oak"
-              }
+              quote: "OpsFlow cut our temp-log time by 60% and boosted HACCP compliance.",
+              author: "Sarah M., GM at The Oak"
             },
             {
-              content: "15 hrs/week saved across two locations—ROI in month one.",
-              author: {
-                name: "Tony R.",
-                title: "Owner",
-                company: "Cantina Añejo"
-              }
+              quote: "15 hrs/week saved across two locations—ROI in month one.",
+              author: "Tony R., Owner of Cantina Añejo"
             },
             {
-              content: "Seamless with Toast + MarginEdge. No more spreadsheet chaos.",
-              author: {
-                name: "Alex E.",
-                title: "F&B Director",
-                company: "Range"
-              }
+              quote: "Seamless with Toast + MarginEdge. No more spreadsheet chaos.",
+              author: "Alex E., F&B Director at Range"
             }
           ]}
         />

@@ -27,7 +27,7 @@ interface MarketingHeroProps {
   showDashboardPreview?: boolean;
 }
 
-const MarketingHero = ({
+export function MarketingHero({
   title = "Restaurant Operations Reimagined",
   description = "The premium platform that transforms how restaurants manage operations, safety compliance, and staff accountability with enterprise-grade tools.",
   badge = "Live Temperature Monitoring",
@@ -35,7 +35,7 @@ const MarketingHero = ({
   className = '',
   showStats = true,
   showDashboardPreview = true
-}: MarketingHeroProps) => {
+}: MarketingHeroProps) {
   useEffect(() => {
     registerComponentLayout('MarketingHero', 'marketing');
   }, []);
@@ -164,6 +164,4 @@ const MarketingHero = ({
       </div>
     </section>
   );
-};
-
-export default MarketingHero;
+}

@@ -1,6 +1,6 @@
-export * from './ContactHero';
-export { default as ContactHero } from './ContactHero';
-export * from './ProductHero';
-export { default as ProductHero } from './ProductHero';
-export * from './RestaurantHero';
-export { default as RestaurantHero } from './RestaurantHero';
+// Semantic Hero Components - Restaurant Operations Focus
+export { MarketingHero } from './MarketingHero';
+export { ProductHero } from './ProductHero'; 
+export { RestaurantHero } from './RestaurantHero';
+export { CompanyHero } from './CompanyHero';
+export { ContactHero } from './ContactHero';

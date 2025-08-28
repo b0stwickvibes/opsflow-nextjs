@@ -1,43 +1,49 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, Thermometer, Shield, Package, GraduationCap, BarChart3, Smartphone } from "lucide-react"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
 export function FeatureGrid() {
   const features = [
     {
+      icon: Thermometer,
       badge: "Food Safety",
       title: "Temperature Monitoring",
       description: "Automated temperature tracking for all food storage units",
       content: "Real-time alerts when temperatures fall outside of safe ranges, with historical logging for compliance."
     },
     {
+      icon: Shield,
       badge: "Compliance",
       title: "HACCP Automation",
       description: "Digital HACCP compliance with paperless record-keeping",
       content: "Track critical control points automatically and generate compliance reports in seconds."
     },
     {
+      icon: Package,
       badge: "Operations",
       title: "Inventory Management",
       description: "Smart inventory tracking and ordering",
       content: "Reduce waste and optimize ordering with AI-powered inventory predictions and automatic reordering."
     },
     {
+      icon: GraduationCap,
       badge: "Staff",
       title: "Training Management",
       description: "Digital training records and certifications",
       content: "Track employee training status, certifications, and schedule automated refresher courses."
     },
     {
+      icon: BarChart3,
       badge: "Analytics",
       title: "Performance Insights",
       description: "Data-driven operational intelligence",
       content: "Visualize trends, identify problem areas, and optimize operations with powerful dashboards."
     },
     {
+      icon: Smartphone,
       badge: "Mobile",
       title: "On-the-Go Access",
       description: "Complete restaurant control from anywhere",
@@ -46,28 +52,48 @@ export function FeatureGrid() {
   ]
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-      {features.map((feature, index) => (
-        <Card key={index}>
-          <CardHeader>
-            <Badge className="w-fit mb-2">{feature.badge}</Badge>
-            <CardTitle>{feature.title}</CardTitle>
-            <CardDescription>
-              {feature.description}
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground">
-              {feature.content}
-            </p>
-          </CardContent>
-          <CardFooter>
-            <Button variant="ghost" size="sm">
-              Learn more <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </CardFooter>
-        </Card>
-      ))}
-    </div>
+    <section className="py-16">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold mb-4">Complete Restaurant Operations Suite</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Everything you need to run efficient, compliant, and profitable restaurant operations in one integrated platform.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            return (
+              <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="p-2 bg-primary/10 rounded-lg">
+                      <IconComponent className="h-6 w-6 text-primary" />
+                    </div>
+                    <Badge variant="secondary">{feature.badge}</Badge>
+                  </div>
+                  <CardTitle>{feature.title}</CardTitle>
+                  <CardDescription>
+                    {feature.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">
+                    {feature.content}
+                  </p>
+                </CardContent>
+                <CardFooter>
+                  <Button variant="ghost" size="sm" className="group">
+                    Learn more 
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </CardFooter>
+              </Card>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   )
 }

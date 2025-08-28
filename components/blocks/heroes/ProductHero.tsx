@@ -107,4 +107,4 @@ const ProductHero = ({
   );
 };
 
-export default ProductHero;
+export { ProductHero };

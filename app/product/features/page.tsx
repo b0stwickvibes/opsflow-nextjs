@@ -4,38 +4,42 @@ import { MarketingCTA } from "@/components/shared/layout";
 
 export default function ProductFeaturesPage() {
   return (
-    <div>
+    <div className="min-h-screen">
       {/* Product Hero */}
-      <ProductHero
-        title="Hospitality features built for restaurants"
-        subtitle="Discover how our restaurant-first platform streamlines kitchen operations, controls food costs, manages staff scheduling, and ensures compliance with health regulations."
-        badge="50+ powerful features"
-        primaryAction={{
-          text: "Try Restaurant Demo",
-          href: "/product/demo"
-        }}
-        secondaryAction={{
-          text: "Restaurant Pricing", 
-          href: "/pricing"
-        }}
-      />
+      <div className="container mx-auto px-4 sm:px-6">
+        <ProductHero
+          title="Hospitality features built for restaurants"
+          subtitle="Discover how our restaurant-first platform streamlines kitchen operations, controls food costs, manages staff scheduling, and ensures compliance with health regulations."
+          badge="50+ powerful features"
+          primaryAction={{
+            text: "Try Restaurant Demo",
+            href: "/product/demo"
+          }}
+          secondaryAction={{
+            text: "Restaurant Pricing", 
+            href: "/pricing"
+          }}
+        />
+      </div>
       
       {/* Restaurant Feature Grid */}
       <RestaurantFeatureGrid />
       
       {/* Call to Action */}
-      <MarketingCTA
-        title="Ready to experience the difference?"
-        description="Join thousands of teams that have transformed their operations with our comprehensive feature suite."
-        primaryAction={{
-          text: "Start Free Trial",
-          href: "/pricing"
-        }}
-        secondaryAction={{
-          text: "Contact Sales",
-          href: "/company/contact"
-        }}
-      />
+      <div className="container mx-auto px-4 sm:px-6 py-16">
+        <MarketingCTA
+          title="Ready to experience the difference?"
+          description="Join thousands of restaurants that have transformed their operations with our comprehensive feature suite."
+          primaryAction={{
+            text: "Start Free Trial",
+            href: "/pricing"
+          }}
+          secondaryAction={{
+            text: "Contact Sales",
+            href: "/company/contact"
+          }}
+        />
+      </div>
     </div>
   );
 }
