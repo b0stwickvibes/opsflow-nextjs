@@ -125,15 +125,4 @@ export type FeatureAvailability =
   | 'add-on'    // Available as a paid add-on
   | 'not-available'; // Not available in this plan
 
-export default {
-  RestaurantType,
-  LocationSize,
-  InquiryType,
-  ContactFormData,
-  OfficeLocation,
-  ContactMethod,
-  FAQ,
-  SuccessMetric,
-  POSSystem,
-  FeatureAvailability
-};
+// No default export for types-only module
