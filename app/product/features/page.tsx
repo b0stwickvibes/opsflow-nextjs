@@ -1,35 +1,40 @@
-import { ProductHero } from "@/components/blocks/heroes";
-import { RestaurantFeatureGrid } from "@/components/domain/restaurant";
+import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
+import FeaturesHero from "@/components/blocks/heroes/FeaturesHero";
+const FeatureCategoryGrid = dynamic(() => import("@/components/domain/product/FeatureCategoryGrid"), { ssr: false });
+const AdvancedOps = dynamic(() => import("@/components/domain/product/AdvancedOps"), { ssr: false });
+const RoleShowcase = dynamic(() => import("@/components/domain/roles/RoleShowcase"), { ssr: false });
+const TemplatesPromo = dynamic(() => import("@/components/domain/templates/TemplatesPromo"), { ssr: false });
+const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"), { ssr: false });
 
 export default function ProductFeaturesPage() {
   return (
     <div className="min-h-screen">
-      {/* Product Hero */}
-      <div className="container mx-auto px-4 sm:px-6">
-        <ProductHero
-          title="Hospitality features built for restaurants"
-          subtitle="Discover how our restaurant-first platform streamlines kitchen operations, controls food costs, manages staff scheduling, and ensures compliance with health regulations."
-          badge="50+ powerful features"
-          primaryAction={{
-            text: "Try Restaurant Demo",
-            href: "/product/demo"
-          }}
-          secondaryAction={{
-            text: "Restaurant Pricing", 
-            href: "/pricing"
-          }}
-        />
-      </div>
-      
-      {/* Restaurant Feature Grid */}
-      <RestaurantFeatureGrid />
+      {/* Features Hero */}
+      <FeaturesHero featuresCount={50} />
+
+      {/* Feature Categories */}
+      <FeatureCategoryGrid />
+
+      {/* Advanced Operations */}
+      <AdvancedOps />
+
+      {/* Role-based demos */}
+      <RoleShowcase />
+
+      {/* Templates */}
+      <TemplatesPromo />
+
+      {/* Integrations band */}
+      <section className="bg-muted/30">
+        <IntegrationPartners />
+      </section>
       
       {/* Call to Action */}
       <div className="container mx-auto px-4 sm:px-6 py-16">
         <MarketingCTA
           title="Ready to experience the difference?"
-          description="Join thousands of restaurants that have transformed their operations with our comprehensive feature suite."
+          description="Join thousands of restaurants, bars, and night clubs using OpsFlow to streamline operations and stay compliant."
           primaryAction={{
             text: "Start Free Trial",
             href: "/pricing"
