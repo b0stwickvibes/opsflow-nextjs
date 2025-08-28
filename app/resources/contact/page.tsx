@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import { ContactSupportPage } from "@/components/resources/ResourcePages";
 
 export const metadata: Metadata = {
   title: "Contact Support — OpsFlow AI",
   description: "Get help with restaurant operations management. Chat with experts, schedule consultations, or email our support team.",
 };
-
-const ContactSupportPage = dynamic(() => import("@/components/resources/ResourcePages").then(m => m.ContactSupportPage), {
-  ssr: false,
-  loading: () => <div className="p-8">Loading support…</div>,
-});
 
 export default function ContactSupportPageRoute() {
   return <ContactSupportPage />;

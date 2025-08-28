@@ -1,11 +1,10 @@
-import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
 import FeaturesHero from "@/components/blocks/heroes/FeaturesHero";
-const FeatureCategoryGrid = dynamic(() => import("@/components/domain/product/FeatureCategoryGrid"), { ssr: false });
-const AdvancedOps = dynamic(() => import("@/components/domain/product/AdvancedOps"), { ssr: false });
-const RoleShowcase = dynamic(() => import("@/components/domain/roles/RoleShowcase"), { ssr: false });
-const TemplatesPromo = dynamic(() => import("@/components/domain/templates/TemplatesPromo"), { ssr: false });
-const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"), { ssr: false });
+import FeatureCategoryGrid from "@/components/domain/product/FeatureCategoryGrid";
+import AdvancedOps from "@/components/domain/product/AdvancedOps";
+import RoleShowcase from "@/components/domain/roles/RoleShowcase";
+import TemplatesPromo from "@/components/domain/templates/TemplatesPromo";
+import IntegrationPartners from "@/components/shared/layout/IntegrationPartners";
 
 export default function ProductFeaturesPage() {
   return (
