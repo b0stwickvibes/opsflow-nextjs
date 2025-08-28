@@ -5,17 +5,17 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
-  Thermometer, 
-  Shield, 
-  Package, 
-  GraduationCap, 
-  BarChart3, 
-  Play, 
-  CheckCircle,
-  AlertTriangle,
-  Clock
-} from "lucide-react";
+import dynamic from "next/dynamic";
+
+const Thermometer = dynamic(() => import('lucide-react').then(m => ({ default: m.Thermometer })));
+const Shield = dynamic(() => import('lucide-react').then(m => ({ default: m.Shield })));
+const Package = dynamic(() => import('lucide-react').then(m => ({ default: m.Package })));
+const GraduationCap = dynamic(() => import('lucide-react').then(m => ({ default: m.GraduationCap })));
+const BarChart3 = dynamic(() => import('lucide-react').then(m => ({ default: m.BarChart3 })));
+const Play = dynamic(() => import('lucide-react').then(m => ({ default: m.Play })));
+const CheckCircle = dynamic(() => import('lucide-react').then(m => ({ default: m.CheckCircle })));
+const AlertTriangle = dynamic(() => import('lucide-react').then(m => ({ default: m.AlertTriangle })));
+const Clock = dynamic(() => import('lucide-react').then(m => ({ default: m.Clock })));
 
 export function DemoFeatures() {
   const [activeDemo, setActiveDemo] = useState("temperature");

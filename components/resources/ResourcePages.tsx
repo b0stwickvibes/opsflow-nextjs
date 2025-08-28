@@ -6,11 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { 
-  Search, ArrowRight, BookOpen, HeadphonesIcon, FileText, MessageSquare, 
-  Users, Shield, Play, GraduationCap, Activity, Calendar, Star, CheckCircle, 
-  Eye, Download, Building2, Target, Zap, Globe, TrendingUp, Award, Copy, Check 
-} from "lucide-react";
+import { DynamicIcon } from "@/components/ui/dynamic-icon";
 
 // Scalable analytics hook - ready for multiple providers
 function usePageTracking(eventName: string, pageTitle: string) {
@@ -73,7 +69,7 @@ function SearchSection({
       
       <div className="flex items-center gap-3 max-w-2xl">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <DynamicIcon name="Search" className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
           <Input 
             placeholder={placeholder} 
             className="pl-10 h-12" 
@@ -134,25 +130,25 @@ export function HelpCenterPage() {
     { 
       title: "Search Knowledge Base", 
       desc: "Find HACCP guides instantly",
-      icon: Search,
+      icon: "Search",
       href: "/resources/help/search"
     },
     { 
       title: "Contact Support", 
       desc: "Chat with operations experts",
-      icon: MessageSquare,
+      icon: "MessageSquare",
       href: "/resources/contact"
     },
     { 
       title: "Video Tutorials", 
       desc: "Step-by-step walkthroughs",
-      icon: Play,
+      icon: "Play",
       href: "/resources/help/videos"
     },
     { 
       title: "System Status", 
       desc: "Check service health",
-      icon: Activity,
+      icon: "Activity",
       href: "/status"
     }
   ];
@@ -161,21 +157,21 @@ export function HelpCenterPage() {
     {
       title: "HACCP Compliance Templates",
       desc: "Complete food safety SOPs, temperature monitoring logs, and audit preparation checklists for full compliance.",
-      icon: Shield,
+      icon: "Shield",
       badge: "150+ Templates",
       href: "/resources/templates"
     },
     {
       title: "Operations Guides", 
       desc: "In-depth articles on inventory optimization, staff scheduling, compliance best practices, and efficiency improvements.",
-      icon: BookOpen,
+      icon: "BookOpen",
       badge: "127+ Articles",
       href: "/resources/blog"
     },
     {
       title: "Staff Training Center",
       desc: "Comprehensive training programs covering food safety, customer service, leadership, and operational excellence.",
-      icon: GraduationCap,
+      icon: "GraduationCap",
       badge: "45+ Courses", 
       href: "/resources/help/training"
     }
@@ -196,14 +192,14 @@ export function HelpCenterPage() {
             <Card key={action.title} className="hover:shadow-lg transition-shadow duration-200">
               <CardContent className="p-6 text-center">
                 <div className="p-3 bg-primary/10 text-primary rounded-lg w-fit mx-auto mb-4">
-                  <action.icon className="h-6 w-6" />
+                  <DynamicIcon name={action.icon} className="h-6 w-6" />
                 </div>
                 <h3 className="font-semibold mb-2">{action.title}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{action.desc}</p>
                 <Button variant="outline" size="sm" asChild>
                   <Link href={action.href}>
                     View
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <DynamicIcon name="ArrowRight" className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
@@ -219,7 +215,7 @@ export function HelpCenterPage() {
               <CardContent className="p-8">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-primary/10 text-primary rounded-lg">
-                    <category.icon className="h-8 w-8" />
+                    <DynamicIcon name={category.icon} className="h-8 w-8" />
                   </div>
                   <Badge variant="outline">{category.badge}</Badge>
                 </div>
@@ -242,7 +238,7 @@ export function HelpCenterPage() {
           <CardContent className="p-12 text-center">
             <div className="max-w-2xl mx-auto">
               <div className="p-4 bg-primary-foreground/10 rounded-2xl w-fit mx-auto mb-6">
-                <HeadphonesIcon className="h-8 w-8" />
+                <DynamicIcon name="HeadphonesIcon" className="h-8 w-8" />
               </div>
               <h3 className="text-3xl font-bold mb-4">Need help with restaurant operations?</h3>
               <p className="text-xl text-primary-foreground/90 mb-8">
@@ -250,11 +246,11 @@ export function HelpCenterPage() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" variant="secondary">
-                  <MessageSquare className="h-5 w-5 mr-2" />
+                  <DynamicIcon name="MessageSquare" className="h-5 w-5 mr-2" />
                   Chat with Operations Expert
                 </Button>
                 <Button size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                  <Calendar className="h-5 w-5 mr-2" />
+                  <DynamicIcon name="Calendar" className="h-5 w-5 mr-2" />
                   Schedule HACCP Consultation
                 </Button>
               </div>
@@ -315,9 +311,9 @@ const reading = await opsflow.temperatures.create({
           <Card className="bg-primary text-primary-foreground">
             <CardContent className="p-8">
               <Badge variant="secondary" className="mb-4">15 min setup</Badge>
-              <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-6">
                 <div className="p-3 bg-primary-foreground/20 rounded-lg">
-                  <Zap className="h-8 w-8" />
+                  <DynamicIcon name="Zap" className="h-8 w-8" />
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold mb-2">Quick Start Guide</h3>
@@ -327,15 +323,15 @@ const reading = await opsflow.temperatures.create({
               
               <div className="space-y-3 mb-6">
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5" />
+                  <DynamicIcon name="CheckCircle" className="h-5 w-5" />
                   <span className="text-sm">Install temperature sensors</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5" />
+                  <DynamicIcon name="CheckCircle" className="h-5 w-5" />
                   <span className="text-sm">Configure HACCP workflows</span>
                 </div>
                 <div className="flex items-center gap-3">
-                  <CheckCircle className="h-5 w-5" />
+                  <DynamicIcon name="CheckCircle" className="h-5 w-5" />
                   <span className="text-sm">Connect POS system</span>
                 </div>
               </div>
@@ -388,13 +384,13 @@ const reading = await opsflow.temperatures.create({
                 
                 <div className="grid gap-4 sm:grid-cols-2 mb-6">
                   {[
-                    { icon: Globe, title: "REST Endpoints", desc: "47 endpoints" },
-                    { icon: Zap, title: "Webhook Events", desc: "Real-time alerts" },
-                    { icon: Shield, title: "Authentication", desc: "API key & OAuth" },
-                    { icon: Building2, title: "SDK Support", desc: "Node, Python, PHP" }
+                    { icon: "Globe", title: "REST Endpoints", desc: "47 endpoints" },
+                    { icon: "Zap", title: "Webhook Events", desc: "Real-time alerts" },
+                    { icon: "Shield", title: "Authentication", desc: "API key & OAuth" },
+                    { icon: "Building2", title: "SDK Support", desc: "Node, Python, PHP" }
                   ].map((item) => (
                     <div key={item.title} className="flex items-center gap-3 p-4 bg-muted rounded-lg">
-                      <item.icon className="h-5 w-5 text-primary" />
+                      <DynamicIcon name={item.icon} className="h-5 w-5 text-primary" />
                       <div>
                         <div className="font-medium">{item.title}</div>
                         <div className="text-sm text-muted-foreground">{item.desc}</div>
@@ -537,12 +533,12 @@ export function TemplatesPage() {
               <CardContent className="p-6">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="p-3 bg-primary/10 text-primary rounded-lg">
-                    <FileText className="h-6 w-6" />
+                    <DynamicIcon name="FileText" className="h-6 w-6" />
                   </div>
                   <Badge variant="outline">{template.format}</Badge>
                   {template.featured && (
                     <Badge variant="secondary" className="text-xs">
-                      <Star className="h-3 w-3 mr-1 fill-current" />
+                      <DynamicIcon name="Star" className="h-3 w-3 mr-1" />
                       Featured
                     </Badge>
                   )}
@@ -559,18 +555,18 @@ export function TemplatesPage() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4 text-sm text-muted-foreground">
                     <div className="flex items-center gap-1">
-                      <Download className="h-3 w-3" />
+                      <DynamicIcon name="Download" className="h-3 w-3" />
                       <span>{template.downloads}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                      <DynamicIcon name="Star" className="h-3 w-3" />
                       <span>{template.rating}</span>
                     </div>
                   </div>
                   <Button size="sm" asChild>
                     <Link href={template.href}>
                       Download
-                      <Download className="ml-2 h-4 w-4" />
+                      <DynamicIcon name="Download" className="ml-2 h-4 w-4" />
                     </Link>
                   </Button>
                 </div>
@@ -583,15 +579,15 @@ export function TemplatesPage() {
       <PageSection title="All Categories">
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           {[
-            { name: "HACCP Compliance", count: 45, icon: Shield, href: "/resources/templates?category=HACCP" },
-            { name: "Safety Protocols", count: 38, icon: CheckCircle, href: "/resources/templates?category=Safety" },
-            { name: "Training Materials", count: 27, icon: GraduationCap, href: "/resources/templates?category=Training" },
-            { name: "Inventory Management", count: 22, icon: Activity, href: "/resources/templates?category=Inventory" }
+            { name: "HACCP Compliance", count: 45, icon: "Shield", href: "/resources/templates?category=HACCP" },
+            { name: "Safety Protocols", count: 38, icon: "CheckCircle", href: "/resources/templates?category=Safety" },
+            { name: "Training Materials", count: 27, icon: "GraduationCap", href: "/resources/templates?category=Training" },
+            { name: "Inventory Management", count: 22, icon: "Activity", href: "/resources/templates?category=Inventory" }
           ].map((category) => (
             <Card key={category.name} className="hover:shadow-lg transition-shadow duration-200">
               <CardContent className="p-6 text-center">
                 <div className="p-4 bg-primary/10 text-primary rounded-2xl w-fit mx-auto mb-4">
-                  <category.icon className="h-8 w-8" />
+                  <DynamicIcon name={category.icon} className="h-8 w-8" />
                 </div>
                 <h3 className="font-semibold mb-2">{category.name}</h3>
                 <p className="text-sm text-muted-foreground mb-4">{category.count} templates</p>

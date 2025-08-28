@@ -2,12 +2,8 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
-import { 
-  Search, Download, Filter, Star, Eye, Clock, Shield, 
-  CheckCircle2, FileText, Utensils, Coffee, Wine, Hotel,
-  ChevronDown, ArrowUpDown, MoreHorizontal,
-  SortAsc, SortDesc, Calendar, TrendingUp
-} from "lucide-react";
+import dynamic from "next/dynamic";
+import { Search, Filter, ChevronDown, MoreHorizontal, SortAsc, SortDesc } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -30,6 +26,22 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Checkbox } from "@/components/ui/checkbox";
+
+// Lazily load non-critical icons to reduce initial bundle
+const Icons = {
+  Download: dynamic(() => import("lucide-react").then(m => ({ default: m.Download }))),
+  Star: dynamic(() => import("lucide-react").then(m => ({ default: m.Star }))),
+  Eye: dynamic(() => import("lucide-react").then(m => ({ default: m.Eye }))),
+  Clock: dynamic(() => import("lucide-react").then(m => ({ default: m.Clock }))),
+  Shield: dynamic(() => import("lucide-react").then(m => ({ default: m.Shield }))),
+  CheckCircle2: dynamic(() => import("lucide-react").then(m => ({ default: m.CheckCircle2 }))),
+  FileText: dynamic(() => import("lucide-react").then(m => ({ default: m.FileText }))),
+  Utensils: dynamic(() => import("lucide-react").then(m => ({ default: m.Utensils }))),
+  Coffee: dynamic(() => import("lucide-react").then(m => ({ default: m.Coffee }))),
+  Wine: dynamic(() => import("lucide-react").then(m => ({ default: m.Wine }))),
+  Hotel: dynamic(() => import("lucide-react").then(m => ({ default: m.Hotel }))),
+  TrendingUp: dynamic(() => import("lucide-react").then(m => ({ default: m.TrendingUp }))),
+} as const;
 
 // SaaS-ready analytics hook - production ready
 function useResourceTracking(action: string, resource: string) {
@@ -97,29 +109,29 @@ interface ResourceTableProps<T extends BaseResource> {
 // Icon mapping for visual consistency
 const getCategoryIcon = (category: string) => {
   const iconMap: Record<string, any> = {
-    'HACCP': Shield,
-    'Safety': CheckCircle2,
-    'Training': FileText,
-    'Operations': Utensils,
-    'Inventory': FileText,
-    'Compliance': Eye,
-    'Articles': FileText,
-    'Case Studies': TrendingUp,
-    'Templates': Download,
-    'Guides': FileText
+    'HACCP': Icons.Shield,
+    'Safety': Icons.CheckCircle2,
+    'Training': Icons.FileText,
+    'Operations': Icons.Utensils,
+    'Inventory': Icons.FileText,
+    'Compliance': Icons.Eye,
+    'Articles': Icons.FileText,
+    'Case Studies': Icons.TrendingUp,
+    'Templates': Icons.Download,
+    'Guides': Icons.FileText,
   };
-  return iconMap[category] || FileText;
+  return iconMap[category] || Icons.FileText;
 };
 
 const getIndustryIcon = (industry: string) => {
   const iconMap: Record<string, any> = {
-    'Restaurant': Utensils,
-    'Bar': Wine,
-    'Coffee': Coffee,
-    'Hotel': Hotel,
-    'All': Utensils
+    'Restaurant': Icons.Utensils,
+    'Bar': Icons.Wine,
+    'Coffee': Icons.Coffee,
+    'Hotel': Icons.Hotel,
+    'All': Icons.Utensils,
   };
-  return iconMap[industry] || Utensils;
+  return iconMap[industry] || Icons.Utensils;
 };
 
 // Utility functions
@@ -455,7 +467,7 @@ export function ResourceTable<T extends BaseResource>({
                     Clear Selection
                   </Button>
                   <Button size="sm" onClick={() => handleBulkAction('download')}>
-                    <Download className="h-3 w-3 mr-1" />
+                    <Icons.Download className="h-3 w-3 mr-1" />
                     Download Selected
                   </Button>
                 </div>
@@ -524,7 +536,7 @@ export function ResourceTable<T extends BaseResource>({
                           <div className="flex items-center gap-1">
                             {resource.featured && (
                               <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
-                                <Star className="h-2.5 w-2.5 mr-1 fill-current" />
+                                <Icons.Star className="h-2.5 w-2.5 mr-1" />
                                 Featured
                               </Badge>
                             )}
@@ -581,7 +593,7 @@ export function ResourceTable<T extends BaseResource>({
                         <TableCell>
                           {resource.rating && (
                             <div className="flex items-center gap-1">
-                              <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
+                              <Icons.Star className="h-3 w-3" />
                               <span className="text-sm font-medium">{resource.rating}</span>
                             </div>
                           )}
@@ -589,7 +601,7 @@ export function ResourceTable<T extends BaseResource>({
                         <TableCell>
                           {resource.downloads && (
                             <div className="flex items-center gap-1">
-                              <Download className="h-3 w-3 text-muted-foreground" />
+                              <Icons.Download className="h-3 w-3 text-muted-foreground" />
                               <span className="text-sm">{formatNumber(resource.downloads)}</span>
                             </div>
                           )}
@@ -598,7 +610,7 @@ export function ResourceTable<T extends BaseResource>({
                     )}
                     <TableCell>
                       <div className="flex items-center gap-1">
-                        <Clock className="h-3 w-3 text-muted-foreground" />
+                        <Icons.Clock className="h-3 w-3 text-muted-foreground" />
                         <span className="text-sm">{formatDate(resource.lastUpdated)}</span>
                       </div>
                     </TableCell>
@@ -612,13 +624,13 @@ export function ResourceTable<T extends BaseResource>({
                         <DropdownMenuContent align="end">
                           <DropdownMenuItem asChild>
                             <Link href={resource.href}>
-                              <Eye className="h-3 w-3 mr-2" />
+                              <Icons.Eye className="h-3 w-3 mr-2" />
                               View
                             </Link>
                           </DropdownMenuItem>
                           {resource.downloads !== undefined && (
                             <DropdownMenuItem onClick={() => onResourceAction?.('download', resource.id)}>
-                              <Download className="h-3 w-3 mr-2" />
+                              <Icons.Download className="h-3 w-3 mr-2" />
                               Download
                             </DropdownMenuItem>
                           )}
@@ -634,7 +646,7 @@ export function ResourceTable<T extends BaseResource>({
           {/* Empty State */}
           {filteredAndSortedResources.length === 0 && (
             <div className="p-8 text-center">
-              <FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+              <Icons.FileText className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
               <h3 className="text-lg font-medium mb-2">No resources found</h3>
               <p className="text-muted-foreground mb-4">
                 Try adjusting your search criteria or filters

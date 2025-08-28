@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
-import { ProductHero } from "@/components/blocks/heroes";
+import { DemoHero } from "@/components/blocks/heroes/DemoHero";
 import { MarketingCTA } from "@/components/shared/layout";
-import { DemoFeatures, DemoBooking, DemoMetrics } from "@/components/domain/demo";
+import IntegrationPartners from "@/components/shared/layout/IntegrationPartners";
+import dynamic from "next/dynamic";
+const DemoFeatures = dynamic(() => import("@/components/domain/demo").then(m => m.DemoFeatures), { ssr: false });
+const DemoMetrics = dynamic(() => import("@/components/domain/demo").then(m => m.DemoMetrics), { ssr: false });
+const DemoBooking = dynamic(() => import("@/components/domain/demo").then(m => m.DemoBooking), { ssr: false });
 
 export const metadata: Metadata = {
   title: "Product Demo — OpsFlow AI",
@@ -12,21 +16,13 @@ export default function ProductDemoPage() {
   return (
     <div className="min-h-screen">
       {/* Demo Hero */}
-      <div className="container mx-auto px-4 sm:px-6">
-        <ProductHero
-          title="See OpsFlow in Action"
-          subtitle="Experience how our restaurant-first platform transforms daily operations with live demonstrations of HACCP compliance, temperature monitoring, and staff management."
-          badge="Interactive Demo Experience"
-          primaryAction={{
-            text: "Start Interactive Demo",
-            href: "#demo-features"
-          }}
-          secondaryAction={{
-            text: "Book Live Demo",
-            href: "#demo-booking"
-          }}
-        />
-      </div>
+      <DemoHero
+        title="See OpsFlow in Action"
+        subtitle="Experience how our restaurant-first platform transforms daily operations with live demonstrations of HACCP compliance, temperature monitoring, and staff management."
+        badge="Interactive Demo Experience"
+        primaryAction={{ text: 'Start Interactive Demo', href: '#demo-features' }}
+        secondaryAction={{ text: 'Book Live Demo', href: '#demo-booking' }}
+      />
 
       {/* Demo Features - Interactive Section */}
       <section id="demo-features">
@@ -35,6 +31,11 @@ export default function ProductDemoPage() {
 
       {/* Demo Success Metrics */}
       <DemoMetrics />
+
+      {/* Integrations */}
+      <section className="bg-muted/30">
+        <IntegrationPartners />
+      </section>
 
       {/* Demo Booking Section */}
       <section id="demo-booking" className="bg-muted/30">

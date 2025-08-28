@@ -1,57 +1,46 @@
-import dynamic from 'next/dynamic';
-import { LucideIcon } from 'lucide-react';
-import { Loader2 } from 'lucide-react';
+"use client";
 
-// Lazy-loaded icon mapping with proper typing
+import dynamic from "next/dynamic";
+
+// Lazy-loaded icon mapping
 const iconMap = {
-  Search: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Search }))),
-  ArrowRight: dynamic(() => import('lucide-react').then(mod => ({ default: mod.ArrowRight }))),
-  BookOpen: dynamic(() => import('lucide-react').then(mod => ({ default: mod.BookOpen }))),
-  HeadphonesIcon: dynamic(() => import('lucide-react').then(mod => ({ default: mod.HeadphonesIcon }))),
-  FileText: dynamic(() => import('lucide-react').then(mod => ({ default: mod.FileText }))),
-  MessageSquare: dynamic(() => import('lucide-react').then(mod => ({ default: mod.MessageSquare }))),
-  Users: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Users }))),
-  Shield: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Shield }))),
-  Play: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Play }))),
-  GraduationCap: dynamic(() => import('lucide-react').then(mod => ({ default: mod.GraduationCap }))),
-  Activity: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Activity }))),
-  Calendar: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Calendar }))),
-  Star: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Star }))),
-  CheckCircle: dynamic(() => import('lucide-react').then(mod => ({ default: mod.CheckCircle }))),
-  Eye: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Eye }))),
-  Download: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Download }))),
-  Building2: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Building2 }))),
-  Target: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Target }))),
-  Zap: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Zap }))),
-  Globe: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Globe }))),
-  TrendingUp: dynamic(() => import('lucide-react').then(mod => ({ default: mod.TrendingUp }))),
-  Award: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Award }))),
-  Copy: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Copy }))),
-  Check: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Check }))),
-  Loader2: dynamic(() => import('lucide-react').then(mod => ({ default: mod.Loader2 })))
+  Search: dynamic(() => import("lucide-react").then((m) => ({ default: m.Search }))),
+  ArrowRight: dynamic(() => import("lucide-react").then((m) => ({ default: m.ArrowRight }))),
+  BookOpen: dynamic(() => import("lucide-react").then((m) => ({ default: m.BookOpen }))),
+  HeadphonesIcon: dynamic(() => import("lucide-react").then((m) => ({ default: m.HeadphonesIcon }))),
+  FileText: dynamic(() => import("lucide-react").then((m) => ({ default: m.FileText }))),
+  MessageSquare: dynamic(() => import("lucide-react").then((m) => ({ default: m.MessageSquare }))),
+  Users: dynamic(() => import("lucide-react").then((m) => ({ default: m.Users }))),
+  Shield: dynamic(() => import("lucide-react").then((m) => ({ default: m.Shield }))),
+  Play: dynamic(() => import("lucide-react").then((m) => ({ default: m.Play }))),
+  GraduationCap: dynamic(() => import("lucide-react").then((m) => ({ default: m.GraduationCap }))),
+  Activity: dynamic(() => import("lucide-react").then((m) => ({ default: m.Activity }))),
+  Calendar: dynamic(() => import("lucide-react").then((m) => ({ default: m.Calendar }))),
+  Star: dynamic(() => import("lucide-react").then((m) => ({ default: m.Star }))),
+  CheckCircle: dynamic(() => import("lucide-react").then((m) => ({ default: m.CheckCircle }))),
+  Eye: dynamic(() => import("lucide-react").then((m) => ({ default: m.Eye }))),
+  Download: dynamic(() => import("lucide-react").then((m) => ({ default: m.Download }))),
+  Building2: dynamic(() => import("lucide-react").then((m) => ({ default: m.Building2 }))),
+  Target: dynamic(() => import("lucide-react").then((m) => ({ default: m.Target }))),
+  Zap: dynamic(() => import("lucide-react").then((m) => ({ default: m.Zap }))),
+  Globe: dynamic(() => import("lucide-react").then((m) => ({ default: m.Globe }))),
+  TrendingUp: dynamic(() => import("lucide-react").then((m) => ({ default: m.TrendingUp }))),
+  Award: dynamic(() => import("lucide-react").then((m) => ({ default: m.Award }))),
+  Copy: dynamic(() => import("lucide-react").then((m) => ({ default: m.Copy }))),
+  Check: dynamic(() => import("lucide-react").then((m) => ({ default: m.Check }))),
 } as const;
 
+export type IconName = keyof typeof iconMap;
+
 interface DynamicIconProps {
-  name: keyof typeof iconMap;
+  name: IconName | (string & {});
   className?: string;
   size?: number;
 }
 
-// High-performance icon component with fallback
-export function DynamicIcon({ name, className = "h-4 w-4", size }: DynamicIconProps) {
-  const IconComponent = iconMap[name];
-  
-  if (!IconComponent) {
-    return <Loader2 className={`${className} animate-spin`} />;
-  }
-
-  return (
-    <IconComponent 
-      className={className} 
-      size={size}
-    />
-  );
+export function DynamicIcon({ name, className, size }: DynamicIconProps) {
+  const Comp = (iconMap as Record<string, any>)[name];
+  if (!Comp) return null;
+  return <Comp className={className} size={size} />;
 }
 
-// Export for direct use in performance-critical components
-export const icons = iconMap;
