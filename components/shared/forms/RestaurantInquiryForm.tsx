@@ -86,7 +86,7 @@ export function RestaurantInquiryForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof InquiryFormData, string>>>({});
   
   useEffect(() => {
-    registerComponentLayout('RestaurantInquiryForm', 'company');
+    registerComponentLayout('RestaurantInquiryForm', 'marketing');
   }, []);
   
   // Update form data with proper type checking

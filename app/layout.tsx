@@ -53,6 +53,7 @@ export default function RootLayout({
         )}
       </head>
       <body className={cn("min-h-screen font-sans bg-background text-foreground")} suppressHydrationWarning>
+        <ErrorBoundary>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
             <GlobalProvider>
               <Navbar />
@@ -62,7 +63,7 @@ export default function RootLayout({
               <ShadcnToaster />
             </GlobalProvider>
           </ThemeProvider>
-        {children}
+        </ErrorBoundary>
       </body>
     </html>
   )

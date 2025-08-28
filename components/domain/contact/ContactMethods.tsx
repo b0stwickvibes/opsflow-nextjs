@@ -52,7 +52,7 @@ export function ContactMethods() {
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
   
   useEffect(() => {
-    registerComponentLayout('ContactMethods', 'company');
+    registerComponentLayout('ContactMethods', 'marketing');
     
     // Report component view for analytics
     trackContactInteraction('contact_methods', 'view');

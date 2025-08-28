@@ -20,32 +20,46 @@
 │   ├── company
 │   │   ├── .DS_Store
 │   │   ├── about
-│   │   │   ├── metadata.ts
 │   │   │   └── page.tsx
 │   │   └── contact
-│   │       ├── metadata.ts
 │   │       └── page.tsx
 │   ├── dashboard
 │   │   └── page.tsx
+│   ├── error.tsx
+│   ├── global-error.tsx
 │   ├── globals.css
 │   ├── layout.tsx
 │   ├── metadata.ts
 │   ├── not-found.tsx
 │   ├── page.tsx
 │   ├── pricing
-│   │   ├── metadata.ts
 │   │   └── page.tsx
 │   ├── product
 │   │   ├── .DS_Store
+│   │   ├── demo
+│   │   │   └── page.tsx
 │   │   └── features
 │   │       ├── error.tsx
-│   │       ├── metadata.ts
+│   │       └── page.tsx
+│   ├── resources
+│   │   ├── blog
+│   │   │   └── page.tsx
+│   │   ├── case-studies
+│   │   │   └── page.tsx
+│   │   ├── contact
+│   │   │   └── page.tsx
+│   │   ├── docs
+│   │   │   └── page.tsx
+│   │   ├── help
+│   │   │   └── page.tsx
+│   │   └── templates
 │   │       └── page.tsx
 │   ├── sign-in
 │   │   └── page.tsx
-│   └── sign-up
+│   ├── sign-up
+│   │   └── page.tsx
+│   └── support
 │       └── page.tsx
-├── check-deps.js
 ├── components
 │   ├── .DS_Store
 │   ├── blocks
@@ -58,13 +72,15 @@
 │   │   │   └── TicketCard.tsx
 │   │   ├── heroes
 │   │   │   ├── CompanyHero.tsx
+│   │   │   ├── ContactHero.tsx
 │   │   │   ├── index.ts
 │   │   │   ├── MarketingHero.tsx
 │   │   │   ├── ProductHero.tsx
 │   │   │   └── RestaurantHero.tsx
 │   │   ├── index.ts
 │   │   ├── stats
-│   │   │   └── .DS_Store
+│   │   │   ├── .DS_Store
+│   │   │   └── Stats9.tsx
 │   │   └── support
 │   │       ├── CategoryGrid.tsx
 │   │       └── SupportSearch.tsx
@@ -76,15 +92,18 @@
 │   │   │   ├── ContactMethods.tsx
 │   │   │   ├── ContactOffices.tsx
 │   │   │   └── index.ts
-│   │   ├── pricing
-│   │   │   ├── index.ts
-│   │   │   ├── PricingTable.tsx
-│   │   │   └── ROICalculator.tsx
+│   │   ├── demo
+│   │   │   ├── DemoBooking.tsx
+│   │   │   ├── DemoFeatures.tsx
+│   │   │   ├── DemoMetrics.tsx
+│   │   │   └── index.ts
 │   │   └── restaurant
 │   │       ├── index.ts
 │   │       ├── RestaurantFeatureGrid.tsx
-│   │       ├── RestaurantPricingTable.tsx
 │   │       └── RestaurantSuccessMetrics.tsx
+│   ├── enhanced
+│   │   ├── CustomerMarquee.tsx
+│   │   └── Marquee.tsx
 │   ├── icons
 │   │   └── plus-signs.tsx
 │   ├── layout
@@ -95,23 +114,36 @@
 │   │   ├── meteors.tsx
 │   │   └── particles.tsx
 │   ├── pages
+│   ├── pricing
+│   │   ├── AddOnsSection.tsx
+│   │   ├── FeatureComparison.tsx
+│   │   ├── PricingCard.tsx
+│   │   ├── PricingFAQ.tsx
+│   │   ├── PricingHero.tsx
+│   │   ├── PricingPageClient.tsx
+│   │   └── ROICalculator.tsx
+│   ├── resources
+│   │   ├── index.ts
+│   │   ├── ResourcePages.tsx
+│   │   └── ResourceTable.tsx
 │   ├── sections
-│   │   ├── .DS_Store
-│   │   └── heroes
-│   │       └── index.ts
+│   │   └── .DS_Store
 │   ├── shared
 │   │   ├── .DS_Store
 │   │   ├── data-display
 │   │   │   ├── .DS_Store
 │   │   │   ├── CardSection.tsx
 │   │   │   ├── FAQSection.tsx
+│   │   │   ├── FAQSection.tsx.bak
 │   │   │   ├── FeatureCard.tsx
+│   │   │   ├── FeatureComparison.tsx
 │   │   │   ├── index.ts
 │   │   │   └── Testimonials.tsx
 │   │   ├── feedback
 │   │   │   ├── BackToTop.tsx
 │   │   │   ├── ErrorDisplay.tsx
 │   │   │   ├── index.ts
+│   │   │   ├── LoadingSkeletons.tsx
 │   │   │   └── Skeletons.tsx
 │   │   ├── forms
 │   │   │   ├── index.ts
@@ -136,6 +168,7 @@
 │       ├── button.tsx
 │       ├── card.tsx
 │       ├── checkbox.tsx
+│       ├── collapsible.tsx
 │       ├── command.tsx
 │       ├── dialog.tsx
 │       ├── diamonds.tsx
@@ -169,36 +202,49 @@
 │       ├── toaster.tsx
 │       └── use-toast.tsx
 ├── components.json
-├── dep-report.html
+├── dep-graph.svg
+├── depcruise-graph.svg
+├── depcruise.json
 ├── ENTERPRISE-FILE-STRUCTURE.md
 ├── ENTERPRISE-IMPLEMENTATION-STATUS.md
-├── FeatureComparison.tsx
+├── filetree.txt
 ├── hooks
 │   ├── use-media-query.ts
-│   └── use-toast.ts
-├── integration-plan.md
+│   ├── use-toast.ts
+│   └── usePricingForm.ts
 ├── lib
 │   ├── .DS_Store
+│   ├── analytics
+│   │   ├── RestaurantAnalytics.ts
+│   │   └── RestaurantAnalytics.tsx
 │   ├── analytics.ts
 │   ├── api
 │   ├── audit.ts
 │   ├── auth.ts
 │   ├── config
+│   ├── context
+│   │   └── GlobalContext.tsx
+│   ├── errors
+│   │   └── ErrorBoundary.tsx
 │   ├── hooks
+│   ├── pricing
+│   │   └── config.ts
 │   ├── pricing-backup
 │   │   ├── index.ts
 │   │   ├── pricing-analytics.ts
 │   │   └── pricing-logic.ts
 │   ├── prisma.ts
 │   ├── real-time.ts
+│   ├── security
+│   │   └── validation.ts
 │   ├── style-system
 │   │   └── layout-differentiation.ts
 │   ├── utils
+│   │   └── browser-detection.ts
 │   ├── utils.ts
 │   └── validations
 ├── middleware.ts
 ├── next-env.d.ts
-├── NEXT-STEPS.md
 ├── next.config.js
 ├── next.config.mjs
 ├── package-lock.json
@@ -210,13 +256,18 @@
 ├── Project Notes
 │   ├── .DS_Store
 │   ├── BLOCK_CODES.md
+│   ├── integration-plan.md
+│   ├── NEXT-STEPS.md
 │   ├── OpsFlow-AI-V2_Full_Blueprint.md
 │   ├── opsflow-claude-protocol.md
-│   └── PROJECT_COMPLETION_SUMMARY.md
+│   ├── PROJECT_COMPLETION_SUMMARY.md
+│   ├── Repo Cartographer.txt
+│   └── SCALER-INTEGRATION.md
 ├── public
 │   └── images
 ├── README.md
-├── SCALER-INTEGRATION.md
+├── repo_slice_20250827_165749.zip
+├── route-map.md
 ├── scaler-nextjs-template
 │   ├── .DS_Store
 │   ├── scalar-nextjs-template-1.1.0
@@ -312,11 +363,15 @@
 │   └── Scalar.fig
 ├── SCALER-SAFETY-PROTOCOL.md
 ├── scripts
-│   └── audit-integrity.sh
+│   ├── audit-integrity.sh
+│   ├── fix-react-prod.js
+│   ├── repo-cartographer.mjs
+│   └── route-map.mjs
 ├── SVG
 ├── tailwind.config.js
 ├── tree.txt
 ├── tsconfig.json
+├── tsconfig.tsbuildinfo
 ├── types
 │   ├── .DS_Store
 │   ├── api
@@ -330,6 +385,10 @@
     │   └── page.tsx
     ├── contact.backup
     │   └── page.tsx
+    ├── domain-pricing-old
+    │   ├── index.ts
+    │   ├── PricingTable.tsx
+    │   └── ROICalculator.tsx
     ├── enhanced.backup
     │   ├── .DS_Store
     │   ├── EnhancedButton.tsx
@@ -338,6 +397,8 @@
     ├── error-boundary.backup
     ├── Feature261.tsx
     ├── features-loading-broken
+    ├── fluff-files
+    ├── fluff-files-2
     ├── hooks.backup
     │   ├── api
     │   ├── use-media-query.ts
@@ -369,14 +430,13 @@
     │   │   ├── browser-detection.js
     │   │   └── features.ts
     │   └── utils.ts
-    ├── numbered-heroes-backup
-    │   ├── Hero159.tsx
-    │   ├── Hero196.tsx
-    │   ├── Hero201.tsx
-    │   ├── Hero218.tsx
-    │   ├── Hero223.tsx
-    │   └── Hero232.tsx
     ├── old-MarketingHero.tsx
+    ├── orphaned-metadata
+    ├── orphaned-metadata-2
+    ├── orphaned-metadata-3
+    ├── orphaned-metadata-4
+    ├── restaurant-pricing-table-old.tsx
+    ├── root-FeatureComparison.tsx
     ├── sections-heroes-duplicate
     │   ├── ContactHero.tsx
     │   ├── CustomContactHero.tsx
@@ -412,4 +472,4 @@
     └── site-empty
         └── .DS_Store
 
-115 directories, 298 files
+131 directories, 342 files

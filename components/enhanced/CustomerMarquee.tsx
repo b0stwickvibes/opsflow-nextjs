@@ -55,7 +55,7 @@ export function CustomerMarquee() {
       // Cleanup any running animations
       const animations = document.getAnimations();
       animations.forEach(animation => {
-        if (animation.animationName?.includes('marquee')) {
+        if ((animation as any).animationName?.includes('marquee')) {
           animation.cancel();
         }
       });

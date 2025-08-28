@@ -61,7 +61,7 @@ export function ContactFAQ() {
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   
   useEffect(() => {
-    registerComponentLayout('ContactFAQ', 'company');
+    registerComponentLayout('ContactFAQ', 'marketing');
     
     // Report view to analytics
     trackFaqInteraction('faq_section', 'view');

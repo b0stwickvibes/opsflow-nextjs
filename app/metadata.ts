@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next"
 
 // Common metadata used across all pages
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
   title: {
     default: "OpsFlow AI | Restaurant Operations Platform",
     template: "%s | OpsFlow AI"

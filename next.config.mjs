@@ -1,9 +1,9 @@
-import bundleAnalyzer from '@next/bundle-analyzer';
-const withBundleAnalyzer = bundleAnalyzer({ enabled: process.env.ANALYZE === 'true' });
-
-// merge with your existing config if needed:
-export default withBundleAnalyzer({
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   reactStrictMode: true,
-  // productionBrowserSourceMaps helps with source-map explorers too
-  productionBrowserSourceMaps: true,
-});
+  experimental: {
+    optimizePackageImports: ['lucide-react'],
+  },
+};
+
+export default nextConfig;

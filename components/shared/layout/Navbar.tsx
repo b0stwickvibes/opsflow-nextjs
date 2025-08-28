@@ -115,7 +115,7 @@ interface Resource {
 }
 
 const SUPPORT_RESOURCES: Resource[] = [
-  { title: "Help Center", href: "/resources/help", icon: HelpCircle },
+  { title: "Support Center", href: "/support", icon: HelpCircle },
   { title: "Documentation", href: "/resources/docs", icon: FileText },
   { title: "Contact Support", href: "/resources/contact", icon: Phone },
 ];
@@ -162,7 +162,7 @@ const usePredictiveHover = (navItems: string[]) => {
     // Get nav item positions
     const navElements = navItems.map(item => 
       document.querySelector(`[data-nav-item="${item}"]`)
-    ).filter(Boolean);
+    ).filter((el): el is Element => Boolean(el));
     
     if (navElements.length === 0) return null;
     
@@ -229,7 +229,13 @@ const DropdownMenu = ({
     }
   }, [isOpen]);
 
-  useEffect(() => () => timeoutRef.current && clearTimeout(timeoutRef.current), []);
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <div

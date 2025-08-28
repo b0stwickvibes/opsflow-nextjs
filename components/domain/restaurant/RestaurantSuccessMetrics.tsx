@@ -87,14 +87,14 @@ export function RestaurantSuccessMetrics() {
     registerComponentLayout('RestaurantSuccessMetrics', 'marketing');
     
     // Track component view
-    trackInteraction('success_metrics', 'view');
+    trackInteraction('success_metrics', { action: 'view' });
     
     // Detect when component is in viewport
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsInView(true);
-          trackInteraction('success_metrics', 'in_view');
+          trackInteraction('success_metrics', { action: 'in_view' });
           observer.disconnect();
         }
       },

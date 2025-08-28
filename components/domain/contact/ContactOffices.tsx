@@ -48,7 +48,7 @@ export function ContactOffices() {
   const [selectedOffice, setSelectedOffice] = useState<number | null>(null);
   
   useEffect(() => {
-    registerComponentLayout('ContactOffices', 'company');
+    registerComponentLayout('ContactOffices', 'marketing');
     
     // Report component view for analytics
     trackOfficeInteraction('offices_section', 'view');

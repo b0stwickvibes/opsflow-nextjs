@@ -19,10 +19,10 @@ export function OriginalContactForm() {
   });
 
   useEffect(() => {
-    registerComponentLayout('OriginalContactForm', 'company');
+    registerComponentLayout('RestaurantContactForm', 'marketing');
     
     // Track component view
-    trackInteraction('contact_form', 'view');
+    trackInteraction('contact_form', { action: 'view' });
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,7 +30,7 @@ export function OriginalContactForm() {
     setFormData(prev => ({ ...prev, [id]: value }));
     
     // Track field interaction
-    trackInteraction('contact_form_field', 'change', { field: id });
+    trackInteraction('contact_form_field', { action: 'change', field: id });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -38,7 +38,8 @@ export function OriginalContactForm() {
     setIsSubmitting(true);
     
     // Track form submission
-    trackInteraction('contact_form', 'submit', { 
+    trackInteraction('contact_form', { 
+      action: 'submit',
       hasName: !!formData.name.trim(),
       hasEmail: !!formData.email.trim(),
       messageLength: formData.message.length
@@ -52,7 +53,7 @@ export function OriginalContactForm() {
       alert("Message sent! Thank you for contacting us. We'll get back to you soon.");
       
       // Track successful submission
-      trackInteraction('contact_form', 'submit_success');
+      trackInteraction('contact_form', { action: 'submit_success' });
       
       // Reset form
       setFormData({
@@ -204,7 +205,7 @@ export function OriginalContactForm() {
           <Button 
             variant="outline" 
             className="w-full border-blue-300 dark:border-blue-700 hover:bg-blue-100 dark:hover:bg-blue-800"
-            onClick={() => trackInteraction('priority_support', 'click')}
+            onClick={() => trackInteraction('priority_support', { action: 'click' })}
           >
             Contact Priority Support
           </Button>

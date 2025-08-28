@@ -222,7 +222,7 @@ function RestaurantNav() {
 
           {/* Hamburger Menu Button (Mobile Only) */}
           <div className="me-6 ml-auto flex flex-1 items-center justify-end lg:me-0 lg:hidden">
-            <ThemeToggle className="" />
+            <ThemeToggle />
 
             <Button
               variant="outline"
@@ -346,7 +346,9 @@ const NavBarAction = ({
     <div className="bordered-div-padding flex items-center justify-between border lg:border-none lg:!p-0">
       <div className="flex flex-1 items-center gap-2">
         <div className="flex flex-1 items-center justify-center">
-          <ThemeToggle className="hidden lg:block" />
+          <div className="hidden lg:block">
+            <ThemeToggle />
+          </div>
           <Link href="/login" onClick={() => setIsMenuOpen?.(false)}>
             <Button size="sm" variant="ghost" className="lg:text-base">
               Log In
