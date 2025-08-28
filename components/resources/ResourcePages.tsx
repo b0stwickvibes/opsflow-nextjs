@@ -224,7 +224,7 @@ export function HelpCenterPage() {
                 <Button asChild>
                   <Link href={category.href}>
                     Learn More
-                    <ArrowRight className="ml-2 h-4 w-4" />
+                    <DynamicIcon name="ArrowRight" className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
               </CardContent>
@@ -339,7 +339,7 @@ const reading = await opsflow.temperatures.create({
               <Button variant="secondary" asChild>
                 <Link href="/resources/docs/quickstart">
                   Start Setup Guide
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <DynamicIcon name="ArrowRight" className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
             </CardContent>
@@ -354,7 +354,7 @@ const reading = await opsflow.temperatures.create({
                 onClick={() => handleCopy(codeExample)}
                 className="h-8 w-8 p-0"
               >
-                {copied === codeExample ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                {copied === codeExample ? <DynamicIcon name="Check" className="h-4 w-4" /> : <DynamicIcon name="Copy" className="h-4 w-4" />}
               </Button>
             </CardHeader>
             <CardContent className="p-0">
@@ -373,7 +373,7 @@ const reading = await opsflow.temperatures.create({
               <div>
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-2 bg-primary text-primary-foreground rounded-lg">
-                    <FileText className="h-5 w-5" />
+                    <DynamicIcon name="FileText" className="h-5 w-5" />
                   </div>
                   <h3 className="text-2xl font-bold">Complete API Reference</h3>
                 </div>
