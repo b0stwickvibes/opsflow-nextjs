@@ -1,10 +1,12 @@
-interface FeatureItem {
+import type { ReactNode } from 'react';
+
+export interface FeatureItem {
   title: string;
   description?: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
 }
 
-interface MarketingFeaturesGridProps {
+export interface MarketingFeaturesGridProps {
   heading?: string;
   subheading?: string;
   items: FeatureItem[];
@@ -42,4 +44,3 @@ export function MarketingFeaturesGrid({ heading, subheading, items }: MarketingF
     </section>
   );
 }
-

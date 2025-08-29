@@ -1,10 +1,10 @@
-interface LogoItem {
+export interface LogoItem {
   src: string;
   alt: string;
   href?: string;
 }
 
-interface MarketingBrandLogosProps {
+export interface MarketingBrandLogosProps {
   heading?: string;
   items: LogoItem[];
 }
@@ -30,13 +30,15 @@ export function MarketingBrandLogos({ heading, items }: MarketingBrandLogosProps
               <img
                 src={logo.src}
                 alt={logo.alt}
+                loading="lazy"
+                decoding="async"
                 className="mx-auto h-8 w-auto opacity-80 grayscale hover:opacity-100"
               />
             );
             return (
               <div key={i} className="flex items-center justify-center">
                 {logo.href ? (
-                  <a href={logo.href} target="_blank" rel="noreferrer">
+                  <a href={logo.href} target="_blank" rel="noreferrer" aria-label={logo.alt}>
                     {img}
                   </a>
                 ) : (
@@ -50,4 +52,3 @@ export function MarketingBrandLogos({ heading, items }: MarketingBrandLogosProps
     </section>
   );
 }
-
