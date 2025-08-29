@@ -34,14 +34,14 @@ export function MarketingBrandLogos({ heading, items }: MarketingBrandLogosProps
                 width={160}
                 height={48}
                 sizes="(max-width: 768px) 33vw, (max-width: 1200px) 20vw, 160px"
-                className="mx-auto h-8 w-auto opacity-80 grayscale hover:opacity-100"
+                className="mx-auto h-8 w-auto opacity-80 grayscale hover:opacity-100 transition"
                 priority={false}
               />
             );
             return (
               <div key={i} className="flex items-center justify-center">
                 {logo.href ? (
-                  <a href={logo.href} target="_blank" rel="noreferrer" aria-label={logo.alt}>
+                  <a href={logo.href} target="_blank" rel="noreferrer" aria-label={logo.alt} title={logo.alt} className="inline-flex items-center justify-center hover:scale-[1.02] transition-transform">
                     {img}
                   </a>
                 ) : (

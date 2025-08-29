@@ -19,12 +19,12 @@ const PARTNERS: Partner[] = [
   { name: 'QuickBooks', logo: '/logos/quickbooks.svg', href: 'https://quickbooks.intuit.com/' },
   { name: 'DoorDash', logo: '/logos/doordash.svg', href: 'https://www.doordash.com/merchant/' },
   // Productivity & CRM
-  { name: 'Slack', href: 'https://slack.com' },
-  { name: 'Microsoft Teams', href: 'https://www.microsoft.com/microsoft-teams' },
-  { name: 'Google Workspace', href: 'https://workspace.google.com' },
-  { name: 'Salesforce', href: 'https://www.salesforce.com' },
-  { name: 'HubSpot', href: 'https://www.hubspot.com' },
-  { name: 'Zapier', href: 'https://zapier.com' },
+  { name: 'Slack', logo: '/logos/slack.svg', href: 'https://slack.com' },
+  { name: 'Microsoft Teams', logo: '/logos/teams.svg', href: 'https://www.microsoft.com/microsoft-teams' },
+  { name: 'Google Workspace', logo: '/logos/google-workspace.svg', href: 'https://workspace.google.com' },
+  { name: 'Salesforce', logo: '/logos/salesforce.svg', href: 'https://www.salesforce.com' },
+  { name: 'HubSpot', logo: '/logos/hubspot.svg', href: 'https://www.hubspot.com' },
+  { name: 'Zapier', logo: '/logos/zapier.svg', href: 'https://zapier.com' },
   // Platform capabilities
   { name: 'API Access' },
   { name: 'Webhooks' },
@@ -69,6 +69,7 @@ export function IntegrationPartners() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={`${p.name} integration`}
+                    title={`${p.name}`}
                     className="inline-flex items-center justify-center hover:scale-105 transition-transform"
                   >
                     {content}
