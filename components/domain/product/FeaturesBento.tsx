@@ -21,9 +21,9 @@ export default function FeaturesBento() {
   return (
     <section className="py-12">
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-[1fr]">
+        <div className="grid auto-rows-[1fr] gap-6 md:grid-cols-3">
           {/* Large tile - Temperature Monitoring */}
-          <Card className="lg:col-span-2">
+          <Card className="md:col-span-2 md:row-span-2 bg-gradient-to-br from-primary/5 to-blue-500/5">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-primary/10 p-2 text-primary"><Thermometer className="h-5 w-5" /></div>
@@ -37,7 +37,7 @@ export default function FeaturesBento() {
           </Card>
 
           {/* HACCP & Audits */}
-          <Card>
+          <Card className="md:col-span-1 bg-background/80">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-primary/10 p-2 text-primary"><Shield className="h-5 w-5" /></div>
@@ -50,7 +50,7 @@ export default function FeaturesBento() {
           </Card>
 
           {/* Smart Work Orders */}
-          <Card>
+          <Card className="bg-background/80">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-primary/10 p-2 text-primary"><ClipboardCheck className="h-5 w-5" /></div>
@@ -63,7 +63,7 @@ export default function FeaturesBento() {
           </Card>
 
           {/* Team Comms */}
-          <Card>
+          <Card className="bg-background/80">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-primary/10 p-2 text-primary"><MessageSquare className="h-5 w-5" /></div>
@@ -76,7 +76,7 @@ export default function FeaturesBento() {
           </Card>
 
           {/* Analytics */}
-          <Card>
+          <Card className="bg-background/80">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-primary/10 p-2 text-primary"><BarChart3 className="h-5 w-5" /></div>
@@ -89,7 +89,7 @@ export default function FeaturesBento() {
           </Card>
 
           {/* Staff & Training */}
-          <Card>
+          <Card className="bg-background/80">
             <CardHeader>
               <div className="flex items-center gap-3">
                 <div className="rounded-md bg-primary/10 p-2 text-primary"><Users className="h-5 w-5" /></div>
@@ -105,4 +105,3 @@ export default function FeaturesBento() {
     </section>
   );
 }
-

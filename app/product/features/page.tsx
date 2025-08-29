@@ -1,11 +1,14 @@
 import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
+import { MarketingBrandLogos } from "@/components/shared/data-display/MarketingBrandLogos";
 import FeaturesHeroPro from "@/components/blocks/heroes/FeaturesHeroPro";
 import FeatureStats from "@/components/domain/product/FeatureStats";
 const FeaturesBento = dynamic(() => import("@/components/domain/product/FeaturesBento"));
+const PlasmaFeaturesSection = dynamic(() => import("@/components/domain/product/PlasmaFeaturesSection"));
 const FeatureCategoryGrid = dynamic(() => import("@/components/domain/product/FeatureCategoryGrid"));
+const UseCaseTabs = dynamic(() => import("@/components/domain/product/UseCaseTabs"));
+const CompetitorComparisonStrip = dynamic(() => import("@/components/domain/product/CompetitorComparisonStrip"));
 const AdvancedOps = dynamic(() => import("@/components/domain/product/AdvancedOps"));
-const RoleShowcase = dynamic(() => import("@/components/domain/roles/RoleShowcase"));
 const TemplatesPromo = dynamic(() => import("@/components/domain/templates/TemplatesPromo"));
 const LocationSecurityShowcase = dynamic(() => import("@/components/domain/security/LocationSecurityShowcase"));
 const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"));
@@ -17,14 +20,36 @@ export default function ProductFeaturesPage() {
       {/* Premium Features Hero */}
       <FeaturesHeroPro />
 
+      {/* Logos band */}
+      <MarketingBrandLogos
+        heading="Trusted by leading restaurants and hospitality groups"
+        items={[
+          { src: "/logos/toast.svg", alt: "Toast" },
+          { src: "/logos/square.svg", alt: "Square" },
+          { src: "/logos/marginedge.svg", alt: "MarginEdge" },
+          { src: "/logos/quickbooks.svg", alt: "QuickBooks" },
+          { src: "/logos/slack.svg", alt: "Slack" },
+          { src: "/logos/zapier.svg", alt: "Zapier" },
+        ]}
+      />
+
       {/* Bento Features Overview */}
       <FeaturesBento />
 
-      {/* Feature Categories */}
-      <FeatureCategoryGrid />
+      {/* Plasma-style feature showcase */}
+      <PlasmaFeaturesSection />
 
       {/* Stats */}
       <FeatureStats />
+
+      {/* Role-based use cases */}
+      <UseCaseTabs />
+
+      {/* Competitor comparison strip */}
+      <CompetitorComparisonStrip />
+
+      {/* Feature Categories */}
+      <FeatureCategoryGrid />
 
       {/* Interactive Demo CTA */}
       <InteractiveDemoCTA />
