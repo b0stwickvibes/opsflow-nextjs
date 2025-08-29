@@ -6,10 +6,10 @@ import { MarketingHero } from "@/components/blocks/heroes";
 import { RestaurantFeatureGrid } from "@/components/domain/restaurant";
 import { Testimonials, MarketingBrandLogos, MarketingFeaturesGrid } from "@/components/shared/data-display";
 import { MarketingCTA } from "@/components/shared/layout";
+import { MarketingCTATracked } from "@/components/shared/layout/MarketingCTATracked";
 import { CustomerMarquee } from "@/components/enhanced/CustomerMarquee";
 import { landingV2Enabled } from "@/lib/config/flags";
 import { landingContent } from "@/lib/marketing/content";
-import { trackInteraction } from "@/lib/analytics";
 
 export default function HomePage() {
   if (landingV2Enabled) {
@@ -21,6 +21,9 @@ export default function HomePage() {
             title={landingContent.hero.title}
             description={landingContent.hero.description}
             badge={landingContent.hero.badge}
+            eyebrow={(landingContent.hero as any).eyebrow}
+            align={(landingContent.hero as any).align}
+            mediaSrc={(landingContent.hero as any).mediaSrc}
             showDashboardPreview={false}
           />
         </div>
@@ -32,13 +35,12 @@ export default function HomePage() {
         <Testimonials title="What customers say" items={landingContent.testimonials} />
 
         <div className="container mx-auto px-4 sm:px-6 py-16">
-          <MarketingCTA
+          <MarketingCTATracked
             title={landingContent.cta.title}
             description={landingContent.cta.description}
             primaryAction={landingContent.cta.primary}
             secondaryAction={landingContent.cta.secondary}
-            onPrimaryClick={() => trackInteraction('cta_click', { location: 'home', variant: 'primary' })}
-            onSecondaryClick={() => trackInteraction('cta_click', { location: 'home', variant: 'secondary' })}
+            location="home"
           />
         </div>
       </div>

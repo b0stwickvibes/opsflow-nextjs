@@ -9,6 +9,9 @@ export const landingContent = {
     description:
       "Paste Figma copy and assets into these sections. We'll swap this into / when approved.",
     badge: 'Preview',
+    eyebrow: 'New',
+    align: 'left' as const,
+    // mediaSrc: '/landing/hero.png', // drop your hero image here to enable
   },
   logos: [
     { src: '/logos/toast.svg', alt: 'Toast' },
@@ -38,4 +41,3 @@ export const landingContent = {
     secondary: { text: 'Schedule Demo', href: '/product/demo' },
   },
 };
-

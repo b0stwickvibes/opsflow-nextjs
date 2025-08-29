@@ -1,7 +1,7 @@
-import { MarketingCTA, MarketingHero } from "@/components/shared/layout";
+import { MarketingHero } from "@/components/shared/layout";
+import { MarketingCTATracked } from "@/components/shared/layout/MarketingCTATracked";
 import { MarketingBrandLogos, MarketingFeaturesGrid, Testimonials } from "@/components/shared/data-display";
 import { landingContent } from "@/lib/marketing/content";
-import { trackInteraction } from "@/lib/analytics";
 import { PageView } from "@/components/shared/analytics/PageView";
 
 export const metadata = {
@@ -17,6 +17,9 @@ export default function LandingPreviewPage() {
           title={landingContent.hero.title}
           description={landingContent.hero.description}
           badge={landingContent.hero.badge}
+          eyebrow={(landingContent.hero as any).eyebrow}
+          align={(landingContent.hero as any).align}
+          mediaSrc={(landingContent.hero as any).mediaSrc}
           showDashboardPreview={false}
         />
       </div>
@@ -35,13 +38,12 @@ export default function LandingPreviewPage() {
       <Testimonials title="What customers say" items={landingContent.testimonials} />
 
       <div className="container mx-auto px-4 sm:px-6 py-16">
-        <MarketingCTA
+        <MarketingCTATracked
           title={landingContent.cta.title}
           description={landingContent.cta.description}
           primaryAction={landingContent.cta.primary}
           secondaryAction={landingContent.cta.secondary}
-          onPrimaryClick={() => trackInteraction('cta_click', { location: 'landing', variant: 'primary' })}
-          onSecondaryClick={() => trackInteraction('cta_click', { location: 'landing', variant: 'secondary' })}
+          location="landing"
         />
       </div>
 

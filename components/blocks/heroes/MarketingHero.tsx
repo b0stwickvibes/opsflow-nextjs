@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, ReactNode } from 'react';
+import Image from 'next/image';
 import { ArrowRight, ChefHat, Shield, BarChart3, Clock } from 'lucide-react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
@@ -25,6 +26,10 @@ interface MarketingHeroProps {
   className?: string;
   showStats?: boolean;
   showDashboardPreview?: boolean;
+  eyebrow?: string;
+  align?: 'center' | 'left';
+  mediaSrc?: string;
+  mediaAlt?: string;
 }
 
 export function MarketingHero({
@@ -34,7 +39,11 @@ export function MarketingHero({
   children,
   className = '',
   showStats = true,
-  showDashboardPreview = true
+  showDashboardPreview = true,
+  eyebrow,
+  align = 'center',
+  mediaSrc,
+  mediaAlt = 'Product preview'
 }: MarketingHeroProps) {
   useEffect(() => {
     registerComponentLayout('MarketingHero', 'marketing');
@@ -43,7 +52,20 @@ export function MarketingHero({
   return (
     <section className={`relative py-16 md:py-24 bg-background ${className}`}>
       <div className="container mx-auto px-4 sm:px-6">
-        <div className="mx-auto max-w-4xl text-center">
+        <div className={`mx-auto max-w-4xl ${align === 'left' ? 'text-left md:max-w-5xl' : 'text-center'}`}>
+          {/* Eyebrow */}
+          {eyebrow && (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className={`mb-4 ${align === 'left' ? '' : 'flex justify-center'}`}
+            >
+              <span className="inline-flex items-center rounded-full border bg-muted px-3 py-1 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                {eyebrow}
+              </span>
+            </motion.div>
+          )}
           {/* Status Badge */}
           {badge && (
             <motion.div
@@ -68,7 +90,7 @@ export function MarketingHero({
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mb-8 space-y-4"
+            className={`mb-8 space-y-4 ${align === 'left' ? 'md:max-w-3xl' : ''}`}
           >
             <h1 className="text-4xl font-bold tracking-tight md:text-6xl">
               {title}
@@ -83,7 +105,7 @@ export function MarketingHero({
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mb-16 flex flex-wrap items-center justify-center gap-4"
+            className={`mb-12 flex flex-wrap items-center ${align === 'left' ? 'justify-start' : 'justify-center'} gap-4`}
           >
             {children || (
               <>
@@ -104,8 +126,28 @@ export function MarketingHero({
           </motion.div>
         </div>
 
-        {/* Dashboard Preview */}
-        {showDashboardPreview && (
+        {/* Dashboard Preview (legacy) or custom media */}
+        {mediaSrc ? (
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="mx-auto max-w-5xl mb-16"
+          >
+            <div className="rounded-xl border bg-muted/50 p-4 shadow-lg">
+              <div className="aspect-video overflow-hidden rounded-lg border bg-background">
+                <Image
+                  src={mediaSrc}
+                  alt={mediaAlt}
+                  width={1280}
+                  height={720}
+                  className="h-full w-full object-cover"
+                  priority
+                />
+              </div>
+            </div>
+          </motion.div>
+        ) : showDashboardPreview && (
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
