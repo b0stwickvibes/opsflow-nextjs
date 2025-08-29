@@ -1,7 +1,8 @@
 import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
-import FeaturesHero from "@/components/blocks/heroes/FeaturesHero";
+import FeaturesHeroPro from "@/components/blocks/heroes/FeaturesHeroPro";
 import FeatureStats from "@/components/domain/product/FeatureStats";
+const FeaturesBento = dynamic(() => import("@/components/domain/product/FeaturesBento"));
 const FeatureCategoryGrid = dynamic(() => import("@/components/domain/product/FeatureCategoryGrid"));
 const AdvancedOps = dynamic(() => import("@/components/domain/product/AdvancedOps"));
 const RoleShowcase = dynamic(() => import("@/components/domain/roles/RoleShowcase"));
@@ -13,8 +14,11 @@ const InteractiveDemoCTA = dynamic(() => import("@/components/domain/product/Int
 export default function ProductFeaturesPage() {
   return (
     <div className="min-h-screen">
-      {/* Features Hero */}
-      <FeaturesHero featuresCount={50} />
+      {/* Premium Features Hero */}
+      <FeaturesHeroPro />
+
+      {/* Bento Features Overview */}
+      <FeaturesBento />
 
       {/* Feature Categories */}
       <FeatureCategoryGrid />
