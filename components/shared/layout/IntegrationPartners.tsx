@@ -54,7 +54,11 @@ export function IntegrationPartners() {
                 className="grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition"
               />
             ) : (
-              <span className="px-2 py-1 text-xs rounded border bg-muted/40">
+              <span
+                className="px-2 py-1 text-xs rounded border bg-muted/40"
+                title={p.name}
+                aria-label={`${p.name} capability`}
+              >
                 {p.name}
               </span>
             );

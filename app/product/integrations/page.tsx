@@ -25,6 +25,30 @@ export default function IntegrationsPage() {
 
       <IntegrationPartners />
 
+      {/* Featured Partners */}
+      <section className="py-8">
+        <div className="container mx-auto px-4 sm:px-6 grid gap-6 md:grid-cols-3">
+          <a href="https://pos.toasttab.com/" target="_blank" rel="noreferrer" className="rounded-lg border bg-muted/20 p-6 hover:bg-muted/30 transition-colors">
+            <h3 className="font-semibold mb-1">POS + Ops</h3>
+            <p className="text-sm text-muted-foreground">
+              Connect Toast to create prep and service tasks in real time based on sales signals.
+            </p>
+          </a>
+          <a href="https://slack.com" target="_blank" rel="noreferrer" className="rounded-lg border bg-muted/20 p-6 hover:bg-muted/30 transition-colors">
+            <h3 className="font-semibold mb-1">Slack</h3>
+            <p className="text-sm text-muted-foreground">
+              Route incidents, temperature alerts, and announcements to the right channels.
+            </p>
+          </a>
+          <a href="/resources/docs/api" className="rounded-lg border bg-muted/20 p-6 hover:bg-muted/30 transition-colors">
+            <h3 className="font-semibold mb-1">SSO + API</h3>
+            <p className="text-sm text-muted-foreground">
+              SSO/SCIM user provisioning, REST API, and webhooks for secure, reliable integrations.
+            </p>
+          </a>
+        </div>
+      </section>
+
       <section className="py-12">
         <div className="container mx-auto px-4 sm:px-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-lg border bg-muted/30 p-6">
@@ -61,4 +85,3 @@ export default function IntegrationsPage() {
     </main>
   );
 }
-
