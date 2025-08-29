@@ -16,6 +16,8 @@ interface MarketingCTAProps {
     text: string;
     href: string;
   };
+  onPrimaryClick?: () => void;
+  onSecondaryClick?: () => void;
   className?: string;
 }
 
@@ -24,7 +26,9 @@ export function MarketingCTA({
   description,
   primaryAction,
   secondaryAction,
-  className = ''
+  className = '',
+  onPrimaryClick,
+  onSecondaryClick,
 }: MarketingCTAProps) {
   return (
     <section className={`py-12 ${className}`}>
@@ -40,7 +44,7 @@ export function MarketingCTA({
             className="bg-white text-primary hover:bg-gray-100"
             asChild
           >
-            <Link href={primaryAction.href}>
+            <Link href={primaryAction.href} onClick={onPrimaryClick}>
               {primaryAction.text}
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
@@ -53,7 +57,7 @@ export function MarketingCTA({
               size="lg"
               asChild
             >
-              <Link href={secondaryAction.href}>
+              <Link href={secondaryAction.href} onClick={onSecondaryClick}>
                 {secondaryAction.text}
               </Link>
             </Button>

@@ -74,8 +74,8 @@ export default function PricingCard({ tier, isAnnual, onCtaClick, experimentId, 
 
   return (
     <Card
-      className={`relative transition-all duration-300 hover:shadow-lg cursor-pointer ${
-        tier.popular ? 'ring-2 ring-primary scale-105' : ''
+      className={`relative transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5 focus-within:ring-2 focus-within:ring-primary cursor-pointer ${
+        tier.popular ? 'ring-2 ring-primary scale-[1.02]' : ''
       }`}
       onClick={handleCardClick}
       role="article"
@@ -124,7 +124,7 @@ export default function PricingCard({ tier, isAnnual, onCtaClick, experimentId, 
         </div>
 
         <Button 
-          className="w-full" 
+          className="w-full transition-transform hover:scale-[1.01]" 
           variant={tier.popular ? 'default' : 'outline'} 
           onClick={handleCtaClick}
           disabled={isClicked}

@@ -46,14 +46,31 @@ export function IntegrationPartners() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center">
           {PARTNERS.map((p) => {
             const content = p.logo ? (
-              <Image src={p.logo} alt={`${p.name} logo`} width={120} height={40} />
+              <Image
+                src={p.logo}
+                alt={`${p.name} logo`}
+                width={120}
+                height={40}
+                className="grayscale opacity-80 group-hover:opacity-100 group-hover:grayscale-0 transition"
+              />
             ) : (
-              <span className="px-2 py-1 text-xs rounded border bg-muted/40">{p.name}</span>
+              <span className="px-2 py-1 text-xs rounded border bg-muted/40">
+                {p.name}
+              </span>
             );
             return (
-              <div key={p.name} className="flex justify-center opacity-80 hover:opacity-100 transition-opacity">
+              <div
+                key={p.name}
+                className="group flex justify-center opacity-80 hover:opacity-100 transition-opacity"
+              >
                 {p.href ? (
-                  <Link href={p.href} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} integration`}>
+                  <Link
+                    href={p.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${p.name} integration`}
+                    className="inline-flex items-center justify-center hover:scale-105 transition-transform"
+                  >
                     {content}
                   </Link>
                 ) : (
@@ -62,6 +79,28 @@ export function IntegrationPartners() {
               </div>
             );
           })}
+        </div>
+
+        {/* Featured partner capabilities */}
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="rounded-lg border bg-muted/30 p-4">
+            <div className="text-sm font-semibold mb-1">POS + Ops</div>
+            <p className="text-sm text-muted-foreground">
+              Real-time POS signals feed prep and service tasks for tighter execution.
+            </p>
+          </div>
+          <div className="rounded-lg border bg-muted/30 p-4">
+            <div className="text-sm font-semibold mb-1">Sensors + Logs</div>
+            <p className="text-sm text-muted-foreground">
+              Temperature events auto-create HACCP entries with corrective actions.
+            </p>
+          </div>
+          <div className="rounded-lg border bg-muted/30 p-4">
+            <div className="text-sm font-semibold mb-1">Identity + Security</div>
+            <p className="text-sm text-muted-foreground">
+              SSO/SCIM with role-based controls and location-based access policies.
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -36,12 +36,11 @@ export default function PricingHero({ isAnnual, onBillingToggle, annualDiscount 
             <span className={`text-sm transition-colors ${isAnnual ? 'text-foreground' : 'text-muted-foreground'}`} id="billing-annual-label">
               Annual
             </span>
-            {isAnnual && (
-              <Badge variant="secondary" className="ml-2" id="billing-discount-info">
-                Save {Math.round(annualDiscount * 100)}%
-              </Badge>
-            )}
+            <Badge variant="secondary" className="ml-2" id="billing-discount-info">
+              Save {Math.round(annualDiscount * 100)}%
+            </Badge>
           </div>
+          <p className="text-xs text-muted-foreground">Annual billing shows the total per year; monthly shows per month.</p>
         </div>
       </div>
     </section>

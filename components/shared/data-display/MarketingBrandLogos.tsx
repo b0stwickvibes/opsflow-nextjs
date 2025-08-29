@@ -14,6 +14,8 @@ export interface MarketingBrandLogosProps {
  * Purpose: Simple logo grid for partner/brand trust.
  * Used in: Marketing pages (home, product, about)
  */
+import Image from 'next/image';
+
 export function MarketingBrandLogos({ heading, items }: MarketingBrandLogosProps) {
   return (
     <section className="py-8 md:py-10">
@@ -26,13 +28,14 @@ export function MarketingBrandLogos({ heading, items }: MarketingBrandLogosProps
         <div className="grid grid-cols-2 items-center gap-6 sm:grid-cols-3 md:grid-cols-6">
           {items.map((logo, i) => {
             const img = (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
+              <Image
                 src={logo.src}
                 alt={logo.alt}
-                loading="lazy"
-                decoding="async"
+                width={160}
+                height={48}
+                sizes="(max-width: 768px) 33vw, (max-width: 1200px) 20vw, 160px"
                 className="mx-auto h-8 w-auto opacity-80 grayscale hover:opacity-100"
+                priority={false}
               />
             );
             return (
