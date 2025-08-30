@@ -1,6 +1,6 @@
 
 import type { Metadata } from "next";
-import PricingPageClient from "@/components/pricing/PricingPageClient";
+import PricingPageClient from "@/components/domain/pricing/PricingPageClient";
 import { PRICING_TIERS, ADD_ONS, FEATURES, FAQ } from "@/lib/pricing/config";
 
 export const metadata: Metadata = {

@@ -1,76 +1,41 @@
-import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
-import { MarketingBrandLogos } from "@/components/shared/data-display/MarketingBrandLogos";
-import FeaturesHeroPro from "@/components/blocks/heroes/FeaturesHeroPro";
-import FeatureStats from "@/components/domain/product/FeatureStats";
-const FeaturesBento = dynamic(() => import("@/components/domain/product/FeaturesBento"));
-const PlasmaFeaturesSection = dynamic(() => import("@/components/domain/product/PlasmaFeaturesSection"));
-const FeatureCategoryGrid = dynamic(() => import("@/components/domain/product/FeatureCategoryGrid"));
-const UseCaseTabs = dynamic(() => import("@/components/domain/product/UseCaseTabs"));
-const CompetitorComparisonStrip = dynamic(() => import("@/components/domain/product/CompetitorComparisonStrip"));
-const AdvancedOps = dynamic(() => import("@/components/domain/product/AdvancedOps"));
-const TemplatesPromo = dynamic(() => import("@/components/domain/templates/TemplatesPromo"));
-const LocationSecurityShowcase = dynamic(() => import("@/components/domain/security/LocationSecurityShowcase"));
-const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"));
-const InteractiveDemoCTA = dynamic(() => import("@/components/domain/product/InteractiveDemoCTA"));
+import { FeaturesHeroGrid, FeatureBoard, SplitFeature } from "@/components/domain/product";
 
 export default function ProductFeaturesPage() {
   return (
     <div className="min-h-screen">
-      {/* Premium Features Hero */}
-      <FeaturesHeroPro />
+      {/* Plasma/Stripe-style hero */}
+      <FeaturesHeroGrid />
 
-      {/* Logos band */}
-      <MarketingBrandLogos
-        heading="Trusted by leading restaurants and hospitality groups"
-        items={[
-          { src: "/logos/toast.svg", alt: "Toast" },
-          { src: "/logos/square.svg", alt: "Square" },
-          { src: "/logos/marginedge.svg", alt: "MarginEdge" },
-          { src: "/logos/quickbooks.svg", alt: "QuickBooks" },
-          { src: "/logos/slack.svg", alt: "Slack" },
-          { src: "/logos/zapier.svg", alt: "Zapier" },
+      {/* Feature board (large left tile + five tiles) */}
+      <FeatureBoard />
+
+      {/* Split features with real visuals */}
+      <SplitFeature
+        title="Temperature monitoring without spreadsheets"
+        subtitle="Real‑time readings across walk‑ins, low‑boys, and hot‑holding with alerts that create corrective actions automatically."
+        bullets={[
+          "Bluetooth and IoT sensors feed live logs",
+          "Threshold alerts with escalation",
+          "Supervisor sign‑off and audit trail",
         ]}
+        image={{ src: "/images/features/temp-split.png", alt: "Temperature dashboard screenshot", caption: "temp-split.png" }}
+        captureId="feature-temp-split"
       />
 
-      {/* Bento Features Overview */}
-      <FeaturesBento />
+      <SplitFeature
+        reverse
+        title="HACCP workflows that stay inspection‑ready"
+        subtitle="Digital control points, sign‑offs, and exportable reports keep your restaurant compliant every day."
+        bullets={[
+          "Daily control point prompts",
+          "Incident logging and CAPA",
+          "PDF/CSV exports for inspectors",
+        ]}
+        image={{ src: "/images/features/haccp-audit.png", alt: "HACCP audit screenshot", caption: "haccp-audit.png" }}
+        captureId="feature-haccp"
+      />
 
-      {/* Plasma-style feature showcase */}
-      <PlasmaFeaturesSection />
-
-      {/* Stats */}
-      <FeatureStats />
-
-      {/* Role-based use cases */}
-      <UseCaseTabs />
-
-      {/* Competitor comparison strip */}
-      <CompetitorComparisonStrip />
-
-      {/* Feature Categories */}
-      <FeatureCategoryGrid />
-
-      {/* Interactive Demo CTA */}
-      <InteractiveDemoCTA />
-
-      {/* Advanced Operations */}
-      <AdvancedOps />
-
-      {/* Location-Based Security */}
-      <LocationSecurityShowcase />
-
-      {/* Role-based demos */}
-      <RoleShowcase />
-
-      {/* Templates */}
-      <TemplatesPromo />
-
-      {/* Integrations band */}
-      <section className="bg-muted/30">
-        <IntegrationPartners />
-      </section>
-      
       {/* Call to Action */}
       <div className="container mx-auto px-4 sm:px-6 py-16">
         <MarketingCTA

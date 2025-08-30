@@ -1,9 +1,10 @@
 /**
  * Homepage - Restaurant operations platform
+ * Updated to use new non-repetitive components
  */
 
-import { MarketingHero } from "@/components/blocks/heroes";
-import { RestaurantFeatureGrid } from "@/components/domain/restaurant";
+import { RestaurantHomeHero, RestaurantPlatformExplorer } from "@/components/domain/restaurant";
+import { MarketingRollingBlocks } from "@/components/domain/marketing";
 import { Testimonials } from "@/components/shared/data-display";
 import { MarketingCTA } from "@/components/shared/layout";
 import { CustomerMarquee } from "@/components/enhanced/CustomerMarquee";
@@ -11,19 +12,14 @@ import { CustomerMarquee } from "@/components/enhanced/CustomerMarquee";
 export default function HomePage() {
   return (
     <div className="min-h-screen -mt-12 -mx-6 overflow-x-hidden">
-      {/* Marketing Hero */}
-      <div className="container mx-auto px-4 sm:px-6">
-        <MarketingHero 
-          title="Transforming restaurant operations"
-          description="Make food safety simple and compliance effortless through intelligent automation."
-          badge="Restaurant Operations Platform"
-        />
-      </div>
+      {/* New Restaurant Hero */}
+      <RestaurantHomeHero />
       
-      {/* Restaurant Features */}
-      <div className="container mx-auto px-4 sm:px-6 py-16">
-        <RestaurantFeatureGrid />
-      </div>
+      {/* Platform Explorer Tabs */}
+      <RestaurantPlatformExplorer />
+      
+      {/* Marketing Rolling Blocks */}
+      <MarketingRollingBlocks />
       
       {/* Customer Marquee */}
       <CustomerMarquee />

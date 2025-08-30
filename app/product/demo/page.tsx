@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DemoHero } from "@/components/blocks/heroes/DemoHero";
+import { DemoHero } from "@/components/domain/demo";
 import dynamic from "next/dynamic";
 import { MarketingCTA } from "@/components/shared/layout";
 const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"));

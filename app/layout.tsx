@@ -19,6 +19,22 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* No-flash: apply saved dark/light + palette before hydration */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(() => { try {
+              var d = document.documentElement;
+              var theme = localStorage.getItem('theme') || 'system';
+              var palette = localStorage.getItem('opsflow:palette') || 'default';
+              var isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+              if (isDark) { d.classList.add('dark'); } else { d.classList.remove('dark'); }
+              d.classList.remove('theme-plasma','theme-figma','theme-styleglide-nebula');
+              if (palette === 'plasma') d.classList.add('theme-plasma');
+              else if (palette === 'figma') d.classList.add('theme-figma');
+              else if (palette === 'styleglide-nebula') d.classList.add('theme-styleglide-nebula');
+            } catch(_) {} })();`
+          }}
+        />
         {/* Performance optimizations */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -51,7 +67,13 @@ export default function RootLayout({
       </head>
       <body className={cn("min-h-screen font-sans bg-background text-foreground")} suppressHydrationWarning>
         <ErrorBoundary>
-          <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            storageKey="theme"
+            disableTransitionOnChange
+          >
             <GlobalProvider>
               <Navbar />
               <main className="container mx-auto px-6 py-12">{children}</main>

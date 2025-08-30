@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactHero } from "@/components/blocks/heroes";
+import { ContactHero } from "@/components/domain/contact";
 import { RestaurantContactForm } from "@/components/shared/forms";
 import { ContactFAQ } from "@/components/domain/contact";
 import { Card, CardContent } from "@/components/ui/card";
