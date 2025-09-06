@@ -1,0 +1,163 @@
+{
+  "title": "OpsFlow Documentation",
+  "sections": [
+    {
+      "title": "Getting Started",
+      "path": "/docs/getting-started",
+      "pages": [
+        {
+          "title": "Introduction",
+          "path": "/docs/getting-started/introduction",
+          "file": "getting-started/introduction.md"
+        },
+        {
+          "title": "Quick Start",
+          "path": "/docs/getting-started/quick-start",
+          "file": "getting-started/quick-start.md"
+        },
+        {
+          "title": "Installation",
+          "path": "/docs/getting-started/installation",
+          "file": "getting-started/installation.md"
+        }
+      ]
+    },
+    {
+      "title": "API Reference",
+      "path": "/docs/api",
+      "pages": [
+        {
+          "title": "Authentication",
+          "path": "/docs/api/authentication",
+          "file": "api/authentication.md"
+        },
+        {
+          "title": "Endpoints",
+          "path": "/docs/api/endpoints",
+          "file": "api/endpoints.md"
+        },
+        {
+          "title": "SDKs",
+          "path": "/docs/api/sdks",
+          "file": "api/sdks.md"
+        }
+      ]
+    },
+    {
+      "title": "Operations",
+      "path": "/docs/operations",
+      "pages": [
+        {
+          "title": "Dashboard",
+          "path": "/docs/operations/dashboard",
+          "file": "operations/dashboard.md"
+        },
+        {
+          "title": "Monitoring",
+          "path": "/docs/operations/monitoring",
+          "file": "operations/monitoring.md"
+        },
+        {
+          "title": "Alerts",
+          "path": "/docs/operations/alerts",
+          "file": "operations/alerts.md"
+        }
+      ]
+    },
+    {
+      "title": "Analytics",
+      "path": "/docs/analytics",
+      "pages": [
+        {
+          "title": "Reports",
+          "path": "/docs/analytics/reports",
+          "file": "analytics/reports.md"
+        },
+        {
+          "title": "Metrics",
+          "path": "/docs/analytics/metrics",
+          "file": "analytics/metrics.md"
+        }
+      ]
+    },
+    {
+      "title": "Integrations",
+      "path": "/docs/integrations",
+      "pages": [
+        {
+          "title": "Webhooks",
+          "path": "/docs/integrations/webhooks",
+          "file": "integrations/webhooks.md"
+        },
+        {
+          "title": "Third-party",
+          "path": "/docs/integrations/third-party",
+          "file": "integrations/third-party.md"
+        }
+      ]
+    },
+    {
+      "title": "Developer",
+      "path": "/docs/developer",
+      "pages": [
+        {
+          "title": "CLI",
+          "path": "/docs/developer/cli",
+          "file": "developer/cli.md"
+        },
+        {
+          "title": "Local Development",
+          "path": "/docs/developer/local-development",
+          "file": "developer/local-development.md"
+        }
+      ]
+    },
+    {
+      "title": "Compliance",
+      "path": "/docs/compliance",
+      "pages": [
+        {
+          "title": "Security",
+          "path": "/docs/compliance/security",
+          "file": "compliance/security.md"
+        },
+        {
+          "title": "Privacy",
+          "path": "/docs/compliance/privacy",
+          "file": "compliance/privacy.md"
+        }
+      ]
+    },
+    {
+      "title": "Support",
+      "path": "/docs/support",
+      "pages": [
+        {
+          "title": "Help Center",
+          "path": "/docs/support/help-center",
+          "file": "support/help-center.md"
+        },
+        {
+          "title": "Temperature Sensors",
+          "path": "/docs/support/temperature-sensors",
+          "file": "support/temperature-sensors.md"
+        },
+        {
+          "title": "Compliance Setup",
+          "path": "/docs/support/compliance-setup",
+          "file": "support/compliance-setup.md"
+        },
+        {
+          "title": "Staff Accounts",
+          "path": "/docs/support/staff-accounts",
+          "file": "support/staff-accounts.md"
+        },
+        {
+          "title": "Contact Support",
+          "path": "/docs/support/contact",
+          "file": "support/contact.md"
+        }
+      ]
+    }
+  ]
+}

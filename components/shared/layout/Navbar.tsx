@@ -115,9 +115,9 @@ interface Resource {
 }
 
 const SUPPORT_RESOURCES: Resource[] = [
-  { title: "Support Center", href: "/support", icon: HelpCircle },
-  { title: "Documentation", href: "/resources/docs", icon: FileText },
-  { title: "Contact Support", href: "/resources/contact", icon: Phone },
+  { title: "Support Center", href: "/docs/support/help-center", icon: HelpCircle },
+  { title: "Documentation", href: "/docs/getting-started/introduction", icon: FileText },
+  { title: "Contact Support", href: "/docs/support/contact", icon: Phone },
 ];
 
 const LEARNING_RESOURCES: Resource[] = [

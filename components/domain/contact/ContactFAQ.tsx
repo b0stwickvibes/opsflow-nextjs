@@ -27,9 +27,9 @@ const faqItems: FAQItem[] = [
   {
     question: "What is the typical timeline for getting started with OpsFlow?",
     answer: "Most restaurants are up and running with OpsFlow in less than a week. Our onboarding process includes initial setup (1-2 days), staff training (1 day), and menu/operations configuration (1-3 days depending on complexity). Enterprise customers with multiple locations may require a more phased approach, which our implementation team will coordinate.",
-    icon: <Clock className="h-5 w-5 text-blue-600" />,
+    icon: <Clock className="h-5 w-5 text-primary" />,
     additionalInfo: (
-      <div className="mt-4 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-md">
+      <div className="mt-4 bg-primary-50 dark:bg-primary-950 p-3 rounded-md">
         <h4 className="font-medium mb-2 text-sm">Implementation Schedule</h4>
         <ul className="text-xs space-y-1 list-disc pl-4">
           <li>Day 1: Account setup and initial configuration</li>
@@ -43,17 +43,17 @@ const faqItems: FAQItem[] = [
   {
     question: "Can OpsFlow integrate with my custom or legacy systems?",
     answer: "Yes, OpsFlow offers flexible integration options through our comprehensive API. Our platform connects with most major POS systems out of the box, and our development team can build custom integrations for legacy or proprietary systems. Custom integration projects typically take 2-4 weeks depending on complexity.",
-    icon: <Share2 className="h-5 w-5 text-blue-600" />,
+    icon: <Share2 className="h-5 w-5 text-primary" />,
   },
   {
     question: "What kind of support does OpsFlow provide?",
     answer: "We offer 24/7 technical support for all customers. Support includes access to our comprehensive documentation, video tutorials, and direct assistance via email and chat. Enterprise customers also receive a dedicated Customer Success Manager for personalized support and quarterly business reviews.",
-    icon: <BarChart3 className="h-5 w-5 text-blue-600" />,
+    icon: <BarChart3 className="h-5 w-5 text-primary" />,
   },
   {
     question: "Is there a free trial available?",
     answer: "Yes, we offer a 14-day free trial of OpsFlow with full functionality. No credit card is required to start your trial. During this period, you'll have access to all features and our support team to help you evaluate if OpsFlow is right for your restaurant operations.",
-    icon: <CalendarCheck className="h-5 w-5 text-blue-600" />,
+    icon: <CalendarCheck className="h-5 w-5 text-primary" />,
   }
 ];
 
@@ -95,7 +95,7 @@ export function ContactFAQ() {
           Frequently Asked Questions
         </h2>
         <p 
-          className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto animate-fade-in"
+          className="text-muted-foreground max-w-2xl mx-auto animate-fade-in"
         >
           Find quick answers to common questions about OpsFlow
         </p>
@@ -110,15 +110,15 @@ export function ContactFAQ() {
         >
           {faqItems.map((item, index) => (
             <div key={index} className="animate-fade-in" style={{animationDelay: `${index * 100}ms`}}>
-              <AccordionItem value={`item-${index}`} className="border border-slate-200 dark:border-slate-800 rounded-lg mb-4 overflow-hidden">
-                <AccordionTrigger className="text-left font-medium px-6 py-4 hover:bg-slate-100 dark:hover:bg-slate-800/50 transition-colors">
+              <AccordionItem value={`item-${index}`} className="border rounded-lg mb-4 overflow-hidden">
+                <AccordionTrigger className="text-left font-medium px-6 py-4 hover:bg-accent transition-colors">
                   <div className="flex items-center">
                     <span className="mr-3">{item.icon}</span>
                     {item.question}
                   </div>
                 </AccordionTrigger>
-                <AccordionContent className="text-slate-600 dark:text-slate-400 px-6 pb-4 pt-2">
-                  <div className="pl-8 border-l-2 border-slate-200 dark:border-slate-700">
+                <AccordionContent className="text-muted-foreground px-6 pb-4 pt-2">
+                  <div className="pl-8 border-l-2 border-border">
                     {item.answer}
                     {item.additionalInfo}
                   </div>
@@ -132,8 +132,8 @@ export function ContactFAQ() {
           className="mt-8 text-center animate-fade-in"
           style={{animationDelay: "600ms"}}
         >
-          <p className="text-slate-600 dark:text-slate-400">
-            Still have questions? <a href="mailto:support@opsflow.ai" className="text-blue-600 hover:underline font-medium">Contact our support team</a>
+          <p className="text-muted-foreground">
+            Still have questions? <a href="mailto:support@opsflow.ai" className="text-primary hover:underline font-medium">Contact our support team</a>
           </p>
         </div>
       </div>

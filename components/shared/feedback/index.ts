@@ -9,3 +9,4 @@ export {
 
 export { ErrorDisplay } from "./ErrorDisplay";
 export { BackToTop } from "./BackToTop";
+export { default as UIShowcase } from "./UIShowcase";

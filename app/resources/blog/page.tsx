@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { BlogPage } from "@/components/resources/ResourcePages";
+import { BlogPage } from "@/components/shared/data-display/ResourcePages";
 
 export const metadata: Metadata = {
   title: "Restaurant Operations Blog — OpsFlow AI", 

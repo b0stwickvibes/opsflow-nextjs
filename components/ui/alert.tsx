@@ -8,9 +8,16 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-card text-card-foreground",
+        default: "bg-card text-card-foreground border-border",
         destructive:
-          "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+          "surface-subtle-destructive",
+        // Theme-aware variants with solid subtle colors (matching subtle badges palette)
+        info:
+          "bg-primary-50 dark:bg-primary-950 text-primary-700 dark:text-primary-300 border-primary-100 dark:border-primary-800",
+        warning:
+          "bg-secondary-50 dark:bg-secondary-950 text-secondary-700 dark:text-secondary-300 border-secondary-100 dark:border-secondary-800", 
+        success:
+          "bg-primary-300 dark:bg-primary-800 text-primary-800 dark:text-primary-200 border-primary-400 dark:border-primary-700",
       },
     },
     defaultVariants: {

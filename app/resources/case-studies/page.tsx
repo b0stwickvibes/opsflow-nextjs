@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CaseStudiesPage } from "@/components/resources/ResourcePages";
+import { CaseStudiesPage } from "@/components/shared/data-display/ResourcePages";
 
 export const metadata: Metadata = {
   title: "Restaurant Case Studies — OpsFlow AI",

@@ -105,10 +105,18 @@ export default function UITestPage() {
         </section>
 
         {/* Theme-Aware Status Indicators */}
-        <section className="space-y-6">
+        <section className="space-y-6 relative">
           <h2 className="text-display-md">Theme-Aware Status Indicators</h2>
+          
+          {/* Glassmorphism background elements to show backdrop-blur effect */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none overflow-hidden rounded-lg">
+            <div className="absolute top-4 left-16 w-24 h-24 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full blur-xl"></div>
+            <div className="absolute top-8 right-20 w-20 h-20 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full blur-xl"></div>
+            <div className="absolute bottom-4 left-1/3 w-16 h-16 bg-gradient-to-br from-green-400 to-blue-500 rounded-full blur-xl"></div>
+            <div className="absolute bottom-8 right-1/4 w-18 h-18 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full blur-xl"></div>
+          </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
+          <div className="grid gap-8 md:grid-cols-3 relative z-10">
             <div className="space-y-3">
               <h3 className="text-sm font-semibold">Default Badges</h3>
               <div className="flex flex-wrap gap-2">
@@ -120,20 +128,38 @@ export default function UITestPage() {
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-sm font-semibold">Subtle Status Badges</h3>
+              <h3 className="text-sm font-semibold">Subtle Status Badges (Glassmorphism)</h3>
               <div className="flex flex-wrap gap-2">
-                <Badge className="bg-primary-50/50 dark:bg-primary/20 text-primary border-primary/20 dark:border-primary/30">Active</Badge>
-                <Badge className="bg-secondary-50/50 dark:bg-secondary/20 text-secondary border-secondary/20 dark:border-secondary/30">Pending</Badge>
-                <Badge className="bg-muted-50/50 dark:bg-muted/20 text-muted-foreground border-muted/20 dark:border-muted/30">Inactive</Badge>
+                <Badge variant="subtle-primary">
+                  <LucideIcons.Zap className="w-3 h-3 mr-1" />
+                  Active
+                </Badge>
+                <Badge variant="subtle-secondary">
+                  <LucideIcons.Clock className="w-3 h-3 mr-1" />
+                  Pending
+                </Badge>
+                <Badge variant="subtle-muted">
+                  <LucideIcons.Pause className="w-3 h-3 mr-1" />
+                  Inactive
+                </Badge>
               </div>
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-sm font-semibold">HACCP Compliance</h3>
+              <h3 className="text-sm font-semibold">HACCP Compliance (Glassmorphism)</h3>
               <div className="flex flex-wrap gap-2">
-                <Badge className="bg-primary-50/50 dark:bg-primary/20 text-primary border-primary/20 dark:border-primary/30">✓ HACCP Compliant</Badge>
-                <Badge className="bg-secondary-50/50 dark:bg-secondary/20 text-secondary border-secondary/20 dark:border-secondary/30">⚠ Temperature Check Due</Badge>
-                <Badge className="bg-red-50/50 dark:bg-red/20 text-red-600 dark:text-red-400 border-red/20 dark:border-red/30">✕ Compliance Violation</Badge>
+                <Badge variant="subtle-primary">
+                  <LucideIcons.CheckCircle className="w-3 h-3 mr-1" />
+                  HACCP Compliant
+                </Badge>
+                <Badge variant="subtle-secondary">
+                  <LucideIcons.AlertTriangle className="w-3 h-3 mr-1" />
+                  Temperature Check Due
+                </Badge>
+                <Badge variant="subtle-destructive">
+                  <LucideIcons.XCircle className="w-3 h-3 mr-1" />
+                  Compliance Violation
+                </Badge>
               </div>
             </div>
           </div>
@@ -153,7 +179,7 @@ export default function UITestPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-primary-50/50 border-primary/20 dark:bg-primary/20 dark:border-primary/30">
+            <Card className="bg-primary-50/20 border-primary/20 dark:bg-primary/10 dark:border-primary/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2"><LucideIcons.BarChart3 className="h-5 w-5 text-primary"/> Performance Analytics</CardTitle>
                 <CardDescription className="text-primary/80 dark:text-primary/90">Advanced restaurant performance metrics</CardDescription>
@@ -165,11 +191,11 @@ export default function UITestPage() {
               </CardContent>
             </Card>
 
-            <Card className="bg-secondary-50/50 border-secondary/20 dark:bg-secondary/20 dark:border-secondary/30">
+            <Card className="bg-secondary-50/20 border-secondary/20 dark:bg-secondary/10 dark:border-secondary/30">
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <span className="flex items-center gap-2"><LucideIcons.Thermometer className="h-5 w-5 text-secondary"/> Temperature Monitor</span>
-                  <Badge className="bg-primary-50/50 dark:bg-primary/20 text-primary border-primary/20 dark:border-primary/30">Normal</Badge>
+                  <Badge className="bg-primary-50/20 dark:bg-primary/20 text-primary border-primary/20 dark:border-primary/30">Normal</Badge>
                 </CardTitle>
                 <CardDescription className="text-secondary/80 dark:text-secondary/90">Kitchen refrigeration status</CardDescription>
               </CardHeader>
@@ -209,32 +235,35 @@ export default function UITestPage() {
         <section className="space-y-6">
           <h2 className="text-display-md">Theme-Aware Alerts</h2>
           <div className="space-y-4">
-            <Alert className="bg-primary-50/50 border-primary/20 dark:bg-primary/20 dark:border-primary/30">
-              <LucideIcons.Info className="h-4 w-4 text-primary" />
-              <AlertTitle className="text-primary">Information</AlertTitle>
-              <AlertDescription className="text-primary/80 dark:text-primary/90">
-                This is an informational alert with frosted glass appearance.
+            <Alert variant="info">
+              <LucideIcons.Info className="h-4 w-4" />
+              <AlertTitle>Information</AlertTitle>
+              <AlertDescription>
+                This is an informational alert with glassmorphism theme-aware colors.
               </AlertDescription>
             </Alert>
-            <Alert className="bg-secondary-50/50 border-secondary/20 dark:bg-secondary/20 dark:border-secondary/30">
-              <LucideIcons.AlertTriangle className="h-4 w-4 text-secondary" />
-              <AlertTitle className="text-secondary">Warning</AlertTitle>
-              <AlertDescription className="text-secondary/80 dark:text-secondary/90">
-                This warning has subtle glass-like background colors.
+
+            <Alert variant="warning">
+              <LucideIcons.AlertTriangle className="h-4 w-4" />
+              <AlertTitle>Warning</AlertTitle>
+              <AlertDescription>
+                This is a warning alert with glassmorphism background that adapts to all themes.
               </AlertDescription>
             </Alert>
-            <Alert className="bg-red-50/50 dark:bg-red/20 border-red/20 dark:border-red/30">
-              <LucideIcons.XCircle className="h-4 w-4 text-red-600 dark:text-red-400" />
-              <AlertTitle className="text-red-600 dark:text-red-400">Error</AlertTitle>
-              <AlertDescription className="text-red-600/80 dark:text-red-400/90">
-                Error alert with very subtle frosted background.
+
+            <Alert variant="destructive">
+              <LucideIcons.XCircle className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>
+                This is an error alert with glassmorphism background that properly supports dark mode.
               </AlertDescription>
             </Alert>
-            <Alert className="bg-primary-50/50 border-primary/20 dark:bg-primary/20 dark:border-primary/30">
-              <LucideIcons.CheckCircle className="h-4 w-4 text-primary" />
-              <AlertTitle className="text-primary">Success</AlertTitle>
-              <AlertDescription className="text-primary/80 dark:text-primary/90">
-                Success alert with frosted glass aesthetic.
+
+            <Alert variant="success">
+              <LucideIcons.CheckCircle className="h-4 w-4" />
+              <AlertTitle>Success</AlertTitle>
+              <AlertDescription>
+                This is a success alert with glassmorphism frosted glass effect.
               </AlertDescription>
             </Alert>
           </div>
@@ -632,17 +661,17 @@ export default function UITestPage() {
 
         {/* Theme-aware Alerts & Cards */}
         <section className="space-y-8">
-          <h2 className="text-display-md">Alerts & Cards</h2>
+          <h2 className="text-display-md">Alerts & Cards with Scale-based Colors</h2>
           <div className="space-y-4">
-            <Alert className="border-primary-200 dark:border-primary-700 bg-primary-50 dark:bg-primary-950">
-              <LucideIcons.Info className="h-4 w-4 text-primary-700 dark:text-primary-300" />
-              <AlertTitle className="text-primary-800 dark:text-primary-200">Information</AlertTitle>
-              <AlertDescription className="text-primary-700 dark:text-primary-300">Theme‑aware informational alert with frosted appearance.</AlertDescription>
+            <Alert className="border-primary/20 bg-primary/5 dark:border-primary/30 dark:bg-primary/10">
+              <LucideIcons.Info className="h-4 w-4 text-primary" />
+              <AlertTitle className="text-primary">Information (Tokens)</AlertTitle>
+              <AlertDescription className="text-primary/80 dark:text-primary/90">Theme-aware with semantic tokens for universal palette support.</AlertDescription>
             </Alert>
-            <Alert className="border-secondary-200 dark:border-secondary-700 bg-secondary-50 dark:bg-secondary-950">
-              <LucideIcons.AlertTriangle className="h-4 w-4 text-secondary-700 dark:text-secondary-300" />
-              <AlertTitle className="text-secondary-800 dark:text-secondary-200">Warning</AlertTitle>
-              <AlertDescription className="text-secondary-700 dark:text-secondary-300">Subtle glass background using semantic tokens.</AlertDescription>
+            <Alert className="border-primary-200 dark:border-primary-700 bg-primary-50/50 dark:bg-primary-950/50">
+              <LucideIcons.AlertTriangle className="h-4 w-4 text-primary-700 dark:text-primary-300" />
+              <AlertTitle className="text-primary-800 dark:text-primary-200">Information (Scale)</AlertTitle>
+              <AlertDescription className="text-primary-700 dark:text-primary-300">Using numeric scale instead of semantic tokens.</AlertDescription>
             </Alert>
           </div>
 
@@ -656,12 +685,12 @@ export default function UITestPage() {
                 <p>Place any information here.</p>
               </CardContent>
             </Card>
-            <Card className="bg-primary-50 dark:bg-primary-950 border-primary-200 dark:border-primary-700">
+            <Card className="bg-primary-50/20 dark:bg-primary/10 border-primary/20 dark:border-primary/30">
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <LucideIcons.BarChart3 className="h-5 w-5 text-primary-700 dark:text-primary-300" /> Analytics
+                  <LucideIcons.BarChart3 className="h-5 w-5 text-primary" /> Analytics (Scale-50/20)
                 </CardTitle>
-                <CardDescription>Performance metrics</CardDescription>
+                <CardDescription className="text-primary/80 dark:text-primary/90">With primary-50 at 20% opacity</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex justify-between"><span className="text-muted-foreground">Overall</span><span className="font-semibold">{progress}%</span></div>
@@ -672,13 +701,25 @@ export default function UITestPage() {
                 </div>
               </CardContent>
             </Card>
-            <Card className="bg-secondary-50 dark:bg-secondary-950 border-secondary-200 dark:border-secondary-700">
+            <Card className="bg-primary-50/50 dark:bg-primary-950/50 border-primary-200 dark:border-primary-700">
               <CardHeader>
-                <CardTitle className="flex items-center gap-2"><LucideIcons.Thermometer className="h-5 w-5 text-secondary-700 dark:text-secondary-300" /> Temperature</CardTitle>
-                <CardDescription>Refrigeration status</CardDescription>
+                <CardTitle className="flex items-center gap-2">
+                  <LucideIcons.BarChart3 className="h-5 w-5 text-primary-700 dark:text-primary-300" /> Analytics (Scale)
+                </CardTitle>
+                <CardDescription>With numeric scale</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex justify-between"><span className="text-muted-foreground">Overall</span><span className="font-semibold">{progress}%</span></div>
+                <Progress value={progress} />
+              </CardContent>
+            </Card>
+            <Card className="bg-secondary-50/20 dark:bg-secondary/10 border-secondary/20 dark:border-secondary/30">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2"><LucideIcons.Thermometer className="h-5 w-5 text-secondary" /> Temperature</CardTitle>
+                <CardDescription className="text-secondary/80 dark:text-secondary/90">With secondary-50 at 20% opacity</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-3xl font-bold text-secondary-800 dark:text-secondary-200">38°F</div>
+                <div className="text-3xl font-bold text-secondary">38°F</div>
                 <p className="text-sm text-muted-foreground">Target: 35–40°F</p>
               </CardContent>
             </Card>

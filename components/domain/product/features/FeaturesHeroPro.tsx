@@ -6,9 +6,9 @@ import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { registerComponentLayout } from "@/lib/style-system/layout-differentiation";
-import NoiseLayer from "@/components/enhanced/NoiseLayer";
-import Spotlight from "@/components/enhanced/Spotlight";
-import GradientText from "@/components/enhanced/GradientText";
+import NoiseLayer from "@/components/shared/enhanced/NoiseLayer";
+import Spotlight from "@/components/shared/enhanced/Spotlight";
+import GradientText from "@/components/shared/enhanced/GradientText";
 import { motion } from "framer-motion";
 
 const ArrowRight = dynamic(() => import("lucide-react").then(m => ({ default: m.ArrowRight })));

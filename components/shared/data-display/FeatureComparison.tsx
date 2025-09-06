@@ -232,7 +232,7 @@ function FeatureValueRenderer({ value }: FeatureValueRendererProps) {
   switch (value.type) {
     case 'boolean':
       return value.value ? (
-        <Check className="h-5 w-5 text-green-600 mx-auto" />
+        <Check className="h-5 w-5 text-primary mx-auto" />
       ) : (
         <X className="h-5 w-5 text-muted-foreground mx-auto" />
       );

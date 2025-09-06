@@ -1,40 +1,28 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 
-type Palette = 'default' | 'plasma' | 'figma'
-
-const STORAGE_KEY = 'opsflow:palette'
-
-function applyPalette(p: Palette) {
+// Palette switching disabled - locked to default OKLCH palette for enterprise consistency
+function ensureDefaultPalette() {
   const el = document.documentElement
-  el.classList.remove('theme-plasma', 'theme-figma')
-  if (p === 'plasma') el.classList.add('theme-plasma')
-  if (p === 'figma') el.classList.add('theme-figma')
+  // Remove any remaining theme classes to ensure default OKLCH palette
+  const themeClasses = ['theme-plasma', 'theme-figma', 'theme-styleglide-nebula']
+  el.classList.remove(...themeClasses)
 }
 
 export function PaletteToggle() {
-  const [palette, setPalette] = useState<Palette>('default')
-
   useEffect(() => {
-    const saved = (localStorage.getItem(STORAGE_KEY) as Palette) || 'default'
-    setPalette(saved)
-    applyPalette(saved)
+    // Always ensure default OKLCH palette on mount
+    ensureDefaultPalette()
+    // Clear any saved palette preference to prevent conflicts
+    localStorage.removeItem('opsflow:palette')
   }, [])
 
-  function cycle() {
-    const next: Palette = palette === 'default' ? 'plasma' : palette === 'plasma' ? 'figma' : 'default'
-    setPalette(next)
-    applyPalette(next)
-    localStorage.setItem(STORAGE_KEY, next)
-  }
-
-  const label = palette === 'default' ? 'Palette: Default' : palette === 'plasma' ? 'Palette: Plasma' : 'Palette: Figma'
-
+  // Component now shows locked status instead of cycling
   return (
-    <Button variant="ghost" size="sm" onClick={cycle} title="Toggle color palette">
-      {label}
+    <Button variant="ghost" size="sm" disabled title="Palette locked to Default OKLCH for consistency">
+      Palette: Default (Locked)
     </Button>
   )
 }

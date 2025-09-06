@@ -65,15 +65,15 @@ export default function ContactPage() {
       </section>
       
       {/* Success metrics */}
-      <div className="w-full max-w-[100vw] bg-slate-50 dark:bg-slate-900 border-t border-b border-slate-200 dark:border-slate-800 relative overflow-hidden py-20">
+      <div className="w-full max-w-[100vw] bg-base-50 dark:bg-base-900 border-t border-b border-base-200 dark:border-base-800 relative overflow-hidden py-20">
         <div className="absolute inset-0 bg-grid-primary/5 opacity-50" aria-hidden="true" />
-        <div className="absolute -top-20 right-1/4 w-80 h-80 rounded-full bg-blue-100/40 dark:bg-blue-900/10 blur-3xl opacity-60 animate-pulse-subtle" />
-        <div className="absolute -bottom-40 left-1/4 w-96 h-96 rounded-full bg-indigo-100/30 dark:bg-indigo-900/10 blur-3xl opacity-50 animate-pulse-subtle" style={{ animationDelay: '1s' }} />
+        <div className="absolute -top-20 right-1/4 w-80 h-80 rounded-full bg-primary-100/40 dark:bg-primary-900/10 blur-3xl opacity-60 animate-pulse-subtle" />
+        <div className="absolute -bottom-40 left-1/4 w-96 h-96 rounded-full bg-secondary-100/30 dark:bg-secondary-900/10 blur-3xl opacity-50 animate-pulse-subtle" style={{ animationDelay: '1s' }} />
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10 mb-10">
           <div className="text-center">
             <h3 className="text-3xl font-bold mb-3 animate-slide-down">Real Results from Real Restaurants</h3>
-            <p className="text-slate-600 dark:text-slate-400 animate-fade-in text-lg max-w-2xl mx-auto">
+            <p className="text-muted-foreground animate-fade-in text-lg max-w-2xl mx-auto">
               Join hundreds of restaurants improving operations with OpsFlow
             </p>
           </div>
@@ -84,10 +84,10 @@ export default function ContactPage() {
             <div className="flex w-max animate-marquee items-stretch gap-[--gap]">
               {successMetrics.map((item, index) => (
                 <div key={index} className="mx-4 animate-fade-in" style={{animationDelay: `${0.1 * index}s`}}>
-                  <Card className="min-w-[240px] border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-md">
+                  <Card className="min-w-[240px] border-base-200 dark:border-base-800 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-md">
                     <CardContent className="p-8">
-                      <p className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{item.metric}</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+                      <p className="text-4xl font-bold text-primary mb-2">{item.metric}</p>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -96,10 +96,10 @@ export default function ContactPage() {
             <div className="flex w-max animate-marquee items-stretch gap-[--gap]" aria-hidden="true">
               {successMetrics.map((item, index) => (
                 <div key={`duplicate-${index}`} className="mx-4 animate-fade-in" style={{animationDelay: `${0.1 * index}s`}}>
-                  <Card className="min-w-[240px] border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-md">
+                  <Card className="min-w-[240px] border-base-200 dark:border-base-800 hover:-translate-y-2 transition-all duration-300 shadow-sm hover:shadow-md">
                     <CardContent className="p-8">
-                      <p className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{item.metric}</p>
-                      <p className="text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+                      <p className="text-4xl font-bold text-primary mb-2">{item.metric}</p>
+                      <p className="text-sm text-muted-foreground">{item.description}</p>
                     </CardContent>
                   </Card>
                 </div>
@@ -110,9 +110,9 @@ export default function ContactPage() {
       </div>
       
       {/* FAQ section */}
-      <div className="w-full max-w-[100vw] bg-slate-50/50 dark:bg-slate-900/50 relative overflow-hidden py-16">
-        <div className="absolute top-1/4 right-1/4 w-48 h-48 rounded-full bg-green-100/30 dark:bg-green-900/10 blur-3xl opacity-40 animate-pulse-subtle" style={{ animationDelay: '0.5s' }} />
-        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-blue-100/30 dark:bg-blue-900/10 blur-3xl opacity-30 animate-pulse-subtle" style={{ animationDelay: '1.5s' }} />
+      <div className="w-full max-w-[100vw] bg-base-50/50 dark:bg-base-900/50 relative overflow-hidden py-16">
+        <div className="absolute top-1/4 right-1/4 w-48 h-48 rounded-full bg-secondary-100/30 dark:bg-secondary-900/10 blur-3xl opacity-40 animate-pulse-subtle" style={{ animationDelay: '0.5s' }} />
+        <div className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-primary-100/30 dark:bg-primary-900/10 blur-3xl opacity-30 animate-pulse-subtle" style={{ animationDelay: '1.5s' }} />
         
         <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <ContactFAQ />

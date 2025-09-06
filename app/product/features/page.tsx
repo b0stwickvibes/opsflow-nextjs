@@ -1,55 +1,28 @@
-import { MarketingCTA } from "@/components/shared/layout";
-import { FeaturesHeroGrid, FeatureBoard, SplitFeature } from "@/components/domain/product";
+import type { Metadata } from "next";
+import { FeaturesHeroPremium } from "@/components/domain/product";
+import { 
+  AdvancedOperations,
+  FinalCTA
+} from "@/components/shared/layout";
+
+export const metadata: Metadata = {
+  title: "Features — OpsFlow AI Restaurant Operations Platform",
+  description: "Complete restaurant operations management with automated temperature monitoring, HACCP compliance, staff training, and real-time analytics. See all features that help restaurants save time and stay compliant.",
+  keywords: "restaurant features, HACCP compliance, temperature monitoring, restaurant management software, operations platform",
+};
 
 export default function ProductFeaturesPage() {
   return (
     <div className="min-h-screen">
-      {/* Plasma/Stripe-style hero */}
-      <FeaturesHeroGrid />
-
-      {/* Feature board (large left tile + five tiles) */}
-      <FeatureBoard />
-
-      {/* Split features with real visuals */}
-      <SplitFeature
-        title="Temperature monitoring without spreadsheets"
-        subtitle="Real‑time readings across walk‑ins, low‑boys, and hot‑holding with alerts that create corrective actions automatically."
-        bullets={[
-          "Bluetooth and IoT sensors feed live logs",
-          "Threshold alerts with escalation",
-          "Supervisor sign‑off and audit trail",
-        ]}
-        image={{ src: "/images/features/temp-split.png", alt: "Temperature dashboard screenshot", caption: "temp-split.png" }}
-        captureId="feature-temp-split"
-      />
-
-      <SplitFeature
-        reverse
-        title="HACCP workflows that stay inspection‑ready"
-        subtitle="Digital control points, sign‑offs, and exportable reports keep your restaurant compliant every day."
-        bullets={[
-          "Daily control point prompts",
-          "Incident logging and CAPA",
-          "PDF/CSV exports for inspectors",
-        ]}
-        image={{ src: "/images/features/haccp-audit.png", alt: "HACCP audit screenshot", caption: "haccp-audit.png" }}
-        captureId="feature-haccp"
-      />
-
-      {/* Call to Action */}
+      {/* Premium Aurora Hero */}
+      <FeaturesHeroPremium />
+      
+      {/* Advanced Operations Features */}
+      <AdvancedOperations />
+      
+      {/* Final CTA */}
       <div className="container mx-auto px-4 sm:px-6 py-16">
-        <MarketingCTA
-          title="Ready to experience the difference?"
-          description="Join thousands of restaurants, bars, and night clubs using OpsFlow to streamline operations and stay compliant."
-          primaryAction={{
-            text: "Start Free Trial",
-            href: "/pricing"
-          }}
-          secondaryAction={{
-            text: "Contact Sales",
-            href: "/company/contact"
-          }}
-        />
+        <FinalCTA className="py-0" />
       </div>
     </div>
   );

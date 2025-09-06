@@ -42,14 +42,14 @@ export function ContactHero({ title, subtitle }: ContactHeroProps) {
   };
 
   return (
-    <section className="relative py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900 overflow-hidden">
+    <section className="relative py-20 md:py-28 bg-gradient-to-b from-base-50 to-background dark:from-base-950 dark:to-base-900 overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
-          className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-blue-100 dark:bg-blue-900/20 blur-3xl opacity-60 animate-fade-in"
+          className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-primary-100 dark:bg-primary-900/20 blur-3xl opacity-60 animate-fade-in"
         />
         <div 
-          className="absolute -left-20 bottom-10 w-80 h-80 rounded-full bg-indigo-100 dark:bg-indigo-900/20 blur-3xl opacity-50 animate-fade-in"
+          className="absolute -left-20 bottom-10 w-80 h-80 rounded-full bg-secondary-100 dark:bg-secondary-900/20 blur-3xl opacity-50 animate-fade-in"
         />
         
         {/* Restaurant-themed dots pattern */}
@@ -65,7 +65,7 @@ export function ContactHero({ title, subtitle }: ContactHeroProps) {
           </h1>
           
           <p 
-            className="text-xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed animate-fade-in"
+            className="text-xl text-base-600 dark:text-base-400 mb-8 leading-relaxed animate-fade-in"
           >
             {subtitle}
           </p>
@@ -75,10 +75,10 @@ export function ContactHero({ title, subtitle }: ContactHeroProps) {
           >
             <Button 
               size="lg" 
-              className="bg-blue-600 hover:bg-blue-700 transition-all group relative overflow-hidden"
+              className="bg-primary hover:bg-primary/90 transition-all group relative overflow-hidden"
               onClick={handleScheduleClick}
             >
-              <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-blue-500 to-blue-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-br from-primary-500 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <span className="relative flex items-center">
                 <Phone className="mr-2 h-4 w-4" />
                 Schedule a Demo
@@ -87,7 +87,7 @@ export function ContactHero({ title, subtitle }: ContactHeroProps) {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-slate-300 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+              className="transition-all"
               onClick={handleSupportClick}
             >
               <Mail className="mr-2 h-4 w-4" />
@@ -100,20 +100,20 @@ export function ContactHero({ title, subtitle }: ContactHeroProps) {
             className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-16 text-center animate-fade-in"
           >
             <div>
-              <p className="text-blue-600 dark:text-blue-400 font-bold text-3xl">24/7</p>
-              <p className="text-sm text-slate-600 dark:text-slate-400">Support Coverage</p>
+              <p className="text-primary-600 dark:text-primary-400 font-bold text-3xl">24/7</p>
+              <p className="text-sm text-base-600 dark:text-base-400">Support Coverage</p>
             </div>
             <div>
-              <p className="text-blue-600 dark:text-blue-400 font-bold text-3xl">15+</p>
-              <p className="text-sm text-slate-600 dark:text-slate-400">POS Integrations</p>
+              <p className="text-primary-600 dark:text-primary-400 font-bold text-3xl">15+</p>
+              <p className="text-sm text-base-600 dark:text-base-400">POS Integrations</p>
             </div>
             <div>
-              <p className="text-blue-600 dark:text-blue-400 font-bold text-3xl">1hr</p>
-              <p className="text-sm text-slate-600 dark:text-slate-400">Response Time</p>
+              <p className="text-primary-600 dark:text-primary-400 font-bold text-3xl">1hr</p>
+              <p className="text-sm text-base-600 dark:text-base-400">Response Time</p>
             </div>
             <div>
-              <p className="text-blue-600 dark:text-blue-400 font-bold text-3xl">5k+</p>
-              <p className="text-sm text-slate-600 dark:text-slate-400">Restaurants Served</p>
+              <p className="text-primary-600 dark:text-primary-400 font-bold text-3xl">5k+</p>
+              <p className="text-sm text-base-600 dark:text-base-400">Restaurants Served</p>
             </div>
           </div>
         </div>

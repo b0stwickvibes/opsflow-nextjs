@@ -1,55 +1,34 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
-type Palette = 'default' | 'plasma' | 'figma' | 'styleglide-nebula'
-const STORAGE_KEY = 'opsflow:palette'
-const PRESETS: Palette[] = ['default', 'plasma', 'figma', 'styleglide-nebula']
-
-function applyPalette(palette: Palette) {
+// Palette switching disabled - locked to default OKLCH palette for enterprise consistency
+function ensureDefaultPalette() {
   const el = document.documentElement
-  const classes = ['theme-plasma', 'theme-figma', 'theme-styleglide-nebula']
-  // Avoid redundant reflows
-  const has = (c: string) => el.classList.contains(c)
-  if (palette === 'default') {
-    if (classes.some(has)) el.classList.remove(...classes)
-    return
-  }
-  const target = palette === 'plasma' ? 'theme-plasma' : palette === 'figma' ? 'theme-figma' : 'theme-styleglide-nebula'
-  if (!has(target)) {
-    el.classList.remove(...classes)
-    el.classList.add(target)
-  }
+  // Remove any remaining theme classes to ensure default OKLCH palette
+  const themeClasses = ['theme-plasma', 'theme-figma', 'theme-styleglide-nebula']
+  el.classList.remove(...themeClasses)
 }
 
 export function PaletteSelect() {
-  const [palette, setPalette] = useState<Palette>('default')
-
   useEffect(() => {
-    const saved = (localStorage.getItem(STORAGE_KEY) as Palette) || 'default'
-    setPalette(saved)
-    applyPalette(saved)
+    // Always ensure default OKLCH palette on mount
+    ensureDefaultPalette()
+    // Clear any saved palette preference to prevent conflicts
+    localStorage.removeItem('opsflow:palette')
   }, [])
 
+  // Component now shows locked default palette only
   return (
-    <Select
-      value={palette}
-      onValueChange={(v: Palette) => {
-        setPalette(v)
-        applyPalette(v)
-        localStorage.setItem(STORAGE_KEY, v)
-      }}
-    >
+    <Select value="default" disabled>
       <SelectTrigger className="w-48">
-        <SelectValue placeholder="Select palette" />
+        <SelectValue placeholder="Palette: Default (Locked)" />
       </SelectTrigger>
       <SelectContent>
-        {PRESETS.map((p) => (
-          <SelectItem key={p} value={p}>
-            Palette: {p.replace('styleglide-', '')}
-          </SelectItem>
-        ))}
+        <SelectItem value="default">
+          Palette: Default (Enterprise OKLCH)
+        </SelectItem>
       </SelectContent>
     </Select>
   )

@@ -2,6 +2,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+const withMarkdoc = require('@markdoc/next.js');
+
+// Markdoc configuration
+const markdocConfig = {
+  mode: 'static',
+  schemaPath: './markdoc.config.js'
+};
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Performance optimizations for scale
@@ -89,12 +97,62 @@ const nextConfig = {
     ];
   },
 
-  // Redirects for SEO
+  // Redirects for SEO - Enterprise unified docs system
   async redirects() {
     return [
+      // Legacy pricing redirect
       {
         source: '/pricing-old',
         destination: '/pricing',
+        permanent: true,
+      },
+      
+      // Unified documentation system redirects
+      // Support center redirects
+      {
+        source: '/support',
+        destination: '/docs/support/help-center',
+        permanent: true,
+      },
+      {
+        source: '/support/:path*',
+        destination: '/docs/support/:path*',
+        permanent: true,
+      },
+      
+      // Documentation redirects
+      {
+        source: '/resources/docs',
+        destination: '/docs/getting-started/introduction',
+        permanent: true,
+      },
+      {
+        source: '/resources/docs/:path*',
+        destination: '/docs/:path*',
+        permanent: true,
+      },
+      
+      // Help center redirects
+      {
+        source: '/resources/help',
+        destination: '/docs/support/help-center',
+        permanent: true,
+      },
+      {
+        source: '/resources/help/:path*',
+        destination: '/docs/support/:path*',
+        permanent: true,
+      },
+      
+      // Specific common documentation paths
+      {
+        source: '/docs/quickstart',
+        destination: '/docs/getting-started/introduction',
+        permanent: true,
+      },
+      {
+        source: '/docs/api-reference',
+        destination: '/docs/api/authentication',
         permanent: true,
       },
     ];
@@ -117,4 +175,4 @@ const nextConfig = {
   poweredByHeader: false,
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = withBundleAnalyzer(withMarkdoc(markdocConfig)(nextConfig));

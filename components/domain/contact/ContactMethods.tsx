@@ -29,7 +29,7 @@ const contactMethods: ContactMethod[] = [
     email: "sales@opsflow.ai",
     phone: "+1 (555) 123-4567",
     hours: "Mon–Fri 9AM–6PM PST",
-    icon: <Phone className="h-8 w-8 text-blue-600" />
+    icon: <Phone className="h-8 w-8 text-primary" />
   },
   {
     title: "Restaurant Support",
@@ -37,14 +37,14 @@ const contactMethods: ContactMethod[] = [
     email: "support@opsflow.ai",
     phone: "+1 (555) 123-4568",
     hours: "",
-    icon: <Mail className="h-8 w-8 text-blue-600" />
+    icon: <Mail className="h-8 w-8 text-primary" />
   },
   {
     title: "Live Chat",
     description: "Real-time help",
     availability: "Available on website",
     hours: "Mon–Fri 8AM–8PM PST",
-    icon: <MessageSquare className="h-8 w-8 text-blue-600" />
+    icon: <MessageSquare className="h-8 w-8 text-primary" />
   }
 ];
 
@@ -64,7 +64,7 @@ export function ContactMethods() {
   }, []);
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-950">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <div 
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
@@ -83,12 +83,12 @@ export function ContactMethods() {
               className="h-full"
             >
               <Card 
-                className="h-full border border-slate-200 dark:border-slate-800 shadow-sm transition-all duration-300 hover:shadow-md relative overflow-hidden"
+                className="h-full shadow-sm transition-all duration-300 hover:shadow-md relative overflow-hidden"
               >
                 <AnimatePresence>
                   {hoveredCard === index && (
                     <motion.div 
-                      className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-blue-600/5 pointer-events-none"
+                      className="absolute inset-0 bg-gradient-to-br from-primary/5 to-primary/10 pointer-events-none"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -106,13 +106,13 @@ export function ContactMethods() {
                   </motion.div>
                   
                   <h3 className="text-xl font-semibold mb-2">{method.title}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-4">{method.description}</p>
+                  <p className="text-muted-foreground mb-4">{method.description}</p>
                   
                   {method.email && (
                     <p className="text-sm mb-1 flex items-center">
                       <a 
                         href={`mailto:${method.email}`} 
-                        className="text-blue-600 hover:underline group inline-flex items-center"
+                        className="text-primary hover:underline group inline-flex items-center"
                         onClick={() => trackContactInteraction(method.title, 'email_click')}
                         aria-label={`Email ${method.title} at ${method.email}`}
                       >
@@ -126,7 +126,7 @@ export function ContactMethods() {
                     <p className="text-sm mb-1 flex items-center">
                       <a 
                         href={`tel:${method.phone}`} 
-                        className="text-blue-600 hover:underline group inline-flex items-center"
+                        className="text-primary hover:underline group inline-flex items-center"
                         onClick={() => trackContactInteraction(method.title, 'phone_click')}
                         aria-label={`Call ${method.title} at ${method.phone}`}
                       >
@@ -137,14 +137,14 @@ export function ContactMethods() {
                   )}
                   
                   {method.availability && (
-                    <p className="text-sm mb-1 text-green-600 font-medium flex items-center">
-                      <span className="inline-block h-2 w-2 rounded-full bg-green-500 mr-2" aria-hidden="true" />
+                    <p className="text-sm mb-1 text-primary font-medium flex items-center">
+                      <span className="inline-block h-2 w-2 rounded-full bg-primary mr-2" aria-hidden="true" />
                       {method.availability}
                     </p>
                   )}
                   
                   {method.hours && (
-                    <p className="text-xs text-slate-500 mt-2">
+                    <p className="text-xs text-muted-foreground mt-2">
                       {method.hours}
                     </p>
                   )}

@@ -36,7 +36,7 @@ type InquiryFormData = z.infer<typeof inquiryFormSchema>;
 
 // Error component for form fields
 const FormFieldError = ({ message }: { message: string }) => (
-  <div className="text-red-500 text-xs mt-1 flex items-center">
+  <div className="text-destructive text-xs mt-1 flex items-center">
     <AlertCircle className="h-3 w-3 mr-1" />
     {message}
   </div>
@@ -181,15 +181,15 @@ export function RestaurantInquiryForm() {
   // Success state with improved a11y
   if (submitted) {
     return (
-      <section className="py-16 bg-white dark:bg-slate-950">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6">
-          <Card className="max-w-2xl mx-auto border border-slate-200 dark:border-slate-800 shadow-sm">
+          <Card className="max-w-2xl mx-auto">
             <CardContent className="p-8 text-center">
               <div className="mb-6 flex justify-center" aria-hidden="true">
-                <CheckCircle className="h-16 w-16 text-green-600" />
+                <CheckCircle className="h-16 w-16 text-primary" />
               </div>
               <h2 className="text-2xl font-bold mb-4" tabIndex={0}>Thank You for Reaching Out!</h2>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">
+              <p className="text-muted-foreground mb-6">
                 We've received your inquiry and will get back to you within 24 hours.
               </p>
               <Button 
@@ -215,26 +215,26 @@ export function RestaurantInquiryForm() {
   }
 
   return (
-    <section className="py-16 bg-white dark:bg-slate-950">
+    <section className="py-16 bg-background">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight mb-4">Get in Touch</h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto">
             Tell us about your restaurant operations needs and we'll get back to you promptly
           </p>
         </div>
         
-        <Card className="max-w-3xl mx-auto border border-slate-200 dark:border-slate-800 shadow-sm">
+        <Card className="max-w-3xl mx-auto">
           <CardContent className="p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* GDPR consent notice */}
-              <div className="bg-slate-50 dark:bg-slate-900 p-3 rounded-md text-xs text-slate-600 dark:text-slate-400 mb-4">
-                <p>We collect and process your data to respond to your inquiry and provide relevant information about OpsFlow. See our <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a> for details on how we safeguard your information.</p>
+              <div className="bg-muted p-3 rounded-md text-xs text-muted-foreground mb-4">
+                <p>We collect and process your data to respond to your inquiry and provide relevant information about OpsFlow. See our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a> for details on how we safeguard your information.</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Name <span className="text-red-500">*</span></Label>
+                  <Label htmlFor="name">Name <span className="text-destructive">*</span></Label>
                   <Input 
                     id="name" 
                     placeholder="Your name" 
@@ -247,7 +247,7 @@ export function RestaurantInquiryForm() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email <span className="text-red-500">*</span></Label>
+                  <Label htmlFor="email">Email <span className="text-destructive">*</span></Label>
                   <Input 
                     id="email" 
                     type="email" 
@@ -261,7 +261,7 @@ export function RestaurantInquiryForm() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="company">Company <span className="text-red-500">*</span></Label>
+                  <Label htmlFor="company">Company <span className="text-destructive">*</span></Label>
                   <Input 
                     id="company" 
                     placeholder="Restaurant name" 
@@ -285,7 +285,7 @@ export function RestaurantInquiryForm() {
               </div>
               
               <div className="space-y-2">
-                <Label>Restaurant Type <span className="text-red-500">*</span></Label>
+                <Label>Restaurant Type <span className="text-destructive">*</span></Label>
                 <RadioGroup 
                   value={formData.restaurantType} 
                   onValueChange={(value) => updateFormField('restaurantType', value)}
@@ -303,7 +303,7 @@ export function RestaurantInquiryForm() {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="locations">Number of Locations <span className="text-red-500">*</span></Label>
+                  <Label htmlFor="locations">Number of Locations <span className="text-destructive">*</span></Label>
                   <Select value={formData.locations} onValueChange={(value) => updateFormField('locations', value)}>
                     <SelectTrigger id="locations">
                       <SelectValue placeholder="Select number of locations" />
@@ -329,7 +329,7 @@ export function RestaurantInquiryForm() {
               </div>
               
               <div className="space-y-2">
-                <Label>Inquiry Type <span className="text-red-500">*</span></Label>
+                <Label>Inquiry Type <span className="text-destructive">*</span></Label>
                 <RadioGroup 
                   value={formData.inquiryType} 
                   onValueChange={(value) => updateFormField('inquiryType', value)}
@@ -346,7 +346,7 @@ export function RestaurantInquiryForm() {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="message">Message <span className="text-red-500">*</span></Label>
+                <Label htmlFor="message">Message <span className="text-destructive">*</span></Label>
                 <Textarea 
                   id="message" 
                   placeholder="Tell us about your restaurant operations needs..."
@@ -360,10 +360,9 @@ export function RestaurantInquiryForm() {
               </div>
               
               <div className="flex justify-between items-center pt-2">
-                <p className="text-xs text-slate-500"><span className="text-red-500">*</span> Required fields</p>
+                <p className="text-xs text-muted-foreground"><span className="text-destructive">*</span> Required fields</p>
                 <Button 
-                  type="submit" 
-                  className="bg-blue-600 hover:bg-blue-700 transition-all" 
+                  type="submit"
                   disabled={isSubmitting}
                   aria-busy={isSubmitting}
                 >

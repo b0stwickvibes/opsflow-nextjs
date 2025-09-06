@@ -170,7 +170,7 @@ export default async function DashboardPage() {
                       {reading.alertTriggered ? (
                         <AlertTriangle className="h-4 w-4 text-destructive" />
                       ) : (
-                        <CheckCircle className="h-4 w-4 text-green-600" />
+                        <CheckCircle className="h-4 w-4 text-primary" />
                       )}
                     </div>
                   </div>
@@ -200,10 +200,10 @@ export default async function DashboardPage() {
                         {log.action.toLowerCase().replace('_', ' ')} {log.resource.replace('_', ' ')}
                       </p>
                       <Badge variant="outline" className={
-                        log.riskLevel === 'CRITICAL' ? 'border-red-500 text-red-700' :
-                        log.riskLevel === 'HIGH' ? 'border-orange-500 text-orange-700' :
-                        log.riskLevel === 'MEDIUM' ? 'border-yellow-500 text-yellow-700' :
-                        'border-gray-500 text-gray-700'
+                        log.riskLevel === 'CRITICAL' ? 'border-destructive text-destructive' :
+                        log.riskLevel === 'HIGH' ? 'border-secondary-500 text-secondary-700 dark:text-secondary-300' :
+                        log.riskLevel === 'MEDIUM' ? 'border-secondary-400 text-secondary-600 dark:text-secondary-400' :
+                        'border-muted-foreground text-muted-foreground'
                       }>
                         {log.riskLevel.toLowerCase()}
                       </Badge>

@@ -27,10 +27,10 @@ export function CompanyHero({
   }, []);
 
   const backgroundStyles = {
-    about: 'bg-gradient-to-br from-slate-50 to-gray-100',
-    contact: 'bg-gradient-to-br from-blue-50 to-indigo-100',
-    careers: 'bg-gradient-to-br from-green-50 to-teal-100',
-    team: 'bg-gradient-to-br from-purple-50 to-pink-100'
+    about: 'bg-gradient-to-br from-base-50 to-base-100',
+    contact: 'bg-gradient-to-br from-primary-50 to-primary-100',
+    careers: 'bg-gradient-to-br from-secondary-50 to-secondary-100',
+    team: 'bg-gradient-to-br from-primary-50 to-secondary-50'
   };
 
   return (
@@ -43,12 +43,12 @@ export function CompanyHero({
             </Badge>
           )}
           
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
             {title}
           </h1>
           
           {description && (
-            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
               {description}
             </p>
           )}

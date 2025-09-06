@@ -35,6 +35,23 @@
 .animate-pulse-subtle {
   animation: pulse 2s infinite;
 }
+
+@keyframes aurora-background {
+  0% {
+    background-position: 50% 50%, 50% 50%;
+  }
+  50% {
+    background-position: 350% 50%, 350% 50%;
+  }
+  100% {
+    background-position: 50% 50%, 50% 50%;
+  }
+}
+
+.animate-aurora-background {
+  animation: aurora-background 60s ease infinite;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -133,233 +150,6 @@
   }
 }
 
-/* ===== Optional Palette Scopes (token-only overrides) ===== */
-/* Plasma-like palette (approximated to HSL; overrides only tokens) */
-html.theme-plasma {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(222 84% 5%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(222 84% 5%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(222 84% 5%);
-  --primary: hsl(260 6% 8%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(280 30% 62%);
-  --secondary-foreground: hsl(222 84% 5%);
-  --muted: hsl(240 5% 94%);
-  --muted-foreground: hsl(240 6% 35%);
-  --accent: hsl(320 5% 96%);
-  --accent-foreground: hsl(222 84% 8%);
-  --destructive: hsl(17 78% 52%);
-  --border: hsl(240 7% 84%);
-  --input: hsl(240 6% 75%);
-  --ring: hsl(240 6% 84%);
-
-  /* Generate primary ramp for the grid using color-mix */
-  --primary-50: color-mix(in oklch, var(--primary) 8%, var(--background));
-  --primary-100: color-mix(in oklch, var(--primary) 16%, var(--background));
-  --primary-200: color-mix(in oklch, var(--primary) 28%, var(--background));
-  --primary-300: color-mix(in oklch, var(--primary) 42%, var(--background));
-  --primary-400: color-mix(in oklch, var(--primary) 58%, var(--background));
-  --primary-500: var(--primary);
-  --primary-600: color-mix(in oklch, var(--primary) 70%, var(--foreground));
-  --primary-700: color-mix(in oklch, var(--primary) 82%, var(--foreground));
-  --primary-800: color-mix(in oklch, var(--primary) 90%, var(--foreground));
-  --primary-900: color-mix(in oklch, var(--primary) 94%, var(--foreground));
-  --primary-950: color-mix(in oklch, var(--primary) 97%, var(--foreground));
-
-  --secondary-50: color-mix(in oklch, var(--secondary) 8%, var(--background));
-  --secondary-100: color-mix(in oklch, var(--secondary) 16%, var(--background));
-  --secondary-200: color-mix(in oklch, var(--secondary) 28%, var(--background));
-  --secondary-300: color-mix(in oklch, var(--secondary) 42%, var(--background));
-  --secondary-400: color-mix(in oklch, var(--secondary) 58%, var(--background));
-  --secondary-500: var(--secondary);
-  --secondary-600: color-mix(in oklch, var(--secondary) 70%, var(--foreground));
-  --secondary-700: color-mix(in oklch, var(--secondary) 82%, var(--foreground));
-  --secondary-800: color-mix(in oklch, var(--secondary) 90%, var(--foreground));
-  --secondary-900: color-mix(in oklch, var(--secondary) 94%, var(--foreground));
-  --secondary-950: color-mix(in oklch, var(--secondary) 97%, var(--foreground));
-}
-html.theme-plasma.dark {
-  --background: hsl(240 6% 5%);
-  --foreground: hsl(0 0% 100%);
-  --card: hsl(240 6% 2%);
-  --card-foreground: hsl(0 0% 100%);
-  --popover: hsl(240 6% 2%);
-  --popover-foreground: hsl(0 0% 100%);
-  --primary: hsl(0 0% 100%);
-  --primary-foreground: hsl(222 84% 8%);
-  --secondary: hsl(280 30% 52%);
-  --secondary-foreground: hsl(0 0% 100%);
-  --muted: hsl(240 6% 92%);
-  --muted-foreground: hsl(240 6% 72%);
-  --accent: hsl(240 6% 8%);
-  --accent-foreground: hsl(240 6% 94%);
-  --destructive: hsl(17 78% 52%);
-  --border: hsl(240 6% 15%);
-  --input: hsl(240 6% 25%);
-  --ring: hsl(240 6% 22%);
-
-  --primary-50: color-mix(in oklch, var(--primary) 8%, var(--background));
-  --primary-100: color-mix(in oklch, var(--primary) 16%, var(--background));
-  --primary-200: color-mix(in oklch, var(--primary) 28%, var(--background));
-  --primary-300: color-mix(in oklch, var(--primary) 42%, var(--background));
-  --primary-400: color-mix(in oklch, var(--primary) 58%, var(--background));
-  --primary-500: var(--primary);
-  --primary-600: color-mix(in oklch, var(--primary) 70%, var(--foreground));
-  --primary-700: color-mix(in oklch, var(--primary) 82%, var(--foreground));
-  --primary-800: color-mix(in oklch, var(--primary) 90%, var(--foreground));
-  --primary-900: color-mix(in oklch, var(--primary) 94%, var(--foreground));
-  --primary-950: color-mix(in oklch, var(--primary) 97%, var(--foreground));
-
-  --secondary-50: color-mix(in oklch, var(--secondary) 8%, var(--background));
-  --secondary-100: color-mix(in oklch, var(--secondary) 16%, var(--background));
-  --secondary-200: color-mix(in oklch, var(--secondary) 28%, var(--background));
-  --secondary-300: color-mix(in oklch, var(--secondary) 42%, var(--background));
-  --secondary-400: color-mix(in oklch, var(--secondary) 58%, var(--background));
-  --secondary-500: var(--secondary);
-  --secondary-600: color-mix(in oklch, var(--secondary) 70%, var(--foreground));
-  --secondary-700: color-mix(in oklch, var(--secondary) 82%, var(--foreground));
-  --secondary-800: color-mix(in oklch, var(--secondary) 90%, var(--foreground));
-  --secondary-900: color-mix(in oklch, var(--secondary) 94%, var(--foreground));
-  --secondary-950: color-mix(in oklch, var(--secondary) 97%, var(--foreground));
-}
-
-/* Figma scale palette mapping (runtime token remap using HSL approximations) */
-html.theme-figma {
-  --background: hsl(0 0% 100%);
-  --foreground: hsl(230 14% 30%);
-  --card: hsl(0 0% 100%);
-  --card-foreground: hsl(230 14% 30%);
-  --popover: hsl(0 0% 100%);
-  --popover-foreground: hsl(230 14% 30%);
-  --primary: hsl(215 70% 50%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(298 65% 50%);
-  --secondary-foreground: hsl(0 0% 100%);
-  --muted: hsl(240 12% 95%);
-  --muted-foreground: hsl(240 10% 45%);
-  --accent: hsl(240 12% 95%);
-  --accent-foreground: hsl(230 14% 30%);
-  --destructive: hsl(17 78% 52%);
-  --border: hsl(240 10% 85%);
-  --input: hsl(240 10% 75%);
-  --ring: hsl(215 70% 50%);
-
-  --primary-50: color-mix(in oklch, var(--primary) 8%, var(--background));
-  --primary-100: color-mix(in oklch, var(--primary) 16%, var(--background));
-  --primary-200: color-mix(in oklch, var(--primary) 28%, var(--background));
-  --primary-300: color-mix(in oklch, var(--primary) 42%, var(--background));
-  --primary-400: color-mix(in oklch, var(--primary) 58%, var(--background));
-  --primary-500: var(--primary);
-  --primary-600: color-mix(in oklch, var(--primary) 70%, var(--foreground));
-  --primary-700: color-mix(in oklch, var(--primary) 82%, var(--foreground));
-  --primary-800: color-mix(in oklch, var(--primary) 90%, var(--foreground));
-  --primary-900: color-mix(in oklch, var(--primary) 94%, var(--foreground));
-  --primary-950: color-mix(in oklch, var(--primary) 97%, var(--foreground));
-
-  --secondary-50: color-mix(in oklch, var(--secondary) 8%, var(--background));
-  --secondary-100: color-mix(in oklch, var(--secondary) 16%, var(--background));
-  --secondary-200: color-mix(in oklch, var(--secondary) 28%, var(--background));
-  --secondary-300: color-mix(in oklch, var(--secondary) 42%, var(--background));
-  --secondary-400: color-mix(in oklch, var(--secondary) 58%, var(--background));
-  --secondary-500: var(--secondary);
-  --secondary-600: color-mix(in oklch, var(--secondary) 70%, var(--foreground));
-  --secondary-700: color-mix(in oklch, var(--secondary) 82%, var(--foreground));
-  --secondary-800: color-mix(in oklch, var(--secondary) 90%, var(--foreground));
-  --secondary-900: color-mix(in oklch, var(--secondary) 94%, var(--foreground));
-  --secondary-950: color-mix(in oklch, var(--secondary) 97%, var(--foreground));
-}
-html.theme-figma.dark {
-  --background: hsl(250 8% 8%);
-  --foreground: hsl(220 10% 83%);
-  --card: hsl(250 8% 8%);
-  --card-foreground: hsl(220 10% 83%);
-  --popover: hsl(250 8% 8%);
-  --popover-foreground: hsl(220 10% 83%);
-  --primary: hsl(215 70% 50%);
-  --primary-foreground: hsl(0 0% 100%);
-  --secondary: hsl(298 65% 50%);
-  --secondary-foreground: hsl(0 0% 100%);
-  --muted: hsl(240 8% 18%);
-  --muted-foreground: hsl(240 8% 60%);
-  --accent: hsl(240 8% 18%);
-  --accent-foreground: hsl(240 8% 83%);
-  --destructive: hsl(17 78% 52%);
-  --border: hsl(240 8% 26%);
-  --input: hsl(240 8% 30%);
-  --ring: hsl(215 70% 50%);
-
-  --primary-50: color-mix(in oklch, var(--primary) 8%, var(--background));
-  --primary-100: color-mix(in oklch, var(--primary) 16%, var(--background));
-  --primary-200: color-mix(in oklch, var(--primary) 28%, var(--background));
-  --primary-300: color-mix(in oklch, var(--primary) 42%, var(--background));
-  --primary-400: color-mix(in oklch, var(--primary) 58%, var(--background));
-  --primary-500: var(--primary);
-  --primary-600: color-mix(in oklch, var(--primary) 70%, var(--foreground));
-  --primary-700: color-mix(in oklch, var(--primary) 82%, var(--foreground));
-  --primary-800: color-mix(in oklch, var(--primary) 90%, var(--foreground));
-  --primary-900: color-mix(in oklch, var(--primary) 94%, var(--foreground));
-  --primary-950: color-mix(in oklch, var(--primary) 97%, var(--foreground));
-
-  --secondary-50: color-mix(in oklch, var(--secondary) 8%, var(--background));
-  --secondary-100: color-mix(in oklch, var(--secondary) 16%, var(--background));
-  --secondary-200: color-mix(in oklch, var(--secondary) 28%, var(--background));
-  --secondary-300: color-mix(in oklch, var(--secondary) 42%, var(--background));
-  --secondary-400: color-mix(in oklch, var(--secondary) 58%, var(--background));
-  --secondary-500: var(--secondary);
-  --secondary-600: color-mix(in oklch, var(--secondary) 70%, var(--foreground));
-  --secondary-700: color-mix(in oklch, var(--secondary) 82%, var(--foreground));
-  --secondary-800: color-mix(in oklch, var(--secondary) 90%, var(--foreground));
-  --secondary-900: color-mix(in oklch, var(--secondary) 94%, var(--foreground));
-  --secondary-950: color-mix(in oklch, var(--secondary) 97%, var(--foreground));
-}
-
-/* Example Styleglide theme scope (replace with your export) */
-html.theme-styleglide-nebula {
-  /* Light */
-  --background: oklch(0.98 0.002 260);
-  --foreground: oklch(0.16 0.02 260);
-  --card: oklch(0.99 0.001 260);
-  --card-foreground: oklch(0.16 0.02 260);
-  --popover: oklch(0.99 0.001 260);
-  --popover-foreground: oklch(0.16 0.02 260);
-  --primary: oklch(0.62 0.21 230);           /* deep blue */
-  --primary-foreground: oklch(1 0 0);
-  --secondary: oklch(0.72 0.18 350);         /* magenta */
-  --secondary-foreground: oklch(0.16 0.02 260);
-  --muted: oklch(0.95 0.01 260);
-  --muted-foreground: oklch(0.40 0.03 260);
-  --accent: oklch(0.96 0.01 320);
-  --accent-foreground: oklch(0.16 0.02 260);
-  --destructive: oklch(0.60 0.19 22);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.84 0.01 240);
-  --input: oklch(0.78 0.02 240);
-  --ring: oklch(0.62 0.21 230);
-}
-html.theme-styleglide-nebula.dark {
-  /* Dark */
-  --background: oklch(0.08 0.02 260);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.06 0.01 260);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.06 0.01 260);
-  --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.78 0.16 230);
-  --primary-foreground: oklch(0.10 0.02 260);
-  --secondary: oklch(0.65 0.16 350);
-  --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.20 0.01 240);
-  --muted-foreground: oklch(0.72 0.01 240);
-  --accent: oklch(0.16 0.01 240);
-  --accent-foreground: oklch(0.95 0.01 240);
-  --destructive: oklch(0.58 0.19 22);
-  --destructive-foreground: oklch(1 0 0);
-  --border: oklch(0.24 0.01 240);
-  --input: oklch(0.32 0.01 240);
-  --ring: oklch(0.78 0.16 230);
-}
 @layer base {
   * {
     @apply border-border;
@@ -372,6 +162,80 @@ html.theme-styleglide-nebula.dark {
 /* Hint UA color-scheme to avoid native control flicker */
 :root { color-scheme: light; }
 .dark { color-scheme: dark; }
+
+/* ===== GLASSMORPHISM DESIGN TOKENS ===== */
+/* Subtle surface variants that work with any theme palette */
+:root {
+  /* Glassmorphism surface variants with transparency */
+  --surface-subtle-primary: color-mix(in oklch, var(--primary) 12%, var(--background) 88%);
+  --surface-subtle-primary-border: color-mix(in oklch, var(--primary) 25%, var(--background) 75%);
+  --surface-subtle-primary-text: var(--primary);
+  
+  --surface-subtle-secondary: color-mix(in oklch, var(--secondary) 12%, var(--background) 88%);
+  --surface-subtle-secondary-border: color-mix(in oklch, var(--secondary) 25%, var(--background) 75%);
+  --surface-subtle-secondary-text: var(--secondary);
+  
+  --surface-subtle-destructive: color-mix(in oklch, var(--destructive) 12%, var(--background) 88%);
+  --surface-subtle-destructive-border: color-mix(in oklch, var(--destructive) 25%, var(--background) 75%);
+  --surface-subtle-destructive-text: var(--destructive);
+  
+  --surface-subtle-muted: color-mix(in oklch, var(--muted-foreground) 8%, var(--background) 92%);
+  --surface-subtle-muted-border: color-mix(in oklch, var(--muted-foreground) 20%, var(--background) 80%);
+  --surface-subtle-muted-text: var(--muted-foreground);
+  
+  /* Glassmorphism effects */
+  --glass-blur: blur(4px);
+  --glass-opacity: 0.9;
+}
+
+.dark {
+  /* Dark mode glassmorphism variants with appropriate transparency */
+  --surface-subtle-primary: color-mix(in oklch, var(--primary) 15%, var(--background) 85%);
+  --surface-subtle-primary-border: color-mix(in oklch, var(--primary) 30%, var(--background) 70%);
+  --surface-subtle-primary-text: var(--primary);
+  
+  --surface-subtle-secondary: color-mix(in oklch, var(--secondary) 15%, var(--background) 85%);
+  --surface-subtle-secondary-border: color-mix(in oklch, var(--secondary) 30%, var(--background) 70%);
+  --surface-subtle-secondary-text: var(--secondary);
+  
+  --surface-subtle-destructive: color-mix(in oklch, var(--destructive) 15%, var(--background) 85%);
+  --surface-subtle-destructive-border: color-mix(in oklch, var(--destructive) 30%, var(--background) 70%);
+  --surface-subtle-destructive-text: var(--destructive);
+  
+  --surface-subtle-muted: color-mix(in oklch, var(--muted-foreground) 12%, var(--background) 88%);
+  --surface-subtle-muted-border: color-mix(in oklch, var(--muted-foreground) 25%, var(--background) 75%);
+  --surface-subtle-muted-text: var(--muted-foreground);
+}
+
+/* ===== GLASSMORPHISM UTILITY CLASSES ===== */
+/* These work consistently across ALL components */
+.surface-subtle-primary {
+  background-color: var(--surface-subtle-primary);
+  border-color: var(--surface-subtle-primary-border);
+  color: var(--surface-subtle-primary-text);
+  backdrop-filter: var(--glass-blur);
+}
+
+.surface-subtle-secondary {
+  background-color: var(--surface-subtle-secondary);
+  border-color: var(--surface-subtle-secondary-border);
+  color: var(--surface-subtle-secondary-text);
+  backdrop-filter: var(--glass-blur);
+}
+
+.surface-subtle-destructive {
+  background-color: var(--surface-subtle-destructive);
+  border-color: var(--surface-subtle-destructive-border);
+  color: var(--surface-subtle-destructive-text);
+  backdrop-filter: var(--glass-blur);
+}
+
+.surface-subtle-muted {
+  background-color: var(--surface-subtle-muted);
+  border-color: var(--surface-subtle-muted-border);
+  color: var(--surface-subtle-muted-text);
+  backdrop-filter: var(--glass-blur);
+}
 
 /* Premium background patterns for OpsFlow */
 .bg-grid-primary\/10 {
@@ -472,11 +336,11 @@ html.theme-styleglide-nebula.dark {
   /* Professional card surface */
   .platform-card-professional { @apply bg-muted/40 border rounded-xl shadow-sm; }
 
-  /* Status indicators */
-  .status-indicator-success { @apply bg-emerald-50 text-emerald-700 border border-emerald-200; }
-  .status-indicator-warning { @apply bg-amber-50 text-amber-700 border border-amber-200; }
-  .status-indicator-error { @apply bg-rose-50 text-rose-700 border border-rose-200; }
-  .status-indicator-neutral { @apply bg-muted text-muted-foreground border; }
+  /* Status indicators - using OKLCH system */
+  .status-indicator-success { @apply bg-primary-50 dark:bg-primary-950 text-primary-700 dark:text-primary-300 border border-primary-100 dark:border-primary-800; }
+  .status-indicator-warning { @apply bg-secondary-50 dark:bg-secondary-950 text-secondary-700 dark:text-secondary-300 border border-secondary-100 dark:border-secondary-800; }
+  .status-indicator-error { @apply surface-subtle-destructive; }
+  .status-indicator-neutral { @apply surface-subtle-muted; }
 
   /* Background grid pattern */
   .bg-grid-pattern {
@@ -507,3 +371,4 @@ html.theme-styleglide-nebula.dark {
   .animation-delay-600 { animation-delay: .6s; }
   .animation-delay-700 { animation-delay: .7s; }
 }
+

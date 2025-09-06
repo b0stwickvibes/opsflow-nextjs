@@ -78,7 +78,7 @@ export function MarketingHero({
                 href="/product/features"
                 className="inline-flex items-center rounded-full border bg-muted px-4 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
               >
-                <div className="mr-2 h-2 w-2 rounded-full bg-green-500" />
+                <div className="mr-2 h-2 w-2 rounded-full bg-primary" />
                 {badge}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

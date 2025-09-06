@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ContactSupportPage } from "@/components/resources/ResourcePages";
+import { ContactSupportPage } from "@/components/shared/data-display/ResourcePages";
 
 export const metadata: Metadata = {
   title: "Contact Support — OpsFlow AI",

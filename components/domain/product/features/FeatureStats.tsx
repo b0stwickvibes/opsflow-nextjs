@@ -1,6 +1,6 @@
 "use client";
 
-import NumberTicker from "@/components/enhanced/NumberTicker";
+import NumberTicker from "@/components/shared/enhanced/NumberTicker";
 import { useEffect } from "react";
 import { registerComponentLayout } from "@/lib/style-system/layout-differentiation";
 

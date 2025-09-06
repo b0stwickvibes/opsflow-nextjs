@@ -37,6 +37,7 @@ module.exports = {
           800: "var(--primary-800)",
           900: "var(--primary-900)",
           950: "var(--primary-950)",
+          1000: "var(--primary-1000)",
         },
         secondary: {
           DEFAULT: "var(--secondary)",
@@ -52,6 +53,7 @@ module.exports = {
           800: "var(--secondary-800)",
           900: "var(--secondary-900)",
           950: "var(--secondary-950)",
+          1000: "var(--secondary-1000)",
         },
         destructive: {
           DEFAULT: "var(--destructive)",

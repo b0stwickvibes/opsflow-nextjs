@@ -7,7 +7,7 @@ import { RestaurantHomeHero, RestaurantPlatformExplorer } from "@/components/dom
 import { MarketingRollingBlocks } from "@/components/domain/marketing";
 import { Testimonials } from "@/components/shared/data-display";
 import { MarketingCTA } from "@/components/shared/layout";
-import { CustomerMarquee } from "@/components/enhanced/CustomerMarquee";
+import { CustomerMarquee } from "@/components/shared/enhanced/CustomerMarquee";
 
 export default function HomePage() {
   return (
