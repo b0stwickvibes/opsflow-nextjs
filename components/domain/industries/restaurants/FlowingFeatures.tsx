@@ -24,6 +24,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';
 import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 // Number animation component
 const NumberTicker = ({ 
@@ -128,35 +129,19 @@ const FeatureCard = ({
     >
       <Card 
         className={cn(
-          "relative overflow-hidden border-0 transition-all duration-500 group",
-          "bg-gradient-to-br hover:shadow-2xl",
-          isActive 
-            ? "from-blue-50/80 via-indigo-50/60 to-purple-50/80 dark:from-blue-950/50 dark:via-indigo-950/30 dark:to-purple-950/50 shadow-xl scale-105 ring-2 ring-blue-200 dark:ring-blue-800" 
-            : "from-gray-50/50 to-white/80 dark:from-gray-900/50 dark:to-gray-800/80 hover:from-blue-50/30 hover:to-indigo-50/30 dark:hover:from-blue-950/20 dark:hover:to-indigo-950/20"
+          "clerk-interactive-tile transition-all duration-300 group",
+          isActive ? "is-active scale-[1.02]" : ""
         )}
       >
-        {/* Animated gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 via-purple-600/5 to-pink-600/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        
         <CardContent className="relative p-6 z-10">
           <div className="flex items-start gap-4">
             <motion.div 
               className={cn(
-                "p-3 rounded-xl transition-all duration-500 relative overflow-hidden",
-                isActive 
-                  ? "bg-gradient-to-br from-blue-500 to-indigo-600 text-white shadow-lg scale-110" 
-                  : "bg-gray-100 dark:bg-gray-800 group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-indigo-600 group-hover:text-white"
+                "clerk-inspired-icon transition-transform",
+                isActive ? "scale-110" : ""
               )}
-              whileHover={{ rotate: 5 }}
             >
               <IconComponent className="h-6 w-6 relative z-10" />
-              {isActive && (
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent"
-                  animate={{ x: [-100, 100] }}
-                  transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                />
-              )}
             </motion.div>
             
             <div className="flex-1">
@@ -179,13 +164,13 @@ const FeatureCard = ({
                 )}
               </div>
               
-              <h3 className="text-lg font-semibold mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              <h3 className="text-lg font-semibold mb-1 group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
               <p className="text-sm text-muted-foreground mb-3 font-medium">
                 {feature.subtitle}
               </p>
-              <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+              <p className="text-sm leading-relaxed text-muted-foreground">
                 {feature.description}
               </p>
               
@@ -329,7 +314,7 @@ export default function FlowingFeatures() {
             animate={isHeroInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <Badge className="mb-6 bg-gradient-to-r from-blue-100 to-purple-100 text-blue-800 border-blue-200 px-6 py-2 text-sm font-medium">
+            <Badge className="clerk-inspired-badge mb-6 px-6 py-2 text-sm font-medium">
               <Eye className="w-4 h-4 mr-2" />
               Complete Restaurant Operations Suite
             </Badge>
@@ -344,7 +329,7 @@ export default function FlowingFeatures() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight max-w-5xl mx-auto leading-tight">
               Stop fighting fires.
               <br />
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <span className="text-gradient">
                 Start preventing them.
               </span>
             </h2>
@@ -383,7 +368,7 @@ export default function FlowingFeatures() {
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <Card className="relative overflow-hidden border-0 bg-gradient-to-br from-blue-50/50 via-indigo-50/30 to-purple-50/50 dark:from-blue-950/30 dark:via-indigo-950/20 dark:to-purple-950/30">
+              <Card className="clerk-inspired-card">
                 <CardContent className="p-8">
                   <motion.div
                     key={activeFeature}
@@ -447,7 +432,7 @@ export default function FlowingFeatures() {
                     </div>
                     
                     <motion.div 
-                      className="flex items-center justify-center gap-2 text-green-600 bg-green-50 dark:bg-green-950/20 rounded-full px-4 py-2"
+                      className="enterprise-status-indicator"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.6 }}
@@ -487,35 +472,8 @@ export default function FlowingFeatures() {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="relative"
         >
-          {/* Gradient border effect */}
-          <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-3xl p-1">
-            <Card className="bg-white dark:bg-gray-900 rounded-3xl border-0 relative overflow-hidden">
-              {/* Animated background pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20" />
-                {[...Array(6)].map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute w-32 h-32 border border-blue-400/20 rounded-full"
-                    animate={{
-                      scale: [1, 1.2, 1],
-                      opacity: [0.1, 0.3, 0.1],
-                    }}
-                    transition={{
-                      duration: 4,
-                      delay: i * 0.7,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                    style={{
-                      left: `${20 + (i * 15)}%`,
-                      top: `${10 + (i % 2) * 60}%`,
-                    }}
-                  />
-                ))}
-              </div>
-              
-              <CardContent className="p-8 lg:p-12 relative z-10">
+          <Card className="clerk-inspired-card">
+            <CardContent className="p-8 lg:p-12 relative z-10">
                 <div className="text-center mb-12">
                   <motion.h3 
                     className="text-3xl font-bold mb-4"
@@ -537,12 +495,13 @@ export default function FlowingFeatures() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
                   {[
-                    { value: '35%', label: 'Cost Reduction', icon: TrendingUp, color: 'from-green-500 to-emerald-600' },
-                    { value: '18hrs', label: 'Weekly Time Savings', icon: Clock, color: 'from-blue-500 to-indigo-600' },
-                    { value: '99.9%', label: 'Compliance Rate', icon: Shield, color: 'from-purple-500 to-violet-600' },
-                    { value: '47min', label: 'Issue Response Time', icon: Zap, color: 'from-pink-500 to-rose-600' }
+                    { value: '35%', label: 'Cost Reduction', icon: TrendingUp },
+                    { value: '18hrs', label: 'Weekly Time Savings', icon: Clock },
+                    { value: '99.9%', label: 'Compliance Rate', icon: Shield },
+                    { value: '47min', label: 'Issue Response Time', icon: Zap }
                   ].map((stat, index) => {
-                    const IconComponent = stat.icon;
+                    const IconComponent = stat.icon as any;
+                    const toneClass = 'roi-icon-brand';
                     return (
                       <motion.div 
                         key={index}
@@ -552,14 +511,14 @@ export default function FlowingFeatures() {
                         transition={{ duration: 0.6, delay: 1 + (index * 0.1) }}
                       >
                         <motion.div 
-                          className={`mx-auto w-16 h-16 bg-gradient-to-br ${stat.color} rounded-full flex items-center justify-center mb-4 shadow-lg`}
-                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className={`${toneClass} mx-auto w-16 h-16 rounded-2xl mb-4 flex items-center justify-center`}
+                          whileHover={{ scale: 1.05 }}
                           transition={{ type: "spring", stiffness: 300 }}
                         >
-                          <IconComponent className="h-8 w-8 text-white" />
+                          <IconComponent className="h-8 w-8" />
                         </motion.div>
                         <motion.div 
-                          className="text-3xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+                          className="metric-display-large"
                           whileInView={{ scale: [1, 1.1, 1] }}
                           transition={{ duration: 0.5 }}
                         >
@@ -582,21 +541,22 @@ export default function FlowingFeatures() {
                   <p className="text-lg font-medium mb-6">Ready to transform your restaurant operations?</p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 shadow-lg">
-                        Start Free Trial
-                        <ArrowRight className="ml-2 h-5 w-5" />
+                      <Button size="lg" className="clerk-cta-primary text-base px-8 py-3 h-auto cta-equal" asChild>
+                        <Link href="/pricing">
+                          Start Free Trial
+                          <ArrowRight className="ml-2 h-5 w-5" />
+                        </Link>
                       </Button>
                     </motion.div>
                     <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                      <Button variant="outline" size="lg" className="border-2">
-                        Schedule Demo
+                      <Button variant="outline" size="lg" className="text-base px-8 py-3 h-auto border-2 cta-equal" asChild>
+                        <Link href="/product/demo?industry=restaurants">Schedule Demo</Link>
                       </Button>
                     </motion.div>
                   </div>
                 </motion.div>
               </CardContent>
             </Card>
-          </div>
         </motion.div>
       </div>
     </section>

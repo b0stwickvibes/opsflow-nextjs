@@ -183,6 +183,68 @@ export function ProductHACCPHero({
 
 ## Design System Integration
 
+### **CRITICAL: CTA Symmetry Standards (NON-NEGOTIABLE)**
+All paired CTAs MUST follow these exact patterns:
+
+```tsx
+// ✅ REQUIRED Pattern for Paired CTAs
+<div className="flex flex-col sm:flex-row gap-4">
+  {/* Primary CTA - Always blue brand */}
+  <Button 
+    className="clerk-cta-primary cta-equal" 
+    size="lg" 
+    // Full sizing: text-base px-8 py-3 h-auto
+  >
+    Start Free Trial
+  </Button>
+  
+  {/* Secondary CTA - Neutral gradient */}
+  <Button 
+    variant="outline" 
+    className="btn-neutral-gradient cta-equal"
+    size="lg"
+  >
+    Schedule Demo
+  </Button>
+</div>
+```
+
+#### **CTA Token System**
+- **Desktop Width**: `--cta-width: 15rem` (240px)
+- **Mobile Width**: 100% (full width)
+- **Primary Styling**: `.clerk-cta-primary` (blue brand gradient)
+- **Secondary Styling**: `.btn-neutral-gradient` (base-200 gradient)
+- **Equal Width Utility**: `.cta-equal` (enforces symmetry)
+
+### **Enterprise Component Requirements**
+All components MUST use the enterprise styling system:
+
+```tsx
+// Professional Cards
+<Card className="enterprise-card">              // Standard professional styling
+<Card className="enterprise-metric-card">       // For metrics display
+
+// Icon Backgrounds (NO dynamic classes)
+<div className={cn(
+  iconStyle === 'primary' && "enterprise-icon-primary",
+  iconStyle === 'secondary' && "enterprise-icon-secondary", 
+  iconStyle === 'accent' && "enterprise-icon-accent",
+  iconStyle === 'muted' && "enterprise-icon-muted"
+)}>
+  <IconComponent className="h-6 w-6" />
+</div>
+
+// ROI Icons (unified brand styling)
+<div className="roi-icon-brand rounded-2xl">
+  <Icon className="h-6 w-6 text-white" />
+</div>
+```
+
+#### **Reference Implementation**
+- **Complete Example**: `/components/domain/industries/restaurants/` - All components
+- **Styling Documentation**: `ENTERPRISE-STYLING-IMPLEMENTATION-COMPLETE.md`
+- **Global Tokens**: `/app/globals.css` (lines 300-500+)
+
 ### **OKLCH Color Usage**
 
 #### Brand Color Implementation
@@ -283,56 +345,386 @@ const layouts = {
 
 ---
 
-## Page Implementation Workflow
+## Template Component Library Integration
 
-### **Phase 1: Quick Win - Restaurant Solutions (Week 1)**
+### **CRITICAL: Use Diverse Template Components**
 
-#### Step 1: Route Creation
-```bash
-# Create route structure
-mkdir -p app/solutions/restaurants
-touch app/solutions/restaurants/page.tsx
-touch app/solutions/restaurants/error.tsx
-touch app/solutions/restaurants/loading.tsx
+**❌ WRONG APPROACH:** Copy restaurant page structure for every industry
+**✅ CORRECT APPROACH:** Use varied template components to create unique layouts
+
+#### **Available Component Library**
+```typescript
+// Complete template library available:
+import { 
+  // Heroes - 9+ different hero types
+  ImpactHero, VisionHero, ProductivityHero, CarouselHero, 
+  SplitScreenHero, BillingHero, WorkflowHero, FormHero, EliteAccessHero 
+} from '@/templates/shadcn-components/processed/heroes';
+
+import {
+  // Features - 14+ different feature layouts  
+  FeatureMatrix, FeatureSplit, FeatureBento, FeatureCarousel,
+  FeatureAccordion, FeatureTimeline, FeatureComparison, FeatureCards,
+  FeatureGrid, FeatureHighlight, FeatureList, FeatureShowcase, FeatureTabs
+} from '@/templates/shadcn-components/processed/features';
+
+import {
+  // Stats - Multiple metric display options
+  KPIShowcase, MetricsDashboard, StatsDisplay
+} from '@/templates/shadcn-components/processed/stats';
+
+import {
+  // CTAs, Testimonials, Integration components, etc.
+  CallToAction, DemoRequest, TestimonialCarousel, 
+  IntegrationGrid, LogoMarquee
+} from '@/templates/shadcn-components/processed/ctas';
 ```
 
-#### Step 2: Page Composition
-```typescript
-// app/solutions/restaurants/page.tsx
-import { 
-  RestaurantSolutionsHero,
-  RestaurantFeatureGrid,
-  RestaurantSuccessMetrics,
-  FlowingFeatures,
-  SecondaryFeatures,
-  RestaurantPlatformExplorer
-} from '@/components/domain/industries/restaurants';
+### **Industry Page Differentiation Strategy**
 
-import { MarketingCTA } from '@/components/shared/layout';
+#### **Component Selection Matrix**
+
+| Industry | Hero Type | Features Layout | Stats Display | Unique Elements |
+|----------|-----------|-----------------|---------------|-----------------|
+| **Restaurants** | `ProductivityHero` | `FeatureGrid` + `FeatureCarousel` | `MetricsDashboard` | Kitchen workflow focus |
+| **Coffee** | `WorkflowHero` | `FeatureBento` + `FeatureTimeline` | `KPIShowcase` | Morning rush optimization |
+| **Bars** | `ImpactHero` | `FeatureMatrix` + `FeatureAccordion` | `StatsDisplay` | Inventory/compliance focus |
+| **Hotels** | `SplitScreenHero` | `FeatureComparison` + `FeatureTabs` | `MetricsDashboard` | Multi-venue operations |
+| **Owners** | `BillingHero` | `FeatureSplit` + `FeatureHighlight` | `KPIShowcase` | ROI and profit focus |
+| **Managers** | `CarouselHero` | `FeatureCards` + `FeatureList` | `StatsDisplay` | Team coordination |
+
+#### **Layout Composition Rules**
+```typescript
+// DON'T: Use same 5-component structure for every page
+const restaurantClone = (
+  <>
+    <IndustryHero />      // Same hero pattern
+    <IndustryFeatures />  // Same feature grid  
+    <IndustryMetrics />   // Same metrics carousel
+    <IndustryFlow />      // Same flowing features
+    <IndustrySecondary /> // Same secondary carousel
+  </>
+);
+
+// DO: Mix different template components per industry
+const coffeeShopPage = (
+  <>
+    <WorkflowHero />           // Different hero type
+    <FeatureBento />           // Different feature layout
+    <IntegrationShowcase />    // Different integration focus
+    <FeatureTimeline />        // Timeline for rush hours
+    <KPIShowcase />           // Different stats presentation
+    <CallToAction />          // Different CTA style
+  </>
+);
+```
+
+### **Template Selection Criteria**
+
+#### **By Business Focus**
+- **Operational Efficiency:** `WorkflowHero`, `FeatureTimeline`, `MetricsDashboard`
+- **ROI/Profit Focus:** `BillingHero`, `FeatureSplit`, `KPIShowcase`  
+- **Compliance/Safety:** `SplitScreenHero`, `FeatureAccordion`, `StatsDisplay`
+- **Technology Integration:** `CarouselHero`, `FeatureMatrix`, `IntegrationGrid`
+- **Scale/Enterprise:** `ImpactHero`, `FeatureComparison`, `TestimonialCarousel`
+
+#### **By Information Architecture**
+- **Simple Message:** `ImpactHero` + `FeatureCards`
+- **Complex Features:** `CarouselHero` + `FeatureTabs` + `FeatureAccordion`
+- **Process/Workflow:** `WorkflowHero` + `FeatureTimeline`
+- **Comparison/Choice:** `SplitScreenHero` + `FeatureComparison`
+- **Data/Analytics:** `ProductivityHero` + `MetricsDashboard`
+
+## Page Implementation Workflow
+
+### **Phase 1: Template-Driven Page Development**
+
+#### Step 1: Industry Analysis & Component Selection
+```typescript
+// Coffee Shop Analysis Example:
+const coffeeShopNeeds = {
+  keyMessage: 'Morning rush optimization',
+  heroType: 'WorkflowHero', // Emphasizes operational flow
+  
+  featureLayout: 'FeatureBento', // Compact feature display
+  secondaryLayout: 'FeatureTimeline', // Rush hour timeline
+  
+  statsType: 'KPIShowcase', // Speed/efficiency metrics
+  integrations: 'IntegrationShowcase', // POS systems
+  
+  uniqueFocus: ['Speed', 'Quality consistency', 'Small space optimization']
+};
+
+const hotelNeeds = {
+  keyMessage: 'Multi-venue enterprise operations',
+  heroType: 'SplitScreenHero', // Dual focus (guest + operations)
+  
+  featureLayout: 'FeatureComparison', // Compare different venues
+  secondaryLayout: 'FeatureTabs', // Organized by department
+  
+  statsType: 'MetricsDashboard', // Complex operational metrics
+  integrations: 'IntegrationGrid', // Many system integrations
+  
+  uniqueFocus: ['Enterprise scale', 'Guest experience', 'Compliance']
+};
+```
+
+#### Step 2: Route Creation with Template Integration
+```bash
+# Create route structure
+mkdir -p app/solutions/coffee
+touch app/solutions/coffee/page.tsx
+touch app/solutions/coffee/error.tsx
+touch app/solutions/coffee/loading.tsx
+```
+
+#### Step 3: Template-Based Page Composition
+```typescript
+// app/solutions/coffee/page.tsx - Using DIVERSE templates
+import { WorkflowHero } from '@/templates/shadcn-components/processed/heroes';
+import { 
+  FeatureBento, 
+  FeatureTimeline 
+} from '@/templates/shadcn-components/processed/features';
+import { KPIShowcase } from '@/templates/shadcn-components/processed/stats';
+import { IntegrationShowcase } from '@/templates/shadcn-components/processed/integration';
+import { CallToAction } from '@/templates/shadcn-components/processed/ctas';
 import { FAQSection } from '@/components/shared/data-display';
 
-export default function RestaurantSolutionsPage() {
+export default function CoffeeSolutionsPage() {
   return (
     <>
-      <RestaurantSolutionsHero variant="expanded" showROI={true} />
-      <RestaurantFeatureGrid />
-      <RestaurantSuccessMetrics />
-      <FlowingFeatures />
-      <RestaurantPlatformExplorer />
-      <SecondaryFeatures />
-      <FAQSection 
-        title="Restaurant Operations FAQ"
-        category="restaurant"
+      {/* Different hero type - workflow focused */}
+      <WorkflowHero 
+        industry="coffee"
+        title="Master Your Morning Rush"
+        subtitle="Optimize barista workflows and deliver consistent quality during peak hours"
+        workflow={[
+          'Order received → Queue management',
+          'Barista assignment → Quality control', 
+          'Service delivery → Customer satisfaction'
+        ]}
       />
-      <MarketingCTA 
-        title="Ready to Transform Your Restaurant?"
-        subtitle="Join 500+ restaurants reducing waste and increasing profits"
-        primaryAction="Start Free Trial"
-        secondaryAction="Schedule Demo"
+
+      {/* Compact bento layout for coffee features */}
+      <FeatureBento 
+        title="Complete Coffee Shop Operations"
+        features={[
+          {
+            title: 'Espresso Quality Control',
+            description: 'Monitor extraction temperature, grind settings, and timing',
+            icon: 'Coffee'
+          },
+          {
+            title: 'Display Case Monitoring', 
+            description: 'Automated pastry temperature tracking with alerts',
+            icon: 'Thermometer'
+          },
+          {
+            title: 'Rush Hour Analytics',
+            description: 'Real-time queue management and staffing optimization',
+            icon: 'BarChart3'
+          },
+          {
+            title: 'Barista Training',
+            description: 'Skill tracking and certification management',
+            icon: 'GraduationCap'
+          }
+        ]}
+      />
+
+      {/* Timeline specifically for rush hour optimization */}
+      <FeatureTimeline 
+        title="Morning Rush Optimization Timeline"
+        timeline={[
+          {
+            time: '6:00 AM',
+            event: 'Pre-opening setup and equipment checks',
+            details: 'Automated system verifies all temperatures and equipment status'
+          },
+          {
+            time: '7:00 AM', 
+            event: 'Rush hour begins - queue management active',
+            details: 'AI-powered order routing and barista task optimization'
+          },
+          {
+            time: '9:30 AM',
+            event: 'Peak analysis and afternoon prep',
+            details: 'Real-time analytics show performance metrics and prep needs'
+          }
+        ]}
+      />
+
+      {/* KPI focused on speed and efficiency */}
+      <KPIShowcase 
+        title="Coffee Shop Performance Metrics"
+        kpis={[
+          { label: 'Average Service Time', value: '2.3 min', change: '-35%' },
+          { label: 'Quality Consistency', value: '98%', change: '+12%' },
+          { label: 'Customer Satisfaction', value: '4.8/5', change: '+0.6' },
+          { label: 'Waste Reduction', value: '23%', change: '+23%' }
+        ]}
+      />
+
+      {/* Integration showcase for POS systems */}
+      <IntegrationShowcase 
+        title="Seamless POS Integration" 
+        subtitle="Works with your existing coffee shop systems"
+        integrations={[
+          { name: 'Square', logo: '/logos/square.png' },
+          { name: 'Toast', logo: '/logos/toast.png' },
+          { name: 'Clover', logo: '/logos/clover.png' }
+        ]}
+      />
+
+      <FAQSection industry="coffee" role="general" />
+
+      {/* Different CTA style */}
+      <CallToAction 
+        variant="demo"
+        title="Ready to Optimize Your Coffee Shop?"
+        description="Join 350+ coffee shops improving operations with OpsFlow"
+        primaryAction={{ text: 'Start Free Trial', href: '/pricing' }}
+        secondaryAction={{ text: 'Schedule Demo', href: '/demo' }}
       />
     </>
   );
 }
+
+// vs. app/solutions/hotels/page.tsx - Completely DIFFERENT layout
+import { SplitScreenHero } from '@/templates/shadcn-components/processed/heroes';
+import { 
+  FeatureComparison,
+  FeatureTabs 
+} from '@/templates/shadcn-components/processed/features';
+import { MetricsDashboard } from '@/templates/shadcn-components/processed/stats';
+
+export default function HotelSolutionsPage() {
+  return (
+    <>
+      {/* Split screen for guest experience vs operations */}
+      <SplitScreenHero 
+        leftSide={{
+          title: 'Exceptional Guest Experience',
+          content: 'Digital room service, dietary preferences, personalized service'
+        }}
+        rightSide={{
+          title: 'Streamlined Operations',
+          content: 'Multi-venue management, compliance tracking, staff coordination'
+        }}
+      />
+
+      {/* Comparison between different venue types */}
+      <FeatureComparison 
+        title="Multi-Venue Operations Management"
+        comparison={[
+          {
+            venue: 'Main Restaurant',
+            features: ['Fine dining workflows', 'Wine service', 'Event catering']
+          },
+          {
+            venue: 'Room Service',
+            features: ['Mobile ordering', 'Dietary tracking', 'In-room delivery']
+          },
+          {
+            venue: 'Banquet Operations', 
+            features: ['Event planning', 'Large group service', 'Special requests']
+          }
+        ]}
+      />
+
+      {/* Tabbed interface for different hotel departments */}
+      <FeatureTabs 
+        tabs={[
+          {
+            label: 'F&B Operations',
+            content: 'Restaurant, bar, and room service management'
+          },
+          {
+            label: 'Event Management',
+            content: 'Banquet planning and execution tools'
+          },
+          {
+            label: 'Guest Services',
+            content: 'Personalization and preference tracking'
+          }
+        ]}
+      />
+
+      {/* Complex dashboard for enterprise metrics */}
+      <MetricsDashboard 
+        title="Enterprise Hotel Analytics"
+        metrics={[
+          { category: 'Revenue', value: '$2.4M', period: 'monthly' },
+          { category: 'Guest Satisfaction', value: '4.9/5', trend: 'up' },
+          { category: 'Compliance Score', value: '99.2%', status: 'excellent' }
+        ]}
+      />
+    </>
+  );
+}
+```
+
+### **Template-Driven Implementation Checklist**
+
+#### **Before Starting Any Page:**
+- [ ] **Industry Analysis Complete**: What makes this industry unique?
+- [ ] **Template Components Reviewed**: Which templates fit the industry needs?
+- [ ] **Layout Strategy Defined**: How will this page differ from existing pages?
+- [ ] **Content Framework Ready**: Industry-specific pain points and solutions identified
+
+#### **Component Selection Decision Tree:**
+
+**🎯 CRITICAL: See VISUAL-COMPONENT-GUIDE.md for detailed component personalities and selection strategies**
+
+```
+1. What's the primary industry focus?
+   ├─ Speed/Efficiency → WorkflowHero + FeatureTimeline + KPIShowcase
+   ├─ ROI/Profit → BillingHero + FeatureSplit + KPIShowcase  
+   ├─ Compliance/Safety → SplitScreenHero + FeatureAccordion + StatsDisplay
+   ├─ Technology/Integration → CarouselHero + FeatureMatrix + IntegrationGrid
+   └─ Enterprise/Scale → ImpactHero + FeatureComparison + MetricsDashboard
+
+2. How complex is the message?
+   ├─ Simple/Clear → 3-4 sections with FeatureCards, CallToAction
+   ├─ Moderate → 4-5 sections with FeatureTabs, TestimonialCarousel  
+   └─ Complex → 5-6 sections with FeatureAccordion, FeatureComparison, MetricsDashboard
+
+3. What's the user's decision-making process?
+   ├─ Quick Decision → ImpactHero + FeatureCards + CallToAction
+   ├─ Comparison Shopping → SplitScreenHero + FeatureComparison + PricingTable
+   └─ Complex Evaluation → CarouselHero + FeatureTabs + MetricsDashboard + TestimonialGrid
+```
+
+#### **Required Diversity Standards:**
+- [ ] **No two pages use identical component combinations**
+- [ ] **Each industry has unique visual hierarchy** 
+- [ ] **Content reflects actual industry operations** (not just terminology swap)
+- [ ] **Template components adapted with industry-specific props**
+- [ ] **Layout matches industry decision-making patterns**
+
+#### **Quality Gates:**
+```bash
+✅ Template Diversity Check:
+- [ ] Different hero type than other industry pages
+- [ ] Different feature layout pattern  
+- [ ] Different stats/metrics presentation
+- [ ] Different integration/CTA approach
+- [ ] Unique visual hierarchy and flow
+
+✅ Industry Authenticity Check:
+- [ ] Content reflects real industry operations
+- [ ] Pain points specific to this industry
+- [ ] Solutions match industry workflow
+- [ ] Metrics relevant to industry success
+- [ ] Integration partners industry-appropriate
+
+✅ Technical Quality Check:
+- [ ] All template imports resolve correctly
+- [ ] Props match template component interfaces
+- [ ] TypeScript compilation passes
+- [ ] Enterprise styling maintained
+- [ ] Responsive design verified
 ```
 
 #### Step 3: Metadata & SEO

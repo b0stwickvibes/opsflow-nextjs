@@ -56,9 +56,9 @@ const platformFeatures: PlatformFeature[] = [
     ctaText: 'View Temperature Tools',
     ctaAction: 'product/features',
     mockupContent: { title: 'Temperature Dashboard', subtitle: 'Live sensor monitoring', items: ['Walk-in Cooler: 38°F', 'Freezer Unit: -2°F', 'Hot Hold: 165°F', 'Prep Cooler: 41°F', 'Alert Settings', 'Sensor Status'] },
-    accentBg: 'bg-indigo-600',
-    borderColor: 'border-indigo-200',
-    iconColor: 'text-indigo-700',
+    accentBg: 'bg-primary',
+    borderColor: 'border-primary/20',
+    iconColor: 'text-primary',
   },
   {
     id: 'digital-checklists',

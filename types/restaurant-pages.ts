@@ -60,9 +60,9 @@ export interface RestaurantPageContent {
 
 export interface RestaurantPageProps {
   content: RestaurantPageContent;
-  industry: 'restaurants' | 'bars' | 'coffee' | 'hotels' | 'general';
-  role: 'owners' | 'managers' | 'staff' | 'general';
+  industry: IndustryType;
+  role: RoleType;
 }
 
-export type IndustryType = 'restaurants' | 'bars' | 'coffee' | 'hotels';
-export type RoleType = 'owners' | 'managers' | 'kitchen' | 'foh' | 'general';
+export type IndustryType = 'restaurants' | 'bars' | 'coffee' | 'hotels' | 'owners' | 'managers' | 'kitchen' | 'general';
+export type RoleType = 'owners' | 'managers' | 'kitchen' | 'foh' | 'staff' | 'general';

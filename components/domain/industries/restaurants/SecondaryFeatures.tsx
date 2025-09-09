@@ -40,7 +40,7 @@ const SECONDARY_FEATURES = [
       'Progress tracking dashboards', 
       'Compliance documentation'
     ],
-    color: 'from-green-500 to-emerald-600'
+    iconStyle: 'primary' as const
   },
   {
     icon: BarChart3,
@@ -51,7 +51,7 @@ const SECONDARY_FEATURES = [
       'Cost optimization insights',
       'Efficiency benchmarking'
     ],
-    color: 'from-blue-500 to-indigo-600'
+    iconStyle: 'secondary' as const
   },
   {
     icon: Smartphone,
@@ -62,7 +62,7 @@ const SECONDARY_FEATURES = [
       'Remote monitoring',
       'Mobile-first design'
     ],
-    color: 'from-purple-500 to-violet-600'
+    iconStyle: 'accent' as const
   },
   {
     icon: Zap,
@@ -73,7 +73,7 @@ const SECONDARY_FEATURES = [
       'Data synchronization',
       'Unified platform'
     ],
-    color: 'from-yellow-500 to-orange-600'
+    iconStyle: 'muted' as const
   },
   {
     icon: Users,
@@ -84,7 +84,7 @@ const SECONDARY_FEATURES = [
       'Shift change notifications',
       'Team performance tracking'
     ],
-    color: 'from-pink-500 to-rose-600'
+    iconStyle: 'primary' as const
   },
   {
     icon: FileCheck,
@@ -95,7 +95,7 @@ const SECONDARY_FEATURES = [
       'Historical data access',
       'Compliance verification'
     ],
-    color: 'from-teal-500 to-cyan-600'
+    iconStyle: 'secondary' as const
   }
 ];
 
@@ -174,13 +174,13 @@ export default function SecondaryFeatures() {
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <Badge className="mb-4 bg-gradient-to-r from-indigo-100 to-purple-100 text-indigo-800 border-indigo-200 px-4 py-2">
+          <Badge className="enterprise-feature-badge mb-4 px-4 py-2">
             <BarChart3 className="w-4 h-4 mr-2" />
             Complete Operational Control
           </Badge>
           <h3 className="text-3xl md:text-4xl font-bold mb-4">
             Everything else you need to{' '}
-            <span className="bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-gradient">
               run like clockwork
             </span>
           </h3>
@@ -223,9 +223,10 @@ export default function SecondaryFeatures() {
                 return (
                   <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
                     <motion.div
-                      className="h-full"
+                      className="h-full cursor-pointer"
                       whileHover={{ y: -8 }}
                       transition={{ type: "spring", stiffness: 300 }}
+                      onClick={() => api?.scrollTo(index)}
                     >
                       <Card className={cn(
                         "h-full border-0 transition-all duration-500 relative overflow-hidden group",
@@ -247,8 +248,11 @@ export default function SecondaryFeatures() {
                           {/* Icon */}
                           <motion.div 
                             className={cn(
-                              "w-14 h-14 rounded-xl flex items-center justify-center mb-4 transition-all duration-500",
-                              `bg-gradient-to-br ${feature.color} shadow-lg`
+                              "w-14 h-14 rounded-xl mb-4 transition-all duration-500",
+                              feature.iconStyle === 'primary' && "enterprise-icon-primary",
+                              feature.iconStyle === 'secondary' && "enterprise-icon-secondary",
+                              feature.iconStyle === 'accent' && "enterprise-icon-accent",
+                              feature.iconStyle === 'muted' && "enterprise-icon-muted"
                             )}
                             animate={isActive ? { 
                               scale: [1, 1.1, 1],
@@ -256,12 +260,12 @@ export default function SecondaryFeatures() {
                             } : {}}
                             transition={{ duration: 2, repeat: isActive ? Infinity : 0, ease: "easeInOut" }}
                           >
-                            <IconComponent className="h-7 w-7 text-white" />
+                            <IconComponent className="h-7 w-7" />
                           </motion.div>
                           
                           {/* Content */}
                           <div className="flex-1">
-                            <h4 className="text-xl font-semibold mb-3 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                            <h4 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors">
                               {feature.title}
                             </h4>
                             <p className="text-sm text-muted-foreground leading-relaxed mb-4">
@@ -273,7 +277,7 @@ export default function SecondaryFeatures() {
                               {feature.benefits.map((benefit, i) => (
                                 <motion.div 
                                   key={i}
-                                  className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300"
+                                  className="flex items-center gap-2 text-sm text-muted-foreground"
                                   initial={{ opacity: 0, x: -10 }}
                                   animate={isActive ? { opacity: 1, x: 0 } : {}}
                                   transition={{ delay: 0.1 * i }}
@@ -290,7 +294,7 @@ export default function SecondaryFeatures() {
                             <Button 
                               variant="ghost" 
                               size="sm" 
-                              className="group p-0 h-auto text-indigo-600 hover:text-indigo-700 dark:text-indigo-400 dark:hover:text-indigo-300"
+                              className="group p-0 h-auto text-primary hover:text-primary/80"
                             >
                               Learn more
                               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -325,7 +329,7 @@ export default function SecondaryFeatures() {
         </motion.div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <motion.div 
           className="text-center mt-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -339,14 +343,18 @@ export default function SecondaryFeatures() {
             whileHover={{ scale: 1.02 }}
           >
             <Button 
+              variant="outline"
               size="lg" 
-              className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 shadow-lg"
+              className="btn-neutral-gradient h-auto px-6 py-3 cta-equal"
+              asChild
             >
-              <Clock className="w-5 h-5 mr-2" />
-              Schedule Demo
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <a href="/product/demo?industry=restaurants" className="inline-flex items-center">
+                <Clock className="w-5 h-5 mr-2" />
+                Schedule Demo
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </a>
             </Button>
-            <Button variant="outline" size="lg" className="border-2">
+            <Button variant="outline" size="lg" className="border-2 cta-equal">
               <DollarSign className="w-5 h-5 mr-2" />
               View Pricing
             </Button>

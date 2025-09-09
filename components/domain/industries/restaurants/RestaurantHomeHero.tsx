@@ -93,7 +93,7 @@ export function RestaurantHomeHero({ onNavigate, className }: RestaurantHomeHero
                 return (
                   <div key={feature.title} className="flex gap-2.5 lg:gap-5 group">
                     <div className="mt-1 shrink-0">
-                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <div className="enterprise-icon-primary w-10 h-10 transition-colors group-hover:opacity-80">
                         <Icon className="h-5 w-5 text-primary" />
                       </div>
                     </div>

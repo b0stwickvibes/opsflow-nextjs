@@ -5,3 +5,4 @@ export { FeatureGrid as RestaurantFeatureGrid } from './RestaurantFeatureGrid';
 export { RestaurantSuccessMetrics } from './RestaurantSuccessMetrics';
 export { RestaurantHomeHero } from './RestaurantHomeHero';
 export { RestaurantPlatformExplorer } from './RestaurantPlatformExplorer';
+export { RestaurantSolutionsHero } from './RestaurantSolutionsHero';

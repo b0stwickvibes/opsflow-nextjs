@@ -91,10 +91,37 @@ export function useRestaurantAnalytics() {
     });
   };
 
+  const trackEvent = (eventName: string, properties: Record<string, any>) => {
+    analytics.track(eventName, {
+      ...properties,
+      category: 'restaurant_operations',
+      timestamp: new Date().toISOString()
+    });
+  };
+
+  const trackInteraction = (interactionType: string, properties: Record<string, any>) => {
+    analytics.track('restaurant_interaction', {
+      interaction_type: interactionType,
+      ...properties,
+      category: 'engagement'
+    });
+  };
+
+  const trackFeatureEngagement = (eventName: string, properties: Record<string, any>) => {
+    analytics.track(eventName, {
+      ...properties,
+      category: 'feature_engagement',
+      feature_area: 'restaurant_features'
+    });
+  };
+
   return {
     trackHeroCTA,
     trackWorkflowInteraction,
-    trackKPIView
+    trackKPIView,
+    trackEvent,
+    trackInteraction,
+    trackFeatureEngagement
   };
 }
 

@@ -131,10 +131,10 @@ export function RestaurantSuccessMetrics() {
                 className="mx-4 animate-fade-in"
                 style={{animationDelay: `${0.1 * index}s`}}
               >
-                <Card className="min-w-[220px] border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300">
-                  <CardContent className="p-6">
-                    <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{item.metric}</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+                <Card className="enterprise-metric-card min-w-[220px]">
+                  <CardContent className="p-0">
+                    <p className="metric-display-large">{item.metric}</p>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -147,10 +147,10 @@ export function RestaurantSuccessMetrics() {
                 className="mx-4 animate-fade-in"
                 style={{animationDelay: `${0.1 * index}s`}}
               >
-                <Card className="min-w-[220px] border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300">
-                  <CardContent className="p-6">
-                    <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{item.metric}</p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400">{item.description}</p>
+                <Card className="enterprise-metric-card min-w-[220px]">
+                  <CardContent className="p-0">
+                    <p className="metric-display-large">{item.metric}</p>
+                    <p className="text-sm text-muted-foreground">{item.description}</p>
                   </CardContent>
                 </Card>
               </div>
