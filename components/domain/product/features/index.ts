@@ -44,8 +44,8 @@ export type { ComplianceProcedure, FeatureAccordionProps } from "./FeatureAccord
 export { FeatureList } from "./FeatureList";
 export type { EquipmentItem, FeatureListProps } from "./FeatureList";
 
-export { FeatureShowcase2 } from "./FeatureShowcase2";
-export type { ROIMetric, FeatureShowcase2Props } from "./FeatureShowcase2";
+export { FeatureShowcaseTwo } from "./FeatureShowcaseTwo";
+export type { ROIMetric, FeatureShowcaseTwoProps } from "./FeatureShowcaseTwo";
 
 // Feature Categories for Restaurant Operations
 export const FEATURE_CATEGORIES = {
@@ -169,7 +169,7 @@ export const FEATURE_USAGE_EXAMPLES = {
   },
   
   // ROI Metrics Showcase
-  FeatureShowcase2: {
+  FeatureShowcaseTwo: {
     description: "Comprehensive ROI metrics with sparkle animations",
     bestFor: "Value proposition pages, ROI calculators",
     props: { showSparkles: true, variant: "showcase" }

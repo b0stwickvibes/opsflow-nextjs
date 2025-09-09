@@ -4,7 +4,9 @@
 - Day‑1 SaaS Standard: docs/SAAS-FILE-STRUCTURE-STANDARD.md (symlink)
 - Enterprise File Structure (this repo): ENTERPRISE-FILE-STRUCTURE.md
  - Start here: PROJECT-STANDARDS.md
- - Agents/Humans quick guide: AGENTS.md
+ - Agents/Humans quick guide: docs/ai/AGENTS.md
+ - AI Chatbot implementation: docs/AI-CHATBOT-NEXTJS.md
+ - Additional AI context: docs/ai/
 
 ## Guardrails
 - Dependency health: `npm run deps:cruise` (writes `depcruise.json`)

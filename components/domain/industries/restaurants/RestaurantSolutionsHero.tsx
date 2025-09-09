@@ -1,12 +1,10 @@
 "use client";
 
-import { ArrowRight, Shield, ChefHat, ClipboardCheck, BarChart3, Users, TrendingUp } from "lucide-react";
+import { ArrowRight, Shield, ChefHat, BarChart3, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ShimmerButton } from "@/components/magicui/shimmer-button";
 
 /**
  * Restaurant Solutions Hero - DIFFERENTIATED from RestaurantHomeHero

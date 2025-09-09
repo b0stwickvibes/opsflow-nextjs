@@ -160,17 +160,17 @@ const roiMetrics: ROIMetric[] = [
   }
 ];
 
-interface FeatureShowcase2Props {
+interface FeatureShowcaseTwoProps {
   className?: string;
   showSparkles?: boolean;
   variant?: "showcase" | "grid" | "detailed";
 }
 
-export function FeatureShowcase2({
+export function FeatureShowcaseTwo({
   className = "",
   showSparkles = true,
   variant = "showcase"
-}: FeatureShowcase2Props) {
+}: FeatureShowcaseTwoProps) {
   const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
   const { trackFeatureEngagement } = useRestaurantAnalytics();
 
@@ -414,4 +414,4 @@ export function FeatureShowcase2({
   );
 };
 
-export type { ROIMetric, FeatureShowcase2Props };
+export type { ROIMetric, FeatureShowcaseTwoProps };

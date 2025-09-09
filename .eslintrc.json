@@ -15,7 +15,8 @@
       "files": [
         "components/aceternity/**/*",
         "components/magicui/**/*",
-        "templates/**/*"
+        "templates/**/*",
+        "Templates-Folder/**/*"
       ],
       "rules": {
         "@typescript-eslint/no-explicit-any": "off",
