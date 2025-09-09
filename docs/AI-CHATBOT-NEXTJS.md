@@ -15,9 +15,22 @@ Prereqs
 - Node 18+ (Edge optional)
 - One provider key (e.g., OPENAI_API_KEY) stored in .env.local
 
-Environment variables (.env.local)
-- OPENAI_API_KEY=... or ANTHROPIC_API_KEY=...
-- AI_PROVIDER=openai | anthropic | together (choose one)
+Environment variables
+- Copy .env.example to .env.local and fill values
+- AI_PROVIDER=openai | anthropic (choose one)
+- OPENAI_API_KEY=... (if AI_PROVIDER=openai)
+- ANTHROPIC_API_KEY=... (if AI_PROVIDER=anthropic)
+- Optional (Vercel AI Gateway for non-Vercel deployments): AI_GATEWAY_API_KEY=...
+
+Vercel CLI setup (optional but recommended)
+- npm i -g vercel
+- vercel link   # link local repo to your Vercel project
+- vercel env pull .env.local   # pull env variables into .env.local
+
+Local run
+- npm install
+- npm run dev
+- Visit http://localhost:3000 and open any /docs page, then click “Ask AI”
 
 Minimal architecture options
 1) Route Handler (Node runtime, simple, flexible)
