@@ -13108,10 +13108,46 @@
           "matchesDoNotFollow": false,
           "circular": false,
           "valid": true
+        },
+        {
+          "module": "@/components/ui/CopyButton",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/CopyButton.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
         }
       ],
       "dependents": [],
       "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/ui/CopyButton.tsx",
+      "dependencies": [],
+      "dependents": [
+        "app/ui-sink/templates/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "app/ui-sink/tokens/page.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
       "valid": true
     },
     {
@@ -20715,8 +20751,8 @@
     "warn": 14,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 335,
-    "totalDependenciesCruised": 862,
+    "totalCruised": 337,
+    "totalDependenciesCruised": 863,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,
