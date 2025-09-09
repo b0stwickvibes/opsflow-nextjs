@@ -1,22 +1,13 @@
 'use client';
 
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Search, Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
+import { Search, Menu, X, ArrowRight, ExternalLink, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import navigation from '../../docs/navigation.json';
-import ChatWidget from '@/components/shared/ai/ChatWidget';
-
-function AskAIContainer() {
-  return (
-    <ChatWidget onClose={() => {
-      const el = document.getElementById('docs-ask-ai');
-      if (el) el.classList.add('hidden');
-    }} />
-  );
-}
+import ChatWidget, { ChatContext } from '@/components/shared/ai/ChatWidget';
 
 interface DocsLayoutProps {
   children: ReactNode;
@@ -38,9 +29,57 @@ interface NavigationSection {
 export function DocsLayout({ children, title, description, slug }: DocsLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [askAIContext, setAskAIContext] = useState<ChatContext | undefined>(undefined);
   const pathname = usePathname();
 
   const currentPath = pathname || '/docs';
+
+  const makeContext = (extra?: Partial<ChatContext>): ChatContext => {
+    const url = typeof window !== 'undefined' ? window.location.href : undefined;
+    const selection = typeof window !== 'undefined' ? (window.getSelection()?.toString().trim() || undefined) : undefined;
+    return {
+      docTitle: title,
+      docSlug: slug?.join('/') || undefined,
+      url,
+      selection,
+      ...extra,
+    };
+  };
+
+  const openAskAI = (extra?: Partial<ChatContext>) => {
+    const ctx = makeContext(extra);
+    setAskAIContext(ctx);
+    const el = document.getElementById('docs-ask-ai');
+    if (el) el.classList.remove('hidden');
+  };
+
+  const closeAskAI = () => {
+    const el = document.getElementById('docs-ask-ai');
+    if (el) el.classList.add('hidden');
+  };
+  
+  // Wire up clicks on links inside Markdoc content like [Ask AI](#ask-ai)
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (!target) return;
+      // Traverse up to find an anchor
+      const anchor = target.closest('a') as HTMLAnchorElement | null;
+      if (anchor && (anchor.getAttribute('href') === '#ask-ai' || anchor.dataset.askAi === 'true')) {
+        e.preventDefault();
+        openAskAI();
+      }
+      const btn = target.closest('[data-ask-ai="true"]') as HTMLElement | null;
+      if (btn) {
+        e.preventDefault();
+        openAskAI();
+      }
+    };
+
+    document.addEventListener('click', handler);
+    return () => document.removeEventListener('click', handler);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [title, slug?.join('/')]);
   
   // Determine header title based on current section
   const getHeaderTitle = () => {
@@ -76,11 +115,9 @@ export function DocsLayout({ children, title, description, slug }: DocsLayoutPro
             </div>
 
             <div className="flex items-center gap-3">
-              <Button variant="outline" size="sm" onClick={() => setSidebarOpen(false)} asChild>
-                <a href="#ask-ai" onClick={(e) => { e.preventDefault(); const el = document.getElementById('docs-ask-ai'); if (el) el.classList.toggle('hidden'); }}>
-                  Ask AI
-                  <ArrowRight className="ml-1 h-3 w-3" />
-                </a>
+              <Button variant="outline" size="sm" onClick={() => { setSidebarOpen(false); openAskAI(); }}>
+                Ask AI
+                <ArrowRight className="ml-1 h-3 w-3" />
               </Button>
               <Button variant="ghost" size="sm">Create account</Button>
               <Button variant="ghost" size="sm">Sign in</Button>
@@ -185,11 +222,8 @@ export function DocsLayout({ children, title, description, slug }: DocsLayoutPro
         <main className="flex-1 lg:pl-0">
           {/* Ask AI flyout */}
           <div id="docs-ask-ai" className="hidden fixed bottom-4 right-4 z-50">
-            {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-            {/* Chat widget */}
-            {/* Using dynamic import would be overkill here; component is light. */}
             <div className="relative">
-              <AskAIContainer />
+              <ChatWidget onClose={closeAskAI} context={askAIContext} />
             </div>
           </div>
 
@@ -218,16 +252,26 @@ export function DocsLayout({ children, title, description, slug }: DocsLayoutPro
             {/* Page header */}
             {(title || description) && (
               <div className="mb-12">
-                {title && (
-                  <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
-                    {title}
-                  </h1>
-                )}
-                {description && (
-                  <p className="text-xl text-muted-foreground leading-relaxed">
-                    {description}
-                  </p>
-                )}
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1">
+                    {title && (
+                      <h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground lg:text-5xl">
+                        {title}
+                      </h1>
+                    )}
+                    {description && (
+                      <p className="text-xl text-muted-foreground leading-relaxed">
+                        {description}
+                      </p>
+                    )}
+                  </div>
+                  <div className="shrink-0">
+                    <Button variant="secondary" size="sm" onClick={() => openAskAI()}>
+                      <MessageSquare className="mr-2 h-4 w-4" />
+                      Ask AI about this page
+                    </Button>
+                  </div>
+                </div>
               </div>
             )}
 

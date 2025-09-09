@@ -58,15 +58,30 @@ export async function POST(req: NextRequest) {
     // Clerk not available; allow guest usage in docs.
   }
 
-  const { messages } = (await req.json()) as { messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> }
+  const body = (await req.json()) as {
+    messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }>
+    context?: { docTitle?: string; docSlug?: string; url?: string; selection?: string }
+  }
+  const { messages, context } = body
   if (!Array.isArray(messages)) {
     return new Response('Invalid payload', { status: 400 })
   }
 
-  const content = await callProvider([
+  const contextSummary = context
+    ? `Documentation context:\n- Title: ${context.docTitle ?? 'unknown'}\n- Slug: ${context.docSlug ?? 'unknown'}\n- URL: ${context.url ?? 'unknown'}\n${context.selection ? `- User selection: "${context.selection}"` : ''}`
+    : undefined
+
+  const providerMessages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
     { role: 'system', content: 'You are an expert OpsFlow documentation assistant. Be concise, cite relevant sections if possible.' },
-    ...messages,
-  ])
+  ]
+
+  if (contextSummary) {
+    providerMessages.push({ role: 'system', content: contextSummary })
+  }
+
+  providerMessages.push(...messages)
+
+  const content = await callProvider(providerMessages)
 
   return new Response(JSON.stringify({ content }), {
     headers: { 'Content-Type': 'application/json' },

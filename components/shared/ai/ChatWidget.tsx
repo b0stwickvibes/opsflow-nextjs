@@ -1,12 +1,20 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 type Message = { role: "user" | "assistant"; content: string };
 
-export default function ChatWidget({ onClose }: { onClose?: () => void }) {
+export type ChatContext = {
+  docTitle?: string;
+  docSlug?: string;
+  url?: string;
+  selection?: string;
+};
+
+export default function ChatWidget({ onClose, context }: { onClose?: () => void; context?: ChatContext }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
@@ -25,7 +33,7 @@ export default function ChatWidget({ onClose }: { onClose?: () => void }) {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: next }),
+        body: JSON.stringify({ messages: next, context }),
       });
 
       if (!res.ok) {
@@ -50,12 +58,12 @@ export default function ChatWidget({ onClose }: { onClose?: () => void }) {
       <div className="flex items-center justify-between border-b px-4 py-2">
         <div className="text-sm font-medium">Ask OpsFlow AI</div>
         <div className="flex items-center gap-2">
-          <a
+          <Link
             href="/docs/AI-CHATBOT-NEXTJS"
             className="text-xs text-muted-foreground hover:text-primary"
           >
             How it’s built
-          </a>
+          </Link>
           <button
             aria-label="Close"
             className="text-muted-foreground hover:text-foreground"
@@ -65,6 +73,23 @@ export default function ChatWidget({ onClose }: { onClose?: () => void }) {
           </button>
         </div>
       </div>
+
+      {/* Context banner */}
+      {context && (context.docTitle || context.selection) && (
+        <div className="border-b bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
+          {context.docTitle && (
+            <div>
+              <span className="font-medium text-foreground">Page:</span> {context.docTitle}
+            </div>
+          )}
+          {context.selection && (
+            <div className="mt-1 line-clamp-2">
+              <span className="font-medium text-foreground">Selection:</span> “{context.selection}”
+            </div>
+          )}
+        </div>
+      )}
+
       <div className="max-h-[50vh] min-h-[220px] overflow-y-auto p-3 text-sm">
         {messages.length === 0 && (
           <div className="text-muted-foreground">
