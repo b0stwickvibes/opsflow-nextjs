@@ -1,23 +1,35 @@
 "use client";
+import React from "react";
+import { OPSFLOW_SECTIONS } from "@/components/sections/opsflow";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function TemplateCatalogPage() {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b bg-card">
-        <div className="container mx-auto px-4 py-4">
-          <div className="space-y-1">
-            <h1 className="text-2xl font-bold">Template Catalog (Temporarily Disabled)</h1>
-            <p className="text-sm text-muted-foreground">
-              The live template catalog is temporarily disabled while we audit template code. Core pages continue to work.
-            </p>
+    <main className="min-h-screen bg-background">
+      <section className="section-padding-large">
+        <div className="container space-y-8">
+          <div>
+            <div className="clerk-inspired-badge mb-2"><span>Template Catalog</span></div>
+            <h1 className="enterprise-headline">OpsFlow Section Library</h1>
+            <p className="enterprise-body mt-2">Preview and copy standardized sections. Click into a card to see the live section below.</p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {OPSFLOW_SECTIONS.map(({ key, title, component: Section }) => (
+              <Card key={key} className="overflow-hidden">
+                <CardHeader>
+                  <CardTitle className="text-display-sm">{title}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="border rounded-lg p-4 bg-muted/20">
+                    <Section />
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
-      </header>
-      <main className="container mx-auto px-4 py-8">
-        <p className="text-muted-foreground">
-          Please continue working on solutions pages. We’ll restore this catalog after stabilizing the template set.
-        </p>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }

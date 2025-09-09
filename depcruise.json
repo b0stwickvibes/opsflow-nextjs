@@ -134,6 +134,8 @@
         "templates/shadcn-components/processed/heroes/WorkflowHero.tsx",
         "templates/shadcn-components/processed/stats/KPIShowcase.tsx",
         "components/domain/industries/restaurants/RestaurantSolutionsHero.tsx",
+        "components/sections/opsflow/FinalCTA.tsx",
+        "components/sections/opsflow/Hero.tsx",
         "app/ui-sink-backup/page.tsx",
         "app/ui-sink/page.tsx",
         "components/pages/UITestPage.tsx",
@@ -832,6 +834,7 @@
         "components/domain/contact/ContactFAQ.tsx",
         "components/domain/pricing/PricingFAQ.tsx",
         "components/domain/product/features/FeaturesHeroPremium.tsx",
+        "components/sections/opsflow/FeatureAccordion.tsx",
         "components/pages/UITestPage.tsx"
       ],
       "orphan": false,
@@ -1309,8 +1312,10 @@
         "templates/shadcn-components/processed/features/FeatureComparison.tsx",
         "templates/shadcn-components/processed/features/FeatureMatrix.tsx",
         "components/domain/industries/restaurants/RestaurantSolutionsHero.tsx",
+        "components/sections/opsflow/FinalCTA.tsx",
         "app/ui-sink-backup/page.tsx",
         "components/pages/UITestPage.tsx",
+        "app/ui-sink/templates/page.tsx",
         "components/domain/product/RestaurantKPIs.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
         "components/domain/product/features/AdvancedOps.tsx",
@@ -2251,6 +2256,7 @@
       "dependencies": [],
       "dependents": [
         "components/shared/enhanced/index.ts",
+        "components/sections/opsflow/MetricsRow.tsx",
         "components/domain/product/features/FeatureStats.tsx"
       ],
       "orphan": false,
@@ -2603,7 +2609,9 @@
       ],
       "dependents": [
         "components/shared/layout/FinalCTA.tsx",
-        "components/domain/product/features/FeaturesHeroPremium.tsx"
+        "components/domain/product/features/FeaturesHeroPremium.tsx",
+        "components/sections/opsflow/FinalCTA.tsx",
+        "components/sections/opsflow/Hero.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -11120,6 +11128,355 @@
       "valid": true
     },
     {
+      "source": "app/testpage-1/page.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/sections/opsflow",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/sections/opsflow/index.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": false,
+          "rules": [
+            {
+              "severity": "warn",
+              "name": "no-legacy-sections"
+            }
+          ]
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/sections/opsflow/index.ts",
+      "dependencies": [
+        {
+          "module": "./FeatureAccordion",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "components/sections/opsflow/FeatureAccordion.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": false,
+          "rules": [
+            {
+              "severity": "warn",
+              "name": "no-legacy-sections"
+            }
+          ]
+        },
+        {
+          "module": "./FinalCTA",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "components/sections/opsflow/FinalCTA.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": false,
+          "rules": [
+            {
+              "severity": "warn",
+              "name": "no-legacy-sections"
+            }
+          ]
+        },
+        {
+          "module": "./Hero",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "components/sections/opsflow/Hero.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": false,
+          "rules": [
+            {
+              "severity": "warn",
+              "name": "no-legacy-sections"
+            }
+          ]
+        },
+        {
+          "module": "./MetricsRow",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "components/sections/opsflow/MetricsRow.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": false,
+          "rules": [
+            {
+              "severity": "warn",
+              "name": "no-legacy-sections"
+            }
+          ]
+        },
+        {
+          "module": "./TilesThreeUp",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "import"
+          ],
+          "resolved": "components/sections/opsflow/TilesThreeUp.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": false,
+          "rules": [
+            {
+              "severity": "warn",
+              "name": "no-legacy-sections"
+            }
+          ]
+        }
+      ],
+      "dependents": [
+        "app/testpage-1/page.tsx",
+        "app/ui-sink/templates/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/sections/opsflow/FeatureAccordion.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/accordion",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/accordion.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/sections/opsflow/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/sections/opsflow/FinalCTA.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/magicui/shimmer-button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/magicui/shimmer-button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/sections/opsflow/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/sections/opsflow/Hero.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/magicui/shimmer-button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/magicui/shimmer-button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/sections/opsflow/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/sections/opsflow/MetricsRow.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/shared/enhanced/NumberTicker",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/shared/enhanced/NumberTicker.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/sections/opsflow/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/sections/opsflow/TilesThreeUp.tsx",
+      "dependencies": [],
+      "dependents": [
+        "components/sections/opsflow/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "app/ui-sink-backup/page.tsx",
       "dependencies": [
         {
@@ -12705,9 +13062,56 @@
     },
     {
       "source": "app/ui-sink/templates/page.tsx",
-      "dependencies": [],
+      "dependencies": [
+        {
+          "module": "@/components/sections/opsflow",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/sections/opsflow/index.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": false,
+          "rules": [
+            {
+              "severity": "warn",
+              "name": "no-legacy-sections"
+            }
+          ]
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
       "dependents": [],
-      "orphan": true,
+      "orphan": false,
       "valid": true
     },
     {
@@ -20181,6 +20585,69 @@
   "summary": {
     "violations": [
       {
+        "type": "dependency",
+        "from": "app/testpage-1/page.tsx",
+        "to": "components/sections/opsflow/index.ts",
+        "rule": {
+          "severity": "warn",
+          "name": "no-legacy-sections"
+        }
+      },
+      {
+        "type": "dependency",
+        "from": "app/ui-sink/templates/page.tsx",
+        "to": "components/sections/opsflow/index.ts",
+        "rule": {
+          "severity": "warn",
+          "name": "no-legacy-sections"
+        }
+      },
+      {
+        "type": "dependency",
+        "from": "components/sections/opsflow/index.ts",
+        "to": "components/sections/opsflow/FeatureAccordion.tsx",
+        "rule": {
+          "severity": "warn",
+          "name": "no-legacy-sections"
+        }
+      },
+      {
+        "type": "dependency",
+        "from": "components/sections/opsflow/index.ts",
+        "to": "components/sections/opsflow/FinalCTA.tsx",
+        "rule": {
+          "severity": "warn",
+          "name": "no-legacy-sections"
+        }
+      },
+      {
+        "type": "dependency",
+        "from": "components/sections/opsflow/index.ts",
+        "to": "components/sections/opsflow/Hero.tsx",
+        "rule": {
+          "severity": "warn",
+          "name": "no-legacy-sections"
+        }
+      },
+      {
+        "type": "dependency",
+        "from": "components/sections/opsflow/index.ts",
+        "to": "components/sections/opsflow/MetricsRow.tsx",
+        "rule": {
+          "severity": "warn",
+          "name": "no-legacy-sections"
+        }
+      },
+      {
+        "type": "dependency",
+        "from": "components/sections/opsflow/index.ts",
+        "to": "components/sections/opsflow/TilesThreeUp.tsx",
+        "rule": {
+          "severity": "warn",
+          "name": "no-legacy-sections"
+        }
+      },
+      {
         "type": "module",
         "from": "app/api/chat/route.ts",
         "to": "app/api/chat/route.ts",
@@ -20245,11 +20712,11 @@
       }
     ],
     "error": 0,
-    "warn": 7,
+    "warn": 14,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 328,
-    "totalDependenciesCruised": 847,
+    "totalCruised": 335,
+    "totalDependenciesCruised": 862,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,
