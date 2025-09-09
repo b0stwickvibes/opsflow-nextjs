@@ -34,7 +34,7 @@ const FeaturesHeroPremium = () => {
               </p>
               
               <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <ShimmerButton size="lg" className="w-full sm:w-auto" asChild>
+<ShimmerButton size="lg" className="w-full sm:w-auto">
                   <Link href="/pricing">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-5 w-5" />

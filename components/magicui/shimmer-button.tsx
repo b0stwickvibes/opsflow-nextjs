@@ -8,7 +8,9 @@ export interface ShimmerButtonProps extends React.ComponentProps<typeof Button> 
 }
 
 // Simple fallback for a ShimmerButton. Renders a Button with a subtle animated gradient.
-export function ShimmerButton({ shimmer = true, className = "", children, ...rest }: ShimmerButtonProps) {
+export function ShimmerButton({ shimmer = true, className = "", children, asChild, ...rest }: ShimmerButtonProps) {
+  // Note: We intentionally ignore `asChild` here to avoid Button's single-child constraint.
+  // Use plain Button semantics and optionally nest a Link inside.
   return (
     <Button
       className={
