@@ -2,6 +2,7 @@
 
 import { CheckCircle, Users, Clock, Shield } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
+import Image from "next/image";
 
 interface AboutSectionProps {
   industry?: "restaurants" | "bars" | "coffee" | "hotels";
@@ -140,13 +141,17 @@ export function AboutSection({
 
         {/* Mission & Image Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          <img
+          <Image
             src={`/images/${industry}-operations.jpg`}
             alt={`${industry} operations management`}
-            className="size-full max-h-96 rounded-2xl object-cover"
+            width={800}
+            height={400}
+            className="w-full h-auto max-h-96 rounded-2xl object-cover"
             onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.src = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=400&fit=crop&crop=center";
+              const target = e.target as any;
+              if (target && target.currentTarget) {
+                target.currentTarget.src = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=400&fit=crop&crop=center";
+              }
             }}
           />
           <div 
@@ -208,13 +213,17 @@ export function AboutSection({
               </h2>
             </div>
             <div>
-              <img
+              <Image
                 src={`/images/${industry}-team.jpg`}
                 alt={`${industry} operations team`}
-                className="mb-6 max-h-36 w-full rounded-xl object-cover"
+                width={800}
+                height={200}
+                className="mb-6 w-full h-auto max-h-36 rounded-xl object-cover"
                 onError={(e) => {
-                  const target = e.target as HTMLImageElement;
-                  target.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=200&fit=crop&crop=center";
+                  const target = e.target as any;
+                  if (target && target.currentTarget) {
+                    target.currentTarget.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=200&fit=crop&crop=center";
+                  }
                 }}
               />
               <p className="text-muted-foreground mb-4">

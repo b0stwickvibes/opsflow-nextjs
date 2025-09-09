@@ -115,7 +115,7 @@ export function StatsDisplay({
   };
 
   const config = industryConfig[industry];
-  const stats = customStats || config.stats;
+  const stats: StatItem[] = (customStats as StatItem[] | undefined) || (config.stats as unknown as StatItem[]);
   const sectionTitle = title || config.title;
 
   // Intersection Observer for animation

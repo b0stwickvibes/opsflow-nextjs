@@ -39,8 +39,8 @@ export function RestaurantHero({
   variant = 'default',
   className 
 }: RestaurantHeroProps) {
-  const Icon = industryIcons[industry];
-  const primaryColor = industryColors[industry];
+  const Icon = (industryIcons as Record<string, any>)[industry] ?? industryIcons.general;
+  const primaryColor = (industryColors as Record<string, string>)[industry] ?? industryColors.general;
   const { trackHeroCTA } = useRestaurantAnalytics();
   
   const handlePrimaryClick = () => {

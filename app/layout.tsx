@@ -5,7 +5,7 @@ import { Footer } from "@/components/shared/layout"
 import { BackToTop } from "@/components/shared/feedback"
 import { Toaster as ShadcnToaster } from "@/components/ui/toaster"
 import { GlobalProvider } from "@/lib/context/GlobalContext"
-import { ErrorBoundary } from "@/lib/errors/ErrorBoundary"
+import ErrorBoundary from "@/lib/errors/ErrorBoundary"
 import { cn } from "@/lib/utils"
 import { metadata, viewport } from "./metadata"
 

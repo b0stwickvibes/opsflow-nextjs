@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin } from "lucide-react";
 import { registerComponentLayout } from "@/lib/style-system/layout-differentiation";
 import { trackInteraction } from "@/lib/analytics";
+import Link from "next/link";
 
 export function OriginalContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -127,7 +128,7 @@ export function OriginalContactForm() {
           </div>
           
           <div className="text-xs text-muted-foreground mb-4">
-            By submitting this form, you agree to our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>.
+By submitting this form, you agree to our <Link href="/privacy" className="text-primary hover:underline">Privacy Policy</Link>.
           </div>
           
           <Button 
@@ -215,3 +216,6 @@ export function OriginalContactForm() {
     </div>
   );
 }
+
+// Backward-compatible export name used by pages
+export const RestaurantContactForm = OriginalContactForm;

@@ -15,6 +15,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { useRef, useState, useCallback, useEffect } from 'react';
+import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -348,11 +349,11 @@ export default function SecondaryFeatures() {
               className="btn-neutral-gradient h-auto px-6 py-3 cta-equal"
               asChild
             >
-              <a href="/product/demo?industry=restaurants" className="inline-flex items-center">
+              <Link href="/product/demo?industry=restaurants" className="inline-flex items-center">
                 <Clock className="w-5 h-5 mr-2" />
                 Schedule Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
-              </a>
+              </Link>
             </Button>
             <Button variant="outline" size="lg" className="border-2 cta-equal">
               <DollarSign className="w-5 h-5 mr-2" />

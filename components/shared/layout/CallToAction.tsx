@@ -84,7 +84,8 @@ export function CallToAction({
   };
 
   const config = industryConfig[industry];
-  const variantConfig = config.variants[variant] || config.variants.primary;
+  // Access variant in a type-safe way even if not declared for industry
+  const variantConfig = (config.variants as Record<string, any>)[variant] || config.variants.primary;
 
   const handlePrimaryCTA = () => {
     trackEvent("cta_primary_click", {

@@ -17,6 +17,7 @@ import {
   usePermission 
 } from '@/lib/hooks/restaurant-pages';
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 // Industry-specific billing content
 const INDUSTRY_BILLING_CONTENT = {
@@ -193,35 +194,43 @@ const BillingHero = ({
             <div className="relative ml-auto mr-auto aspect-[1.28581291/1] w-full max-w-[37.25rem] lg:ml-auto lg:mr-0">
               {/* Main Dashboard Image */}
               <div className="relative mx-auto aspect-[1.020365896/1] h-full w-[79.35%] max-w-[29.5625rem] overflow-hidden rounded-3xl shadow-2xl">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
                   alt={`${industry} financial dashboard interface`}
-                  className="relative z-10 w-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 800px"
+                  className="relative z-10 object-cover"
                 />
               </div>
               
               {/* Floating Feature Cards */}
               <div className="absolute -left-[-2%] top-[19.84%] z-30 aspect-[1.765043789/1] w-[30.49%] max-w-[11.875rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-left animation-delay-400">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
                   alt={`${industry} cost tracking widget`}
-                  className="size-full object-cover"
+                  fill
+                  sizes="200px"
+                  className="object-cover"
                 />
               </div>
               
               <div className="absolute left-[0%] top-[55%] z-30 aspect-[1.776555024/1] w-[43.6%] max-w-[16.375rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-left animation-delay-500">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg"
                   alt={`${industry} revenue analytics`}
-                  className="size-full object-cover"
+                  fill
+                  sizes="260px"
+                  className="object-cover"
                 />
               </div>
               
               <div className="absolute right-[0%] top-[40%] z-30 aspect-[1.170212766/1] w-[26.48%] max-w-[10.3125rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-right animation-delay-600">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg"
                   alt={`${industry} payment management`}
-                  className="size-full object-cover"
+                  fill
+                  sizes="180px"
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -250,10 +259,12 @@ const BillingHero = ({
             <CarouselContent className="items-center">
               {TRUST_LOGOS.concat(TRUST_LOGOS).map((logo, index) => (
                 <CarouselItem key={index} className="w-fit basis-auto px-7">
-                  <img
+                  <Image
                     src={logo.src}
                     alt={`${logo.alt} - trusted ${industry} operations partner`}
-                    className="h-6 md:h-8 w-full object-contain opacity-60 hover:opacity-90 transition-opacity"
+                    width={160}
+                    height={32}
+                    className="h-6 md:h-8 w-auto object-contain opacity-60 hover:opacity-90 transition-opacity"
                   />
                 </CarouselItem>
               ))}

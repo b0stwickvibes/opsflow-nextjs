@@ -13,6 +13,7 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 import type { IndustryType, RoleType } from "@/types/restaurant-pages";
+import Image from "next/image";
 
 interface RestaurantIntegration {
   title: string;
@@ -43,9 +44,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Sync kitchen orders with prep tasks and compliance monitoring",
     benefits: ["Kitchen workflow sync", "Order accuracy tracking", "Peak time optimization"],
     icon: (
-      <img
+      <Image
         src="https://seeklogo.com/images/T/toast-logo-F1CE12DE99-seeklogo.com.png"
         alt="Toast POS"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -58,9 +61,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Real-time sales data integration with staff scheduling",
     benefits: ["Sales-driven scheduling", "Staff performance tracking", "Revenue correlation"],
     icon: (
-      <img
+      <Image
         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/square/square-original.svg"
         alt="Square POS"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -73,9 +78,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Automate labor cost reporting and compliance documentation",
     benefits: ["Labor cost automation", "P&L integration", "HACCP reporting"],
     icon: (
-      <img
+      <Image
         src="https://images.ctfassets.net/4cd45et68cgf/5vAkCpBm6j7bV8gXqS4fBn/76e43bcfe6f6e7b9c0e3d7d8e3c7bdaa/QuickBooks_Logo_Horizontal_Blue_RGB.png"
         alt="QuickBooks"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -88,9 +95,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Monitor delivery prep times and kitchen coordination",
     benefits: ["Prep time tracking", "Kitchen efficiency", "Quality control"],
     icon: (
-      <img
+      <Image
         src="https://logo.clearbit.com/doordash.com"
         alt="DoorDash"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -103,9 +112,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Sync inventory levels with task assignments and ordering",
     benefits: ["Automated ordering", "Waste reduction", "Cost optimization"],
     icon: (
-      <img
+      <Image
         src="https://www.bevspot.com/wp-content/uploads/2019/08/BevSpot_Logo_RGB_Color.png"
         alt="BevSpot"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -118,9 +129,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Connect payroll data with scheduling and performance metrics",
     benefits: ["Labor cost control", "Compliance tracking", "Performance correlation"],
     icon: (
-      <img
+      <Image
         src="https://logos-world.net/wp-content/uploads/2021/02/ADP-Logo.png"
         alt="ADP Workforce"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -133,9 +146,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Track order fulfillment efficiency and staff performance",
     benefits: ["Fulfillment tracking", "Staff efficiency", "Peak hour management"],
     icon: (
-      <img
+      <Image
         src="https://logo.clearbit.com/ubereats.com"
         alt="Uber Eats"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -148,9 +163,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Optimize delivery operations with real-time task management",
     benefits: ["Delivery optimization", "Order coordination", "Performance tracking"],
     icon: (
-      <img
+      <Image
         src="https://logo.clearbit.com/grubhub.com"
         alt="Grubhub"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),
@@ -163,9 +180,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Comprehensive POS integration for complete operations visibility",
     benefits: ["Complete visibility", "Multi-location sync", "Advanced reporting"],
     icon: (
-      <img
+      <Image
         src="https://www.clover.com/assets/images/public-site/press/Clover_Logo_Primary_Gray_RGB.png"
         alt="Clover POS"
+        width={32}
+        height={32}
         className="h-8 w-8 object-contain"
       />
     ),

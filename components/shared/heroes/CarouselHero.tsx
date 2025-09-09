@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/carousel";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 import type { IndustryType, RoleType } from "@/types/restaurant-pages";
+import Image from "next/image";
 
 interface CarouselHeroSlide {
   image: string;
@@ -137,11 +138,15 @@ export function CarouselHero({
               {slides.map((slide, index) => (
                 <CarouselItem key={index}>
                   <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-50 to-blue-50 dark:from-orange-950/20 dark:to-blue-950/20">
-                    <img
-                      src={slide.image}
-                      alt={slide.alt}
-                      className="h-[400px] w-full object-cover sm:h-[500px] lg:h-[600px]"
-                    />
+                    <div className="relative h-[400px] sm:h-[500px] lg:h-[600px] w-full">
+                      <Image
+                        src={slide.image}
+                        alt={slide.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 1024px"
+                        className="object-cover"
+                      />
+                    </div>
                     {/* Overlay for better text contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   </div>
@@ -226,7 +231,7 @@ interface SlideIndicatorProps {
   currentSlide: number;
   slides: Array<{ label: string }>;
   className?: string;
-  api: CarouselApi | null;
+  api?: CarouselApi | null;
 }
 
 const SlideIndicator = ({

@@ -19,6 +19,8 @@ interface MarketingCTAProps {
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
   className?: string;
+  // Accept unused variant for API compatibility with pages
+  variant?: string;
 }
 
 export function MarketingCTA({

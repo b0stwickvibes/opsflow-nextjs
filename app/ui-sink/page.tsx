@@ -1,6 +1,7 @@
 // app/ui-sink/page.tsx
 "use client";
 
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +24,9 @@ export default function UISink() {
               <Badge variant="secondary">Testing Ground</Badge>
             </div>
             <div className="flex items-center space-x-2">
+              <Link href="/ui-sink/templates">
+                <Button variant="outline" size="sm">Open Template Catalog</Button>
+              </Link>
               <PaletteSelect />
               <ThemeToggle />
             </div>

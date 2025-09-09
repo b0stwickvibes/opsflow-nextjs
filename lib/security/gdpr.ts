@@ -4,7 +4,7 @@
  */
 
 import { apiClient } from '@/lib/api';
-import type { UserContext } from './rbac';
+import crypto from 'crypto';
 
 // GDPR data processing purposes
 export const GDPR_PURPOSES = {
@@ -86,7 +86,7 @@ export class GDPRManager {
    * Generate personal data report for user (GDPR Article 15 - Right of Access)
    */
   static async generateDataReport(userId: string): Promise<{
-    personalData: Record<string, any>;
+    personalData: Record<string, unknown>;
     dataProcessing: Array<{
       purpose: string;
       legalBasis: string;
@@ -102,7 +102,7 @@ export class GDPRManager {
   }> {
     const response = await apiClient.get(`/api/gdpr/data-report/${userId}`);
     return response.data as {
-      personalData: Record<string, any>;
+      personalData: Record<string, unknown>;
       dataProcessing: Array<{
         purpose: string;
         legalBasis: string;
@@ -163,7 +163,7 @@ export class GDPRManager {
    */
   static async rectifyUserData(
     userId: string,
-    corrections: Record<string, any>,
+    corrections: Record<string, unknown>,
     requestedBy: string
   ): Promise<{
     correctedFields: string[];
@@ -415,7 +415,6 @@ export class PrivacyUtils {
    */
   static hashPersonalData(data: string, salt?: string): string {
     // Simple hash - in production, use proper cryptographic hashing
-    const crypto = require('crypto');
     const hashSalt = salt || process.env.PRIVACY_HASH_SALT || 'default-salt';
     return crypto.createHash('sha256').update(data + hashSalt).digest('hex');
   }
@@ -445,9 +444,9 @@ export class PrivacyUtils {
   /**
    * Mask sensitive data for logging
    */
-  static maskSensitiveData(data: any): any {
+  static maskSensitiveData<T extends Record<string, unknown>>(data: T): T {
     const sensitive = ['email', 'phone', 'address', 'ssn', 'creditCard'];
-    const masked = { ...data };
+    const masked: Record<string, unknown> = { ...data };
 
     sensitive.forEach(field => {
       if (masked[field]) {
@@ -460,7 +459,7 @@ export class PrivacyUtils {
       }
     });
 
-    return masked;
+    return masked as T;
   }
 }
 

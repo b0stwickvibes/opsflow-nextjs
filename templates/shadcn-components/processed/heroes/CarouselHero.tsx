@@ -226,7 +226,7 @@ interface SlideIndicatorProps {
   currentSlide: number;
   slides: Array<{ label: string }>;
   className?: string;
-  api: CarouselApi | null;
+  api?: CarouselApi | null;
 }
 
 const SlideIndicator = ({

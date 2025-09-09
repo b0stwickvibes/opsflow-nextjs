@@ -13,17 +13,5 @@ export { SplitScreenHero } from './SplitScreenHero';
 export { VisionHero } from './VisionHero';
 export { WorkflowHero } from './WorkflowHero';
 
-// Types - will need to check each component for proper type exports
-export type { 
-  CarouselHeroProps,
-  CarouselHeroSlide,
-  CarouselHeroFeature
-} from './CarouselHero';
-
-export type { 
-  SplitScreenHeroProps,
-  SplitScreenHeroFeature
-} from './SplitScreenHero';
-
 // Re-export common types
 export type { IndustryType, RoleType } from '@/types/restaurant-pages';

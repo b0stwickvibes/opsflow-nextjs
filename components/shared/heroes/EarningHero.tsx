@@ -9,6 +9,7 @@ import {
   usePermission 
 } from '@/lib/hooks/restaurant-pages';
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 // Industry-specific earning/revenue content
 const INDUSTRY_EARNINGS_CONTENT = {
@@ -193,17 +194,21 @@ const EarningHero = ({
               
               <div className="relative mx-auto mt-20 w-[12.5rem] sm:w-[18.75rem]">
                 {/* Phone Frame Mockup */}
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/hero108/iphone.png"
                   alt={`${industry} mobile app frame`}
-                  className="absolute top-0 z-20 block w-full drop-shadow-2xl"
+                  fill
+                  sizes="(max-width: 768px) 200px, 300px"
+                  className="absolute top-0 z-20 block drop-shadow-2xl"
                 />
                 
                 {/* App Interface */}
-                <img
+                <Image
                   src={content.mockupSrc}
                   alt={content.mockupAlt}
-                  className="absolute top-0 block w-full rounded-[50px] bg-background"
+                  fill
+                  sizes="(max-width: 768px) 200px, 300px"
+                  className="absolute top-0 block rounded-[50px] bg-background"
                 />
                 
                 {/* Floating Metrics (if detailed variant) */}

@@ -1,6 +1,21 @@
-// Bento Grid Components
+// Layout components barrel
+export { Navbar } from './Navbar';
+export { Footer } from './Footer';
+
+// Marketing/layout sections
+export { MarketingCTA } from './MarketingCTA';
+export { MarketingHero } from './MarketingHero';
+export { CallToAction } from './CallToAction';
+export { FinalCTA } from './FinalCTA';
+
+// Bento utilities
 export { BentoGrid } from './BentoGrid';
 export { BentoLayout } from './BentoLayout';
+
+// Optional helpers (available for pages/components)
+export { DemoRequest } from './DemoRequest';
+export { TrialSignup } from './TrialSignup';
+export { AdvancedOperations } from './AdvancedOperations';
 
 // Re-export types for convenience
 export type { 

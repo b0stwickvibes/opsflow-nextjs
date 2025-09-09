@@ -11,6 +11,7 @@ import {
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 import type { IndustryType, RoleType } from "@/types/restaurant-pages";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface RestaurantIntegration {
   id: number;
@@ -137,10 +138,12 @@ export function IntegrationGrid({
               <CardHeader className="text-center space-y-4">
                 <div className="flex justify-center">
                   <div className="relative w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <img
+                    <Image
                       src={integration.icon}
                       alt={`${integration.title} integration`}
-                      className="w-8 h-8 object-contain"
+                      fill
+                      sizes="64px"
+                      className="p-4 object-contain"
                     />
                   </div>
                 </div>

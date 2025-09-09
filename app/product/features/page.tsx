@@ -1,29 +1,18 @@
 import type { Metadata } from "next";
-import { FeaturesHeroPremium } from "@/components/domain/product";
-import { 
-  AdvancedOperations,
-  FinalCTA
-} from "@/components/shared/layout";
 
 export const metadata: Metadata = {
   title: "Features — OpsFlow AI Restaurant Operations Platform",
-  description: "Complete restaurant operations management with automated temperature monitoring, HACCP compliance, staff training, and real-time analytics. See all features that help restaurants save time and stay compliant.",
+  description: "Complete restaurant operations management with automated temperature monitoring, HACCP compliance, staff training, and real-time analytics.",
   keywords: "restaurant features, HACCP compliance, temperature monitoring, restaurant management software, operations platform",
 };
 
 export default function ProductFeaturesPage() {
   return (
-    <div className="min-h-screen">
-      {/* Premium Aurora Hero */}
-      <FeaturesHeroPremium />
-      
-      {/* Advanced Operations Features */}
-      <AdvancedOperations />
-      
-      {/* Final CTA */}
-      <div className="container mx-auto px-4 sm:px-6 py-16">
-        <FinalCTA className="py-0" />
-      </div>
+    <div className="min-h-screen container mx-auto px-4 sm:px-6 py-24">
+      <h1 className="text-4xl font-bold">Product Features</h1>
+      <p className="text-muted-foreground mt-4 max-w-2xl">
+        This page is temporarily simplified while we stabilize the template/library. Core solutions pages continue to work.
+      </p>
     </div>
   );
 }

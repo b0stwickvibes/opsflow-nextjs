@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 
 const IntegrationPartners = dynamic(() => import("@/components/shared/layout/IntegrationPartners"));
 
@@ -40,12 +41,12 @@ export default function IntegrationsPage() {
               Route incidents, temperature alerts, and announcements to the right channels.
             </p>
           </a>
-          <a href="/resources/docs/api" className="rounded-lg border bg-muted/20 p-6 hover:bg-muted/30 transition-colors">
+          <Link href="/resources/docs/api" className="rounded-lg border bg-muted/20 p-6 hover:bg-muted/30 transition-colors">
             <h3 className="font-semibold mb-1">SSO + API</h3>
             <p className="text-sm text-muted-foreground">
               SSO/SCIM user provisioning, REST API, and webhooks for secure, reliable integrations.
             </p>
-          </a>
+          </Link>
         </div>
       </section>
 

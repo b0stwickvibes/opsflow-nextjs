@@ -18,6 +18,8 @@ type CarouselProps = {
     align?: "start" | "center" | "end"
     loop?: boolean
   }
+  // Accept optional plugins for compatibility with components that pass them; ignored by this lightweight impl
+  plugins?: any[]
   setApi?: (api: CarouselApi) => void
   className?: string
   children: React.ReactNode

@@ -4,7 +4,7 @@ import {
   Building2,
   Shield,
   HeadphonesIcon,
-  API,
+  Plug,
   Database,
   Users,
   Crown,
@@ -81,7 +81,7 @@ export function EnterprisePricing({
           },
         },
         {
-          icon: API,
+          icon: Plug,
           name: "Enterprise API & Integrations",
           description: "Custom API access and dedicated integrations with POS systems, inventory management, and financial software.",
           price: {
@@ -134,7 +134,9 @@ export function EnterprisePricing({
           },
         },
         {
-          icon: API,
+icon: Plug,
+
+
           name: "POS & System Integrations",
           description: "Custom integrations with bar management systems, inventory platforms, and financial software.",
           price: {
@@ -196,7 +198,8 @@ export function EnterprisePricing({
           },
         },
         {
-          icon: API,
+icon: Plug,
+
           name: "Supply Chain Integrations",
           description: "Custom integrations with suppliers, roasters, and inventory management systems.",
           price: {
@@ -267,7 +270,7 @@ export function EnterprisePricing({
           },
         },
         {
-          icon: API,
+icon: Plug,
           name: "Hotel System Integrations",
           description: "Custom integrations with PMS, booking systems, and hospitality management platforms.",
           price: {

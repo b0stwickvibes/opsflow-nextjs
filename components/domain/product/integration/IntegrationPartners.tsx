@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 import type { IndustryType, RoleType } from "@/types/restaurant-pages";
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 interface RestaurantPartnership {
   name: string;
@@ -201,9 +202,11 @@ export function IntegrationPartners({
           </div>
 
           <div className="bg-white dark:bg-gray-800 relative mb-3 flex h-20 w-20 rounded-2xl border-2 border-orange-200 dark:border-orange-700 p-4 shadow-lg md:h-24 md:w-24 md:p-6">
-            <img 
+            <Image 
               src="https://seeklogo.com/images/T/toast-logo-F1CE12DE99-seeklogo.com.png" 
               alt="Restaurant Integration" 
+              fill
+              sizes="(max-width: 768px) 5rem, 6rem"
               className="object-contain"
             />
           </div>
@@ -244,10 +247,12 @@ export function IntegrationPartners({
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-2xl bg-gray-50 dark:bg-gray-700 flex items-center justify-center p-2">
-                      <img
+                      <Image
                         src={partnership.logo}
                         alt={`${partnership.name} logo`}
-                        className="max-w-full max-h-full object-contain"
+                        width={40}
+                        height={40}
+                        className="object-contain"
                       />
                     </div>
                     <div>

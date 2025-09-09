@@ -190,16 +190,4 @@ export const RESTAURANT_METRICS = {
   TOTAL_RESTAURANTS_SERVED: "500+"
 } as const;
 
-// Feature Component Mapping
-export const FEATURE_COMPONENTS = {
-  [FEATURE_CATEGORIES.HACCP_COMPLIANCE]: FeatureGrid,
-  [FEATURE_CATEGORIES.KITCHEN_OPERATIONS]: FeatureShowcase,
-  [FEATURE_CATEGORIES.STAFF_MANAGEMENT]: FeatureCards,
-  [FEATURE_CATEGORIES.ANALYTICS_REPORTING]: FeatureTabs,
-  [FEATURE_CATEGORIES.MULTI_LOCATION]: FeatureCarousel,
-  [FEATURE_CATEGORIES.COST_CONTROL]: FeatureMatrix,
-  [FEATURE_CATEGORIES.AUDIT_DOCUMENTATION]: FeatureSplit,
-  [FEATURE_CATEGORIES.EQUIPMENT_MONITORING]: FeatureList,
-  [FEATURE_CATEGORIES.ROI_METRICS]: FeatureShowcase2,
-  [FEATURE_CATEGORIES.IMPLEMENTATION]: FeatureTimeline
-} as const;
+// Feature Component Mapping intentionally omitted here; import concrete components directly where needed.

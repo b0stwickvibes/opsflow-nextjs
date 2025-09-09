@@ -11,6 +11,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 import { useCallback } from 'react';
 import { z } from 'zod';
+import Link from 'next/link';
 
 // Define analytics tracking function
 const trackEvent = (eventName: string, properties?: Record<string, any>) => {
@@ -229,7 +230,7 @@ export function RestaurantInquiryForm() {
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* GDPR consent notice */}
               <div className="bg-muted p-3 rounded-md text-xs text-muted-foreground mb-4">
-                <p>We collect and process your data to respond to your inquiry and provide relevant information about OpsFlow. See our <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a> for details on how we safeguard your information.</p>
+<p>We collect and process your data to respond to your inquiry and provide relevant information about OpsFlow. See our <Link href="/privacy" className="text-primary hover:underline">Privacy Policy</Link> for details on how we safeguard your information.</p>
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

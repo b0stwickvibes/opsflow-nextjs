@@ -84,7 +84,7 @@ export function CallToAction({
   };
 
   const config = industryConfig[industry];
-  const variantConfig = config.variants[variant] || config.variants.primary;
+  const variantConfig = (config.variants as Record<string, any>)[variant] || config.variants.primary;
 
   const handlePrimaryCTA = () => {
     trackEvent("cta_primary_click", {

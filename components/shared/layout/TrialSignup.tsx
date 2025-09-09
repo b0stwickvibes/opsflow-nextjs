@@ -104,44 +104,46 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="grid gap-8">
-                {config.features?.map((feature, index) => (
-                  <div 
-                    key={index}
-                    className="flex items-start gap-4 p-4 rounded-lg bg-background border hover:shadow-md transition-shadow"
-                  >
+                {Array.isArray((config as any).features)
+                  ? (((config as any).features as any[]).map((feature: any, index: number) => (
                     <div 
-                      className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
-                      style={{ backgroundColor: `oklch(from ${config.color} l c h / 0.1)` }}
+                      key={index}
+                      className="flex items-start gap-4 p-4 rounded-lg bg-background border hover:shadow-md transition-shadow"
                     >
-                      <feature.icon 
-                        className="size-6" 
-                        style={{ color: config.color }}
-                      />
+                      <div 
+                        className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
+                        style={{ backgroundColor: `oklch(from ${config.color} l c h / 0.1)` }}
+                      >
+                        <feature.icon 
+                          className="size-6" 
+                          style={{ color: config.color }}
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                        <p className="text-muted-foreground">{feature.description}</p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
-                      <p className="text-muted-foreground">{feature.description}</p>
+                  )))
+                  : (
+                    <div className="space-y-6">
+                      <h3 className="text-2xl font-semibold">Why Choose OpsFlow?</h3>
+                      <ul className="space-y-3">
+                        <li className="flex items-center gap-3">
+                          <Shield className="size-5" style={{ color: config.color }} />
+                          <span>Industry-specific compliance tools</span>
+                        </li>
+                        <li className="flex items-center gap-3">
+                          <Users className="size-5" style={{ color: config.color }} />
+                          <span>Seamless team coordination</span>
+                        </li>
+                        <li className="flex items-center gap-3">
+                          <Zap className="size-5" style={{ color: config.color }} />
+                          <span>Real-time operational insights</span>
+                        </li>
+                      </ul>
                     </div>
-                  </div>
-                )) || (
-                  <div className="space-y-6">
-                    <h3 className="text-2xl font-semibold">Why Choose OpsFlow?</h3>
-                    <ul className="space-y-3">
-                      <li className="flex items-center gap-3">
-                        <Shield className="size-5" style={{ color: config.color }} />
-                        <span>Industry-specific compliance tools</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Users className="size-5" style={{ color: config.color }} />
-                        <span>Seamless team coordination</span>
-                      </li>
-                      <li className="flex items-center gap-3">
-                        <Zap className="size-5" style={{ color: config.color }} />
-                        <span>Real-time operational insights</span>
-                      </li>
-                    </ul>
-                  </div>
-                )}
+                  )}
               </div>
             </div>
 
@@ -178,12 +180,12 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
                 </div>
 
                 <div className="space-y-3 text-center">
-                  {(config.benefits || [
+                  {((config as any).benefits || [
                     "Setup in under 30 minutes",
                     "No credit card required", 
                     "Cancel anytime",
                     "Full support during trial"
-                  ]).map((benefit, index) => (
+]).map((benefit: any, index: number) => (
                     <div key={index} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
                       <div 
                         className="w-2 h-2 rounded-full" 
