@@ -110,36 +110,36 @@ const FeaturesHeroPremium = () => {
       <div className="container mt-32 lg:mt-48">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Daily Tasks & Checklists */}
-          <div className="flex flex-col items-center text-center p-6">
+          <div className="clerk-interactive-tile p-6 text-center">
             <div className="w-20 h-20 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl flex items-center justify-center mb-6 border">
               <CheckSquare className="h-10 w-10 text-green-600" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Daily Tasks & Checklists</h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <h3 className="text-display-sm mb-2">Daily Tasks & Checklists</h3>
+            <p className="enterprise-body">
               Create custom checklists and SOPs with smart scheduling, team assignments, 
               and progress tracking for consistent operations.
             </p>
           </div>
           
           {/* Multi-Location Management */}
-          <div className="flex flex-col items-center text-center p-6">
+          <div className="clerk-interactive-tile p-6 text-center">
             <div className="w-20 h-20 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl flex items-center justify-center mb-6 border">
               <Building2 className="h-10 w-10 text-blue-600" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Multi-Location Management</h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <h3 className="text-display-sm mb-2">Multi-Location Management</h3>
+            <p className="enterprise-body">
               Manage unlimited restaurant locations with unified reporting, standardized 
               procedures, and seamless location switching.
             </p>
           </div>
           
           {/* Equipment & Maintenance */}
-          <div className="flex flex-col items-center text-center p-6">
+          <div className="clerk-interactive-tile p-6 text-center">
             <div className="w-20 h-20 bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-2xl flex items-center justify-center mb-6 border">
               <Wrench className="h-10 w-10 text-orange-600" />
             </div>
-            <h3 className="text-xl font-semibold mb-3">Equipment & Maintenance</h3>
-            <p className="text-muted-foreground leading-relaxed">
+            <h3 className="text-display-sm mb-2">Equipment & Maintenance</h3>
+            <p className="enterprise-body">
               Preventive maintenance scheduling, work order management, and equipment 
               performance tracking to avoid costly breakdowns.
             </p>

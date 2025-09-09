@@ -2,6 +2,7 @@
 
 import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 import React, { useRef } from "react";
+import Image from "next/image";
 import { AuroraText } from "@/components/shared/enhanced";
 import { Thermometer, ClipboardList, AlertTriangle, Shield } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -50,13 +51,13 @@ const AdvancedOperations = ({ className }: { className?: string }) => {
             </>
           }
         >
-          <img
+          <Image
             src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/dashboard/admin-dashboard-1.png"
             alt="OpsFlow AI Dashboard"
-            height={720}
             width={1400}
+            height={720}
+            unoptimized
             className="mx-auto h-full rounded-2xl object-cover object-left-top"
-            draggable={false}
           />
         </ContainerScroll>
         
