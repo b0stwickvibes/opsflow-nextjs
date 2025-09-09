@@ -1,6 +1,7 @@
 import { ArrowRight, Thermometer, Users, CheckSquare, Building2, Wrench, Shield, BarChart3, Wifi, AlertTriangle } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import ShimmerButton from "@/components/magicui/shimmer-button";
 import {
   Accordion,
   AccordionContent,
@@ -10,30 +11,36 @@ import {
 
 const FeaturesHeroPremium = () => {
   return (
-    <section className="py-20 lg:py-32">
+    <section className="enterprise-hero-section section-padding-large py-20 lg:py-32">
       <div className="lg:border-y">
         <div className="container flex flex-col max-lg:divide-y lg:flex-row">
           <div className="flex-1 lg:border-l">
             <div className="lg:border-b lg:pr-8 lg:pb-5 lg:pl-2">
-              <h1 className="mx-auto text-[2.5rem] leading-[1.2] tracking-[-1.6px] md:text-[4rem] md:leading-[1.15] md:tracking-[-4.32px] lg:text-7xl">
-                Complete restaurant operations{" "}
-                <span className="bg-gradient-to-r from-primary via-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  in one platform
-                </span>
+              {/* Clerk-inspired badge */}
+              <div className="mb-4 inline-block">
+                <div className="clerk-inspired-badge">
+                  <Shield className="h-4 w-4" />
+                  <span>OpsFlow Features</span>
+                </div>
+              </div>
+              <h1 className="enterprise-headline">
+                Complete restaurant operations
+                <br />
+                <span className="text-primary">in one platform</span>
               </h1>
-              <p className="mt-6 tracking-[-0.32px] text-muted-foreground">
+              <p className="enterprise-body mt-4">
                 From temperature monitoring to staff training—everything your restaurant needs 
                 to stay compliant, efficient, and profitable.
               </p>
               
               <div className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-4">
-                <Button size="lg" className="w-full sm:w-auto" asChild>
+                <ShimmerButton size="lg" className="w-full sm:w-auto" asChild>
                   <Link href="/pricing">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
-                </Button>
-                <Button variant="ghost" size="lg" className="w-full sm:w-auto" asChild>
+                </ShimmerButton>
+                <Button variant="outline" size="lg" className="w-full sm:w-auto" asChild>
                   <Link href="/product/demo">
                     Watch Demo
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -42,38 +49,21 @@ const FeaturesHeroPremium = () => {
               </div>
               
               <ul className="mt-8 space-y-3">
-                <li className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-sm font-medium text-foreground">14-day free trial with full access</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-sm font-medium text-foreground">24/7 customer support included</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-sm font-medium text-foreground">HACCP compliance guaranteed</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-green-100 dark:bg-green-900/20 flex items-center justify-center">
-                    <svg className="w-3 h-3 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <span className="text-sm font-medium text-foreground">Free data migration from existing systems</span>
-                </li>
+                {[
+                  "14-day free trial with full access",
+                  "24/7 customer support included",
+                  "HACCP compliance guaranteed",
+                  "Free data migration from existing systems",
+                ].map((text) => (
+                  <li key={text} className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+                      <svg className="w-3 h-3 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-sm text-foreground">{text}</span>
+                  </li>
+                ))}
               </ul>
             </div>
             

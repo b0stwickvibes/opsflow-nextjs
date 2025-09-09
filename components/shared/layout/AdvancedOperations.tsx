@@ -40,16 +40,12 @@ const AdvancedOperations = ({ className }: { className?: string }) => {
         <ContainerScroll
           titleComponent={
             <>
-              <p className="mx-auto mb-4 text-muted-foreground md:text-xl">
+              <p className="mx-auto mb-4 enterprise-body">
                 Advanced Restaurant Operations
               </p>
-              <h1 className="text-7xl font-semibold tracking-tighter md:text-8xl xl:text-[10rem]">
-                <span className="pr-6 text-muted-foreground/40">Build</span>
-                <AuroraText
-                  colors={["#ff6449", "#ff6449", "#6248fe", "#6248fe"]}
-                >
-                  Faster
-                </AuroraText>
+              <h1 className="enterprise-headline">
+                <span className="pr-3 text-muted-foreground/60">Build</span>
+                <AuroraText colors={["#ff6449", "#ff6449", "#6248fe", "#6248fe"]}>Faster</AuroraText>
               </h1>
             </>
           }
@@ -72,12 +68,11 @@ const AdvancedOperations = ({ className }: { className?: string }) => {
               <div className="absolute -top-px left-0 right-0 h-px bg-border" />
               {/* Left grid cell - 1x1 with all borders */}
               <div className="border-r border-border p-12 lg:p-16">
-                <h2 className="mb-8 text-5xl font-medium text-balance md:text-7xl">
+                <h2 className="mb-6 text-display-xl">
                   Sophisticated Restaurant Operations
                 </h2>
-                <p className="text-xl text-muted-foreground">
-                  Temperature monitoring, incident management, corrective actions, and compliance auditing 
-                  — all powered by intelligent automation for modern restaurants.
+                <p className="enterprise-body">
+                  Temperature monitoring, incident management, corrective actions, and compliance auditing — all powered by intelligent automation for modern restaurants.
                 </p>
               </div>
               

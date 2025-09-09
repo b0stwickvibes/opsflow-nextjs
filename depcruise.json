@@ -79,6 +79,7 @@
         "components/shared/layout/CallToAction.tsx",
         "components/shared/layout/DemoRequest.tsx",
         "components/shared/layout/FinalCTA.tsx",
+        "components/magicui/shimmer-button.tsx",
         "components/shared/layout/MarketingCTA.tsx",
         "components/shared/layout/MarketingHero.tsx",
         "components/shared/layout/Navbar.tsx",
@@ -107,10 +108,7 @@
         "components/domain/demo/DemoFeatures.tsx",
         "components/domain/demo/DemoHero.tsx",
         "components/domain/demo/DemoMetrics.tsx",
-        "components/domain/product/features/FeatureBento.tsx",
-        "components/domain/product/features/FeaturesHero.tsx",
-        "components/domain/product/features/InteractiveDemoCTA.tsx",
-        "components/domain/templates/TemplatesPromo.tsx",
+        "components/domain/product/features/FeaturesHeroPremium.tsx",
         "components/shared/data-display/ResourcePages.tsx",
         "templates/shadcn-components/processed/ctas/CallToAction.tsx",
         "templates/shadcn-components/processed/ctas/DemoRequest.tsx",
@@ -149,6 +147,7 @@
         "components/domain/product/RestaurantHero.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
         "components/domain/product/features/FeatureAccordion.tsx",
+        "components/domain/product/features/FeatureBento.tsx",
         "components/domain/product/features/FeatureBoard.tsx",
         "components/domain/product/features/FeatureCarousel.tsx",
         "components/domain/product/features/FeatureGrid.tsx",
@@ -158,12 +157,13 @@
         "components/domain/product/features/FeatureSplit.tsx",
         "components/domain/product/features/FeatureTabs.tsx",
         "components/domain/product/features/FeatureTimeline.tsx",
-        "components/domain/product/features/FeaturesHeroPremium.tsx",
+        "components/domain/product/features/FeaturesHero.tsx",
         "components/domain/product/features/FeaturesHeroPro.tsx",
+        "components/domain/product/features/InteractiveDemoCTA.tsx",
         "components/domain/product/integration/IntegrationGrid.tsx",
         "components/domain/product/integration/IntegrationPartners.tsx",
         "components/domain/product/integration/IntegrationShowcase.tsx",
-        "components/magicui/shimmer-button.tsx",
+        "components/domain/templates/TemplatesPromo.tsx",
         "components/pages/HomePage.tsx",
         "components/shared/data-display/KPIShowcase.tsx",
         "components/shared/data-display/LogoGrid.tsx",
@@ -232,7 +232,6 @@
         "components/ui/table.tsx",
         "components/ui/switch.tsx",
         "components/ui/select.tsx",
-        "components/domain/product/features/FeatureBento.tsx",
         "templates/shadcn-components/processed/features/FeatureAccordion.tsx",
         "templates/shadcn-components/processed/features/FeatureBento.tsx",
         "templates/shadcn-components/processed/features/FeatureList.tsx",
@@ -271,6 +270,7 @@
         "components/domain/product/RestaurantKPIs.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
         "components/domain/product/features/FeatureAccordion.tsx",
+        "components/domain/product/features/FeatureBento.tsx",
         "components/domain/product/features/FeatureBoard.tsx",
         "components/domain/product/features/FeatureList.tsx",
         "components/domain/product/features/FeatureShowcaseTwo.tsx",
@@ -831,8 +831,8 @@
         "components/shared/layout/Navbar.tsx",
         "components/domain/contact/ContactFAQ.tsx",
         "components/domain/pricing/PricingFAQ.tsx",
-        "components/pages/UITestPage.tsx",
-        "components/domain/product/features/FeaturesHeroPremium.tsx"
+        "components/domain/product/features/FeaturesHeroPremium.tsx",
+        "components/pages/UITestPage.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -914,7 +914,6 @@
         "components/shared/layout/TrialSignup.tsx",
         "components/shared/forms/ContactForm.tsx",
         "components/shared/forms/LeadCapture.tsx",
-        "components/domain/product/features/FeatureBento.tsx",
         "templates/shadcn-components/processed/ctas/CallToAction.tsx",
         "templates/shadcn-components/processed/ctas/DemoRequest.tsx",
         "templates/shadcn-components/processed/ctas/TrialSignup.tsx",
@@ -954,6 +953,7 @@
         "components/domain/product/RestaurantHero.tsx",
         "components/domain/product/RestaurantPageTemplate.tsx",
         "components/domain/product/features/FeatureAccordion.tsx",
+        "components/domain/product/features/FeatureBento.tsx",
         "components/domain/product/features/FeatureCards.tsx",
         "components/domain/product/features/FeatureCarousel.tsx",
         "components/domain/product/features/FeatureComparison.tsx",
@@ -1305,11 +1305,6 @@
         "components/domain/demo/DemoBooking.tsx",
         "components/domain/demo/DemoFeatures.tsx",
         "components/domain/demo/DemoMetrics.tsx",
-        "components/domain/product/features/AdvancedOps.tsx",
-        "components/domain/product/features/FeatureCategoryGrid.tsx",
-        "components/domain/roles/RoleShowcase.tsx",
-        "components/domain/security/LocationSecurityShowcase.tsx",
-        "components/domain/templates/TemplatesPromo.tsx",
         "components/shared/data-display/ResourcePages.tsx",
         "templates/shadcn-components/processed/features/FeatureComparison.tsx",
         "templates/shadcn-components/processed/features/FeatureMatrix.tsx",
@@ -1318,8 +1313,10 @@
         "components/pages/UITestPage.tsx",
         "components/domain/product/RestaurantKPIs.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
+        "components/domain/product/features/AdvancedOps.tsx",
         "components/domain/product/features/CompetitorComparisonStrip.tsx",
         "components/domain/product/features/FeatureBoard.tsx",
+        "components/domain/product/features/FeatureCategoryGrid.tsx",
         "components/domain/product/features/FeatureComparison.tsx",
         "components/domain/product/features/FeatureMatrix.tsx",
         "components/domain/product/features/FeaturesBento.tsx",
@@ -1328,6 +1325,9 @@
         "components/domain/product/features/UseCaseTabs.tsx",
         "components/domain/product/integration/IntegrationGrid.tsx",
         "components/domain/product/integration/IntegrationPartners.tsx",
+        "components/domain/roles/RoleShowcase.tsx",
+        "components/domain/security/LocationSecurityShowcase.tsx",
+        "components/domain/templates/TemplatesPromo.tsx",
         "components/shared/data-display/FeatureCard.tsx",
         "components/shared/data-display/FeatureComparison.tsx",
         "components/shared/data-display/LogoMarquee.tsx",
@@ -1536,7 +1536,6 @@
         "app/layout.tsx",
         "app/page.tsx",
         "app/product/demo/page.tsx",
-        "app/product/features/page.tsx",
         "app/solutions/restaurants/page.tsx",
         "components/domain/product/RestaurantPageTemplate.tsx",
         "components/shared/index.ts"
@@ -1589,7 +1588,8 @@
         }
       ],
       "dependents": [
-        "components/shared/layout/index.ts"
+        "components/shared/layout/index.ts",
+        "app/product/features/page.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -2017,11 +2017,6 @@
         "components/domain/demo/DemoFeatures.tsx",
         "components/domain/demo/DemoHero.tsx",
         "components/domain/demo/DemoMetrics.tsx",
-        "components/domain/product/features/FeatureBento.tsx",
-        "components/domain/product/features/FeatureCategoryGrid.tsx",
-        "components/domain/product/features/InteractiveDemoCTA.tsx",
-        "components/domain/security/LocationSecurityShowcase.tsx",
-        "components/domain/templates/TemplatesPromo.tsx",
         "components/shared/data-display/ResourcePages.tsx",
         "templates/shadcn-components/processed/features/FeatureAccordion.tsx",
         "templates/shadcn-components/processed/features/FeatureBento.tsx",
@@ -2049,9 +2044,11 @@
         "components/domain/product/RestaurantKPIs.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
         "components/domain/product/features/FeatureAccordion.tsx",
+        "components/domain/product/features/FeatureBento.tsx",
         "components/domain/product/features/FeatureBoard.tsx",
         "components/domain/product/features/FeatureCards.tsx",
         "components/domain/product/features/FeatureCarousel.tsx",
+        "components/domain/product/features/FeatureCategoryGrid.tsx",
         "components/domain/product/features/FeatureComparison.tsx",
         "components/domain/product/features/FeatureHighlight.tsx",
         "components/domain/product/features/FeatureList.tsx",
@@ -2064,7 +2061,10 @@
         "components/domain/product/features/FeaturesBento.tsx",
         "components/domain/product/features/FeaturesHeroGrid.tsx",
         "components/domain/product/features/FeaturesHeroPro.tsx",
+        "components/domain/product/features/InteractiveDemoCTA.tsx",
         "components/domain/product/features/PlasmaFeaturesSection.tsx",
+        "components/domain/security/LocationSecurityShowcase.tsx",
+        "components/domain/templates/TemplatesPromo.tsx",
         "components/shared/data-display/FeatureComparison.tsx",
         "components/shared/data-display/ResourceTable.tsx",
         "components/shared/heroes/EliteAccessHero.tsx",
@@ -2490,6 +2490,26 @@
       "source": "components/shared/layout/FinalCTA.tsx",
       "dependencies": [
         {
+          "module": "@/components/magicui/shimmer-button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/magicui/shimmer-button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
           "module": "@/components/ui/button",
           "moduleSystem": "es6",
           "dynamic": false,
@@ -2551,7 +2571,39 @@
         }
       ],
       "dependents": [
-        "components/shared/layout/index.ts"
+        "components/shared/layout/index.ts",
+        "app/product/features/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/magicui/shimmer-button.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/shared/layout/FinalCTA.tsx",
+        "components/domain/product/features/FeaturesHeroPremium.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -2679,21 +2731,21 @@
         "components/domain/industries/restaurants/RestaurantSuccessMetrics.tsx",
         "components/domain/demo/DemoHero.tsx",
         "components/shared/layout/IntegrationPartners.tsx",
-        "components/domain/product/features/AdvancedOps.tsx",
-        "components/domain/product/features/FeatureCategoryGrid.tsx",
-        "components/domain/product/features/FeatureStats.tsx",
-        "components/domain/product/features/InteractiveDemoCTA.tsx",
-        "components/domain/roles/RoleShowcase.tsx",
-        "components/domain/security/LocationSecurityShowcase.tsx",
-        "components/domain/templates/TemplatesPromo.tsx",
         "components/domain/company/CompanyHero.tsx",
         "components/domain/product/ProductHero.tsx",
+        "components/domain/product/features/AdvancedOps.tsx",
         "components/domain/product/features/CompetitorComparisonStrip.tsx",
+        "components/domain/product/features/FeatureCategoryGrid.tsx",
+        "components/domain/product/features/FeatureStats.tsx",
         "components/domain/product/features/FeaturesBento.tsx",
         "components/domain/product/features/FeaturesHeroGrid.tsx",
         "components/domain/product/features/FeaturesHeroPro.tsx",
+        "components/domain/product/features/InteractiveDemoCTA.tsx",
         "components/domain/product/features/PlasmaFeaturesSection.tsx",
         "components/domain/product/features/UseCaseTabs.tsx",
+        "components/domain/roles/RoleShowcase.tsx",
+        "components/domain/security/LocationSecurityShowcase.tsx",
+        "components/domain/templates/TemplatesPromo.tsx",
         "components/shared/data-display/FeatureComparison.tsx",
         "components/shared/forms/RestaurantInquiryForm.tsx",
         "components/shared/layout/RestaurantNav.tsx"
@@ -5753,11 +5805,11 @@
       "dependents": [
         "components/domain/industries/restaurants/RestaurantPlatformExplorer.tsx",
         "components/domain/demo/DemoFeatures.tsx",
-        "components/domain/roles/RoleShowcase.tsx",
         "app/ui-sink-backup/page.tsx",
         "components/pages/UITestPage.tsx",
         "components/domain/pricing/PricingComparison.tsx",
-        "components/domain/product/features/UseCaseTabs.tsx"
+        "components/domain/product/features/UseCaseTabs.tsx",
+        "components/domain/roles/RoleShowcase.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -7369,7 +7421,6 @@
       ],
       "dependents": [
         "app/product/demo/page.tsx",
-        "app/product/features/page.tsx",
         "app/product/integrations/page.tsx"
       ],
       "orphan": false,
@@ -7420,67 +7471,7 @@
       "source": "app/product/features/page.tsx",
       "dependencies": [
         {
-          "module": "@/components/domain/product/features/AdvancedOps",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/domain/product/features/AdvancedOps.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/product/features/FeatureBento",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/domain/product/features/FeatureBento.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/product/features/FeatureCategoryGrid",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/domain/product/features/FeatureCategoryGrid.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/product/features/FeaturesHero",
+          "module": "@/components/domain/product/features/FeaturesHeroPremium",
           "moduleSystem": "es6",
           "dynamic": false,
           "exoticallyRequired": false,
@@ -7491,7 +7482,7 @@
             "local",
             "import"
           ],
-          "resolved": "components/domain/product/features/FeaturesHero.tsx",
+          "resolved": "components/domain/product/features/FeaturesHeroPremium.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -7500,7 +7491,7 @@
           "valid": true
         },
         {
-          "module": "@/components/domain/product/features/FeatureStats",
+          "module": "@/components/shared/layout/AdvancedOperations",
           "moduleSystem": "es6",
           "dynamic": false,
           "exoticallyRequired": false,
@@ -7511,7 +7502,7 @@
             "local",
             "import"
           ],
-          "resolved": "components/domain/product/features/FeatureStats.tsx",
+          "resolved": "components/shared/layout/AdvancedOperations.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -7520,87 +7511,7 @@
           "valid": true
         },
         {
-          "module": "@/components/domain/product/features/InteractiveDemoCTA",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/domain/product/features/InteractiveDemoCTA.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/roles/RoleShowcase",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/domain/roles/RoleShowcase.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/security/LocationSecurityShowcase",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/domain/security/LocationSecurityShowcase.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/templates/TemplatesPromo",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/domain/templates/TemplatesPromo.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/shared/layout",
+          "module": "@/components/shared/layout/FinalCTA",
           "moduleSystem": "es6",
           "dynamic": false,
           "exoticallyRequired": false,
@@ -7611,27 +7522,7 @@
             "local",
             "import"
           ],
-          "resolved": "components/shared/layout/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/shared/layout/IntegrationPartners",
-          "moduleSystem": "es6",
-          "dynamic": true,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "dynamic-import"
-          ],
-          "resolved": "components/shared/layout/IntegrationPartners.tsx",
+          "resolved": "components/shared/layout/FinalCTA.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -7645,10 +7536,10 @@
       "valid": true
     },
     {
-      "source": "components/domain/product/features/AdvancedOps.tsx",
+      "source": "components/domain/product/features/FeaturesHeroPremium.tsx",
       "dependencies": [
         {
-          "module": "@/components/ui/card",
+          "module": "@/components/magicui/shimmer-button",
           "moduleSystem": "es6",
           "dynamic": false,
           "exoticallyRequired": false,
@@ -7659,7 +7550,7 @@
             "local",
             "import"
           ],
-          "resolved": "components/ui/card.tsx",
+          "resolved": "components/magicui/shimmer-button.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -7668,7 +7559,7 @@
           "valid": true
         },
         {
-          "module": "@/lib/style-system/layout-differentiation",
+          "module": "@/components/ui/accordion",
           "moduleSystem": "es6",
           "dynamic": false,
           "exoticallyRequired": false,
@@ -7679,37 +7570,7 @@
             "local",
             "import"
           ],
-          "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/features/FeatureBento.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/badge",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/badge.tsx",
+          "resolved": "components/ui/accordion.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -7736,504 +7597,10 @@
           "matchesDoNotFollow": false,
           "circular": false,
           "valid": true
-        },
-        {
-          "module": "@/lib/hooks/restaurant-pages",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/hooks/restaurant-pages.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/utils",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/utils.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx",
-        "components/domain/product/features/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/features/FeatureCategoryGrid.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/badge",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/badge.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/style-system/layout-differentiation",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
         }
       ],
       "dependents": [
         "app/product/features/page.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/features/FeaturesHero.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/features/FeatureStats.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/shared/enhanced/NumberTicker",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/shared/enhanced/NumberTicker.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/style-system/layout-differentiation",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/features/InteractiveDemoCTA.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/badge",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/badge.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/style-system/layout-differentiation",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/roles/RoleShowcase.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/tabs",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/tabs.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/style-system/layout-differentiation",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx",
-        "components/domain/roles/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/security/LocationSecurityShowcase.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/badge",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/badge.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/style-system/layout-differentiation",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx",
-        "components/domain/security/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/templates/TemplatesPromo.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/badge",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/badge.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/style-system/layout-differentiation",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/product/features/page.tsx",
-        "components/domain/templates/index.ts"
       ],
       "orphan": false,
       "valid": true
@@ -14508,6 +13875,54 @@
       "valid": true
     },
     {
+      "source": "components/domain/product/features/AdvancedOps.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/style-system/layout-differentiation",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/style-system/layout-differentiation.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "components/domain/product/features/CompetitorComparisonStrip.tsx",
       "dependencies": [
         {
@@ -14557,6 +13972,96 @@
     },
     {
       "source": "components/domain/product/features/FeatureAccordion.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/badge",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/badge.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/hooks/restaurant-pages",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/hooks/restaurant-pages.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/features/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/features/FeatureBento.tsx",
       "dependencies": [
         {
           "module": "@/components/ui/badge",
@@ -14900,6 +14405,74 @@
       "dependents": [
         "components/domain/product/features/index.ts"
       ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/features/FeatureCategoryGrid.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/badge",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/badge.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/style-system/layout-differentiation",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/style-system/layout-differentiation.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
       "orphan": false,
       "valid": true
     },
@@ -15524,6 +15097,54 @@
       "valid": true
     },
     {
+      "source": "components/domain/product/features/FeatureStats.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/shared/enhanced/NumberTicker",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/shared/enhanced/NumberTicker.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/style-system/layout-differentiation",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/style-system/layout-differentiation.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "components/domain/product/features/FeatureTabs.tsx",
       "dependencies": [
         {
@@ -15752,6 +15373,34 @@
       "valid": true
     },
     {
+      "source": "components/domain/product/features/FeaturesHero.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "components/domain/product/features/FeaturesHeroGrid.tsx",
       "dependencies": [
         {
@@ -15807,54 +15456,6 @@
             "import"
           ],
           "resolved": "lib/style-system/layout-differentiation.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/features/FeaturesHeroPremium.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/accordion",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/accordion.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -15930,6 +15531,74 @@
           "circular": false,
           "valid": true
         },
+        {
+          "module": "@/components/ui/badge",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/badge.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/style-system/layout-differentiation",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/style-system/layout-differentiation.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/features/InteractiveDemoCTA.tsx",
+      "dependencies": [
         {
           "module": "@/components/ui/badge",
           "moduleSystem": "es6",
@@ -16863,6 +16532,76 @@
       "valid": true
     },
     {
+      "source": "components/domain/roles/RoleShowcase.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/tabs",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/tabs.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/style-system/layout-differentiation",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/style-system/layout-differentiation.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/roles/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "components/domain/roles/index.ts",
       "dependencies": [
         {
@@ -16888,6 +16627,76 @@
       "valid": true
     },
     {
+      "source": "components/domain/security/LocationSecurityShowcase.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/badge",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/badge.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/style-system/layout-differentiation",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/style-system/layout-differentiation.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/security/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "components/domain/security/index.ts",
       "dependencies": [
         {
@@ -16909,6 +16718,96 @@
         }
       ],
       "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/templates/TemplatesPromo.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/badge",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/badge.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/style-system/layout-differentiation",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/style-system/layout-differentiation.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/templates/index.ts"
+      ],
       "orphan": false,
       "valid": true
     },
@@ -16953,34 +16852,6 @@
             "import"
           ],
           "resolved": "lib/utils.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/magicui/shimmer-button.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -20378,7 +20249,7 @@
     "info": 0,
     "ignore": 0,
     "totalCruised": 328,
-    "totalDependenciesCruised": 853,
+    "totalDependenciesCruised": 847,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,

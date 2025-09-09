@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import ShimmerButton from "@/components/magicui/shimmer-button";
 
 const FinalCTA = ({ className }: { className?: string }) => {
   return (
@@ -17,26 +18,25 @@ const FinalCTA = ({ className }: { className?: string }) => {
             <div className="absolute bottom-6 right-6 w-16 h-16 bg-secondary/10 rounded-full blur-xl" />
             
             <div className="relative z-10">
-              <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium mb-8">
+              <div className="clerk-inspired-badge mb-6">
                 <Sparkles className="h-4 w-4" />
-                Transform Your Operations Today
+                <span>Transform Your Operations Today</span>
               </div>
               
-              <h2 className="text-4xl lg:text-6xl font-bold tracking-tight mb-6">
+              <h2 className="enterprise-headline mb-4">
                 Ready to experience the difference?
               </h2>
               
-              <p className="text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto mb-12">
-                Join thousands of teams that have transformed their operations 
-                with our comprehensive feature suite.
+              <p className="enterprise-body max-w-2xl mx-auto mb-10">
+                Join thousands of teams that have transformed their operations with our comprehensive feature suite.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="px-8 py-6 text-lg">
+                <ShimmerButton size="lg" className="px-8 py-6 text-base">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button variant="outline" size="lg" className="px-8 py-6 text-lg">
+                </ShimmerButton>
+                <Button variant="outline" size="lg" className="px-8 py-6 text-base">
                   Contact Sales
                 </Button>
               </div>
