@@ -36,7 +36,7 @@ const features = [
 
 const AdvancedOperations = ({ className }: { className?: string }) => {
   return (
-    <section className={cn("py-16 lg:py-24", className)}>
+    <section className={cn("py-16 lg:py-24 bg-grid-pattern", className)}>
       <div className="container">
         <ContainerScroll
           titleComponent={
@@ -83,7 +83,8 @@ const AdvancedOperations = ({ className }: { className?: string }) => {
                   <div 
                     key={idx} 
                     className={cn(
-                      "p-8 lg:p-12",
+                      "p-8 lg:p-12 rounded-lg transition-colors",
+                      "hover:bg-muted/30",
                       // Top border for all items
                       idx < 2 ? "" : "border-t border-border",
                       // Right border for left column items

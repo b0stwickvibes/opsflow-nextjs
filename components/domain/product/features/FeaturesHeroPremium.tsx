@@ -1,5 +1,6 @@
 import { ArrowRight, Thermometer, Users, CheckSquare, Building2, Wrench, Shield, BarChart3, Wifi, AlertTriangle } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import ShimmerButton from "@/components/magicui/shimmer-button";
 import {
@@ -46,6 +47,21 @@ const FeaturesHeroPremium = () => {
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Link>
                 </Button>
+              </div>
+
+              {/* Stripe-like brand confidence row */}
+              <div className="mt-6 flex flex-wrap items-center gap-6 opacity-80">
+                {[
+                  { src: "/logos/toast.svg", alt: "Toast" },
+                  { src: "/logos/square.svg", alt: "Square" },
+                  { src: "/logos/quickbooks.svg", alt: "QuickBooks" },
+                  { src: "/logos/slack.svg", alt: "Slack" },
+                  { src: "/logos/zapier.svg", alt: "Zapier" },
+                ].map((logo) => (
+                  <div key={logo.alt} className="h-6 w-auto grayscale opacity-70 hover:opacity-100 transition">
+                    <Image src={logo.src} alt={`${logo.alt} logo`} width={100} height={24} />
+                  </div>
+                ))}
               </div>
               
               <ul className="mt-8 space-y-3">
