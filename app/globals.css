@@ -333,6 +333,23 @@
   .text-display-md { font-size: clamp(1.5rem, 3vw, 2rem); line-height: 1.2; font-weight: 700; letter-spacing: -0.01em; }
   .text-display-sm { font-size: clamp(1.25rem, 2.2vw, 1.5rem); line-height: 1.25; font-weight: 700; }
 
+  /* Enterprise headline/body tokens */
+  .enterprise-headline { @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight; }
+  .enterprise-body { @apply text-muted-foreground text-lg leading-relaxed; }
+  .section-padding-large { @apply py-16 md:py-24; }
+
+  /* Clerk-inspired badge */
+  .clerk-inspired-badge { @apply inline-flex items-center gap-2 rounded-full px-3 py-1 text-xs border; }
+  .clerk-inspired-badge { 
+    border-color: oklch(from var(--border) l c h / .7);
+    background: oklch(from var(--background) l c h / .95);
+    color: oklch(from var(--foreground) l c h / .75);
+  }
+
+  /* Interactive tile */
+  .clerk-interactive-tile { @apply rounded-xl border bg-background transition-all duration-200; }
+  .clerk-interactive-tile:hover { @apply shadow-sm; }
+
   /* Professional card surface */
   .platform-card-professional { @apply bg-muted/40 border rounded-xl shadow-sm; }
 
