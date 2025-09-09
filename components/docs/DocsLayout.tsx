@@ -7,6 +7,16 @@ import { Search, Menu, X, ArrowRight, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import navigation from '../../docs/navigation.json';
+import ChatWidget from '@/components/shared/ai/ChatWidget';
+
+function AskAIContainer() {
+  return (
+    <ChatWidget onClose={() => {
+      const el = document.getElementById('docs-ask-ai');
+      if (el) el.classList.add('hidden');
+    }} />
+  );
+}
 
 interface DocsLayoutProps {
   children: ReactNode;
@@ -66,9 +76,11 @@ export function DocsLayout({ children, title, description, slug }: DocsLayoutPro
             </div>
 
             <div className="flex items-center gap-3">
-              <Button variant="outline" size="sm">
-                Ask AI
-                <ArrowRight className="ml-1 h-3 w-3" />
+              <Button variant="outline" size="sm" onClick={() => setSidebarOpen(false)} asChild>
+                <a href="#ask-ai" onClick={(e) => { e.preventDefault(); const el = document.getElementById('docs-ask-ai'); if (el) el.classList.toggle('hidden'); }}>
+                  Ask AI
+                  <ArrowRight className="ml-1 h-3 w-3" />
+                </a>
               </Button>
               <Button variant="ghost" size="sm">Create account</Button>
               <Button variant="ghost" size="sm">Sign in</Button>
@@ -171,6 +183,16 @@ export function DocsLayout({ children, title, description, slug }: DocsLayoutPro
 
         {/* Main content */}
         <main className="flex-1 lg:pl-0">
+          {/* Ask AI flyout */}
+          <div id="docs-ask-ai" className="hidden fixed bottom-4 right-4 z-50">
+            {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+            {/* Chat widget */}
+            {/* Using dynamic import would be overkill here; component is light. */}
+            <div className="relative">
+              <AskAIContainer />
+            </div>
+          </div>
+
           <div className="mx-auto max-w-4xl p-6 lg:p-8">
             {/* Breadcrumbs */}
             {slug && slug.length > 0 && (

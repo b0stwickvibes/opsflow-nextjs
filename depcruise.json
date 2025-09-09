@@ -89,6 +89,7 @@
         "components/shared/forms/LeadCapture.tsx",
         "components/shared/forms/RestaurantContactForm.tsx",
         "components/docs/DocsLayout.tsx",
+        "components/shared/ai/ChatWidget.tsx",
         "app/docs/page.tsx",
         "components/shared/feedback/BackToTop.tsx",
         "components/shared/feedback/ErrorDisplay.tsx",
@@ -350,6 +351,19 @@
       ],
       "orphan": false,
       "valid": true
+    },
+    {
+      "source": "app/api/chat/route.ts",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": false,
+      "rules": [
+        {
+          "severity": "warn",
+          "name": "no-orphans"
+        }
+      ]
     },
     {
       "source": "app/api/page.tsx",
@@ -3407,6 +3421,7 @@
         "components/shared/forms/LeadCapture.tsx",
         "components/shared/forms/RestaurantContactForm.tsx",
         "components/docs/DocsLayout.tsx",
+        "components/shared/ai/ChatWidget.tsx",
         "components/domain/pricing/ROICalculator.tsx",
         "components/domain/demo/DemoBooking.tsx",
         "components/shared/data-display/ResourcePages.tsx",
@@ -4048,6 +4063,26 @@
           "valid": true
         },
         {
+          "module": "@/components/shared/ai/ChatWidget",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/shared/ai/ChatWidget.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
           "module": "@/components/ui/button",
           "moduleSystem": "es6",
           "dynamic": false,
@@ -4090,6 +4125,56 @@
       ],
       "dependents": [
         "app/docs/[...slug]/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/shared/ai/ChatWidget.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/input",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/input.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/docs/DocsLayout.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -20226,6 +20311,15 @@
     "violations": [
       {
         "type": "module",
+        "from": "app/api/chat/route.ts",
+        "to": "app/api/chat/route.ts",
+        "rule": {
+          "severity": "warn",
+          "name": "no-orphans"
+        }
+      },
+      {
+        "type": "module",
         "from": "app/error.tsx",
         "to": "app/error.tsx",
         "rule": {
@@ -20280,11 +20374,11 @@
       }
     ],
     "error": 0,
-    "warn": 6,
+    "warn": 7,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 326,
-    "totalDependenciesCruised": 850,
+    "totalCruised": 328,
+    "totalDependenciesCruised": 853,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,
