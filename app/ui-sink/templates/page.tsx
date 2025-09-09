@@ -2,6 +2,7 @@
 import React, { useMemo, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import CopyButton from "@/components/ui/CopyButton";
 
 // OpsFlow sections
@@ -37,6 +38,30 @@ type TemplateItem = {
   importPath: string;
   importName: string;
 };
+
+// Simple error boundary to sandbox broken templates
+class TemplateBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean; msg?: string }> {
+  constructor(props: { children: React.ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError(error: Error) {
+    return { hasError: true, msg: error?.message };
+  }
+  componentDidCatch(_e: Error) {
+    // noop: keep catalog resilient
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="rounded-md border border-destructive/40 bg-destructive/5 p-4 text-sm text-destructive">
+          Template failed to render. Check export, props, or styling. {this.state.msg && <span className="opacity-70">({this.state.msg})</span>}
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 // Build registry
 const REGISTRY: TemplateItem[] = [
@@ -149,6 +174,8 @@ function usageSnippet(item: TemplateItem) {
 
 export default function TemplateCatalogPage() {
   const [selected, setSelected] = useState<Category>("all");
+  const [query, setQuery] = useState("");
+  const [sort, setSort] = useState<"az" | "za" | "category">("az");
 
   const counts = useMemo(() => {
     const map = new Map<string, number>();
@@ -157,9 +184,26 @@ export default function TemplateCatalogPage() {
   }, []);
 
   const filtered = useMemo(() => {
-    if (selected === "all") return REGISTRY;
-    return REGISTRY.filter((i) => i.tags.includes(selected));
-  }, [selected]);
+    const base = selected === "all" ? REGISTRY : REGISTRY.filter((i) => i.tags.includes(selected));
+    const q = query.trim().toLowerCase();
+    const searched = q
+      ? base.filter((i) =>
+          i.title.toLowerCase().includes(q) ||
+          i.importName.toLowerCase().includes(q) ||
+          i.tags.some((t) => t.toLowerCase().includes(q))
+        )
+      : base;
+    const sorted = [...searched].sort((a, b) => {
+      if (sort === "az") return a.title.localeCompare(b.title);
+      if (sort === "za") return b.title.localeCompare(a.title);
+      // category: compare first tag then title
+      const at = a.tags[0] || "";
+      const bt = b.tags[0] || "";
+      const c = at.localeCompare(bt);
+      return c !== 0 ? c : a.title.localeCompare(b.title);
+    });
+    return sorted;
+  }, [selected, query, sort]);
 
   return (
     <main className="min-h-screen bg-background">
@@ -169,6 +213,19 @@ export default function TemplateCatalogPage() {
             <div className="clerk-inspired-badge mb-2"><span>Template Catalog</span></div>
             <h1 className="enterprise-headline">OpsFlow Section Library</h1>
             <p className="enterprise-body mt-2">Preview and copy standardized sections. Use filters to browse by type.</p>
+          </div>
+
+          {/* Search + Sort */}
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+            <div className="w-full md:max-w-sm">
+              <Input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search by name or tag…" />
+            </div>
+            <div className="flex items-center gap-2 text-sm">
+              <span className="text-muted-foreground">Sort</span>
+              <Button size="sm" variant={sort === "az" ? "default" : "outline"} onClick={() => setSort("az")}>A–Z</Button>
+              <Button size="sm" variant={sort === "za" ? "default" : "outline"} onClick={() => setSort("za")}>Z–A</Button>
+              <Button size="sm" variant={sort === "category" ? "default" : "outline"} onClick={() => setSort("category")}>Category</Button>
+            </div>
           </div>
 
           {/* Filters */}
@@ -194,7 +251,9 @@ export default function TemplateCatalogPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="container">
-                    <Section />
+                    <TemplateBoundary>
+                      <Section />
+                    </TemplateBoundary>
                   </div>
                 </CardContent>
               </Card>

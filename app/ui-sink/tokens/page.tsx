@@ -7,6 +7,13 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import ShimmerButton from "@/components/magicui/shimmer-button";
 import AnimatedBeam from "@/components/magicui/animated-beam";
+import { Switch } from "@/components/ui/switch";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
 
 const SHADES = ["50","100","200","300","400","500","600","700","800","900","950"] as const;
 
@@ -146,12 +153,83 @@ export default function TokensPage() {
                 </CardContent>
               </Card>
               <Card>
-                <CardHeader><CardTitle>Card Surface</CardTitle></CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground">Use Card for grouped content and surface elevation.</p>
+                <CardHeader><CardTitle>Form Controls</CardTitle></CardHeader>
+                <CardContent className="flex flex-col gap-4">
+                  <div className="flex items-center gap-3">
+                    <Switch id="notifications" />
+                    <label htmlFor="notifications" className="text-sm">Enable notifications</label>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Checkbox id="tos" />
+                    <label htmlFor="tos" className="text-sm">Accept terms</label>
+                  </div>
+                  <div className="w-56">
+                    <Select>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select location" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="nyc">New York</SelectItem>
+                        <SelectItem value="sf">San Francisco</SelectItem>
+                        <SelectItem value="atx">Austin</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 </CardContent>
               </Card>
             </div>
+          </div>
+
+          {/* Overlays */}
+          <div className="space-y-4">
+            <h2 className="text-display-sm">Overlays</h2>
+            <div className="grid gap-6 md:grid-cols-2">
+              <Card>
+                <CardHeader><CardTitle>Dialog</CardTitle></CardHeader>
+                <CardContent>
+                  <Dialog>
+                    <DialogTrigger asChild>
+                      <Button variant="outline">Open Dialog</Button>
+                    </DialogTrigger>
+                    <DialogContent>
+                      <DialogHeader>
+                        <DialogTitle>Confirm Action</DialogTitle>
+                        <DialogDescription>Are you sure you want to proceed?</DialogDescription>
+                      </DialogHeader>
+                    </DialogContent>
+                  </Dialog>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardHeader><CardTitle>Hover Card</CardTitle></CardHeader>
+                <CardContent>
+                  <HoverCard>
+                    <HoverCardTrigger asChild>
+                      <Button variant="outline">Hover me</Button>
+                    </HoverCardTrigger>
+                    <HoverCardContent className="w-64">Rich content on hover for hints and helpers.</HoverCardContent>
+                  </HoverCard>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Tabs */}
+          <div className="space-y-4">
+            <h2 className="text-display-sm">Tabs</h2>
+            <Card>
+              <CardContent className="pt-6">
+                <Tabs defaultValue="overview">
+                  <TabsList>
+                    <TabsTrigger value="overview">Overview</TabsTrigger>
+                    <TabsTrigger value="details">Details</TabsTrigger>
+                  </TabsList>
+                  <Separator className="my-3" />
+                  <TabsContent value="overview" className="text-sm text-muted-foreground">High-level summary content…</TabsContent>
+                  <TabsContent value="details" className="text-sm text-muted-foreground">More detailed content…</TabsContent>
+                </Tabs>
+              </CardContent>
+            </Card>
           </div>
 
           {/* MagicUI */}
