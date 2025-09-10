@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "templates:refactor:heroes": "node ./scripts/refactor-processed-heroes.mjs",
+    "templates:refactor:processed": "node ./scripts/refactor-processed.mjs features stats pricing compare bento faqs about logos integration testimonials contact ctas",
     "dev:stop": "bash scripts/dev-stop.sh",
     "build": "next build",
     "start": "next start",

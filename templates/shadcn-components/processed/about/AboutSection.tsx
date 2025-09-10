@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { CheckCircle, Users, Clock, Shield } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -128,24 +129,26 @@ export function AboutSection({
         {/* Hero Section */}
         <div className="flex flex-col gap-7">
           <h1 
-            className="text-4xl font-semibold lg:text-7xl"
+            className="text-display-2xl  font-semibold lg:text-7xl"
             style={{ color: config.color }}
           >
             {customTitle || config.title}
           </h1>
-          <p className="max-w-xl text-lg text-muted-foreground">
+          <p className="enterprise-body max-w-xl  text-muted-foreground">
             {customDescription || config.description}
           </p>
         </div>
 
         {/* Mission & Image Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          <img
+          <Image
             src={`/images/${industry}-operations.jpg`}
             alt={`${industry} operations management`}
             className="size-full max-h-96 rounded-2xl object-cover"
+            width={1200}
+            height={800}
             onError={(e) => {
-              const target = e.target as HTMLImageElement;
+              const target = e.currentTarget as HTMLImageElement;
               target.src = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=400&fit=crop&crop=center";
             }}
           />
@@ -159,7 +162,7 @@ export function AboutSection({
             <p className="text-sm font-medium tracking-wide" style={{ color: config.color }}>
               OUR MISSION
             </p>
-            <p className="text-lg font-medium text-foreground">
+            <p className="enterprise-body  font-medium text-foreground">
               {config.mission}
             </p>
           </div>
@@ -168,7 +171,7 @@ export function AboutSection({
         {/* Features Section */}
         <div className="flex flex-col gap-6 md:gap-20">
           <div className="max-w-xl">
-            <h2 className="mb-2.5 text-3xl font-semibold md:text-5xl">
+            <h2 className="enterprise-headline mb-2.5 text-3xl font-semibold md:">
               We make {industry} operations ridiculously efficient
             </h2>
             <p className="text-muted-foreground">
@@ -185,7 +188,7 @@ export function AboutSection({
                 >
                   <feature.icon className="size-5" style={{ color: config.color }} />
                 </div>
-                <h3 className="mt-2 mb-3 text-lg font-semibold">
+                <h3 className="enterprise-body mt-2 mb-3  font-semibold">
                   {feature.title}
                 </h3>
                 <p className="text-muted-foreground">
@@ -203,17 +206,19 @@ export function AboutSection({
               <p className="mb-10 text-sm font-medium tracking-wide" style={{ color: config.color }}>
                 JOIN OUR TEAM
               </p>
-              <h2 className="mb-2.5 text-3xl font-semibold md:text-5xl">
+              <h2 className="enterprise-headline mb-2.5 text-3xl font-semibold md:">
                 We're transforming {industry} operations
               </h2>
             </div>
             <div>
-              <img
+              <Image
                 src={`/images/${industry}-team.jpg`}
                 alt={`${industry} operations team`}
                 className="mb-6 max-h-36 w-full rounded-xl object-cover"
+                width={1200}
+                height={800}
                 onError={(e) => {
-                  const target = e.target as HTMLImageElement;
+                  const target = e.currentTarget as HTMLImageElement;
                   target.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=200&fit=crop&crop=center";
                 }}
               />
