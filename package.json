@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "templates:refactor:heroes": "node ./scripts/refactor-processed-heroes.mjs",
     "dev:stop": "bash scripts/dev-stop.sh",
     "build": "next build",
     "start": "next start",

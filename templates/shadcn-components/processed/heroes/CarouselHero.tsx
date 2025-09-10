@@ -8,6 +8,7 @@ import {
   CheckSquare,
   BarChart3,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -136,12 +137,12 @@ export function CarouselHero({
             <CarouselContent>
               {slides.map((slide, index) => (
                 <CarouselItem key={index}>
-                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-50 to-blue-50 dark:from-orange-950/20 dark:to-blue-950/20">
-                    <img
+                  <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 to-blue-50 dark:from-orange-950/20 dark:to-blue-950/20">
+                    <Image
                       src={slide.image}
                       alt={slide.alt}
                       className="h-[400px] w-full object-cover sm:h-[500px] lg:h-[600px]"
-                    />
+                     width={1200} height={800} />
                     {/* Overlay for better text contrast */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
                   </div>
@@ -161,11 +162,11 @@ export function CarouselHero({
         {/* Content Section */}
         <div className="space-y-12 text-center">
           <div className="mx-auto max-w-4xl">
-            <h1 className="text-display-2xl text-gray-900 dark:text-gray-100">
+            <h1 className="text-display-2xl text-primary dark:text-primary">
               {title}
             </h1>
 
-            <p className="text-muted-foreground mt-6 text-xl font-medium lg:text-2xl">
+            <p className="enterprise-body text-muted-foreground mt-6  font-medium lg:text-2xl">
               {subtitle}
             </p>
           </div>
@@ -177,12 +178,12 @@ export function CarouselHero({
               return (
                 <div key={feature.title} className="space-y-4 text-center">
                   <div className="flex justify-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 dark:bg-orange-900/30">
-                      <Icon className="h-6 w-6 text-orange-600" />
+                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary dark:bg-primary/30">
+                      <Icon className="h-6 w-6 text-primary" />
                     </div>
                   </div>
                   <div>
-                    <h2 className="text-lg font-semibold text-gray-900 dark:text-gray-100">
+                    <h2 className="enterprise-body  font-semibold text-primary dark:text-primary">
                       {feature.title}
                     </h2>
                     <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
@@ -198,7 +199,7 @@ export function CarouselHero({
             <Button 
               size="lg" 
               onClick={handlePrimaryClick}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+              className="enterprise-body bg-gradient-to-r from-primary/100 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0 px-8 py-6  font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
               aria-label={primaryCTA}
             >
               {primaryCTA}
@@ -207,7 +208,7 @@ export function CarouselHero({
               onClick={handleSecondaryClick}
               variant="outline" 
               size="lg"
-              className="px-8 py-6 text-lg font-semibold bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white hover:border-gray-300 transition-all duration-200"
+              className="enterprise-body px-8 py-6  font-semibold bg-card/80 backdrop-blur-sm border-primary hover:bg-card hover:border-primary transition-all duration-200"
               aria-label={secondaryCTA}
             >
               <span className="flex items-center gap-2">
@@ -240,10 +241,10 @@ const SlideIndicator = ({
       className={cn("flex flex-col items-center gap-2 font-medium", className)}
     >
       <div className="">
-        <span className="text-gray-600 dark:text-gray-400">
+        <span className="text-primary dark:text-primary">
           {currentSlide + 1} of {slides.length} — 
         </span>
-        <span className="text-orange-600 ml-1">
+        <span className="text-primary ml-1">
           {slides[currentSlide].label}
         </span>
       </div>
@@ -256,8 +257,8 @@ const SlideIndicator = ({
             className={cn(
               "h-1 w-8 rounded-full transition-colors",
               index === currentSlide
-                ? "bg-orange-500"
-                : "bg-orange-200 hover:bg-orange-300 dark:bg-orange-800 dark:hover:bg-orange-700",
+                ? "bg-primary0"
+                : "bg-primary hover:bg-primary dark:bg-primary dark:hover:bg-primary",
             )}
           />
         ))}

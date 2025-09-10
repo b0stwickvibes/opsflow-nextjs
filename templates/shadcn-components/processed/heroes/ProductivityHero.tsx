@@ -10,6 +10,7 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
@@ -115,19 +116,19 @@ const ProductivityHero = ({
 
   const colorClasses = {
     orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-600 hover:bg-orange-700',
-      accent: 'bg-orange-100 dark:bg-orange-900/20',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary hover:bg-primary',
+      accent: 'bg-primary dark:bg-primary/20',
     },
     purple: {
-      primary: 'text-purple-600 dark:text-purple-400',
-      bg: 'bg-purple-600 hover:bg-purple-700',
-      accent: 'bg-purple-100 dark:bg-purple-900/20',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary hover:bg-primary',
+      accent: 'bg-primary dark:bg-primary/20',
     },
     amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-600 hover:bg-amber-700',
-      accent: 'bg-amber-100 dark:bg-amber-900/20',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary hover:bg-primary',
+      accent: 'bg-primary dark:bg-primary/20',
     },
   };
 
@@ -148,11 +149,11 @@ const ProductivityHero = ({
               <CarouselContent>
                 {content.slides.map((slide, index) => (
                   <CarouselItem key={index}>
-                    <img
+                    <Image
                       src={slide.image}
                       alt={`${industry} ${slide.label} interface`}
                       className="h-[400px] w-full rounded-2xl object-cover shadow-2xl sm:h-[500px] lg:h-[600px] hover:shadow-3xl transition-shadow duration-300"
-                    />
+                     width={1200} height={800} />
                   </CarouselItem>
                 ))}
               </CarouselContent>
@@ -194,11 +195,11 @@ const ProductivityHero = ({
               <span className="text-sm font-medium">Productivity Boost</span>
             </div>
             
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl mb-6">
+            <h1 className="text-display-2xl enterprise-headline text-3xl font-bold tracking-tight sm: md: lg:text-6xl mb-6">
               {content.title}
             </h1>
 
-            <p className="text-muted-foreground text-xl font-medium lg:text-2xl">
+            <p className="enterprise-body text-muted-foreground  font-medium lg:text-2xl">
               {content.subtitle}
             </p>
           </div>
@@ -224,7 +225,7 @@ const ProductivityHero = ({
                       </div>
                     </div>
                     <div>
-                      <h2 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                      <h2 className="enterprise-body  font-semibold group-hover:text-primary transition-colors">
                         {feature.title}
                       </h2>
                       <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
