@@ -285,11 +285,11 @@ export function PricingFeatures({
   return (
     <section className="relative overflow-hidden py-32 text-center">
       <div className="container">
-        <h1 className="text-4xl font-semibold tracking-tight md:text-5xl lg:text-6xl">
+        <h1 className="text-display-2xl enterprise-headline  font-semibold tracking-tight md: lg:text-6xl">
           {config.title}
         </h1>
         <div className="mx-auto mt-4 max-w-[45rem] space-y-2">
-          <p className="text-muted-foreground text-xl md:text-2xl">
+          <p className="enterprise-body text-muted-foreground  md:text-2xl">
             {config.subtitle}
           </p>
         </div>
@@ -297,8 +297,7 @@ export function PricingFeatures({
         <div className="relative mt-8 overflow-hidden md:mt-12 lg:mt-20">
           {/* Background and layout wrapper */}
           <div 
-            className="absolute inset-0 hidden rounded-3xl md:block"
-            style={{ background: `linear-gradient(to right, ${config.color}, oklch(from ${config.color} l c h / 0.8))` }}
+            className="absolute inset-0 hidden rounded-3xl md:block bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10"
           >
             <PlusSigns className="text-white/[0.05] h-full w-full" />
           </div>
@@ -309,7 +308,6 @@ export function PricingFeatures({
                 key={tier.name}
                 tier={tier}
                 isHighlighted={index === 1}
-                color={config.color}
                 onCTAClick={() => handleCTAClick(tier)}
               />
             ))}
@@ -340,11 +338,10 @@ export function PricingFeatures({
 interface PricingCardProps {
   tier: PricingTier;
   isHighlighted: boolean;
-  color: string;
   onCTAClick: () => void;
 }
 
-function PricingCard({ tier, isHighlighted, color, onCTAClick }: PricingCardProps) {
+function PricingCard({ tier, isHighlighted, onCTAClick }: PricingCardProps) {
   const styles = {
     card: cn(
       "flex flex-col gap-6 rounded-xl p-6 sm:rounded-2xl md:rounded-none lg:p-8",
@@ -386,9 +383,9 @@ function PricingCard({ tier, isHighlighted, color, onCTAClick }: PricingCardProp
     button: cn(
       "group relative w-full transition-all duration-200",
       // Desktop styles
-      "md:text-white md:bg-white/10 md:border-white/20 md:hover:bg-white/20",
+      "md:text-white md:bg-card/10 md:border-white/20 md:hover:bg-card/20",
       isHighlighted &&
-        "md:bg-white md:text-primary md:hover:bg-white/90 md:shadow-lg",
+        "md:bg-card md:text-primary md:hover:bg-card/90 md:shadow-lg",
     ),
   };
 
@@ -408,12 +405,10 @@ function PricingCard({ tier, isHighlighted, color, onCTAClick }: PricingCardProp
         {tier.features.map((feature) => (
           <li key={feature} className="flex items-start gap-3">
             <Check 
-              className="size-4 shrink-0 mt-0.5" 
-              style={{ 
-                color: isHighlighted 
-                  ? (typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches ? 'white' : color)
-                  : color 
-              }}
+              className={cn(
+                "size-4 shrink-0 mt-0.5 text-primary",
+                isHighlighted && "md:text-white"
+              )}
             />
             <span>{feature}</span>
           </li>
@@ -424,9 +419,12 @@ function PricingCard({ tier, isHighlighted, color, onCTAClick }: PricingCardProp
         <Button
           variant={isHighlighted ? "default" : "outline"}
           size="lg"
-          className={styles.button}
+          className={cn(
+            styles.button,
+            !isHighlighted && "border-primary text-primary",
+            isHighlighted && "cta-shimmer"
+          )}
           onClick={handleClick}
-          style={isHighlighted ? {} : { borderColor: color, color: color }}
           aria-label={`${tier.cta.text} for ${tier.name} plan`}
         >
           {tier.cta.text}

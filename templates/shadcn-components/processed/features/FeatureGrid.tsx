@@ -105,10 +105,10 @@ export function FeatureGrid({
   return (
     <section className={`container py-32 lg:py-40 ${className}`}>
       <div className="mb-12 text-center">
-        <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+        <h2 className="text-display-2xl mb-4 text-3xl font-bold tracking-tight lg:">
           Restaurant Operations Excellence
         </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+        <p className="enterprise-body  text-muted-foreground max-w-2xl mx-auto">
           Comprehensive HACCP compliance and operational control designed for modern restaurant chains
         </p>
       </div>
@@ -124,10 +124,10 @@ export function FeatureGrid({
         ))}
         
         {/* Hero CTA Block - spans 2x2 grid */}
-        <div className="flex w-full grow flex-col gap-6 rounded-lg bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 p-6 transition-all hover:from-primary/10 hover:via-primary/15 hover:to-primary/10 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-2 lg:p-10">
+        <div className="flex w-full grow flex-col gap-6 rounded-lg bg-brand-surface p-6 transition-all md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-2 lg:p-10">
           <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-center">
             <div className="flex-1">
-              <h3 className="mb-2 text-xl font-bold tracking-tight lg:text-3xl">
+              <h3 className="enterprise-body mb-2  font-bold tracking-tight lg:text-3xl">
                 Complete Restaurant Control
               </h3>
               <p className="text-sm text-muted-foreground lg:text-base max-w-sm">
@@ -151,12 +151,12 @@ export function FeatureGrid({
               <div className="mb-4 h-4 w-3/4 bg-primary/20 rounded"></div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <div className="h-2 w-full bg-green-500/30 rounded"></div>
-                  <div className="h-2 w-2/3 bg-green-500/20 rounded"></div>
+                  <div className="h-2 w-full bg-primary/30 rounded"></div>
+                  <div className="h-2 w-2/3 bg-primary/20 rounded"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="h-2 w-full bg-orange-500/30 rounded"></div>
-                  <div className="h-2 w-1/2 bg-orange-500/20 rounded"></div>
+                  <div className="h-2 w-full bg-secondary/30 rounded"></div>
+                  <div className="h-2 w-1/2 bg-secondary/20 rounded"></div>
                 </div>
               </div>
             </div>
@@ -185,9 +185,9 @@ const FeatureBlock: React.FC<FeatureBlockProps & {
   const getComplianceColor = (level?: string) => {
     switch (level) {
       case "critical":
-        return "border-red-500/20 hover:border-red-500/40";
+        return "border-destructive/20 hover:border-destructive/40";
       case "high":
-        return "border-orange-500/20 hover:border-orange-500/40";
+        return "border-secondary/20 hover:border-secondary/40";
       default:
         return "border-primary/20 hover:border-primary/40";
     }

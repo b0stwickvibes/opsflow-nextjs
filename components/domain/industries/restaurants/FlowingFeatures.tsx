@@ -378,19 +378,19 @@ export default function FlowingFeatures() {
                     className="text-center space-y-6"
                   >
                     {/* Feature Icon */}
-                    <motion.div 
-                      className="mx-auto w-20 h-20 bg-gradient-to-br from-blue-500 via-purple-600 to-pink-600 rounded-2xl flex items-center justify-center shadow-xl"
-                      animate={{ 
-                        rotate: [0, 5, -5, 0],
-                        scale: [1, 1.05, 1]
-                      }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    >
-                      {(() => {
-                        const IconComponent = MAIN_FEATURES[activeFeature].icon;
-                        return <IconComponent className="h-10 w-10 text-white" />;
-                      })()}
-                    </motion.div>
+              <motion.div 
+                className="icon-badge-ambient mx-auto w-20 h-20 rounded-2xl flex items-center justify-center shadow-xl"
+                animate={{ 
+                  rotate: [0, 5, -5, 0],
+                  scale: [1, 1.05, 1]
+                }}
+                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              >
+                {(() => {
+                  const IconComponent = MAIN_FEATURES[activeFeature].icon;
+                  return <IconComponent className="h-10 w-10 text-white" />;
+                })()}
+              </motion.div>
                     
                     <div>
                       <h4 className="text-2xl font-bold mb-2">

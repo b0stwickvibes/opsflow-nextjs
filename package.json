@@ -15,7 +15,8 @@
     "capture:features": "node scripts/capture-features.mjs",
     "deps:cruise": "depcruise -c .dependency-cruiser.cjs components lib app hooks types --output-type json > depcruise.json",
     "enforce:filenames": "node scripts/enforce-filenames.mjs",
-    "enforce:all": "npm run deps:cruise && npm run enforce:filenames"
+    "enforce:all": "npm run deps:cruise && npm run enforce:filenames",
+    "page:blueprint": "node scripts/page-blueprinter.mjs"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.31.6",
@@ -52,9 +53,12 @@
     "clsx": "^2.1.1",
     "cmdk": "^1.0.4",
     "cobe": "^0.6.4",
+    "embla-carousel-auto-scroll": "^8.6.0",
+    "embla-carousel-autoplay": "^8.6.0",
     "framer-motion": "^12.23.12",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.469.0",
+    "motion": "^12.23.12",
     "next": "^15.1.4",
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.4.6",

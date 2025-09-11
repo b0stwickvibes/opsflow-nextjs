@@ -32,11 +32,11 @@ const FinalCTA = ({ className }: { className?: string }) => {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <ShimmerButton size="lg" className="px-8 py-6 text-base">
+                <ShimmerButton size="lg" className="clerk-cta-primary cta-shimmer hover-scale-103 px-8 py-6 text-base">
                   Start Free Trial
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </ShimmerButton>
-                <Button variant="outline" size="lg" className="px-8 py-6 text-base">
+                <Button variant="outline" size="lg" className="px-8 py-6 text-base hover-scale-103 border-2">
                   Contact Sales
                 </Button>
               </div>

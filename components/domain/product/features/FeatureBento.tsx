@@ -235,13 +235,13 @@ export function FeatureBento({
   };
 
   return (
-    <section className={`overflow-hidden py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing overflow-hidden ${className}`}>
       <div className="container">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
             Operations Dashboard
           </Badge>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h2 className="heading-brand-gradient mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
             Complete Operations Control Center
           </h2>
           <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
@@ -322,7 +322,7 @@ export function FeatureBento({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" onClick={handleExploreClick}>
+              <Button size="lg" onClick={handleExploreClick} className="cta-shimmer">
                 Explore Live Dashboard
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -354,7 +354,7 @@ const DashboardCard: React.FC<{
   const Icon = widget.icon;
 
   return (
-    <div className="bg-card border relative z-20 flex h-full flex-col rounded-2xl p-6 transition-all duration-200 hover:shadow-lg">
+    <div className="bg-card border relative z-20 flex h-full flex-col rounded-2xl p-6 transition-all duration-200 hover:shadow-lg tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background">
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className={cn("p-3 rounded-xl", widget.bgColor)}>

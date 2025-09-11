@@ -25,7 +25,7 @@ const INDUSTRY_VISION_CONTENT = {
     ],
     icon: ChefHat,
     color: "orange",
-    bgColor: "bg-orange-50/50 dark:bg-orange-950/10",
+    bgColor: "bg-primary/50 dark:bg-orange-950/10",
   },
   bar: {
     title: "Discover our vision for smarter, more profitable bars",
@@ -38,7 +38,7 @@ const INDUSTRY_VISION_CONTENT = {
     ],
     icon: BarChart3,
     color: "purple",
-    bgColor: "bg-purple-50/50 dark:bg-purple-950/10",
+    bgColor: "bg-primary/50 dark:bg-purple-950/10",
   },
   cafe: {
     title: "Explore our vision for streamlined, exceptional cafés",
@@ -51,7 +51,7 @@ const INDUSTRY_VISION_CONTENT = {
     ],
     icon: Clock,
     color: "amber",
-    bgColor: "bg-amber-50/50 dark:bg-amber-950/10",
+    bgColor: "bg-primary/50 dark:bg-amber-950/10",
   },
 };
 
@@ -84,22 +84,22 @@ const VisionHero = ({
   // Industry-specific styling
   const colorClasses = {
     orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-600',
-      hover: 'hover:bg-orange-700',
-      accent: 'bg-orange-100 dark:bg-orange-900/20',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
+      accent: 'bg-primary dark:bg-primary/20',
     },
     purple: {
-      primary: 'text-purple-600 dark:text-purple-400',
-      bg: 'bg-purple-600',
-      hover: 'hover:bg-purple-700',
-      accent: 'bg-purple-100 dark:bg-purple-900/20',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
+      accent: 'bg-primary dark:bg-primary/20',
     },
     amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-600',
-      hover: 'hover:bg-amber-700',
-      accent: 'bg-amber-100 dark:bg-amber-900/20',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
+      accent: 'bg-primary dark:bg-primary/20',
     },
   };
 

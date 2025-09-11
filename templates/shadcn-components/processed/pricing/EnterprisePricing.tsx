@@ -308,12 +308,7 @@ export function EnterprisePricing({
       <div className="container">
         <div className="flex w-full flex-col items-center gap-4">
           <Badge 
-            className="flex items-center gap-2 rounded-full border px-4 py-1.5"
-            style={{ 
-              borderColor: config.color,
-              backgroundColor: `oklch(from ${config.color} l c h / 0.1)`,
-              color: config.color
-            }}
+            className="flex items-center gap-2 rounded-full border px-4 py-1.5 border-primary bg-primary/10 text-primary"
           >
             <Crown className="size-3" />
             <p className="text-sm leading-5 font-medium">
@@ -321,11 +316,11 @@ export function EnterprisePricing({
             </p>
           </Badge>
           
-          <h2 className="max-w-full text-center text-3xl font-semibold md:max-w-[42.5rem] md:text-5xl">
+          <h2 className="enterprise-headline max-w-full text-center text-3xl font-semibold md:max-w-[42.5rem] md:">
             {config.title}
           </h2>
           
-          <p className="text-center text-lg text-muted-foreground max-w-3xl">
+          <p className="enterprise-body text-center  text-muted-foreground max-w-3xl">
             {config.subtitle}
           </p>
 
@@ -339,10 +334,9 @@ export function EnterprisePricing({
                 key={`addon-${i}`}
               >
                 {addon.popular && (
-                  <div 
-                    className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-medium text-white flex items-center gap-1"
-                    style={{ backgroundColor: config.color }}
-                  >
+              <div 
+                className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-medium bg-primary text-primary-foreground flex items-center gap-1"
+              >
                     <Star className="size-3" />
                     Most Popular
                   </div>
@@ -351,14 +345,13 @@ export function EnterprisePricing({
                 <div className="flex w-full flex-col gap-4 p-6 md:flex-row">
                   <div className="relative flex size-12">
                     <div 
-                      className="relative z-20 m-auto flex size-11 shrink-0 rounded-full"
-                      style={{ backgroundColor: config.color }}
+                      className="relative z-20 m-auto flex size-11 shrink-0 rounded-full bg-primary"
                     >
                       <addon.icon className="m-auto size-5 stroke-white" />
                     </div>
                   </div>
                   <div className="flex flex-col gap-1">
-                    <h3 className="text-xl font-medium">{addon.name}</h3>
+                    <h3 className="enterprise-body  font-medium">{addon.name}</h3>
                     <p className="text-base text-muted-foreground">
                       {addon.description}
                     </p>
@@ -367,7 +360,7 @@ export function EnterprisePricing({
 
                 <div className="flex w-full flex-col items-center gap-2 p-6 md:flex-row">
                   <div className="flex w-full flex-wrap items-center gap-4 md:flex-nowrap">
-                    <div className="text-lg font-semibold">
+                    <div className="enterprise-body  font-semibold">
                       {addon.price.amount}
                     </div>
                     <div className="text-xs text-muted-foreground">
@@ -376,12 +369,8 @@ export function EnterprisePricing({
                   </div>
                   <Button
                     variant={addon.popular ? "default" : "outline"}
-                    className="h-12 w-full px-4 md:max-w-[10.625rem] hover:scale-105 transition-transform"
+                    className={`h-12 w-full px-4 md:max-w-[10.625rem] hover:scale-105 transition-transform ${addon.popular ? 'bg-primary text-primary-foreground' : 'border-primary text-primary'}`}
                     onClick={() => handleAddonClick(addon)}
-                    style={addon.popular 
-                      ? { backgroundColor: config.color }
-                      : { borderColor: config.color, color: config.color }
-                    }
                     aria-label={`Get ${addon.name} add-on`}
                   >
                     Get Add-on
@@ -406,8 +395,7 @@ export function EnterprisePricing({
                 trackEvent("enterprise_custom_solution_click", { industry });
                 window.location.href = `/contact-enterprise?industry=${industry}`;
               }}
-              style={{ backgroundColor: config.color }}
-              className="text-white hover:scale-105 transition-transform"
+              className="bg-primary text-primary-foreground hover:scale-105 transition-transform"
             >
               Discuss Custom Solutions
             </Button>

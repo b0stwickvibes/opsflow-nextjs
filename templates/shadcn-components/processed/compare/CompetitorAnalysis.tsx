@@ -207,7 +207,7 @@ export function CompetitorAnalysis({
         {/* Header */}
         <div className="col-span-4 mb-8 max-w-3xl md:col-span-8 md:mb-12 lg:col-span-10 lg:col-start-2 lg:mb-16">
           <h2 
-            className="mb-4 text-center text-3xl font-bold sm:text-left md:text-4xl lg:text-6xl"
+            className="text-display-2xl mb-4 text-center text-3xl font-bold sm:text-left md: lg:text-6xl"
             role="heading"
             aria-level={2}
           >
@@ -248,14 +248,14 @@ export function CompetitorAnalysis({
               }}
             >
               <div className="grid grid-cols-4 items-start gap-4 py-6 md:grid-cols-8 md:py-8">
-                <h3 className="col-span-4 mt-2 text-base font-bold md:col-span-2 md:text-lg">
+                <h3 className="enterprise-body col-span-4 mt-2 text-base font-bold md:col-span-2 md:">
                   {row.title}
                 </h3>
 
                 {/* Legacy Stat */}
                 <div className="col-span-2 flex flex-col md:col-span-3">
                   <div className="ml-0 transition-colors group-hover:text-foreground md:ml-32 lg:ml-40 xl:ml-48 2xl:ml-56">
-                    <p className="mb-1 flex items-baseline text-2xl font-bold text-foreground md:mb-2 md:text-5xl">
+                    <p className="enterprise-headline mb-1 flex items-baseline text-2xl font-bold text-foreground md:mb-2 md:">
                       {row.legacy.value}
                       {row.legacy.unit && (
                         <sup className="ml-0.5 text-xs text-foreground md:text-sm">
@@ -272,7 +272,7 @@ export function CompetitorAnalysis({
                 {/* Modern Stat */}
                 <div className="col-span-2 flex flex-col md:col-span-3">
                   <div className={cn("ml-0 transition-colors md:ml-32 lg:ml-40 xl:ml-48 2xl:ml-56", getIndustryColors())}>
-                    <p className="mb-1 flex items-baseline text-2xl font-bold md:mb-2 md:text-5xl">
+                    <p className="enterprise-headline mb-1 flex items-baseline text-2xl font-bold md:mb-2 md:">
                       {row.modern.value}
                       {row.modern.unit && (
                         <sup className="ml-0.5 text-xs md:text-sm">

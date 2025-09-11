@@ -181,13 +181,13 @@ export function BentoLayout({
           {badgeText}
         </p>
         <h2 
-          className="relative z-20 py-2 text-center font-sans text-5xl font-semibold tracking-tighter md:py-7 lg:text-6xl"
+          className="enterprise-headline relative z-20 py-2 text-center font-sans  font-semibold tracking-tighter md:py-7 lg:text-6xl"
           role="heading"
           aria-level={2}
         >
           {heading}
         </h2>
-        <p className="text-md text-muted-foreground mx-auto max-w-xl text-center lg:text-lg">
+        <p className="enterprise-body text-md text-muted-foreground mx-auto max-w-xl text-center lg:">
           {subheading}
         </p>
 
@@ -276,7 +276,7 @@ const BentoLayoutCard = ({
       </div>
       <h1 
         id={`bento-layout-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
-        className="text-xl font-medium tracking-tight"
+        className="enterprise-body  font-medium tracking-tight"
       >
         {title}
       </h1>

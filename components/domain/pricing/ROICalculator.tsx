@@ -44,7 +44,7 @@ export default function ROICalculator({ experimentId }: ROICalculatorProps) {
       <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <Collapsible open={isOpen} onOpenChange={handleToggle}>
           <CollapsibleTrigger asChild>
-            <Button variant="outline" size="lg" className="w-full mb-8 hover:bg-accent transition-colors" aria-expanded={isOpen} aria-controls="roi-calculator-content">
+            <Button variant="outline" size="lg" className="w-full mb-8 hover:bg-accent transition-colors cta-shimmer" aria-expanded={isOpen} aria-controls="roi-calculator-content">
               <Calculator className="w-5 h-5 mr-2" aria-hidden="true" />
               Calculate Your Restaurant ROI
               <ChevronDown className={`w-5 h-5 ml-2 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} aria-hidden="true" />

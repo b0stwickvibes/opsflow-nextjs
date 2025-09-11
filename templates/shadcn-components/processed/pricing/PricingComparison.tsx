@@ -267,13 +267,13 @@ export function PricingComparison({
     <section className="bg-muted/50 py-32">
       <div className="container">
         <div className="flex flex-col items-center gap-6">
-          <Badge variant="outline" className="border-2" style={{ borderColor: config.color, color: config.color }}>
+          <Badge variant="outline" className="border-2 border-primary text-primary">
             Pricing
           </Badge>
-          <h1 className="text-center text-4xl font-semibold text-balance sm:text-5xl lg:text-7xl">
+          <h1 className="text-display-2xl enterprise-headline text-center  font-semibold text-balance sm: lg:text-7xl">
             {config.title}
           </h1>
-          <p className="text-center text-lg text-muted-foreground max-w-2xl">
+          <p className="enterprise-body text-center  text-muted-foreground max-w-2xl">
             {config.subtitle}
           </p>
           
@@ -295,7 +295,7 @@ export function PricingComparison({
             {/* Starter Plan */}
             <div className="w-full rounded-lg border bg-background p-8 shadow-sm">
               <div className="flex flex-col gap-1">
-                <h3 className="text-xl font-semibold">{config.plans.starter.name}</h3>
+                <h3 className="enterprise-body  font-semibold">{config.plans.starter.name}</h3>
                 <p className="text-sm text-muted-foreground">
                   {config.plans.starter.description}
                 </p>
@@ -304,8 +304,8 @@ export function PricingComparison({
               
               <div className="flex items-center gap-2">
                 <div className="flex items-start font-semibold">
-                  <p className="text-xl">$</p>
-                  <p className="text-5xl leading-none">
+                  <p className="enterprise-body ">$</p>
+                  <p className="enterprise-headline  leading-none">
                     {isMonthly ? config.plans.starter.monthlyPrice : config.plans.starter.yearlyPrice}
                   </p>
                 </div>
@@ -322,9 +322,8 @@ export function PricingComparison({
               
               <Button 
                 variant="outline" 
-                className="mt-4 mb-2 w-full hover:scale-105 transition-transform"
+                className="mt-4 mb-2 w-full hover:scale-105 transition-transform border-primary text-primary"
                 onClick={() => handlePlanClick("starter", config.plans.starter.name, config.plans.starter.monthlyPrice)}
-                style={{ borderColor: config.color, color: config.color }}
               >
                 Start Free Trial
               </Button>
@@ -338,7 +337,7 @@ export function PricingComparison({
                 <ul className="flex flex-col gap-2">
                   {config.plans.starter.features.map((feature, index) => (
                     <li key={index} className="flex items-center gap-2">
-                      <CheckCircle2 className="h-4 w-4 shrink-0" style={{ color: config.color }} />
+                      <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
                       <p className="text-sm">{feature}</p>
                     </li>
                   ))}
@@ -347,16 +346,16 @@ export function PricingComparison({
             </div>
 
             {/* Professional Plan - Popular */}
-            <div className="w-full rounded-lg border-2 bg-background p-8 shadow-lg relative" style={{ borderColor: config.color }}>
+            <div className="w-full rounded-lg border-2 bg-background p-8 shadow-lg relative border-primary">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <Badge className="flex items-center gap-1 px-3 py-1" style={{ backgroundColor: config.color }}>
+                <Badge className="flex items-center gap-1 px-3 py-1 bg-primary text-primary-foreground">
                   <Crown className="size-3" />
                   Most Popular
                 </Badge>
               </div>
               
               <div className="flex flex-col gap-1">
-                <h3 className="text-xl font-semibold">{config.plans.professional.name}</h3>
+                <h3 className="enterprise-body  font-semibold">{config.plans.professional.name}</h3>
                 <p className="text-sm text-muted-foreground">
                   {config.plans.professional.description}
                 </p>
@@ -365,8 +364,8 @@ export function PricingComparison({
               
               <div className="flex items-center gap-2">
                 <div className="flex items-start font-semibold">
-                  <p className="text-xl">$</p>
-                  <p className="text-5xl leading-none">
+                  <p className="enterprise-body ">$</p>
+                  <p className="enterprise-headline  leading-none">
                     {isMonthly ? config.plans.professional.monthlyPrice : config.plans.professional.yearlyPrice}
                   </p>
                 </div>
@@ -382,9 +381,8 @@ export function PricingComparison({
               </p>
               
               <Button 
-                className="mt-4 mb-2 w-full hover:scale-105 transition-transform text-white"
+                className="mt-4 mb-2 w-full hover:scale-105 transition-transform bg-primary text-primary-foreground"
                 onClick={() => handlePlanClick("professional", config.plans.professional.name, config.plans.professional.monthlyPrice)}
-                style={{ backgroundColor: config.color }}
               >
                 Start Free Trial
               </Button>
@@ -410,8 +408,8 @@ export function PricingComparison({
             <div className="w-full rounded-lg border bg-background p-8 shadow-sm">
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="text-xl font-semibold">{config.plans.enterprise.name}</h3>
-                  <Shield className="size-5" style={{ color: config.color }} />
+                  <h3 className="enterprise-body  font-semibold">{config.plans.enterprise.name}</h3>
+                  <Shield className="size-5 text-primary" />
                 </div>
                 <p className="text-sm text-muted-foreground">
                   {config.plans.enterprise.description}
@@ -420,7 +418,7 @@ export function PricingComparison({
               <Separator className="my-6" />
               
               <div className="flex items-start font-semibold">
-                <p className="text-5xl leading-none">Custom</p>
+                <p className="enterprise-headline  leading-none">Custom</p>
               </div>
               <p className="text-sm text-muted-foreground">
                 Tailored pricing for your needs
@@ -428,9 +426,8 @@ export function PricingComparison({
               
               <Button 
                 variant="outline" 
-                className="mt-4 mb-2 w-full hover:scale-105 transition-transform"
+                className="mt-4 mb-2 w-full hover:scale-105 transition-transform border-primary text-primary"
                 onClick={() => handlePlanClick("enterprise", config.plans.enterprise.name, "custom")}
-                style={{ borderColor: config.color, color: config.color }}
               >
                 Contact Sales
               </Button>
@@ -460,15 +457,15 @@ export function PricingComparison({
             </p>
             <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
               <span className="flex items-center gap-1">
-                <CheckCircle2 className="size-4" style={{ color: config.color }} />
+                <CheckCircle2 className="size-4 text-primary" />
                 No setup fees
               </span>
               <span className="flex items-center gap-1">
-                <CheckCircle2 className="size-4" style={{ color: config.color }} />
+                <CheckCircle2 className="size-4 text-primary" />
                 Cancel anytime
               </span>
               <span className="flex items-center gap-1">
-                <CheckCircle2 className="size-4" style={{ color: config.color }} />
+                <CheckCircle2 className="size-4 text-primary" />
                 24/7 support available
               </span>
             </div>

@@ -5,6 +5,16 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import CopyButton from "@/components/ui/CopyButton";
 
+// Simple fallback select without pulling shadcn Select here to keep this light
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
+  return (
+    <label className="flex items-center gap-2 text-sm text-muted-foreground">
+      <span className="w-28 shrink-0">{label}</span>
+      <div className="grow">{children}</div>
+    </label>
+  );
+}
+
 // OpsFlow sections
 import { HeroSection, TilesThreeUpSection, MetricsRowSection, FeatureAccordionSection, FinalCTASection } from "@/components/sections/opsflow";
 
@@ -37,6 +47,12 @@ type TemplateItem = {
   tags: string[]; // categories (loosened for flexibility)
   importPath: string;
   importName: string;
+};
+
+type BlueprintSection = {
+  importPath: string;
+  importName: string;
+  props?: Record<string, any>;
 };
 
 // Simple error boundary to sandbox broken templates
@@ -172,10 +188,102 @@ function usageSnippet(item: TemplateItem) {
   return `import { ${item.importName} } from "${item.importPath}"\n\n<${item.importName} />`;
 }
 
+function SectionCard({ item, onAdd }: { item: TemplateItem; onAdd: (s: BlueprintSection) => void }) {
+  const { component: Section, importName, importPath, title } = item;
+
+  // Per-item props controls (only for known components)
+  const [industry, setIndustry] = useState<'restaurants' | 'bars' | 'coffee' | 'hotels'>('restaurants');
+  const [variant, setVariant] = useState<'ambient' | 'outline' | 'ghost' | 'mono'>('outline');
+  const [energy, setEnergy] = useState<'subtle' | 'balanced' | 'bold'>('balanced');
+  const [leadKey, setLeadKey] = useState<string>('Efficiency');
+  const [leadIndex, setLeadIndex] = useState<number>(0);
+
+  const isKPI = importName === 'KPIShowcase';
+  const isStatsDisplay = importName === 'StatsDisplay';
+  const isMetrics = importName === 'MetricsDashboard';
+  const isIntegrationGrid = importName === 'IntegrationGrid';
+
+  const props: Record<string, any> = {};
+  if (isKPI) Object.assign(props, { industry, variant, energy, leadKey });
+  if (isStatsDisplay) Object.assign(props, { industry, variant, energy, leadIndex });
+  if (isMetrics) Object.assign(props, { industry });
+  if (isIntegrationGrid) Object.assign(props, {});
+
+  const hasControls = isKPI || isStatsDisplay || isMetrics || isIntegrationGrid;
+
+  return (
+    <Card className="overflow-hidden">
+      <CardHeader className="flex flex-row items-center justify-between gap-4">
+        <CardTitle className="text-display-sm">{title}</CardTitle>
+        <div className="flex items-center gap-2">
+          <CopyButton value={usageSnippet(item)} label="Copy usage" />
+          <Button size="sm" variant="outline" onClick={() => onAdd({ importName, importPath, props })}>
+            Add to blueprint
+          </Button>
+        </div>
+      </CardHeader>
+      <CardContent>
+        {hasControls && (
+          <div className="mb-4 grid grid-cols-1 md:grid-cols-2 gap-3">
+            {(isKPI || isStatsDisplay || isMetrics) && (
+              <Field label="Industry">
+                <select className="w-full rounded-md border bg-background p-2" value={industry} onChange={(e) => setIndustry(e.target.value as any)}>
+                  <option value="restaurants">restaurants</option>
+                  <option value="bars">bars</option>
+                  <option value="coffee">coffee</option>
+                  <option value="hotels">hotels</option>
+                </select>
+              </Field>
+            )}
+            {(isKPI || isStatsDisplay) && (
+              <Field label="Variant">
+                <select className="w-full rounded-md border bg-background p-2" value={variant} onChange={(e) => setVariant(e.target.value as any)}>
+                  <option value="outline">outline</option>
+                  <option value="ambient">ambient</option>
+                  <option value="ghost">ghost</option>
+                  <option value="mono">mono</option>
+                </select>
+              </Field>
+            )}
+            {(isKPI || isStatsDisplay) && (
+              <Field label="Energy">
+                <select className="w-full rounded-md border bg-background p-2" value={energy} onChange={(e) => setEnergy(e.target.value as any)}>
+                  <option value="subtle">subtle</option>
+                  <option value="balanced">balanced</option>
+                  <option value="bold">bold</option>
+                </select>
+              </Field>
+            )}
+            {isKPI && (
+              <Field label="Lead key">
+                <Input value={leadKey} onChange={(e) => setLeadKey(e.target.value)} placeholder="e.g. Compliance" />
+              </Field>
+            )}
+            {isStatsDisplay && (
+              <Field label="Lead index">
+                <Input type="number" value={leadIndex} onChange={(e) => setLeadIndex(Number(e.target.value) || 0)} min={0} />
+              </Field>
+            )}
+          </div>
+        )}
+        <div className="container">
+          <TemplateBoundary>
+            <Section {...props} />
+          </TemplateBoundary>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function TemplateCatalogPage() {
   const [selected, setSelected] = useState<Category>("all");
   const [query, setQuery] = useState("");
   const [sort, setSort] = useState<"az" | "za" | "category">("az");
+  const [blueprint, setBlueprint] = useState<BlueprintSection[]>([]);
+
+  const addToBlueprint = (s: BlueprintSection) => setBlueprint((prev) => [...prev, s]);
+  const clearBlueprint = () => setBlueprint([]);
 
   const counts = useMemo(() => {
     const map = new Map<string, number>();
@@ -215,6 +323,30 @@ export default function TemplateCatalogPage() {
             <p className="enterprise-body mt-2">Preview and copy standardized sections. Use filters to browse by type.</p>
           </div>
 
+          {/* Blueprint panel */}
+          <Card className="border-primary/20">
+            <CardHeader className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+              <CardTitle className="text-base">Blueprint cart</CardTitle>
+              <div className="flex items-center gap-2">
+                <CopyButton 
+                  value={JSON.stringify({ sections: blueprint }, null, 2)} 
+                  label={`Copy (${blueprint.length})`} 
+                />
+                <Button size="sm" variant="outline" onClick={clearBlueprint} disabled={blueprint.length === 0}>
+                  Clear
+                </Button>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <pre className="max-h-64 overflow-auto rounded bg-muted/50 p-3 text-xs">
+{JSON.stringify({ sections: blueprint }, null, 2)}
+              </pre>
+              <p className="mt-2 text-xs text-muted-foreground">
+                Tip: Save this JSON and run: node scripts/page-blueprinter.mjs --input blueprint.json --output app/solutions/draft/page.tsx
+              </p>
+            </CardContent>
+          </Card>
+
           {/* Search + Sort */}
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <div className="w-full md:max-w-sm">
@@ -243,20 +375,8 @@ export default function TemplateCatalogPage() {
 
           {/* Grid */}
           <div className="grid grid-cols-1 gap-8">
-            {filtered.map(({ key, title, component: Section, importName, importPath }) => (
-              <Card key={key} className="overflow-hidden">
-                <CardHeader className="flex flex-row items-center justify-between">
-                  <CardTitle className="text-display-sm">{title}</CardTitle>
-                  <CopyButton value={usageSnippet({ key, title, component: Section, tags: [], importName, importPath })} label="Copy usage" />
-                </CardHeader>
-                <CardContent>
-                  <div className="container">
-                    <TemplateBoundary>
-                      <Section />
-                    </TemplateBoundary>
-                  </div>
-                </CardContent>
-              </Card>
+            {filtered.map((item) => (
+              <SectionCard key={item.key} item={item} onAdd={addToBlueprint} />
             ))}
           </div>
         </div>

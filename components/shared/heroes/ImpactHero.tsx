@@ -144,7 +144,7 @@ const ImpactHero = ({
                   <span className="text-sm font-medium capitalize">{industry} Operations</span>
                 </div>
                 
-                <h1 className="font-poppins mb-[0.625rem] text-center text-5xl font-bold leading-tight tracking-[-1px] sm:text-[3.375rem] md:text-[5.625rem] md:leading-[6.18rem] lg:text-left">
+                <h1 className="heading-brand-gradient font-poppins mb-[0.625rem] text-center text-5xl font-bold leading-tight tracking-[-1px] sm:text-[3.375rem] md:text-[5.625rem] md:leading-[6.18rem] lg:text-left">
                   {content.title}
                 </h1>
                 
@@ -158,8 +158,8 @@ const ImpactHero = ({
                     variant="default"
                     asChild
                     className={cn(
-                      "h-fit w-full rounded-lg border-2 px-8 py-4 text-lg font-semibold sm:w-fit shadow-lg hover:shadow-xl transition-all duration-200",
-                      colors.border
+                      "h-fit w-full rounded-lg border-0 px-8 py-4 text-lg font-semibold sm:w-fit shadow-lg hover:shadow-xl transition-all duration-200 bg-brand-gradient text-primary-foreground cta-shimmer",
+                      
                     )}
                   >
                     <a href="#" aria-label={content.ctaPrimary}>{content.ctaPrimary}</a>

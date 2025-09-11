@@ -51,7 +51,7 @@ export function RestaurantHomeHero({ onNavigate, className }: RestaurantHomeHero
   const handleDocumentation = () => onNavigate?.("docs");
 
   return (
-    <section className={cn("bg-linear-to-b from-background via-background to-background relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4", className)}>
+    <section className={cn("enterprise-hero-section hero-ambient section-grid-overlay section-vignette-bottom energy-balanced relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4", className)}>
       <div className="py-20 lg:py-32">
         <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-8 md:gap-14 lg:flex-row">
@@ -66,19 +66,19 @@ export function RestaurantHomeHero({ onNavigate, className }: RestaurantHomeHero
                 </Badge>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-6 motion-fade-in-up-320">
                 <h1 className="text-display-2xl tracking-tight">Restaurant operations made simple</h1>
                 <p className="text-muted-foreground text-xl lg:text-2xl max-w-2xl">
                   OpsFlow AI streamlines food safety, compliance, and staff management for restaurants, bars, and hospitality businesses.
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-4">
-                <Button size="lg" onClick={handleGetStarted} className="px-8 py-3 shadow-lg hover:shadow-xl transition-all duration-300">
+              <div className="flex flex-wrap items-center gap-4 motion-fade-in-up-320 animation-delay-100">
+                <Button size="lg" onClick={handleGetStarted} className="clerk-cta-primary cta-shimmer hover-scale-103 px-8 py-3">
                   Get started
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-                <Button variant="outline" size="lg" onClick={handleDocumentation} className="px-8 py-3">
+                <Button variant="outline" size="lg" onClick={handleDocumentation} className="hover-scale-103 px-8 py-3 border-2">
                   <span className="flex items-center gap-2 whitespace-pre-wrap">Documentation <ArrowRight className="h-4 w-4" /></span>
                 </Button>
               </div>

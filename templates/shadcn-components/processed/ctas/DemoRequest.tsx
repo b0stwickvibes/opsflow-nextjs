@@ -69,39 +69,38 @@ export function DemoRequest({ industry = "restaurants" }: DemoRequestProps) {
   };
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container">
         <div className="mx-auto max-w-4xl">
           <div 
-            className="relative rounded-2xl p-12 text-white overflow-hidden"
-            style={{ backgroundColor: config.color }}
+            className="relative rounded-2xl p-12 text-white overflow-hidden bg-primary"
           >
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10">
               <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent" />
-              <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-32 translate-x-32" />
-              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-24 -translate-x-24" />
+              <div className="absolute top-0 right-0 w-64 h-64 bg-card/10 rounded-full -translate-y-32 translate-x-32" />
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-card/10 rounded-full translate-y-24 -translate-x-24" />
             </div>
 
             <div className="relative z-10">
               <div className="text-center mb-12">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 text-white/90 mb-6">
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/20 text-white/90 mb-6">
                   <Calendar className="size-4" />
                   <span className="text-sm font-medium">Free 30-minute Demo</span>
                 </div>
                 
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                <h2 className="enterprise-headline text-3xl md: font-bold mb-4">
                   {config.title}
                 </h2>
                 
-                <p className="text-xl text-white/90 max-w-3xl mx-auto">
+                <p className="enterprise-body  text-white/90 max-w-3xl mx-auto">
                   {config.subtitle}
                 </p>
               </div>
 
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h3 className="text-xl font-semibold mb-6 text-white/95">
+                  <h3 className="enterprise-body  font-semibold mb-6 text-white/95">
                     What you'll see in the demo:
                   </h3>
                   <ul className="space-y-4">
@@ -115,16 +114,16 @@ export function DemoRequest({ industry = "restaurants" }: DemoRequestProps) {
                 </div>
 
                 <div className="text-center">
-                  <div className="bg-white/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
+                  <div className="bg-card/10 backdrop-blur-sm rounded-xl p-8 border border-white/20">
                     <Calendar className="size-12 text-white/90 mx-auto mb-4" />
-                    <h4 className="text-lg font-semibold mb-2">Schedule Your Demo</h4>
+                    <h4 className="enterprise-body  font-semibold mb-2">Schedule Your Demo</h4>
                     <p className="text-white/80 mb-6 text-sm">
                       Choose a time that works for you. No commitment required.
                     </p>
                     <Button
                       onClick={handleScheduleDemo}
                       size="lg"
-                      className="w-full bg-white text-black hover:bg-white/90 hover:scale-105 transition-all font-semibold"
+                      className="cta-shimmer w-full bg-card text-black hover:bg-card/90 hover:scale-105 transition-all font-semibold"
                     >
                       Schedule Demo Now
                       <ArrowRight className="ml-2 size-4" />

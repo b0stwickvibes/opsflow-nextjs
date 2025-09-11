@@ -124,13 +124,12 @@ export function AboutSection({
   };
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container flex flex-col gap-28">
         {/* Hero Section */}
         <div className="flex flex-col gap-7">
           <h1 
-            className="text-display-2xl  font-semibold lg:text-7xl"
-            style={{ color: config.color }}
+            className="heading-brand-gradient text-display-2xl font-semibold lg:text-7xl"
           >
             {customTitle || config.title}
           </h1>
@@ -153,13 +152,9 @@ export function AboutSection({
             }}
           />
           <div 
-            className="flex flex-col justify-between gap-10 rounded-2xl p-10"
-            style={{ 
-              backgroundColor: `oklch(from ${config.color} l c h / 0.1)`,
-              borderLeft: `4px solid ${config.color}`
-            }}
+            className="flex flex-col justify-between gap-10 rounded-2xl p-10 bg-primary/10 border-l-4 border-primary"
           >
-            <p className="text-sm font-medium tracking-wide" style={{ color: config.color }}>
+            <p className="text-sm font-medium tracking-wide text-primary">
               OUR MISSION
             </p>
             <p className="enterprise-body  font-medium text-foreground">
@@ -171,7 +166,7 @@ export function AboutSection({
         {/* Features Section */}
         <div className="flex flex-col gap-6 md:gap-20">
           <div className="max-w-xl">
-            <h2 className="enterprise-headline mb-2.5 text-3xl font-semibold md:">
+            <h2 className="heading-brand-gradient enterprise-headline mb-2.5 text-3xl font-semibold md:">
               We make {industry} operations ridiculously efficient
             </h2>
             <p className="text-muted-foreground">
@@ -183,10 +178,9 @@ export function AboutSection({
             {config.features.map((feature, index) => (
               <div key={index} className="flex flex-col">
                 <div 
-                  className="mb-5 flex size-12 items-center justify-center rounded-2xl"
-                  style={{ backgroundColor: `oklch(from ${config.color} l c h / 0.1)` }}
+                  className="mb-5 flex size-12 items-center justify-center rounded-2xl bg-primary/10"
                 >
-                  <feature.icon className="size-5" style={{ color: config.color }} />
+                  <feature.icon className="size-5 text-primary" />
                 </div>
                 <h3 className="enterprise-body mt-2 mb-3  font-semibold">
                   {feature.title}
@@ -203,10 +197,10 @@ export function AboutSection({
         {showJoinTeam && (
           <div className="grid gap-10 md:grid-cols-2">
             <div>
-              <p className="mb-10 text-sm font-medium tracking-wide" style={{ color: config.color }}>
+              <p className="mb-10 text-sm font-medium tracking-wide text-primary">
                 JOIN OUR TEAM
               </p>
-              <h2 className="enterprise-headline mb-2.5 text-3xl font-semibold md:">
+              <h2 className="heading-brand-gradient enterprise-headline mb-2.5 text-3xl font-semibold md:">
                 We're transforming {industry} operations
               </h2>
             </div>
@@ -228,11 +222,7 @@ export function AboutSection({
               </p>
               <button
                 onClick={handleJoinTeamClick}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors hover:opacity-90"
-                style={{ 
-                  backgroundColor: config.color,
-                  color: "white"
-                }}
+                className="cta-shimmer inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-colors bg-primary text-primary-foreground hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 aria-label={`Join the ${industry} operations team`}
               >
                 View Open Positions

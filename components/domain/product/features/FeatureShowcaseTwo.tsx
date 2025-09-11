@@ -200,14 +200,14 @@ export function FeatureShowcaseTwo({
   };
 
   return (
-    <section className={`relative w-full overflow-hidden py-24 lg:py-32 ${className}`}>
+    <section className={cn("section-marketing relative w-full overflow-hidden", className)}>
       <div className="container relative flex flex-col items-center justify-center">
         {/* Header Section */}
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
             Proven ROI Metrics
           </Badge>
-          <h1 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h1 className="heading-brand-gradient mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
             Restaurant Operations ROI
           </h1>
           <p className="text-muted-foreground/70 mx-auto max-w-3xl text-lg">
@@ -250,7 +250,7 @@ export function FeatureShowcaseTwo({
               <div
                 key={index}
                 className={cn(
-                  "group cursor-pointer rounded-2xl border bg-card p-6 transition-all duration-200 hover:shadow-lg hover:border-primary/20",
+                  "group cursor-pointer rounded-2xl border bg-card p-6 transition-all duration-200 tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   isSelected ? "border-primary shadow-lg" : ""
                 )}
                 onClick={() => handleMetricClick(metric, index)}
@@ -384,7 +384,7 @@ export function FeatureShowcaseTwo({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" onClick={handleGetROIAnalysisClick}>
+              <Button size="lg" onClick={handleGetROIAnalysisClick} className="cta-shimmer bg-brand-gradient text-primary-foreground">
                 Get Free ROI Analysis
                 <DollarSign className="ml-2 h-4 w-4" />
               </Button>

@@ -222,7 +222,7 @@ export default function SecondaryFeatures() {
                 const isActive = index === current;
                 
                 return (
-                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                  <CarouselItem key={index} className="pl-2 md:pl-4 basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/3">
                     <motion.div
                       className="h-full cursor-pointer"
                       whileHover={{ y: -8 }}

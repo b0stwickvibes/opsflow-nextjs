@@ -3,6 +3,7 @@
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 import { 
   useFeatureFlag, 
@@ -95,29 +96,29 @@ const EliteAccessHero = ({
   // Industry-specific styling
   const colorClasses = {
     orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-600',
-      hover: 'hover:bg-orange-700',
-      badge: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
+      badge: 'bg-primary text-primary dark:bg-primary dark:text-primary',
     },
     purple: {
-      primary: 'text-purple-600 dark:text-purple-400',
-      bg: 'bg-purple-600',
-      hover: 'hover:bg-purple-700',
-      badge: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
+      badge: 'bg-primary text-primary dark:bg-primary dark:text-primary',
     },
     amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-600',
-      hover: 'hover:bg-amber-700',
-      badge: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
+      badge: 'bg-primary text-primary dark:bg-primary dark:text-primary',
     },
   };
 
   const colors = colorClasses[content.color as keyof typeof colorClasses];
 
   return (
-    <section className="bg-gradient-to-br from-background to-muted/20 py-32">
+    <section className="section-marketing bg-gradient-to-br from-background to-muted/20 py-32">
       <div className="container">
         <div className="flex flex-col items-center justify-center gap-10 pb-8">
           {/* Premium Badge */}
@@ -129,17 +130,17 @@ const EliteAccessHero = ({
           )}
           
           {/* Industry Icon */}
-          <div className={cn("p-4 rounded-full animate-fade-in-up animation-delay-100", colors.primary.includes('orange') ? 'bg-orange-100 dark:bg-orange-900/20' : colors.primary.includes('purple') ? 'bg-purple-100 dark:bg-purple-900/20' : 'bg-amber-100 dark:bg-amber-900/20')}>
+          <div className={cn("p-4 rounded-full animate-fade-in-up animation-delay-100", colors.primary.includes('orange') ? 'bg-primary dark:bg-primary/20' : colors.primary.includes('purple') ? 'bg-primary dark:bg-primary/20' : 'bg-primary dark:bg-primary/20')}>
             <Icon className={cn("size-8", colors.primary)} />
           </div>
           
           {/* Title */}
-          <h1 className="max-w-lg text-center text-4xl font-bold md:max-w-2xl md:text-6xl leading-tight animate-fade-in-up animation-delay-200">
+          <h1 className="heading-brand-gradient text-display-2xl max-w-lg text-center font-bold md:max-w-2xl md:text-6xl leading-tight animate-fade-in-up animation-delay-200">
             {content.title}
           </h1>
           
           {/* Subtitle */}
-          <p className="text-muted-foreground max-w-2xl text-center font-medium text-lg leading-relaxed animate-fade-in-up animation-delay-300">
+          <p className="enterprise-body text-muted-foreground max-w-2xl text-center font-medium  leading-relaxed animate-fade-in-up animation-delay-300">
             {content.subtitle}
           </p>
           
@@ -156,7 +157,7 @@ const EliteAccessHero = ({
                   size="lg"
                   className={cn(
                     "w-full md:flex-1 shadow-lg hover:shadow-xl transition-all duration-200",
-                    btn.variant === "default" && cn(colors.bg, colors.hover),
+                    btn.variant === "default" && cn("cta-shimmer text-primary-foreground", colors.bg),
                     isEliteButton && !canAccessElite && "opacity-75 cursor-not-allowed",
                     isTrialButton && !canStartPremiumTrial && "opacity-75 cursor-not-allowed"
                   )}
@@ -185,11 +186,11 @@ const EliteAccessHero = ({
                 style={{ animationDelay: `${0.6 + (index * 0.1)}s` }}
               >
                 <AspectRatio ratio={img.ratio} className="rounded-xl border shadow-lg hover:shadow-xl transition-shadow duration-200 overflow-hidden">
-                  <img
+                  <Image
                     src={img.src}
                     alt={img.alt}
                     className="block size-full object-cover object-[50%_0%] hover:scale-105 transition-transform duration-300"
-                  />
+                   width={1200} height={800} />
                 </AspectRatio>
               </div>
             ))}

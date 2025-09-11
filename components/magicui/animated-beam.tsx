@@ -1,136 +1,188 @@
 "use client";
 
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import { motion } from "motion/react";
+import { RefObject, useEffect, useId, useState } from "react";
 
-type RefLike = React.RefObject<HTMLElement | null> | React.RefObject<HTMLDivElement | null>;
+import { cn } from "@/lib/utils";
 
-export type AnimatedBeamProps = {
-  fromRef: RefLike;
-  toRef: RefLike;
-  containerRef?: RefLike;
-  duration?: number; // seconds
-  color?: string;
+export interface AnimatedBeamProps {
   className?: string;
-};
+  containerRef: RefObject<HTMLElement | null>; // Container ref
+  fromRef: RefObject<HTMLElement | null>;
+  toRef: RefObject<HTMLElement | null>;
+  curvature?: number;
+  reverse?: boolean;
+  pathColor?: string;
+  pathWidth?: number;
+  pathOpacity?: number;
+  gradientStartColor?: string;
+  gradientStopColor?: string;
+  delay?: number;
+  duration?: number;
+  startXOffset?: number;
+  startYOffset?: number;
+  endXOffset?: number;
+  endYOffset?: number;
+}
 
-// Lightweight, dependency-free line/beam between two refs.
-// This is a graceful fallback for environments where the original MagicUI
-// animated-beam is not present. It avoids runtime errors and provides a simple visual.
-export function AnimatedBeam({
+export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
+  className,
+  containerRef,
   fromRef,
   toRef,
-  containerRef,
-  duration = 2,
-  color = "rgba(59,130,246,0.75)", // primary/blue-500 with alpha
-  className = "",
-}: AnimatedBeamProps) {
-  const svgRef = useRef<SVGSVGElement | null>(null);
-  const [path, setPath] = useState<string>("");
+  curvature = 0,
+  reverse = false,
+  duration = Math.random() * 3 + 4,
+  delay = 0,
+  pathColor = "var(--chart-2)",
+  pathWidth = 2,
+  pathOpacity = 0.2,
+  gradientStartColor = "#ffaa40",
+  gradientStopColor = "#9c40ff",
+  startXOffset = 0,
+  startYOffset = 0,
+  endXOffset = 0,
+  endYOffset = 0,
+}) => {
+  const id = useId();
+  const [pathD, setPathD] = useState("");
+  const [svgDimensions, setSvgDimensions] = useState({ width: 0, height: 0 });
 
-  const getRects = () => {
-    const fromEl = fromRef.current as HTMLElement | null;
-    const toEl = toRef.current as HTMLElement | null;
-    if (!fromEl || !toEl) return null;
-
-    const containerEl = (containerRef?.current as HTMLElement | null) ?? fromEl.parentElement;
-    if (!containerEl) return null;
-
-    const containerRect = containerEl.getBoundingClientRect();
-    const fromRect = fromEl.getBoundingClientRect();
-    const toRect = toEl.getBoundingClientRect();
-
-    // Start at center of from, end at center of to (relative to container)
-    const start = {
-      x: fromRect.left - containerRect.left + fromRect.width / 2,
-      y: fromRect.top - containerRect.top + fromRect.height / 2,
-    };
-    const end = {
-      x: toRect.left - containerRect.left + toRect.width / 2,
-      y: toRect.top - containerRect.top + toRect.height / 2,
-    };
-
-    return { containerRect, start, end };
-  };
-
-  const recompute = () => {
-    const info = getRects();
-    if (!info) return;
-    const { containerRect, start, end } = info;
-
-    // Simple curved path (quadratic) between points
-    const dx = end.x - start.x;
-    const dy = end.y - start.y;
-    const cx = start.x + dx / 2; // control point x (midpoint)
-    const cy = start.y + dy / 2 - 40; // slight upward curve
-
-    const d = `M ${start.x},${start.y} Q ${cx},${cy} ${end.x},${end.y}`;
-    setPath(d);
-
-    // Resize the svg to the container size
-    if (svgRef.current) {
-      svgRef.current.setAttribute("width", String(containerRect.width));
-      svgRef.current.setAttribute("height", String(containerRect.height));
-    }
-  };
+  // Calculate the gradient coordinates based on the reverse prop
+  const gradientCoordinates = reverse
+    ? {
+        x1: ["90%", "-10%"],
+        x2: ["100%", "0%"],
+        y1: ["0%", "0%"],
+        y2: ["0%", "0%"],
+      }
+    : {
+        x1: ["10%", "110%"],
+        x2: ["0%", "100%"],
+        y1: ["0%", "0%"],
+        y2: ["0%", "0%"],
+      };
 
   useEffect(() => {
-    // Initial compute
-    recompute();
+    const updatePath = () => {
+      if (containerRef.current && fromRef.current && toRef.current) {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const rectA = fromRef.current.getBoundingClientRect();
+        const rectB = toRef.current.getBoundingClientRect();
 
-    // Recompute on resize/scroll
-    const ro = new ResizeObserver(() => recompute());
-    const fromEl = fromRef.current as HTMLElement | null;
-    const toEl = toRef.current as HTMLElement | null;
-    const containerEl = (containerRef?.current as HTMLElement | null) ?? fromEl?.parentElement ?? undefined;
+        const svgWidth = containerRect.width;
+        const svgHeight = containerRect.height;
+        setSvgDimensions({ width: svgWidth, height: svgHeight });
 
-    if (fromEl) ro.observe(fromEl);
-    if (toEl) ro.observe(toEl);
-    if (containerEl) ro.observe(containerEl);
+        const startX =
+          rectA.left - containerRect.left + rectA.width / 2 + startXOffset;
+        const startY =
+          rectA.top - containerRect.top + rectA.height / 2 + startYOffset;
+        const endX =
+          rectB.left - containerRect.left + rectB.width / 2 + endXOffset;
+        const endY =
+          rectB.top - containerRect.top + rectB.height / 2 + endYOffset;
 
-    const onScroll = () => recompute();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-
-    return () => {
-      ro.disconnect();
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
+        const controlY = startY - curvature;
+        const d = `M ${startX},${startY} Q ${
+          (startX + endX) / 2
+        },${controlY} ${endX},${endY}`;
+        setPathD(d);
+      }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [fromRef, toRef, containerRef, duration]);
 
-  const dashArray = useMemo(() => 6, []);
+    // Initialize ResizeObserver
+    const resizeObserver = new ResizeObserver(() => {
+      updatePath();
+    });
+
+    // Observe the container element
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    // Call the updatePath initially to set the initial path
+    updatePath();
+
+    // Clean up the observer on component unmount
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [
+    containerRef,
+    fromRef,
+    toRef,
+    curvature,
+    startXOffset,
+    startYOffset,
+    endXOffset,
+    endYOffset,
+  ]);
 
   return (
     <svg
-      ref={svgRef}
-      className={`pointer-events-none absolute inset-0 z-0 ${className}`}
-      viewBox="0 0 100 100"
-      preserveAspectRatio="none"
+      fill="none"
+      width={svgDimensions.width}
+      height={svgDimensions.height}
+      xmlns="http://www.w3.org/2000/svg"
+      className={cn(
+        "pointer-events-none absolute top-0 left-0 transform-gpu stroke-2",
+        className,
+      )}
+      viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}
     >
       <path
-        d={path}
-        fill="none"
-        stroke={color}
-        strokeWidth={3}
+        d={pathD}
+        stroke={pathColor}
+        strokeWidth={pathWidth}
+        strokeOpacity={pathOpacity}
         strokeLinecap="round"
-        strokeLinejoin="round"
-        style={{
-          // Animate the dash offset continuously to suggest motion
-          strokeDasharray: dashArray,
-          strokeDashoffset: 0,
-          animation: `beam-dash ${duration}s linear infinite`,
-        }}
       />
-      <style>{`
-        @keyframes beam-dash {
-          from { stroke-dashoffset: 0; }
-          to { stroke-dashoffset: ${dashArray}; }
-        }
-      `}</style>
+      <path
+        d={pathD}
+        strokeWidth={pathWidth}
+        stroke={`url(#${id})`}
+        strokeOpacity="1"
+        strokeLinecap="round"
+      />
+      <defs>
+        <motion.linearGradient
+          className="transform-gpu"
+          id={id}
+          gradientUnits={"userSpaceOnUse"}
+          initial={{
+            x1: "0%",
+            x2: "0%",
+            y1: "0%",
+            y2: "0%",
+          }}
+          animate={{
+            x1: gradientCoordinates.x1,
+            x2: gradientCoordinates.x2,
+            y1: gradientCoordinates.y1,
+            y2: gradientCoordinates.y2,
+          }}
+          transition={{
+            delay,
+            duration,
+            ease: [0.16, 1, 0.3, 1],
+            repeat: Infinity,
+            repeatDelay: 0,
+          }}
+        >
+          <stop stopColor={gradientStartColor} stopOpacity="0"></stop>
+          <stop stopColor={gradientStartColor}></stop>
+          <stop offset="32.5%" stopColor={gradientStopColor}></stop>
+          <stop
+            offset="100%"
+            stopColor={gradientStopColor}
+            stopOpacity="0"
+          ></stop>
+        </motion.linearGradient>
+      </defs>
     </svg>
   );
-}
+};
 
 export default AnimatedBeam;
 

@@ -15,6 +15,7 @@ import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
+import { cn } from "@/lib/utils";
 
 interface RestaurantMatrixFeature {
   id: string;
@@ -125,13 +126,9 @@ export function FeatureMatrix({
     });
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "core": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "advanced": return "bg-purple-100 text-purple-800 border-purple-200";
-      case "enterprise": return "bg-orange-100 text-orange-800 border-orange-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
-    }
+  const getCategoryColor = (_category: string) => {
+    // Standardize badge color to brand tokens for consistency
+    return "bg-primary/10 text-primary border-primary/20";
   };
 
   const getCategoryIcon = (category: string) => {
@@ -144,7 +141,7 @@ export function FeatureMatrix({
   };
 
   return (
-    <section className={`bg-background overflow-hidden py-24 lg:py-32 ${className}`}>
+    <section className={cn("section-marketing overflow-hidden", className)}>
       <div className="container">
         <div className="relative mb-16">
           <header className="max-w-4xl">
@@ -152,7 +149,7 @@ export function FeatureMatrix({
               <Badge variant="outline" className="mb-4">
                 Restaurant Operations Platform
               </Badge>
-              <h1 className="text-foreground mb-8 text-4xl font-bold tracking-tighter lg:text-7xl">
+              <h1 className="heading-brand-gradient mb-8 text-4xl font-bold tracking-tighter lg:text-7xl">
                 Complete Restaurant Operations Matrix
               </h1>
               <p className="text-muted-foreground text-lg leading-relaxed tracking-tight md:text-xl max-w-3xl">
@@ -207,7 +204,7 @@ export function FeatureMatrix({
                 onClick={() => handleFeatureClick(feature)}
                 className="block transition-all duration-500 ease-in-out text-left w-full"
               >
-                <Card className="border-border bg-background hover:bg-gradient-to-l hover:to-muted group relative border p-8 shadow-none transition-all duration-500 ease-in-out hover:from-transparent hover:shadow-lg h-full">
+                <Card className="tile-hover border-border bg-background group relative border p-8 shadow-none transition-all duration-500 ease-in-out h-full">
                   <CardContent className="flex h-full flex-col justify-between p-0">
                     {/* Header */}
                     <div className="mb-6">
@@ -241,7 +238,7 @@ export function FeatureMatrix({
                       <ul className="space-y-2">
                         {feature.benefits.slice(0, 3).map((benefit, index) => (
                           <li key={index} className="flex items-start gap-2 text-xs text-muted-foreground">
-                            <CheckCircle className="h-3 w-3 text-green-600 flex-shrink-0 mt-0.5" />
+                            <CheckCircle className="h-3 w-3 text-primary flex-shrink-0 mt-0.5" />
                             {benefit}
                           </li>
                         ))}

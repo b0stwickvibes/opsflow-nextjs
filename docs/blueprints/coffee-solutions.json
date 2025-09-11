@@ -1,0 +1,40 @@
+{
+  "title": "Coffee Solutions",
+  "sections": [
+    {
+      "importPath": "@/templates/shadcn-components/processed/heroes",
+      "importName": "WorkflowHero",
+      "props": { "industry": "cafe", "role": "manager", "variant": "default" }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/features",
+      "importName": "FeatureBento",
+      "props": { "variant": "dashboard" }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/integration",
+      "importName": "IntegrationGrid",
+      "props": { 
+        "title": "Coffee POS & Ops Integrations",
+        "subtitle": "Connect OpsFlow to your café stack—POS, delivery, accounting & more.",
+        "featuredIds": [2]
+      }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/stats",
+      "importName": "KPIShowcase",
+      "props": { "industry": "coffee", "variant": "outline", "energy": "balanced", "leadKey": "Compliance" }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/ctas",
+      "importName": "CallToAction",
+      "props": { 
+        "industry": "coffee", 
+        "variant": "demo",
+        "customTitle": "Ready to Master Your Morning Rush?",
+        "customSubtitle": "Join leading coffee shops optimizing consistency and speed with OpsFlow"
+      }
+    }
+  ]
+}
+

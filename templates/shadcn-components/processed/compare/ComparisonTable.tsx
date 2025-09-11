@@ -123,7 +123,7 @@ export function ComparisonTable({
       case 'bars': return 'border-purple-200 bg-purple-50/50 dark:border-purple-800 dark:bg-purple-950/20';
       case 'coffee': return 'border-amber-200 bg-amber-50/50 dark:border-amber-800 dark:bg-amber-950/20';
       case 'hotels': return 'border-blue-200 bg-blue-50/50 dark:border-blue-800 dark:bg-blue-950/20';
-      default: return 'border-gray-200 bg-gray-50/50 dark:border-gray-800 dark:bg-gray-950/20';
+      default: return 'border-border bg-muted/50 dark:border-gray-800 dark:bg-gray-950/20';
     }
   };
 
@@ -155,13 +155,13 @@ export function ComparisonTable({
       <div className="container">
         <div className="text-center">
           <h1 
-            className="mb-6 text-4xl font-semibold md:text-7xl"
+            className="text-display-2xl mb-6  font-semibold md:text-7xl"
             role="heading"
             aria-level={1}
           >
             {heading}
           </h1>
-          <p className="mx-auto max-w-4xl text-muted-foreground md:text-xl">
+          <p className="enterprise-body mx-auto max-w-4xl text-muted-foreground md:">
             {subheading}
           </p>
         </div>
@@ -247,7 +247,7 @@ export function ComparisonTable({
           >
             Who are {competitorProduct} suitable for?
           </h2>
-          <p className="leading-6 text-muted-foreground md:text-lg">
+          <p className="enterprise-body leading-6 text-muted-foreground md:">
             {getCompetitorDescription()}
           </p>
           
@@ -258,7 +258,7 @@ export function ComparisonTable({
           >
             Key Differences and Considerations
           </h2>
-          <p className="leading-6 text-muted-foreground md:text-lg">
+          <p className="enterprise-body leading-6 text-muted-foreground md:">
             When choosing between {ourProduct} and {competitorProduct}, consider your 
             long-term operational needs and growth plans. {ourProduct} offers advanced 
             restaurant-specific features, better scalability, and comprehensive support 

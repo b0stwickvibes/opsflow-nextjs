@@ -20,15 +20,18 @@ export function TilesThreeUpSection() {
   ];
 
   return (
-    <section className="py-12">
-      <div className="container grid grid-cols-1 md:grid-cols-3 gap-6">
+    <section className="section-marketing py-12">
+      <div className="container grid grid-cols-1 gap-6 md:grid-cols-3">
         {tiles.map((t) => (
-          <div key={t.title} className="clerk-interactive-tile p-6 text-center">
-            <div className="mx-auto mb-4 h-16 w-16 rounded-xl border bg-muted/40 grid place-items-center">
+          <div
+            key={t.title}
+            className="p-6 text-center bg-card border border-primary/10 rounded-xl tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+          >
+            <div className="mx-auto mb-4 h-16 w-16 rounded-xl border border-primary/20 bg-primary/5 grid place-items-center">
               <Image src={t.icon} alt="" width={40} height={40} />
             </div>
-            <h3 className="text-display-sm mb-2">{t.title}</h3>
-            <p className="enterprise-body">{t.body}</p>
+            <h3 className="text-display-sm mb-2 heading-brand-gradient text-balance">{t.title}</h3>
+            <p className="enterprise-body text-muted-foreground">{t.body}</p>
           </div>
         ))}
       </div>

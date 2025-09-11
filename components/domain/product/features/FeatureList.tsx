@@ -297,13 +297,13 @@ export function FeatureList({
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section className={cn("section-marketing", className)}>
       <div className="container">
         <div className="mb-12 text-center">
           <Badge variant="outline" className="mb-4">
             Equipment Monitoring
           </Badge>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h2 className="heading-brand-gradient mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
             Real-time Equipment Health Monitoring
           </h2>
           <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
@@ -341,7 +341,7 @@ export function FeatureList({
             <div
               key={equipment.id}
               className={cn(
-                "bg-card border rounded-lg p-6 cursor-pointer transition-all duration-200 hover:shadow-lg hover:border-primary/20",
+                "bg-card border rounded-lg p-6 cursor-pointer transition-all duration-200 tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                 selectedEquipment === equipment.id ? "border-primary shadow-lg" : ""
               )}
               onClick={() => handleEquipmentClick(equipment)}

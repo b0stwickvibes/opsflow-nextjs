@@ -154,10 +154,10 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
   };
 
   return (
-    <section className="py-32 bg-muted/30">
+    <section className="section-marketing">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold md:text-5xl mb-4" style={{ color: config.color }}>
+          <h2 className="heading-brand-gradient text-3xl font-bold md:text-5xl mb-4">
             {config.title}
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -175,8 +175,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
               <div className="flex flex-col lg:flex-row lg:items-center gap-6 mb-8">
                 <div className="flex items-center gap-4">
                   <div 
-                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl"
-                    style={{ backgroundColor: `oklch(from ${config.color} l c h / 0.1)` }}
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center text-2xl bg-primary/10"
                   >
                     {testimonial.logo}
                   </div>
@@ -192,8 +191,8 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
                     return (
                       <div key={key} className="text-center">
                         <div className="flex items-center gap-2 mb-1">
-                          <Icon className="w-4 h-4" style={{ color: config.color }} />
-                          <span className="text-2xl font-bold" style={{ color: config.color }}>
+                          <Icon className="w-4 h-4 text-primary" />
+                          <span className="text-2xl font-bold text-primary">
                             {value}
                           </span>
                         </div>
@@ -218,7 +217,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
 
                 <div>
                   <h4 className="font-semibold text-lg mb-3 flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: config.color }}></span>
+                    <span className="w-2 h-2 rounded-full bg-primary"></span>
                     Solution
                   </h4>
                   <p className="text-muted-foreground">{testimonial.solution}</p>
@@ -252,7 +251,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
                       </div>
                       <div className="flex">
                         {[...Array(5)].map((_, i) => (
-                          <Star key={i} className="w-4 h-4 fill-current" style={{ color: config.color }} />
+                          <Star key={i} className="w-4 h-4 fill-current text-primary" />
                         ))}
                       </div>
                     </div>
@@ -269,14 +268,9 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
                       company: testimonial.company,
                       cta_type: "learn_more"
                     });
-                    window.location.href = `/case-study/${testimonial.company.toLowerCase().replace(/\s+/g, '-')}?industry=${industry}`;
+                    window.location.href = `/case-study/${testimonial.company.toLowerCase().replace(/\\s+/g, '-')}?industry=${industry}`;
                   }}
-                  className="inline-flex items-center gap-2 px-6 py-2 rounded-lg font-medium transition-all hover:scale-105"
-                  style={{ 
-                    backgroundColor: `oklch(from ${config.color} l c h / 0.1)`,
-                    color: config.color,
-                    border: `1px solid ${config.color}`
-                  }}
+                  className="tile-hover inline-flex items-center gap-2 px-6 py-2 rounded-lg font-medium transition-all hover:scale-105 bg-primary/10 text-primary border border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   Read Full Case Study
                   <TrendingUp className="w-4 h-4" />
@@ -298,8 +292,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
                 trackEvent("case_study_bottom_trial_click", { industry });
                 window.location.href = `/start-trial?industry=${industry}&source=case_studies`;
               }}
-              className="px-8 py-4 rounded-lg font-semibold text-white hover:scale-105 transition-transform"
-              style={{ backgroundColor: config.color }}
+              className="cta-shimmer px-8 py-4 rounded-lg font-semibold bg-primary text-primary-foreground hover:scale-105 transition-transform focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               Start Your Success Story
             </button>
@@ -308,12 +301,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
                 trackEvent("case_study_bottom_demo_click", { industry });
                 window.location.href = `/schedule-demo?industry=${industry}&source=case_studies`;
               }}
-              className="px-8 py-4 rounded-lg font-semibold border-2 hover:scale-105 transition-all"
-              style={{ 
-                borderColor: config.color,
-                color: config.color,
-                backgroundColor: "transparent"
-              }}
+              className="px-8 py-4 rounded-lg font-semibold border-2 hover:scale-105 transition-all border-primary text-primary bg-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               See Live Demo
             </button>

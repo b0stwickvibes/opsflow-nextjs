@@ -124,7 +124,7 @@ export default function PricingCard({ tier, isAnnual, onCtaClick, experimentId, 
         </div>
 
         <Button 
-          className="w-full transition-transform hover:scale-[1.01]" 
+          className="w-full transition-transform hover:scale-[1.01] cta-shimmer" 
           variant={tier.popular ? 'default' : 'outline'} 
           onClick={handleCtaClick}
           disabled={isClicked}

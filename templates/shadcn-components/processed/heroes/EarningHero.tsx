@@ -2,6 +2,7 @@
 
 import { ArrowRight, Check, TrendingUp, Clock, Shield, BarChart3, ChefHat, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 import { 
   useFeatureFlag, 
@@ -25,7 +26,7 @@ const INDUSTRY_EARNINGS_CONTENT = {
     mockupAlt: "Restaurant management app interface",
     icon: ChefHat,
     color: "orange",
-    bgColor: "from-orange-50 to-orange-100/50 dark:from-orange-950/20 dark:to-orange-900/10",
+    bgColor: "from-primary/10 to-secondary/10 dark:from-orange-950/20 dark:to-orange-900/10",
   },
   bar: {
     title: "Maximize bar profits without adding more venues", 
@@ -40,7 +41,7 @@ const INDUSTRY_EARNINGS_CONTENT = {
     mockupAlt: "Bar management app interface",
     icon: BarChart3,
     color: "purple", 
-    bgColor: "from-purple-50 to-purple-100/50 dark:from-purple-950/20 dark:to-purple-900/10",
+    bgColor: "from-primary/10 to-secondary/10 dark:from-purple-950/20 dark:to-purple-900/10",
   },
   cafe: {
     title: "Grow café income without opening more locations",
@@ -55,7 +56,7 @@ const INDUSTRY_EARNINGS_CONTENT = {
     mockupAlt: "Café management app interface",
     icon: Clock,
     color: "amber",
-    bgColor: "from-amber-50 to-amber-100/50 dark:from-amber-950/20 dark:to-amber-900/10",
+    bgColor: "from-primary/10 to-secondary/10 dark:from-amber-950/20 dark:to-amber-900/10",
   },
 };
 
@@ -89,22 +90,22 @@ const EarningHero = ({
   // Industry-specific styling
   const colorClasses = {
     orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      accent: 'fill-orange-200 dark:fill-orange-800',
-      bg: 'bg-orange-600',
-      hover: 'hover:bg-orange-700',
+      primary: 'text-primary dark:text-primary',
+      accent: 'fill-primary dark:fill-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
     },
     purple: {
-      primary: 'text-purple-600 dark:text-purple-400',
-      accent: 'fill-purple-200 dark:fill-purple-800',
-      bg: 'bg-purple-600',
-      hover: 'hover:bg-purple-700',
+      primary: 'text-primary dark:text-primary',
+      accent: 'fill-primary dark:fill-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
     },
     amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      accent: 'fill-amber-200 dark:fill-amber-800',
-      bg: 'bg-amber-600',
-      hover: 'hover:bg-amber-700',
+      primary: 'text-primary dark:text-primary',
+      accent: 'fill-primary dark:fill-primary',
+      bg: 'bg-primary',
+      hover: 'hover:bg-primary',
     },
   };
 
@@ -122,7 +123,7 @@ const EarningHero = ({
           </div>
           
           {/* Main Heading */}
-          <h1 className="text-5xl font-bold text-foreground md:text-6xl leading-tight">
+          <h1 className="enterprise-headline  font-bold text-foreground md:text-6xl leading-tight">
             Earn{" "}
             <span className="relative inline-block">
               <span className={colors.primary}>{content.subtitle}</span>
@@ -186,25 +187,25 @@ const EarningHero = ({
               {/* Industry-specific overlay effects */}
               <div className={cn(
                 "absolute inset-0 opacity-10 bg-gradient-to-br",
-                content.color === 'orange' ? 'from-orange-500 to-orange-600' :
-                content.color === 'purple' ? 'from-purple-500 to-purple-600' :
-                'from-amber-500 to-amber-600'
+                content.color === 'orange' ? 'from-primary/100 to-orange-600' :
+                content.color === 'purple' ? 'from-primary/100 to-purple-600' :
+                'from-primary/100 to-amber-600'
               )} />
               
               <div className="relative mx-auto mt-20 w-[12.5rem] sm:w-[18.75rem]">
                 {/* Phone Frame Mockup */}
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/hero108/iphone.png"
                   alt={`${industry} mobile app frame`}
                   className="absolute top-0 z-20 block w-full drop-shadow-2xl"
-                />
+                 width={1200} height={800} />
                 
                 {/* App Interface */}
-                <img
+                <Image
                   src={content.mockupSrc}
                   alt={content.mockupAlt}
                   className="absolute top-0 block w-full rounded-[50px] bg-background"
-                />
+                 width={1200} height={800} />
                 
                 {/* Floating Metrics (if detailed variant) */}
                 {variant === 'detailed' && (

@@ -251,7 +251,7 @@ export function LeadCapture({
     <section className={cn("py-32", className)}>
       <div className="container max-w-4xl">
         <h1 
-          className="text-center text-4xl font-semibold tracking-tight sm:text-5xl"
+          className="text-display-2xl enterprise-headline text-center  font-semibold tracking-tight sm:"
           role="heading"
           aria-level={1}
         >
@@ -265,7 +265,7 @@ export function LeadCapture({
           {/* Contact Information */}
           <div className="space-y-10 pr-10 md:gap-20">
             <div>
-              <h2 className="text-lg font-semibold flex items-center gap-2">
+              <h2 className="enterprise-body  font-semibold flex items-center gap-2">
                 <MapPin className="size-4" aria-hidden="true" />
                 {officeTitle}
               </h2>
@@ -275,7 +275,7 @@ export function LeadCapture({
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold flex items-center gap-2">
+              <h2 className="enterprise-body  font-semibold flex items-center gap-2">
                 <Mail className="size-4" aria-hidden="true" />
                 {emailTitle}
               </h2>
@@ -296,7 +296,7 @@ export function LeadCapture({
             </div>
 
             <div>
-              <h2 className="text-lg font-semibold">{followTitle}</h2>
+              <h2 className="enterprise-body  font-semibold">{followTitle}</h2>
               <div className="mt-3 flex gap-6">
                 <a
                   href="#"
@@ -328,7 +328,7 @@ export function LeadCapture({
 
           {/* Lead Capture Form */}
           <div className="flex-1 pl-0 md:pl-10">
-            <h2 className="text-lg font-semibold">{industryContent.formTitle}</h2>
+            <h2 className="enterprise-body  font-semibold">{industryContent.formTitle}</h2>
             <form className="mt-5 space-y-5" onSubmit={handleSubmit}>
               {formFields.map((field) => (
                 <div key={field.name} className="space-y-2">

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   MotionValue,
@@ -43,11 +44,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Sync kitchen orders with prep tasks and compliance monitoring",
     benefits: ["Kitchen workflow sync", "Order accuracy tracking", "Peak time optimization"],
     icon: (
-      <img
+      <Image
         src="https://seeklogo.com/images/T/toast-logo-F1CE12DE99-seeklogo.com.png"
         alt="Toast POS"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -58,11 +59,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Real-time sales data integration with staff scheduling",
     benefits: ["Sales-driven scheduling", "Staff performance tracking", "Revenue correlation"],
     icon: (
-      <img
+      <Image
         src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/square/square-original.svg"
         alt="Square POS"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -73,11 +74,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Automate labor cost reporting and compliance documentation",
     benefits: ["Labor cost automation", "P&L integration", "HACCP reporting"],
     icon: (
-      <img
+      <Image
         src="https://images.ctfassets.net/4cd45et68cgf/5vAkCpBm6j7bV8gXqS4fBn/76e43bcfe6f6e7b9c0e3d7d8e3c7bdaa/QuickBooks_Logo_Horizontal_Blue_RGB.png"
         alt="QuickBooks"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -88,11 +89,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Monitor delivery prep times and kitchen coordination",
     benefits: ["Prep time tracking", "Kitchen efficiency", "Quality control"],
     icon: (
-      <img
+      <Image
         src="https://logo.clearbit.com/doordash.com"
         alt="DoorDash"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -103,11 +104,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Sync inventory levels with task assignments and ordering",
     benefits: ["Automated ordering", "Waste reduction", "Cost optimization"],
     icon: (
-      <img
+      <Image
         src="https://www.bevspot.com/wp-content/uploads/2019/08/BevSpot_Logo_RGB_Color.png"
         alt="BevSpot"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -118,11 +119,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Connect payroll data with scheduling and performance metrics",
     benefits: ["Labor cost control", "Compliance tracking", "Performance correlation"],
     icon: (
-      <img
+      <Image
         src="https://logos-world.net/wp-content/uploads/2021/02/ADP-Logo.png"
         alt="ADP Workforce"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -133,11 +134,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Track order fulfillment efficiency and staff performance",
     benefits: ["Fulfillment tracking", "Staff efficiency", "Peak hour management"],
     icon: (
-      <img
+      <Image
         src="https://logo.clearbit.com/ubereats.com"
         alt="Uber Eats"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -148,11 +149,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Optimize delivery operations with real-time task management",
     benefits: ["Delivery optimization", "Order coordination", "Performance tracking"],
     icon: (
-      <img
+      <Image
         src="https://logo.clearbit.com/grubhub.com"
         alt="Grubhub"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
   {
@@ -163,11 +164,11 @@ const defaultRestaurantIntegrations: RestaurantIntegration[] = [
     description: "Comprehensive POS integration for complete operations visibility",
     benefits: ["Complete visibility", "Multi-location sync", "Advanced reporting"],
     icon: (
-      <img
+      <Image
         src="https://www.clover.com/assets/images/public-site/press/Clover_Logo_Primary_Gray_RGB.png"
         alt="Clover POS"
         className="h-8 w-8 object-contain"
-      />
+       width={1200} height={800} />
     ),
   },
 ];
@@ -197,14 +198,14 @@ export function IntegrationShowcase({
         <div className="bg-orange-100 dark:bg-orange-900/30 mb-4 rounded-full px-4 py-2 text-xs uppercase font-semibold text-orange-700 dark:text-orange-300 tracking-wider">
           RESTAURANT INTEGRATIONS
         </div>
-        <h2 className="relative py-2 text-center font-sans text-5xl font-semibold tracking-tighter lg:text-6xl text-gray-900 dark:text-gray-100">
+        <h2 className="enterprise-headline relative py-2 text-center font-sans  font-semibold tracking-tighter lg:text-6xl text-foreground dark:text-gray-100">
           {title}
         </h2>
-        <p className="text-xl text-muted-foreground mx-auto mt-6 max-w-3xl px-5 text-center lg:text-xl">
+        <p className="enterprise-body  text-muted-foreground mx-auto mt-6 max-w-3xl px-5 text-center lg:text-xl">
           {subtitle}
         </p>
 
-        <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-4xl container relative my-20 w-fit border border-orange-200/50 dark:border-orange-800/50 shadow-xl">
+        <div className="bg-card/80 dark:bg-gray-900/80 backdrop-blur-sm rounded-4xl container relative my-20 w-fit border border-orange-200/50 dark:border-orange-800/50 shadow-xl">
           <DockIntegrations
             integrations={integrations}
             className="hidden md:flex"
@@ -225,7 +226,7 @@ export function IntegrationShowcase({
         
         <div className="text-center space-y-4">
           <Button 
-            className="h-12 rounded-xl px-8 bg-orange-600 hover:bg-orange-700 text-white font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-200"
+            className="enterprise-body h-12 rounded-xl px-8 bg-orange-600 hover:bg-orange-700 text-white font-semibold  shadow-lg hover:shadow-xl transition-all duration-200"
             onClick={handleCtaClick}
           >
             {ctaText}
@@ -264,13 +265,13 @@ const IntegrationCard = ({
       className="group cursor-pointer transition-transform hover:scale-105"
       onClick={handleClick}
     >
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-md border border-gray-200 dark:border-gray-700">
+      <div className="bg-card dark:bg-gray-800 rounded-xl p-4 shadow-md border border-border dark:border-gray-700">
         <div className="flex items-center justify-center mb-3">
-          <div className="w-12 h-12 rounded-lg bg-gray-50 dark:bg-gray-700 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-muted dark:bg-gray-700 flex items-center justify-center">
             {integration.icon}
           </div>
         </div>
-        <h4 className="text-sm font-semibold text-center text-gray-900 dark:text-gray-100">
+        <h4 className="text-sm font-semibold text-center text-foreground dark:text-gray-100">
           {integration.title}
         </h4>
         <p className="text-xs text-muted-foreground text-center mt-1 capitalize">
@@ -371,7 +372,7 @@ const DockIcon = ({
     >
       <motion.div
         style={{ width, height, y, transformOrigin: "bottom center" }}
-        className="absolute bottom-0 flex items-center justify-center rounded-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm border border-gray-200/50 dark:border-gray-600/50 shadow-lg hover:shadow-xl transition-shadow"
+        className="absolute bottom-0 flex items-center justify-center rounded-xl bg-card/90 dark:bg-gray-800/90 backdrop-blur-sm border border-border/50 dark:border-gray-600/50 shadow-lg hover:shadow-xl transition-shadow"
       >
         <button
           onClick={handleClick}
@@ -384,7 +385,7 @@ const DockIcon = ({
       
       {/* Tooltip */}
       <div className="absolute bottom-full mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-10">
-        <div className="bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap shadow-lg">
+        <div className="bg-gray-900 dark:bg-muted text-white dark:text-foreground px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap shadow-lg">
           <div className="font-semibold">{integration.title}</div>
           <div className="text-xs opacity-80 capitalize">
             {integration.category === 'pos' ? 'Point of Sale' : integration.category}

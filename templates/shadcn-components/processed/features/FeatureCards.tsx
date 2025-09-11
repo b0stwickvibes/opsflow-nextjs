@@ -105,18 +105,18 @@ export function FeatureCards({
       case "training": return "bg-green-100 text-green-800 border-green-200";
       case "performance": return "bg-purple-100 text-purple-800 border-purple-200";
       case "compliance": return "bg-red-100 text-red-800 border-red-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      default: return "bg-muted text-foreground border-border";
     }
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing ${className}`}>
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="heading-brand-gradient text-display-2xl mb-4 text-3xl font-bold tracking-tight lg:">
             Staff Management Excellence
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="enterprise-body  text-muted-foreground max-w-3xl mx-auto">
             Comprehensive workforce management tools designed for restaurant operations with focus on efficiency and compliance
           </p>
         </div>
@@ -125,7 +125,7 @@ export function FeatureCards({
           {filteredFeatures.map((feature, index, arr) => (
             <div
               key={feature.id}
-              className="flex shrink grow basis-full flex-col items-start justify-between p-6 md:basis-1/2 lg:basis-1/4 group cursor-pointer"
+              className="flex shrink grow basis-full flex-col items-start justify-between p-6 md:basis-1/2 lg:basis-1/4 group cursor-pointer rounded-lg bg-card/70 backdrop-blur-sm border tile-hover"
               onClick={() => handleFeatureClick(feature)}
             >
               <div className="w-full">
@@ -143,7 +143,7 @@ export function FeatureCards({
                   </div>
                 </div>
                 
-                <h3 className="mb-3 text-lg font-semibold group-hover:text-primary transition-colors">
+                <h3 className="enterprise-body mb-3  font-semibold group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
                 

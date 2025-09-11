@@ -134,30 +134,30 @@ export function BentoGrid({
     }
   };
 
-  const getIndustryColors = () => {
+  const getIndustryAccent = () => {
     switch (industry) {
-      case 'restaurants': return 'from-orange-500/10 to-red-500/10 text-orange-600 dark:text-orange-400';
-      case 'bars': return 'from-purple-500/10 to-indigo-500/10 text-purple-600 dark:text-purple-400';
-      case 'coffee': return 'from-amber-500/10 to-yellow-500/10 text-amber-700 dark:text-amber-400';
-      case 'hotels': return 'from-blue-500/10 to-cyan-500/10 text-blue-600 dark:text-blue-400';
-      default: return 'from-slate-500/10 to-gray-500/10 text-slate-600 dark:text-slate-400';
+      case 'restaurants': return 'accent-orange';
+      case 'bars': return 'accent-purple';
+      case 'coffee': return 'accent-amber';
+      case 'hotels': return 'accent-blue';
+      default: return '';
     }
   };
 
   return (
-    <section className={cn("overflow-hidden py-32", className)}>
+    <section className={cn("overflow-hidden py-32", getIndustryAccent(), className)}>
       <div className="container flex w-full flex-col items-center justify-center px-4">
         <p className="bg-muted rounded-full px-4 py-1 text-xs uppercase tracking-wide">
           {badgeText}
         </p>
         <h2 
-          className="relative z-20 py-2 text-center font-sans text-5xl font-semibold tracking-tighter md:py-7 lg:text-6xl"
+          className="enterprise-headline relative z-20 py-2 text-center font-sans  font-semibold tracking-tighter md:py-7 lg:text-6xl"
           role="heading"
           aria-level={2}
         >
           {heading}
         </h2>
-        <p className="text-md text-muted-foreground mx-auto max-w-xl text-center lg:text-lg">
+        <p className="enterprise-body text-md text-muted-foreground mx-auto max-w-xl text-center lg:">
           {subheading}
         </p>
 
@@ -176,8 +176,7 @@ export function BentoGrid({
                   {hoveredIndex === idx && (
                     <motion.span
                       className={cn(
-                        "absolute inset-0 block h-full w-full rounded-2xl bg-gradient-to-br",
-                        getIndustryColors()
+                        "absolute inset-0 block h-full w-full rounded-2xl bg-brand-gradient opacity-20"
                       )}
                       layoutId="hoverBackground"
                       key={idx}

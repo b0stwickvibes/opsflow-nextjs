@@ -80,23 +80,22 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
   };
 
   return (
-    <section className="py-32 bg-muted/30">
+    <section className="section-marketing">
       <div className="container">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-white mb-6"
-              style={{ backgroundColor: config.color }}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-primary text-primary-foreground"
             >
               <Zap className="size-4" />
               <span className="text-sm font-medium">Free 14-Day Trial</span>
             </div>
             
-            <h2 className="text-3xl md:text-5xl font-bold mb-4">
+            <h2 className="heading-brand-gradient enterprise-headline text-3xl md: font-bold mb-4">
               {config.title}
             </h2>
             
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="enterprise-body  text-muted-foreground max-w-3xl mx-auto">
               {config.subtitle}
             </p>
           </div>
@@ -111,16 +110,14 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
                       className="flex items-start gap-4 p-4 rounded-lg bg-background border hover:shadow-md transition-shadow"
                     >
                       <div 
-                        className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center"
-                        style={{ backgroundColor: `oklch(from ${config.color} l c h / 0.1)` }}
+                        className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center bg-primary/10"
                       >
                         <feature.icon 
-                          className="size-6" 
-                          style={{ color: config.color }}
+                          className="size-6 text-primary" 
                         />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+                        <h3 className="enterprise-body font-semibold  mb-2">{feature.title}</h3>
                         <p className="text-muted-foreground">{feature.description}</p>
                       </div>
                     </div>
@@ -130,15 +127,15 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
                       <h3 className="text-2xl font-semibold">Why Choose OpsFlow?</h3>
                       <ul className="space-y-3">
                         <li className="flex items-center gap-3">
-                          <Shield className="size-5" style={{ color: config.color }} />
+                          <Shield className="size-5 text-primary" />
                           <span>Industry-specific compliance tools</span>
                         </li>
                         <li className="flex items-center gap-3">
-                          <Users className="size-5" style={{ color: config.color }} />
+                          <Users className="size-5 text-primary" />
                           <span>Seamless team coordination</span>
                         </li>
                         <li className="flex items-center gap-3">
-                          <Zap className="size-5" style={{ color: config.color }} />
+                          <Zap className="size-5 text-primary" />
                           <span>Real-time operational insights</span>
                         </li>
                       </ul>
@@ -149,8 +146,7 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
 
             <div>
               <div 
-                className="bg-background rounded-2xl p-8 border shadow-lg"
-                style={{ borderColor: `oklch(from ${config.color} l c h / 0.3)` }}
+                className="bg-background rounded-2xl p-8 border border-primary/30 shadow-lg"
               >
                 <div className="text-center mb-8">
                   <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
@@ -161,8 +157,7 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
                   <Button
                     onClick={handleStartTrial}
                     size="lg"
-                    className="w-full text-white font-semibold hover:scale-105 transition-transform mb-4"
-                    style={{ backgroundColor: config.color }}
+                    className="cta-shimmer w-full bg-primary text-primary-foreground font-semibold hover:scale-105 transition-transform mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     {config.ctaText}
                     <ArrowRight className="ml-2 size-4" />
@@ -172,8 +167,7 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
                     variant="outline"
                     onClick={handleWatchDemo}
                     size="lg"
-                    className="w-full"
-                    style={{ borderColor: config.color, color: config.color }}
+                    className="w-full border-primary text-primary"
                   >
                     Watch Demo First
                   </Button>
@@ -188,8 +182,7 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
 ]).map((benefit: any, index: number) => (
                     <div key={index} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
                       <div 
-                        className="w-2 h-2 rounded-full" 
-                        style={{ backgroundColor: config.color }}
+                        className="w-2 h-2 rounded-full bg-primary" 
                       />
                       <span>{benefit}</span>
                     </div>

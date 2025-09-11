@@ -69,12 +69,11 @@ export function DemoRequest({ industry = "restaurants" }: DemoRequestProps) {
   };
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container">
         <div className="mx-auto max-w-4xl">
           <div 
-            className="relative rounded-2xl p-12 text-white overflow-hidden"
-            style={{ backgroundColor: config.color }}
+            className="relative rounded-2xl p-12 text-white overflow-hidden bg-primary"
           >
             {/* Background pattern */}
             <div className="absolute inset-0 opacity-10">
@@ -124,7 +123,7 @@ export function DemoRequest({ industry = "restaurants" }: DemoRequestProps) {
                     <Button
                       onClick={handleScheduleDemo}
                       size="lg"
-                      className="w-full bg-white text-black hover:bg-white/90 hover:scale-105 transition-all font-semibold"
+                      className="cta-shimmer w-full bg-white text-black hover:bg-white/90 hover:scale-105 transition-all font-semibold"
                     >
                       Schedule Demo Now
                       <ArrowRight className="ml-2 size-4" />

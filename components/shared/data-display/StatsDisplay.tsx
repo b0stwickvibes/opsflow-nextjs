@@ -15,13 +15,19 @@ interface StatsDisplayProps {
   customStats?: StatItem[];
   animateOnView?: boolean;
   title?: string;
+  variant?: 'ambient' | 'outline' | 'ghost' | 'mono';
+  energy?: 'subtle' | 'balanced' | 'bold';
+  leadIndex?: number; // optional highlighted index for ambient
 }
 
 export function StatsDisplay({ 
   industry = "restaurants",
   customStats,
   animateOnView = true,
-  title
+  title,
+  variant,
+  energy = 'balanced',
+  leadIndex,
 }: StatsDisplayProps) {
   const { trackEvent } = useRestaurantAnalytics();
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -154,11 +160,10 @@ export function StatsDisplay({
   };
 
   return (
-    <section className="py-32" ref={sectionRef}>
+    <section className="section-marketing energy-subtle" ref={sectionRef}>
       <div className="container">
         <h1 
-          className="text-center text-4xl font-semibold lg:text-6xl mb-4"
-          style={{ color: config.color }}
+          className="heading-brand-gradient text-center text-4xl font-semibold lg:text-6xl mb-4 motion-fade-in-up-320"
         >
           {sectionTitle}
         </h1>
@@ -167,47 +172,58 @@ export function StatsDisplay({
         </p>
 
         <div className="grid gap-10 pt-9 md:grid-cols-3 lg:gap-0 lg:pt-20">
-          {stats.map((stat, index) => (
-            <div 
-              key={stat.label}
-              className={`text-center cursor-pointer group transition-all duration-700 hover:scale-105 ${
-                isVisible 
-                  ? 'opacity-100 translate-y-0' 
-                  : 'opacity-0 translate-y-8'
-              }`}
-              style={{ 
-                transitionDelay: `${index * 200}ms`
-              }}
-              onClick={() => handleStatClick(stat)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  handleStatClick(stat);
-                }
-              }}
-              aria-label={`${stat.label}: ${stat.value} ${stat.description}`}
-            >
-              <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
-                {stat.label}
-              </p>
-              <p 
-                className="pt-4 text-7xl font-bold lg:pt-10 transition-all duration-300 group-hover:scale-110"
-                style={{ color: stat.color || config.color }}
-              >
-                {stat.value}
-              </p>
-              <p className="text-2xl font-semibold text-muted-foreground capitalize">
-                {stat.description}
-              </p>
-
-              {/* Decorative underline on hover */}
+          {stats.map((stat, index) => {
+            const appliedVariant = leadIndex !== undefined && index === leadIndex ? 'ambient' : (variant as any);
+            const variantClass = appliedVariant ? (
+              appliedVariant === 'ambient'
+                ? 'bg-brand-gradient text-primary-foreground ring-1 ring-primary/25 backdrop-blur-md rounded-xl p-6'
+                : appliedVariant === 'outline'
+                ? 'bg-card/60 ring-1 ring-border/40 backdrop-blur-sm rounded-xl p-6'
+                : appliedVariant === 'ghost'
+                ? 'bg-transparent'
+                : 'bg-transparent text-muted-foreground'
+            ) : '';
+            const valueClass = appliedVariant === 'ambient' ? 'text-primary-foreground' : appliedVariant === 'mono' ? 'text-muted-foreground' : 'text-primary';
+            return (
               <div 
-                className="mt-4 mx-auto h-1 w-0 group-hover:w-16 transition-all duration-300 rounded-full"
-                style={{ backgroundColor: stat.color || config.color }}
-              />
-            </div>
-          ))}
+                key={stat.label}
+                className={`tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-center cursor-pointer group transition-all duration-700 hover:scale-105 ${
+                  isVisible 
+                    ? 'opacity-100 translate-y-0' 
+                    : 'opacity-0 translate-y-8'
+                } ${variantClass}`}
+                style={{ 
+                  transitionDelay: `${index * 200}ms`
+                }}
+                onClick={() => handleStatClick(stat)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    handleStatClick(stat);
+                  }
+                }}
+                aria-label={`${stat.label}: ${stat.value} ${stat.description}`}
+              >
+                <p className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+                  {stat.label}
+                </p>
+                <p 
+                  className={`pt-4 text-7xl font-bold lg:pt-10 transition-all duration-300 group-hover:scale-110 ${valueClass}`}
+                >
+                  {stat.value}
+                </p>
+                <p className="text-2xl font-semibold text-muted-foreground capitalize">
+                  {stat.description}
+                </p>
+
+                {/* Decorative underline on hover */}
+                <div 
+                  className="mt-4 mx-auto h-1 w-0 group-hover:w-16 transition-all duration-300 rounded-full bg-primary"
+                />
+              </div>
+            );
+          })}
         </div>
 
         {/* Additional Context */}
@@ -218,8 +234,7 @@ export function StatsDisplay({
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <span className="flex items-center gap-2">
               <div 
-                className="w-2 h-2 rounded-full" 
-                style={{ backgroundColor: config.color }}
+                className="w-2 h-2 rounded-full bg-primary" 
               />
               Industry Average Performance
             </span>
@@ -239,12 +254,7 @@ export function StatsDisplay({
               });
               window.location.href = `/case-studies?industry=${industry}`;
             }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg"
-            style={{ 
-              backgroundColor: `oklch(from ${config.color} l c h / 0.1)`,
-              color: config.color,
-              border: `2px solid ${config.color}`
-            }}
+            className="tile-hover inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg bg-primary/10 text-primary border-2 border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             See Detailed Case Studies
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

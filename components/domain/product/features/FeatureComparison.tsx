@@ -193,10 +193,10 @@ export function FeatureComparison({
 
   if (variant === "cards") {
     return (
-      <section className={`py-24 lg:py-32 ${className}`}>
+      <section className={`section-marketing ${className}`}>
         <div className="container">
           <div className="mx-auto mb-16 flex max-w-4xl flex-col gap-4 text-center">
-            <h2 className="text-3xl font-bold lg:text-5xl">
+            <h2 className="heading-brand-gradient text-3xl font-bold lg:text-5xl">
               Why Leading Restaurants Choose OpsFlow
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -271,7 +271,7 @@ const CompetitorCard: React.FC<{
   
   return (
     <Card 
-      className={`h-full transition-all duration-200 hover:shadow-lg cursor-pointer ${
+      className={`h-full transition-all duration-200 hover:shadow-lg cursor-pointer tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
         isOpsFlow ? "ring-2 ring-primary border-primary" : "hover:border-primary/20"
       }`}
       onClick={onClick}

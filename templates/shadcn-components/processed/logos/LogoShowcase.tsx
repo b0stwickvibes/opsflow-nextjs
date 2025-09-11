@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import AutoScroll from "embla-carousel-auto-scroll";
 import { Star, Quote, TrendingUp, Users, ChefHat } from "lucide-react";
 
@@ -207,7 +208,7 @@ export function LogoShowcase({
       'catering': 'bg-green-50 dark:bg-green-950/30',
       'food-truck': 'bg-blue-50 dark:bg-blue-950/30'
     };
-    return colors[brandIndustry] || 'bg-gray-50 dark:bg-gray-950/30';
+    return colors[brandIndustry] || 'bg-muted dark:bg-gray-950/30';
   };
 
   return (
@@ -216,10 +217,10 @@ export function LogoShowcase({
         <div className="bg-orange-100 dark:bg-orange-900/30 mb-6 inline-block rounded-full px-4 py-2 text-xs uppercase font-semibold text-orange-700 dark:text-orange-300 tracking-wider">
           RESTAURANT SUCCESS STORIES
         </div>
-        <h1 className="text-display-md text-gray-900 dark:text-gray-100 mb-4 font-bold max-w-4xl">
+        <h1 className="text-display-md text-foreground dark:text-gray-100 mb-4 font-bold max-w-4xl">
           {title}
         </h1>
-        <p className="text-lg text-muted-foreground mb-16 max-w-3xl">
+        <p className="enterprise-body  text-muted-foreground mb-16 max-w-3xl">
           {subtitle}
         </p>
       </div>
@@ -244,11 +245,11 @@ export function LogoShowcase({
                     <div className="flex items-center gap-3">
                       {industryIcons[brand.industry]}
                       <div className="text-left">
-                        <img
+                        <Image
                           src={brand.logo}
                           alt={brand.name}
                           className={cn(brand.className, "object-cover grayscale group-hover:grayscale-0 transition-all duration-300")}
-                        />
+                         width={1200} height={800} />
                         <p className="text-xs text-muted-foreground mt-2 capitalize">
                           {brand.industry.replace('-', ' ')} • {brand.size.replace('-', ' ')}
                         </p>
@@ -271,7 +272,7 @@ export function LogoShowcase({
       {/* Testimonials Section */}
       <div className="container">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-3xl font-bold text-foreground dark:text-gray-100 mb-4">
             What Restaurant Leaders Are Saying
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -285,7 +286,7 @@ export function LogoShowcase({
               <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
                 <Card 
                   className={cn(
-                    "group cursor-pointer h-full border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm",
+                    "group cursor-pointer h-full border-border dark:border-gray-700 hover:shadow-xl transition-all duration-300 bg-card/80 dark:bg-gray-900/80 backdrop-blur-sm",
                     index === 0 && "lg:border-l-2 lg:border-l-orange-200 dark:lg:border-l-orange-800"
                   )}
                   onClick={() => handleTestimonialClick(testimonial)}
@@ -294,14 +295,14 @@ export function LogoShowcase({
                     {/* Quote */}
                     <div className="flex-1 mb-6">
                       <Quote className="w-8 h-8 text-orange-600 mb-4 opacity-60" />
-                      <blockquote className="text-lg text-muted-foreground leading-relaxed line-clamp-6">
+                      <blockquote className="enterprise-body  text-muted-foreground leading-relaxed line-clamp-6">
                         {testimonial.quote}
                       </blockquote>
                     </div>
 
                     {/* Metrics */}
                     {testimonial.metrics && (
-                      <div className="mb-6 p-4 rounded-xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+                      <div className="mb-6 p-4 rounded-xl bg-muted dark:bg-gray-800/50 border border-border dark:border-gray-700">
                         <div className="text-center">
                           <div className="text-2xl font-bold text-orange-600 mb-1">
                             {testimonial.metrics.improvement}
@@ -323,15 +324,15 @@ export function LogoShowcase({
                     {/* Author Info */}
                     <div className="mt-auto text-center">
                       <div className="flex items-center justify-center gap-4 mb-3">
-                        <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-                          <img
+                        <div className="w-12 h-12 rounded-full bg-muted dark:bg-gray-700 flex items-center justify-center overflow-hidden">
+                          <Image
                             src={testimonial.logo}
                             alt={testimonial.company}
                             className="w-8 h-8 object-contain rounded-full"
-                          />
+                           width={1200} height={800} />
                         </div>
                         <div className="text-left">
-                          <p className="font-bold text-gray-900 dark:text-gray-100 text-lg">
+                          <p className="enterprise-body font-bold text-foreground dark:text-gray-100 ">
                             {testimonial.author}
                           </p>
                           <p className="text-sm text-muted-foreground">

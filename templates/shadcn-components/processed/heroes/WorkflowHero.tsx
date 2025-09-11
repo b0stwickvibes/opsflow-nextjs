@@ -79,9 +79,9 @@ const WorkflowHero = ({
   const content = INDUSTRY_WORKFLOWS[industry];
 
   const colorClasses = {
-    orange: 'text-orange-600 dark:text-orange-400 bg-orange-600 hover:bg-orange-700',
-    purple: 'text-purple-600 dark:text-purple-400 bg-purple-600 hover:bg-purple-700',
-    amber: 'text-amber-600 dark:text-amber-400 bg-amber-600 hover:bg-amber-700'
+    orange: 'text-primary dark:text-primary bg-primary hover:bg-primary',
+    purple: 'text-primary dark:text-primary bg-primary hover:bg-primary',
+    amber: 'text-primary dark:text-primary bg-primary hover:bg-primary'
   };
 
   return (
@@ -89,16 +89,16 @@ const WorkflowHero = ({
       <div className="container">
         <div className="mx-auto max-w-4xl text-center space-y-12">
           <div className="space-y-6">
-            <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border", content.color === 'orange' ? 'text-orange-600 dark:text-orange-400' : content.color === 'purple' ? 'text-purple-600 dark:text-purple-400' : 'text-amber-600 dark:text-amber-400')}>
+            <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border", content.color === 'orange' ? 'text-primary dark:text-primary' : content.color === 'purple' ? 'text-primary dark:text-primary' : 'text-primary dark:text-primary')}>
               <Workflow className="size-4" />
               <span className="text-sm font-medium">Smart Workflows</span>
             </div>
             
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl animate-fade-in-up">
+            <h1 className="text-display-2xl enterprise-headline text-3xl font-bold tracking-tight sm: md: lg:text-6xl animate-fade-in-up">
               {content.title}
             </h1>
             
-            <p className="text-muted-foreground text-xl font-medium lg:text-2xl max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
+            <p className="enterprise-body text-muted-foreground  font-medium lg:text-2xl max-w-2xl mx-auto animate-fade-in-up animation-delay-200">
               {content.subtitle}
             </p>
           </div>
@@ -110,10 +110,10 @@ const WorkflowHero = ({
                 return (
                   <div key={feature.title} className="space-y-4 text-center p-6 rounded-xl hover:bg-muted/50 transition-colors">
                     <div className="flex justify-center">
-                      <Icon className={cn("size-8", content.color === 'orange' ? 'text-orange-600 dark:text-orange-400' : content.color === 'purple' ? 'text-purple-600 dark:text-purple-400' : 'text-amber-600 dark:text-amber-400')} />
+                      <Icon className={cn("size-8", content.color === 'orange' ? 'text-primary dark:text-primary' : content.color === 'purple' ? 'text-primary dark:text-primary' : 'text-primary dark:text-primary')} />
                     </div>
                     <div>
-                      <h2 className="text-lg font-semibold">{feature.title}</h2>
+                      <h2 className="enterprise-body  font-semibold">{feature.title}</h2>
                       <p className="text-muted-foreground mt-2 text-sm">
                         {feature.description}
                       </p>
@@ -129,9 +129,9 @@ const WorkflowHero = ({
               size="lg" 
               className={cn(
                 "shadow-lg hover:shadow-xl transition-all duration-200",
-                content.color === 'orange' ? 'bg-orange-600 hover:bg-orange-700' : 
-                content.color === 'purple' ? 'bg-purple-600 hover:bg-purple-700' : 
-                'bg-amber-600 hover:bg-amber-700',
+                content.color === 'orange' ? 'bg-primary hover:bg-primary' : 
+                content.color === 'purple' ? 'bg-primary hover:bg-primary' : 
+                'bg-primary hover:bg-primary',
                 !canOptimize && "opacity-75 cursor-not-allowed"
               )}
               disabled={!canOptimize}

@@ -217,19 +217,19 @@ export function FeatureAccordion({
   showCompliance = true,
   variant = "procedures"
 }: FeatureAccordionProps) {
+  // Allow multiple open and allow all collapsed (collapsible behavior)
   const [openItems, setOpenItems] = useState<string[]>([]);
   const { trackFeatureEngagement } = useRestaurantAnalytics();
 
   const toggleItem = (itemId: string) => {
-    setOpenItems(prev => 
-      prev.includes(itemId)
-        ? prev.filter(id => id !== itemId)
-        : [...prev, itemId]
-    );
-    
-    trackFeatureEngagement("compliance_procedure_toggle", {
-      procedure_id: itemId,
-      action: openItems.includes(itemId) ? "close" : "open",
+    setOpenItems((prev) => {
+      const isOpen = prev.includes(itemId);
+      const next = isOpen ? prev.filter((id) => id !== itemId) : [...prev, itemId];
+      trackFeatureEngagement("compliance_procedure_toggle", {
+        procedure_id: itemId,
+        action: isOpen ? "close" : "open",
+      });
+      return next;
     });
   };
 
@@ -239,34 +239,20 @@ export function FeatureAccordion({
     });
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "haccp": return "bg-red-100 text-red-800 border-red-200";
-      case "cleaning": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "staff": return "bg-green-100 text-green-800 border-green-200";
-      case "equipment": return "bg-orange-100 text-orange-800 border-orange-200";
-      case "documentation": return "bg-purple-100 text-purple-800 border-purple-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
+const getCategoryColor = (_category: string) => {
+  // Standardize to brand tokens for consistency
+  return "bg-primary/10 text-primary border-primary/20";
+};
 
-  const getCriticalityColor = (criticality: string) => {
-    switch (criticality) {
-      case "critical": return "bg-red-500";
-      case "high": return "bg-orange-500";
-      case "medium": return "bg-yellow-500";
-      default: return "bg-gray-500";
-    }
-  };
+const getCriticalityColor = (_criticality: string) => {
+  // Use a single, subtle indicator color to avoid rainbow noise
+  return "bg-primary";
+};
 
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "compliant": return "text-green-600";
-      case "warning": return "text-orange-600";
-      case "overdue": return "text-red-600";
-      default: return "text-gray-600";
-    }
-  };
+const getStatusColor = (_status: string) => {
+  // Tone down status color; keep emphasis on the numeric rate
+  return "text-muted-foreground";
+};
 
   const getAutomationBadge = (level: string) => {
     switch (level) {
@@ -275,66 +261,68 @@ export function FeatureAccordion({
       case "semi-automated":
         return <Badge variant="outline" className="bg-blue-50 text-blue-700 border-blue-200">Semi-Automated</Badge>;
       case "manual":
-        return <Badge variant="outline" className="bg-gray-50 text-gray-700 border-gray-200">Manual Process</Badge>;
+        return <Badge variant="outline" className="bg-muted text-foreground border-border">Manual Process</Badge>;
       default:
         return null;
     }
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing ${className}`}>
       <div className="container">
         <div className="mb-12 text-center">
           <Badge variant="outline" className="mb-4">
             Compliance Procedures
           </Badge>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+<h2 className="heading-brand-gradient text-display-2xl mb-4  font-bold tracking-tight lg:text-6xl">
             Streamlined Compliance Management
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
+          <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
             Comprehensive digital procedures that guide your team through every compliance requirement. 
             From HACCP protocols to staff training, everything is automated and audit-ready.
           </p>
         </div>
 
         {/* Procedure Overview Stats */}
-        <div className="mb-12 grid grid-cols-1 md:grid-cols-4 gap-6">
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
+<div className="mb-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
             <Shield className="h-8 w-8 mx-auto text-primary mb-2" />
             <div className="text-2xl font-bold text-primary">99.2%</div>
             <div className="text-sm text-muted-foreground">Avg Compliance Rate</div>
           </div>
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-            <CheckCircle className="h-8 w-8 mx-auto text-green-600 mb-2" />
-            <div className="text-2xl font-bold text-green-600">50+</div>
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
+            <CheckCircle className="h-8 w-8 mx-auto text-primary mb-2" />
+            <div className="text-2xl font-bold text-primary">50+</div>
             <div className="text-sm text-muted-foreground">Active Procedures</div>
           </div>
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-            <Clock className="h-8 w-8 mx-auto text-blue-600 mb-2" />
-            <div className="text-2xl font-bold text-blue-600">80%</div>
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
+            <Clock className="h-8 w-8 mx-auto text-primary mb-2" />
+            <div className="text-2xl font-bold text-primary">80%</div>
             <div className="text-sm text-muted-foreground">Time Savings</div>
           </div>
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-            <BarChart3 className="h-8 w-8 mx-auto text-purple-600 mb-2" />
-            <div className="text-2xl font-bold text-purple-600">24/7</div>
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
+            <BarChart3 className="h-8 w-8 mx-auto text-primary mb-2" />
+            <div className="text-2xl font-bold text-primary">24/7</div>
             <div className="text-sm text-muted-foreground">Monitoring</div>
           </div>
         </div>
 
         {/* Compliance Procedures Accordion */}
         <div className="max-w-4xl mx-auto space-y-4">
-          {complianceProcedures.map((procedure) => {
+{complianceProcedures.map((procedure) => {
             const isOpen = openItems.includes(procedure.id);
             
             return (
               <div
                 key={procedure.id}
-                className="border border-border rounded-lg bg-card overflow-hidden"
+                className="border border-border rounded-lg bg-card overflow-hidden tile-hover"
               >
                 {/* Accordion Header */}
-                <button
+<button
                   onClick={() => toggleItem(procedure.id)}
                   className="w-full p-6 text-left hover:bg-muted/50 transition-colors"
+                  aria-expanded={isOpen}
+                  aria-controls={`accordion-panel-${procedure.id}`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 flex-1">
@@ -344,9 +332,9 @@ export function FeatureAccordion({
                       
                       <div className="flex-1">
                         <div className="flex items-center gap-3 mb-2">
-                          <h3 className="text-lg font-semibold">{procedure.title}</h3>
+                          <h3 className="enterprise-body  font-semibold">{procedure.title}</h3>
                           <div className={cn("w-2 h-2 rounded-full", getCriticalityColor(procedure.criticality))} />
-                          <Badge 
+<Badge 
                             variant="outline" 
                             className={`text-xs ${getCategoryColor(procedure.category)} capitalize`}
                           >
@@ -363,9 +351,9 @@ export function FeatureAccordion({
                           <span className="text-muted-foreground">
                             Frequency: <span className="font-medium">{procedure.frequency}</span>
                           </span>
-                          {showCompliance && (
+{showCompliance && (
                             <>
-                              <span className={getStatusColor(procedure.compliance.status)}>
+                              <span className="text-primary font-medium">
                                 {procedure.compliance.rate} compliant
                               </span>
                               <span className="text-muted-foreground">
@@ -387,18 +375,19 @@ export function FeatureAccordion({
                 </button>
 
                 {/* Accordion Content */}
-                <div
+<div
+                  id={`accordion-panel-${procedure.id}`}
                   className={cn(
-                    "overflow-hidden transition-all duration-300 ease-in-out",
+                    "overflow-hidden transition-all duration-300 ease-out",
                     isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                   )}
                 >
-                  <div className="p-6 pt-0 border-t bg-muted/20">
+<div className="p-6 pt-0 border-t bg-muted/20">
                     <div className="space-y-6">
                       {procedure.steps.map((step, index) => (
                         <div key={step.id} className="border border-border rounded-lg p-4 bg-card">
                           <div className="flex items-start gap-3">
-                            <div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-medium flex-shrink-0 mt-0.5">
+<div className="w-6 h-6 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-medium flex-shrink-0 mt-0.5">
                               {index + 1}
                             </div>
                             
@@ -411,7 +400,7 @@ export function FeatureAccordion({
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                                   {step.checkpoints.map((checkpoint, idx) => (
                                     <div key={idx} className="flex items-center gap-2 text-sm">
-                                      <CheckCircle className="h-3 w-3 text-green-600 flex-shrink-0" />
+                                      <CheckCircle className="h-3 w-3 text-primary flex-shrink-0" />
                                       {checkpoint}
                                     </div>
                                   ))}
@@ -419,11 +408,11 @@ export function FeatureAccordion({
                               </div>
                               
                               {step.documentation && (
-                                <div className="mt-3 p-3 bg-blue-50 rounded-lg border border-blue-200">
+                                <div className="mt-3 p-3 bg-card/60 rounded-lg border border-primary/20">
                                   <div className="flex items-center gap-2 text-sm">
-                                    <FileText className="h-4 w-4 text-blue-600" />
-                                    <span className="font-medium text-blue-800">Documentation:</span>
-                                    <span className="text-blue-700">{step.documentation}</span>
+                                    <FileText className="h-4 w-4 text-primary" />
+                                    <span className="font-medium">Documentation:</span>
+                                    <span className="text-muted-foreground">{step.documentation}</span>
                                   </div>
                                 </div>
                               )}
@@ -440,7 +429,7 @@ export function FeatureAccordion({
         </div>
 
         {/* CTA Section */}
-        <div className="mt-16 text-center">
+<div className="mt-16 text-center">
           <div className="p-8 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Ready to Streamline Your Compliance?</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
@@ -449,7 +438,7 @@ export function FeatureAccordion({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" onClick={handleStartComplianceClick}>
+              <Button size="lg" className="cta-shimmer" onClick={handleStartComplianceClick}>
                 Start Compliance Automation
                 <Shield className="ml-2 h-4 w-4" />
               </Button>
@@ -457,18 +446,18 @@ export function FeatureAccordion({
                 Schedule Compliance Demo
               </Button>
             </div>
-
+            
             <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <CheckCircle className="h-4 w-4 text-primary" />
                 50+ automated procedures
               </div>
               <div className="flex items-center gap-1">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <CheckCircle className="h-4 w-4 text-primary" />
                 Real-time compliance tracking
               </div>
               <div className="flex items-center gap-1">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <CheckCircle className="h-4 w-4 text-primary" />
                 Audit-ready documentation
               </div>
             </div>

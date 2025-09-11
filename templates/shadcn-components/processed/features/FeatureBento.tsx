@@ -198,32 +198,26 @@ export function FeatureBento({
     });
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "analytics": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "compliance": return "bg-red-100 text-red-800 border-red-200";
-      case "operations": return "bg-green-100 text-green-800 border-green-200";
-      case "financial": return "bg-purple-100 text-purple-800 border-purple-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
+const getCategoryColor = (_category: string) => {
+  return "bg-primary/10 text-primary border-primary/20";
+};
 
-  const getStatusIcon = (status?: string) => {
-    switch (status) {
-      case "good": return <CheckCircle className="h-4 w-4 text-green-600" />;
-      case "warning": return <AlertTriangle className="h-4 w-4 text-orange-600" />;
-      case "critical": return <AlertTriangle className="h-4 w-4 text-red-600" />;
-      default: return null;
-    }
-  };
+const getStatusIcon = (status?: string) => {
+  switch (status) {
+    case "good": return <CheckCircle className="h-4 w-4 text-primary" />;
+    case "warning": return <AlertTriangle className="h-4 w-4 text-muted-foreground" />;
+    case "critical": return <AlertTriangle className="h-4 w-4 text-muted-foreground" />;
+    default: return null;
+  }
+};
 
-  const getTrendIcon = (trend?: string) => {
-    switch (trend) {
-      case "up": return <TrendingUp className="h-4 w-4 text-green-600" />;
-      case "down": return <TrendingUp className="h-4 w-4 text-red-600 rotate-180" />;
-      default: return null;
-    }
-  };
+const getTrendIcon = (trend?: string) => {
+  switch (trend) {
+    case "up": return <TrendingUp className="h-4 w-4 text-primary" />;
+    case "down": return <TrendingUp className="h-4 w-4 text-primary rotate-180" />;
+    default: return null;
+  }
+};
 
   const getGridClass = (size: string) => {
     switch (size) {
@@ -235,16 +229,16 @@ export function FeatureBento({
   };
 
   return (
-    <section className={`overflow-hidden py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing overflow-hidden ${className}`}>
       <div className="container">
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
             Operations Dashboard
           </Badge>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h2 className="heading-brand-gradient text-display-2xl mb-4 font-bold tracking-tight lg:text-6xl">
             Complete Operations Control Center
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
+          <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
             Unified dashboard providing real-time insights into every aspect of your restaurant operations. 
             Monitor, analyze, and optimize from a single command center.
           </p>
@@ -267,8 +261,7 @@ export function FeatureBento({
                   {hoveredIndex === idx && (
                     <motion.span
                       className={cn(
-                        "absolute inset-0 block h-full w-full rounded-2xl",
-                        widget.bgColor
+                        "absolute inset-0 block h-full w-full rounded-2xl bg-card/80 backdrop-blur-sm border border-primary/10"
                       )}
                       layoutId="hoverBackground"
                       key={idx}
@@ -293,20 +286,20 @@ export function FeatureBento({
         </div>
 
         {/* Dashboard Stats */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
+<div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
             <div className="text-2xl font-bold text-primary mb-2">Real-time</div>
             <div className="text-sm text-muted-foreground">Data Updates</div>
           </div>
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
             <div className="text-2xl font-bold text-primary mb-2">500+</div>
             <div className="text-sm text-muted-foreground">Data Points</div>
           </div>
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
             <div className="text-2xl font-bold text-primary mb-2">24/7</div>
             <div className="text-sm text-muted-foreground">Monitoring</div>
           </div>
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
+          <div className="text-center p-6 bg-muted/30 rounded-lg tile-hover">
             <div className="text-2xl font-bold text-primary mb-2">∞</div>
             <div className="text-sm text-muted-foreground">Customization</div>
           </div>
@@ -322,7 +315,7 @@ export function FeatureBento({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" onClick={handleExploreClick}>
+              <Button size="lg" onClick={handleExploreClick} className="cta-shimmer">
                 Explore Live Dashboard
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -357,8 +350,8 @@ const DashboardCard: React.FC<{
     <div className="bg-card border relative z-20 flex h-full flex-col rounded-2xl p-6 transition-all duration-200 hover:shadow-lg">
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
-        <div className={cn("p-3 rounded-xl", widget.bgColor)}>
-          <Icon className={cn("h-6 w-6", widget.color)} />
+<div className="p-3 rounded-xl bg-primary/10">
+          <Icon className="h-6 w-6 text-primary" />
         </div>
         <div className="flex flex-col items-end gap-2">
           <Badge 
@@ -373,7 +366,7 @@ const DashboardCard: React.FC<{
 
       {/* Title and Description */}
       <div className="flex-1 mb-4">
-        <h3 className="text-lg font-semibold mb-2">{widget.title}</h3>
+        <h3 className="enterprise-body  font-semibold mb-2">{widget.title}</h3>
         <p className="text-sm text-muted-foreground leading-relaxed">
           {widget.description}
         </p>

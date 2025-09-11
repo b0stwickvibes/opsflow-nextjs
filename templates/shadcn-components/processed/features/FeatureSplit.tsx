@@ -109,7 +109,7 @@ export function FeatureSplit({
       case "documentation": return "bg-blue-100 text-blue-800 border-blue-200";
       case "efficiency": return "bg-purple-100 text-purple-800 border-purple-200";
       case "savings": return "bg-orange-100 text-orange-800 border-orange-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      default: return "bg-muted text-foreground border-border";
     }
   };
 
@@ -120,10 +120,10 @@ export function FeatureSplit({
           <Badge variant="outline" className="mb-4">
             Audit & Documentation Excellence
           </Badge>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h2 className="text-display-2xl mb-4  font-bold tracking-tight lg:text-6xl">
             Audit-Ready Documentation
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
+          <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
             Comprehensive digital audit trails and automated compliance documentation 
             that keeps your restaurant inspection-ready 24/7.
           </p>
@@ -241,7 +241,7 @@ export function FeatureSplit({
         <div className="mb-16 p-8 bg-muted/30 rounded-2xl">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-xl font-bold mb-4">Client Success Story</h3>
+              <h3 className="enterprise-body  font-bold mb-4">Client Success Story</h3>
               <blockquote className="text-muted-foreground leading-relaxed mb-4">
                 "OpsFlow's audit documentation saved us during our surprise health inspection. 
                 The inspector was impressed with our digital records and we passed with a 
@@ -373,7 +373,7 @@ const MetricCard: React.FC<{
         </div>
 
         <div className="absolute mx-auto flex w-full flex-col items-center justify-center transition duration-200 group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0">
-          <div className="text-4xl font-bold tracking-tight mb-2">
+          <div className="text-display-2xl  font-bold tracking-tight mb-2">
             {metric.value}
           </div>
           <div className="text-sm text-muted-foreground">
@@ -403,7 +403,7 @@ function getCategoryColor(category: string) {
     case "documentation": return "bg-blue-100 text-blue-800 border-blue-200";
     case "efficiency": return "bg-purple-100 text-purple-800 border-purple-200";
     case "savings": return "bg-orange-100 text-orange-800 border-orange-200";
-    default: return "bg-gray-100 text-gray-800 border-gray-200";
+    default: return "bg-muted text-foreground border-border";
   }
 }
 

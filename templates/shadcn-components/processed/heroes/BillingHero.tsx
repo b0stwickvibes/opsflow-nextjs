@@ -3,6 +3,7 @@
 import AutoScroll from "embla-carousel-auto-scroll";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronRight, DollarSign, TrendingUp, BarChart3, Clock } from "lucide-react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -98,15 +99,15 @@ const BillingHero = ({
 
   // Industry-specific styling
   const industryColors = {
-    restaurant: 'text-orange-600 dark:text-orange-400',
-    bar: 'text-purple-600 dark:text-purple-400', 
-    cafe: 'text-amber-600 dark:text-amber-400'
+    restaurant: 'text-primary dark:text-primary',
+    bar: 'text-primary dark:text-primary', 
+    cafe: 'text-primary dark:text-primary'
   };
 
   const industryGradients = {
-    restaurant: 'from-orange-50 to-orange-100/50 dark:from-orange-950/20 dark:to-orange-900/10',
-    bar: 'from-purple-50 to-purple-100/50 dark:from-purple-950/20 dark:to-purple-900/10',
-    cafe: 'from-amber-50 to-amber-100/50 dark:from-amber-950/20 dark:to-amber-900/10'
+    restaurant: 'from-primary/10 to-secondary/10 dark:from-orange-950/20 dark:to-orange-900/10',
+    bar: 'from-primary/10 to-secondary/10 dark:from-purple-950/20 dark:to-purple-900/10',
+    cafe: 'from-primary/10 to-secondary/10 dark:from-amber-950/20 dark:to-amber-900/10'
   };
 
   return (
@@ -121,16 +122,16 @@ const BillingHero = ({
           <div className="animate-fade-in-up">
             <div className="flex flex-col gap-6">
               <div className="space-y-4">
-                <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-white/50 dark:bg-black/20", industryColors[industry])}>
+                <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-card/50 ", industryColors[industry])}>
                   <DollarSign className="size-4" />
                   <span className="text-sm font-medium">Financial Operations</span>
                 </div>
                 
-                <h1 className="text-foreground text-4xl leading-tight font-bold md:text-5xl lg:text-[3.5rem]">
+                <h1 className="text-display-2xl enterprise-headline text-foreground  leading-tight font-bold md: lg:text-[3.5rem]">
                   {content.title}
                 </h1>
                 
-                <p className="text-muted-foreground text-lg leading-relaxed">
+                <p className="enterprise-body text-muted-foreground  leading-relaxed">
                   {content.subtitle}
                 </p>
               </div>
@@ -143,7 +144,7 @@ const BillingHero = ({
                     return (
                       <div
                         key={feature.name}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/70 dark:bg-black/20 border text-sm font-medium"
+                        className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card/70  border text-sm font-medium"
                       >
                         <Icon className={cn("size-4", industryColors[industry])} />
                         <span>{feature.name}</span>
@@ -174,7 +175,7 @@ const BillingHero = ({
                   <Button
                     variant="ghost"
                     asChild
-                    className="group flex h-fit items-center gap-2 hover:bg-white/50 dark:hover:bg-black/20 transition-colors"
+                    className="group flex h-fit items-center gap-2 hover:bg-card/50 dark:hover:bg-black/20 transition-colors"
                   >
                     <a href="#" aria-label={content.secondaryCTA}>
                       <p className="text-foreground font-medium text-sm uppercase tracking-wider">
@@ -193,36 +194,36 @@ const BillingHero = ({
             <div className="relative ml-auto mr-auto aspect-[1.28581291/1] w-full max-w-[37.25rem] lg:ml-auto lg:mr-0">
               {/* Main Dashboard Image */}
               <div className="relative mx-auto aspect-[1.020365896/1] h-full w-[79.35%] max-w-[29.5625rem] overflow-hidden rounded-3xl shadow-2xl">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
                   alt={`${industry} financial dashboard interface`}
                   className="relative z-10 w-full object-cover"
-                />
+                 width={1200} height={800} />
               </div>
               
               {/* Floating Feature Cards */}
               <div className="absolute -left-[-2%] top-[19.84%] z-30 aspect-[1.765043789/1] w-[30.49%] max-w-[11.875rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-left animation-delay-400">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
                   alt={`${industry} cost tracking widget`}
                   className="size-full object-cover"
-                />
+                 width={1200} height={800} />
               </div>
               
               <div className="absolute left-[0%] top-[55%] z-30 aspect-[1.776555024/1] w-[43.6%] max-w-[16.375rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-left animation-delay-500">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg"
                   alt={`${industry} revenue analytics`}
                   className="size-full object-cover"
-                />
+                 width={1200} height={800} />
               </div>
               
               <div className="absolute right-[0%] top-[40%] z-30 aspect-[1.170212766/1] w-[26.48%] max-w-[10.3125rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-right animation-delay-600">
-                <img
+                <Image
                   src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg"
                   alt={`${industry} payment management`}
                   className="size-full object-cover"
-                />
+                 width={1200} height={800} />
               </div>
             </div>
           </div>
@@ -250,11 +251,11 @@ const BillingHero = ({
             <CarouselContent className="items-center">
               {TRUST_LOGOS.concat(TRUST_LOGOS).map((logo, index) => (
                 <CarouselItem key={index} className="w-fit basis-auto px-7">
-                  <img
+                  <Image
                     src={logo.src}
                     alt={`${logo.alt} - trusted ${industry} operations partner`}
                     className="h-6 md:h-8 w-full object-contain opacity-60 hover:opacity-90 transition-opacity"
-                  />
+                   width={1200} height={800} />
                 </CarouselItem>
               ))}
             </CarouselContent>

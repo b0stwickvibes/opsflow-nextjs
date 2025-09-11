@@ -102,18 +102,19 @@ export function FeatureGrid({
     });
   };
 
-  return (
-    <section className={`container py-32 lg:py-40 ${className}`}>
-      <div className="mb-12 text-center">
-        <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
-          Restaurant Operations Excellence
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Comprehensive HACCP compliance and operational control designed for modern restaurant chains
-        </p>
-      </div>
+return (
+    <section className={`section-marketing ${className}`}>
+      <div className="container">
+        <div className="mb-12 text-center">
+          <h2 className="heading-brand-gradient mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+            Restaurant Operations Excellence
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Comprehensive HACCP compliance and operational control designed for modern restaurant chains
+          </p>
+        </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-3">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-3">
         {restaurantFeatures.map((feature) => (
           <FeatureBlock
             key={feature.id}
@@ -123,8 +124,8 @@ export function FeatureGrid({
           />
         ))}
         
-        {/* Hero CTA Block - spans 2x2 grid */}
-        <div className="flex w-full grow flex-col gap-6 rounded-lg bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 p-6 transition-all hover:from-primary/10 hover:via-primary/15 hover:to-primary/10 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-2 lg:p-10">
+{/* Hero CTA Block - spans 2x2 grid */}
+        <div className="flex w-full grow flex-col gap-6 rounded-lg bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5 p-6 transition-all hover:from-primary/10 hover:via-primary/15 hover:to-primary/10 md:col-span-2 md:col-start-2 md:row-span-2 md:row-start-2 lg:p-10 tile-hover">
           <div className="flex flex-col items-start justify-between gap-5 md:flex-row md:items-center">
             <div className="flex-1">
               <h3 className="mb-2 text-xl font-bold tracking-tight lg:text-3xl">
@@ -145,22 +146,23 @@ export function FeatureGrid({
           </div>
           
           {/* Dashboard Preview */}
-          <div className="relative flex-1 min-h-[200px] rounded-lg bg-gradient-to-br from-muted/50 to-muted/30 p-4 overflow-hidden">
+<div className="relative flex-1 min-h-[200px] rounded-lg bg-gradient-to-br from-muted/50 to-muted/30 p-4 overflow-hidden">
             <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%239C92AC%22 fill-opacity=%220.1%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%221%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
             <div className="relative">
               <div className="mb-4 h-4 w-3/4 bg-primary/20 rounded"></div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <div className="h-2 w-full bg-green-500/30 rounded"></div>
-                  <div className="h-2 w-2/3 bg-green-500/20 rounded"></div>
+                  <div className="h-2 w-full bg-primary/25 rounded"></div>
+                  <div className="h-2 w-2/3 bg-primary/15 rounded"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="h-2 w-full bg-orange-500/30 rounded"></div>
-                  <div className="h-2 w-1/2 bg-orange-500/20 rounded"></div>
+                  <div className="h-2 w-full bg-primary/25 rounded"></div>
+                  <div className="h-2 w-1/2 bg-primary/15 rounded"></div>
                 </div>
               </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
     </section>
@@ -193,9 +195,9 @@ const FeatureBlock: React.FC<FeatureBlockProps & {
     }
   };
 
-  return (
+return (
     <button
-      className={`flex w-full cursor-pointer flex-col rounded-lg bg-card border-2 transition-all duration-200 p-6 lg:p-8 text-left hover:shadow-lg hover:scale-[1.02] ${getComplianceColor(complianceLevel)}`}
+      className={`flex w-full cursor-pointer flex-col rounded-lg bg-card border-2 transition-all duration-200 p-6 lg:p-8 text-left hover:shadow-lg hover:scale-[1.02] tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${getComplianceColor(complianceLevel)}`}
       onMouseEnter={() => setIsHover(true)}
       onMouseLeave={() => setIsHover(false)}
       onClick={onClick}

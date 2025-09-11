@@ -154,7 +154,7 @@ export function FeatureTabs({
       case "financial": return "bg-green-100 text-green-800 border-green-200";
       case "compliance": return "bg-red-100 text-red-800 border-red-200";
       case "performance": return "bg-purple-100 text-purple-800 border-purple-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      default: return "bg-muted text-foreground border-border";
     }
   };
 
@@ -170,10 +170,10 @@ export function FeatureTabs({
     <section className={`py-24 lg:py-32 ${className}`}>
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="text-display-2xl mb-4 text-3xl font-bold tracking-tight lg:">
             Restaurant Analytics Dashboard
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+          <p className="enterprise-body  text-muted-foreground max-w-3xl mx-auto">
             Comprehensive analytics suite providing actionable insights for restaurant operations, compliance, and profitability
           </p>
         </div>
@@ -217,7 +217,7 @@ export function FeatureTabs({
                 </Badge>
               </div>
               
-              <h3 className="text-xl font-semibold">{activeTabData.title}</h3>
+              <h3 className="enterprise-body  font-semibold">{activeTabData.title}</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 {activeTabData.description}
               </p>
@@ -249,7 +249,7 @@ export function FeatureTabs({
               {activeTabData.metrics.secondary.map((metric, index) => (
                 <div key={index} className="p-4 bg-muted/50 rounded-lg">
                   <div className="text-sm text-muted-foreground mb-1">{metric.label}</div>
-                  <div className="text-lg font-semibold">{metric.value}</div>
+                  <div className="enterprise-body  font-semibold">{metric.value}</div>
                 </div>
               ))}
             </div>
@@ -259,7 +259,7 @@ export function FeatureTabs({
         {/* Features List */}
         <div className="grid md:grid-cols-2 gap-8 mb-8">
           <div>
-            <h4 className="text-lg font-semibold mb-4">Key Features</h4>
+            <h4 className="enterprise-body  font-semibold mb-4">Key Features</h4>
             <div className="space-y-3">
               {activeTabData.features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">

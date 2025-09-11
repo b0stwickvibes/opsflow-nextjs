@@ -127,22 +127,22 @@ const FormHero = ({
 
   const colorClasses = {
     orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-600 hover:bg-orange-700',
-      badge: 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200',
-      border: 'focus:border-orange-500 focus:ring-orange-500',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary hover:bg-primary',
+      badge: 'bg-primary text-primary dark:bg-primary dark:text-primary',
+      border: 'focus:border-primary0 focus:ring-orange-500',
     },
     purple: {
-      primary: 'text-purple-600 dark:text-purple-400',
-      bg: 'bg-purple-600 hover:bg-purple-700',
-      badge: 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200',
-      border: 'focus:border-purple-500 focus:ring-purple-500',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary hover:bg-primary',
+      badge: 'bg-primary text-primary dark:bg-primary dark:text-primary',
+      border: 'focus:border-primary0 focus:ring-purple-500',
     },
     amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-600 hover:bg-amber-700', 
-      badge: 'bg-amber-100 text-amber-800 dark:bg-amber-900 dark:text-amber-200',
-      border: 'focus:border-amber-500 focus:ring-amber-500',
+      primary: 'text-primary dark:text-primary',
+      bg: 'bg-primary hover:bg-primary', 
+      badge: 'bg-primary text-primary dark:bg-primary dark:text-primary',
+      border: 'focus:border-primary0 focus:ring-amber-500',
     },
   };
 
@@ -160,10 +160,10 @@ const FormHero = ({
             </Badge>
             
             <div className="space-y-4">
-              <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl leading-tight">
+              <h1 className="text-display-2xl enterprise-headline  font-bold md: lg:text-6xl leading-tight">
                 {content.title}
               </h1>
-              <p className="text-muted-foreground text-lg leading-relaxed">
+              <p className="enterprise-body text-muted-foreground  leading-relaxed">
                 {content.subtitle}
               </p>
             </div>

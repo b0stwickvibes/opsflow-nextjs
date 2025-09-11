@@ -137,7 +137,7 @@ export function FeatureHighlight({
       case "compliance": return "bg-red-100 text-red-800 border-red-200";
       case "efficiency": return "bg-blue-100 text-blue-800 border-blue-200";
       case "revenue": return "bg-purple-100 text-purple-800 border-purple-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      default: return "bg-muted text-foreground border-border";
     }
   };
 
@@ -150,13 +150,13 @@ export function FeatureHighlight({
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing ${className}`}>
       <div className="container">
         <div className="mb-16 text-center">
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h2 className="heading-brand-gradient text-display-2xl mb-4 font-bold tracking-tight lg:text-6xl">
             Proven ROI for Restaurant Operations
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
+          <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
             Real results from 500+ restaurants using OpsFlow. See how our platform delivers 
             immediate and sustained value across all aspects of your operations.
           </p>
@@ -200,7 +200,7 @@ export function FeatureHighlight({
                 </div>
 
                 <div>
-                  <h4 className="font-semibold mb-3 text-lg">Key Benefits</h4>
+                  <h4 className="enterprise-body font-semibold mb-3 ">Key Benefits</h4>
                   <ul className="space-y-3">
                     {highlight.benefits.map((benefit, idx) => (
                       <li key={idx} className="flex items-start gap-3">
@@ -214,7 +214,7 @@ export function FeatureHighlight({
                 <Button 
                   size="lg" 
                   onClick={() => handleGetStartedClick(highlight.id)}
-                  className="w-full sm:w-auto"
+                  className="cta-shimmer w-full sm:w-auto"
                 >
                   Learn More About {highlight.title.split(' ')[0]} ROI
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -224,13 +224,13 @@ export function FeatureHighlight({
               {/* Stats Section */}
               <div className="space-y-6">
                 <div className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl">
-                  <h4 className="font-semibold text-lg mb-6">Performance Metrics</h4>
+                  <h4 className="enterprise-body font-semibold  mb-6">Performance Metrics</h4>
                   <div className="grid gap-4">
                     {highlight.stats.map((stat, idx) => (
                       <div key={idx} className="flex items-center justify-between p-4 bg-card rounded-lg border">
                         <div>
                           <div className="text-sm text-muted-foreground">{stat.label}</div>
-                          <div className="text-xl font-bold">{stat.value}</div>
+                          <div className="enterprise-body  font-bold">{stat.value}</div>
                         </div>
                         <div className="flex items-center gap-2">
                           {getTrendIcon(stat.trend)}
@@ -275,7 +275,7 @@ export function FeatureHighlight({
           </div>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" className="px-8">
+            <Button size="lg" className="cta-shimmer px-8">
               Calculate Your ROI
               <BarChart3 className="ml-2 h-4 w-4" />
             </Button>

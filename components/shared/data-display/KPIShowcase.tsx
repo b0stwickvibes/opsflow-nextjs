@@ -16,11 +16,61 @@ const NumberFlow = ({ value, prefix = "", suffix = "", className = "" }: {
   <span className={className}>{prefix}{value}{suffix}</span>
 );
 
-interface KPIShowcaseProps {
-  industry?: "restaurants" | "bars" | "coffee" | "hotels";
+// Variants and energy to pace visual emphasis
+export type StatVariant = 'ambient' | 'outline' | 'ghost' | 'mono';
+export type Energy = 'subtle' | 'balanced' | 'bold';
+
+function getTileClasses(variant: StatVariant, energy: Energy) {
+  const energyMap = {
+    subtle: {
+      ring: 'ring-1 ring-border/40',
+      blur: 'backdrop-blur-sm',
+      shadow: 'shadow-sm',
+    },
+    balanced: {
+      ring: 'ring-1 ring-border/30',
+      blur: 'backdrop-blur-md',
+      shadow: 'shadow',
+    },
+    bold: {
+      ring: 'ring-1 ring-border/20',
+      blur: 'backdrop-blur-md',
+      shadow: 'shadow-lg',
+    },
+  } as const;
+
+  switch (variant) {
+    case 'ambient':
+      return `bg-brand-gradient text-primary-foreground ${energyMap[energy].shadow} ${energyMap[energy].blur} ring-1 ring-primary/25`;
+    case 'outline':
+      return `bg-card/60 text-foreground ${energyMap[energy].ring} ${energyMap[energy].blur}`;
+    case 'ghost':
+      return `bg-transparent text-foreground hover:ring-1 hover:ring-border/30`;
+    case 'mono':
+      return `bg-transparent text-muted-foreground`;
+  }
 }
 
-export function KPIShowcase({ industry = "restaurants" }: KPIShowcaseProps) {
+function getValueClasses(variant: StatVariant) {
+  switch (variant) {
+    case 'ambient':
+      return 'text-primary-foreground';
+    case 'outline':
+    case 'ghost':
+      return 'text-primary';
+    case 'mono':
+      return 'text-muted-foreground';
+  }
+}
+
+interface KPIShowcaseProps {
+  industry?: "restaurants" | "bars" | "coffee" | "hotels";
+  variant?: StatVariant; // default look for non-lead items
+  energy?: Energy;       // controls blur/shadow intensity
+  leadKey?: string;      // the single KPI key to elevate to 'ambient'
+}
+
+export function KPIShowcase({ industry = "restaurants", variant = 'outline', energy = 'balanced', leadKey }: KPIShowcaseProps) {
   const [showMonthlyStats, setShowMonthlyStats] = useState(false);
   const [stats, setStats] = useState({
     monthly: {
@@ -175,11 +225,11 @@ export function KPIShowcase({ industry = "restaurants" }: KPIShowcaseProps) {
   };
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container flex justify-center">
         <div className="flex w-full flex-col justify-between gap-8 lg:flex-row">
           <div className="w-full lg:w-1/3">
-            <h1 className="w-full text-4xl font-bold lg:text-6xl">
+            <h1 className="heading-brand-gradient w-full text-4xl font-bold lg:text-6xl">
               {config.title}
             </h1>
             <p className="my-4 text-lg tracking-tight text-muted-foreground">
@@ -187,8 +237,7 @@ export function KPIShowcase({ industry = "restaurants" }: KPIShowcaseProps) {
             </p>
             <Button
               onClick={handleGetStarted}
-              className="group text-md mt-10 flex w-fit items-center justify-center gap-2 rounded-full px-6 py-3 tracking-tight text-white hover:scale-105 transition-all"
-              style={{ backgroundColor: config.color }}
+              className="cta-shimmer group text-md mt-10 flex w-fit items-center justify-center gap-2 rounded-full px-6 py-3 tracking-tight bg-primary text-primary-foreground hover:scale-105 transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               <span>Get Started With OpsFlow</span>
               <ArrowRight className="size-4 -rotate-45 transition-all ease-out group-hover:ml-3 group-hover:rotate-0" />
@@ -200,10 +249,9 @@ export function KPIShowcase({ industry = "restaurants" }: KPIShowcaseProps) {
                   {[65, 78, 85, 92, 88, 95].map((height, i) => (
                     <div key={i} className="flex flex-col items-center">
                       <div 
-                        className="w-8 rounded-t"
+                        className="w-8 rounded-t bg-primary"
                         style={{ 
-                          height: `${height}%`,
-                          backgroundColor: config.color
+                          height: `${height}%`
                         }}
                       />
                       <span className="text-xs text-muted-foreground mt-2">
@@ -244,35 +292,38 @@ export function KPIShowcase({ industry = "restaurants" }: KPIShowcaseProps) {
             </div>
             
             <div className="mt-auto mb-10 grid w-full grid-cols-2 gap-8">
-              {config.kpis.map((kpi, index) => (
-                <div 
-                  key={kpi.key}
-                  className={`${index % 2 === 0 ? "text-left" : "text-right"} group cursor-pointer hover:scale-105 transition-all duration-200`}
-                  onClick={() => trackEvent("kpi_metric_clicked", {
-                    industry,
-                    metric: kpi.label,
-                    value: showMonthlyStats ? stats.monthly[kpi.key as keyof typeof stats.monthly] : stats.yearly[kpi.key as keyof typeof stats.yearly]
-                  })}
-                >
-                  <h2 
-                    className="text-3xl font-bold lg:text-5xl"
-                    style={{ color: config.color }}
+              {config.kpis.map((kpi, index) => {
+                const isLead = leadKey ? kpi.key === leadKey : false;
+                const appliedVariant: StatVariant = isLead ? 'ambient' : variant;
+                return (
+                  <div 
+                    key={kpi.key}
+                    className={`${index % 2 === 0 ? "text-left" : "text-right"} tile-hover group cursor-pointer rounded-xl p-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary transition-all duration-200 hover:scale-105 ${getTileClasses(appliedVariant, energy)}`}
+                    onClick={() => trackEvent("kpi_metric_clicked", {
+                      industry,
+                      metric: kpi.label,
+                      value: showMonthlyStats ? stats.monthly[kpi.key as keyof typeof stats.monthly] : stats.yearly[kpi.key as keyof typeof stats.yearly]
+                    })}
                   >
-                    <NumberFlow
-                      value={
-                        showMonthlyStats
-                          ? stats.monthly[kpi.key as keyof typeof stats.monthly]
-                          : stats.yearly[kpi.key as keyof typeof stats.yearly]
-                      }
-                      prefix={kpi.prefix}
-                      suffix={kpi.suffix}
-                    />
-                  </h2>
-                  <p className="text-muted-foreground/70 text-sm lg:text-base">
-                    {kpi.label}
-                  </p>
-                </div>
-              ))}
+                    <h2 
+                      className={`text-3xl font-bold lg:text-5xl ${getValueClasses(appliedVariant)}`}
+                    >
+                      <NumberFlow
+                        value={
+                          showMonthlyStats
+                            ? stats.monthly[kpi.key as keyof typeof stats.monthly]
+                            : stats.yearly[kpi.key as keyof typeof stats.yearly]
+                        }
+                        prefix={kpi.prefix}
+                        suffix={kpi.suffix}
+                      />
+                    </h2>
+                    <p className="text-muted-foreground/70 text-sm lg:text-base">
+                      {kpi.label}
+                    </p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

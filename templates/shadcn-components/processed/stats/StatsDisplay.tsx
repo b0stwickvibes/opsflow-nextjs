@@ -154,15 +154,14 @@ export function StatsDisplay({
   };
 
   return (
-    <section className="py-32" ref={sectionRef}>
+    <section className="section-marketing" ref={sectionRef}>
       <div className="container">
         <h1 
-          className="text-center text-4xl font-semibold lg:text-6xl mb-4"
-          style={{ color: config.color }}
+          className="heading-brand-gradient text-display-2xl text-center font-semibold lg:text-6xl mb-4"
         >
           {sectionTitle}
         </h1>
-        <p className="text-center text-lg text-muted-foreground max-w-3xl mx-auto mb-12">
+        <p className="enterprise-body text-center  text-muted-foreground max-w-3xl mx-auto mb-12">
           Real results from {industry} using OpsFlow to optimize their operations and improve their bottom line.
         </p>
 
@@ -170,7 +169,7 @@ export function StatsDisplay({
           {stats.map((stat, index) => (
             <div 
               key={stat.label}
-              className={`text-center cursor-pointer group transition-all duration-700 hover:scale-105 ${
+              className={`tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary text-center cursor-pointer group transition-all duration-700 hover:scale-105 ${
                 isVisible 
                   ? 'opacity-100 translate-y-0' 
                   : 'opacity-0 translate-y-8'
@@ -192,8 +191,7 @@ export function StatsDisplay({
                 {stat.label}
               </p>
               <p 
-                className="pt-4 text-7xl font-bold lg:pt-10 transition-all duration-300 group-hover:scale-110"
-                style={{ color: stat.color || config.color }}
+                className="pt-4 text-7xl font-bold lg:pt-10 transition-all duration-300 group-hover:scale-110 text-primary"
               >
                 {stat.value}
               </p>
@@ -203,8 +201,7 @@ export function StatsDisplay({
 
               {/* Decorative underline on hover */}
               <div 
-                className="mt-4 mx-auto h-1 w-0 group-hover:w-16 transition-all duration-300 rounded-full"
-                style={{ backgroundColor: stat.color || config.color }}
+                className="mt-4 mx-auto h-1 w-0 group-hover:w-16 transition-all duration-300 rounded-full bg-primary"
               />
             </div>
           ))}
@@ -218,8 +215,7 @@ export function StatsDisplay({
           <div className="flex flex-wrap justify-center gap-6 text-sm">
             <span className="flex items-center gap-2">
               <div 
-                className="w-2 h-2 rounded-full" 
-                style={{ backgroundColor: config.color }}
+                className="w-2 h-2 rounded-full bg-primary" 
               />
               Industry Average Performance
             </span>
@@ -239,12 +235,7 @@ export function StatsDisplay({
               });
               window.location.href = `/case-studies?industry=${industry}`;
             }}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg"
-            style={{ 
-              backgroundColor: `oklch(from ${config.color} l c h / 0.1)`,
-              color: config.color,
-              border: `2px solid ${config.color}`
-            }}
+            className="tile-hover inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 hover:shadow-lg bg-primary/10 text-primary border-2 border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
           >
             See Detailed Case Studies
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -218,18 +218,29 @@ export function FeatureAccordion({
   variant = "procedures"
 }: FeatureAccordionProps) {
   const [openItems, setOpenItems] = useState<string[]>([]);
+  const itemRefs = React.useRef<Record<string, HTMLDivElement | null>>({});
   const { trackFeatureEngagement } = useRestaurantAnalytics();
 
   const toggleItem = (itemId: string) => {
-    setOpenItems(prev => 
-      prev.includes(itemId)
-        ? prev.filter(id => id !== itemId)
-        : [...prev, itemId]
-    );
-    
-    trackFeatureEngagement("compliance_procedure_toggle", {
-      procedure_id: itemId,
-      action: openItems.includes(itemId) ? "close" : "open",
+    setOpenItems((prev) => {
+      const isOpen = prev.includes(itemId);
+      const next = isOpen ? prev.filter((id) => id !== itemId) : [...prev, itemId];
+      trackFeatureEngagement("compliance_procedure_toggle", {
+        procedure_id: itemId,
+        action: isOpen ? "close" : "open",
+      });
+      // If closing, scroll the item header back into view for better UX
+      if (isOpen) {
+        const el = itemRefs.current[itemId];
+        if (el) {
+          try {
+            el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          } catch (_) {
+            // no-op
+          }
+        }
+      }
+      return next;
     });
   };
 
@@ -327,14 +338,17 @@ export function FeatureAccordion({
             const isOpen = openItems.includes(procedure.id);
             
             return (
-              <div
+<div
                 key={procedure.id}
+ref={(el) => { itemRefs.current[procedure.id] = el; }}
                 className="border border-border rounded-lg bg-card overflow-hidden"
               >
                 {/* Accordion Header */}
-                <button
+<button
                   onClick={() => toggleItem(procedure.id)}
                   className="w-full p-6 text-left hover:bg-muted/50 transition-colors"
+                  aria-expanded={isOpen}
+                  aria-controls={`accordion-panel-${procedure.id}`}
                 >
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-4 flex-1">
@@ -387,9 +401,10 @@ export function FeatureAccordion({
                 </button>
 
                 {/* Accordion Content */}
-                <div
+<div
+                  id={`accordion-panel-${procedure.id}`}
                   className={cn(
-                    "overflow-hidden transition-all duration-300 ease-in-out",
+                    "overflow-hidden transition-all duration-300 ease-out",
                     isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"
                   )}
                 >

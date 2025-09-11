@@ -4,6 +4,120 @@
   to { opacity: 1; }
 }
 
+/* ===== Clerk/Stripe-inspired premium utilities (marketing oomph) ===== */
+@layer components {
+  /* Ambient hero with radial brand glows */
+  .enterprise-hero-section { @apply relative py-16 md:py-24 overflow-hidden; }
+  .hero-ambient {
+    background:
+      radial-gradient(800px 400px at 10% -10%, oklch(from var(--brand-start) l c h / var(--ambient-a, .18)) 0%, transparent 70%),
+      radial-gradient(900px 450px at 90% -10%, oklch(from var(--brand-end) l c h / var(--ambient-b, .16)) 0%, transparent 70%),
+      var(--gradient-surface);
+    background-size: 200% 200%;
+  }
+  .hero-ambient::before,
+  .hero-ambient::after {
+    content: "";
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 60%;
+    pointer-events: none;
+    filter: blur(40px);
+    background: radial-gradient(600px 240px at 30% 0%, oklch(from var(--brand-start) l c h / .20), transparent 60%);
+    opacity: .6;
+  }
+  .hero-ambient::after {
+    inset: auto -10% -15% -10%;
+    height: 50%;
+    background: radial-gradient(700px 260px at 70% 100%, oklch(from var(--brand-end) l c h / .22), transparent 65%);
+    opacity: .5;
+  }
+
+  /* Gradient/shimmer CTA tuned for conversion */
+  .clerk-cta-primary {
+    border: 1px solid transparent;
+    background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+    color: var(--color-white);
+    box-shadow: 0 8px 30px -12px oklch(from var(--brand-start) l c h / var(--glow-shadow, .55));
+    transition: transform 180ms cubic-bezier(.2,.9,.3,1), box-shadow 220ms ease, opacity .2s ease;
+  }
+  .clerk-cta-primary:hover { transform: scale(1.03); box-shadow: 0 14px 48px -16px oklch(from var(--brand-end) l c h / var(--glow-shadow, .6)); }
+  .clerk-cta-primary:active { transform: scale(0.99); }
+  .clerk-cta-primary:focus-visible { outline: 2px solid oklch(from var(--color-white) l c h / .0); box-shadow: 0 0 0 3px oklch(from var(--brand-end) l c h / .75); }
+  .cta-equal { min-height: 3rem; }
+
+  /* Motion spec: 320ms springy fade-in-up */
+  @keyframes motion-fade-up-12 { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+  .motion-fade-in-up-320 { animation: motion-fade-up-12 320ms cubic-bezier(.2,.9,.3,1) both; }
+  .hover-scale-103 { transition: transform 180ms cubic-bezier(.2,.9,.3,1); }
+  .hover-scale-103:hover { transform: scale(1.03); }
+
+  /* Premium cards/tiles */
+  .icon-badge-ambient {
+    border: 1px solid oklch(from var(--border) l c h / .7);
+    background: linear-gradient(135deg, oklch(from var(--brand-start) l c h / .85), oklch(from var(--brand-end) l c h / .85));
+    color: var(--color-white);
+    box-shadow: 0 8px 24px -14px oklch(from var(--brand-end) l c h / .6), inset 0 0 0 2px oklch(from var(--color-white) l c h / .1);
+  }
+  .roi-icon-brand { @apply icon-badge-ambient; }
+
+  .enterprise-card {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(0deg, oklch(from var(--background) l c h / .9), oklch(from var(--background) l c h / .9)) padding-box,
+      linear-gradient(135deg, oklch(from var(--brand-start) l c h / .3), oklch(from var(--brand-end) l c h / .3)) border-box;
+    backdrop-filter: var(--glass-blur);
+    border-radius: 0.875rem;
+  }
+  .enterprise-metric-card { @apply enterprise-card; box-shadow: 0 10px 30px -18px oklch(from var(--brand-start) l c h / .4); }
+
+  .feature-tile { @apply rounded-xl; border: 1px solid oklch(from var(--border) l c h / .8); background: oklch(from var(--background) l c h / .96); backdrop-filter: var(--glass-blur); transition: transform 200ms ease, box-shadow 250ms ease, border-color 200ms ease; }
+  .feature-tile:not(.feature-tile--static):hover { transform: translateY(-4px); box-shadow: 0 16px 36px -18px oklch(from var(--brand-end) l c h / .45); border-color: oklch(from var(--brand-start) l c h / .6); }
+
+  /* Icon wrappers with subtle tone */
+  .enterprise-icon-primary, .enterprise-icon-secondary, .enterprise-icon-accent, .enterprise-icon-muted {
+    @apply inline-flex items-center justify-center rounded-lg border; width: 2.75rem; height: 2.75rem;
+    background: oklch(from var(--background) l c h / .92);
+    border-color: oklch(from var(--border) l c h / .7);
+    color: oklch(from var(--foreground) l c h / .8);
+  }
+  .enterprise-icon-primary { box-shadow: inset 0 0 0 1px oklch(from var(--brand-start) l c h / .35); }
+  .enterprise-icon-secondary { box-shadow: inset 0 0 0 1px oklch(from var(--brand-end) l c h / .35); }
+  .enterprise-icon-accent { box-shadow: inset 0 0 0 1px oklch(from var(--primary) l c h / .35); }
+  .enterprise-icon-muted { opacity: .85; }
+
+  /* Typographic helpers */
+  .metric-display-medium { font-size: clamp(1.75rem, 3.2vw, 2.5rem); line-height: 1.1; font-weight: 800; letter-spacing: -0.02em; }
+  .text-gradient {
+    background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  /* Clerk-inspired card used in interactive sections */
+  .clerk-inspired-card { @apply rounded-2xl; border: 1px solid oklch(from var(--border) l c h / .75); background: oklch(from var(--background) l c h / .92); backdrop-filter: var(--glass-blur); }
+
+  /* Section depth overlays */
+  .section-vignette-bottom { position: relative; }
+  .section-vignette-bottom::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 28%;
+    background: linear-gradient(to bottom, transparent, oklch(from var(--background) l c h / .95));
+    pointer-events: none;
+  }
+  .section-grid-overlay { position: relative; }
+  .section-grid-overlay::before {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .06;
+    background-image:
+      linear-gradient(to right, currentColor 1px, transparent 1px),
+      linear-gradient(to bottom, currentColor 1px, transparent 1px);
+    color: oklch(from var(--foreground) l c h / .5); background-size: 24px 24px;
+  }
+
+  /* Energy variants */
+  .energy-subtle { --ambient-a: .10; --ambient-b: .08; --glow-shadow: .35; }
+  .energy-balanced { --ambient-a: .18; --ambient-b: .16; --glow-shadow: .55; }
+  .energy-bold { --ambient-a: .28; --ambient-b: .24; --glow-shadow: .75; }
+}
+
 @keyframes slideUp {
   from { transform: translateY(20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
@@ -125,6 +239,10 @@
     /* Figma/marketing bridge */
     --gradient-surface: radial-gradient(1200px 600px at 0% 0%, oklch(0.8 0.12 210 / 0.12) 0%, transparent 60%),
                         radial-gradient(1200px 600px at 100% 0%, oklch(0.75 0.15 310 / 0.12) 0%, transparent 60%);
+
+    /* Brand gradient defaults (can be overridden by .accent-*) */
+    --brand-start: var(--primary-700);
+    --brand-end: var(--secondary-700);
   }
 
   .dark {
@@ -344,6 +462,65 @@
     border-color: oklch(from var(--border) l c h / .7);
     background: oklch(from var(--background) l c h / .95);
     color: oklch(from var(--foreground) l c h / .75);
+  }
+
+  /* Brand gradient utilities (Clerk-style, consistent across components) */
+  .bg-brand-gradient {
+    background-image: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+  }
+  .bg-brand-surface {
+    background: var(--gradient-surface);
+    background-size: 200% 200%;
+  }
+  .text-brand-gradient {
+    background: linear-gradient(135deg, var(--brand-start), var(--brand-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Marketing section wrapper */
+  .section-marketing { @apply py-16 md:py-24; background: var(--gradient-surface); background-size: 200% 200%; }
+
+  /* Hover lift + glow utility for cards/tiles */
+  .tile-hover { transition: transform .25s ease, box-shadow .3s ease, background-color .2s ease, border-color .2s ease; }
+  .tile-hover:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -20px oklch(from var(--brand-start) l c h / 0.35); }
+  .tile-hover:focus-visible { outline: 2px solid oklch(from var(--brand-start) l c h / 0.8); outline-offset: 3px; }
+
+  /* Heading gradient (Figma-style) */
+  .heading-brand-gradient { @apply font-bold; background: linear-gradient(135deg, var(--brand-start), var(--brand-end)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* Standard easing/timing helpers */
+  .ease-standard { transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1); }
+  .duration-standard { transition-duration: .3s; }
+
+  /* CTA shimmer (optional) */
+  @keyframes cta-shimmer {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+  }
+  .cta-shimmer {
+    background-image: linear-gradient(90deg, oklch(from var(--brand-start) l c h / 0.2), oklch(from var(--brand-end) l c h / 0.45), oklch(from var(--brand-start) l c h / 0.2));
+    background-size: 200% 100%;
+    animation: cta-shimmer 1.8s linear infinite;
+  }
+
+  /* Accent themes (override brand gradient colors per section/industry) */
+  .accent-orange { 
+    --brand-start: oklch(0.72 0.16 55);
+    --brand-end:   oklch(0.62 0.13 35);
+  }
+  .accent-purple { 
+    --brand-start: oklch(0.66 0.18 300);
+    --brand-end:   oklch(0.58 0.14 285);
+  }
+  .accent-amber { 
+    --brand-start: oklch(0.76 0.15 85);
+    --brand-end:   oklch(0.68 0.12 75);
+  }
+  .accent-blue { 
+    --brand-start: oklch(0.64 0.16 230);
+    --brand-end:   oklch(0.56 0.12 210);
   }
 
   /* Interactive tile */

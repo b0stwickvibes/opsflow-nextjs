@@ -225,10 +225,10 @@ export function FAQSection({
   };
 
   return (
-    <section className={cn("py-32", className)}>
+    <section className={cn("section-marketing", className)}>
       <div className={cn("container", maxWidthClasses[maxWidth])}>
         <h1 
-          className="mb-4 text-3xl font-semibold md:mb-11 md:text-4xl text-center"
+          className="heading-brand-gradient text-display-2xl mb-4 text-3xl font-semibold md:mb-11 md: text-center"
           role="heading"
           aria-level={1}
         >
@@ -239,22 +239,23 @@ export function FAQSection({
           type="single" 
           collapsible 
           onValueChange={handleAccordionChange}
+          className="bg-card/70 backdrop-blur-sm border rounded-xl"
         >
           {faqItems.map((item, index) => (
             <AccordionItem 
               key={item.id || index} 
               value={`item-${index}`}
-              className="border-b border-border/50"
+              className="border-b border-border/50 tile-hover"
             >
               <AccordionTrigger 
-                className="font-semibold hover:no-underline text-left py-6"
+                className="font-semibold hover:no-underline text-left py-6 px-5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 aria-describedby={`faq-answer-${index}`}
               >
                 {item.question}
               </AccordionTrigger>
               <AccordionContent 
                 id={`faq-answer-${index}`}
-                className="text-muted-foreground pb-6 leading-relaxed"
+                className="text-muted-foreground pb-6 px-5 leading-relaxed"
               >
                 {item.answer}
               </AccordionContent>

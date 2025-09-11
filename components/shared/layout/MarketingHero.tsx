@@ -50,7 +50,7 @@ export function MarketingHero({
   }, []);
 
   return (
-    <section className={`relative py-16 md:py-24 bg-background ${className}`}>
+    <section className={`enterprise-hero-section hero-ambient section-grid-overlay section-vignette-bottom energy-balanced ${className}`}>
       <div className="container mx-auto px-4 sm:px-6">
         <div className={`mx-auto max-w-4xl ${align === 'left' ? 'text-left md:max-w-5xl' : 'text-center'}`}>
           {/* Eyebrow */}
@@ -109,14 +109,14 @@ export function MarketingHero({
           >
             {children || (
               <>
-                <Button asChild size="lg">
+                <Button asChild size="lg" className="clerk-cta-primary cta-shimmer hover-scale-103">
                   <Link href="/pricing">
                     Start Free Trial
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 
-                <Button asChild variant="outline" size="lg">
+                <Button asChild variant="outline" size="lg" className="hover-scale-103 border-2">
                   <Link href="/product/demo">
                     Watch Demo
                   </Link>

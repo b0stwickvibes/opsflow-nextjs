@@ -194,7 +194,7 @@ const ProductivityHero = ({
               <span className="text-sm font-medium">Productivity Boost</span>
             </div>
             
-            <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl mb-6">
+            <h1 className="heading-brand-gradient text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl mb-6">
               {content.title}
             </h1>
 
@@ -242,8 +242,7 @@ const ProductivityHero = ({
             <Button 
               size="lg" 
               className={cn(
-                "shadow-lg hover:shadow-xl transition-all duration-200 px-8 py-4 text-lg",
-                colors.bg,
+                "shadow-lg hover:shadow-xl transition-all duration-200 px-8 py-4 text-lg bg-brand-gradient text-primary-foreground cta-shimmer",
                 !canBoostProductivity && "opacity-75 cursor-not-allowed"
               )}
               disabled={!canBoostProductivity}

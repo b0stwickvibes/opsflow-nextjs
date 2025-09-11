@@ -310,20 +310,18 @@ export function PricingTable({
                   {config.subtitle}
                 </p>
                 {showAnnualDiscount && (
-                  <p className="mt-2 text-sm font-medium" style={{ color: config.color }}>
+                  <p className="mt-2 text-sm font-medium text-primary">
                     Save 20% with annual billing
                   </p>
                 )}
               </div>
               <div 
-                className="hidden md:flex md:items-center md:justify-center md:size-24 lg:size-32 rounded-2xl"
-                style={{ backgroundColor: `oklch(from ${config.color} l c h / 0.1)` }}
+                className="hidden md:flex md:items-center md:justify-center md:size-24 lg:size-32 rounded-2xl bg-primary/10"
               >
                 <div 
-                  className="size-12 lg:size-16 rounded-xl flex items-center justify-center"
-                  style={{ backgroundColor: config.color }}
+                  className="size-12 lg:size-16 rounded-xl flex items-center justify-center bg-primary"
                 >
-                  <span className="text-white font-bold text-lg lg:text-xl">$</span>
+                  <span className="text-primary-foreground font-bold text-lg lg:text-xl">$</span>
                 </div>
               </div>
             </div>
@@ -335,18 +333,13 @@ export function PricingTable({
                   key={plan.id}
                   className={`flex flex-1 flex-col rounded-lg p-6 lg:py-8 relative ${
                     plan.isPopular 
-                      ? 'border-2 shadow-lg' 
+                      ? 'border-2 shadow-lg border-primary bg-primary/5' 
                       : 'bg-accent border border-border'
                   }`}
-                  style={plan.isPopular ? { 
-                    borderColor: config.color,
-                    backgroundColor: `oklch(from ${config.color} l c h / 0.05)`
-                  } : {}}
                 >
                   {plan.isPopular && (
                     <div 
-                      className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-medium text-white"
-                      style={{ backgroundColor: config.color }}
+                      className="absolute -top-3 left-6 px-3 py-1 rounded-full text-xs font-medium bg-primary text-primary-foreground"
                     >
                       Most Popular
                     </div>
@@ -377,8 +370,7 @@ export function PricingTable({
                         {plan.features.map((feature, index) => (
                           <li key={index} className="flex items-start gap-2 text-sm">
                             <Check 
-                              className="size-4 mt-0.5 flex-shrink-0" 
-                              style={{ color: config.color }}
+                              className="size-4 mt-0.5 flex-shrink-0 text-primary"
                             />
                             <span>{feature}</span>
                           </li>
@@ -391,28 +383,9 @@ export function PricingTable({
                         onClick={() => handleCTAClick(plan)}
                         className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-medium transition-all duration-200 hover:scale-105 ${
                           plan.isPopular
-                            ? 'text-white shadow-lg'
-                            : 'border-2 hover:text-white'
+                            ? 'bg-primary text-primary-foreground shadow-lg'
+                            : 'border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground'
                         }`}
-                        style={plan.isPopular 
-                          ? { backgroundColor: config.color }
-                          : { 
-                              borderColor: config.color, 
-                              color: config.color,
-                              backgroundColor: 'transparent'
-                            }
-                        }
-                        onMouseEnter={(e) => {
-                          if (!plan.isPopular) {
-                            e.currentTarget.style.backgroundColor = config.color;
-                          }
-                        }}
-                        onMouseLeave={(e) => {
-                          if (!plan.isPopular) {
-                            e.currentTarget.style.backgroundColor = 'transparent';
-                            e.currentTarget.style.color = config.color;
-                          }
-                        }}
                         aria-label={`${plan.ctaText} for ${plan.name} plan`}
                       >
                         {plan.ctaAction === 'contact' && <Phone className="size-4" />}
@@ -431,8 +404,7 @@ export function PricingTable({
               <p className="mt-1">
                 Need a custom solution? {" "}
                 <button 
-                  className="font-medium hover:underline"
-                  style={{ color: config.color }}
+                  className="font-medium hover:underline text-primary"
                   onClick={() => trackEvent("pricing_custom_solution_click", { industry })}
                 >
                   Contact our enterprise team

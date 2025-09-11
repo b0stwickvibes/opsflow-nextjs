@@ -1,0 +1,50 @@
+{
+  "title": "Restaurant Solutions Deluxe",
+  "sections": [
+    {
+      "importPath": "@/templates/shadcn-components/processed/heroes",
+      "importName": "WorkflowHero",
+      "props": { "industry": "restaurant", "role": "manager", "variant": "default" }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/features",
+      "importName": "FeatureBento",
+      "props": { "variant": "dashboard" }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/stats",
+      "importName": "MetricsDashboard",
+      "props": { "industry": "restaurants" }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/integration",
+      "importName": "IntegrationGrid",
+      "props": {
+        "title": "Restaurant Tech Integrations",
+        "subtitle": "Connect OpsFlow with POS, delivery, payroll, accounting and more.",
+        "featuredIds": [2]
+      }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/stats",
+      "importName": "KPIShowcase",
+      "props": { "industry": "restaurants", "variant": "outline", "energy": "balanced", "leadKey": "Compliance" }
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/testimonials",
+      "importName": "TestimonialGrid",
+      "props": {}
+    },
+    {
+      "importPath": "@/templates/shadcn-components/processed/ctas",
+      "importName": "CallToAction",
+      "props": { 
+        "industry": "restaurants", 
+        "variant": "demo",
+        "customTitle": "Ready to Transform Your Restaurant Operations?",
+        "customSubtitle": "Join thousands of restaurants streamlining operations with OpsFlow"
+      }
+    }
+  ]
+}
+

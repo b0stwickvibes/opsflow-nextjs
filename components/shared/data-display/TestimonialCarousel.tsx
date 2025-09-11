@@ -103,10 +103,10 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
   const config = industryConfig[industry];
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold md:text-5xl mb-4" style={{ color: config.color }}>
+          <h2 className="heading-brand-gradient text-3xl font-bold md:text-5xl mb-4">
             Real Results from {industry.charAt(0).toUpperCase() + industry.slice(1)}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -138,7 +138,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
                   <div className="col-span-2">
                     <div className="mb-6 flex items-center justify-center gap-3 lg:mb-8 lg:justify-start">
                       <span className="text-3xl">{testimonial.logo}</span>
-                      <span className="text-xl font-semibold lg:text-3xl" style={{ color: config.color }}>
+                      <span className="text-xl font-semibold lg:text-3xl text-primary">
                         {testimonial.company}
                       </span>
                     </div>
@@ -153,7 +153,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
                       {testimonial.metrics.map((metric, metricIndex) => (
                         <div 
                           key={metricIndex}
-                          className="flex flex-col cursor-pointer hover:scale-105 transition-transform"
+                          className="flex flex-col cursor-pointer tile-hover rounded-lg p-4"
                           onClick={() => trackEvent("testimonial_metric_clicked", {
                             industry,
                             testimonial: testimonial.company,
@@ -162,8 +162,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
                           })}
                         >
                           <span 
-                            className="mb-4 text-4xl font-bold md:text-6xl"
-                            style={{ color: config.color }}
+                            className="mb-4 text-4xl font-bold md:text-6xl text-primary"
                           >
                             {metric.value}
                           </span>
@@ -191,11 +190,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
               trackEvent("testimonial_cta_click", { industry });
               window.location.href = `/case-studies?industry=${industry}`;
             }}
-            className="px-6 py-3 rounded-lg font-medium transition-all hover:scale-105"
-            style={{ 
-              backgroundColor: config.color,
-              color: "white"
-            }}
+            className="px-6 py-3 rounded-lg font-medium transition-all hover:scale-105 bg-brand-gradient text-primary-foreground cta-shimmer"
           >
             Read More Success Stories
           </button>

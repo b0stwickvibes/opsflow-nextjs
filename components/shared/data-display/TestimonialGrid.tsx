@@ -126,10 +126,10 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
   const config = industryConfig[industry];
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold md:text-5xl mb-4" style={{ color: config.color }}>
+          <h2 className="heading-brand-gradient text-3xl font-bold md:text-5xl mb-4">
             Success Stories from {industry.charAt(0).toUpperCase() + industry.slice(1)} Leaders
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -141,7 +141,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           {config.testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-background rounded-xl p-8 border hover:shadow-lg transition-all duration-300 cursor-pointer hover:scale-105"
+              className="tile-hover bg-background rounded-xl p-8 border cursor-pointer"
               onClick={() => trackEvent("testimonial_card_clicked", {
                 industry,
                 testimonial: testimonial.company,
@@ -158,13 +158,13 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg">{testimonial.name}</h3>
                   <p className="text-muted-foreground text-sm">{testimonial.title}</p>
-                  <p className="text-muted-foreground text-sm font-medium" style={{ color: config.color }}>
+                  <p className="text-sm font-medium text-primary">
                     {testimonial.company}
                   </p>
                 </div>
                 <div className="flex">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-current" style={{ color: config.color }} />
+                    <Star key={i} className="w-4 h-4 text-primary fill-primary" />
                   ))}
                 </div>
               </div>
@@ -172,8 +172,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
               {/* Quote */}
               <div className="relative mb-6">
                 <Quote 
-                  className="absolute -top-2 -left-2 w-8 h-8 opacity-20" 
-                  style={{ color: config.color }}
+                  className="absolute -top-2 -left-2 w-8 h-8 opacity-20 text-primary" 
                 />
                 <blockquote className="text-foreground leading-relaxed pl-6">
                   "{testimonial.quote}"
@@ -182,11 +181,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
 
               {/* Metric */}
               <div 
-                className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium"
-                style={{ 
-                  backgroundColor: `oklch(from ${config.color} l c h / 0.1)`,
-                  color: config.color
-                }}
+                className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium border border-primary/20 bg-primary/10 text-primary"
               >
                 <span className="font-bold">Results: {testimonial.metric}</span>
               </div>
@@ -205,8 +200,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
                 trackEvent("testimonial_grid_trial_click", { industry });
                 window.location.href = `/start-trial?industry=${industry}&source=testimonials`;
               }}
-              className="px-8 py-3 rounded-lg font-semibold text-white hover:scale-105 transition-transform"
-              style={{ backgroundColor: config.color }}
+              className="px-8 py-3 rounded-lg font-semibold hover:scale-105 transition-transform bg-brand-gradient text-primary-foreground cta-shimmer"
             >
               Start Free Trial
             </button>
@@ -215,12 +209,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
                 trackEvent("testimonial_grid_demo_click", { industry });
                 window.location.href = `/schedule-demo?industry=${industry}&source=testimonials`;
               }}
-              className="px-8 py-3 rounded-lg font-semibold border-2 hover:scale-105 transition-all"
-              style={{ 
-                borderColor: config.color,
-                color: config.color,
-                backgroundColor: "transparent"
-              }}
+              className="px-8 py-3 rounded-lg font-semibold border-2 hover:scale-105 transition-all border-primary text-primary bg-transparent"
             >
               Schedule Demo
             </button>

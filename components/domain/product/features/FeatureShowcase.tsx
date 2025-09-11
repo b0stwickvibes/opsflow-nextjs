@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { Badge } from "@/components/ui/badge";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
+import { cn } from "@/lib/utils";
 
 interface KitchenOperation {
   id: string;
@@ -232,10 +233,10 @@ export function FeatureShowcase({
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section className={cn("section-marketing", className)}>
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          <h2 className="heading-brand-gradient mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
             Kitchen Operations Excellence
           </h2>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -283,7 +284,7 @@ export function FeatureShowcase({
 
           <div className="relative">
             <CarouselContent
-              className="ml-6 pt-[5px] pb-5 transition-all duration-300"
+              className="ml-6 pt-[5px] pb-5 transition-all duration-300 ease-out"
               style={{
                 transform: `translateX(-${activeIndex * 100}%)`,
               }}
@@ -293,7 +294,7 @@ export function FeatureShowcase({
                   key={operation.id}
                   className="flex basis-full md:basis-1/2 xl:basis-1/3"
                 >
-                  <div className="flex h-full flex-col justify-between rounded-xl p-8 shadow-lg border bg-card hover:shadow-xl transition-all duration-200">
+                  <div className="flex h-full flex-col justify-between rounded-xl p-8 border bg-card tile-hover">
                     <div className="mb-6 flex items-start justify-between">
                       <div className="flex items-center gap-3">
                         <div className="p-2 rounded-lg bg-primary/10">
@@ -322,7 +323,7 @@ export function FeatureShowcase({
                     )}
 
                     <button
-                      className="mb-6 flex items-center text-sm text-primary hover:text-primary/80 transition-colors group"
+                      className="mb-6 flex items-center text-sm text-primary hover:text-primary/80 transition-colors group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                       onClick={() => handleLearnMoreClick(operation)}
                     >
                       Learn More 
@@ -361,7 +362,7 @@ export function FeatureShowcase({
             <p className="text-sm text-muted-foreground max-w-md">
               Join 500+ restaurants using our kitchen operations platform to reduce costs and improve efficiency
             </p>
-            <button className="px-6 py-3 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors font-medium">
+            <button className="px-6 py-3 rounded-lg transition-colors font-medium bg-brand-gradient text-primary-foreground cta-shimmer">
               Schedule Kitchen Assessment
             </button>
           </div>

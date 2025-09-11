@@ -138,12 +138,12 @@ export function IntegrationGrid({
               <CardHeader className="text-center space-y-4">
                 <div className="flex justify-center">
                   <div className="relative w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Image
+<Image
                       src={integration.icon}
                       alt={`${integration.title} integration`}
                       fill
                       sizes="64px"
-                      className="p-4 object-contain"
+                      className="p-4 object-contain transition-all duration-300 filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100"
                     />
                   </div>
                 </div>

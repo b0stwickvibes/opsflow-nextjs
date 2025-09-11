@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, Star, TrendingUp, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -147,7 +148,7 @@ export function LogoMarquee({
       case 'compliance':
         return <TrendingUp className="w-4 h-4 text-purple-600" />;
       default:
-        return <Award className="w-4 h-4 text-gray-600" />;
+        return <Award className="w-4 h-4 text-muted-foreground" />;
     }
   };
 
@@ -162,21 +163,21 @@ export function LogoMarquee({
   };
 
   return (
-    <section className={cn("py-32 bg-gradient-to-br from-gray-50 to-orange-50/30 dark:from-gray-900 dark:to-orange-950/20", className)}>
+    <section className={cn("py-32 bg-brand-surface", className)}>
       <div className="container">
-        <div className="grid overflow-hidden rounded-2xl border border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-xl md:grid-cols-2">
+        <div className="grid overflow-hidden rounded-2xl border border-border dark:border-gray-700 bg-card/80 dark:bg-gray-900/80 backdrop-blur-sm shadow-xl md:grid-cols-2">
           {/* Left Content */}
           <div className="my-auto px-8 py-12 sm:px-12 sm:py-16 lg:p-20">
             <div className="w-full md:max-w-lg">
-              <div className="bg-orange-100 dark:bg-orange-900/30 mb-4 inline-block rounded-full px-4 py-2 text-xs uppercase font-semibold text-orange-700 dark:text-orange-300 tracking-wider">
+              <div className="mb-4 inline-block rounded-full px-4 py-2 text-xs uppercase font-semibold tracking-wider bg-primary/10 text-primary">
                 INDUSTRY RECOGNITION
               </div>
               
-              <h2 className="mb-6 text-3xl font-bold lg:text-4xl text-gray-900 dark:text-gray-100">
+              <h2 className="text-display-2xl mb-6 text-3xl font-bold lg: text-foreground dark:text-gray-100">
                 {title}
               </h2>
               
-              <p className="mb-4 text-lg font-semibold text-gray-700 dark:text-gray-300">
+              <p className="enterprise-body mb-4  font-semibold text-foreground dark:text-gray-300">
                 {subtitle}
               </p>
               
@@ -191,7 +192,7 @@ export function LogoMarquee({
                     <div className="flex items-center justify-center mb-2">
                       {stat.icon}
                     </div>
-                    <div className="text-2xl font-bold text-gray-900 dark:text-gray-100">
+                    <div className="text-2xl font-bold text-foreground dark:text-gray-100">
                       {stat.value}
                     </div>
                     <div className="text-xs text-muted-foreground">
@@ -212,12 +213,12 @@ export function LogoMarquee({
           </div>
 
           {/* Right Grid - Achievements */}
-          <div className="grid grid-cols-2 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+          <div className="grid grid-cols-2 border-t border-border dark:border-gray-700 md:border-t-0 md:border-l">
             {achievements.map((achievement, index) => (
               <Card
                 key={achievement.id}
                 className={cn(
-                  "group cursor-pointer border-r border-b border-gray-200 dark:border-gray-700 rounded-none hover:shadow-lg transition-all duration-300",
+                  "group cursor-pointer border-r border-b border-border dark:border-gray-700 rounded-none hover:shadow-lg transition-all duration-300",
                   index % 2 === 1 && "border-r-0",
                   index >= achievements.length - 2 && "border-b-0",
                   getCategoryColor(achievement.category)
@@ -226,17 +227,17 @@ export function LogoMarquee({
               >
                 <CardContent className="flex flex-col items-center justify-center text-center p-6 h-full min-h-[180px]">
                   <div className="relative mb-4">
-                    <img
+                    <Image
                       src={achievement.logo}
                       alt={achievement.title}
                       className="w-16 h-16 object-cover rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300"
-                    />
+                     width={1200} height={800} />
                     <div className="absolute -top-1 -right-1">
                       {getCategoryIcon(achievement.category)}
                     </div>
                   </div>
                   
-                  <h4 className="font-bold text-sm mb-2 text-gray-900 dark:text-gray-100 leading-tight">
+                  <h4 className="font-bold text-sm mb-2 text-foreground dark:text-gray-100 leading-tight">
                     {achievement.title}
                   </h4>
                   
@@ -246,7 +247,7 @@ export function LogoMarquee({
                   
                   <div className="mt-auto space-y-1">
                     {achievement.organization && (
-                      <p className="text-xs font-medium text-gray-600 dark:text-gray-400">
+                      <p className="text-xs font-medium text-muted-foreground dark:text-muted-foreground">
                         {achievement.organization}
                       </p>
                     )}
@@ -274,7 +275,7 @@ export function LogoMarquee({
 
         {/* Bottom Recognition Section */}
         <div className="mt-16 text-center">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-6">
+          <h3 className="enterprise-body  font-semibold text-foreground dark:text-gray-100 mb-6">
             Recognized by Leading Restaurant Industry Organizations
           </h3>
           

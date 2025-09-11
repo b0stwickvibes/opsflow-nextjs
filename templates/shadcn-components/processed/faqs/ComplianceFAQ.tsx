@@ -382,7 +382,7 @@ export function ComplianceFAQ({
       case 'bars': return 'bg-purple-50/50 dark:bg-purple-950/20';
       case 'coffee': return 'bg-amber-50/50 dark:bg-amber-950/20';
       case 'hotels': return 'bg-blue-50/50 dark:bg-blue-950/20';
-      default: return 'bg-gray-50/50 dark:bg-gray-950/20';
+      default: return 'bg-muted/50 dark:bg-gray-950/20';
     }
   };
 
@@ -403,7 +403,7 @@ export function ComplianceFAQ({
       <div className="container max-w-4xl">
         <div className="text-center">
           <h1 
-            className="text-center text-4xl font-semibold tracking-tight sm:text-5xl"
+            className="text-display-2xl enterprise-headline text-center  font-semibold tracking-tight sm:"
             role="heading"
             aria-level={1}
           >

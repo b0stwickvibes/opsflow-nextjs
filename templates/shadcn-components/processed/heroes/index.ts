@@ -11,6 +11,7 @@ export { ImpactHero } from './ImpactHero';
 export { ProductivityHero } from './ProductivityHero';
 export { SplitScreenHero } from './SplitScreenHero';
 export { WorkflowHero } from './WorkflowHero';
+export { FeatureAnnouncementHero } from './FeatureAnnouncementHero';
 
 // Re-export common types
 export type { IndustryType, RoleType } from '@/types/restaurant-pages';

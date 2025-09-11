@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -9,6 +10,7 @@ import {
 } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
+import { ChefHat, Beer, Coffee, Building2 } from "lucide-react";
 
 interface TestimonialCarouselProps {
   industry?: "restaurants" | "bars" | "coffee" | "hotels";
@@ -103,13 +105,13 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
   const config = industryConfig[industry];
 
   return (
-    <section className="py-32">
+    <section className={`section-marketing ${(() => { switch (industry) { case 'restaurants': return 'accent-orange'; case 'bars': return 'accent-purple'; case 'coffee': return 'accent-amber'; case 'hotels': return 'accent-blue'; default: return ''; } })()}`}>
       <div className="container">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold md:text-5xl mb-4" style={{ color: config.color }}>
+          <h2 className="enterprise-headline heading-brand-gradient text-3xl md:text-6xl font-bold mb-4">
             Real Results from {industry.charAt(0).toUpperCase() + industry.slice(1)}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="enterprise-body  text-muted-foreground max-w-2xl mx-auto">
             See how operations leaders are transforming their businesses with OpsFlow
           </p>
         </div>
@@ -123,27 +125,32 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
                   className="grid grid-cols-1 gap-y-10 pt-4 pr-4 pb-14 pl-8 sm:pt-8 lg:grid-cols-3 lg:gap-10 lg:p-20"
                 >
                   <div className="text-center lg:text-left">
-                    <img
+                    <Image
                       src={testimonial.avatar}
                       alt={testimonial.name}
                       className="mx-auto w-32 h-32 rounded-xl object-cover lg:mx-0"
-                    />
+                     width={1200} height={800} />
                     <div className="mt-4">
-                      <h3 className="font-semibold text-lg">{testimonial.name}</h3>
+                      <h3 className="enterprise-body font-semibold ">{testimonial.name}</h3>
                       <p className="text-muted-foreground">{testimonial.title}</p>
                       <p className="text-sm text-muted-foreground">{testimonial.company}</p>
                     </div>
                   </div>
                   
                   <div className="col-span-2">
-                    <div className="mb-6 flex items-center justify-center gap-3 lg:mb-8 lg:justify-start">
-                      <span className="text-3xl">{testimonial.logo}</span>
-                      <span className="text-xl font-semibold lg:text-3xl" style={{ color: config.color }}>
+<div className="mb-6 flex items-center justify-center gap-3 lg:mb-8 lg:justify-start">
+                      <div className="h-12 w-12 rounded-xl bg-primary/10 grid place-items-center">
+                        {industry === 'restaurants' && <ChefHat className="h-6 w-6 text-primary" />}
+                        {industry === 'bars' && <Beer className="h-6 w-6 text-primary" />}
+                        {industry === 'coffee' && <Coffee className="h-6 w-6 text-primary" />}
+                        {industry === 'hotels' && <Building2 className="h-6 w-6 text-primary" />}
+                      </div>
+                      <span className="enterprise-body font-semibold lg:text-3xl text-primary">
                         {testimonial.company}
                       </span>
                     </div>
                     
-                    <blockquote className="text-center text-xl font-medium lg:text-left lg:text-2xl text-foreground mb-8">
+                    <blockquote className="enterprise-body text-center  font-medium lg:text-left lg:text-2xl text-foreground mb-8">
                       "{testimonial.quote}"
                     </blockquote>
                     
@@ -153,7 +160,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
                       {testimonial.metrics.map((metric, metricIndex) => (
                         <div 
                           key={metricIndex}
-                          className="flex flex-col cursor-pointer hover:scale-105 transition-transform"
+                          className="flex flex-col cursor-pointer tile-hover rounded-lg p-4"
                           onClick={() => trackEvent("testimonial_metric_clicked", {
                             industry,
                             testimonial: testimonial.company,
@@ -162,8 +169,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
                           })}
                         >
                           <span 
-                            className="mb-4 text-4xl font-bold md:text-6xl"
-                            style={{ color: config.color }}
+                            className="text-display-2xl mb-4 font-bold md:text-6xl text-primary"
                           >
                             {metric.value}
                           </span>
@@ -191,11 +197,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
               trackEvent("testimonial_cta_click", { industry });
               window.location.href = `/case-studies?industry=${industry}`;
             }}
-            className="px-6 py-3 rounded-lg font-medium transition-all hover:scale-105"
-            style={{ 
-              backgroundColor: config.color,
-              color: "white"
-            }}
+            className="px-6 py-3 rounded-lg font-medium transition-all hover:scale-105 bg-brand-gradient text-primary-foreground cta-shimmer"
           >
             Read More Success Stories
           </button>

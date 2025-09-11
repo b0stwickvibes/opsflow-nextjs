@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import {
   Check,
   X,
@@ -155,10 +156,10 @@ export function FeatureComparison({
 
   const getFeatureValue = (value: boolean | string) => {
     if (typeof value === "boolean") {
-      return value ? (
-        <Check className="h-5 w-5 text-green-600" />
+return value ? (
+        <Check className="h-5 w-5 text-primary" />
       ) : (
-        <X className="h-5 w-5 text-red-500" />
+        <X className="h-5 w-5 text-muted-foreground/50" />
       );
     }
     return <span className="text-sm font-medium">{value}</span>;
@@ -173,33 +174,32 @@ export function FeatureComparison({
     }
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "core": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "advanced": return "bg-purple-100 text-purple-800 border-purple-200";
-      case "enterprise": return "bg-orange-100 text-orange-800 border-orange-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
+const getCategoryColor = (_category: string) => {
+  return "bg-primary/10 text-primary border-primary/20";
+};
 
-  const getMarketPositionColor = (position: string) => {
-    switch (position) {
-      case "leader": return "bg-green-100 text-green-800 border-green-200";
-      case "challenger": return "bg-yellow-100 text-yellow-800 border-yellow-200";
-      case "niche": return "bg-gray-100 text-gray-800 border-gray-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
-    }
-  };
+const getMarketPositionColor = (position: string) => {
+  switch (position) {
+    case "leader":
+      return "bg-primary/10 text-primary border-primary/20";
+    case "challenger":
+      return "bg-muted/50 text-foreground border-border";
+    case "niche":
+      return "bg-muted text-foreground border-border";
+    default:
+      return "bg-muted text-foreground border-border";
+  }
+};
 
   if (variant === "cards") {
     return (
-      <section className={`py-24 lg:py-32 ${className}`}>
+      <section className={`section-marketing ${className}`}>
         <div className="container">
           <div className="mx-auto mb-16 flex max-w-4xl flex-col gap-4 text-center">
-            <h2 className="text-3xl font-bold lg:text-5xl">
+<h2 className="heading-brand-gradient enterprise-headline text-3xl font-bold lg:text-6xl">
               Why Leading Restaurants Choose OpsFlow
             </h2>
-            <p className="text-muted-foreground text-lg">
+            <p className="enterprise-body text-muted-foreground ">
               Comprehensive comparison with leading restaurant operations platforms. 
               See why we're the smart choice for modern restaurant chains.
             </p>
@@ -263,6 +263,20 @@ export function FeatureComparison({
   return null;
 };
 
+// Module-level helper for badge coloring so cards can use it
+function getMarketPositionColor(position: string) {
+  switch (position) {
+    case "leader":
+      return "bg-primary/10 text-primary border-primary/20";
+    case "challenger":
+      return "bg-muted/50 text-foreground border-border";
+    case "niche":
+      return "bg-muted text-foreground border-border";
+    default:
+      return "bg-muted text-foreground border-border";
+  }
+}
+
 const CompetitorCard: React.FC<{ 
   competitor: CompetitionCard; 
   onClick?: () => void; 
@@ -271,7 +285,7 @@ const CompetitorCard: React.FC<{
   
   return (
     <Card 
-      className={`h-full transition-all duration-200 hover:shadow-lg cursor-pointer ${
+      className={`tile-hover h-full transition-all duration-200 hover:shadow-lg cursor-pointer ${
         isOpsFlow ? "ring-2 ring-primary border-primary" : "hover:border-primary/20"
       }`}
       onClick={onClick}
@@ -280,10 +294,10 @@ const CompetitorCard: React.FC<{
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-muted">
-              <img src={competitor.logo} alt={competitor.name} className="h-6 w-6" />
+              <Image src={competitor.logo} alt={competitor.name} className="h-6 w-6"  width={1200} height={800} />
             </div>
             <div>
-              <CardTitle className="text-lg font-semibold">{competitor.name}</CardTitle>
+              <CardTitle className="enterprise-body  font-semibold">{competitor.name}</CardTitle>
               {isOpsFlow && (
                 <Badge className="mt-1 text-xs bg-primary/10 text-primary border-primary/20">
                   Recommended
@@ -305,11 +319,11 @@ const CompetitorCard: React.FC<{
 
         <div className="space-y-4">
           <div>
-            <h4 className="text-sm font-semibold text-green-600 mb-2">Strengths</h4>
+<h4 className="text-sm font-semibold text-primary mb-2">Strengths</h4>
             <ul className="text-xs text-muted-foreground space-y-1">
               {competitor.strengths.map((strength, index) => (
                 <li key={index} className="flex items-center gap-2">
-                  <Check className="h-3 w-3 text-green-500" />
+<Check className="h-3 w-3 text-primary" />
                   {strength}
                 </li>
               ))}
@@ -317,11 +331,11 @@ const CompetitorCard: React.FC<{
           </div>
           
           <div>
-            <h4 className="text-sm font-semibold text-orange-600 mb-2">Considerations</h4>
+<h4 className="text-sm font-semibold text-muted-foreground mb-2">Considerations</h4>
             <ul className="text-xs text-muted-foreground space-y-1">
               {competitor.weaknesses.map((weakness, index) => (
                 <li key={index} className="flex items-center gap-2">
-                  <div className="h-3 w-3 rounded-full bg-orange-200" />
+<div className="h-3 w-3 rounded-full bg-primary/10" />
                   {weakness}
                 </li>
               ))}
@@ -340,13 +354,5 @@ const CompetitorCard: React.FC<{
   );
 };
 
-function getMarketPositionColor(position: string) {
-  switch (position) {
-    case "leader": return "bg-green-100 text-green-800 border-green-200";
-    case "challenger": return "bg-yellow-100 text-yellow-800 border-yellow-200";
-    case "niche": return "bg-gray-100 text-gray-800 border-gray-200";
-    default: return "bg-gray-100 text-gray-800 border-gray-200";
-  }
-}
 
 export type { CompetitorFeature, CompetitionCard, FeatureComparisonProps };

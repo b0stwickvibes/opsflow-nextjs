@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -109,28 +110,27 @@ export function CallToAction({
   };
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container">
         <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
-          <img
+          <Image
             src={config.image}
             alt={`${industry} operations`}
             className="h-full w-full object-cover"
-          />
+           width={1200} height={800} />
           <div className="absolute inset-0 z-10 bg-black/60" />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-8 p-6 text-white">
-            <h2 className="text-center text-3xl font-bold md:text-5xl max-w-4xl">
+            <h2 className="enterprise-headline text-center text-3xl font-bold md: max-w-4xl">
               {customTitle || variantConfig.title}
             </h2>
-            <p className="text-center text-lg md:text-xl max-w-2xl text-white/90">
+            <p className="enterprise-body text-center  md:text-xl max-w-2xl text-white/90">
               {customSubtitle || variantConfig.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg"
                 onClick={handlePrimaryCTA}
-                className="text-white hover:scale-105 transition-transform"
-                style={{ backgroundColor: config.color }}
+                className="cta-shimmer bg-primary text-primary-foreground hover:scale-105 transition-transform"
               >
                 {variantConfig.primaryCTA}
                 <ArrowRight className="ml-2" />
@@ -139,7 +139,7 @@ export function CallToAction({
                 size="lg"
                 variant="outline"
                 onClick={handleSecondaryCTA}
-                className="border-white text-white hover:bg-white hover:text-black transition-all"
+                className="border-white text-white hover:bg-card hover:text-black transition-all"
               >
                 <PlayCircle className="mr-2" />
                 {variantConfig.secondaryCTA}

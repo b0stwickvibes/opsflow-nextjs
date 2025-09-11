@@ -82,7 +82,7 @@ export function RestaurantHero({
               variant="outline" 
               className="px-4 py-2 text-sm font-medium bg-white/80 backdrop-blur-sm border-orange-200"
             >
-              <Icon className="w-4 h-4 mr-2" style={{ color: primaryColor }} />
+              <Icon className="w-4 h-4 mr-2 text-primary" />
               {content.badge}
             </Badge>
           </motion.div>
@@ -130,7 +130,7 @@ export function RestaurantHero({
             <Button
               size="lg"
               onClick={handlePrimaryClick}
-              className="bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+              className="cta-shimmer bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
             >
               {content.ctas.primary}
               <ArrowRight className="ml-2 h-5 w-5" />

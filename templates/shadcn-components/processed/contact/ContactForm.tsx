@@ -181,7 +181,7 @@ export function ContactForm({
     )}>
       <div className="container max-w-2xl">
         <h1 
-          className="text-center text-4xl font-semibold tracking-tight lg:text-5xl"
+          className="text-display-2xl enterprise-headline text-center  font-semibold tracking-tight lg:"
           role="heading"
           aria-level={1}
         >
@@ -258,7 +258,7 @@ export function ContactForm({
 
         {/* Inquiry Form */}
         <div className="mx-auto">
-          <h2 className="text-lg font-semibold">{industryContent.inquiriesTitle}</h2>
+          <h2 className="enterprise-body  font-semibold">{industryContent.inquiriesTitle}</h2>
           <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-2">
               <Label htmlFor="fullName">Full name</Label>

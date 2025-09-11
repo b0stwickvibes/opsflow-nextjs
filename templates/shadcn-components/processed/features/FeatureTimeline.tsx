@@ -211,7 +211,7 @@ export function FeatureTimeline({
     switch (status) {
       case "completed": return "bg-green-100 text-green-800 border-green-200";
       case "in-progress": return "bg-orange-100 text-orange-800 border-orange-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      default: return "bg-muted text-foreground border-border";
     }
   };
 
@@ -219,10 +219,10 @@ export function FeatureTimeline({
     <section className={`py-24 lg:py-32 ${className}`}>
       <div className="container">
         <div className="mx-auto mb-12 max-w-3xl text-center">
-          <h2 className="mb-4 text-3xl font-bold lg:text-5xl">
+          <h2 className="enterprise-headline mb-4 text-3xl font-bold lg:">
             Your Implementation Journey
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="enterprise-body text-muted-foreground ">
             A proven 12-week implementation process that gets your restaurant operations running smoothly. 
             From setup to optimization, we're with you every step.
           </p>
@@ -307,7 +307,7 @@ export function FeatureTimeline({
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-3">Key Deliverables</h4>
+              <h4 className="enterprise-body  font-semibold mb-3">Key Deliverables</h4>
               <div className="space-y-2">
                 {selectedPhaseData.deliverables.map((deliverable, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -319,7 +319,7 @@ export function FeatureTimeline({
             </div>
 
             <div>
-              <h4 className="text-lg font-semibold mb-3">Success Milestones</h4>
+              <h4 className="enterprise-body  font-semibold mb-3">Success Milestones</h4>
               <div className="space-y-2">
                 {selectedPhaseData.milestones.map((milestone, index) => (
                   <div key={index} className="flex items-center gap-3">
@@ -378,7 +378,7 @@ export function FeatureTimeline({
 
         {/* CTA Section */}
         <div className="text-center p-8 bg-muted/30 rounded-lg">
-          <h3 className="text-xl font-bold mb-2">Ready to Start Your Implementation?</h3>
+          <h3 className="enterprise-body  font-bold mb-2">Ready to Start Your Implementation?</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
             Join 500+ restaurants that have successfully implemented OpsFlow. Our implementation team 
             will work closely with you to ensure a smooth transition and rapid ROI.

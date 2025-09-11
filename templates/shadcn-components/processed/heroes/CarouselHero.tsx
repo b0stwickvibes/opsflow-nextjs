@@ -71,17 +71,17 @@ const defaultRestaurantFeatures: CarouselHeroFeature[] = [
 
 const defaultRestaurantSlides: CarouselHeroSlide[] = [
   { 
-    image: "/images/restaurant-dashboard.webp", 
+    image: "https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=1600&auto=format&fit=crop",
     label: "Operations Dashboard",
     alt: "Restaurant operations management dashboard showing live metrics"
   },
   { 
-    image: "/images/haccp-monitoring.webp", 
+    image: "https://images.unsplash.com/photo-1543351611-58f69d2be8a2?q=80&w=1600&auto=format&fit=crop",
     label: "HACCP Monitoring",
     alt: "Food safety compliance dashboard with temperature tracking"
   },
   { 
-    image: "/images/task-coordination.webp", 
+    image: "https://images.unsplash.com/photo-1523875194681-bedd468c58bf?q=80&w=1600&auto=format&fit=crop",
     label: "Task Coordination",
     alt: "Staff task management and coordination interface"
   },
@@ -122,7 +122,7 @@ export function CarouselHero({
   };
 
   return (
-    <section className={cn("relative overflow-hidden py-24", className)}>
+    <section className={cn("section-marketing relative overflow-hidden py-24", className)}>
       <div className="container">
         {/* Carousel Section */}
         <div className="relative mb-16">
@@ -162,7 +162,7 @@ export function CarouselHero({
         {/* Content Section */}
         <div className="space-y-12 text-center">
           <div className="mx-auto max-w-4xl">
-            <h1 className="text-display-2xl text-primary dark:text-primary">
+            <h1 className="heading-brand-gradient text-display-2xl">
               {title}
             </h1>
 
@@ -178,7 +178,7 @@ export function CarouselHero({
               return (
                 <div key={feature.title} className="space-y-4 text-center">
                   <div className="flex justify-center">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary dark:bg-primary/30">
+<div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 dark:bg-primary/20">
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                   </div>
@@ -199,7 +199,7 @@ export function CarouselHero({
             <Button 
               size="lg" 
               onClick={handlePrimaryClick}
-              className="enterprise-body bg-gradient-to-r from-primary/100 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white border-0 px-8 py-6  font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
+              className="cta-shimmer enterprise-body bg-primary text-primary-foreground border-0 px-8 py-6  font-semibold shadow-lg hover:shadow-xl transition-all duration-200"
               aria-label={primaryCTA}
             >
               {primaryCTA}
@@ -257,8 +257,8 @@ const SlideIndicator = ({
             className={cn(
               "h-1 w-8 rounded-full transition-colors",
               index === currentSlide
-                ? "bg-primary0"
-                : "bg-primary hover:bg-primary dark:bg-primary dark:hover:bg-primary",
+                ? "bg-primary"
+                : "bg-primary/30 hover:bg-primary/50",
             )}
           />
         ))}

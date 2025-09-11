@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -28,6 +29,7 @@ interface IntegrationGridProps {
   industry?: IndustryType | 'general';
   role?: RoleType | 'general';
   className?: string;
+  featuredIds?: number[]; // highlight partners with a subtle ambient ring
 }
 
 const defaultRestaurantIntegrations: RestaurantIntegration[] = [
@@ -87,7 +89,8 @@ export function IntegrationGrid({
   integrations = defaultRestaurantIntegrations,
   industry = 'restaurants',
   role = 'general',
-  className
+  className,
+  featuredIds = []
 }: IntegrationGridProps) {
   const { trackInteraction } = useRestaurantAnalytics();
 
@@ -116,37 +119,42 @@ export function IntegrationGrid({
   };
 
   return (
-    <section className={cn("py-24 bg-gray-50/50 dark:bg-gray-900/50", className)}>
+    <section className={cn("py-24 bg-muted/50 dark:bg-gray-900/50", className)}>
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-display-md text-gray-900 dark:text-gray-100 mb-4">
+          <h2 className="text-display-md text-foreground dark:text-gray-100 mb-4">
             {title}
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="enterprise-body  text-muted-foreground max-w-3xl mx-auto">
             {subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {integrations.map((integration) => (
+          {integrations.map((integration) => {
+            const isFeatured = featuredIds.includes(integration.id);
+            return (
             <Card 
               key={integration.id}
-              className="group cursor-pointer hover:shadow-lg transition-all duration-300 bg-white/80 backdrop-blur-sm"
+              className={cn(
+                "group cursor-pointer hover:shadow-lg transition-all duration-300 bg-card/80 backdrop-blur-sm",
+                isFeatured && "ring-2 ring-primary/30"
+              )}
               onClick={() => handleIntegrationClick(integration)}
             >
               <CardHeader className="text-center space-y-4">
                 <div className="flex justify-center">
-                  <div className="relative w-16 h-16 rounded-2xl bg-white shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <img
+                  <div className="relative w-16 h-16 rounded-2xl bg-card shadow-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+<Image
                       src={integration.icon}
                       alt={`${integration.title} integration`}
-                      className="w-8 h-8 object-contain"
-                    />
+                      className="w-8 h-8 object-contain transition-all duration-300 filter grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100"
+                     width={1200} height={800} />
                   </div>
                 </div>
                 
                 <div>
-                  <CardTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100 group-hover:text-orange-600 transition-colors">
+                  <CardTitle className="enterprise-body  font-semibold text-foreground dark:text-gray-100 group-hover:text-orange-600 transition-colors">
                     {integration.title}
                   </CardTitle>
                   <div className={cn(
@@ -171,7 +179,8 @@ export function IntegrationGrid({
                 </div>
               </CardHeader>
             </Card>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center">
@@ -179,7 +188,7 @@ export function IntegrationGrid({
             variant="outline" 
             size="lg"
             onClick={handleViewAllClick}
-            className="px-8 py-6 text-lg font-semibold bg-white/80 backdrop-blur-sm border-gray-200 hover:bg-white hover:border-gray-300 transition-all duration-200"
+            className="enterprise-body px-8 py-6  font-semibold bg-card/80 backdrop-blur-sm border-border hover:bg-card hover:border-border transition-all duration-200"
           >
             View All Integrations
           </Button>

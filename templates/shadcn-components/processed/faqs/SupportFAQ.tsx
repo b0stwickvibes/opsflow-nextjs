@@ -333,7 +333,7 @@ export function SupportFAQ({
         <div className="container grid max-w-5xl gap-16 lg:grid-cols-2">
           <div className="space-y-4">
             <h2 
-              className="text-2xl font-semibold tracking-tight md:text-4xl lg:text-5xl"
+              className="text-display-2xl enterprise-headline text-2xl font-semibold tracking-tight md: lg:"
               role="heading"
               aria-level={2}
             >

@@ -110,7 +110,7 @@ export function CallToAction({
   };
 
   return (
-    <section className="py-32">
+    <section className="section-marketing">
       <div className="container">
         <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
           <img
@@ -130,8 +130,7 @@ export function CallToAction({
               <Button 
                 size="lg"
                 onClick={handlePrimaryCTA}
-                className="text-white hover:scale-105 transition-transform"
-                style={{ backgroundColor: config.color }}
+                className="clerk-cta-primary cta-shimmer hover-scale-103"
               >
                 {variantConfig.primaryCTA}
                 <ArrowRight className="ml-2" />
@@ -140,7 +139,7 @@ export function CallToAction({
                 size="lg"
                 variant="outline"
                 onClick={handleSecondaryCTA}
-                className="border-white text-white hover:bg-white hover:text-black transition-all"
+                className="border-white text-white hover:bg-white hover:text-black transition-all hover-scale-103"
               >
                 <PlayCircle className="mr-2" />
                 {variantConfig.secondaryCTA}

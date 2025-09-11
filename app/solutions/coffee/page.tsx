@@ -45,7 +45,7 @@ export default function CoffeeSolutionsPage() {
       <FeatureTimeline className="pt-0" variant="horizontal" showProgress />
 
       {/* Coffee industry KPIs */}
-      <KPIShowcase industry="coffee" />
+      <KPIShowcase industry="coffee" variant="outline" energy="balanced" leadKey="Compliance" />
 
       {/* Coffee-specific FAQ */}
       <FAQSection 

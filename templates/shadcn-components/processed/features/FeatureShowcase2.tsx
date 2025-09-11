@@ -195,22 +195,22 @@ export function FeatureShowcase2({
       case "efficiency": return "bg-blue-100 text-blue-800 border-blue-200";
       case "compliance": return "bg-red-100 text-red-800 border-red-200";
       case "growth": return "bg-purple-100 text-purple-800 border-purple-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      default: return "bg-muted text-foreground border-border";
     }
   };
 
   return (
-    <section className={`relative w-full overflow-hidden py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing relative w-full overflow-hidden ${className}`}>
       <div className="container relative flex flex-col items-center justify-center">
         {/* Header Section */}
         <div className="mb-16 text-center">
           <Badge variant="outline" className="mb-4">
             Proven ROI Metrics
           </Badge>
-          <h1 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h1 className="heading-brand-gradient mb-4 font-bold tracking-tight lg:text-6xl">
             Restaurant Operations ROI
           </h1>
-          <p className="text-muted-foreground/70 mx-auto max-w-3xl text-lg">
+          <p className="enterprise-body text-muted-foreground/70 mx-auto max-w-3xl ">
             Real results from 500+ restaurants using OpsFlow. See the measurable impact 
             on your bottom line, operations, and customer satisfaction.
           </p>
@@ -250,7 +250,7 @@ export function FeatureShowcase2({
               <div
                 key={index}
                 className={cn(
-                  "group cursor-pointer rounded-2xl border bg-card p-6 transition-all duration-200 hover:shadow-lg hover:border-primary/20",
+                  "group cursor-pointer rounded-2xl border bg-card p-6 transition-all duration-200 tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   isSelected ? "border-primary shadow-lg" : ""
                 )}
                 onClick={() => handleMetricClick(metric, index)}
@@ -262,7 +262,7 @@ export function FeatureShowcase2({
                   
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <h4 className="text-lg font-semibold group-hover:text-primary transition-colors">
+                      <h4 className="enterprise-body  font-semibold group-hover:text-primary transition-colors">
                         {metric.title}
                       </h4>
                       <Badge 
@@ -384,7 +384,7 @@ export function FeatureShowcase2({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" onClick={handleGetROIAnalysisClick}>
+              <Button size="lg" onClick={handleGetROIAnalysisClick} className="cta-shimmer bg-brand-gradient text-primary-foreground">
                 Get Free ROI Analysis
                 <DollarSign className="ml-2 h-4 w-4" />
               </Button>

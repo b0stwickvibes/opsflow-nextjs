@@ -62,8 +62,8 @@ export function FeatureGrid() {
     <section className="py-16">
       <div className="container mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4">Complete Restaurant Operations Suite</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <h2 className="text-3xl font-bold mb-4 motion-fade-in-up-320">Complete Restaurant Operations Suite</h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto motion-fade-in-up-320 animation-delay-100">
             Everything you need to run efficient, compliant, and profitable restaurant operations in one integrated platform.
           </p>
         </div>
@@ -72,7 +72,7 @@ export function FeatureGrid() {
           {features.map((feature, index) => {
             const IconComponent = feature.icon;
             return (
-              <Card key={index} className="enterprise-card">
+              <Card key={index} className="enterprise-card tile-hover motion-fade-in-up-320" style={{ animationDelay: `${index * 80}ms` }}>
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
                     <div className={cn(
@@ -92,7 +92,7 @@ export function FeatureGrid() {
                   <p className="text-sm text-muted-foreground mb-4">{feature.content}</p>
                 </CardContent>
                 <CardFooter>
-                  <Button variant="outline" size="sm" className="w-full group">
+                  <Button variant="outline" size="sm" className="w-full group hover-scale-103">
                     Learn More
                     <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                   </Button>

@@ -120,7 +120,7 @@ export function FeatureCarousel({
       case "flagship": return "bg-purple-100 text-purple-800 border-purple-200";
       case "franchise": return "bg-blue-100 text-blue-800 border-blue-200";
       case "corporate": return "bg-green-100 text-green-800 border-green-200";
-      default: return "bg-gray-100 text-gray-800 border-gray-200";
+      default: return "bg-muted text-foreground border-border";
     }
   };
 
@@ -134,16 +134,16 @@ export function FeatureCarousel({
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing ${className}`}>
       <div className="container">
         <div className="mb-12 text-center">
           <Badge variant="outline" className="mb-4">
             Multi-Location Management
           </Badge>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+<h2 className="heading-brand-gradient text-display-2xl mb-4  font-bold tracking-tight lg:text-6xl">
             Connecting Restaurant Operations Worldwide
           </h2>
-          <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
+          <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
             Seamlessly manage operations across unlimited locations with centralized control, 
             standardized processes, and real-time insights for every restaurant in your network.
           </p>
@@ -208,11 +208,11 @@ const LocationCard: React.FC<{
   return (
     <button
       onClick={onClick}
-      className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all duration-200 text-left w-full"
+className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all duration-200 text-left w-full tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     >
       <div className="flex items-start justify-between mb-4">
         <div>
-          <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
+          <h3 className="enterprise-body font-semibold  group-hover:text-primary transition-colors">
             {location.name}
           </h3>
           <div className="flex items-center gap-1 text-sm text-muted-foreground mt-1">
@@ -231,15 +231,15 @@ const LocationCard: React.FC<{
 
       <div className="grid grid-cols-3 gap-4 mb-4">
         <div className="text-center p-3 bg-muted/50 rounded-lg">
-          <div className="text-lg font-bold text-green-600">{location.metrics.compliance}</div>
+          <div className="enterprise-body  font-bold text-green-600">{location.metrics.compliance}</div>
           <div className="text-xs text-muted-foreground">Compliance</div>
         </div>
         <div className="text-center p-3 bg-muted/50 rounded-lg">
-          <div className="text-lg font-bold text-blue-600">{location.metrics.efficiency}</div>
+          <div className="enterprise-body  font-bold text-blue-600">{location.metrics.efficiency}</div>
           <div className="text-xs text-muted-foreground">Efficiency</div>
         </div>
         <div className="text-center p-3 bg-muted/50 rounded-lg">
-          <div className="text-lg font-bold text-primary">{location.metrics.savings}</div>
+          <div className="enterprise-body  font-bold text-primary">{location.metrics.savings}</div>
           <div className="text-xs text-muted-foreground">Savings</div>
         </div>
       </div>
@@ -282,50 +282,50 @@ const MultiLocationNetwork = () => {
           {/* Location 1 */}
           <div
             ref={location1Ref}
-            className="size-16 bg-background absolute left-0 top-20 z-10 flex items-center justify-center rounded-full border-2 border-blue-500 p-2"
+            className="size-16 bg-card/80 backdrop-blur-sm absolute left-0 top-20 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
           >
-            <div className="bg-blue-500 flex size-8 items-center justify-center rounded-full">
-              <Building size={16} className="text-white" />
+            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
+              <Building size={16} className="text-primary-foreground" />
             </div>
           </div>
           
           {/* Location 2 */}
           <div
             ref={location2Ref}
-            className="size-16 bg-background absolute right-0 top-20 z-10 flex items-center justify-center rounded-full border-2 border-green-500 p-2"
+            className="size-16 bg-card/80 backdrop-blur-sm absolute right-0 top-20 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
           >
-            <div className="bg-green-500 flex size-8 items-center justify-center rounded-full">
-              <Users size={16} className="text-white" />
+            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
+              <Users size={16} className="text-primary-foreground" />
             </div>
           </div>
           
           {/* Location 3 */}
           <div
             ref={location3Ref}
-            className="size-16 bg-background absolute bottom-0 left-6 z-10 flex items-center justify-center rounded-full border-2 border-purple-500 p-2"
+            className="size-16 bg-card/80 backdrop-blur-sm absolute bottom-0 left-6 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
           >
-            <div className="bg-purple-500 flex size-8 items-center justify-center rounded-full">
-              <Shield size={16} className="text-white" />
+            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
+              <Shield size={16} className="text-primary-foreground" />
             </div>
           </div>
           
           {/* Location 4 */}
           <div
             ref={location4Ref}
-            className="size-16 bg-background absolute bottom-0 right-6 z-10 flex items-center justify-center rounded-full border-2 border-orange-500 p-2"
+            className="size-16 bg-card/80 backdrop-blur-sm absolute bottom-0 right-6 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
           >
-            <div className="bg-orange-500 flex size-8 items-center justify-center rounded-full">
-              <MapPin size={16} className="text-white" />
+            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
+              <MapPin size={16} className="text-primary-foreground" />
             </div>
           </div>
           
           {/* Location 5 */}
           <div
             ref={location5Ref}
-            className="size-16 bg-background absolute top-0 left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center rounded-full border-2 border-pink-500 p-2"
+            className="size-16 bg-card/80 backdrop-blur-sm absolute top-0 left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
           >
-            <div className="bg-pink-500 flex size-8 items-center justify-center rounded-full">
-              <TrendingUp size={16} className="text-white" />
+            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
+              <TrendingUp size={16} className="text-primary-foreground" />
             </div>
           </div>
         </div>
@@ -333,9 +333,9 @@ const MultiLocationNetwork = () => {
         {/* Central Hub */}
         <div
           ref={centralRef}
-          className="bg-gradient-to-br from-primary to-primary/80 z-10 flex size-32 items-center justify-center rounded-3xl border-4 border-primary/20 lg:size-40"
+          className="bg-card/90 backdrop-blur-sm z-10 flex size-32 items-center justify-center rounded-3xl border border-primary/20 lg:size-40"
         >
-          <div className="text-center text-white">
+          <div className="text-center text-foreground">
             <BarChart3 className="size-8 mx-auto mb-2" />
             <div className="text-xs font-medium">OpsFlow</div>
             <div className="text-xs opacity-80">Control Center</div>
@@ -344,11 +344,11 @@ const MultiLocationNetwork = () => {
       </div>
 
       {/* Animated Beams */}
-      <AnimatedBeam duration={3} containerRef={containerRef} fromRef={location1Ref} toRef={centralRef} />
-      <AnimatedBeam duration={3} containerRef={containerRef} fromRef={location2Ref} toRef={centralRef} />
-      <AnimatedBeam duration={3} containerRef={containerRef} fromRef={location3Ref} toRef={centralRef} />
-      <AnimatedBeam duration={3} containerRef={containerRef} fromRef={location4Ref} toRef={centralRef} />
-      <AnimatedBeam duration={3} containerRef={containerRef} fromRef={location5Ref} toRef={centralRef} />
+<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location1Ref} toRef={centralRef} />
+<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location2Ref} toRef={centralRef} />
+<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location3Ref} toRef={centralRef} />
+<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location4Ref} toRef={centralRef} />
+<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location5Ref} toRef={centralRef} />
     </div>
   );
 };
@@ -358,7 +358,7 @@ function getLocationTypeColor(type: string) {
     case "flagship": return "bg-purple-100 text-purple-800 border-purple-200";
     case "franchise": return "bg-blue-100 text-blue-800 border-blue-200";
     case "corporate": return "bg-green-100 text-green-800 border-green-200";
-    default: return "bg-gray-100 text-gray-800 border-gray-200";
+    default: return "bg-muted text-foreground border-border";
   }
 }
 

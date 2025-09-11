@@ -86,6 +86,19 @@ const restaurantLocations: RestaurantLocation[] = [
     },
     specialties: ["Seasonal Menu", "Tourist Focus", "Weather Resilience"],
     connectedSystems: 9
+  },
+  {
+    id: "mountain-lodge",
+    name: "Mountain Lodge",
+    city: "Denver, CO",
+    type: "corporate",
+    metrics: {
+      compliance: "98.9%",
+      efficiency: "90%",
+      savings: "$2,300/mo"
+    },
+    specialties: ["Seasonal Traffic", "Inventory Efficiency", "Cold Chain Reliability"],
+    connectedSystems: 7
   }
 ];
 
@@ -134,13 +147,13 @@ export function FeatureCarousel({
   };
 
   return (
-    <section className={`py-24 lg:py-32 ${className}`}>
+    <section className={`section-marketing ${className}`}>
       <div className="container">
         <div className="mb-12 text-center">
           <Badge variant="outline" className="mb-4">
             Multi-Location Management
           </Badge>
-          <h2 className="mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
+          <h2 className="heading-brand-gradient mb-4 text-4xl font-bold tracking-tight lg:text-6xl">
             Connecting Restaurant Operations Worldwide
           </h2>
           <p className="text-muted-foreground mx-auto max-w-3xl text-lg">
@@ -152,8 +165,8 @@ export function FeatureCarousel({
         {showAnimations && <MultiLocationNetwork />}
         
         {/* Location Showcase */}
-        <div className="mt-16 grid gap-8 lg:grid-cols-3">
-          {restaurantLocations.slice(0, 3).map((location) => (
+        <div className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
+          {restaurantLocations.map((location) => (
             <LocationCard 
               key={location.id} 
               location={location} 
@@ -190,7 +203,7 @@ export function FeatureCarousel({
               Whether you're managing 2 locations or 200, OpsFlow scales with your business. 
               Get centralized control without losing local flexibility.
             </p>
-            <Button size="lg" onClick={handleGetStartedClick}>
+            <Button size="lg" onClick={handleGetStartedClick} className="cta-shimmer">
               Start Multi-Location Trial
               <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
@@ -208,7 +221,7 @@ const LocationCard: React.FC<{
   return (
     <button
       onClick={onClick}
-      className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all duration-200 text-left w-full"
+      className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all duration-200 text-left w-full tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
       <div className="flex items-start justify-between mb-4">
         <div>

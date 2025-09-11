@@ -2,6 +2,7 @@
 
 import { Check, Play, Star, TrendingUp, DollarSign, Clock, Users, ChefHat, BarChart3, Zap } from "lucide-react";
 import { Fragment, useState } from "react";
+import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -109,22 +110,22 @@ const ImpactHero = ({
   // Industry-specific styling
   const colorClasses = {
     orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      fill: 'fill-orange-600 stroke-orange-600',
-      bg: 'bg-orange-600',
-      border: 'border-orange-600',
+      primary: 'text-primary dark:text-primary',
+      fill: 'fill-primary stroke-primary',
+      bg: 'bg-primary',
+      border: 'border-primary',
     },
     purple: {
-      primary: 'text-purple-600 dark:text-purple-400', 
-      fill: 'fill-purple-600 stroke-purple-600',
-      bg: 'bg-purple-600',
-      border: 'border-purple-600',
+      primary: 'text-primary dark:text-primary', 
+      fill: 'fill-primary stroke-primary',
+      bg: 'bg-primary',
+      border: 'border-primary',
     },
     amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      fill: 'fill-amber-600 stroke-amber-600', 
-      bg: 'bg-amber-600',
-      border: 'border-amber-600',
+      primary: 'text-primary dark:text-primary',
+      fill: 'fill-primary stroke-primary', 
+      bg: 'bg-primary',
+      border: 'border-primary',
     },
   };
 
@@ -132,7 +133,9 @@ const ImpactHero = ({
 
   return (
     <Fragment>
-      <section className="py-12 md:py-20 bg-gradient-to-br from-background via-background to-muted/20">
+      <section className={cn("py-12 md:py-20 bg-gradient-to-br from-background via-background to-muted/20",
+        content.color === 'orange' ? 'accent-orange' : content.color === 'purple' ? 'accent-purple' : 'accent-amber')}
+      >
         <div className="container max-w-[75rem]">
           <div className="flex gap-8">
             {/* Content Section */}
@@ -144,7 +147,7 @@ const ImpactHero = ({
                   <span className="text-sm font-medium capitalize">{industry} Operations</span>
                 </div>
                 
-                <h1 className="font-poppins mb-[0.625rem] text-center text-5xl font-bold leading-tight tracking-[-1px] sm:text-[3.375rem] md:text-[5.625rem] md:leading-[6.18rem] lg:text-left">
+                <h1 className="enterprise-headline font-poppins mb-[0.625rem] text-center  font-bold leading-tight tracking-[-1px] sm:text-[3.375rem] md:text-[5.625rem] md:leading-[6.18rem] lg:text-left">
                   {content.title}
                 </h1>
                 
@@ -158,7 +161,7 @@ const ImpactHero = ({
                     variant="default"
                     asChild
                     className={cn(
-                      "h-fit w-full rounded-lg border-2 px-8 py-4 text-lg font-semibold sm:w-fit shadow-lg hover:shadow-xl transition-all duration-200",
+                      "h-fit w-full rounded-lg border-2 px-8 py-4 text-lg font-semibold sm:w-fit shadow-lg hover:shadow-xl transition-all duration-200 bg-brand-gradient text-primary-foreground",
                       colors.border
                     )}
                   >
@@ -197,11 +200,11 @@ const ImpactHero = ({
                 
                 {/* Rules/Automation Card */}
                 <div className="relative col-[1/2] row-[1/3] animate-slide-in-left animation-delay-400">
-                  <img
+                  <Image
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
                     alt={`${industry} management interface`}
                     className="object-fit h-full w-full rounded-2xl opacity-80 blur-md"
-                  />
+                   width={1200} height={800} />
                   <div className="bg-background absolute bottom-0 flex min-w-[15rem] gap-3 rounded-2xl p-3 shadow-2xl border">
                     <div className={cn("h-11 w-11 rounded-full flex items-center justify-center", colors.bg)}>
                       <Icon className="h-6 w-6 text-white" />
@@ -272,15 +275,15 @@ const ImpactHero = ({
                           xmlns="http://www.w3.org/2000/svg"
                         >
                           <path
-                            className={cn(content.color === 'orange' ? 'fill-orange-200' : content.color === 'purple' ? 'fill-purple-200' : 'fill-amber-200')}
+                            className={cn(content.color === 'orange' ? 'fill-primary' : content.color === 'purple' ? 'fill-primary' : 'fill-primary')}
                             d="M148 74C148 114.869 114.869 148 74 148C33.1309 148 0 114.869 0 74C0 33.1309 33.1309 0 74 0C114.869 0 148 33.1309 148 74ZM13.0735 74C13.0735 107.649 40.3512 134.926 74 134.926C107.649 134.926 134.926 107.649 134.926 74C134.926 40.3512 107.649 13.0735 74 13.0735C40.3512 13.0735 13.0735 40.3512 13.0735 74Z"
                           />
                           <path
-                            className={cn(content.color === 'orange' ? 'fill-orange-400' : content.color === 'purple' ? 'fill-purple-400' : 'fill-amber-400')}
+                            className={cn(content.color === 'orange' ? 'fill-primary' : content.color === 'purple' ? 'fill-primary' : 'fill-primary')}
                             d="M74 0C90.6218 1.98213e-07 106.76 5.59609 119.813 15.8865C132.866 26.177 142.075 40.5625 145.955 56.725C149.836 72.8876 148.161 89.8859 141.203 104.981C134.244 120.076 122.405 132.388 107.595 139.934C92.7852 147.481 75.8657 149.821 59.5633 146.578C43.2609 143.335 28.5249 134.698 17.7299 122.059C6.93495 109.42 0.709615 93.5142 0.0570506 76.9052C-0.595514 60.2962 4.3627 43.9512 14.1328 30.5039L24.7069 38.1865C16.6625 49.2586 12.5801 62.7167 13.1174 76.3921C13.6547 90.0675 18.7804 103.164 27.6687 113.571C36.5571 123.977 48.6902 131.089 62.1132 133.759C75.5362 136.429 89.4672 134.502 101.661 128.289C113.856 122.075 123.603 111.938 129.333 99.5088C135.063 87.08 136.441 73.0841 133.246 59.7763C130.051 46.4685 122.469 34.6238 111.721 26.1509C100.973 17.6781 87.6859 13.0704 74 13.0704L74 0Z"
                           />
                           <path
-                            className={cn(content.color === 'orange' ? 'fill-orange-600' : content.color === 'purple' ? 'fill-purple-600' : 'fill-amber-600')}
+                            className={cn(content.color === 'orange' ? 'fill-primary' : content.color === 'purple' ? 'fill-primary' : 'fill-primary')}
                             d="M74 0C85.678 1.39258e-07 97.1901 2.76383 107.595 8.06552C118 13.3672 127.003 21.0562 133.867 30.5039C140.731 39.9516 145.262 50.8896 147.089 62.4238C148.916 73.958 147.987 85.7608 144.378 96.8672C140.769 107.974 134.583 118.068 126.326 126.326C118.068 134.583 107.974 140.769 96.8673 144.378C85.7609 147.987 73.9581 148.916 62.4239 147.089C50.8897 145.262 39.9516 140.731 30.5039 133.867L38.2046 123.268C45.9797 128.917 54.9812 132.646 64.4734 134.149C73.9655 135.652 83.6787 134.888 92.8188 131.918C101.959 128.948 110.266 123.858 117.062 117.062C123.858 110.266 128.948 101.959 131.918 92.8187C134.888 83.6786 135.652 73.9655 134.149 64.4733C132.646 54.9812 128.917 45.9796 123.268 38.2046C117.619 30.4296 110.21 24.1019 101.647 19.7388C93.0845 15.3758 83.6105 13.1013 74 13.1013L74 0Z"
                           />
                         </svg>
@@ -299,11 +302,11 @@ const ImpactHero = ({
 
                 {/* Additional Visual Element */}
                 <div className="col-[1/2] row-[-1/-3] animate-slide-in-left animation-delay-800">
-                  <img
+                  <Image
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg"
                     alt={`${industry} analytics dashboard`}
                     className="object-fit h-full w-full rounded-2xl blur-md opacity-60"
-                  />
+                   width={1200} height={800} />
                 </div>
               </div>
             </div>
