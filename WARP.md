@@ -266,6 +266,7 @@ npm run design:responsive-test           # Test responsive design across breakpo
 - Guides:
   - docs/branding/BRAND-IMAGING-GUIDE.md
   - docs/branding/DEVICE-MOCKUP-TEMPLATE.md
+  - docs/branding/IMAGEN-PROMPTS.md
 - Workflow summary:
   1) Generate images (Midjourney/SDXL) using brand tokens and seed policy
   2) Composite OpsFlow UI onto devices via Figma/Photoshop template
