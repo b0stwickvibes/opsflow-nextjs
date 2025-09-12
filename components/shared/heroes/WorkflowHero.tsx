@@ -79,9 +79,9 @@ const WorkflowHero = ({
   const content = INDUSTRY_WORKFLOWS[industry];
 
   const colorClasses = {
-    orange: 'text-orange-600 dark:text-orange-400 bg-orange-600 hover:bg-orange-700',
-    purple: 'text-purple-600 dark:text-purple-400 bg-purple-600 hover:bg-purple-700',
-    amber: 'text-amber-600 dark:text-amber-400 bg-amber-600 hover:bg-amber-700'
+    orange: 'text-primary bg-primary hover:bg-primary/90',
+    purple: 'text-primary bg-primary hover:bg-primary/90',
+    amber: 'text-primary bg-primary hover:bg-primary/90'
   };
 
   return (
@@ -89,7 +89,7 @@ const WorkflowHero = ({
       <div className="container">
         <div className="mx-auto max-w-4xl text-center space-y-12">
           <div className="space-y-6">
-            <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border", content.color === 'orange' ? 'text-orange-600 dark:text-orange-400' : content.color === 'purple' ? 'text-purple-600 dark:text-purple-400' : 'text-amber-600 dark:text-amber-400')}>
+            <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border text-primary") }>
               <Workflow className="size-4" />
               <span className="text-sm font-medium">Smart Workflows</span>
             </div>
@@ -110,7 +110,7 @@ const WorkflowHero = ({
                 return (
                   <div key={feature.title} className="space-y-4 text-center p-6 rounded-xl hover:bg-muted/50 transition-colors">
                     <div className="flex justify-center">
-                      <Icon className={cn("size-8", content.color === 'orange' ? 'text-orange-600 dark:text-orange-400' : content.color === 'purple' ? 'text-purple-600 dark:text-purple-400' : 'text-amber-600 dark:text-amber-400')} />
+                      <Icon className={cn("size-8 text-primary")} />
                     </div>
                     <div>
                       <h2 className="text-lg font-semibold">{feature.title}</h2>
@@ -127,19 +127,20 @@ const WorkflowHero = ({
           <div className="animate-fade-in-up animation-delay-500">
             <Button 
               size="lg" 
+              asChild
               className={cn(
                 "shadow-lg hover:shadow-xl transition-all duration-200",
-                content.color === 'orange' ? 'bg-orange-600 hover:bg-orange-700' : 
-                content.color === 'purple' ? 'bg-purple-600 hover:bg-purple-700' : 
-                'bg-amber-600 hover:bg-amber-700',
+'bg-primary hover:bg-primary/90',
                 !canOptimize && "opacity-75 cursor-not-allowed"
               )}
               disabled={!canOptimize}
             >
-              <span className="flex items-center gap-2">
-                {content.cta}
-                <ArrowRight className="size-4" />
-              </span>
+              <a href="#" aria-label={content.cta} onClick={(e) => { if (!canOptimize) e.preventDefault(); }}>
+                <span className="flex items-center gap-2">
+                  {content.cta}
+                  <ArrowRight className="size-4" />
+                </span>
+              </a>
             </Button>
           </div>
         </div>
