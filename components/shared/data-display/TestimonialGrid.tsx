@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { Star, Quote } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -150,9 +152,11 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
-                <img
+                <Image
                   src={testimonial.avatar}
                   alt={testimonial.name}
+                  width={64}
+                  height={64}
                   className="w-16 h-16 rounded-full object-cover"
                 />
                 <div className="flex-1">

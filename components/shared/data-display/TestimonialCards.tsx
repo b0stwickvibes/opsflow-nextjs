@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { Star, TrendingUp, Users, Shield } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -235,9 +237,11 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
               {/* Testimonial */}
               <div className="mt-8 pt-8 border-t">
                 <div className="flex items-start gap-4">
-                  <img
+                  <Image
                     src={testimonial.person.avatar}
                     alt={testimonial.person.name}
+                    width={56}
+                    height={56}
                     className="w-14 h-14 rounded-full object-cover flex-shrink-0"
                   />
                   <div className="flex-1">
