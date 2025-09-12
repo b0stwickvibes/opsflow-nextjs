@@ -27,6 +27,7 @@ interface SplitScreenHeroProps {
   heroImage?: string;
   industry?: IndustryType | 'general';
   role?: RoleType | 'general';
+  energy?: 'subtle' | 'balanced' | 'bold';
   className?: string;
 }
 
@@ -59,9 +60,10 @@ export function SplitScreenHero({
   primaryCTA = "Start Restaurant Trial",
   secondaryCTA = "Schedule Demo",
   features = defaultRestaurantFeatures,
-  heroImage = "/images/restaurant-operations-hero.webp",
+  heroImage = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1600&auto=format&fit=crop",
   industry = 'restaurants',
   role = 'general',
+  energy = 'balanced',
   className
 }: SplitScreenHeroProps) {
   const { trackHeroCTA } = useRestaurantAnalytics();
@@ -74,9 +76,14 @@ export function SplitScreenHero({
     trackHeroCTA(industry, 'split-screen', secondaryCTA);
   };
 
+  const energySectionClass = energy === 'subtle'
+    ? "relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4 bg-gradient-to-br from-orange-50 via-white to-blue-50 dark:from-orange-950/10 dark:via-background dark:to-blue-950/10"
+    : energy === 'bold'
+      ? "relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4 bg-gradient-to-br from-orange-100 via-white to-blue-100 dark:from-orange-900/30 dark:via-background dark:to-blue-900/30"
+      : "relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4 bg-gradient-to-br from-orange-50 via-white to-blue-50 dark:from-orange-950/20 dark:via-background dark:to-blue-950/20";
   return (
     <section className={cn(
-      "relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4 bg-gradient-to-br from-orange-50 via-white to-blue-50 dark:from-orange-950/20 dark:via-background dark:to-blue-950/20",
+      energySectionClass,
       className
     )}>
       <div className="py-16 md:py-24 lg:py-32">

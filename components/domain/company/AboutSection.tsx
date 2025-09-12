@@ -140,18 +140,12 @@ export function AboutSection({
 
         {/* Mission & Image Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          <Image
-            src={`/images/${industry}-operations.jpg`}
+<Image
+            src={industry === 'restaurants' ? "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1600&auto=format&fit=crop" : industry === 'bars' ? "https://images.unsplash.com/photo-1580837029840-8a1dff5b82d5?q=80&w=1600&auto=format&fit=crop" : industry === 'coffee' ? "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop" : "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1600&auto=format&fit=crop"}
             alt={`${industry} operations management`}
             width={800}
             height={400}
             className="w-full h-auto max-h-96 rounded-2xl object-cover"
-            onError={(e) => {
-              const target = e.target as any;
-              if (target && target.currentTarget) {
-                target.currentTarget.src = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=400&fit=crop&crop=center";
-              }
-            }}
           />
           <div 
             className="flex flex-col justify-between gap-10 rounded-2xl p-10 bg-primary/10 border-l-4 border-primary"
@@ -207,18 +201,12 @@ export function AboutSection({
               </h2>
             </div>
             <div>
-              <Image
-                src={`/images/${industry}-team.jpg`}
+<Image
+                src={industry === 'restaurants' ? "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1600&auto=format&fit=crop" : industry === 'bars' ? "https://images.unsplash.com/photo-1514362545857-3bc16c4c76c8?q=80&w=1600&auto=format&fit=crop" : industry === 'coffee' ? "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1600&auto=format&fit=crop" : "https://images.unsplash.com/photo-1498550744921-75f79806b8a7?q=80&w=1600&auto=format&fit=crop"}
                 alt={`${industry} operations team`}
                 width={800}
                 height={200}
                 className="mb-6 w-full h-auto max-h-36 rounded-xl object-cover"
-                onError={(e) => {
-                  const target = e.target as any;
-                  if (target && target.currentTarget) {
-                    target.currentTarget.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=200&fit=crop&crop=center";
-                  }
-                }}
               />
               <p className="text-muted-foreground mb-4">
                 We're looking for passionate individuals who want to revolutionize {industry} operations. 

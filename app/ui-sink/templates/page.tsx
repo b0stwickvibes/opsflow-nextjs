@@ -22,19 +22,16 @@ import { HeroSection, MetricsRowSection, FeatureAccordionSection, FinalCTASectio
 import * as Heroes from "@/templates/shadcn-components/processed/heroes";
 import * as Features from "@/templates/shadcn-components/processed/features";
 import * as CTAs from "@/templates/shadcn-components/processed/ctas";
-import * as Logos from "@/templates/shadcn-components/processed/logos";
 import * as Stats from "@/templates/shadcn-components/processed/stats";
 import { PricingTable } from "@/templates/shadcn-components/processed/pricing/PricingTable";
 import { PricingComparison } from "@/templates/shadcn-components/processed/pricing/PricingComparison";
-import * as Integration from "@/templates/shadcn-components/processed/integration";
-import * as Testimonials from "@/templates/shadcn-components/processed/testimonials";
 import * as Contact from "@/templates/shadcn-components/processed/contact";
 import * as About from "@/templates/shadcn-components/processed/about";
 import * as Bento from "@/templates/shadcn-components/processed/bento";
 
 // Category filter list (provided)
 const CATEGORIES = [
-  "hero","feature","footer","content","testimonial","pricing","login","logos","about","banner","bento","blog","blogpost","careers","casestudies","casestudy","changelog","chatinput","community","compare","component","contact","cta","download","faq","gallery","integration","list","navbar","product","resource","resources","services","signup","stats","team","timeline","waitlist","price"
+  "hero","feature","footer","content","pricing","login","about","banner","bento","blog","blogpost","careers","casestudies","casestudy","changelog","chatinput","community","component","contact","cta","download","faq","gallery","list","navbar","product","resource","resources","services","signup","stats","team","timeline","waitlist","price"
 ] as const;
 
 type Category = typeof CATEGORIES[number] | "all";
@@ -113,15 +110,6 @@ const REGISTRY: TemplateItem[] = [
     importPath: "@/templates/shadcn-components/processed/ctas",
     importName: name,
   })),
-  // Logos
-  ...Object.entries(Logos).map(([name, Comp]) => ({
-    key: `logos-${name.toLowerCase()}`,
-    title: name,
-    component: Comp as React.ComponentType<any>,
-    tags: ["logos"],
-    importPath: "@/templates/shadcn-components/processed/logos",
-    importName: name,
-  })),
   // Stats
   ...Object.entries(Stats).map(([name, Comp]) => ({
     key: `stats-${name.toLowerCase()}`,
@@ -133,25 +121,6 @@ const REGISTRY: TemplateItem[] = [
   })),
   // Pricing (explicit imports to avoid EnterprisePricing issues)
   { key: "pricing-pricingtable", title: "PricingTable", component: PricingTable as React.ComponentType<any>, tags: ["pricing","price"], importPath: "@/templates/shadcn-components/processed/pricing/PricingTable", importName: "PricingTable" },
-  { key: "pricing-pricingcomparison", title: "PricingComparison", component: PricingComparison as React.ComponentType<any>, tags: ["pricing","compare","price"], importPath: "@/templates/shadcn-components/processed/pricing/PricingComparison", importName: "PricingComparison" },
-  // Integration
-  ...Object.entries(Integration).map(([name, Comp]) => ({
-    key: `integration-${name.toLowerCase()}`,
-    title: name,
-    component: Comp as React.ComponentType<any>,
-    tags: ["integration"],
-    importPath: "@/templates/shadcn-components/processed/integration",
-    importName: name,
-  })),
-  // Testimonials
-  ...Object.entries(Testimonials).map(([name, Comp]) => ({
-    key: `testimonial-${name.toLowerCase()}`,
-    title: name,
-    component: Comp as React.ComponentType<any>,
-    tags: ["testimonial"],
-    importPath: "@/templates/shadcn-components/processed/testimonials",
-    importName: name,
-  })),
   // Contact
   ...Object.entries(Contact).map(([name, Comp]) => ({
     key: `contact-${name.toLowerCase()}`,
