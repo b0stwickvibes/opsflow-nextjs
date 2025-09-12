@@ -262,6 +262,20 @@ npm run design:responsive-test           # Test responsive design across breakpo
 
 ## Warp Terminal Optimizations
 
+### ShadcnBlocks Quickstart
+- Full guide: docs/integrations/SHADCNBLOCKS.md
+- TL;DR commands:
+```bash
+# 1) Ensure API key
+export SHADCNBLOCKS_API_KEY={{SHADCNBLOCKS_API_KEY}}
+
+# 2) Install a block (example)
+npx shadcn@latest add hero187
+
+# 3) Enforce standards before commit
+npm run enforce:all && npx tsc -p tsconfig.json --noEmit && npm run lint
+```
+
 ### AI Assistant Integration
 When working with Claude 4 Sonnet through Warp, reference these key files for maximum context efficiency:
 1. **ENTERPRISE-SCALABILITY-AUDIT.md** - Architecture review and cleanup
