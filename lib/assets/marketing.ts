@@ -37,8 +37,8 @@ export interface AssetCollection {
 // Hero Images (16:9) - Homepage and landing page headers
 export const heroAssets: AssetCollection = {
   restaurantOperations: {
-    src: '/images/marketing/heroes/opsflow-abstract-hero-01.svg',
-    alt: 'Professional restaurant team using tablets for task management and temperature monitoring in modern commercial kitchen',
+    src: '/images/marketing/heroes/One_Clean Kitchen Technology.webp',
+    alt: 'Clean modern commercial kitchen with technology integration and stainless workstations',
     width: 1920,
     height: 1080,
     aspect: '16:9',
@@ -56,8 +56,8 @@ export const heroAssets: AssetCollection = {
     tags: ['kitchen','tablet','team']
   },
   taskManagement: {
-    src: '/images/marketing/heroes/opsflow-abstract-hero-02.svg',
-    alt: 'Kitchen staff completing digital checklists on mounted tablets with real-time task tracking',
+    src: '/images/marketing/heroes/Two_Kitchen Operations Overview.webp',
+    alt: 'Kitchen operations overview with team coordination across the line',
     width: 1920,
     height: 1080,
     aspect: '16:9',
@@ -66,8 +66,8 @@ export const heroAssets: AssetCollection = {
     priority: 'high'
   },
   complianceAudit: {
-    src: '/images/marketing/heroes/compliance-audit-hero-01.webp',
-    alt: 'Restaurant manager reviewing HACCP compliance reports on tablet with organized kitchen background',
+    src: '/images/marketing/heroes/Three_Management & Compliance Visual.webp',
+    alt: 'Management and compliance visual with team alignment in professional kitchen',
     width: 1920,
     height: 1080,
     aspect: '16:9',
@@ -76,8 +76,8 @@ export const heroAssets: AssetCollection = {
     priority: 'medium'
   },
   temperatureMonitoring: {
-    src: '/images/marketing/heroes/temperature-monitoring-hero-01.webp',
-    alt: 'Chef checking temperature logs on digital interface with walk-in cooler and monitoring equipment visible',
+    src: '/images/marketing/heroes/Two_Kitchen Operations Overview.webp',
+    alt: 'Operations overview hero used for temperature and task context',
     width: 1920,
     height: 1080,
     aspect: '16:9',
@@ -112,8 +112,8 @@ export const cardAssets: AssetCollection = {
     tags: ['temperature','compliance']
   },
   teamMeeting: {
-    src: '/images/marketing/cards/team-meeting-card-01.webp',
-    alt: 'Restaurant manager conducting team meeting with staff schedules displayed on tablet',
+    src: '/images/marketing/cards/Six_Team Management Interface.webp',
+    alt: 'Team management interface on tablet during staff meeting',
     width: 1200,
     height: 1200,
     aspect: '1:1',
@@ -123,8 +123,8 @@ export const cardAssets: AssetCollection = {
     tags: ['team','scheduling']
   },
   complianceCheck: {
-    src: '/images/marketing/cards/compliance-check-card-01.webp',
-    alt: 'Staff member reviewing HACCP compliance checklist on mounted kitchen tablet',
+    src: '/images/marketing/cards/Four_Digitial_Interface.webp',
+    alt: 'Digital interface for checklist and compliance tasks on tablet',
     width: 1200,
     height: 1200,
     aspect: '1:1',
@@ -134,8 +134,8 @@ export const cardAssets: AssetCollection = {
     tags: ['compliance','checklist']
   },
   inventoryManagement: {
-    src: '/images/marketing/cards/inventory-management-card-01.webp',
-    alt: 'Kitchen staff using tablet to track inventory in organized walk-in storage area',
+    src: '/images/marketing/cards/Seven_Inventory Organization Concept.webp',
+    alt: 'Inventory organization concept in storage area',
     width: 1200,
     height: 1200,
     category: 'card',
@@ -146,8 +146,8 @@ export const cardAssets: AssetCollection = {
 // Feature Images (4:3) - Detailed feature explanations
 export const featureAssets: AssetCollection = {
   haccpCompliance: {
-    src: '/images/marketing/features/haccp-compliance-feature-01.webp',
-    alt: 'Organized commercial kitchen with visible HACCP compliance documentation and temperature monitoring systems',
+    src: '/images/features/Ten_Storage & Monitoring System.webp',
+    alt: 'Storage and temperature monitoring system in organized cold storage',
     width: 1600,
     height: 1200,
     aspect: '4:3',
@@ -157,8 +157,8 @@ export const featureAssets: AssetCollection = {
     tags: ['haccp','compliance']
   },
   staffScheduling: {
-    src: '/images/marketing/features/staff-scheduling-feature-01.webp',
-    alt: 'Restaurant manager reviewing staff schedules and assignments on tablet with team in background',
+    src: '/images/features/Twelve_Scheduling Interface Concept.webp',
+    alt: 'Staff scheduling interface concept on tablet in kitchen environment',
     width: 1600,
     height: 1200,
     aspect: '4:3',
@@ -168,8 +168,8 @@ export const featureAssets: AssetCollection = {
     tags: ['scheduling','team']
   },
   coldStorageMonitoring: {
-    src: '/images/marketing/features/cold-storage-monitoring-feature-01.webp',
-    alt: 'Walk-in cooler with digital temperature monitoring system and organized food storage',
+    src: '/images/features/Eleven_Reporting & Analytics Visual.webp',
+    alt: 'Reporting and analytics visual near the line for operational insights',
     width: 1600,
     height: 1200,
     aspect: '4:3',
