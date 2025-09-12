@@ -37,7 +37,7 @@ export interface AssetCollection {
 // Hero Images (16:9) - Homepage and landing page headers
 export const heroAssets: AssetCollection = {
   restaurantOperations: {
-    src: '/images/marketing/heroes/restaurant-ops-hero-01.webp',
+    src: '/images/marketing/heroes/opsflow-abstract-hero-01.svg',
     alt: 'Professional restaurant team using tablets for task management and temperature monitoring in modern commercial kitchen',
     width: 1920,
     height: 1080,
@@ -56,7 +56,7 @@ export const heroAssets: AssetCollection = {
     tags: ['kitchen','tablet','team']
   },
   taskManagement: {
-    src: '/images/marketing/heroes/task-management-hero-01.webp',
+    src: '/images/marketing/heroes/opsflow-abstract-hero-02.svg',
     alt: 'Kitchen staff completing digital checklists on mounted tablets with real-time task tracking',
     width: 1920,
     height: 1080,
@@ -90,7 +90,7 @@ export const heroAssets: AssetCollection = {
 // Feature Cards (1:1) - Feature highlights and benefit showcases
 export const cardAssets: AssetCollection = {
   tabletChecklist: {
-    src: '/images/marketing/cards/tablet-checklist-card-01.webp',
+    src: '/images/marketing/cards/opsflow-abstract-card-01.svg',
     alt: 'Close-up of hands using tablet to complete opening checklist in commercial kitchen',
     width: 1200,
     height: 1200,
@@ -101,7 +101,7 @@ export const cardAssets: AssetCollection = {
     tags: ['tablet','checklist']
   },
   temperatureProbe: {
-    src: '/images/marketing/cards/temperature-probe-card-01.webp',
+    src: '/images/marketing/cards/opsflow-abstract-card-02.svg',
     alt: 'Digital thermometer reading temperature in walk-in cooler with compliance documentation',
     width: 1200,
     height: 1200,

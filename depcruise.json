@@ -90,19 +90,20 @@
         "components/shared/forms/ContactForm.tsx",
         "components/shared/forms/LeadCapture.tsx",
         "components/shared/forms/RestaurantContactForm.tsx",
+        "components/domain/marketing/MarketingCarouselHero.tsx",
+        "components/ui/carousel.tsx",
+        "components/domain/marketing/MarketingRollingBlocks.tsx",
         "components/docs/DocsLayout.tsx",
         "components/shared/ai/ChatWidget.tsx",
         "app/docs/page.tsx",
         "components/shared/feedback/BackToTop.tsx",
         "components/shared/feedback/ErrorDisplay.tsx",
         "app/not-found.tsx",
-        "components/domain/marketing/MarketingRollingBlocks.tsx",
         "components/domain/industries/restaurants/FlowingFeatures.tsx",
         "components/domain/industries/restaurants/RestaurantFeatureGrid.tsx",
         "components/domain/industries/restaurants/RestaurantHomeHero.tsx",
         "components/domain/industries/restaurants/RestaurantPlatformExplorer.tsx",
         "components/domain/industries/restaurants/SecondaryFeatures.tsx",
-        "components/ui/carousel.tsx",
         "components/domain/pricing/PricingCard.tsx",
         "components/domain/pricing/ROICalculator.tsx",
         "components/domain/demo/DemoBooking.tsx",
@@ -221,10 +222,11 @@
         "components/ui/label.tsx",
         "components/ui/textarea.tsx",
         "components/shared/forms/LeadCapture.tsx",
+        "components/ui/carousel.tsx",
+        "components/domain/marketing/MarketingRollingBlocks.tsx",
         "app/layout.tsx",
         "components/ui/alert.tsx",
         "components/ui/toast.tsx",
-        "components/domain/marketing/MarketingRollingBlocks.tsx",
         "components/domain/industries/restaurants/FlowingFeatures.tsx",
         "components/ui/separator.tsx",
         "components/domain/industries/restaurants/RestaurantFeatureGrid.tsx",
@@ -232,7 +234,6 @@
         "components/domain/industries/restaurants/RestaurantPlatformExplorer.tsx",
         "components/ui/tabs.tsx",
         "components/domain/industries/restaurants/SecondaryFeatures.tsx",
-        "components/ui/carousel.tsx",
         "components/ui/table.tsx",
         "components/ui/switch.tsx",
         "components/ui/select.tsx",
@@ -1055,8 +1056,8 @@
       "dependents": [
         "lib/hooks/restaurant-pages.ts",
         "components/shared/forms/RestaurantContactForm.tsx",
-        "components/shared/feedback/ErrorDisplay.tsx",
         "components/domain/marketing/MarketingRollingBlocks.tsx",
+        "components/shared/feedback/ErrorDisplay.tsx",
         "components/domain/industries/restaurants/RestaurantPlatformExplorer.tsx",
         "components/domain/industries/restaurants/RestaurantSuccessMetrics.tsx",
         "components/shared/data-display/FeatureComparison.tsx",
@@ -1428,9 +1429,9 @@
         "components/domain/contact/ContactOffices.tsx",
         "components/shared/forms/RestaurantContactForm.tsx",
         "app/dashboard/page.tsx",
+        "components/domain/marketing/MarketingRollingBlocks.tsx",
         "app/docs/page.tsx",
         "components/shared/feedback/ErrorDisplay.tsx",
-        "components/domain/marketing/MarketingRollingBlocks.tsx",
         "components/domain/industries/restaurants/FlowingFeatures.tsx",
         "components/domain/industries/restaurants/RestaurantFeatureGrid.tsx",
         "components/domain/industries/restaurants/RestaurantPlatformExplorer.tsx",
@@ -1455,7 +1456,6 @@
         "components/pages/UITestPage.tsx",
         "app/ui-sink/templates/page.tsx",
         "app/ui-sink/tokens/page.tsx",
-        "components/domain/dashboard/TemperatureMonitor.tsx",
         "components/domain/product/RestaurantKPIs.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
         "components/domain/product/features/AdvancedOps.tsx",
@@ -4110,6 +4110,341 @@
       "valid": true
     },
     {
+      "source": "app/demo/hero/page.tsx",
+      "dependencies": [
+        {
+          "module": "@/domain/marketing",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-paths",
+            "local",
+            "import"
+          ],
+          "resolved": "components/domain/marketing/index.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/marketing/index.ts",
+      "dependencies": [
+        {
+          "module": "./MarketingCarouselHero",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "export"
+          ],
+          "resolved": "components/domain/marketing/MarketingCarouselHero.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "./MarketingRollingBlocks",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "export"
+          ],
+          "resolved": "components/domain/marketing/MarketingRollingBlocks.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "app/demo/hero/page.tsx",
+        "app/page.tsx",
+        "components/pages/HomePage.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/marketing/MarketingCarouselHero.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/carousel",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/carousel.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/assets/marketing",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/assets/marketing.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils/cn",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "unknown"
+          ],
+          "resolved": "@/lib/utils/cn",
+          "coreModule": false,
+          "followable": false,
+          "couldNotResolve": true,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/marketing/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "@/lib/utils/cn",
+      "followable": false,
+      "coreModule": false,
+      "couldNotResolve": true,
+      "matchesDoNotFollow": false,
+      "dependencyTypes": [
+        "unknown"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "components/domain/marketing/MarketingCarouselHero.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/ui/carousel.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/marketing/MarketingCarouselHero.tsx",
+        "components/domain/industries/restaurants/SecondaryFeatures.tsx",
+        "components/domain/product/features/FeatureShowcase.tsx",
+        "components/pages/UITestPage.tsx",
+        "templates/shadcn-components/processed/heroes/BillingHero.tsx",
+        "components/shared/data-display/LogoGrid.tsx",
+        "components/shared/data-display/LogoShowcase.tsx",
+        "components/shared/data-display/TestimonialCarousel.tsx",
+        "components/shared/heroes/BillingHero.tsx",
+        "components/shared/heroes/CarouselHero.tsx",
+        "components/shared/heroes/ProductivityHero.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "lib/assets/marketing.ts",
+      "dependencies": [],
+      "dependents": [
+        "components/domain/marketing/MarketingCarouselHero.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/marketing/MarketingRollingBlocks.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/analytics",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/analytics.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/marketing/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "app/docs/[...slug]/page.tsx",
       "dependencies": [
         {
@@ -5286,124 +5621,6 @@
       "valid": true
     },
     {
-      "source": "components/domain/marketing/index.ts",
-      "dependencies": [
-        {
-          "module": "./MarketingRollingBlocks",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "export"
-          ],
-          "resolved": "components/domain/marketing/MarketingRollingBlocks.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/page.tsx",
-        "components/pages/HomePage.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/marketing/MarketingRollingBlocks.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/analytics",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/analytics.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/utils",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/utils.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "components/domain/marketing/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
       "source": "components/domain/restaurant/index.ts",
       "dependencies": [
         {
@@ -6171,65 +6388,6 @@
       "dependents": [
         "components/domain/restaurant/index.ts",
         "components/domain/industries/restaurants/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/ui/carousel.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/utils",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/utils.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "components/domain/industries/restaurants/SecondaryFeatures.tsx",
-        "components/domain/product/features/FeatureShowcase.tsx",
-        "components/pages/UITestPage.tsx",
-        "templates/shadcn-components/processed/heroes/BillingHero.tsx",
-        "components/shared/data-display/LogoGrid.tsx",
-        "components/shared/data-display/LogoShowcase.tsx",
-        "components/shared/data-display/TestimonialCarousel.tsx",
-        "components/shared/heroes/BillingHero.tsx",
-        "components/shared/heroes/CarouselHero.tsx",
-        "components/shared/heroes/ProductivityHero.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -16129,130 +16287,6 @@
       "valid": true
     },
     {
-      "source": "components/domain/dashboard/StatusIsland.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/smoothui/ui/DynamicIsland",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/smoothui/ui/DynamicIsland.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/smoothui/ui/DynamicIsland.tsx",
-      "dependencies": [],
-      "dependents": [
-        "components/domain/dashboard/StatusIsland.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/dashboard/TemperatureMonitor.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/smoothui/ui/NumberFlow",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/smoothui/ui/NumberFlow.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/smoothui/ui/NumberFlow.tsx",
-      "dependencies": [
-        {
-          "module": "@/lib/utils/cn",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/utils/cn.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "components/domain/dashboard/TemperatureMonitor.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "lib/utils/cn.ts",
-      "dependencies": [],
-      "dependents": [
-        "components/smoothui/ui/NumberFlow.tsx"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
       "source": "components/domain/industries/coffee/features/FeatureGrid.tsx",
       "dependencies": [
         {
@@ -20829,6 +20863,19 @@
       "valid": true
     },
     {
+      "source": "components/smoothui/ui/DynamicIsland.tsx",
+      "dependencies": [],
+      "dependents": [],
+      "orphan": true,
+      "valid": false,
+      "rules": [
+        {
+          "severity": "warn",
+          "name": "no-orphans"
+        }
+      ]
+    },
+    {
       "source": "components/ui/animated-counter.tsx",
       "dependencies": [
         {
@@ -21690,6 +21737,15 @@
       },
       {
         "type": "module",
+        "from": "components/smoothui/ui/DynamicIsland.tsx",
+        "to": "components/smoothui/ui/DynamicIsland.tsx",
+        "rule": {
+          "severity": "warn",
+          "name": "no-orphans"
+        }
+      },
+      {
+        "type": "module",
         "from": "lib/ai/marketingPlaybook.ts",
         "to": "lib/ai/marketingPlaybook.ts",
         "rule": {
@@ -21717,11 +21773,11 @@
       }
     ],
     "error": 0,
-    "warn": 16,
+    "warn": 17,
     "info": 0,
     "ignore": 0,
     "totalCruised": 362,
-    "totalDependenciesCruised": 897,
+    "totalDependenciesCruised": 899,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,
