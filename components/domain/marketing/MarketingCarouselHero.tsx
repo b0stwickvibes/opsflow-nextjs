@@ -30,7 +30,15 @@ export function MarketingCarouselHero() {
 
   return (
     <section className="relative overflow-hidden py-32">
-      <div className="container relative grid gap-12 lg:grid-cols-[1fr_1.2fr]">
+      {/* Left-third gradient overlay for copy readability */}
+      <div
+        className="pointer-events-none absolute inset-y-0 left-0 w-[35%] z-[1]"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(30,64,175,0.92) 0%, rgba(30,64,175,0.75) 45%, rgba(30,64,175,0.0) 100%)",
+        }}
+      />
+      <div className="container relative z-10 grid gap-12 lg:grid-cols-[1fr_1.2fr]">
         {/* Left: Content */}
         <div className="space-y-8 lg:space-y-12">
           <div>
