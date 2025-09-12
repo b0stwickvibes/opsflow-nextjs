@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 import type { IndustryType, RoleType } from "@/types/restaurant-pages";
 
@@ -244,9 +245,11 @@ export function LogoShowcase({
                     <div className="flex items-center gap-3">
                       {industryIcons[brand.industry]}
                       <div className="text-left">
-                        <img
+                        <Image
                           src={brand.logo}
                           alt={brand.name}
+                          width={200}
+                          height={80}
                           className={cn(brand.className, "object-cover grayscale group-hover:grayscale-0 transition-all duration-300")}
                         />
                         <p className="text-xs text-muted-foreground mt-2 capitalize">
@@ -324,9 +327,11 @@ export function LogoShowcase({
                     <div className="mt-auto text-center">
                       <div className="flex items-center justify-center gap-4 mb-3">
                         <div className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center overflow-hidden">
-                          <img
+                          <Image
                             src={testimonial.logo}
                             alt={testimonial.company}
+                            width={32}
+                            height={32}
                             className="w-8 h-8 object-contain rounded-full"
                           />
                         </div>

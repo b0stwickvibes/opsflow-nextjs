@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export const dynamic = 'force-static';
-export const revalidate = false as any;
+export const revalidate = false;
 
 export default function DocsHomePage() {
   const quickStartSections = [

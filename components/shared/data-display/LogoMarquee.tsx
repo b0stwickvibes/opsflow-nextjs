@@ -3,6 +3,7 @@
 import { ArrowRight, Star, TrendingUp, Users, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import Image from "next/image";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 import type { IndustryType, RoleType } from "@/types/restaurant-pages";
 import { cn } from "@/lib/utils";
@@ -226,9 +227,11 @@ export function LogoMarquee({
               >
                 <CardContent className="flex flex-col items-center justify-center text-center p-6 h-full min-h-[180px]">
                   <div className="relative mb-4">
-                    <img
+                    <Image
                       src={achievement.logo}
                       alt={achievement.title}
+                      width={64}
+                      height={64}
                       className="w-16 h-16 object-cover rounded-xl shadow-md group-hover:scale-110 transition-transform duration-300"
                     />
                     <div className="absolute -top-1 -right-1">

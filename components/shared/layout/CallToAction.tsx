@@ -4,6 +4,7 @@ import { ArrowRight, PlayCircle } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 interface CallToActionProps {
   industry?: "restaurants" | "bars" | "coffee" | "hotels";
@@ -19,6 +20,13 @@ export function CallToAction({
   customSubtitle
 }: CallToActionProps) {
   const { trackEvent } = useRestaurantAnalytics();
+
+  type CTAConfig = {
+    title: string;
+    subtitle: string;
+    primaryCTA: string;
+    secondaryCTA: string;
+  };
 
   const industryConfig = {
     restaurants: {
@@ -84,8 +92,9 @@ export function CallToAction({
   };
 
   const config = industryConfig[industry];
-  // Access variant in a type-safe way even if not declared for industry
-  const variantConfig = (config.variants as Record<string, any>)[variant] || config.variants.primary;
+  type VariantName = "primary" | "demo" | "trial";
+  const variants = config.variants as Record<string, CTAConfig>;
+  const variantConfig: CTAConfig = (variant in variants ? variants[variant as VariantName] : variants["primary"]) as CTAConfig;
 
   const handlePrimaryCTA = () => {
     trackEvent("cta_primary_click", {
@@ -113,12 +122,13 @@ export function CallToAction({
     <section className="section-marketing">
       <div className="container">
         <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
-<img
+<Image
             src={config.image}
             alt={`${industry} operations`}
-            className="h-full w-full object-cover"
-            loading="lazy"
-            decoding="async"
+            fill
+            sizes="(max-width: 768px) 100vw, 1200px"
+            className="object-cover"
+            priority={false}
           />
           <div className="absolute inset-0 z-10 bg-black/60" />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-8 p-6 text-white">

@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import type { CarouselApi } from "@/components/ui/carousel";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -79,9 +80,11 @@ const ProductivityHero = () => {
             <CarouselContent>
               {SLIDES.map((slide, index) => (
                 <CarouselItem key={index}>
-                  <img
+                  <Image
                     src={slide.image}
                     alt={`Streamline product interface showing ${slide.label}`}
+                    width={1200}
+                    height={600}
                     className="h-[400px] w-full rounded-2xl object-cover sm:h-[500px] lg:h-[600px]"
                   />
                 </CarouselItem>

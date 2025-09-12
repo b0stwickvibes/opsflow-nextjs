@@ -140,16 +140,12 @@ export function AboutSection({
 
         {/* Mission & Image Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-          <Image
-            src={`/images/${industry}-operations.jpg`}
+<Image
+            src={industry === 'restaurants' ? "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1600&auto=format&fit=crop" : industry === 'bars' ? "https://images.unsplash.com/photo-1580837029840-8a1dff5b82d5?q=80&w=1600&auto=format&fit=crop" : industry === 'coffee' ? "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop" : "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1600&auto=format&fit=crop"}
             alt={`${industry} operations management`}
             className="size-full max-h-96 rounded-2xl object-cover"
             width={1200}
             height={800}
-            onError={(e) => {
-              const target = e.currentTarget as HTMLImageElement;
-              target.src = "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=400&fit=crop&crop=center";
-            }}
           />
           <div 
             className="flex flex-col justify-between gap-10 rounded-2xl p-10 bg-primary/10 border-l-4 border-primary"

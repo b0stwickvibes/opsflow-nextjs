@@ -134,6 +134,9 @@
         "components/ui/calendar-lite.tsx",
         "components/ui/pagination.tsx",
         "app/ui-sink/templates/page.tsx",
+        "components/hero-section.tsx",
+        "components/header.tsx",
+        "components/shared/heroes/MarketingHeroTailark.tsx",
         "templates/shadcn-components/processed/bento/BentoLayout.tsx",
         "templates/shadcn-components/processed/contact/ContactForm.tsx",
         "templates/shadcn-components/processed/contact/LeadCapture.tsx",
@@ -261,6 +264,9 @@
         "components/ui/popover.tsx",
         "components/ui/scroll-area.tsx",
         "components/ui/sheet.tsx",
+        "components/header.tsx",
+        "components/logo.tsx",
+        "components/ui/text-effect.tsx",
         "templates/shadcn-components/processed/bento/BentoGrid.tsx",
         "templates/shadcn-components/processed/bento/BentoLayout.tsx",
         "templates/shadcn-components/processed/contact/ContactForm.tsx",
@@ -12539,6 +12545,26 @@
       "source": "app/ui-sink/templates/page.tsx",
       "dependencies": [
         {
+          "module": "@/components/hero-section",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/hero-section.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
           "module": "@/components/sections/opsflow",
           "moduleSystem": "es6",
           "dynamic": false,
@@ -12563,6 +12589,26 @@
               "name": "no-legacy-sections"
             }
           ]
+        },
+        {
+          "module": "@/components/shared/heroes/MarketingHeroTailark",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/shared/heroes/MarketingHeroTailark.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
         },
         {
           "module": "@/components/ui/button",
@@ -12806,6 +12852,390 @@
         }
       ],
       "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/hero-section.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/header",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/header.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/motion-primitives/animated-group",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/motion-primitives/animated-group.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/motion-primitives/text-effect",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/motion-primitives/text-effect.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "app/ui-sink/templates/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/header.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/logo",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/logo.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/hero-section.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/logo.tsx",
+      "dependencies": [
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/header.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/motion-primitives/animated-group.tsx",
+      "dependencies": [
+        {
+          "module": "../ui/animated-group",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "export"
+          ],
+          "resolved": "components/ui/animated-group.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/hero-section.tsx",
+        "components/shared/heroes/MarketingHeroTailark.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/ui/animated-group.tsx",
+      "dependencies": [],
+      "dependents": [
+        "components/motion-primitives/animated-group.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/motion-primitives/text-effect.tsx",
+      "dependencies": [
+        {
+          "module": "../ui/text-effect",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "export"
+          ],
+          "resolved": "components/ui/text-effect.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/hero-section.tsx",
+        "components/shared/heroes/MarketingHeroTailark.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/ui/text-effect.tsx",
+      "dependencies": [
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/motion-primitives/text-effect.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/shared/heroes/MarketingHeroTailark.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/motion-primitives/animated-group",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/motion-primitives/animated-group.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/motion-primitives/text-effect",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/motion-primitives/text-effect.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/cta-variants",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/cta-variants.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "app/ui-sink/templates/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/ui/cta-variants.ts",
+      "dependencies": [],
+      "dependents": [
+        "components/shared/heroes/MarketingHeroTailark.tsx"
+      ],
       "orphan": false,
       "valid": true
     },
@@ -21165,8 +21595,8 @@
     "warn": 16,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 348,
-    "totalDependenciesCruised": 876,
+    "totalCruised": 357,
+    "totalDependenciesCruised": 893,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,

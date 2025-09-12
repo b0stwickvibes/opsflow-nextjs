@@ -5,6 +5,7 @@ import { Fragment, useState } from "react";
 
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -59,10 +60,11 @@ function HeroSection() {
                     ratio={0.724137931 / 1}
                     className="overflow-hidden"
                   >
-                    <img
+                    <Image
                       src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
                       alt=""
-                      className="size-full object-cover object-center"
+                      fill
+                      className="object-cover object-center"
                     />
                   </AspectRatio>
                 </div>
@@ -72,10 +74,11 @@ function HeroSection() {
                     ratio={0.724137931 / 1}
                     className="overflow-hidden"
                   >
-                    <img
+                    <Image
                       src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg"
                       alt=""
-                      className="size-full object-cover object-center"
+                      fill
+                      className="object-cover object-center"
                     />
                   </AspectRatio>
                 </div>
@@ -85,10 +88,11 @@ function HeroSection() {
                     ratio={0.724137931 / 1}
                     className="overflow-hidden"
                   >
-                    <img
+                    <Image
                       src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
                       alt=""
-                      className="size-full object-cover object-center"
+                      fill
+                      className="object-cover object-center"
                     />
                   </AspectRatio>
                 </div>

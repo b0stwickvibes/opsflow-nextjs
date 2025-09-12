@@ -4,6 +4,7 @@ import { Check, Play, Star, TrendingUp, DollarSign, Clock, Users, ChefHat, BarCh
 import { Fragment, useState } from "react";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   Dialog,
   DialogContent,
@@ -197,10 +198,11 @@ const ImpactHero = ({
                 
                 {/* Rules/Automation Card */}
                 <div className="relative col-[1/2] row-[1/3] animate-slide-in-left animation-delay-400">
-                  <img
+                  <Image
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
                     alt={`${industry} management interface`}
-                    className="object-fit h-full w-full rounded-2xl opacity-80 blur-md"
+                    fill
+                    className="object-cover rounded-2xl opacity-80 blur-md"
                   />
                   <div className="bg-background absolute bottom-0 flex min-w-[15rem] gap-3 rounded-2xl p-3 shadow-2xl border">
                     <div className={cn("h-11 w-11 rounded-full flex items-center justify-center", colors.bg)}>
@@ -298,11 +300,12 @@ const ImpactHero = ({
                 )}
 
                 {/* Additional Visual Element */}
-                <div className="col-[1/2] row-[-1/-3] animate-slide-in-left animation-delay-800">
-                  <img
+                <div className="col-[1/2] row-[-1/-3] animate-slide-in-left animation-delay-800 relative">
+                  <Image
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg"
                     alt={`${industry} analytics dashboard`}
-                    className="object-fit h-full w-full rounded-2xl blur-md opacity-60"
+                    fill
+                    className="object-cover rounded-2xl blur-md opacity-60"
                   />
                 </div>
               </div>

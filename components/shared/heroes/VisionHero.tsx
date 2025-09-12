@@ -10,6 +10,7 @@ import {
   usePageView, 
   usePermission 
 } from '@/lib/hooks/restaurant-pages';
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 // Industry-specific vision content
@@ -161,33 +162,36 @@ const VisionHero = ({
               <div className="grid h-full w-full grid-cols-2 grid-rows-2 gap-5 lg:max-w-[38.9375rem] lg:gap-8">
                 {/* Large Image */}
                 <div className="col-[1/2] row-[1/3] animate-scale-in animation-delay-400">
-                  <div className="h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <img
+                  <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
+                    <Image
                       src={content.images[0].src}
                       alt={content.images[0].alt}
-                      className="h-full w-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover object-center hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </div>
                 
                 {/* Top Right Image */}
                 <div className="col-[2/3] row-[1/2] animate-slide-in-right animation-delay-500">
-                  <div className="h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <img
+                  <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
+                    <Image
                       src={content.images[1].src}
                       alt={content.images[1].alt}
-                      className="h-full w-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover object-center hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </div>
                 
                 {/* Bottom Right Image */}
                 <div className="col-[2/3] row-[2/3] animate-slide-in-right animation-delay-600">
-                  <div className="h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <img
+                  <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
+                    <Image
                       src={content.images[2].src}
                       alt={content.images[2].alt}
-                      className="h-full w-full object-cover object-center hover:scale-105 transition-transform duration-300"
+                      fill
+                      className="object-cover object-center hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </div>

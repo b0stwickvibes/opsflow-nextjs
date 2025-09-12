@@ -61,6 +61,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'cdn.jsdelivr.net' },
       { protocol: 'https', hostname: 'images.ctfassets.net' },
       { protocol: 'https', hostname: 'deifkwefumgah.cloudfront.net' },
+      { protocol: 'https', hostname: 'html.tailus.io' },
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
@@ -185,4 +186,4 @@ const nextConfig = {
   poweredByHeader: false,
 };
 
-module.exports = withBundleAnalyzer(withMarkdoc(markdocConfig)(nextConfig));
+module.exports = withBundleAnalyzer(withMarkdoc(nextConfig, markdocConfig));

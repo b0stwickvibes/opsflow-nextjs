@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
+import Image from "next/image";
 
 interface CompetitorFeature {
   feature: string;
@@ -280,7 +281,7 @@ const CompetitorCard: React.FC<{
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-lg bg-muted">
-              <img src={competitor.logo} alt={competitor.name} className="h-6 w-6" />
+              <Image src={competitor.logo} alt={competitor.name} width={24} height={24} className="h-6 w-6" />
             </div>
             <div>
               <CardTitle className="text-lg font-semibold">{competitor.name}</CardTitle>

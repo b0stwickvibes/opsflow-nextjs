@@ -3,15 +3,18 @@
 import { Expand, Globe, MoveRight, Rocket, Wrench } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const FormHero = () => {
   return (
     <section className="py-32">
       <div className="container">
         <div className="text-center">
-          <img
+          <Image
             src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/block-1.svg"
             alt="placeholder"
+            width={112}
+            height={112}
             className="mx-auto mb-5 w-16 md:mb-6 md:w-24 lg:mb-7 lg:w-28"
           />
           <span className="mb-3 text-sm tracking-widest text-muted-foreground md:text-base">

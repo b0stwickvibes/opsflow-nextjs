@@ -6,6 +6,7 @@ import { Play, CheckCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import {
   Carousel,
   CarouselContent,
@@ -205,9 +206,11 @@ export function LogoGrid({
                       onClick={() => handleClientClick(client)}
                     >
                       <div className="relative mb-4">
-                        <img
+                        <Image
                           src={client.logo}
                           alt={client.name}
+                          width={200}
+                          height={80}
                           className={cn(client.className, "rounded-lg object-cover filter brightness-110 group-hover:scale-105 transition-transform")}
                         />
                         <div className="absolute -top-2 -right-2">
@@ -247,9 +250,11 @@ export function LogoGrid({
                     className="group flex flex-col items-center justify-center lg:mx-10 py-6 cursor-pointer"
                     onClick={() => handleClientClick(client)}
                   >
-                    <img
+                    <Image
                       src={client.logo}
                       alt={client.name}
+                      width={200}
+                      height={80}
                       className={cn(client.className, "rounded-md object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-300")}
                     />
                     <span className="text-xs text-muted-foreground mt-2 text-center capitalize">
