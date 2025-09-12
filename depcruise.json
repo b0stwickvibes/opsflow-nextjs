@@ -1455,6 +1455,7 @@
         "components/pages/UITestPage.tsx",
         "app/ui-sink/templates/page.tsx",
         "app/ui-sink/tokens/page.tsx",
+        "components/domain/dashboard/TemperatureMonitor.tsx",
         "components/domain/product/RestaurantKPIs.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
         "components/domain/product/features/AdvancedOps.tsx",
@@ -16128,6 +16129,130 @@
       "valid": true
     },
     {
+      "source": "components/domain/dashboard/StatusIsland.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/smoothui/ui/DynamicIsland",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/smoothui/ui/DynamicIsland.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/smoothui/ui/DynamicIsland.tsx",
+      "dependencies": [],
+      "dependents": [
+        "components/domain/dashboard/StatusIsland.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/dashboard/TemperatureMonitor.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/smoothui/ui/NumberFlow",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/smoothui/ui/NumberFlow.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/smoothui/ui/NumberFlow.tsx",
+      "dependencies": [
+        {
+          "module": "@/lib/utils/cn",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils/cn.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/dashboard/TemperatureMonitor.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "lib/utils/cn.ts",
+      "dependencies": [],
+      "dependents": [
+        "components/smoothui/ui/NumberFlow.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "components/domain/industries/coffee/features/FeatureGrid.tsx",
       "dependencies": [
         {
@@ -21595,8 +21720,8 @@
     "warn": 16,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 357,
-    "totalDependenciesCruised": 893,
+    "totalCruised": 362,
+    "totalDependenciesCruised": 897,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,

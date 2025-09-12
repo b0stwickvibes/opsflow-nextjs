@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { Star, Quote } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -20,7 +18,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Carlos Rodriguez",
           title: "Executive Chef",
           company: "Meridian Restaurant Group",
-          avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "HACCP compliance used to take 3 hours daily across our locations. Now it's automated and we maintain 100% compliance effortlessly.",
           metric: "3hr → 15min daily"
@@ -29,7 +27,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Jennifer Walsh",
           title: "Operations Manager",
           company: "Farm Table Restaurants",
-          avatar: "https://images.unsplash.com/photo-1494790108755-2616b332b630?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Managing 8 restaurant locations became seamless. Real-time visibility into operations across all sites has transformed our efficiency.",
           metric: "8 locations managed"
@@ -38,7 +36,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Michael Chen",
           title: "Restaurant Owner",
           company: "Golden Dragon Cuisine",
-          avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Labor costs dropped 28% while maintaining service quality. The staff scheduling optimization is incredible.",
           metric: "28% cost reduction"
@@ -47,7 +45,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Sarah Thompson",
           title: "General Manager",
           company: "Coastal Bistro",
-          avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Temperature monitoring and task verification happen automatically. Health department inspections are now stress-free.",
           metric: "100% audit pass rate"
@@ -61,7 +59,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Jake Morrison",
           title: "Bar Manager",
           company: "The Copper Still",
-          avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Inventory shrinkage reduced by 35%. Finally have complete visibility into stock levels across all shifts.",
           metric: "35% shrinkage reduction"
@@ -70,7 +68,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Lisa Rodriguez",
           title: "Operations Director",
           company: "Metro Bar Group",
-          avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Coordinating 5 bar locations is now effortless. Staff scheduling and compliance tracking work perfectly.",
           metric: "5 locations optimized"
@@ -84,7 +82,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Emma Davis",
           title: "Cafe Owner",
           company: "Artisan Coffee Co.",
-          avatar: "https://images.unsplash.com/photo-1494790108755-2616b332b630?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Equipment monitoring prevented 3 major breakdowns this year. Saved thousands in repair costs and downtime.",
           metric: "$12K saved annually"
@@ -93,7 +91,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Ryan Park",
           title: "Regional Manager",
           company: "Bean There Coffee",
-          avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Quality consistency across 12 locations improved dramatically. Customer satisfaction scores hit all-time highs.",
           metric: "12 locations consistent"
@@ -107,7 +105,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "Victoria Adams",
           title: "Hotel Manager",
           company: "Grand Plaza Hotel",
-          avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Housekeeping efficiency increased 40%. Guest satisfaction scores improved and our team coordination is flawless.",
           metric: "40% efficiency gain"
@@ -116,7 +114,7 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
           name: "David Kim",
           title: "Operations Director",
           company: "Luxury Suites Chain",
-          avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
+          avatar: '',
           rating: 5,
           quote: "Managing 6 properties became seamless. Maintenance requests are handled 60% faster with better guest communication.",
           metric: "60% faster response"
@@ -152,13 +150,9 @@ export function TestimonialGrid({ industry = "restaurants" }: TestimonialGridPro
             >
               {/* Header */}
               <div className="flex items-center gap-4 mb-6">
-                <Image
-                  src={testimonial.avatar}
-                  alt={testimonial.name}
-                  width={64}
-                  height={64}
-                  className="w-16 h-16 rounded-full object-cover"
-                />
+                <div className="w-16 h-16 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold">
+                  {testimonial.name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase()}
+                </div>
                 <div className="flex-1">
                   <h3 className="font-semibold text-lg">{testimonial.name}</h3>
                   <p className="text-muted-foreground text-sm">{testimonial.title}</p>

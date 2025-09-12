@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { CheckCircle, Users, Clock, Shield } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -140,12 +139,9 @@ export function AboutSection({
 
         {/* Mission & Image Grid */}
         <div className="grid gap-6 md:grid-cols-2">
-<Image
-            src={industry === 'restaurants' ? "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=1600&auto=format&fit=crop" : industry === 'bars' ? "https://images.unsplash.com/photo-1580837029840-8a1dff5b82d5?q=80&w=1600&auto=format&fit=crop" : industry === 'coffee' ? "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1600&auto=format&fit=crop" : "https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1600&auto=format&fit=crop"}
-            alt={`${industry} operations management`}
-            className="size-full max-h-96 rounded-2xl object-cover"
-            width={1200}
-            height={800}
+<div
+            className="size-full max-h-96 rounded-2xl bg-gradient-to-br from-primary/15 via-background to-secondary/15"
+            aria-hidden
           />
           <div 
             className="flex flex-col justify-between gap-10 rounded-2xl p-10 bg-primary/10 border-l-4 border-primary"
@@ -201,16 +197,9 @@ export function AboutSection({
               </h2>
             </div>
             <div>
-              <Image
-                src={`/images/${industry}-team.jpg`}
-                alt={`${industry} operations team`}
-                className="mb-6 max-h-36 w-full rounded-xl object-cover"
-                width={1200}
-                height={800}
-                onError={(e) => {
-                  const target = e.currentTarget as HTMLImageElement;
-                  target.src = "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=200&fit=crop&crop=center";
-                }}
+              <div
+                className="mb-6 max-h-36 w-full rounded-xl bg-gradient-to-br from-primary/10 via-background to-secondary/10"
+                aria-hidden
               />
               <p className="text-muted-foreground mb-4">
                 We're looking for passionate individuals who want to revolutionize {industry} operations. 

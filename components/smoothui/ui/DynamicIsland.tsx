@@ -251,7 +251,7 @@ export default function DynamicIsland({
   }
 
   return (
-    <div className={`h-[200px] ${className}`}>
+    <div className={`h[200px] ${className}`}>
       <div className="relative flex h-full w-full flex-col justify-center">
         <motion.div
           layout
@@ -320,3 +320,4 @@ export default function DynamicIsland({
     </div>
   )
 }
+

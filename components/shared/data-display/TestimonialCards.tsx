@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 import { Star, TrendingUp, Users, Shield } from "lucide-react";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -34,7 +32,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
           person: {
             name: "Alexandra Martinez",
             title: "VP of Operations",
-            avatar: "https://images.unsplash.com/photo-1494790108755-2616b332b630?q=80&w=150&h=150&auto=format&fit=crop&crop=face"
+            avatar: ''
           }
         },
         {
@@ -54,7 +52,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
           person: {
             name: "Marcus Johnson",
             title: "Franchise Owner",
-            avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&h=150&auto=format&fit=crop&crop=face"
+            avatar: ''
           }
         }
       ]
@@ -80,7 +78,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
           person: {
             name: "Rachel Torres",
             title: "Operations Manager",
-            avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&h=150&auto=format&fit=crop&crop=face"
+            avatar: ''
           }
         }
       ]
@@ -106,7 +104,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
           person: {
             name: "David Chen",
             title: "Regional Director",
-            avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=150&h=150&auto=format&fit=crop&crop=face"
+            avatar: ''
           }
         }
       ]
@@ -132,7 +130,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
           person: {
             name: "Elena Rodriguez",
             title: "General Manager",
-            avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&h=150&auto=format&fit=crop&crop=face"
+            avatar: ''
           }
         }
       ]
@@ -237,13 +235,9 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
               {/* Testimonial */}
               <div className="mt-8 pt-8 border-t">
                 <div className="flex items-start gap-4">
-                  <Image
-                    src={testimonial.person.avatar}
-                    alt={testimonial.person.name}
-                    width={56}
-                    height={56}
-                    className="w-14 h-14 rounded-full object-cover flex-shrink-0"
-                  />
+                  <div className="w-14 h-14 rounded-full bg-primary/20 text-primary flex items-center justify-center font-semibold flex-shrink-0">
+                    {testimonial.person.name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase()}
+                  </div>
                   <div className="flex-1">
                     <blockquote className="text-lg italic text-foreground mb-4">
                       "{testimonial.quote}"
@@ -272,7 +266,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
                       company: testimonial.company,
                       cta_type: "learn_more"
                     });
-                    window.location.href = `/case-study/${testimonial.company.toLowerCase().replace(/\\s+/g, '-')}?industry=${industry}`;
+                    window.location.href = `/case-study/${testimonial.company.toLowerCase().replace(/\s+/g, '-')}?industry=${industry}`;
                   }}
                   className="tile-hover inline-flex items-center gap-2 px-6 py-2 rounded-lg font-medium transition-all hover:scale-105 bg-primary/10 text-primary border border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >

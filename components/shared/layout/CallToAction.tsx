@@ -34,7 +34,7 @@ export function CallToAction({
   const industryConfig = {
     restaurants: {
       color: "oklch(0.70 0.15 25)",
-      image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2074&auto=format&fit=crop",
+      image: null,
       variants: {
         primary: {
           title: "Transform Your Restaurant Operations Today",
@@ -58,7 +58,7 @@ export function CallToAction({
     },
     bars: {
       color: "oklch(0.60 0.20 270)",
-      image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=2074&auto=format&fit=crop",
+      image: null,
       variants: {
         primary: {
           title: "Elevate Your Bar Operations",
@@ -70,7 +70,7 @@ export function CallToAction({
     },
     coffee: {
       color: "oklch(0.65 0.18 80)",
-      image: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?q=80&w=2078&auto=format&fit=crop",
+      image: null,
       variants: {
         primary: {
           title: "Perfect Your Coffee Operations",
@@ -82,7 +82,7 @@ export function CallToAction({
     },
     hotels: {
       color: "oklch(0.55 0.15 210)",
-      image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070&auto=format&fit=crop",
+      image: null,
       variants: {
         primary: {
           title: "Transform Hotel Operations",
