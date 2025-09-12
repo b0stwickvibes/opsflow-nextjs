@@ -17,6 +17,8 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 
 // OpsFlow sections
 import { HeroSection, MetricsRowSection, FeatureAccordionSection, FinalCTASection } from "@/components/sections/opsflow";
+// Adapted Tailark hero
+import { MarketingHeroTailark } from "@/components/shared/heroes/MarketingHeroTailark";
 
 // Processed template exports
 import * as Heroes from "@/templates/shadcn-components/processed/heroes";
@@ -77,6 +79,8 @@ class TemplateBoundary extends React.Component<{ children: React.ReactNode }, { 
 
 // Build registry
 const REGISTRY: TemplateItem[] = [
+  // Tailark hero adapted to OpsFlow standards
+  { key: "hero-marketingherotailark", title: "MarketingHeroTailark", component: MarketingHeroTailark as React.ComponentType<any>, tags: ["hero"], importPath: "@/components/shared/heroes/MarketingHeroTailark", importName: "MarketingHeroTailark" },
   // OpsFlow sections
   { key: "hero", title: "Hero (OpsFlow)", component: HeroSection, tags: ["hero"], importPath: "@/components/sections/opsflow", importName: "HeroSection" },
   { key: "metrics", title: "Metrics Row (OpsFlow)", component: MetricsRowSection, tags: ["stats"], importPath: "@/components/sections/opsflow", importName: "MetricsRowSection" },
