@@ -1,13 +1,13 @@
 import { Metadata } from 'next';
 
 // Heroes
-import { WorkflowHero } from '@/templates/shadcn-components/processed/heroes';
+import { WorkflowHero } from '@/components/domain/industries/coffee/heroes/WorkflowHero';
 // Features
-import { FeatureBento, FeatureTimeline } from '@/templates/shadcn-components/processed/features';
+import { FeatureBento, FeatureTimeline } from '@/components/domain/product/features';
 // Stats
-import { KPIShowcase } from '@/templates/shadcn-components/processed/stats';
+import { KPIShowcase } from '@/components/shared/data-display';
 // CTAs
-import { CallToAction } from '@/templates/shadcn-components/processed/ctas';
+import { CallToAction } from '@/components/shared/layout';
 // Shared
 import { FAQSection } from '@/components/shared/data-display';
 
@@ -36,7 +36,7 @@ export default function CoffeeSolutionsPage() {
   return (
     <>
       {/* Industry-specific Hero (café) */}
-      <WorkflowHero industry="cafe" role="manager" variant="default" />
+      <WorkflowHero />
 
       {/* Dashboard Bento for operations preview */}
       <FeatureBento className="pt-8" variant="dashboard" />

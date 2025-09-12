@@ -1,18 +1,17 @@
 "use client";
 
+import Autoplay from "embla-carousel-autoplay";
 import {
   ArrowRight,
-  ChefHat,
-  BarChart3,
-  Clock,
-  TrendingUp,
-  Users,
-  Shield,
-  Zap,
+  Blend,
+  ChartNoAxesColumn,
+  CircleDot,
+  Diamond,
 } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { cn } from "@/lib/utils";
+
 import { Button } from "@/components/ui/button";
 import type { CarouselApi } from "@/components/ui/carousel";
 import {
@@ -20,242 +19,173 @@ import {
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
 
-import { 
-  useFeatureFlag, 
-  usePageView, 
-  usePermission 
-} from '@/lib/hooks/restaurant-pages';
-
-// Industry-specific productivity features and slides
-const INDUSTRY_PRODUCTIVITY = {
-  restaurant: {
-    title: "Boost Restaurant Productivity with Smart Automation",
-    subtitle: "Advanced tools designed to streamline kitchen operations and enhance service efficiency.",
-    features: [
-      { title: "Smart Kitchen Workflows", description: "Automate prep scheduling and reduce food waste with AI-powered insights.", icon: ChefHat },
-      { title: "Service Optimization", description: "Optimize table turnover and staff coordination for peak performance.", icon: Clock },
-      { title: "Team Coordination", description: "Seamless communication between front and back-of-house teams.", icon: Users },
-      { title: "Performance Analytics", description: "Real-time insights into food costs, labor efficiency, and customer satisfaction.", icon: BarChart3 },
-    ],
-    slides: [
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg", label: "Kitchen Dashboard" },
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg", label: "Staff Scheduling" },
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg", label: "Cost Analytics" },
-    ],
-    cta: "Boost Restaurant Productivity",
-    color: "orange",
+const features = [
+  {
+    title: "Tailored workflows",
+    description: "Track progress across custom issue flows for your team.",
+    icon: CircleDot,
   },
-  bar: {
-    title: "Maximize Bar Productivity with Intelligent Systems",
-    subtitle: "Advanced tools designed to optimize inventory management and boost revenue per customer.",
-    features: [
-      { title: "Smart Inventory Control", description: "Automated reordering and waste reduction with predictive analytics.", icon: BarChart3 },
-      { title: "Revenue Optimization", description: "Dynamic pricing and upselling strategies for maximum profitability.", icon: TrendingUp },
-      { title: "Staff Efficiency", description: "Optimize bartender workflows and service speed during peak hours.", icon: Clock },
-      { title: "Customer Insights", description: "Track preferences and buying patterns to enhance service quality.", icon: Users },
-    ],
-    slides: [
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg", label: "Inventory Control" },
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg", label: "Revenue Analytics" },
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg", label: "Customer Insights" },
-    ],
-    cta: "Boost Bar Productivity",
-    color: "purple",
+  {
+    title: "Milestones",
+    description: "Break projects down into concrete phases.",
+    icon: Diamond,
   },
-  cafe: {
-    title: "Enhance Café Productivity with Smart Operations",
-    subtitle: "Advanced tools designed to perfect coffee preparation and streamline customer service.",
-    features: [
-      { title: "Order Flow Optimization", description: "Streamline coffee preparation with queue management and timing systems.", icon: Clock },
-      { title: "Quality Consistency", description: "Maintain brew standards with automated quality control and monitoring.", icon: Shield },
-      { title: "Customer Experience", description: "Enhance service speed with integrated ordering and loyalty programs.", icon: Users },
-      { title: "Operational Analytics", description: "Track peak hours, popular items, and service efficiency metrics.", icon: BarChart3 },
-    ],
-    slides: [
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg", label: "Order Queue" },
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg", label: "Quality Control" },
-      { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg", label: "Customer Analytics" },
-    ],
-    cta: "Boost Café Productivity",
-    color: "amber",
+  {
+    title: "Cross-team projects",
+    description: "Collaborate across teams and departments.",
+    icon: Blend,
   },
-};
+  {
+    title: "Progress insights",
+    description: "Track scope, velocity, and progress over time.",
+    icon: ChartNoAxesColumn,
+  },
+];
 
-export interface ProductivityHeroProps {
-  industry: 'restaurant' | 'bar' | 'cafe';
-  role?: 'owner' | 'manager' | 'staff';
-  variant?: 'default' | 'compact' | 'detailed';
-}
+const SLIDES = [
+  { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg", label: "Kanban" },
+  { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg", label: "Issues" },
+  { image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg", label: "Add Issues" },
+];
 
-const ProductivityHero = ({ 
-  industry = 'restaurant', 
-  role = 'manager',
-  variant = 'default'
-}: ProductivityHeroProps) => {
+const ProductivityHero = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [api, setApi] = useState<CarouselApi>();
 
-  const showCarousel = useFeatureFlag('productivityHeroCarousel', true);
-  const showFeatures = useFeatureFlag('productivityHeroFeatures', true);
-  
-  usePageView(`${industry}_productivity_hero`, { variant, industry, role });
-  
-  const canBoostProductivity = usePermission('PRODUCTIVITY_BOOST_ACCESS');
-  const content = INDUSTRY_PRODUCTIVITY[industry];
-
   useEffect(() => {
-    if (!api) return;
-    
+    if (!api) {
+      return;
+    }
+
     api.on("select", () => {
       setCurrentSlide(api.selectedScrollSnap());
     });
   }, [api]);
 
-  const colorClasses = {
-    orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-600 hover:bg-orange-700',
-      accent: 'bg-orange-100 dark:bg-orange-900/20',
-    },
-    purple: {
-      primary: 'text-purple-600 dark:text-purple-400',
-      bg: 'bg-purple-600 hover:bg-purple-700',
-      accent: 'bg-purple-100 dark:bg-purple-900/20',
-    },
-    amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-600 hover:bg-amber-700',
-      accent: 'bg-amber-100 dark:bg-amber-900/20',
-    },
-  };
-
-  const colors = colorClasses[content.color as keyof typeof colorClasses];
-
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-background to-muted/20 py-20">
+    <section className="relative overflow-hidden">
       <div className="container">
         {/* Carousel Section */}
-        {showCarousel && (
-          <div className="relative mb-16 animate-fade-in-up">
-            <Carousel
-              className="mx-auto max-w-4xl"
-              setApi={setApi}
-              opts={{ loop: true }}
-              plugins={[Autoplay({ delay: 4000, stopOnInteraction: true })]}
-            >
-              <CarouselContent>
-                {content.slides.map((slide, index) => (
-                  <CarouselItem key={index}>
-                    <img
-                      src={slide.image}
-                      alt={`${industry} ${slide.label} interface`}
-                      className="h-[400px] w-full rounded-2xl object-cover shadow-2xl sm:h-[500px] lg:h-[600px] hover:shadow-3xl transition-shadow duration-300"
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-            </Carousel>
-
-            {/* Slide Indicator */}
-            <div className="mt-8 flex flex-col items-center gap-3 font-medium">
-              <div className="text-center">
-                <span className="text-muted-foreground text-sm">
-                  {currentSlide + 1} of {content.slides.length} — 
-                </span>
-                <span className={cn("font-semibold ml-1", colors.primary)}>
-                  {content.slides[currentSlide].label}
-                </span>
-              </div>
-              
-              <div className="flex gap-2">
-                {content.slides.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => api?.scrollTo(index)}
-                    aria-label={`Go to slide ${index + 1}: ${content.slides[index].label}`}
-                    className={cn(
-                      "h-1 w-8 rounded-full transition-all duration-200 hover:scale-110",
-                      index === currentSlide ? "bg-primary shadow-sm" : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    )}
+        <div className="relative mb-16">
+          <Carousel
+            className="mx-auto max-w-4xl"
+            setApi={setApi}
+            opts={{
+              loop: true,
+            }}
+            plugins={[Autoplay({ delay: 4000, stopOnInteraction: true })]}
+          >
+            <CarouselContent>
+              {SLIDES.map((slide, index) => (
+                <CarouselItem key={index}>
+                  <img
+                    src={slide.image}
+                    alt={`Streamline product interface showing ${slide.label}`}
+                    className="h-[400px] w-full rounded-2xl object-cover sm:h-[500px] lg:h-[600px]"
                   />
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          <SlideIndicator
+            currentSlide={currentSlide}
+            slides={SLIDES}
+            className="mt-8"
+            api={api ?? null}
+          />
+        </div>
 
         {/* Content Section */}
         <div className="space-y-12 text-center">
-          <div className="mx-auto max-w-4xl animate-fade-in-up animation-delay-200">
-            <div className={cn("inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full border", colors.primary)}>
-              <Zap className="size-4" />
-              <span className="text-sm font-medium">Productivity Boost</span>
-            </div>
-            
-            <h1 className="heading-brand-gradient text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl mb-6">
-              {content.title}
+          <div className="mx-auto max-w-4xl">
+            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+              Shadcnblocks components for your next project
             </h1>
 
-            <p className="text-muted-foreground text-xl font-medium lg:text-2xl">
-              {content.subtitle}
+            <p className="text-muted-foreground mt-6 text-xl font-medium lg:text-2xl">
+              Streamline is the fit-for-purpose tool for planning and building
+              modern software products.
             </p>
           </div>
 
-          {/* Features Grid */}
-          {showFeatures && (
-            <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4 animate-fade-in-up animation-delay-300">
-              {content.features.map((feature, index) => {
-                const Icon = feature.icon;
-                return (
-                  <div 
-                    key={feature.title} 
-                    className={cn(
-                      "group space-y-4 text-center p-6 rounded-xl transition-all duration-200",
-                      "hover:bg-muted/50 hover:shadow-lg hover:-translate-y-1",
-                      "animate-fade-in-up",
-                      `animation-delay-${400 + (index * 100)}`
-                    )}
-                  >
-                    <div className="flex justify-center">
-                      <div className={cn("p-3 rounded-full transition-colors", colors.accent)}>
-                        <Icon className={cn("size-8 transition-colors", colors.primary)} />
-                      </div>
-                    </div>
-                    <div>
-                      <h2 className="text-lg font-semibold group-hover:text-primary transition-colors">
-                        {feature.title}
-                      </h2>
-                      <p className="text-muted-foreground mt-2 text-sm leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
+          {/* Features */}
+          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {features.map((feature) => {
+              const Icon = feature.icon;
+              return (
+                <div key={feature.title} className="space-y-4 text-center">
+                  <div className="flex justify-center">
+                    <Icon className="text-primary size-8" />
                   </div>
-                );
-              })}
-            </div>
-          )}
+                  <div>
+                    <h2 className="text-lg font-semibold">{feature.title}</h2>
+                    <p className="text-muted-foreground mt-2 text-sm">
+                      {feature.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
 
-          {/* CTA Button */}
-          <div className="animate-fade-in-up animation-delay-700">
-            <Button 
-              size="lg" 
-              className={cn(
-                "shadow-lg hover:shadow-xl transition-all duration-200 px-8 py-4 text-lg bg-brand-gradient text-primary-foreground cta-shimmer",
-                !canBoostProductivity && "opacity-75 cursor-not-allowed"
-              )}
-              disabled={!canBoostProductivity}
-            >
-              <span className="flex items-center gap-2">
-                {content.cta}
-                <ArrowRight className="size-5" />
-              </span>
+          <div className="flex flex-wrap items-center justify-center gap-4">
+            <Button size="lg" aria-label="Get started">
+              Get started
             </Button>
+            <a href="#">
+              <Button aria-label="Documentation" variant="outline" size="lg">
+                <span className="flex items-center gap-2">
+                  Documentation
+                  <ArrowRight className="size-4" />
+                </span>
+              </Button>
+            </a>
           </div>
         </div>
       </div>
     </section>
+  );
+};
+
+interface SlideIndicatorProps {
+  currentSlide: number;
+  slides: Array<{ label: string }>;
+  className?: string;
+  api: CarouselApi | null;
+}
+
+const SlideIndicator = ({
+  currentSlide,
+  slides,
+  className,
+  api,
+}: SlideIndicatorProps) => {
+  return (
+    <div
+      className={cn("flex flex-col items-center gap-2 font-medium", className)}
+    >
+      <div className="">
+        <span className="text-foreground-700">{currentSlide + 1} of 3 — </span>
+        <span className="text-primary">{slides[currentSlide].label}</span>
+      </div>
+      <div className="flex gap-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => api?.scrollTo(index)}
+            aria-label={`Go to slide ${index + 1}`}
+            className={cn(
+              "h-0.5 w-6 rounded-full transition-colors",
+              index === currentSlide
+                ? "bg-primary"
+                : "bg-primary/20 hover:bg-primary/40",
+            )}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 

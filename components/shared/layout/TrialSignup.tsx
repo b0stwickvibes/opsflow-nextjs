@@ -84,10 +84,9 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
       <div className="container">
         <div className="mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <div 
+<div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-primary text-primary-foreground"
             >
-              <Zap className="size-4" />
               <span className="text-sm font-medium">Free 14-Day Trial</span>
             </div>
             
@@ -157,7 +156,7 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
                   <Button
                     onClick={handleStartTrial}
                     size="lg"
-                    className="cta-shimmer w-full bg-primary text-primary-foreground font-semibold hover:scale-105 transition-transform mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+className="w-full bg-primary text-primary-foreground font-semibold transition-transform mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                   >
                     {config.ctaText}
                     <ArrowRight className="ml-2 size-4" />
@@ -196,11 +195,11 @@ export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
             <p className="text-muted-foreground mb-4">
               Trusted by leading {industry} operations worldwide
             </p>
-            <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <span>🏆 Industry Leader</span>
-              <span>🔒 SOC 2 Certified</span>
-              <span>📞 24/7 Support</span>
-              <span>📊 99.9% Uptime</span>
+<div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
+              <span>Industry Leader</span>
+              <span>SOC 2 Certified</span>
+              <span>24/7 Support</span>
+              <span>99.9% Uptime</span>
             </div>
           </div>
         </div>

@@ -123,7 +123,7 @@ export function DemoRequest({ industry = "restaurants" }: DemoRequestProps) {
                     <Button
                       onClick={handleScheduleDemo}
                       size="lg"
-                      className="cta-shimmer w-full bg-white text-black hover:bg-white/90 hover:scale-105 transition-all font-semibold"
+className="w-full bg-white text-black hover:bg-white/90 transition-all font-semibold"
                     >
                       Schedule Demo Now
                       <ArrowRight className="ml-2 size-4" />

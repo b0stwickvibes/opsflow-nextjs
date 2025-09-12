@@ -113,10 +113,12 @@ export function CallToAction({
     <section className="section-marketing">
       <div className="container">
         <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
-          <img
+<img
             src={config.image}
             alt={`${industry} operations`}
             className="h-full w-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
           <div className="absolute inset-0 z-10 bg-black/60" />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-8 p-6 text-white">
@@ -127,19 +129,18 @@ export function CallToAction({
               {customSubtitle || variantConfig.subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
+<Button 
                 size="lg"
                 onClick={handlePrimaryCTA}
-                className="clerk-cta-primary cta-shimmer hover-scale-103"
               >
                 {variantConfig.primaryCTA}
                 <ArrowRight className="ml-2" />
               </Button>
-              <Button 
+<Button 
                 size="lg"
                 variant="outline"
                 onClick={handleSecondaryCTA}
-                className="border-white text-white hover:bg-white hover:text-black transition-all hover-scale-103"
+                className="border-white text-white hover:bg-white hover:text-black transition-all"
               >
                 <PlayCircle className="mr-2" />
                 {variantConfig.secondaryCTA}

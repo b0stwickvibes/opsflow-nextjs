@@ -8,7 +8,13 @@
     "@typescript-eslint/no-empty-object-type": "warn",
     "react/no-unescaped-entities": "off",
     "prefer-const": "warn",
-    "react-hooks/rules-of-hooks": "warn"
+    "react-hooks/rules-of-hooks": "warn",
+"no-restricted-imports": [
+      "error",
+      {
+        "patterns": ["@/templates/shadcn-components/processed/*"]
+      }
+    ]
   },
   "overrides": [
     {
@@ -23,7 +29,8 @@
         "@typescript-eslint/no-unused-vars": [
           "warn",
           { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
-        ]
+        ],
+        "no-restricted-imports": "off"
       }
     }
   ]
