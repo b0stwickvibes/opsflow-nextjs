@@ -262,6 +262,16 @@ npm run design:responsive-test           # Test responsive design across breakpo
 
 ## Warp Terminal Optimizations
 
+### Brand Imaging Quickstart
+- Guides:
+  - docs/branding/BRAND-IMAGING-GUIDE.md
+  - docs/branding/DEVICE-MOCKUP-TEMPLATE.md
+- Workflow summary:
+  1) Generate images (Midjourney/SDXL) using brand tokens and seed policy
+  2) Composite OpsFlow UI onto devices via Figma/Photoshop template
+  3) Export WebP/AVIF, add to public/images per structure
+  4) Register assets in lib/assets/marketing.ts with alt text and metadata
+
 ### ShadcnBlocks Quickstart
 - Full guide: docs/integrations/SHADCNBLOCKS.md
 - TL;DR commands:
