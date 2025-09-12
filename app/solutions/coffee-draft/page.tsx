@@ -13,11 +13,11 @@ export default function Page() {
 
       <FeatureBento variant={"dashboard"} />
 
-      <IntegrationGrid title={"Coffee POS & Ops Integrations"} subtitle={"Connect OpsFlow to your café stack—POS, delivery, accounting & more."} />
+      <IntegrationGrid title={"Coffee POS & Ops Integrations"} subtitle={"Connect OpsFlow to your café stack—POS, delivery, accounting & more."} integrations={[]} />
 
       <KPIShowcase industry={"coffee"} variant={"outline"} energy={"balanced"} leadKey={"Compliance"} />
 
-      <CallToAction industry={"coffee"} variant={"demo"} customTitle={"Ready to Master Your Morning Rush?"} customSubtitle={"Join leading coffee shops optimizing consistency and speed with OpsFlow"} />
+      <CallToAction industry={"coffee"} variant={"demo"} customTitle={"Ready to Master Your Morning Rush?"} customSubtitle={"Join leading coffee shops optimizing consistency and speed with OpsFlow"} imageSrc={null} />
     </>
   )
 }

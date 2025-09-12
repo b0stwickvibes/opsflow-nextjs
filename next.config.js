@@ -53,21 +53,22 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     // Re-enable optimizer; remotePatterns configured below
     unoptimized: false,
+    // Next.js 15.3+ supports URL objects in remotePatterns
     remotePatterns: [
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'logo.clearbit.com' },
-      { protocol: 'https', hostname: 'seeklogo.com' },
-      { protocol: 'https', hostname: 'upload.wikimedia.org' },
-      { protocol: 'https', hostname: 'cdn.jsdelivr.net' },
-      { protocol: 'https', hostname: 'images.ctfassets.net' },
-      { protocol: 'https', hostname: 'deifkwefumgah.cloudfront.net' },
-      { protocol: 'https', hostname: 'html.tailus.io' },
+      new URL('https://images.unsplash.com/**'),
+      new URL('https://logo.clearbit.com/**'),
+      new URL('https://seeklogo.com/**'),
+      new URL('https://upload.wikimedia.org/**'),
+      new URL('https://cdn.jsdelivr.net/**'),
+      new URL('https://images.ctfassets.net/**'),
+      new URL('https://deifkwefumgah.cloudfront.net/**'),
+      new URL('https://html.tailus.io/**'),
+      new URL('https://ik.imagekit.io/**'),
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
-
   // Speed up CI/builds when lint is not critical
   eslint: {
     ignoreDuringBuilds: true,
@@ -186,4 +187,4 @@ const nextConfig = {
   poweredByHeader: false,
 };
 
-module.exports = withBundleAnalyzer(withMarkdoc(nextConfig, markdocConfig));
+module.exports = withBundleAnalyzer(withMarkdoc(markdocConfig)(nextConfig));

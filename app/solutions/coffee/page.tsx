@@ -61,6 +61,7 @@ export default function CoffeeSolutionsPage() {
         variant="demo"
         customTitle="Ready to Master Your Morning Rush?"
         customSubtitle="Join leading coffee shops optimizing consistency and speed with OpsFlow"
+        imageSrc={null}
       />
     </>
   );

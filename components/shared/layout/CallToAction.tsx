@@ -11,13 +11,16 @@ interface CallToActionProps {
   variant?: "primary" | "demo" | "trial";
   customTitle?: string;
   customSubtitle?: string;
+  // Optional override for background image. Set to null to disable images entirely.
+  imageSrc?: string | null;
 }
 
 export function CallToAction({ 
   industry = "restaurants",
   variant = "primary",
   customTitle,
-  customSubtitle
+  customSubtitle,
+  imageSrc
 }: CallToActionProps) {
   const { trackEvent } = useRestaurantAnalytics();
 
@@ -96,6 +99,9 @@ export function CallToAction({
   const variants = config.variants as Record<string, CTAConfig>;
   const variantConfig: CTAConfig = (variant in variants ? variants[variant as VariantName] : variants["primary"]) as CTAConfig;
 
+  // Determine background image usage
+  const bgImage = imageSrc === undefined ? config.image : imageSrc;
+
   const handlePrimaryCTA = () => {
     trackEvent("cta_primary_click", {
       industry,
@@ -122,14 +128,18 @@ export function CallToAction({
     <section className="section-marketing">
       <div className="container">
         <div className="relative h-[400px] overflow-hidden rounded-xl md:h-[500px]">
-<Image
-            src={config.image}
-            alt={`${industry} operations`}
-            fill
-            sizes="(max-width: 768px) 100vw, 1200px"
-            className="object-cover"
-            priority={false}
-          />
+          {bgImage ? (
+            <Image
+              src={bgImage}
+              alt={`${industry} operations`}
+              fill
+              sizes="(max-width: 768px) 100vw, 1200px"
+              className="object-cover"
+              priority={false}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-background to-secondary/20" />
+          )}
           <div className="absolute inset-0 z-10 bg-black/60" />
           <div className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-8 p-6 text-white">
             <h2 className="text-center text-3xl font-bold md:text-5xl max-w-4xl">

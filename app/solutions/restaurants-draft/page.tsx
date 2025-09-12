@@ -15,13 +15,13 @@ export default function Page() {
 
       <MetricsDashboard industry={"restaurants"} />
 
-      <IntegrationGrid title={"Restaurant Tech Integrations"} subtitle={"Connect OpsFlow with POS, delivery, payroll, accounting and more."} />
+      <IntegrationGrid title={"Restaurant Tech Integrations"} subtitle={"Connect OpsFlow with POS, delivery, payroll, accounting and more."} integrations={[]} />
 
       <KPIShowcase industry={"restaurants"} variant={"outline"} energy={"balanced"} leadKey={"Compliance"} />
 
       <TestimonialGrid />
 
-      <CallToAction industry={"restaurants"} variant={"demo"} customTitle={"Ready to Transform Your Restaurant Operations?"} customSubtitle={"Join thousands of restaurants streamlining operations with OpsFlow"} />
+      <CallToAction industry={"restaurants"} variant={"demo"} customTitle={"Ready to Transform Your Restaurant Operations?"} customSubtitle={"Join thousands of restaurants streamlining operations with OpsFlow"} imageSrc={null} />
     </>
   )
 }

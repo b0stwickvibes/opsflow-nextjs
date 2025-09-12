@@ -84,6 +84,7 @@
     "dependency-cruiser": "^17.0.1",
     "eslint": "^9.17.0",
     "eslint-config-next": "^15.1.4",
-    "madge": "^8.0.0"
+    "madge": "^8.0.0",
+    "shadcn": "^3.2.1"
   }
 }
