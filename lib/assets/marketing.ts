@@ -37,7 +37,7 @@ export interface AssetCollection {
 // Hero Images (16:9) - Homepage and landing page headers
 export const heroAssets: AssetCollection = {
   restaurantOperations: {
-src: '/images/marketing/heroes/one-clean-kitchen-technology.webp'
+    src: '/images/marketing/heroes/one-clean-kitchen-technology.webp',
     alt: 'Clean modern commercial kitchen with technology integration and stainless workstations',
     width: 1920,
     height: 1080,
@@ -56,7 +56,7 @@ src: '/images/marketing/heroes/one-clean-kitchen-technology.webp'
     tags: ['kitchen','tablet','team']
   },
   taskManagement: {
-src: '/images/marketing/heroes/two-kitchen-operations-overview.webp'
+    src: '/images/marketing/heroes/two-kitchen-operations-overview.webp',
     alt: 'Kitchen operations overview with team coordination across the line',
     width: 1920,
     height: 1080,
@@ -66,7 +66,7 @@ src: '/images/marketing/heroes/two-kitchen-operations-overview.webp'
     priority: 'high'
   },
   complianceAudit: {
-src: '/images/marketing/heroes/three-management-compliance-visual.webp'
+    src: '/images/marketing/heroes/three-management-compliance-visual.webp',
     alt: 'Management and compliance visual with team alignment in professional kitchen',
     width: 1920,
     height: 1080,
@@ -76,7 +76,7 @@ src: '/images/marketing/heroes/three-management-compliance-visual.webp'
     priority: 'medium'
   },
   temperatureMonitoring: {
-src: '/images/marketing/heroes/two-kitchen-operations-overview.webp'
+    src: '/images/marketing/heroes/two-kitchen-operations-overview.webp',
     alt: 'Operations overview hero used for temperature and task context',
     width: 1920,
     height: 1080,
@@ -112,7 +112,7 @@ export const cardAssets: AssetCollection = {
     tags: ['temperature','compliance']
   },
   teamMeeting: {
-src: '/images/marketing/cards/six-team-management-interface.webp'
+    src: '/images/marketing/cards/six-team-management-interface.webp',
     alt: 'Team management interface on tablet during staff meeting',
     width: 1200,
     height: 1200,
@@ -123,7 +123,7 @@ src: '/images/marketing/cards/six-team-management-interface.webp'
     tags: ['team','scheduling']
   },
   complianceCheck: {
-src: '/images/marketing/cards/four-digitial-interface.webp'
+    src: '/images/marketing/cards/four-digitial-interface.webp',
     alt: 'Digital interface for checklist and compliance tasks on tablet',
     width: 1200,
     height: 1200,
@@ -134,7 +134,7 @@ src: '/images/marketing/cards/four-digitial-interface.webp'
     tags: ['compliance','checklist']
   },
   inventoryManagement: {
-src: '/images/marketing/cards/seven-inventory-organization-concept.webp'
+    src: '/images/marketing/cards/seven-inventory-organization-concept.webp',
     alt: 'Inventory organization concept in storage area',
     width: 1200,
     height: 1200,
@@ -146,7 +146,7 @@ src: '/images/marketing/cards/seven-inventory-organization-concept.webp'
 // Feature Images (4:3) - Detailed feature explanations
 export const featureAssets: AssetCollection = {
   haccpCompliance: {
-src: '/images/features/ten-storage-monitoring-system.webp'
+    src: '/images/features/ten-storage-monitoring-system.webp',
     alt: 'Storage and temperature monitoring system in organized cold storage',
     width: 1600,
     height: 1200,
@@ -157,7 +157,7 @@ src: '/images/features/ten-storage-monitoring-system.webp'
     tags: ['haccp','compliance']
   },
   staffScheduling: {
-src: '/images/features/twelve-scheduling-interface-concept.webp'
+    src: '/images/features/twelve-scheduling-interface-concept.webp',
     alt: 'Staff scheduling interface concept on tablet in kitchen environment',
     width: 1600,
     height: 1200,
@@ -168,7 +168,7 @@ src: '/images/features/twelve-scheduling-interface-concept.webp'
     tags: ['scheduling','team']
   },
   coldStorageMonitoring: {
-src: '/images/features/eleven-reporting-analytics-visual.webp'
+    src: '/images/features/eleven-reporting-analytics-visual.webp',
     alt: 'Reporting and analytics visual near the line for operational insights',
     width: 1600,
     height: 1200,
