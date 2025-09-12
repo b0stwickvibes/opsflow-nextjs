@@ -16,7 +16,7 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 }
 
 // OpsFlow sections
-import { HeroSection, TilesThreeUpSection, MetricsRowSection, FeatureAccordionSection, FinalCTASection } from "@/components/sections/opsflow";
+import { HeroSection, MetricsRowSection, FeatureAccordionSection, FinalCTASection } from "@/components/sections/opsflow";
 
 // Processed template exports
 import * as Heroes from "@/templates/shadcn-components/processed/heroes";
@@ -26,7 +26,6 @@ import * as Logos from "@/templates/shadcn-components/processed/logos";
 import * as Stats from "@/templates/shadcn-components/processed/stats";
 import { PricingTable } from "@/templates/shadcn-components/processed/pricing/PricingTable";
 import { PricingComparison } from "@/templates/shadcn-components/processed/pricing/PricingComparison";
-import { PricingFeatures } from "@/templates/shadcn-components/processed/pricing/PricingFeatures";
 import * as Integration from "@/templates/shadcn-components/processed/integration";
 import * as Testimonials from "@/templates/shadcn-components/processed/testimonials";
 import * as Contact from "@/templates/shadcn-components/processed/contact";
@@ -83,7 +82,6 @@ class TemplateBoundary extends React.Component<{ children: React.ReactNode }, { 
 const REGISTRY: TemplateItem[] = [
   // OpsFlow sections
   { key: "hero", title: "Hero (OpsFlow)", component: HeroSection, tags: ["hero"], importPath: "@/components/sections/opsflow", importName: "HeroSection" },
-  { key: "tiles-three-up", title: "Tiles Three Up (OpsFlow)", component: TilesThreeUpSection, tags: ["feature","bento"], importPath: "@/components/sections/opsflow", importName: "TilesThreeUpSection" },
   { key: "metrics", title: "Metrics Row (OpsFlow)", component: MetricsRowSection, tags: ["stats"], importPath: "@/components/sections/opsflow", importName: "MetricsRowSection" },
   { key: "accordion", title: "Feature Accordion (OpsFlow)", component: FeatureAccordionSection, tags: ["feature","faq","list"], importPath: "@/components/sections/opsflow", importName: "FeatureAccordionSection" },
   { key: "cta", title: "Final CTA (OpsFlow)", component: FinalCTASection, tags: ["cta"], importPath: "@/components/sections/opsflow", importName: "FinalCTASection" },
@@ -136,7 +134,6 @@ const REGISTRY: TemplateItem[] = [
   // Pricing (explicit imports to avoid EnterprisePricing issues)
   { key: "pricing-pricingtable", title: "PricingTable", component: PricingTable as React.ComponentType<any>, tags: ["pricing","price"], importPath: "@/templates/shadcn-components/processed/pricing/PricingTable", importName: "PricingTable" },
   { key: "pricing-pricingcomparison", title: "PricingComparison", component: PricingComparison as React.ComponentType<any>, tags: ["pricing","compare","price"], importPath: "@/templates/shadcn-components/processed/pricing/PricingComparison", importName: "PricingComparison" },
-  { key: "pricing-pricingfeatures", title: "PricingFeatures", component: PricingFeatures as React.ComponentType<any>, tags: ["pricing","feature"], importPath: "@/templates/shadcn-components/processed/pricing/PricingFeatures", importName: "PricingFeatures" },
   // Integration
   ...Object.entries(Integration).map(([name, Comp]) => ({
     key: `integration-${name.toLowerCase()}`,

@@ -168,7 +168,7 @@ interface FeatureShowcase2Props {
 
 export function FeatureShowcase2({
   className = "",
-  showSparkles = true,
+  showSparkles = false,
   variant = "showcase"
 }: FeatureShowcase2Props) {
   const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
@@ -207,7 +207,7 @@ export function FeatureShowcase2({
           <Badge variant="outline" className="mb-4">
             Proven ROI Metrics
           </Badge>
-          <h1 className="heading-brand-gradient mb-4 font-bold tracking-tight lg:text-6xl">
+<h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
             Restaurant Operations ROI
           </h1>
           <p className="enterprise-body text-muted-foreground/70 mx-auto max-w-3xl ">
@@ -226,11 +226,11 @@ export function FeatureShowcase2({
             <div className="absolute inset-x-60 top-0 h-px w-1/4 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
 
             {/* Sparkles */}
-            <SparklesCore
+<SparklesCore
               background="transparent"
               minSize={0.4}
               maxSize={1}
-              particleDensity={300}
+              particleDensity={120}
               className="h-full w-full"
               particleColor="hsl(var(--primary))"
             />
@@ -384,7 +384,7 @@ export function FeatureShowcase2({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" onClick={handleGetROIAnalysisClick} className="cta-shimmer bg-brand-gradient text-primary-foreground">
+<Button size="lg" onClick={handleGetROIAnalysisClick}>
                 Get Free ROI Analysis
                 <DollarSign className="ml-2 h-4 w-4" />
               </Button>

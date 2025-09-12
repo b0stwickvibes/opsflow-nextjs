@@ -3,10 +3,7 @@
 
 // Core Feature Components
 export { FeatureGrid } from "./FeatureGrid";
-export type { RestaurantFeature, FeatureGridProps } from "./FeatureGrid";
 
-export { FeatureShowcase } from "./FeatureShowcase";
-export type { KitchenOperation, FeatureShowcaseProps } from "./FeatureShowcase";
 
 export { FeatureCards } from "./FeatureCards";
 export type { StaffManagementFeature, FeatureCardsProps } from "./FeatureCards";
@@ -15,8 +12,6 @@ export { FeatureTabs } from "./FeatureTabs";
 export type { AnalyticsTab, FeatureTabsProps } from "./FeatureTabs";
 
 // Comparison & Timeline Components
-export { FeatureComparison } from "./FeatureComparison";
-export type { CompetitorFeature, CompetitionCard, FeatureComparisonProps } from "./FeatureComparison";
 
 export { FeatureTimeline } from "./FeatureTimeline";
 export type { ImplementationPhase, FeatureTimelineProps } from "./FeatureTimeline";
@@ -25,8 +20,6 @@ export type { ImplementationPhase, FeatureTimelineProps } from "./FeatureTimelin
 export { FeatureHighlight } from "./FeatureHighlight";
 export type { ROIHighlight, FeatureHighlightProps } from "./FeatureHighlight";
 
-export { FeatureMatrix } from "./FeatureMatrix";
-export type { RestaurantMatrixFeature, FeatureMatrixProps } from "./FeatureMatrix";
 
 export { FeatureCarousel } from "./FeatureCarousel";
 export type { RestaurantLocation, FeatureCarouselProps } from "./FeatureCarousel";
@@ -84,12 +77,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showMetrics: true, variant: "default" }
   },
   
-  // Kitchen Operations Showcase
-  FeatureShowcase: {
-    description: "Interactive carousel showcasing kitchen operation solutions",
-    bestFor: "Product pages, kitchen management sections",
-    props: { showMetrics: true, variant: "carousel" }
-  },
   
   // Staff Management Cards
   FeatureCards: {
@@ -105,12 +92,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showMetrics: true, defaultTab: "operations-dashboard" }
   },
   
-  // Competitor Comparison
-  FeatureComparison: {
-    description: "Detailed comparison with JOLT and Xenia.Teams",
-    bestFor: "Competitive analysis pages, sales materials",
-    props: { showPricing: true, variant: "cards" }
-  },
   
   // Implementation Timeline
   FeatureTimeline: {
@@ -126,12 +107,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showStats: true, variant: "spotlight" }
   },
   
-  // Feature Matrix
-  FeatureMatrix: {
-    description: "Complete restaurant operations capability matrix",
-    bestFor: "Product overview pages, feature comparison",
-    props: { showMetrics: true, variant: "grid" }
-  },
   
   // Multi-location Carousel
   FeatureCarousel: {

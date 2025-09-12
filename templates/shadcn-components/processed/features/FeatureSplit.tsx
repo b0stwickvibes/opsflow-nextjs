@@ -85,7 +85,7 @@ interface FeatureSplitProps {
 
 export function FeatureSplit({
   className = "",
-  showAnimations = true,
+  showAnimations = false,
   variant = "split"
 }: FeatureSplitProps) {
   const { trackFeatureEngagement } = useRestaurantAnalytics();
@@ -120,7 +120,7 @@ export function FeatureSplit({
           <Badge variant="outline" className="mb-4">
             Audit & Documentation Excellence
           </Badge>
-          <h2 className="text-display-2xl mb-4  font-bold tracking-tight lg:text-6xl">
+<h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
             Audit-Ready Documentation
           </h2>
           <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
@@ -260,19 +260,19 @@ export function FeatureSplit({
             
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-4 bg-card rounded-lg border">
-                <div className="text-2xl font-bold text-green-600">100%</div>
+<div className="text-2xl font-bold text-primary">100%</div>
                 <div className="text-sm text-muted-foreground">Inspection Pass Rate</div>
               </div>
               <div className="text-center p-4 bg-card rounded-lg border">
-                <div className="text-2xl font-bold text-blue-600">15 min</div>
+<div className="text-2xl font-bold text-primary">15 min</div>
                 <div className="text-sm text-muted-foreground">Audit Prep Time</div>
               </div>
               <div className="text-center p-4 bg-card rounded-lg border">
-                <div className="text-2xl font-bold text-purple-600">Zero</div>
+<div className="text-2xl font-bold text-primary">Zero</div>
                 <div className="text-sm text-muted-foreground">Violations Found</div>
               </div>
               <div className="text-center p-4 bg-card rounded-lg border">
-                <div className="text-2xl font-bold text-orange-600">$3.2K</div>
+<div className="text-2xl font-bold text-primary">$3.2K</div>
                 <div className="text-sm text-muted-foreground">Monthly Savings</div>
               </div>
             </div>
