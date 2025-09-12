@@ -280,3 +280,256 @@ npm run arch:health && npm run comp:audit
 # Full context generation for Claude 4 Sonnet
 npm run ai:context > claude-context.md
 ```
+
+## Dashboard Development Strategy
+
+### Interactive Demo System (Superior to Demo.Arcade)
+
+When building the actual OpsFlow dashboard, use this strategy for creating marketing assets and interactive demos that showcase real functionality.
+
+#### Core Approach
+**Build real dashboard components first, then create demo versions for marketing**
+
+```typescript
+// 1. Functional dashboard component
+export function TemperatureDashboard({ locationId, isDemo = false }: Props) {
+  const data = isDemo ? mockTemperatureData : useTemperatureData(locationId);
+  
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+      <TemperatureGrid data={data} interactive={!isDemo} />
+      <ComplianceStatus alerts={data.alerts} />
+    </motion.div>
+  );
+}
+
+// 2. Demo wrapper for marketing pages
+export function TemperatureDashboardDemo() {
+  return (
+    <div className="pointer-events-none border rounded-lg overflow-hidden">
+      <TemperatureDashboard isDemo={true} />
+    </div>
+  );
+}
+```
+
+#### Advanced Animation Techniques
+
+**1. Progressive Feature Reveal**
+```typescript
+const useFeatureReveal = (step: number) => {
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+  
+  return { variants, step };
+};
+
+// Usage in marketing component
+<AnimatePresence mode="wait">
+  {step >= 1 && <TemperatureModule />}
+  {step >= 2 && <TaskManagement />} 
+  {step >= 3 && <ComplianceReports />}
+  {step >= 4 && <AnalyticsDashboard />}
+</AnimatePresence>
+```
+
+**2. Real-Time Data Simulation**
+```typescript
+const useMockRealTimeData = () => {
+  const [metrics, setMetrics] = useState({
+    temperature: 38.2,
+    tasksCompleted: 45,
+    complianceScore: 94
+  });
+  
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setMetrics(prev => ({
+        temperature: prev.temperature + (Math.random() - 0.5) * 0.3,
+        tasksCompleted: Math.min(prev.tasksCompleted + Math.floor(Math.random() * 3), 50),
+        complianceScore: Math.min(prev.complianceScore + Math.floor(Math.random() * 2), 100)
+      }));
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, []);
+  
+  return metrics;
+};
+```
+
+**3. Component-Level Interactions**
+```typescript
+const DashboardShowcase = () => {
+  const [hoveredFeature, setHoveredFeature] = useState(null);
+  
+  return (
+    <div className="dashboard-showcase">
+      {features.map((feature) => (
+        <motion.div
+          key={feature.id}
+          onHoverStart={() => setHoveredFeature(feature.id)}
+          onHoverEnd={() => setHoveredFeature(null)}
+          animate={{
+            scale: hoveredFeature === feature.id ? 1.02 : 1,
+            boxShadow: hoveredFeature === feature.id 
+              ? "0 20px 40px rgba(0,0,0,0.1)" 
+              : "0 4px 12px rgba(0,0,0,0.05)"
+          }}
+        >
+          <feature.component isDemo={true} />
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+```
+
+#### Automated Screenshot Generation
+
+**Development Workflow Commands**
+```bash
+# Dashboard development workflow
+npm run dashboard:dev                     # Start dashboard development server
+npm run dashboard:screenshot             # Generate marketing screenshots
+npm run dashboard:demo-components        # Build demo versions of components
+npm run dashboard:interactive-export     # Export interactive demo components
+```
+
+**Playwright Screenshot Automation**
+```typescript
+// scripts/dashboard-screenshots.ts
+import { chromium } from 'playwright';
+
+const generateDashboardScreenshots = async () => {
+  const browser = await chromium.launch();
+  const page = await browser.newPage({
+    viewport: { width: 1200, height: 800 }
+  });
+  
+  const components = [
+    'temperature-dashboard',
+    'task-management',
+    'compliance-audit',
+    'staff-scheduling',
+    'inventory-tracking'
+  ];
+  
+  for (const component of components) {
+    await page.goto(`http://localhost:3000/demo/${component}`);
+    await page.waitForTimeout(2000); // Let animations complete
+    
+    await page.screenshot({
+      path: `public/images/dashboard/${component}.png`,
+      type: 'png',
+      clip: { x: 0, y: 0, width: 1200, height: 800 }
+    });
+  }
+  
+  await browser.close();
+};
+```
+
+#### Marketing Integration Strategy
+
+**1. Live Component Embeds**
+```typescript
+// In marketing pages - embed actual dashboard components
+<section className="dashboard-preview">
+  <div className="container mx-auto px-6">
+    <h2>See OpsFlow in Action</h2>
+    
+    {/* Live dashboard component with demo data */}
+    <div className="relative rounded-lg overflow-hidden border bg-background">
+      <RestaurantDashboardDemo />
+    </div>
+    
+    {/* Interactive feature callouts */}
+    <FeatureCallouts onFeatureHover={highlightInDashboard} />
+  </div>
+</section>
+```
+
+**2. Screenshot Fallbacks with Animations**
+```typescript
+const DashboardPreview = ({ interactive = false }) => {
+  if (interactive) {
+    return <RestaurantDashboardDemo />;
+  }
+  
+  // Fallback to optimized images with hover effects
+  return (
+    <motion.div
+      whileHover={{ scale: 1.02 }}
+      className="dashboard-screenshot"
+    >
+      <Image
+        src="/images/dashboard/hero-dashboard.webp"
+        alt="OpsFlow Restaurant Dashboard"
+        width={1200}
+        height={800}
+        className="rounded-lg shadow-xl"
+      />
+    </motion.div>
+  );
+};
+```
+
+#### Competitive Advantages Over Xenia.teams
+
+**Your Approach Wins Because:**
+- **Live components** vs static Arcade recordings
+- **Real-time data simulation** vs pre-recorded clicks
+- **Responsive interactions** vs fixed viewport demos
+- **Component reusability** vs one-off recordings
+- **Performance optimization** vs video loading delays
+
+**Implementation Priority:**
+1. **Build functional dashboard components**
+2. **Create demo versions with mock data**
+3. **Add Framer Motion animations**
+4. **Generate automated screenshots**
+5. **Embed interactive demos in marketing**
+
+#### Restaurant-Specific Mock Data
+
+```typescript
+// lib/mock-data/restaurant.ts
+export const mockRestaurantData = {
+  temperature: {
+    walkInFreezer: { temp: 2.1, status: 'normal', lastCheck: '10:30 AM' },
+    walkInCooler: { temp: 4.8, status: 'normal', lastCheck: '10:28 AM' },
+    hotHoldingUnit: { temp: 63.2, status: 'normal', lastCheck: '10:25 AM' },
+    fryer: { temp: 175.5, status: 'warning', lastCheck: '10:20 AM' }
+  },
+  tasks: {
+    opening: { completed: 8, total: 10, completionRate: 80 },
+    hourly: { completed: 15, total: 18, completionRate: 83 },
+    closing: { completed: 0, total: 12, completionRate: 0 }
+  },
+  compliance: {
+    haccpScore: 94,
+    lastAudit: '2024-01-15',
+    criticalControlPoints: { passed: 8, total: 8 },
+    upcomingDeadlines: 2
+  },
+  staff: {
+    onDuty: 12,
+    scheduled: 14,
+    callouts: 1,
+    overtime: 2
+  }
+};
+```
+
+This strategy creates a superior demo experience while building your actual product functionality simultaneously.
