@@ -24,17 +24,12 @@ const components = {
 
 interface PageProps {
   params: Promise<{
-    slug?: string[];
+    slug: string[]; // required catch-all always provides an array of at least 1 segment
   }>;
 }
 
 export default async function DocsPage({ params }: PageProps) {
-  const { slug = [] } = await params;
-  
-  // Handle root docs page (should normally be handled by app/docs/page.tsx)
-  if (slug.length === 0) {
-    return <DocsLayout><div>Welcome to OpsFlow Docs</div></DocsLayout>;
-  }
+  const { slug } = await params;
 
   // Construct file path
   const filePath = path.join(process.cwd(), 'docs', ...slug) + '.md';
@@ -116,7 +111,8 @@ export async function generateStaticParams() {
       }
     }
 
-    return paths;
+    // Ensure we do not include root '/docs' here; it's handled by app/docs/page.tsx
+    return paths.filter((p) => Array.isArray(p.slug) && p.slug.length > 0);
   } catch (e) {
     return [];
   }

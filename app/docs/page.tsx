@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   description: "Complete documentation for restaurant operations management with OpsFlow AI. Get started with guides, API references, and support resources.",
 };
 
+export const dynamic = 'force-static';
+export const revalidate = false as any;
+
 export default function DocsHomePage() {
   const quickStartSections = [
     {
