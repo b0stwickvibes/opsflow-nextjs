@@ -31,7 +31,7 @@ interface PageProps {
 export default async function DocsPage({ params }: PageProps) {
   const { slug = [] } = await params;
   
-  // Handle root docs page
+  // Handle root docs page (should normally be handled by app/docs/page.tsx)
   if (slug.length === 0) {
     return <DocsLayout><div>Welcome to OpsFlow Docs</div></DocsLayout>;
   }
@@ -66,24 +66,6 @@ export default async function DocsPage({ params }: PageProps) {
   }
 }
 
-// Generate static params for all docs pages
-export async function generateStaticParams() {
-  const navigation = await import('../../../docs/navigation.json');
-  const paths: { slug: string[] }[] = [];
-
-  // Add root docs page
-  paths.push({ slug: [] });
-
-  // Extract all page paths from navigation
-  navigation.default.sections.forEach((section: any) => {
-    section.pages.forEach((page: any) => {
-      const slug = page.path.replace('/docs/', '').split('/');
-      paths.push({ slug });
-    });
-  });
-
-  return paths;
-}
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: PageProps) {
@@ -113,5 +95,29 @@ export async function generateMetadata({ params }: PageProps) {
       title: 'Page Not Found - OpsFlow Docs',
       description: 'The requested documentation page could not be found.',
     };
+  }
+}
+
+// Restore static params for SSG, with null-safety
+export async function generateStaticParams() {
+  try {
+    const { default: navigation } = await import('../../../docs/navigation.json');
+    const paths: { slug: string[] }[] = [];
+    const sections = Array.isArray(navigation?.sections) ? navigation.sections : [];
+
+    for (const section of sections) {
+      const pages = Array.isArray(section?.pages) ? section.pages : [];
+      for (const page of pages) {
+        if (typeof page?.path === 'string') {
+          const cleaned = page.path.replace(/^\/?docs\/?/, '');
+          const parts = cleaned ? cleaned.split('/') : [];
+          if (parts.length > 0) paths.push({ slug: parts });
+        }
+      }
+    }
+
+    return paths;
+  } catch (e) {
+    return [];
   }
 }
