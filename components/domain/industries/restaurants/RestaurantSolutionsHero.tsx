@@ -70,7 +70,7 @@ interface RestaurantSolutionsHeroProps {
 export function RestaurantSolutionsHero({ className }: RestaurantSolutionsHeroProps) {
   return (
     <section className={cn(
-      "enterprise-hero-section section-padding-large overflow-hidden hero-ambient accent-blue",
+      "relative overflow-hidden py-20 lg:py-32",
       className
     )}>
       

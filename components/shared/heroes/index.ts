@@ -5,6 +5,7 @@
 export { BillingHero } from './BillingHero';
 export { EarningHero } from './EarningHero';
 export { ImpactHero } from './ImpactHero';
+export { MarketingStartupHero } from './MarketingStartupHero';
 export { VisionHero } from './VisionHero';
 export { WorkflowHero } from './WorkflowHero';
 

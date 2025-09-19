@@ -1,0 +1,199 @@
+"use client";
+
+import { useState } from "react";
+import {
+  Code2,
+  Zap,
+  Shield,
+  Globe,
+  ArrowRight,
+  CheckCircle,
+  ExternalLink,
+} from "lucide-react";
+
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+
+export type DeveloperIntegrationFeaturesProps = {
+  onNavigate?: (page: string) => void;
+  className?: string;
+  heading?: string;
+  subheading?: string;
+  badgeText?: string;
+};
+
+/**
+ * Developer Integration Features Section
+ * Simple showcase of development tools and integrations
+ */
+export function DeveloperIntegrationFeatures({
+  onNavigate,
+  className,
+  heading = "Developer Platform",
+  subheading = "Build with modern APIs and integrate with your favorite tools",
+  badgeText = "Developer Tools",
+}: DeveloperIntegrationFeaturesProps) {
+  const [activeTab, setActiveTab] = useState<'sdks' | 'integrations'>('sdks');
+
+  const handleNavigation = (page: string) => {
+    if (onNavigate) {
+      onNavigate(page);
+    } else {
+      if (typeof window !== 'undefined') {
+        window.location.href = `/${page}`;
+      }
+    }
+  };
+
+  return (
+    <div className={cn("max-w-6xl mx-auto px-4 py-16 space-y-12", className)}>
+      {/* Header */}
+      <div className="text-center space-y-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm">
+          <Code2 className="size-4" />
+          {badgeText}
+        </div>
+        <h2 className="text-3xl font-bold text-gray-900">{heading}</h2>
+        <p className="text-lg text-gray-600 max-w-2xl mx-auto">{subheading}</p>
+      </div>
+
+      {/* Tab Navigation */}
+      <div className="flex justify-center">
+        <div className="flex gap-1 p-1 bg-gray-100 rounded-lg">
+          <button
+            className={cn(
+              "px-4 py-2 rounded-md text-sm font-medium transition-all",
+              activeTab === 'sdks'
+                ? "bg-white text-gray-900 shadow-sm"
+                : "text-gray-600 hover:text-gray-900"
+            )}
+            onClick={() => setActiveTab('sdks')}
+          >
+            SDKs & APIs
+          </button>
+          <button
+            className={cn(
+              "px-4 py-2 rounded-md text-sm font-medium transition-all",
+              activeTab === 'integrations'
+                ? "bg-white text-gray-900 shadow-sm"
+                : "text-gray-600 hover:text-gray-900"
+            )}
+            onClick={() => setActiveTab('integrations')}
+          >
+            Integrations
+          </button>
+        </div>
+      </div>
+
+      {/* Content */}
+      {activeTab === 'sdks' && (
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Modern SDKs
+              </h3>
+              <p className="text-gray-600">
+                Comprehensive development kits for popular frameworks and languages.
+              </p>
+            </div>
+            
+            <div className="grid grid-cols-2 gap-3">
+              {['React', 'Node.js', 'Python', 'PHP'].map((tech) => (
+                <div key={tech} className="bg-white rounded-lg p-4 border border-gray-200 text-center">
+                  <div className="w-8 h-8 bg-blue-500 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                    <Code2 className="size-4 text-white" />
+                  </div>
+                  <div className="text-sm font-medium text-gray-900">{tech}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-gray-900 rounded-lg p-4">
+            <div className="text-sm text-gray-400 mb-2">Quick Example</div>
+            <pre className="text-sm text-gray-200">
+              <code>{`import { OpsFlow } from '@opsflow/sdk'
+
+const client = new OpsFlow({
+  apiKey: 'your-api-key'
+})
+
+const tasks = await client.tasks.list()`}</code>
+            </pre>
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'integrations' && (
+        <div className="grid md:grid-cols-2 gap-8">
+          <div className="space-y-6">
+            <div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                Popular Integrations
+              </h3>
+              <p className="text-gray-600">
+                Connect with the tools and platforms you already use.
+              </p>
+            </div>
+            
+            <div className="space-y-3">
+              {[
+                { name: 'Stripe', desc: 'Payment processing' },
+                { name: 'Square', desc: 'POS integration' },
+                { name: 'Slack', desc: 'Team notifications' },
+                { name: 'Zapier', desc: 'Workflow automation' }
+              ].map((integration) => (
+                <div key={integration.name} className="flex items-center justify-between p-3 bg-white rounded-lg border border-gray-200">
+                  <div>
+                    <div className="font-medium text-gray-900">{integration.name}</div>
+                    <div className="text-sm text-gray-600">{integration.desc}</div>
+                  </div>
+                  <div className="flex items-center gap-1 text-xs text-green-600">
+                    <CheckCircle className="size-3" />
+                    Active
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="bg-white rounded-lg p-6 border border-gray-200">
+              <h4 className="font-semibold text-gray-900 mb-4">Integration Benefits</h4>
+              <div className="space-y-3">
+                <div className="flex items-center gap-3">
+                  <Zap className="size-4 text-blue-600" />
+                  <span className="text-sm text-gray-700">Real-time sync</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Shield className="size-4 text-blue-600" />
+                  <span className="text-sm text-gray-700">Secure connections</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Globe className="size-4 text-blue-600" />
+                  <span className="text-sm text-gray-700">Global availability</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* CTA */}
+      <div className="text-center">
+        <Button 
+          size="lg"
+          className="bg-blue-600 hover:bg-blue-700 text-white"
+          onClick={() => handleNavigation('docs')}
+        >
+          View Documentation
+          <ArrowRight className="size-4 ml-2" />
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+export default DeveloperIntegrationFeatures;

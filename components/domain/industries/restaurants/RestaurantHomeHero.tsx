@@ -51,7 +51,7 @@ export function RestaurantHomeHero({ onNavigate, className }: RestaurantHomeHero
   const handleDocumentation = () => onNavigate?.("docs");
 
   return (
-    <section className={cn("enterprise-hero-section hero-ambient section-grid-overlay section-vignette-bottom energy-balanced relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4", className)}>
+    <section className={cn("relative mx-2.5 mt-2.5 rounded-b-[36px] rounded-t-2xl lg:mx-4", className)}>
       <div className="py-20 lg:py-32">
         <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-8 md:gap-14 lg:flex-row">

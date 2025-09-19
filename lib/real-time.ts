@@ -117,7 +117,7 @@ export class RealTimeService {
     };
 
     await this.publishNotification(notification);
-    console.log(`⚠️ COMPLIANCE VIOLATION [${severity}]: ${description}`);
+    console.log(`[WARNING] COMPLIANCE VIOLATION [${severity}]: ${description}`);
   }
 
   /**

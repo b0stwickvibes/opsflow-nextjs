@@ -55,7 +55,11 @@ export function SupportFAQ({
             },
             {
               question: "How long does it take to train my staff?",
-              answer: "Most restaurant staff can learn the basics of OpsFlow in under 30 minutes. We provide video tutorials, quick-start guides, and hands-on training sessions. Advanced features like analytics and reporting typically require 1-2 hours of additional training."
+              answer: "Most restaurant staff can learn the basics of OpsFlow in under 30 minutes. We provide interactive tutorials, quick-start guides, and hands-on training sessions. Advanced features like analytics and reporting typically require 1-2 hours of additional training."
+            },
+            {
+              question: "What's included in the free trial?",
+              answer: "Our 14-day free trial includes full access to all features with no limitations. You can process real orders, manage inventory, and use all analytics tools. No credit card required to start."
             }
           ]
         },
@@ -81,15 +85,19 @@ export function SupportFAQ({
           questions: [
             {
               question: "What if I need help during service hours?",
-              answer: "Our priority support is available 24/7 for urgent issues during service hours. You can reach us via phone, chat, or email, and critical issues are resolved within minutes. We understand that downtime during service is not an option."
+              answer: "Our priority support is available 24/7 for urgent issues during service hours. You can reach us via phone, live chat, or email, and critical issues are resolved within minutes. We understand that downtime during service is not an option."
             },
             {
               question: "How often is the system updated?",
-              answer: "OpsFlow receives regular updates with new features and improvements, typically every 2-4 weeks. Updates happen automatically during off-peak hours and don't require any downtime. Major feature releases are announced in advance."
+              answer: "OpsFlow receives regular updates with new features and improvements, typically every 2-4 weeks. Updates happen automatically during off-peak hours with zero downtime. Major feature releases are announced in advance with training materials."
             },
             {
               question: "Can I customize the system for my specific needs?",
-              answer: "Yes! OpsFlow offers extensive customization options including custom fields, workflows, reports, and integrations. Our team can work with you to tailor the system to match your specific operational requirements."
+              answer: "Absolutely! OpsFlow offers extensive customization options including custom fields, workflows, reports, and integrations. Our team can work with you to tailor the system to match your specific operational requirements."
+            },
+            {
+              question: "Is my data secure and backed up?",
+              answer: "Security is our top priority. We use enterprise-grade encryption, secure data centers, automated backups, and comply with SOC 2 Type II standards. Your data is backed up multiple times daily and we maintain 99.9% uptime."
             }
           ]
         }
@@ -325,71 +333,91 @@ export function SupportFAQ({
 
   return (
     <section className={cn(
-      "relative mx-2.5 mt-2.5 rounded-t-2xl rounded-b-[36px] bg-gradient-to-b lg:mx-4",
-      getIndustryColors(),
+      "relative mx-2.5 mt-2.5 rounded-t-2xl rounded-b-[36px]",
+      "bg-gradient-to-br from-background/90 via-background to-slate-50/50 dark:to-slate-900/50",
+      "border border-border/40",
       className
     )}>
-      <section className="py-32">
-        <div className="container grid max-w-5xl gap-16 lg:grid-cols-2">
-          <div className="space-y-4">
-            <h2 
-              className="text-display-2xl enterprise-headline text-2xl font-semibold tracking-tight md: lg:"
-              role="heading"
-              aria-level={2}
-            >
-              {heading}
-            </h2>
+      <section className="py-20 lg:py-32">
+        <div className="container grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
+          {/* Header Section */}
+          <div className="space-y-6">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 rounded-full bg-muted/60 px-3 py-1">
+                <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                <span className="text-sm font-medium text-muted-foreground">Support Center</span>
+              </div>
+              
+              <h2 className="text-3xl font-bold tracking-tight md:text-4xl lg:text-5xl">
+                {heading}
+              </h2>
+              
+              <p className="text-lg leading-relaxed text-muted-foreground max-w-md">
+                {subheading}{" "}
+                <a 
+                  href={contactLink} 
+                  className="font-medium text-primary underline underline-offset-4 hover:text-primary/80 transition-colors"
+                  onClick={handleContactClick}
+                >
+                  {contactLinkText}
+                </a>
+                .
+              </p>
+            </div>
 
-            <p className="max-w-md leading-snug font-medium text-muted-foreground lg:mx-auto">
-              {subheading}{" "}
-              <a 
-                href={contactLink} 
-                className="underline underline-offset-4 hover:text-foreground transition-colors"
-                onClick={handleContactClick}
-              >
-                {contactLinkText}
-              </a>
-              .
-            </p>
+            {/* Quick Contact Options */}
+            <div className="pt-4 space-y-3">
+              <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wide">
+                Need immediate help?
+              </h3>
+              <div className="grid gap-3 sm:grid-cols-2">
+                <div className="rounded-lg border bg-card/50 p-4">
+                  <div className="text-sm font-medium">24/7 Emergency</div>
+                  <div className="text-xs text-muted-foreground">Critical issues during service</div>
+                </div>
+                <div className="rounded-lg border bg-card/50 p-4">
+                  <div className="text-sm font-medium">Live Chat</div>
+                  <div className="text-xs text-muted-foreground">Instant support available</div>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="grid gap-6 text-start">
+          {/* FAQ Content */}
+          <div className="space-y-8">
             {categories.map((category, categoryIndex) => (
-              <div key={category.title} className="">
-                <h3 
-                  className="border-b py-4 font-medium text-muted-foreground"
-                  role="heading"
-                  aria-level={3}
-                >
-                  {category.title}
-                </h3>
-                <Accordion 
-                  type="single" 
-                  collapsible 
-                  className="w-full"
-                  onValueChange={handleAccordionChange}
-                >
-                  {category.questions.map((item, i) => (
-                    <AccordionItem 
-                      key={i} 
-                      value={`${categoryIndex}-${i}`}
-                      className="border-b border-border/30"
-                    >
-                      <AccordionTrigger 
-                        className="text-start text-base hover:no-underline py-4"
-                        aria-describedby={`support-answer-${categoryIndex}-${i}`}
+              <div key={category.title} className="rounded-lg border bg-card/30 backdrop-blur-sm overflow-hidden">
+                <div className="bg-muted/30 px-6 py-4 border-b">
+                  <h3 className="font-semibold text-lg text-foreground">
+                    {category.title}
+                  </h3>
+                </div>
+                
+                <div className="p-1">
+                  <Accordion 
+                    type="single" 
+                    collapsible 
+                    className="w-full"
+                    onValueChange={handleAccordionChange}
+                  >
+                    {category.questions.map((item, i) => (
+                      <AccordionItem 
+                        key={i} 
+                        value={`${categoryIndex}-${i}`}
+                        className="border-0 border-b border-border/20 last:border-b-0"
                       >
-                        {item.question}
-                      </AccordionTrigger>
-                      <AccordionContent 
-                        id={`support-answer-${categoryIndex}-${i}`}
-                        className="text-muted-foreground pb-4 leading-relaxed"
-                      >
-                        {item.answer}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
+                        <AccordionTrigger 
+                          className="text-left px-5 py-4 text-base font-medium hover:no-underline hover:bg-muted/20 transition-colors"
+                        >
+                          {item.question}
+                        </AccordionTrigger>
+                        <AccordionContent className="px-5 pb-4 pt-0 text-muted-foreground leading-relaxed">
+                          {item.answer}
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
               </div>
             ))}
           </div>

@@ -1,27 +1,70 @@
-# Opsflow-nextjs
+# OpsFlow Restaurant Operations Platform
 
-## Project Standards
-- Day‑1 SaaS Standard: docs/SAAS-FILE-STRUCTURE-STANDARD.md (symlink)
-- Enterprise File Structure (this repo): ENTERPRISE-FILE-STRUCTURE.md
- - Start here: PROJECT-STANDARDS.md
- - Agents/Humans quick guide: docs/ai/AGENTS.md
- - AI Chatbot implementation: docs/AI-CHATBOT-NEXTJS.md
- - Additional AI context: docs/ai/
+**Professional restaurant operations management with Stripe-level design quality.**
 
-## Guardrails
-- Dependency health: `npm run deps:cruise` (writes `depcruise.json`)
-- Filename policy (no digits in component filenames): `npm run enforce:filenames`
-- Both: `npm run enforce:all`
+## 🚀 **3-SOP Development System**
 
-## Ask AI / Chatbot Quickstart
-- Copy `.env.example` to `.env.local`
-- Set AI provider:
-  - `AI_PROVIDER=openai` and `OPENAI_API_KEY=...`
-  - or `AI_PROVIDER=anthropic` and `ANTHROPIC_API_KEY=...`
-- Optional (Vercel AI Gateway on non-Vercel runs): `AI_GATEWAY_API_KEY=...`
-- Start dev: `npm install && npm run dev`
-- Open any docs page under `/docs/*` and click “Ask AI” in the header
-- See full guide: `docs/AI-CHATBOT-NEXTJS.md`
+### **The Only Files You Need for Development:**
 
-## Contributing
-See CONTRIBUTING.md for naming, barrels, and import rules.
+| File | Purpose | When to Use |
+|------|---------|-------------|
+| **[DEVELOPMENT-SOP.md](./DEVELOPMENT-SOP.md)** | Daily coding decisions | Creating components, styling questions, page design |
+| **[PROJECT-STATUS-SOP.md](./PROJECT-STATUS-SOP.md)** | Current status & priorities | What's built, what's next, current issues |
+| **[ARCHITECTURE-SOP.md](./ARCHITECTURE-SOP.md)** | Enterprise patterns | Major refactoring, scaling decisions |
+
+---
+
+## ⚡ **Quick Start**
+
+```bash
+# Development
+npm run dev                           # Start development server
+npm run build                         # Production build
+
+# Quality Checks  
+npm run enforce:all                   # Dependency + filename validation
+npx tsc -p tsconfig.json --noEmit     # TypeScript validation
+```
+
+---
+
+## 🎯 **Restaurant Operations Focus**
+
+Every component serves restaurant operations:
+- **Temperature monitoring** and HACCP compliance
+- **Staff scheduling** and kitchen operations  
+- **Inventory tracking** and waste reduction
+- **Health inspection** preparation and audit trails
+
+---
+
+## 🏗️ **Built With**
+
+- **Framework:** Next.js 15 with App Router
+- **Styling:** OKLCH color system + Marketing playbook compliance
+- **Components:** Shadcn/UI with enterprise restaurant theming
+- **Quality:** TypeScript, ESLint, dependency health monitoring
+
+---
+
+## 📊 **Current Status**
+
+**✅ 22 pages completed** with professional restaurant focus  
+**✅ Enterprise styling system** with your global.css tokens  
+**✅ Component architecture** with domain-driven organization  
+
+**Next Priority:** Template diversity implementation + mobile optimization
+
+---
+
+## 🧭 **Navigation**
+
+- **Need to create something?** → `DEVELOPMENT-SOP.md` 
+- **What's the current status?** → `PROJECT-STATUS-SOP.md`
+- **Architecture question?** → `ARCHITECTURE-SOP.md`
+
+**Rule:** All new protocols get added to the existing 3 SOP files. No new .md files.
+
+---
+
+*Enterprise-ready restaurant operations platform designed for 0→$10M ARR scaling.*

@@ -11,7 +11,7 @@ export function MarketingHeroTailark() {
   return (
     <section className="section-marketing">
       <div className="container">
-        <div className="enterprise-hero-section hero-ambient rounded-2xl border overflow-hidden">
+        <div className="relative rounded-2xl border overflow-hidden">
           <div className="relative z-10 px-6 py-16 md:py-24 text-center">
             <div className="clerk-inspired-badge mb-4">
               <span>Restaurant Operations</span>
@@ -45,7 +45,6 @@ export function MarketingHeroTailark() {
               <span>Free 14‑day trial • No credit card required</span>
             </div>
           </div>
-          <div className="absolute inset-0 -z-10 bg-[radial-gradient(80%_50%_at_0%_0%,oklch(var(--oklch-primary)/.15),transparent_60%),radial-gradient(80%_50%_at_100%_0%,oklch(var(--oklch-secondary)/.12),transparent_60%)]" />
         </div>
       </div>
     </section>

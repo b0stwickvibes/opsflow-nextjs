@@ -17,7 +17,7 @@ export function TestimonialCards({ industry = "restaurants" }: TestimonialCardsP
       testimonials: [
         {
           company: "Savory Heights Restaurant Chain",
-          logo: "🍽️",
+          logo: "SH",
           industry: "Fine Dining",
           locations: 15,
           results: {

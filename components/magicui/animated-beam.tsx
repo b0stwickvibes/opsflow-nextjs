@@ -70,8 +70,9 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
         const rectA = fromRef.current.getBoundingClientRect();
         const rectB = toRef.current.getBoundingClientRect();
 
-        const svgWidth = containerRect.width;
-        const svgHeight = containerRect.height;
+        // Fallback to container client sizes if bounding box returns 0
+        const svgWidth = containerRect.width || containerRef.current.clientWidth || 1;
+        const svgHeight = containerRect.height || containerRef.current.clientHeight || 1;
         setSvgDimensions({ width: svgWidth, height: svgHeight });
 
         const startX =
@@ -126,7 +127,7 @@ export const AnimatedBeam: React.FC<AnimatedBeamProps> = ({
       height={svgDimensions.height}
       xmlns="http://www.w3.org/2000/svg"
       className={cn(
-        "pointer-events-none absolute top-0 left-0 transform-gpu stroke-2",
+        "pointer-events-none absolute top-0 left-0 transform-gpu stroke-2 z-0",
         className,
       )}
       viewBox={`0 0 ${svgDimensions.width} ${svgDimensions.height}`}

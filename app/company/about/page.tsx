@@ -1,26 +1,12 @@
-import MarketingPage from "@/components/shared/layout/MarketingPage"
-import { MarketingCTA } from "@/components/shared/layout"
-import { CardSection } from "@/components/shared/data-display"
+import { AboutSection } from "@/components/shared/sections";
 
 export default function AboutPage() {
   return (
-    <MarketingPage
-      title="Transforming restaurant operations"
-      subtitle="We make food safety simple and compliance effortless through intelligent automation."
-      badge={<span>About OpsFlow AI</span>}
-    >
-      {/* Values Section */}
-      <CardSection />
-
-      {/* CTA Section */}
-      <MarketingCTA
-        title="Ready to get started?"
-        description="Join hundreds of restaurants using OpsFlow."
-        primaryAction={{
-          text: "Contact Us",
-          href: "/company/contact"
-        }}
-      />
-    </MarketingPage>
-  )
+    <AboutSection 
+      industry="general"
+      showJoinTeam={true}
+      customTitle="Transforming Operations Across Hospitality"
+      customDescription="We make food safety simple, compliance effortless, and operations intelligent through automation that works for restaurants, bars, coffee shops, and hotels."
+    />
+  );
 }

@@ -4,28 +4,20 @@ import { Facebook, Linkedin, Twitter, MapPin, Mail, Phone } from "lucide-react";
 import React, { useState } from "react";
 
 import { cn } from "@/lib/utils";
-import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
-import type { IndustryType, RoleType } from "@/types/restaurant-pages";
-
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
 
-interface ContactFormProps {
-  industry?: IndustryType | 'general';
-  role?: RoleType | 'general';
+export type ContactFormProps = {
+  industry?: 'restaurants' | 'bars' | 'coffee' | 'hotels';
   heading?: string;
   subheading?: string;
-  officeTitle?: string;
-  officeAddress?: string;
-  emailTitle?: string;
-  followTitle?: string;
-  inquiriesTitle?: string;
-  submitText?: string;
+  badgeText?: string;
   onSubmit?: (data: FormData) => void;
   className?: string;
-}
+};
 
 interface FormData {
   fullName: string;
@@ -33,103 +25,61 @@ interface FormData {
   company: string;
   businessSize: string;
   message: string;
-  industry?: IndustryType | 'general';
-  role?: RoleType | 'general';
 }
 
-interface DashedLineProps {
-  orientation?: "horizontal" | "vertical";
-  className?: string;
-}
-
+/**
+ * Contact Form Component
+ * Professional contact form with restaurant operations focus
+ * Uses enterprise styling system with OKLCH token system
+ */
 export function ContactForm({
   industry = 'restaurants',
-  role = 'general',
-  heading = "Contact OpsFlow",
-  subheading = "Get in touch with our restaurant operations specialists",
-  officeTitle = "Corporate Office",
-  officeAddress = "1 Innovation Drive\nSuite 200, San Francisco, CA 94105",
-  emailTitle = "Email Us",
-  followTitle = "Follow Us",
-  inquiriesTitle = "Restaurant Inquiries",
-  submitText = "Send Message",
+  heading = "Get in Touch with Restaurant Operations Experts",
+  subheading = "Connect with our team to discuss how OpsFlow can streamline your restaurant operations, improve compliance, and reduce costs.",
+  badgeText = "Contact Sales",
   onSubmit,
   className,
 }: ContactFormProps) {
-  const { trackInteraction } = useRestaurantAnalytics();
   const [formData, setFormData] = useState<FormData>({
     fullName: '',
     email: '',
     company: '',
     businessSize: '',
     message: '',
-    industry,
-    role,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const getIndustrySpecificContent = () => {
+  const getIndustryContent = () => {
     const content = {
       restaurants: {
-        subheading: "Connect with our restaurant operations experts",
-        inquiriesTitle: "Restaurant Solutions",
         businessSizeOptions: ["1-5 locations", "6-20 locations", "21-50 locations", "50+ locations"],
-        emailCategories: [
-          { category: "Restaurant Operations", email: "restaurants@opsflow.com" },
-          { category: "Multi-Location Support", email: "enterprise@opsflow.com" }
-        ]
+        companyLabel: "Restaurant/Chain name",
+        companyPlaceholder: "Restaurant name",
+        messagePlaceholder: "Tell us about your restaurant operations needs - HACCP compliance, staff management, temperature monitoring, etc."
       },
       bars: {
-        subheading: "Connect with our bar and nightlife specialists",
-        inquiriesTitle: "Bar Operations",
-        businessSizeOptions: ["Single venue", "2-5 venues", "6-15 venues", "15+ venues"],
-        emailCategories: [
-          { category: "Bar Operations", email: "bars@opsflow.com" },
-          { category: "Nightlife Management", email: "nightlife@opsflow.com" }
-        ]
+        businessSizeOptions: ["Single venue", "2-5 venues", "6-15 venues", "15+ venues"], 
+        companyLabel: "Bar/Venue name",
+        companyPlaceholder: "Bar name",
+        messagePlaceholder: "Describe your bar management challenges - inventory control, staff scheduling, compliance tracking, etc."
       },
       coffee: {
-        subheading: "Connect with our coffee shop operations team",
-        inquiriesTitle: "Coffee Shop Solutions",
         businessSizeOptions: ["Single shop", "2-5 shops", "6-20 shops", "Chain operations"],
-        emailCategories: [
-          { category: "Coffee Operations", email: "coffee@opsflow.com" },
-          { category: "Franchise Support", email: "franchise@opsflow.com" }
-        ]
+        companyLabel: "Coffee shop name", 
+        companyPlaceholder: "Coffee shop name",
+        messagePlaceholder: "Share your coffee shop requirements - quality control, equipment monitoring, peak hour management, etc."
       },
       hotels: {
-        subheading: "Connect with our hospitality dining specialists",
-        inquiriesTitle: "Hotel Dining Solutions",
         businessSizeOptions: ["Boutique hotel", "Mid-scale hotel", "Full-service hotel", "Resort operations"],
-        emailCategories: [
-          { category: "Hotel Dining", email: "hotels@opsflow.com" },
-          { category: "Resort Operations", email: "resorts@opsflow.com" }
-        ]
+        companyLabel: "Hotel name",
+        companyPlaceholder: "Hotel name", 
+        messagePlaceholder: "Explain your hotel dining needs - multi-venue management, guest experience, compliance coordination, etc."
       },
-      general: {
-        subheading: "Connect with our operations specialists",
-        inquiriesTitle: "Business Inquiries",
-        businessSizeOptions: ["Small business", "Medium business", "Large business", "Enterprise"],
-        emailCategories: [
-          { category: "General Inquiries", email: "info@opsflow.com" },
-          { category: "Support", email: "support@opsflow.com" }
-        ]
-      }
     };
-    return content[industry as keyof typeof content] || content.general;
+    return content[industry] || content.restaurants;
   };
 
-  const industryContent = getIndustrySpecificContent();
-
-  const getIndustryColors = () => {
-    switch (industry) {
-      case 'restaurants': return 'from-orange-50 via-background to-background dark:from-orange-950';
-      case 'bars': return 'from-purple-50 via-background to-background dark:from-purple-950';
-      case 'coffee': return 'from-amber-50 via-background to-background dark:from-amber-950';
-      case 'hotels': return 'from-blue-50 via-background to-background dark:from-blue-950';
-      default: return 'from-gray-50 via-background to-background dark:from-gray-950';
-    }
-  };
+  const industryContent = getIndustryContent();
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
@@ -139,257 +89,242 @@ export function ContactForm({
     e.preventDefault();
     setIsSubmitting(true);
 
-    trackInteraction('contact_form_submit', {
-      industry,
-      role,
-      company_size: formData.businessSize,
-      has_company: !!formData.company,
-    });
-
     try {
       if (onSubmit) {
         await onSubmit(formData);
       } else {
-        // Default form submission logic
         console.log('Form submitted:', formData);
       }
     } catch (error) {
       console.error('Form submission error:', error);
-      trackInteraction('contact_form_error', {
-        industry,
-        role,
-        error: 'submission_failed',
-      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleSocialClick = (platform: string) => {
-    trackInteraction('contact_social_click', {
-      industry,
-      role,
-      platform,
-    });
-  };
-
   return (
-    <section className={cn(
-      "relative mx-2.5 mt-2.5 rounded-t-2xl rounded-b-[36px] bg-gradient-to-b py-32 lg:mx-4",
-      getIndustryColors(),
-      className
-    )}>
-      <div className="container max-w-2xl">
-        <h1 
-          className="text-display-2xl enterprise-headline text-center  font-semibold tracking-tight lg:"
-          role="heading"
-          aria-level={1}
-        >
-          {heading}
-        </h1>
-        <p className="mt-4 text-center leading-snug font-medium text-muted-foreground lg:mx-auto">
-          {industryContent.subheading}
-        </p>
+    <section className={cn("py-20 lg:py-28 bg-background", className)}>
+      <div className="container max-w-6xl">
+        {/* Header Section */}
+        <div className="text-center space-y-6 mb-16">
+          <Badge className="clerk-inspired-badge">
+            <Mail className="size-4" />
+            {badgeText}
+          </Badge>
 
-        <div className="mt-10 flex justify-between gap-8 max-sm:flex-col md:mt-14 lg:mt-20 lg:gap-12">
-          <div>
-            <h2 className="font-semibold flex items-center gap-2">
-              <MapPin className="size-4" aria-hidden="true" />
-              {officeTitle}
-            </h2>
-            <p className="mt-3 text-muted-foreground whitespace-pre-line">
-              {officeAddress}
-            </p>
-          </div>
+          <h1 className="enterprise-headline">
+            <span className="text-brand-gradient">{heading}</span>
+          </h1>
 
-          <div>
-            <h2 className="font-semibold flex items-center gap-2">
-              <Mail className="size-4" aria-hidden="true" />
-              {emailTitle}
-            </h2>
-            <div className="mt-3 space-y-2">
-              {industryContent.emailCategories.map((category, index) => (
-                <div key={index}>
-                  <p className="text-primary text-sm font-medium">{category.category}</p>
-                  <a
-                    href={`mailto:${category.email}`}
-                    className="text-muted-foreground hover:text-foreground transition-colors text-sm"
-                    onClick={() => trackInteraction('contact_email_click', { industry, role, category: category.category })}
-                  >
-                    {category.email}
-                  </a>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h2 className="font-semibold">{followTitle}</h2>
-            <div className="mt-3 flex gap-6 lg:gap-10">
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => handleSocialClick('facebook')}
-                aria-label="Follow us on Facebook"
-              >
-                <Facebook className="size-5" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => handleSocialClick('twitter')}
-                aria-label="Follow us on Twitter"
-              >
-                <Twitter className="size-5" />
-              </a>
-              <a
-                href="#"
-                className="text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => handleSocialClick('linkedin')}
-                aria-label="Follow us on LinkedIn"
-              >
-                <Linkedin className="size-5" />
-              </a>
-            </div>
-          </div>
+          <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            {subheading}
+          </p>
         </div>
 
-        <DashedLine className="my-12" />
+        {/* Two Column Layout */}
+        <div className="grid lg:grid-cols-2 gap-12">
+          
+          {/* Left Column - Contact Information */}
+          <div className="space-y-6">
+            <div>
+              <h2 className="text-2xl font-bold mb-6 text-foreground">
+                Contact Information
+              </h2>
+              
+              <div className="space-y-4">
+                {/* Office Location */}
+                <div className="clerk-inspired-card p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="enterprise-icon-primary">
+                      <MapPin className="size-5" />
+                    </div>
+                    <h3 className="font-semibold text-foreground">Corporate Office</h3>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed">
+                    1 Innovation Drive<br/>
+                    Suite 200<br/>
+                    San Francisco, CA 94105
+                  </p>
+                </div>
 
-        {/* Inquiry Form */}
-        <div className="mx-auto">
-          <h2 className="enterprise-body  font-semibold">{industryContent.inquiriesTitle}</h2>
-          <form className="mt-8 space-y-5" onSubmit={handleSubmit}>
-            <div className="space-y-2">
-              <Label htmlFor="fullName">Full name</Label>
-              <Input 
-                id="fullName"
-                placeholder="First and last name" 
-                value={formData.fullName}
-                onChange={(e) => handleInputChange('fullName', e.target.value)}
-                required
-                aria-describedby="fullName-error"
-              />
+                {/* Email Contact */}
+                <div className="clerk-inspired-card p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="enterprise-icon-secondary">
+                      <Mail className="size-5" />
+                    </div>
+                    <h3 className="font-semibold text-foreground">Email Support</h3>
+                  </div>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Sales Inquiries</p>
+                      <a 
+                        href="mailto:sales@opsflow.com" 
+                        className="text-primary hover:text-primary/80 transition-colors"
+                      >
+                        sales@opsflow.com
+                      </a>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-foreground">Technical Support</p>
+                      <a 
+                        href="mailto:support@opsflow.com" 
+                        className="text-primary hover:text-primary/80 transition-colors"
+                      >
+                        support@opsflow.com
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Phone Contact */}
+                <div className="clerk-inspired-card p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="enterprise-icon-accent">
+                      <Phone className="size-5" />
+                    </div>
+                    <h3 className="font-semibold text-foreground">Phone Support</h3>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-muted-foreground">
+                      <span className="font-medium text-foreground">Sales:</span> (415) 555-0123
+                    </p>
+                    <p className="text-muted-foreground">
+                      <span className="font-medium text-foreground">Support:</span> (415) 555-0124
+                    </p>
+                    <p className="text-sm text-muted-foreground">
+                      Monday - Friday, 8:00 AM - 6:00 PM PST
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="email">Business email address</Label>
-              <Input 
-                id="email"
-                placeholder="me@company.com" 
-                type="email" 
-                value={formData.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
-                required
-                aria-describedby="email-error"
-              />
+            {/* Social Links */}
+            <div>
+              <h3 className="font-semibold mb-4 text-foreground">Follow Us</h3>
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  className="enterprise-icon-muted hover:text-primary transition-colors"
+                  aria-label="Follow us on LinkedIn"
+                >
+                  <Linkedin className="size-5" />
+                </a>
+                <a
+                  href="#"
+                  className="enterprise-icon-muted hover:text-primary transition-colors"
+                  aria-label="Follow us on Twitter"
+                >
+                  <Twitter className="size-5" />
+                </a>
+                <a
+                  href="#"
+                  className="enterprise-icon-muted hover:text-primary transition-colors"
+                  aria-label="Follow us on Facebook"
+                >
+                  <Facebook className="size-5" />
+                </a>
+              </div>
             </div>
+          </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="company">
-                {industry === 'restaurants' ? 'Restaurant/Chain name' :
-                 industry === 'bars' ? 'Bar/Venue name' :
-                 industry === 'coffee' ? 'Coffee shop name' :
-                 industry === 'hotels' ? 'Hotel name' : 'Company name'}{" "}
-                <span className="text-muted-foreground">(optional)</span>
-              </Label>
-              <Input 
-                id="company"
-                placeholder={
-                  industry === 'restaurants' ? 'Restaurant name' :
-                  industry === 'bars' ? 'Bar name' :
-                  industry === 'coffee' ? 'Coffee shop name' :
-                  industry === 'hotels' ? 'Hotel name' : 'Company name'
-                }
-                value={formData.company}
-                onChange={(e) => handleInputChange('company', e.target.value)}
-              />
-            </div>
+          {/* Right Column - Contact Form */}
+          <div className="clerk-inspired-card p-8">
+            <h2 className="text-2xl font-bold mb-6 text-foreground">
+              Send us a Message
+            </h2>
 
-            <div className="space-y-2">
-              <Label htmlFor="businessSize">
-                Business size{" "}
-                <span className="text-muted-foreground">(optional)</span>
-              </Label>
-              <Input 
-                id="businessSize"
-                placeholder="Select your business size"
-                list="businessSizes"
-                value={formData.businessSize}
-                onChange={(e) => handleInputChange('businessSize', e.target.value)}
-              />
-              <datalist id="businessSizes">
-                {industryContent.businessSizeOptions.map((option, index) => (
-                  <option key={index} value={option} />
-                ))}
-              </datalist>
-            </div>
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="space-y-2">
+                <Label htmlFor="fullName" className="text-foreground font-medium">
+                  Full Name *
+                </Label>
+                <Input 
+                  id="fullName"
+                  placeholder="First and last name" 
+                  value={formData.fullName}
+                  onChange={(e) => handleInputChange('fullName', e.target.value)}
+                  required
+                  className="border-border focus:border-primary"
+                />
+              </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="message">Your message</Label>
-              <Textarea
-                id="message"
-                placeholder={
-                  industry === 'restaurants' ? 'Tell us about your restaurant operations needs' :
-                  industry === 'bars' ? 'Describe your bar management challenges' :
-                  industry === 'coffee' ? 'Share your coffee shop requirements' :
-                  industry === 'hotels' ? 'Explain your hotel dining needs' : 'Write your message'
-                }
-                className="min-h-[120px] resize-none"
-                value={formData.message}
-                onChange={(e) => handleInputChange('message', e.target.value)}
-                required
-              />
-            </div>
+              <div className="space-y-2">
+                <Label htmlFor="email" className="text-foreground font-medium">
+                  Business Email *
+                </Label>
+                <Input 
+                  id="email"
+                  placeholder="you@company.com" 
+                  type="email" 
+                  value={formData.email}
+                  onChange={(e) => handleInputChange('email', e.target.value)}
+                  required
+                  className="border-border focus:border-primary"
+                />
+              </div>
 
-            <div className="flex justify-end">
+              <div className="space-y-2">
+                <Label htmlFor="company" className="text-foreground font-medium">
+                  {industryContent.companyLabel}{" "}
+                  <span className="text-muted-foreground">(optional)</span>
+                </Label>
+                <Input 
+                  id="company"
+                  placeholder={industryContent.companyPlaceholder}
+                  value={formData.company}
+                  onChange={(e) => handleInputChange('company', e.target.value)}
+                  className="border-border focus:border-primary"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="businessSize" className="text-foreground font-medium">
+                  Business Size{" "}
+                  <span className="text-muted-foreground">(optional)</span>
+                </Label>
+                <select 
+                  id="businessSize"
+                  value={formData.businessSize}
+                  onChange={(e) => handleInputChange('businessSize', e.target.value)}
+                  className="w-full px-3 py-2 border border-border rounded-md focus:border-primary focus:ring-1 focus:ring-primary bg-background text-foreground"
+                >
+                  <option value="">Select business size</option>
+                  {industryContent.businessSizeOptions.map((option, index) => (
+                    <option key={index} value={option}>
+                      {option}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="message" className="text-foreground font-medium">
+                  Message *
+                </Label>
+                <Textarea
+                  id="message"
+                  placeholder={industryContent.messagePlaceholder}
+                  className="min-h-[120px] resize-none border-border focus:border-primary"
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                  required
+                />
+              </div>
+
               <Button 
                 size="lg" 
                 type="submit" 
                 disabled={isSubmitting}
-                className="min-w-[120px]"
+                className="w-full clerk-cta-primary"
               >
-                {isSubmitting ? 'Sending...' : submitText}
+                {isSubmitting ? 'Sending Message...' : 'Send Message'}
               </Button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-const DashedLine = ({
-  orientation = "horizontal",
-  className,
-}: DashedLineProps) => {
-  const isHorizontal = orientation === "horizontal";
-
-  return (
-    <div
-      className={cn(
-        "relative text-muted-foreground",
-        isHorizontal ? "h-px w-full" : "h-full w-px",
-        className,
-      )}
-      role="separator"
-      aria-orientation={orientation}
-    >
-      <div
-        className={cn(
-          isHorizontal
-            ? [
-                "h-px w-full",
-                "bg-[repeating-linear-gradient(90deg,transparent,transparent_4px,currentColor_4px,currentColor_10px)]",
-                "[mask-image:linear-gradient(90deg,transparent,black_25%,black_75%,transparent)]",
-              ]
-            : [
-                "h-full w-px",
-                "bg-[repeating-linear-gradient(180deg,transparent,transparent_4px,currentColor_4px,currentColor_8px)]",
-                "[mask-image:linear-gradient(180deg,transparent,black_25%,black_75%,transparent)]",
-              ],
-        )}
-      />
-    </div>
-  );
-};

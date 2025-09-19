@@ -225,8 +225,8 @@ export function FAQSection({
   };
 
   return (
-    <section className={cn("section-marketing", className)}>
-      <div className={cn("container", maxWidthClasses[maxWidth])}>
+    <div className={cn("w-full", className)}>
+      <div className={cn("mx-auto", maxWidthClasses[maxWidth])}>
         <h1 
           className="heading-brand-gradient mb-4 text-3xl font-semibold md:mb-11 md:text-4xl text-center"
           role="heading"
@@ -263,6 +263,6 @@ export function FAQSection({
           ))}
         </Accordion>
       </div>
-    </section>
+    </div>
   );
 }

@@ -26,7 +26,7 @@ export function TestimonialCarousel({ industry = "restaurants" }: TestimonialCar
           title: "General Manager",
           company: "Bella Vista Bistro",
           avatar: "https://images.unsplash.com/photo-1494790108755-2616b332b630?q=80&w=150&h=150&auto=format&fit=crop&crop=face",
-          logo: "🍽️",
+          logo: "BVB",
           quote: "OpsFlow transformed our HACCP compliance from a daily struggle to an automated process. We've maintained 100% compliance for 8 months straight.",
           metrics: [
             { value: "100%", label: "HACCP Compliance Rate" },

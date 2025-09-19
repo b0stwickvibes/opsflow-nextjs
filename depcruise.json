@@ -123,9 +123,6 @@
         "components/domain/product/features/FeatureSplit.tsx",
         "components/domain/product/features/FeatureTabs.tsx",
         "components/domain/product/features/FeatureTimeline.tsx",
-        "components/domain/product/integration/IntegrationGrid.tsx",
-        "components/domain/product/integration/IntegrationPartners.tsx",
-        "components/domain/product/integration/IntegrationShowcase.tsx",
         "components/domain/industries/restaurants/RestaurantSolutionsHero.tsx",
         "components/sections/opsflow/FinalCTA.tsx",
         "components/sections/opsflow/Hero.tsx",
@@ -169,6 +166,9 @@
         "components/domain/product/features/FeaturesHero.tsx",
         "components/domain/product/features/FeaturesHeroPro.tsx",
         "components/domain/product/features/InteractiveDemoCTA.tsx",
+        "components/domain/product/integration/IntegrationGrid.tsx",
+        "components/domain/product/integration/IntegrationPartners.tsx",
+        "components/domain/product/integration/IntegrationShowcase.tsx",
         "components/domain/templates/TemplatesPromo.tsx",
         "components/pages/HomePage.tsx",
         "components/shared/data-display/LogoGrid.tsx",
@@ -222,6 +222,7 @@
         "components/ui/label.tsx",
         "components/ui/textarea.tsx",
         "components/shared/forms/LeadCapture.tsx",
+        "components/domain/marketing/MarketingCarouselHero.tsx",
         "components/ui/carousel.tsx",
         "components/domain/marketing/MarketingRollingBlocks.tsx",
         "app/layout.tsx",
@@ -237,6 +238,9 @@
         "components/ui/table.tsx",
         "components/ui/switch.tsx",
         "components/ui/select.tsx",
+        "components/domain/product/features/OpsFeatureGrid.tsx",
+        "components/domain/product/features/OpsMediaFeature.tsx",
+        "components/domain/product/features/OpsSectionHeader.tsx",
         "components/shared/heroes/base/WorkflowHeroBase.tsx",
         "components/domain/product/features/FeatureAccordion.tsx",
         "components/domain/product/features/FeatureBento.tsx",
@@ -246,9 +250,6 @@
         "components/domain/product/features/FeatureShowcase.tsx",
         "components/domain/product/features/FeatureShowcaseTwo.tsx",
         "components/domain/product/features/FeatureTabs.tsx",
-        "components/domain/product/integration/IntegrationGrid.tsx",
-        "components/domain/product/integration/IntegrationPartners.tsx",
-        "components/domain/product/integration/IntegrationShowcase.tsx",
         "components/domain/industries/restaurants/RestaurantSolutionsHero.tsx",
         "components/ui/dialog.tsx",
         "components/ui/avatar.tsx",
@@ -288,6 +289,9 @@
         "components/domain/product/RestaurantKPIs.tsx",
         "components/domain/product/RestaurantWorkflows.tsx",
         "components/domain/product/features/FeatureBoard.tsx",
+        "components/domain/product/integration/IntegrationGrid.tsx",
+        "components/domain/product/integration/IntegrationPartners.tsx",
+        "components/domain/product/integration/IntegrationShowcase.tsx",
         "components/icons/plus-signs.tsx",
         "components/shared/data-display/LogoGrid.tsx",
         "components/shared/data-display/LogoMarquee.tsx",
@@ -757,9 +761,7 @@
       "dependents": [
         "app/company/about/page.tsx",
         "app/page.tsx",
-        "app/solutions/coffee-draft/page.tsx",
         "app/solutions/coffee/page.tsx",
-        "app/solutions/restaurants-draft/page.tsx",
         "app/solutions/restaurants/page.tsx",
         "components/shared/index.ts"
       ],
@@ -997,10 +999,6 @@
         "components/domain/product/features/FeatureSplit.tsx",
         "components/domain/product/features/FeatureTabs.tsx",
         "components/domain/product/features/FeatureTimeline.tsx",
-        "components/domain/product/integration/IntegrationGrid.tsx",
-        "components/domain/product/integration/IntegrationPartners.tsx",
-        "components/domain/product/integration/IntegrationShowcase.tsx",
-        "components/domain/industries/restaurants/heroes/WorkflowHero.tsx",
         "templates/shadcn-components/processed/about/AboutSection.tsx",
         "templates/shadcn-components/processed/bento/BentoGrid.tsx",
         "templates/shadcn-components/processed/bento/BentoLayout.tsx",
@@ -1022,6 +1020,7 @@
         "templates/shadcn-components/processed/heroes/BillingHero.tsx",
         "templates/shadcn-components/processed/heroes/EarningHero.tsx",
         "templates/shadcn-components/processed/heroes/ImpactHero.tsx",
+        "components/domain/industries/restaurants/heroes/WorkflowHero.tsx",
         "templates/shadcn-components/processed/pricing/PricingTable.tsx",
         "templates/shadcn-components/processed/stats/KPIShowcase.tsx",
         "templates/shadcn-components/processed/stats/MetricsDashboard.tsx",
@@ -1035,6 +1034,9 @@
         "components/domain/product/CompetitorAnalysis.tsx",
         "components/domain/product/RestaurantHero.tsx",
         "components/domain/product/RestaurantPageTemplate.tsx",
+        "components/domain/product/integration/IntegrationGrid.tsx",
+        "components/domain/product/integration/IntegrationPartners.tsx",
+        "components/domain/product/integration/IntegrationShowcase.tsx",
         "components/shared/data-display/LogoGrid.tsx",
         "components/shared/data-display/LogoMarquee.tsx",
         "components/shared/data-display/LogoShowcase.tsx",
@@ -1448,8 +1450,6 @@
         "components/shared/data-display/ResourcePages.tsx",
         "components/domain/product/features/FeatureComparison.tsx",
         "components/domain/product/features/FeatureMatrix.tsx",
-        "components/domain/product/integration/IntegrationGrid.tsx",
-        "components/domain/product/integration/IntegrationPartners.tsx",
         "components/domain/industries/restaurants/RestaurantSolutionsHero.tsx",
         "components/sections/opsflow/FinalCTA.tsx",
         "app/ui-sink-backup/page.tsx",
@@ -1466,6 +1466,8 @@
         "components/domain/product/features/FeaturesHeroGrid.tsx",
         "components/domain/product/features/PlasmaFeaturesSection.tsx",
         "components/domain/product/features/UseCaseTabs.tsx",
+        "components/domain/product/integration/IntegrationGrid.tsx",
+        "components/domain/product/integration/IntegrationPartners.tsx",
         "components/domain/roles/RoleShowcase.tsx",
         "components/domain/security/LocationSecurityShowcase.tsx",
         "components/domain/templates/TemplatesPromo.tsx",
@@ -1677,9 +1679,7 @@
         "app/layout.tsx",
         "app/page.tsx",
         "app/product/demo/page.tsx",
-        "app/solutions/coffee-draft/page.tsx",
         "app/solutions/coffee/page.tsx",
-        "app/solutions/restaurants-draft/page.tsx",
         "app/solutions/restaurants/page.tsx",
         "components/domain/product/RestaurantPageTemplate.tsx",
         "components/shared/index.ts"
@@ -1732,8 +1732,7 @@
         }
       ],
       "dependents": [
-        "components/shared/layout/index.ts",
-        "app/product/features/page.tsx"
+        "components/shared/layout/index.ts"
       ],
       "orphan": false,
       "valid": true
@@ -4247,17 +4246,21 @@
           "valid": true
         },
         {
-          "module": "@/lib/utils/cn",
+          "module": "@/lib/utils",
           "moduleSystem": "es6",
           "dynamic": false,
           "exoticallyRequired": false,
           "dependencyTypes": [
-            "unknown"
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
           ],
-          "resolved": "@/lib/utils/cn",
+          "resolved": "lib/utils.ts",
           "coreModule": false,
-          "followable": false,
-          "couldNotResolve": true,
+          "followable": true,
+          "couldNotResolve": false,
           "matchesDoNotFollow": false,
           "circular": false,
           "valid": true
@@ -4265,22 +4268,6 @@
       ],
       "dependents": [
         "components/domain/marketing/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "@/lib/utils/cn",
-      "followable": false,
-      "coreModule": false,
-      "couldNotResolve": true,
-      "matchesDoNotFollow": false,
-      "dependencyTypes": [
-        "unknown"
-      ],
-      "dependencies": [],
-      "dependents": [
-        "components/domain/marketing/MarketingCarouselHero.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -4349,7 +4336,9 @@
       "source": "lib/assets/marketing.ts",
       "dependencies": [],
       "dependents": [
-        "components/domain/marketing/MarketingCarouselHero.tsx"
+        "components/domain/marketing/MarketingCarouselHero.tsx",
+        "components/domain/product/features/RestaurantFeaturesPageSections.tsx",
+        "app/ui-sink/page.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -7827,7 +7816,7 @@
           "valid": true
         },
         {
-          "module": "@/components/shared/layout/AdvancedOperations",
+          "module": "@/components/domain/product/features/RestaurantFeaturesPageSections",
           "moduleSystem": "es6",
           "dynamic": false,
           "exoticallyRequired": false,
@@ -7838,7 +7827,7 @@
             "local",
             "import"
           ],
-          "resolved": "components/shared/layout/AdvancedOperations.tsx",
+          "resolved": "components/domain/product/features/RestaurantFeaturesPageSections.tsx",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -7957,6 +7946,189 @@
       ],
       "dependents": [
         "app/product/features/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/features/RestaurantFeaturesPageSections.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/domain/product/features/OpsFeatureGrid",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/domain/product/features/OpsFeatureGrid.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/domain/product/features/OpsMediaFeature",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/domain/product/features/OpsMediaFeature.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/domain/product/features/OpsSectionHeader",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/domain/product/features/OpsSectionHeader.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/assets/marketing",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/assets/marketing.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "app/product/features/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/features/OpsFeatureGrid.tsx",
+      "dependencies": [
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/features/RestaurantFeaturesPageSections.tsx",
+        "app/ui-sink/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/features/OpsMediaFeature.tsx",
+      "dependencies": [
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/features/RestaurantFeaturesPageSections.tsx",
+        "app/ui-sink/page.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/features/OpsSectionHeader.tsx",
+      "dependencies": [
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/features/RestaurantFeaturesPageSections.tsx",
+        "app/ui-sink/page.tsx"
       ],
       "orphan": false,
       "valid": true
@@ -8245,7 +8417,7 @@
       "valid": true
     },
     {
-      "source": "app/solutions/coffee-draft/page.tsx",
+      "source": "app/solutions/coffee/page.tsx",
       "dependencies": [
         {
           "module": "@/components/domain/industries/coffee/heroes/WorkflowHero",
@@ -8280,26 +8452,6 @@
             "import"
           ],
           "resolved": "components/domain/product/features/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/product/integration",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/domain/product/integration/index.ts",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -8397,7 +8549,6 @@
         }
       ],
       "dependents": [
-        "app/solutions/coffee-draft/page.tsx",
         "app/solutions/coffee/page.tsx"
       ],
       "orphan": false,
@@ -8697,9 +8848,7 @@
         }
       ],
       "dependents": [
-        "app/solutions/coffee-draft/page.tsx",
         "app/solutions/coffee/page.tsx",
-        "app/solutions/restaurants-draft/page.tsx",
         "components/domain/product/index.ts"
       ],
       "orphan": false,
@@ -9898,570 +10047,10 @@
       "valid": true
     },
     {
-      "source": "components/domain/product/integration/index.ts",
-      "dependencies": [
-        {
-          "module": "./IntegrationGrid",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "export"
-          ],
-          "resolved": "components/domain/product/integration/IntegrationGrid.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "./IntegrationPartners",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "export"
-          ],
-          "resolved": "components/domain/product/integration/IntegrationPartners.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "./IntegrationShowcase",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "local",
-            "export"
-          ],
-          "resolved": "components/domain/product/integration/IntegrationShowcase.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/solutions/coffee-draft/page.tsx",
-        "app/solutions/restaurants-draft/page.tsx",
-        "components/domain/product/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/integration/IntegrationGrid.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/hooks/restaurant-pages",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/hooks/restaurant-pages.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/utils",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/utils.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "components/domain/product/integration/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/integration/IntegrationPartners.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/ui/card",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/card.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/hooks/restaurant-pages",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/hooks/restaurant-pages.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/utils",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/utils.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "components/domain/product/integration/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/product/integration/IntegrationShowcase.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/ui/button",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/ui/button.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/hooks/restaurant-pages",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/hooks/restaurant-pages.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/utils",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/utils.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "components/domain/product/integration/index.ts"
-      ],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "app/solutions/coffee/page.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/domain/industries/coffee/heroes/WorkflowHero",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/domain/industries/coffee/heroes/WorkflowHero.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/product/features",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/domain/product/features/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/shared/data-display",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/shared/data-display/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/shared/layout",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/shared/layout/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [],
-      "orphan": false,
-      "valid": true
-    },
-    {
       "source": "app/solutions/hotels/page.tsx",
       "dependencies": [],
       "dependents": [],
       "orphan": true,
-      "valid": true
-    },
-    {
-      "source": "app/solutions/restaurants-draft/page.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/domain/industries/restaurants/heroes/WorkflowHero",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/domain/industries/restaurants/heroes/WorkflowHero.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/product/features",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/domain/product/features/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/domain/product/integration",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/domain/product/integration/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/shared/data-display",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/shared/data-display/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/components/shared/layout",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/shared/layout/index.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [],
-      "orphan": false,
-      "valid": true
-    },
-    {
-      "source": "components/domain/industries/restaurants/heroes/WorkflowHero.tsx",
-      "dependencies": [
-        {
-          "module": "@/components/shared/heroes/base/WorkflowHeroBase",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "components/shared/heroes/base/WorkflowHeroBase.tsx",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        },
-        {
-          "module": "@/lib/hooks/restaurant-pages",
-          "moduleSystem": "es6",
-          "dynamic": false,
-          "exoticallyRequired": false,
-          "dependencyTypes": [
-            "aliased",
-            "aliased-tsconfig",
-            "aliased-tsconfig-base-url",
-            "local",
-            "import"
-          ],
-          "resolved": "lib/hooks/restaurant-pages.ts",
-          "coreModule": false,
-          "followable": true,
-          "couldNotResolve": false,
-          "matchesDoNotFollow": false,
-          "circular": false,
-          "valid": true
-        }
-      ],
-      "dependents": [
-        "app/solutions/restaurants-draft/page.tsx",
-        "templates/shadcn-components/processed/heroes/WorkflowHero.tsx"
-      ],
-      "orphan": false,
       "valid": true
     },
     {
@@ -11573,6 +11162,66 @@
       "source": "app/ui-sink/page.tsx",
       "dependencies": [
         {
+          "module": "@/components/domain/product/features/OpsFeatureGrid",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/domain/product/features/OpsFeatureGrid.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/domain/product/features/OpsMediaFeature",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/domain/product/features/OpsMediaFeature.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/domain/product/features/OpsSectionHeader",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/domain/product/features/OpsSectionHeader.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
           "module": "@/components/pages/UITestPage",
           "moduleSystem": "es6",
           "dynamic": false,
@@ -11665,6 +11314,26 @@
             "import"
           ],
           "resolved": "components/ui/theme-toggle.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/assets/marketing",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/assets/marketing.ts",
           "coreModule": false,
           "followable": true,
           "couldNotResolve": false,
@@ -15630,6 +15299,56 @@
       "valid": true
     },
     {
+      "source": "components/domain/industries/restaurants/heroes/WorkflowHero.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/shared/heroes/base/WorkflowHeroBase",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/shared/heroes/base/WorkflowHeroBase.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/hooks/restaurant-pages",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/hooks/restaurant-pages.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "templates/shadcn-components/processed/heroes/WorkflowHero.tsx"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
       "source": "templates/shadcn-components/processed/pricing/PricingTable.tsx",
       "dependencies": [
         {
@@ -18305,6 +18024,317 @@
         }
       ],
       "dependents": [],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/integration/index.ts",
+      "dependencies": [
+        {
+          "module": "./IntegrationGrid",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "export"
+          ],
+          "resolved": "components/domain/product/integration/IntegrationGrid.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "./IntegrationPartners",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "export"
+          ],
+          "resolved": "components/domain/product/integration/IntegrationPartners.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "./IntegrationShowcase",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "local",
+            "export"
+          ],
+          "resolved": "components/domain/product/integration/IntegrationShowcase.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/integration/IntegrationGrid.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/hooks/restaurant-pages",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/hooks/restaurant-pages.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/integration/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/integration/IntegrationPartners.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/components/ui/card",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/card.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/hooks/restaurant-pages",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/hooks/restaurant-pages.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/integration/index.ts"
+      ],
+      "orphan": false,
+      "valid": true
+    },
+    {
+      "source": "components/domain/product/integration/IntegrationShowcase.tsx",
+      "dependencies": [
+        {
+          "module": "@/components/ui/button",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "components/ui/button.tsx",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/hooks/restaurant-pages",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/hooks/restaurant-pages.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        },
+        {
+          "module": "@/lib/utils",
+          "moduleSystem": "es6",
+          "dynamic": false,
+          "exoticallyRequired": false,
+          "dependencyTypes": [
+            "aliased",
+            "aliased-tsconfig",
+            "aliased-tsconfig-base-url",
+            "local",
+            "import"
+          ],
+          "resolved": "lib/utils.ts",
+          "coreModule": false,
+          "followable": true,
+          "couldNotResolve": false,
+          "matchesDoNotFollow": false,
+          "circular": false,
+          "valid": true
+        }
+      ],
+      "dependents": [
+        "components/domain/product/integration/index.ts"
+      ],
       "orphan": false,
       "valid": true
     },
@@ -21776,8 +21806,8 @@
     "warn": 17,
     "info": 0,
     "ignore": 0,
-    "totalCruised": 362,
-    "totalDependenciesCruised": 899,
+    "totalCruised": 363,
+    "totalDependenciesCruised": 900,
     "optionsUsed": {
       "baseDir": "/Users/devin/XYZcode/opsflow-nextjs",
       "combinedDependencies": false,

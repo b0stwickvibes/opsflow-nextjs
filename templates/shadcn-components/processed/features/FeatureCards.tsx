@@ -110,38 +110,37 @@ export function FeatureCards({
   };
 
   return (
-    <section className={`section-marketing ${className}`}>
-      <div className="container">
-        <div className="mb-12 text-center">
-          <h2 className="heading-brand-gradient text-display-2xl mb-4 text-3xl font-bold tracking-tight lg:">
-            Staff Management Excellence
-          </h2>
-          <p className="enterprise-body  text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive workforce management tools designed for restaurant operations with focus on efficiency and compliance
-          </p>
-        </div>
+    <div className={className}>
+      <div className="mb-12 text-center">
+        <h2 className="heading-brand-gradient text-display-2xl mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+          Staff Management Excellence
+        </h2>
+        <p className="enterprise-body text-muted-foreground max-w-3xl mx-auto">
+          Comprehensive workforce management tools designed for restaurant operations with focus on efficiency and compliance
+        </p>
+      </div>
 
-        <div className="flex flex-wrap items-start justify-between">
-          {filteredFeatures.map((feature, index, arr) => (
-            <div
-              key={feature.id}
-              className="flex shrink grow basis-full flex-col items-start justify-between p-6 md:basis-1/2 lg:basis-1/4 group cursor-pointer rounded-lg bg-card/70 backdrop-blur-sm border tile-hover"
-              onClick={() => handleFeatureClick(feature)}
-            >
-              <div className="w-full">
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      {feature.icon}
-                    </div>
-                    <Badge 
-                      variant="outline" 
-                      className={`text-xs ${getCategoryColor(feature.category)} capitalize`}
-                    >
-                      {feature.category}
-                    </Badge>
+      <div className="flex flex-wrap items-start justify-between">
+        {filteredFeatures.map((feature, index, arr) => (
+          <div
+            key={feature.id}
+            className="flex shrink grow basis-full flex-col items-start justify-between p-6 md:basis-1/2 lg:basis-1/4 group cursor-pointer rounded-lg bg-card/70 backdrop-blur-sm border tile-hover"
+            onClick={() => handleFeatureClick(feature)}
+          >
+            <div className="w-full">
+              <div className="mb-4 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    {feature.icon}
                   </div>
+                  <Badge 
+                    variant="outline" 
+                    className={`text-xs ${getCategoryColor(feature.category)} capitalize`}
+                  >
+                    {feature.category}
+                  </Badge>
                 </div>
+              </div>
                 
                 <h3 className="enterprise-body mb-3  font-semibold group-hover:text-primary transition-colors">
                   {feature.title}
@@ -178,11 +177,11 @@ export function FeatureCards({
                 </button>
               )}
             </div>
-          ))}
-        </div>
+        ))}
+      </div>
 
-        {/* Bottom Stats Bar */}
-        <div className="mt-16 border-t pt-12">
+      {/* Bottom Stats Bar */}
+      <div className="mt-16 border-t pt-12">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
             <div className="space-y-2">
               <div className="text-2xl font-bold text-primary">500+</div>
@@ -202,8 +201,7 @@ export function FeatureCards({
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </div>
   );
 };
 

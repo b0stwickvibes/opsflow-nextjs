@@ -43,7 +43,7 @@ const REVIEWS = [
   {
     name: 'Tusmah',
     username: '@ananenu1',
-    body: "Made a Plasma flow that watches my screenshot folder and auto-saves new captures to Notion. Didn't touch the cloud once. 🔥",
+    body: "Made a Plasma flow that watches my screenshot folder and auto-saves new captures to Notion. Didn't touch the cloud once. Amazing!",
     img: 'https://avatar.vercel.sh/ananenu1',
   },
   {

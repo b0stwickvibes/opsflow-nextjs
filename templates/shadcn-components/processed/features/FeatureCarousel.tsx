@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Building, MapPin, Users, TrendingUp, Shield, BarChart3 } from "lucide-react";
+import { ArrowRight, Building, MapPin, Users, TrendingUp, Shield, BarChart3, Zap } from "lucide-react";
 import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -95,6 +95,33 @@ interface FeatureCarouselProps {
   variant?: "showcase" | "network" | "detailed";
 }
 
+const getLocationCardColor = (type: string) => {
+  switch (type) {
+    case "flagship": return "dashboard-metric-blue";
+    case "franchise": return "bg-blue-100";
+    case "corporate": return "bg-green-100";
+    default: return "bg-card";
+  }
+};
+
+const getLocationTypeColor = (type: string) => {
+  switch (type) {
+    case "flagship": return "dashboard-badge-active";
+    case "franchise": return "dashboard-badge-franchise";
+    case "corporate": return "dashboard-badge-corporate";
+    default: return "bg-muted text-foreground border-border";
+  }
+};
+
+const getLocationTypeIcon = (type: string) => {
+  switch (type) {
+    case "flagship": return <Building className="h-4 w-4" />;
+    case "franchise": return <Users className="h-4 w-4" />;
+    case "corporate": return <Shield className="h-4 w-4" />;
+    default: return <MapPin className="h-4 w-4" />;
+  }
+};
+
 export function FeatureCarousel({
   className = "",
   showAnimations = true,
@@ -115,48 +142,34 @@ export function FeatureCarousel({
     });
   };
 
-  const getLocationTypeColor = (type: string) => {
-    switch (type) {
-      case "flagship": return "bg-purple-100 text-purple-800 border-purple-200";
-      case "franchise": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "corporate": return "bg-green-100 text-green-800 border-green-200";
-      default: return "bg-muted text-foreground border-border";
-    }
-  };
-
-  const getLocationTypeIcon = (type: string) => {
-    switch (type) {
-      case "flagship": return <Building className="h-4 w-4" />;
-      case "franchise": return <Users className="h-4 w-4" />;
-      case "corporate": return <Shield className="h-4 w-4" />;
-      default: return <MapPin className="h-4 w-4" />;
-    }
-  };
-
   return (
-    <section className={`section-marketing ${className}`}>
+    <section className={`section-marketing hero-ambient energy-balanced ${className}`}>
       <div className="container">
         <div className="mb-12 text-center">
           <Badge variant="outline" className="mb-4">
             Multi-Location Management
           </Badge>
-<h2 className="heading-brand-gradient text-display-2xl mb-4  font-bold tracking-tight lg:text-6xl">
+          <h2 className="heading-brand-gradient text-display-2xl mb-4  font-bold tracking-tight lg:text-6xl">
             Connecting Restaurant Operations Worldwide
           </h2>
           <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
-            Seamlessly manage operations across unlimited locations with centralized control, 
+            Seamlessly manage operations across unlimited locations with centralized control,
             standardized processes, and real-time insights for every restaurant in your network.
           </p>
         </div>
 
-        {showAnimations && <MultiLocationNetwork />}
-        
+        {showAnimations && (
+          <div className="my-20">
+            <MultiLocationNetwork />
+          </div>
+        )}
+
         {/* Location Showcase */}
         <div className="mt-16 grid gap-8 lg:grid-cols-3">
           {restaurantLocations.slice(0, 3).map((location) => (
-            <LocationCard 
-              key={location.id} 
-              location={location} 
+            <LocationCard
+              key={location.id}
+              location={location}
               onClick={() => handleLocationClick(location)}
             />
           ))}
@@ -187,7 +200,7 @@ export function FeatureCarousel({
           <div className="p-8 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Scale Your Restaurant Operations</h3>
             <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Whether you're managing 2 locations or 200, OpsFlow scales with your business. 
+              Whether you're managing 2 locations or 200, OpsFlow scales with your business.
               Get centralized control without losing local flexibility.
             </p>
             <Button size="lg" onClick={handleGetStartedClick}>
@@ -208,7 +221,7 @@ const LocationCard: React.FC<{
   return (
     <button
       onClick={onClick}
-className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all duration-200 text-left w-full tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+      className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all duration-200 text-left w-full tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
     >
       <div className="flex items-start justify-between mb-4">
         <div>
@@ -220,8 +233,8 @@ className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all du
             {location.city}
           </div>
         </div>
-        <Badge 
-          variant="outline" 
+        <Badge
+          variant="outline"
           className={`text-xs ${getLocationTypeColor(location.type)} capitalize`}
         >
           {getLocationTypeIcon(location.type)}
@@ -266,109 +279,163 @@ className="group p-6 bg-card rounded-lg border hover:shadow-lg transition-all du
 };
 
 const MultiLocationNetwork = () => {
+  // Container and step refs for animated beams
   const containerRef = useRef<HTMLDivElement>(null);
-  const centralRef = useRef<HTMLDivElement>(null);
   const location1Ref = useRef<HTMLDivElement>(null);
   const location2Ref = useRef<HTMLDivElement>(null);
   const location3Ref = useRef<HTMLDivElement>(null);
-  const location4Ref = useRef<HTMLDivElement>(null);
-  const location5Ref = useRef<HTMLDivElement>(null);
+  const centralRef = useRef<HTMLDivElement>(null);
+  const powerRef = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="relative flex w-full items-center justify-center overflow-hidden p-10" ref={containerRef}>
-      <div className="flex w-full flex-col items-center justify-between gap-10 lg:flex-row">
-        {/* Location Nodes */}
-        <div className="h-100 relative z-10 flex w-full items-center justify-center rounded-3xl lg:w-0">
-          {/* Location 1 */}
+    <div 
+      className="relative flex w-full items-center justify-center overflow-hidden py-8 px-4 mb-8 max-h-80"
+      ref={containerRef}
+    >
+      <div className="flex items-center justify-between w-full max-w-6xl mx-auto">
+        
+        {/* Left Column: Input Nodes */}
+        <div className="flex flex-col items-center justify-center gap-6 lg:gap-8">
+          
+          {/* Location 1: Setup */}
           <div
             ref={location1Ref}
-            className="size-16 bg-card/80 backdrop-blur-sm absolute left-0 top-20 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
+            className="flex-shrink-0 z-10"
           >
-            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
-              <Building size={16} className="text-primary-foreground" />
+            <div className="dashboard-card-white tile-hover p-3 rounded-lg shadow-sm">
+              <div className="flex flex-col items-center gap-2 text-center min-w-[120px]">
+                <div className="w-10 h-10 rounded-md flex items-center justify-center dashboard-metric-blue">
+                  <Building className="size-7" />
+                </div>
+                <div>
+                  <h3 className="font-semibold dashboard-text-primary text-xs mb-1">Flagship Store</h3>
+                  <p className="text-xs dashboard-text-secondary">Downtown NYC</p>
+                </div>
+              </div>
             </div>
           </div>
-          
-          {/* Location 2 */}
+
+          {/* Location 2: Integration */}
           <div
             ref={location2Ref}
-            className="size-16 bg-card/80 backdrop-blur-sm absolute right-0 top-20 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
+            className="flex-shrink-0 z-10 transform translate-x-12"
           >
-            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
-              <Users size={16} className="text-primary-foreground" />
+            <div className="dashboard-card-white tile-hover p-3 rounded-lg shadow-sm">
+              <div className="flex flex-col items-center gap-2 text-center min-w-[120px]">
+                <div className="w-10 h-10 rounded-md flex items-center justify-center bg-purple-100">
+                  <Users className="text-purple-600 size-7" />
+                </div>
+                <div>
+                  <h3 className="font-semibold dashboard-text-primary text-xs mb-1">Franchise Network</h3>
+                  <p className="text-xs dashboard-text-secondary">Multi-location</p>
+                </div>
+              </div>
             </div>
           </div>
-          
-          {/* Location 3 */}
+
+          {/* Location 3: Optimization */}
           <div
             ref={location3Ref}
-            className="size-16 bg-card/80 backdrop-blur-sm absolute bottom-0 left-6 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
+            className="flex-shrink-0 z-10"
           >
-            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
-              <Shield size={16} className="text-primary-foreground" />
-            </div>
-          </div>
-          
-          {/* Location 4 */}
-          <div
-            ref={location4Ref}
-            className="size-16 bg-card/80 backdrop-blur-sm absolute bottom-0 right-6 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
-          >
-            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
-              <MapPin size={16} className="text-primary-foreground" />
-            </div>
-          </div>
-          
-          {/* Location 5 */}
-          <div
-            ref={location5Ref}
-            className="size-16 bg-card/80 backdrop-blur-sm absolute top-0 left-1/2 transform -translate-x-1/2 z-10 flex items-center justify-center rounded-full border border-primary/30 p-2"
-          >
-            <div className="bg-primary/70 flex size-8 items-center justify-center rounded-full">
-              <TrendingUp size={16} className="text-primary-foreground" />
+            <div className="dashboard-card-white tile-hover p-3 rounded-lg shadow-sm">
+              <div className="flex flex-col items-center gap-2 text-center min-w-[120px]">
+                <div className="w-10 h-10 rounded-md flex items-center justify-center bg-blue-100">
+                  <Shield className="text-blue-600 size-7" />
+                </div>
+                <div>
+                  <h3 className="font-semibold dashboard-text-primary text-xs mb-1">Corporate Locations</h3>
+                  <p className="text-xs dashboard-text-secondary">Enterprise</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        
-        {/* Central Hub */}
+
+        {/* Center: Operations Hub */}
         <div
           ref={centralRef}
-          className="bg-card/90 backdrop-blur-sm z-10 flex size-32 items-center justify-center rounded-3xl border border-primary/20 lg:size-40"
+          className="flex-shrink-0 z-10"
         >
-          <div className="text-center text-foreground">
-            <BarChart3 className="size-8 mx-auto mb-2" />
-            <div className="text-xs font-medium">OpsFlow</div>
-            <div className="text-xs opacity-80">Control Center</div>
+          <div className="dashboard-card-white tile-hover p-6 rounded-2xl shadow-lg">
+            <div className="flex flex-col items-center gap-4 text-center">
+              <div className="w-16 h-16 rounded-xl flex items-center justify-center bg-primary/10">
+                <BarChart3 className="text-primary size-8" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold dashboard-text-primary mb-1">
+                  Operations Hub
+                </h3>
+                <p className="dashboard-text-secondary text-sm max-w-[140px]">
+                  Centralized control center
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: Results */}
+        <div
+          ref={powerRef}
+          className="flex-shrink-0 z-10"
+        >
+          <div className="dashboard-card-white tile-hover p-4 rounded-xl shadow-sm">
+            <div className="flex flex-col items-center gap-3 text-center min-w-[120px]">
+              <div className="w-12 h-12 rounded-lg flex items-center justify-center bg-primary/10">
+                <Zap className="text-primary size-6" />
+              </div>
+              <div>
+                <h3 className="font-semibold dashboard-text-primary text-sm mb-1">Results</h3>
+                <p className="text-xs dashboard-text-secondary">Instant impact & ROI</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Animated Beams */}
-<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location1Ref} toRef={centralRef} />
-<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location2Ref} toRef={centralRef} />
-<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location3Ref} toRef={centralRef} />
-<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location4Ref} toRef={centralRef} />
-<AnimatedBeam duration={6} containerRef={containerRef} fromRef={location5Ref} toRef={centralRef} />
+      {/* Animated Beams - 3-1-1 Layout */}
+      <AnimatedBeam
+        duration={3}
+        delay={0}
+        pathColor="var(--primary)"
+        gradientStartColor="var(--primary-400)"
+        gradientStopColor="var(--secondary-400)"
+        containerRef={containerRef}
+        fromRef={location1Ref}
+        toRef={centralRef}
+      />
+      <AnimatedBeam
+        duration={3}
+        delay={0}
+        pathColor="var(--primary)"
+        gradientStartColor="var(--primary-400)"
+        gradientStopColor="var(--secondary-400)"
+        containerRef={containerRef}
+        fromRef={location2Ref}
+        toRef={centralRef}
+      />
+      <AnimatedBeam
+        duration={3}
+        delay={0}
+        pathColor="var(--primary)"
+        gradientStartColor="var(--primary-400)"
+        gradientStopColor="var(--secondary-400)"
+        containerRef={containerRef}
+        fromRef={location3Ref}
+        toRef={centralRef}
+      />
+      <AnimatedBeam
+        duration={3}
+        delay={0.9}
+        pathColor="var(--secondary)"
+        gradientStartColor="var(--secondary-400)"
+        gradientStopColor="var(--primary-400)"
+        containerRef={containerRef}
+        fromRef={centralRef}
+        toRef={powerRef}
+      />
     </div>
   );
 };
-
-function getLocationTypeColor(type: string) {
-  switch (type) {
-    case "flagship": return "bg-purple-100 text-purple-800 border-purple-200";
-    case "franchise": return "bg-blue-100 text-blue-800 border-blue-200";
-    case "corporate": return "bg-green-100 text-green-800 border-green-200";
-    default: return "bg-muted text-foreground border-border";
-  }
-}
-
-function getLocationTypeIcon(type: string) {
-  switch (type) {
-    case "flagship": return <Building className="h-4 w-4" />;
-    case "franchise": return <Users className="h-4 w-4" />;
-    case "corporate": return <Shield className="h-4 w-4" />;
-    default: return <MapPin className="h-4 w-4" />;
-  }
-}
 
 export type { RestaurantLocation, FeatureCarouselProps };

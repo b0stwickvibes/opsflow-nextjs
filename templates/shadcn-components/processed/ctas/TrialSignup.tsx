@@ -1,211 +1,293 @@
 "use client";
 
-import { Zap, Shield, Users, ArrowRight } from "lucide-react";
-import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
+import { Zap, Shield, Users, ArrowRight, Trophy, Lock, Phone, BarChart3, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
-interface TrialSignupProps {
+export type TrialSignupProps = {
   industry?: "restaurants" | "bars" | "coffee" | "hotels";
-}
+  heading?: string;
+  subheading?: string;
+  badgeText?: string;
+  ctaText?: string;
+  onStartTrial?: () => void;
+  onWatchDemo?: () => void;
+  className?: string;
+};
 
-export function TrialSignup({ industry = "restaurants" }: TrialSignupProps) {
-  const { trackEvent } = useRestaurantAnalytics();
+/**
+ * Trial Signup Component
+ * Professional trial signup CTA with restaurant operations focus
+ * Uses enterprise styling system with OKLCH token system
+ */
+export function TrialSignup({ 
+  industry = "restaurants",
+  heading,
+  subheading,
+  badgeText,
+  ctaText,
+  onStartTrial,
+  onWatchDemo,
+  className
+}: TrialSignupProps) {
 
-  const industryConfig = {
-    restaurants: {
-      color: "oklch(0.70 0.15 25)",
-      title: "Start Your Restaurant Transformation Today",
-      subtitle: "14-day free trial with full access to all restaurant operations features",
-      features: [
-        {
-          icon: Shield,
-          title: "HACCP Compliance",
-          description: "Automated temperature logging and compliance tracking"
-        },
-        {
-          icon: Users,
-          title: "Staff Coordination",
-          description: "Seamless kitchen and front-of-house communication"
-        },
-        {
-          icon: Zap,
-          title: "Real-time Insights",
-          description: "Live operational dashboards and performance metrics"
-        }
-      ],
-      ctaText: "Start Free Restaurant Trial",
-      benefits: [
-        "Setup in under 30 minutes",
-        "No credit card required",
-        "Cancel anytime",
-        "Full support during trial"
-      ]
-    },
-    bars: {
-      color: "oklch(0.60 0.20 270)",
-      title: "Transform Your Bar Operations",
-      subtitle: "14-day free trial with complete bar management features",
-      ctaText: "Start Free Bar Trial"
-    },
-    coffee: {
-      color: "oklch(0.65 0.18 80)",
-      title: "Perfect Your Coffee Operations",
-      subtitle: "14-day free trial with all coffee shop optimization tools",
-      ctaText: "Start Free Coffee Trial"
-    },
-    hotels: {
-      color: "oklch(0.55 0.15 210)",
-      title: "Elevate Your Hotel Operations",
-      subtitle: "14-day free trial with comprehensive hotel management features",
-      ctaText: "Start Free Hotel Trial"
+  const getIndustryConfig = () => {
+    const configs = {
+      restaurants: {
+        heading: "Start Your Restaurant Transformation Today",
+        subheading: "Get full access to HACCP compliance, staff management, temperature monitoring, and cost reduction tools. No credit card required.",
+        badgeText: "Free 14-Day Trial",
+        ctaText: "Start Free Restaurant Trial",
+        features: [
+          {
+            icon: Shield,
+            title: "HACCP Compliance",
+            description: "Automated temperature logging and compliance tracking"
+          },
+          {
+            icon: Users,
+            title: "Staff Coordination", 
+            description: "Seamless kitchen and front-of-house communication"
+          },
+          {
+            icon: Zap,
+            title: "Real-time Insights",
+            description: "Live operational dashboards and performance metrics"
+          }
+        ]
+      },
+      bars: {
+        heading: "Transform Your Bar Operations",
+        subheading: "Get full access to inventory management, compliance tracking, and staff coordination tools. No credit card required.",
+        badgeText: "Free 14-Day Trial",
+        ctaText: "Start Free Bar Trial",
+        features: [
+          {
+            icon: Shield,
+            title: "Inventory Management",
+            description: "Automated stock tracking and ordering systems"
+          },
+          {
+            icon: Users,
+            title: "Staff Management",
+            description: "Streamlined scheduling and performance tracking"
+          },
+          {
+            icon: Zap,
+            title: "Real-time Analytics",
+            description: "Live operational dashboards and insights"
+          }
+        ]
+      },
+      coffee: {
+        heading: "Perfect Your Coffee Shop Operations",
+        subheading: "Get full access to quality control, equipment monitoring, and multi-location management tools. No credit card required.",
+        badgeText: "Free 14-Day Trial",
+        ctaText: "Start Free Coffee Trial",
+        features: [
+          {
+            icon: Shield,
+            title: "Quality Control",
+            description: "Automated brewing and temperature monitoring"
+          },
+          {
+            icon: Users,
+            title: "Staff Training",
+            description: "Barista training and performance tracking"
+          },
+          {
+            icon: Zap,
+            title: "Real-time Metrics",
+            description: "Live operational dashboards and analytics"
+          }
+        ]
+      },
+      hotels: {
+        heading: "Elevate Your Hotel Operations",
+        subheading: "Get full access to multi-outlet management, guest services, and staff coordination tools. No credit card required.",
+        badgeText: "Free 14-Day Trial",
+        ctaText: "Start Free Hotel Trial",
+        features: [
+          {
+            icon: Shield,
+            title: "Guest Services",
+            description: "Automated guest service and satisfaction tracking"
+          },
+          {
+            icon: Users,
+            title: "Staff Coordination",
+            description: "Seamless communication across all departments"
+          },
+          {
+            icon: Zap,
+            title: "Real-time Insights",
+            description: "Live operational dashboards and performance metrics"
+          }
+        ]
+      }
+    };
+
+    return configs[industry] || configs.restaurants;
+  };
+
+  const config = getIndustryConfig();
+
+  const handleStartTrial = () => {
+    if (onStartTrial) {
+      onStartTrial();
+    } else {
+      console.log(`Trial started for ${industry}`);
     }
   };
 
-  const config = industryConfig[industry];
-
-  const handleStartTrial = () => {
-    trackEvent("trial_signup_click", {
-      industry,
-      source: "trial_cta"
-    });
-    window.location.href = `/start-trial?industry=${industry}&source=cta`;
-  };
-
   const handleWatchDemo = () => {
-    trackEvent("trial_demo_click", {
-      industry,
-      source: "trial_cta"
-    });
-    window.location.href = `/schedule-demo?industry=${industry}&source=trial_cta`;
+    if (onWatchDemo) {
+      onWatchDemo();
+    } else {
+      console.log(`Demo requested for ${industry}`);
+    }
   };
+
+  const benefits = [
+    "Setup in under 30 minutes",
+    "No credit card required", 
+    "Cancel anytime",
+    "Full support during trial"
+  ];
 
   return (
-    <section className="section-marketing">
-      <div className="container">
-        <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
-            <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 bg-primary text-primary-foreground"
-            >
-              <Zap className="size-4" />
-              <span className="text-sm font-medium">Free 14-Day Trial</span>
-            </div>
-            
-            <h2 className="heading-brand-gradient enterprise-headline text-3xl md: font-bold mb-4">
-              {config.title}
-            </h2>
-            
-            <p className="enterprise-body  text-muted-foreground max-w-3xl mx-auto">
-              {config.subtitle}
-            </p>
-          </div>
+    <div className={cn("max-w-6xl mx-auto px-4 py-16 space-y-16", className)}>
+      
+      {/* Header */}
+      <div className="text-center space-y-6">
+        <Badge className="clerk-inspired-badge">
+          <Zap className="size-4" />
+          {badgeText || config.badgeText}
+        </Badge>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="grid gap-8">
-                {Array.isArray((config as any).features)
-                  ? (((config as any).features as any[]).map((feature: any, index: number) => (
-                    <div 
-                      key={index}
-                      className="flex items-start gap-4 p-4 rounded-lg bg-background border hover:shadow-md transition-shadow"
-                    >
-                      <div 
-                        className="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center bg-primary/10"
-                      >
-                        <feature.icon 
-                          className="size-6 text-primary" 
-                        />
-                      </div>
-                      <div>
-                        <h3 className="enterprise-body font-semibold  mb-2">{feature.title}</h3>
-                        <p className="text-muted-foreground">{feature.description}</p>
-                      </div>
-                    </div>
-                  )))
-                  : (
-                    <div className="space-y-6">
-                      <h3 className="text-2xl font-semibold">Why Choose OpsFlow?</h3>
-                      <ul className="space-y-3">
-                        <li className="flex items-center gap-3">
-                          <Shield className="size-5 text-primary" />
-                          <span>Industry-specific compliance tools</span>
-                        </li>
-                        <li className="flex items-center gap-3">
-                          <Users className="size-5 text-primary" />
-                          <span>Seamless team coordination</span>
-                        </li>
-                        <li className="flex items-center gap-3">
-                          <Zap className="size-5 text-primary" />
-                          <span>Real-time operational insights</span>
-                        </li>
-                      </ul>
-                    </div>
-                  )}
-              </div>
-            </div>
+        <h2 className="enterprise-headline">
+          <span className="text-brand-gradient">{heading || config.heading}</span>
+        </h2>
 
-            <div>
+        <p className="enterprise-body max-w-3xl mx-auto">
+          {subheading || config.subheading}
+        </p>
+      </div>
+
+      <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div>
+          <div className="grid gap-8">
+            {config.features.map((feature, index) => (
               <div 
-                className="bg-background rounded-2xl p-8 border border-primary/30 shadow-lg"
+                key={index}
+                className="enterprise-card p-6 hover:shadow-md transition-shadow"
               >
-                <div className="text-center mb-8">
-                  <h3 className="text-2xl font-bold mb-4">Ready to Get Started?</h3>
-                  <p className="text-muted-foreground mb-6">
-                    Join thousands of {industry} operations already using OpsFlow
-                  </p>
-                  
-                  <Button
-                    onClick={handleStartTrial}
-                    size="lg"
-                    className="cta-shimmer w-full bg-primary text-primary-foreground font-semibold hover:scale-105 transition-transform mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                  >
-                    {config.ctaText}
-                    <ArrowRight className="ml-2 size-4" />
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    onClick={handleWatchDemo}
-                    size="lg"
-                    className="w-full border-primary text-primary"
-                  >
-                    Watch Demo First
-                  </Button>
-                </div>
-
-                <div className="space-y-3 text-center">
-                  {((config as any).benefits || [
-                    "Setup in under 30 minutes",
-                    "No credit card required", 
-                    "Cancel anytime",
-                    "Full support during trial"
-]).map((benefit: any, index: number) => (
-                    <div key={index} className="flex items-center justify-center gap-2 text-sm text-muted-foreground">
-                      <div 
-                        className="w-2 h-2 rounded-full bg-primary" 
-                      />
-                      <span>{benefit}</span>
-                    </div>
-                  ))}
+                <div className="flex items-start gap-4">
+                  <div className="enterprise-icon-primary">
+                    <feature.icon className="size-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-2">{feature.title}</h3>
+                    <p className="text-muted-foreground">{feature.description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
+        </div>
 
-          <div className="mt-16 text-center">
-            <p className="text-muted-foreground mb-4">
-              Trusted by leading {industry} operations worldwide
-            </p>
-            <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
-              <span>🏆 Industry Leader</span>
-              <span>🔒 SOC 2 Certified</span>
-              <span>📞 24/7 Support</span>
-              <span>📊 99.9% Uptime</span>
+        <div>
+          <div className="enterprise-card p-8">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-50 border border-primary-200 mb-4">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                <span className="text-xs font-medium text-primary">Available now</span>
+              </div>
+              
+              <h3 className="text-2xl font-bold mb-3">
+                Ready to Get Started?
+              </h3>
+              <p className="text-muted-foreground mb-6 text-sm leading-relaxed">
+                Join thousands of {industry} operations already transforming with OpsFlow
+              </p>
+              
+              <Button
+                onClick={handleStartTrial}
+                size="lg"
+                className="w-full clerk-cta-primary mb-3"
+              >
+                <span className="flex items-center gap-2">
+                  {ctaText || config.ctaText}
+                  <ArrowRight className="size-4" />
+                </span>
+              </Button>
+              
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-border/30" />
+                </div>
+                <div className="relative flex justify-center text-xs">
+                  <span className="bg-card px-3 text-muted-foreground/60">or</span>
+                </div>
+              </div>
+              
+              <Button
+                variant="outline"
+                onClick={handleWatchDemo}
+                size="lg"
+                className="w-full mt-3 group"
+              >
+                <div className="flex items-center gap-2">
+                  <div className="relative">
+                    <Calendar className="size-4 text-secondary group-hover:text-secondary-600 transition-colors" />
+                    <div className="absolute -top-1 -right-1 w-2 h-2 bg-secondary rounded-full animate-pulse" />
+                  </div>
+                  <span className="font-medium">Schedule Demo</span>
+                </div>
+              </Button>
+            </div>
+
+            <div className="space-y-3">
+              <div className="text-center mb-3">
+                <span className="text-xs font-medium text-muted-foreground/60 uppercase tracking-wide">What's included</span>
+              </div>
+              {benefits.map((benefit, index) => (
+                <div key={index} className="flex items-center gap-3 text-sm text-muted-foreground">
+                  <div className="flex-shrink-0 w-5 h-5 rounded-full bg-primary-50 border border-primary-200 flex items-center justify-center">
+                    <div className="w-2 h-2 rounded-full bg-primary" />
+                  </div>
+                  <span>{benefit}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
-};
 
+      <div className="text-center">
+        <p className="text-muted-foreground mb-4">
+          Trusted by leading {industry} operations worldwide
+        </p>
+        <div className="flex justify-center items-center space-x-8 text-sm text-muted-foreground">
+          <span className="flex items-center gap-1">
+            <Trophy className="h-4 w-4" />
+            Industry Leader
+          </span>
+          <span className="flex items-center gap-1">
+            <Lock className="h-4 w-4" />
+            SOC 2 Certified
+          </span>
+          <span className="flex items-center gap-1">
+            <Phone className="h-4 w-4" />
+            24/7 Support
+          </span>
+          <span className="flex items-center gap-1">
+            <BarChart3 className="h-4 w-4" />
+            99.9% Uptime
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}

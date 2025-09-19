@@ -179,7 +179,7 @@ export const featureAssets: AssetCollection = {
     tags: ['cold-storage','temperature']
   },
   taskCompletion: {
-    src: '/images/marketing/features/task-completion-feature-01.webp',
+    src: '/images/features/twelve-scheduling-interface-concept.webp',
     alt: 'Kitchen team completing closing procedures with digital task tracking and verification',
     width: 1600,
     height: 1200,
@@ -195,7 +195,7 @@ export const featureAssets: AssetCollection = {
 export const industryAssets = {
   restaurants: {
     fullServiceDining: {
-    src: '/images/industries/restaurants/full-service-dining-01.webp',
+      src: '/images/features/ten-storage-monitoring-system.webp',
       alt: 'Busy full-service restaurant kitchen with coordinated team using digital management systems',
       width: 1600,
       height: 1200,
@@ -203,7 +203,7 @@ export const industryAssets = {
       priority: 'high' as const
     },
     fastCasual: {
-      src: '/images/industries/restaurants/fast-casual-ops-01.webp',
+      src: '/images/features/eleven-reporting-analytics-visual.webp',
       alt: 'Fast-casual restaurant kitchen with streamlined operations and digital order management',
       width: 1600,
       height: 1200,
@@ -213,7 +213,7 @@ export const industryAssets = {
   },
   coffee: {
     coffeeShopOps: {
-      src: '/images/industries/coffee/coffee-shop-ops-01.webp',
+      src: '/images/features/twelve-scheduling-interface-concept.webp',
       alt: 'Coffee shop team managing operations with tablet-based systems and quality control',
       width: 1600,
       height: 1200,
@@ -223,7 +223,7 @@ export const industryAssets = {
   },
   bars: {
     barOperations: {
-      src: '/images/industries/bars/bar-operations-01.webp',
+      src: '/images/features/eleven-reporting-analytics-visual.webp',
       alt: 'Professional bar staff managing inventory and compliance with digital systems',
       width: 1600,
       height: 1200,
@@ -233,7 +233,7 @@ export const industryAssets = {
   },
   hotels: {
     hotelDining: {
-      src: '/images/industries/hotels/hotel-dining-ops-01.webp',
+      src: '/images/features/twelve-scheduling-interface-concept.webp',
       alt: 'Hotel restaurant kitchen with multi-venue management systems and compliance tracking',
       width: 1600,
       height: 1200,

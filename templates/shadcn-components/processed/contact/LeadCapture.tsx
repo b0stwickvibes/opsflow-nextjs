@@ -1,30 +1,23 @@
 "use client";
 
-import { Facebook, Linkedin, Twitter, MapPin, Mail } from "lucide-react";
+import { Facebook, Linkedin, Twitter, MapPin, Mail, ArrowRight } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
-import type { IndustryType, RoleType } from "@/types/restaurant-pages";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-interface LeadCaptureProps {
-  industry?: IndustryType | 'general';
-  role?: RoleType | 'general';
+export type LeadCaptureProps = {
+  industry?: 'restaurants' | 'bars' | 'coffee' | 'hotels';
   heading?: string;
   subheading?: string;
-  officeTitle?: string;
-  officeAddress?: string;
-  emailTitle?: string;
-  followTitle?: string;
-  formTitle?: string;
-  submitText?: string;
+  badgeText?: string;
   onSubmit?: (data: LeadFormData) => void;
   className?: string;
-}
+};
 
 interface LeadFormData {
   fullName: string;
@@ -32,167 +25,81 @@ interface LeadFormData {
   company: string;
   employees: string;
   message: string;
-  industry?: IndustryType | 'general';
-  role?: RoleType | 'general';
 }
 
-interface FormField {
-  label: string;
-  name: keyof LeadFormData;
-  placeholder: string;
-  type: 'text' | 'email' | 'textarea';
-  optional?: boolean;
-  options?: string[];
-}
-
+/**
+ * Lead Capture Component
+ * Clean lead generation form with restaurant operations focus
+ * Uses enterprise styling system with OKLCH token system
+ */
 export function LeadCapture({
   industry = 'restaurants',
-  role = 'general',
-  heading = "Get Started with OpsFlow",
-  subheading = "Transform your restaurant operations with our comprehensive platform",
-  officeTitle = "Headquarters",
-  officeAddress = "1 Innovation Drive\nSuite 200, San Francisco, CA 94105",
-  emailTitle = "Contact Us",
-  followTitle = "Connect",
-  formTitle = "Request a Demo",
-  submitText = "Submit Request",
+  heading = "Start Your Restaurant Operations Transformation",
+  subheading = "Join hundreds of restaurants using OpsFlow to streamline operations, ensure compliance, and reduce costs. Get started with a personalized demo.",
+  badgeText = "Get Started",
   onSubmit,
   className,
 }: LeadCaptureProps) {
-  const { trackInteraction } = useRestaurantAnalytics();
   const [formData, setFormData] = useState<LeadFormData>({
     fullName: '',
     email: '',
     company: '',
     employees: '',
     message: '',
-    industry,
-    role,
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const getIndustrySpecificContent = () => {
+  const getIndustryContent = () => {
     const content = {
       restaurants: {
-        subheading: "Streamline your restaurant operations with industry-leading technology",
-        formTitle: "Restaurant Demo Request",
-        emailCategories: [
-          { category: "Restaurant Sales", email: "sales@opsflow.com" },
-          { category: "Technical Support", email: "support@opsflow.com" }
-        ],
         employeeOptions: [
           "1-10 employees",
           "11-50 employees", 
           "51-200 employees",
           "200+ employees"
-        ]
+        ],
+        companyLabel: "Restaurant Name",
+        companyPlaceholder: "Your restaurant name",
+        messagePlaceholder: "Tell us about your restaurant operations needs - HACCP compliance, staff management, temperature monitoring, etc."
       },
       bars: {
-        subheading: "Optimize your bar operations with specialized management tools",
-        formTitle: "Bar Operations Demo",
-        emailCategories: [
-          { category: "Bar Solutions", email: "bars@opsflow.com" },
-          { category: "Support", email: "support@opsflow.com" }
-        ],
         employeeOptions: [
           "1-15 staff",
           "16-40 staff",
           "41-100 staff", 
           "100+ staff"
-        ]
+        ],
+        companyLabel: "Bar/Venue Name",
+        companyPlaceholder: "Your bar name",
+        messagePlaceholder: "Describe your bar management requirements - inventory control, staff scheduling, compliance tracking, etc."
       },
       coffee: {
-        subheading: "Enhance your coffee shop operations with smart automation",
-        formTitle: "Coffee Shop Demo",
-        emailCategories: [
-          { category: "Coffee Solutions", email: "coffee@opsflow.com" },
-          { category: "Support", email: "support@opsflow.com" }
-        ],
         employeeOptions: [
           "1-8 baristas",
           "9-25 baristas",
           "26-60 baristas",
           "60+ baristas"
-        ]
+        ],
+        companyLabel: "Coffee Shop Name",
+        companyPlaceholder: "Your coffee shop name",
+        messagePlaceholder: "Share your coffee shop challenges - quality control, equipment monitoring, peak hour management, etc."
       },
       hotels: {
-        subheading: "Elevate your hotel dining operations with integrated solutions",
-        formTitle: "Hotel Dining Demo",
-        emailCategories: [
-          { category: "Hospitality Sales", email: "hotels@opsflow.com" },
-          { category: "Support", email: "support@opsflow.com" }
-        ],
         employeeOptions: [
           "Boutique (1-50 rooms)",
           "Mid-scale (51-150 rooms)",
           "Full-service (151-400 rooms)",
           "Resort/Large (400+ rooms)"
-        ]
-      },
-      general: {
-        subheading: "Optimize your business operations with our platform",
-        formTitle: "Demo Request",
-        emailCategories: [
-          { category: "Sales", email: "sales@opsflow.com" },
-          { category: "Support", email: "support@opsflow.com" }
         ],
-        employeeOptions: [
-          "1-10 employees",
-          "11-50 employees",
-          "51-200 employees",
-          "200+ employees"
-        ]
-      }
+        companyLabel: "Hotel Name",
+        companyPlaceholder: "Your hotel name",
+        messagePlaceholder: "Explain your hotel dining requirements - multi-venue management, guest experience, compliance coordination, etc."
+      },
     };
-    return content[industry as keyof typeof content] || content.general;
+    return content[industry] || content.restaurants;
   };
 
-  const industryContent = getIndustrySpecificContent();
-
-  const getFormFields = (): FormField[] => [
-    {
-      label: "Full name",
-      name: "fullName",
-      placeholder: "First and last name",
-      type: "text",
-    },
-    {
-      label: "Business email address",
-      name: "email",
-      placeholder: "me@company.com",
-      type: "email",
-    },
-    {
-      label: industry === 'restaurants' ? 'Restaurant name' :
-             industry === 'bars' ? 'Bar/Venue name' :
-             industry === 'coffee' ? 'Coffee shop name' :
-             industry === 'hotels' ? 'Hotel name' : 'Company name',
-      name: "company",
-      placeholder: industry === 'restaurants' ? 'Restaurant name' :
-                   industry === 'bars' ? 'Bar name' :
-                   industry === 'coffee' ? 'Coffee shop name' :
-                   industry === 'hotels' ? 'Hotel name' : 'Company name',
-      type: "text",
-      optional: true,
-    },
-    {
-      label: industry === 'hotels' ? 'Property size' : 'Number of employees',
-      name: "employees",
-      placeholder: industry === 'hotels' ? 'Select property size' : 'Select business size',
-      type: "text",
-      optional: true,
-      options: industryContent.employeeOptions,
-    },
-    {
-      label: "Your message",
-      name: "message",
-      placeholder: industry === 'restaurants' ? 'Tell us about your restaurant operations needs' :
-                   industry === 'bars' ? 'Describe your bar management requirements' :
-                   industry === 'coffee' ? 'Share your coffee shop challenges' :
-                   industry === 'hotels' ? 'Explain your hotel dining requirements' : 'Write your message',
-      type: "textarea",
-    },
-  ];
+  const industryContent = getIndustryContent();
 
   const handleInputChange = (name: keyof LeadFormData, value: string) => {
     setFormData(prev => ({ ...prev, [name]: value }));
@@ -202,191 +109,258 @@ export function LeadCapture({
     e.preventDefault();
     setIsSubmitting(true);
 
-    trackInteraction('lead_capture_submit', {
-      industry,
-      role,
-      company_size: formData.employees,
-      has_company: !!formData.company,
-      form_type: 'lead_capture',
-    });
-
     try {
       if (onSubmit) {
         await onSubmit(formData);
       } else {
-        // Default submission logic
         console.log('Lead captured:', formData);
       }
     } catch (error) {
       console.error('Lead capture error:', error);
-      trackInteraction('lead_capture_error', {
-        industry,
-        role,
-        error: 'submission_failed',
-      });
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const handleSocialClick = (platform: string) => {
-    trackInteraction('lead_capture_social_click', {
-      industry,
-      role,
-      platform,
-    });
-  };
-
-  const handleEmailClick = (category: string) => {
-    trackInteraction('lead_capture_email_click', {
-      industry,
-      role,
-      category,
-    });
-  };
-
-  const formFields = getFormFields();
-
   return (
-    <section className={cn("py-32", className)}>
-      <div className="container max-w-4xl">
-        <h1 
-          className="text-display-2xl enterprise-headline text-center  font-semibold tracking-tight sm:"
-          role="heading"
-          aria-level={1}
-        >
-          {heading}
+    <div className={cn("max-w-6xl mx-auto px-4 py-16 space-y-16", className)}>
+      {/* Header Section */}
+      <div className="text-center space-y-6">
+        <Badge className="clerk-inspired-badge">
+          <ArrowRight className="size-4" />
+          {badgeText}
+        </Badge>
+
+        <h1 className="enterprise-headline">
+          <span className="text-brand-gradient">{heading}</span>
         </h1>
-        <p className="mt-4 text-center text-muted-foreground">
-          {industryContent.subheading}
+
+        <p className="enterprise-body max-w-3xl mx-auto">
+          {subheading}
         </p>
+      </div>
 
-        <div className="mt-8 flex gap-10 max-md:flex-col md:mt-12 md:divide-x">
-          {/* Contact Information */}
-          <div className="space-y-10 pr-10 md:gap-20">
-            <div>
-              <h2 className="enterprise-body  font-semibold flex items-center gap-2">
-                <MapPin className="size-4" aria-hidden="true" />
-                {officeTitle}
-              </h2>
-              <p className="mt-3 font-medium tracking-tight text-muted-foreground whitespace-pre-line">
-                {officeAddress}
-              </p>
-            </div>
-
-            <div>
-              <h2 className="enterprise-body  font-semibold flex items-center gap-2">
-                <Mail className="size-4" aria-hidden="true" />
-                {emailTitle}
-              </h2>
-              <div className="mt-3 space-y-2">
-                {industryContent.emailCategories.map((category, index) => (
-                  <div key={index}>
-                    <p className="text-primary font-medium">{category.category}</p>
-                    <a
-                      href={`mailto:${category.email}`}
-                      className="mt-1 block tracking-tight text-muted-foreground hover:text-foreground transition-colors"
-                      onClick={() => handleEmailClick(category.category)}
-                    >
-                      {category.email}
-                    </a>
-                  </div>
-                ))}
+      {/* Main Content Grid */}
+      <div className="grid lg:grid-cols-5 gap-12">
+        
+        {/* Left Column - Benefits & Contact Info */}
+        <div className="lg:col-span-2 space-y-8">
+          
+          {/* Key Benefits */}
+          <div className="enterprise-card p-6">
+            <h2 className="text-display-sm font-semibold mb-4">
+              Why Choose OpsFlow?
+            </h2>
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-3 h-3 text-primary-foreground" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium">HACCP Compliance Made Easy</p>
+                  <p className="text-sm text-muted-foreground">Automated temperature logs and audit trails</p>
+                </div>
               </div>
-            </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-3 h-3 text-primary-foreground" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium">Reduce Labor Costs by 25%</p>
+                  <p className="text-sm text-muted-foreground">Smart scheduling and task automation</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-3 h-3 text-primary-foreground" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium">99.8% Health Inspection Pass Rate</p>
+                  <p className="text-sm text-muted-foreground">Real-time monitoring and alerts</p>
+                </div>
+              </div>
 
-            <div>
-              <h2 className="enterprise-body  font-semibold">{followTitle}</h2>
-              <div className="mt-3 flex gap-6">
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => handleSocialClick('facebook')}
-                  aria-label="Follow us on Facebook"
-                >
-                  <Facebook className="size-6" />
-                </a>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => handleSocialClick('twitter')}
-                  aria-label="Follow us on Twitter"
-                >
-                  <Twitter className="size-6" />
-                </a>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                  onClick={() => handleSocialClick('linkedin')}
-                  aria-label="Follow us on LinkedIn"
-                >
-                  <Linkedin className="size-6" />
-                </a>
+              <div className="flex items-start gap-3">
+                <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                  <svg className="w-3 h-3 text-primary-foreground" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="font-medium">Setup in Under 48 Hours</p>
+                  <p className="text-sm text-muted-foreground">White-glove onboarding and training</p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Lead Capture Form */}
-          <div className="flex-1 pl-0 md:pl-10">
-            <h2 className="enterprise-body  font-semibold">{industryContent.formTitle}</h2>
-            <form className="mt-5 space-y-5" onSubmit={handleSubmit}>
-              {formFields.map((field) => (
-                <div key={field.name} className="space-y-2">
-                  <Label htmlFor={field.name}>
-                    {field.label}
-                    {field.optional && (
-                      <span className="text-muted-foreground/60">
-                        {" "}
-                        (optional)
-                      </span>
-                    )}
-                  </Label>
-                  {field.type === "textarea" ? (
-                    <Textarea
-                      id={field.name}
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      className="min-h-[120px] resize-none"
-                      value={formData[field.name]}
-                      onChange={(e) => handleInputChange(field.name, e.target.value)}
-                      required={!field.optional}
-                    />
-                  ) : (
-                    <Input
-                      id={field.name}
-                      type={field.type}
-                      name={field.name}
-                      placeholder={field.placeholder}
-                      list={field.options ? `${field.name}-options` : undefined}
-                      value={formData[field.name]}
-                      onChange={(e) => handleInputChange(field.name, e.target.value)}
-                      required={!field.optional}
-                    />
-                  )}
-                  {field.options && (
-                    <datalist id={`${field.name}-options`}>
-                      {field.options.map((option, index) => (
-                        <option key={index} value={option} />
-                      ))}
-                    </datalist>
-                  )}
+          {/* Contact Information */}
+          <div className="enterprise-card p-6">
+            <h3 className="font-semibold mb-4">Contact Information</h3>
+            
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <MapPin className="size-5 text-muted-foreground" />
+                <div>
+                  <p className="text-sm font-medium">San Francisco HQ</p>
+                  <p className="text-sm text-muted-foreground">1 Innovation Drive, Suite 200</p>
                 </div>
-              ))}
-
-              <div className="flex justify-end">
-                <Button 
-                  type="submit" 
-                  size="lg" 
-                  disabled={isSubmitting}
-                  className="min-w-[140px]"
-                >
-                  {isSubmitting ? 'Submitting...' : submitText}
-                </Button>
               </div>
+              
+              <div className="flex items-center gap-3">
+                <Mail className="size-5 text-muted-foreground" />
+                <div>
+                  <p className="text-sm font-medium">Sales Team</p>
+                  <a 
+                    href="mailto:sales@opsflow.com" 
+                    className="text-sm text-primary hover:text-primary-600"
+                  >
+                    sales@opsflow.com
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t">
+              <p className="text-sm font-medium mb-3">Follow Us</p>
+              <div className="flex gap-3">
+                <a
+                  href="#"
+                  className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary-50 hover:text-primary transition-colors"
+                >
+                  <Linkedin className="size-4" />
+                </a>
+                <a
+                  href="#"
+                  className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary-50 hover:text-primary transition-colors"
+                >
+                  <Twitter className="size-4" />
+                </a>
+                <a
+                  href="#"
+                  className="w-8 h-8 bg-muted rounded-lg flex items-center justify-center text-muted-foreground hover:bg-primary-50 hover:text-primary transition-colors"
+                >
+                  <Facebook className="size-4" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column - Lead Form */}
+        <div className="lg:col-span-3">
+          <div className="enterprise-card p-8">
+            <div className="mb-6">
+              <h2 className="text-display-sm font-semibold mb-2">
+                Get Your Personalized Demo
+              </h2>
+              <p className="text-muted-foreground">
+                See how OpsFlow can transform your restaurant operations in just 30 minutes.
+              </p>
+            </div>
+
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="fullName">
+                    Full Name *
+                  </Label>
+                  <Input 
+                    id="fullName"
+                    placeholder="Your full name" 
+                    value={formData.fullName}
+                    onChange={(e) => handleInputChange('fullName', e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="email">
+                    Business Email *
+                  </Label>
+                  <Input 
+                    id="email"
+                    placeholder="you@restaurant.com" 
+                    type="email" 
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="company">
+                    {industryContent.companyLabel}
+                  </Label>
+                  <Input 
+                    id="company"
+                    placeholder={industryContent.companyPlaceholder}
+                    value={formData.company}
+                    onChange={(e) => handleInputChange('company', e.target.value)}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="employees">
+                    {industry === 'hotels' ? 'Property Size' : 'Team Size'}
+                  </Label>
+                  <select 
+                    id="employees"
+                    value={formData.employees}
+                    onChange={(e) => handleInputChange('employees', e.target.value)}
+                    className="w-full px-3 py-2 border border-input rounded-md focus:border-primary focus:ring-1 focus:ring-primary bg-background"
+                  >
+                    <option value="">Select size</option>
+                    {industryContent.employeeOptions.map((option, index) => (
+                      <option key={index} value={option}>
+                        {option}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="message">
+                  Tell Us About Your Needs
+                </Label>
+                <Textarea
+                  id="message"
+                  placeholder={industryContent.messagePlaceholder}
+                  className="min-h-[100px] resize-none"
+                  value={formData.message}
+                  onChange={(e) => handleInputChange('message', e.target.value)}
+                />
+              </div>
+
+              <Button 
+                size="lg" 
+                type="submit" 
+                disabled={isSubmitting}
+                className="w-full clerk-cta-primary"
+              >
+                {isSubmitting ? 'Requesting Demo...' : 'Request Demo'}
+                <ArrowRight className="size-4 ml-2" />
+              </Button>
+
+              <p className="text-xs text-muted-foreground text-center">
+                By submitting this form, you agree to receive communications from OpsFlow. 
+                We respect your privacy and will never sell your information.
+              </p>
             </form>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

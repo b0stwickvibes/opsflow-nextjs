@@ -4,6 +4,7 @@ import { ArrowRight, BookOpen, HelpCircle, Code2, Shield, Zap, Users } from "luc
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Section, SectionContent } from "@/components/shared/layout";
 
 export const metadata: Metadata = {
   title: "Documentation — OpsFlow AI",
@@ -60,34 +61,37 @@ export default function DocsHomePage() {
     <div className="min-h-screen bg-background">
       {/* Header - matches your unified docs system */}
       <header className="border-b border-border bg-background/95 backdrop-blur">
-        <div className="container mx-auto px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
-            <div className="text-xl font-bold">
-              opsflow <span className="font-normal text-muted-foreground">DOCS</span>
+        <Section padding="none">
+          <SectionContent>
+            <div className="flex h-16 items-center justify-between">
+              <div className="text-xl font-bold">
+                opsflow <span className="font-normal text-muted-foreground">DOCS</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Button variant="ghost" size="sm">Create account</Button>
+                <Button variant="ghost" size="sm">Sign in</Button>
+              </div>
             </div>
-            <div className="flex items-center gap-3">
-              <Button variant="ghost" size="sm">Create account</Button>
-              <Button variant="ghost" size="sm">Sign in</Button>
-            </div>
-          </div>
-        </div>
+          </SectionContent>
+        </Section>
       </header>
 
-      <main className="container mx-auto px-6 lg:px-8 py-16">
-        {/* Hero Section */}
-        <div className="text-center mb-16">
-          <Badge variant="secondary" className="mb-4">Documentation Hub</Badge>
-          <h1 className="text-4xl font-bold tracking-tight text-foreground lg:text-5xl mb-6">
-            OpsFlow Documentation
-          </h1>
-          <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-            Everything you need to implement restaurant operations management with OpsFlow AI. 
-            From quick setup guides to comprehensive API documentation.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" asChild>
-              <Link href="/docs/getting-started/introduction">
+      <Section padding="xl">
+        <SectionContent maxWidth="6xl">
+          {/* Hero Section */}
+          <div className="text-center mb-16">
+            <Badge variant="secondary" className="mb-4">Documentation Hub</Badge>
+            <h1 className="text-4xl font-bold tracking-tight text-foreground lg:text-5xl mb-6">
+              OpsFlow Documentation
+            </h1>
+            <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
+              Everything you need to implement restaurant operations management with OpsFlow AI. 
+              From quick setup guides to comprehensive API documentation.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" asChild>
+                <Link href="/docs/getting-started/introduction">
                 Get Started
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
@@ -191,7 +195,8 @@ export default function DocsHomePage() {
             </CardContent>
           </Card>
         </section>
-      </main>
+        </SectionContent>
+      </Section>
     </div>
   );
 }

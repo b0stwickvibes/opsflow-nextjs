@@ -6,11 +6,13 @@ import { ChevronRight, DollarSign, TrendingUp, BarChart3, Clock } from "lucide-r
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
 } from "@/components/ui/carousel";
+import { Section, SectionContent } from "@/components/shared/layout";
 
 import { 
   useFeatureFlag, 
@@ -111,27 +113,23 @@ const BillingHero = ({
   };
 
   return (
-    <section className={cn(
-      "bg-gradient-to-br",
-      industryGradients[industry],
-      "bg-[url('https://deifkwefumgah.cloudfront.net/shadcnblocks/block/patterns/noise.png')] py-12 font-sans md:py-20"
-    )}>
-      <div className="container">
+    <Section background="gradient" padding="xl">
+      <SectionContent maxWidth="6xl">
         <div className="grid grid-cols-1 items-center justify-center gap-12 lg:grid-cols-[minmax(33.75rem,1fr)_1.5fr] lg:gap-8">
           {/* Content Section */}
           <div className="animate-fade-in-up">
             <div className="flex flex-col gap-6">
               <div className="space-y-4">
-                <div className={cn("inline-flex items-center gap-2 px-3 py-1 rounded-full border bg-card/50 ", industryColors[industry])}>
+                <Badge className="clerk-inspired-badge inline-flex items-center gap-2">
                   <DollarSign className="size-4" />
                   <span className="text-sm font-medium">Financial Operations</span>
-                </div>
+                </Badge>
                 
-                <h1 className="text-display-2xl enterprise-headline text-foreground  leading-tight font-bold md: lg:text-[3.5rem]">
+                <h1 className="enterprise-headline text-foreground leading-tight font-bold">
                   {content.title}
                 </h1>
                 
-                <p className="enterprise-body text-muted-foreground  leading-relaxed">
+                <p className="enterprise-body text-muted-foreground leading-relaxed">
                   {content.subtitle}
                 </p>
               </div>
@@ -144,9 +142,11 @@ const BillingHero = ({
                     return (
                       <div
                         key={feature.name}
-                        className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-card/70  border text-sm font-medium"
+                        className="enterprise-card inline-flex items-center gap-2 px-3 py-2 rounded-xl border text-sm font-medium hover-scale-103"
                       >
-                        <Icon className={cn("size-4", industryColors[industry])} />
+                        <div className="enterprise-icon-primary">
+                          <Icon className="size-4" />
+                        </div>
                         <span>{feature.name}</span>
                       </div>
                     );
@@ -154,115 +154,49 @@ const BillingHero = ({
                 </div>
               )}
 
-              {/* CTA Section */}
-              <div className="animate-fade-in-up animation-delay-300">
-                <div className="flex flex-col items-start gap-4 lg:flex-row lg:items-center">
-                  <div className="shrink-0">
-                    <Button
-                      asChild
-                      className={cn(
-                        "h-fit w-fit rounded-full px-8 py-4 font-medium text-sm tracking-wide shadow-lg hover:shadow-xl transition-all duration-200",
-                        canViewBillingDemo ? "opacity-100" : "opacity-75 cursor-not-allowed"
-                      )}
-                      disabled={!canViewBillingDemo}
-                    >
-                      <a href="#" aria-label={content.primaryCTA}>
-                        {content.primaryCTA}
-                      </a>
-                    </Button>
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
+                <Button 
+                  size="lg"
+                  className="clerk-cta-primary cta-equal"
+                  onClick={() => window.location.href = `/schedule-demo?industry=${industry}`}
+                >
+                  {content.primaryCTA}
+                  <ChevronRight className="ml-2 h-4 w-4" />
+                </Button>
+                <Button 
+                  size="lg"
+                  variant="outline"
+                  className="cta-equal"
+                  onClick={() => window.location.href = `/resources?industry=${industry}`}
+                >
+                  {content.secondaryCTA}
+                </Button>
+              </div>
+            </div>
+          </div>
+
+          {/* Image Section */}
+          <div className="animate-fade-in-up animation-delay-300">
+            <div className="relative">
+              <div className="aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-muted/20 to-muted/10 p-8 lg:aspect-[4/3]">
+                <div className="flex h-full items-center justify-center">
+                  <div className="text-center space-y-4">
+                    <div className="enterprise-icon-primary mx-auto mb-4">
+                      <BarChart3 className="size-16" />
+                    </div>
+                    <h3 className="text-xl font-semibold">Financial Dashboard Preview</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Real-time revenue tracking and cost analysis
+                    </p>
                   </div>
-                  
-                  <Button
-                    variant="ghost"
-                    asChild
-                    className="group flex h-fit items-center gap-2 hover:bg-card/50 dark:hover:bg-black/20 transition-colors"
-                  >
-                    <a href="#" aria-label={content.secondaryCTA}>
-                      <p className="text-foreground font-medium text-sm uppercase tracking-wider">
-                        {content.secondaryCTA}
-                      </p>
-                      <ChevronRight className="stroke-foreground h-4 w-4 shrink-0 transition-transform group-hover:translate-x-1" />
-                    </a>
-                  </Button>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* Visual Section */}
-          <div className="animate-fade-in-up animation-delay-100">
-            <div className="relative ml-auto mr-auto aspect-[1.28581291/1] w-full max-w-[37.25rem] lg:ml-auto lg:mr-0">
-              {/* Main Dashboard Image */}
-              <div className="relative mx-auto aspect-[1.020365896/1] h-full w-[79.35%] max-w-[29.5625rem] overflow-hidden rounded-3xl shadow-2xl">
-                <Image
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-                  alt={`${industry} financial dashboard interface`}
-                  className="relative z-10 w-full object-cover"
-                 width={1200} height={800} />
-              </div>
-              
-              {/* Floating Feature Cards */}
-              <div className="absolute -left-[-2%] top-[19.84%] z-30 aspect-[1.765043789/1] w-[30.49%] max-w-[11.875rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-left animation-delay-400">
-                <Image
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg"
-                  alt={`${industry} cost tracking widget`}
-                  className="size-full object-cover"
-                 width={1200} height={800} />
-              </div>
-              
-              <div className="absolute left-[0%] top-[55%] z-30 aspect-[1.776555024/1] w-[43.6%] max-w-[16.375rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-left animation-delay-500">
-                <Image
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg"
-                  alt={`${industry} revenue analytics`}
-                  className="size-full object-cover"
-                 width={1200} height={800} />
-              </div>
-              
-              <div className="absolute right-[0%] top-[40%] z-30 aspect-[1.170212766/1] w-[26.48%] max-w-[10.3125rem] overflow-hidden rounded-lg shadow-lg animate-slide-in-right animation-delay-600">
-                <Image
-                  src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-4.svg"
-                  alt={`${industry} payment management`}
-                  className="size-full object-cover"
-                 width={1200} height={800} />
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-
-      {/* Trust/Social Proof Section */}
-      {showLogosCarousel && (
-        <div className="flex flex-col items-center justify-center gap-8 pt-28 animate-fade-in-up animation-delay-700">
-          <p className="text-muted-foreground px-5 text-center font-medium text-sm uppercase tracking-wider">
-            {content.trustMessage}
-          </p>
-          
-          <Carousel
-            opts={{
-              loop: true,
-              align: "center",
-            }}
-            plugins={enableAutoScroll ? [
-              AutoScroll({ speed: 1 }),
-              Autoplay({ playOnInit: true, delay: 1000 }),
-            ] : []}
-            className="max-w-(--breakpoint-2xl) relative w-full overflow-hidden"
-          >
-            <CarouselContent className="items-center">
-              {TRUST_LOGOS.concat(TRUST_LOGOS).map((logo, index) => (
-                <CarouselItem key={index} className="w-fit basis-auto px-7">
-                  <Image
-                    src={logo.src}
-                    alt={`${logo.alt} - trusted ${industry} operations partner`}
-                    className="h-6 md:h-8 w-full object-contain opacity-60 hover:opacity-90 transition-opacity"
-                   width={1200} height={800} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-          </Carousel>
-        </div>
-      )}
-    </section>
+      </SectionContent>
+    </Section>
   );
 };
 

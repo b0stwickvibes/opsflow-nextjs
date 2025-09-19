@@ -376,53 +376,44 @@ export function ComplianceFAQ({
     }
   };
 
-  const getIndustryColors = () => {
-    switch (industry) {
-      case 'restaurants': return 'bg-orange-50/50 dark:bg-orange-950/20';
-      case 'bars': return 'bg-purple-50/50 dark:bg-purple-950/20';
-      case 'coffee': return 'bg-amber-50/50 dark:bg-amber-950/20';
-      case 'hotels': return 'bg-blue-50/50 dark:bg-blue-950/20';
-      default: return 'bg-muted/50 dark:bg-gray-950/20';
-    }
-  };
-
-  const getButtonColors = (isActive: boolean) => {
-    if (!isActive) return "font-normal hover:opacity-75";
-    
-    switch (industry) {
-      case 'restaurants': return 'font-semibold text-orange-600 dark:text-orange-400';
-      case 'bars': return 'font-semibold text-purple-600 dark:text-purple-400';
-      case 'coffee': return 'font-semibold text-amber-600 dark:text-amber-400';
-      case 'hotels': return 'font-semibold text-blue-600 dark:text-blue-400';
-      default: return 'font-semibold text-primary';
-    }
-  };
-
   return (
-    <section className={cn("min-h-screen py-32", getIndustryColors(), className)}>
+    <section className={cn("py-20 lg:py-28 bg-background", className)}>
       <div className="container max-w-4xl">
-        <div className="text-center">
-          <h1 
-            className="text-display-2xl enterprise-headline text-center  font-semibold tracking-tight sm:"
-            role="heading"
-            aria-level={1}
-          >
-            {industryContent.heading}
-          </h1>
-          <p className="mx-auto mt-4 max-w-xl text-center text-balance text-muted-foreground">
-            {industryContent.subheading}
-          </p>
+        <div className="text-center space-y-6 mb-16">
+          {/* Simple badge following marketing playbook */}
+          <div className="flex justify-center">
+            <div className="clerk-inspired-badge">
+              Restaurant Compliance
+            </div>
+          </div>
+          
+          {/* Heading with brand gradient following SOP */}
+          <div className="space-y-4">
+            <h1 className="enterprise-headline text-center">
+              <span className="text-brand-gradient">
+                {industryContent.heading}
+              </span>
+            </h1>
+            <p className="text-xl lg:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              {industryContent.subheading}
+            </p>
+          </div>
         </div>
 
-        <div className="mt-8 grid max-w-5xl gap-8 md:mt-12 md:grid-cols-[200px_1fr] md:gap-12 lg:mt-16">
+        <div className="grid gap-8 md:grid-cols-[200px_1fr] md:gap-12">
           {/* Sidebar */}
-          <div className="sticky top-24 flex h-fit flex-col gap-4 max-md:hidden">
+          <div className="sticky top-24 flex h-fit flex-col gap-2 max-md:hidden">
             {industryContent.categories.map((category) => (
               <Button
                 variant="ghost"
                 key={category}
                 onClick={() => handleCategoryClick(category)}
-                className={`justify-start text-left text-xl transition-colors ${getButtonColors(activeCategory === category)}`}
+                className={cn(
+                  "justify-start text-left transition-colors",
+                  activeCategory === category 
+                    ? "text-primary font-semibold" 
+                    : "text-muted-foreground hover:text-foreground"
+                )}
                 aria-pressed={activeCategory === category}
               >
                 {category}
@@ -445,10 +436,8 @@ export function ComplianceFAQ({
                     categoryRefs.current[category] = el;
                   }}
                   className={cn(
-                    "rounded-xl px-6",
-                    activeCategory === category
-                      ? "bg-background"
-                      : "bg-background/40",
+                    "enterprise-card p-6",
+                    activeCategory === category && "border-primary/20"
                   )}
                   style={{
                     scrollMargin: `${TOP_PADDING}px`,
@@ -465,7 +454,7 @@ export function ComplianceFAQ({
                       <AccordionItem
                         key={i}
                         value={`${category}-${i}`}
-                        className="border-b border-muted last:border-0"
+                        className="border-b border-border last:border-0"
                       >
                         <AccordionTrigger 
                           className="text-base font-medium hover:no-underline py-6 text-left"
@@ -475,7 +464,7 @@ export function ComplianceFAQ({
                         </AccordionTrigger>
                         <AccordionContent 
                           id={`compliance-answer-${category}-${i}`}
-                          className="text-base font-medium text-muted-foreground pb-6 leading-relaxed"
+                          className="text-base text-muted-foreground pb-6 leading-relaxed"
                         >
                           {item.answer}
                         </AccordionContent>

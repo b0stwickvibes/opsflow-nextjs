@@ -59,14 +59,13 @@ export function FeatureGrid() {
   ]
 
   return (
-    <section className="py-16">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold mb-4 motion-fade-in-up-320">Complete Restaurant Operations Suite</h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto motion-fade-in-up-320 animation-delay-100">
-            Everything you need to run efficient, compliant, and profitable restaurant operations in one integrated platform.
-          </p>
-        </div>
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl font-bold mb-4 motion-fade-in-up-320">Complete Restaurant Operations Suite</h2>
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto motion-fade-in-up-320 animation-delay-100">
+          Everything you need to run efficient, compliant, and profitable restaurant operations in one integrated platform.
+        </p>
+      </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => {
@@ -101,7 +100,6 @@ export function FeatureGrid() {
             );
           })}
         </div>
-      </div>
-    </section>
+    </div>
   )
 }

@@ -17,8 +17,11 @@ export { DemoRequest } from './DemoRequest';
 export { TrialSignup } from './TrialSignup';
 export { AdvancedOperations } from './AdvancedOperations';
 
+// New section system for clean backgrounds
+export { Section, SectionContent, SectionDivider, RadialBackground } from './Section';
+
 // Re-export types for convenience
-export type { 
+export type {
   IndustryType,
-  RoleType 
+  RoleType
 } from '@/types/restaurant-pages';

@@ -8,6 +8,7 @@ import {
 
 import { MarketingCTA } from '@/components/shared/layout';
 import { FAQSection } from '@/components/shared/data-display';
+import { Section, SectionContent, SectionDivider } from '@/components/shared/layout';
 
 export const metadata: Metadata = {
   title: 'Restaurant Solutions | OpsFlow - Restaurant Operations Management',
@@ -35,46 +36,61 @@ export const metadata: Metadata = {
  */
 export default function RestaurantSolutionsPage() {
   return (
-    <>
+    <div className="min-h-screen">
       {/* Solutions Hero - DIFFERENTIATED from home page */}
-      <RestaurantSolutionsHero 
-        className="restaurant-solutions-hero"
-      />
+      <Section background="none" padding="none">
+        <RestaurantSolutionsHero 
+          className="restaurant-solutions-hero"
+        />
+      </Section>
       
       {/* Feature Grid - Professional feature presentation */}
-      <RestaurantFeatureGrid />
+      <Section background="default" padding="lg">
+        <RestaurantFeatureGrid />
+      </Section>
+      
+      <SectionDivider />
       
       {/* Interactive Features Showcase - Advanced animations and interactions */}
-      <FlowingFeatures />
+      <Section background="muted" padding="lg">
+        <FlowingFeatures />
+      </Section>
       
       {/* Removed RestaurantPlatformExplorer to avoid duplication with home page */}
       
       {/* Additional Features - Secondary feature presentations */}
-      <SecondaryFeatures />
+      <Section background="default" padding="lg">
+        <SecondaryFeatures />
+      </Section>
       
       {/* Restaurant-Specific FAQ */}
-      <FAQSection 
-        industry="restaurants"
-        role="general"
-        heading="Restaurant Operations FAQ"
-        className="py-16 md:py-24"
-      />
+      <Section background="muted" padding="lg">
+        <SectionContent maxWidth="4xl">
+          <FAQSection 
+            industry="restaurants"
+            role="general"
+            heading="Restaurant Operations FAQ"
+          />
+        </SectionContent>
+      </Section>
       
       {/* Final CTA - Professional conversion section */}
-      <MarketingCTA
-        variant="clerk"
-        title="Ready to Transform Your Restaurant Operations?"
-        description="Join thousands of restaurants using OpsFlow to streamline operations, ensure compliance, and boost profitability."
-        primaryAction={{
-          text: "Start Free Restaurant Demo",
-          href: "/product/demo?industry=restaurants"
-        }}
-        secondaryAction={{
-          text: "Talk to Restaurant Expert", 
-          href: "/contact?speciality=restaurants"
-        }}
-        className="bg-gradient-to-br from-background to-background/80"
-      />
-    </>
+      <Section background="none" padding="lg">
+        <MarketingCTA
+          variant="clerk"
+          title="Ready to Transform Your Restaurant Operations?"
+          description="Join thousands of restaurants using OpsFlow to streamline operations, ensure compliance, and boost profitability."
+          primaryAction={{
+            text: "Start Free Restaurant Demo",
+            href: "/product/demo?industry=restaurants"
+          }}
+          secondaryAction={{
+            text: "Talk to Restaurant Expert", 
+            href: "/contact?speciality=restaurants"
+          }}
+          className="bg-gradient-to-br from-background to-background/80"
+        />
+      </Section>
+    </div>
   );
 }

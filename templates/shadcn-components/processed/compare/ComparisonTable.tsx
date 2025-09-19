@@ -1,8 +1,9 @@
 "use client";
 
-import { CheckCircle2, CircleMinus } from "lucide-react";
+import { CheckCircle2, CircleMinus, Users, Building, BarChart3, Shield, TrendingUp, MapPin, Zap } from "lucide-react";
 
-import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 import type { IndustryType, RoleType } from "@/types/restaurant-pages";
 import { cn } from "@/lib/utils";
@@ -43,23 +44,23 @@ export function ComparisonTable({
   const getDefaultFeatures = (): ComparisonItem[] => {
     const baseFeatures = [
       {
-        feature: "Basic POS Integration",
+        feature: "Multi-Location POS Integration",
         ourProduct: true,
         competitor: true,
+        industrySpecific: {
+          bars: { feature: "Bar POS & Inventory System" },
+          coffee: { feature: "Coffee Shop POS Integration" },
+          hotels: { feature: "Hotel F&B POS Integration" },
+        },
       },
       {
-        feature: "Multi-Location Management",
-        ourProduct: true,
-        competitor: true,
-      },
-      {
-        feature: "Advanced Kitchen Display",
+        feature: "Kitchen Display Systems",
         ourProduct: true,
         competitor: false,
         industrySpecific: {
-          bars: { feature: "Smart Bar Display System" },
+          bars: { feature: "Bar Display Systems" },
           coffee: { feature: "Barista Workflow Display" },
-          hotels: { feature: "Multi-Venue Order Display" },
+          hotels: { feature: "Multi-Venue Kitchen Display" },
         },
       },
       {
@@ -68,38 +69,28 @@ export function ComparisonTable({
         competitor: false,
         industrySpecific: {
           bars: { feature: "Safety & Sanitation Tracking" },
-          coffee: { feature: "Quality Control Monitoring" },
-          hotels: { feature: "Food Safety Compliance" },
+          coffee: { feature: "Food Safety Compliance" },
+          hotels: { feature: "Multi-Venue Safety Monitoring" },
         },
       },
       {
-        feature: "Predictive Analytics",
+        feature: "Staff Scheduling & Communication",
         ourProduct: true,
         competitor: false,
         industrySpecific: {
-          bars: { feature: "Demand Forecasting" },
-          coffee: { feature: "Sales Trend Analysis" },
-          hotels: { feature: "Guest Preference Analytics" },
+          bars: { feature: "Bar Staff Coordination" },
+          coffee: { feature: "Shift Management System" },
+          hotels: { feature: "Hotel Staff Communication" },
         },
       },
       {
-        feature: "Mobile Staff Communication",
+        feature: "Advanced Analytics & Reporting",
         ourProduct: true,
         competitor: false,
         industrySpecific: {
-          bars: { feature: "Floor-to-Bar Messaging" },
-          coffee: { feature: "Team Coordination Hub" },
-          hotels: { feature: "Multi-Department Communication" },
-        },
-      },
-      {
-        feature: "AI-Powered Scheduling",
-        ourProduct: true,
-        competitor: false,
-        industrySpecific: {
-          bars: { feature: "Peak Hour Optimization" },
-          coffee: { feature: "Rush Hour Staffing" },
-          hotels: { feature: "Cross-Venue Scheduling" },
+          bars: { feature: "Bar Performance Analytics" },
+          coffee: { feature: "Coffee Shop Metrics" },
+          hotels: { feature: "Hotel F&B Analytics" },
         },
       },
     ];
@@ -117,27 +108,6 @@ export function ComparisonTable({
     return item.feature;
   };
 
-  const getIndustryColors = () => {
-    switch (industry) {
-      case 'restaurants': return 'border-orange-200 bg-orange-50/50 dark:border-orange-800 dark:bg-orange-950/20';
-      case 'bars': return 'border-purple-200 bg-purple-50/50 dark:border-purple-800 dark:bg-purple-950/20';
-      case 'coffee': return 'border-amber-200 bg-amber-50/50 dark:border-amber-800 dark:bg-amber-950/20';
-      case 'hotels': return 'border-blue-200 bg-blue-50/50 dark:border-blue-800 dark:bg-blue-950/20';
-      default: return 'border-border bg-muted/50 dark:border-gray-800 dark:bg-gray-950/20';
-    }
-  };
-
-  const getCompetitorDescription = () => {
-    const descriptions = {
-      restaurants: "Legacy restaurant management systems are reliable solutions designed for basic operations and smaller establishments. They provide essential functionality for those getting started or requiring fundamental features. While they offer straightforward interfaces, they may lack advanced capabilities needed for scaling operations or handling complex multi-location workflows.",
-      bars: "Traditional bar management systems provide basic functionality for simple operations. They cover essential point-of-sale and inventory needs but often lack the sophisticated features required for high-volume establishments, event management, or advanced beverage program optimization.",
-      coffee: "Standard coffee shop systems handle basic transactions and simple inventory tracking. However, they typically miss advanced features like brew quality monitoring, rush hour optimization, or sophisticated customer preference analytics that modern coffee operations need.",
-      hotels: "Basic hospitality management systems cover fundamental operations but often lack integration across dining venues, room service coordination, and the comprehensive guest experience management that modern hotels require for competitive advantage.",
-      general: "Legacy systems provide reliable solutions designed for basic needs and smaller operations. They offer essential functionality for those getting started but may lack advanced capabilities needed for scaling or complex workflows.",
-    };
-    return descriptions[industry as keyof typeof descriptions] || descriptions.general;
-  };
-
   const features = getDefaultFeatures();
 
   const handleFeatureView = (feature: string, hasFeature: boolean) => {
@@ -151,125 +121,170 @@ export function ComparisonTable({
   };
 
   return (
-    <section className={cn("bg-muted/50 py-32", className)}>
+    <section className={cn("py-24 bg-gradient-to-b from-background to-muted/20", className)}>
       <div className="container">
-        <div className="text-center">
-          <h1 
-            className="text-display-2xl mb-6  font-semibold md:text-7xl"
-            role="heading"
-            aria-level={1}
-          >
-            {heading}
+        {/* Header */}
+        <div className="text-center mb-20">
+          <Badge variant="outline" className="mb-6">
+            Comparison
+          </Badge>
+          <h1 className="heading-brand-gradient text-display-2xl font-bold tracking-tight mb-6">
+            See how {ourProduct} stacks up<br />against traditional restaurant systems
           </h1>
-          <p className="enterprise-body mx-auto max-w-4xl text-muted-foreground md:">
-            {subheading}
+          <p className="text-xl text-muted-foreground mx-auto max-w-2xl leading-relaxed">
+            Discover why restaurant operators choose {ourProduct} over legacy {industry === 'restaurants' ? 'restaurant management' : 'hospitality management'} solutions
           </p>
         </div>
         
-        <div className="mt-28">
-          <div className="mx-auto grid max-w-3xl gap-6 md:grid-cols-2">
-            {/* Our Product */}
-            <div 
-              className={cn(
-                "rounded-xl border shadow",
-                getIndustryColors()
-              )}
-            >
-              <div className="p-6">
-                <span className="flex items-center justify-center gap-2 font-medium">
-                  <div className="flex size-7 items-center justify-center rounded bg-primary text-primary-foreground text-sm font-bold">
-                    O
-                  </div>
-                  {ourProduct}
-                </span>
-                <Separator className="my-6" />
-                <ul className="space-y-2" role="list">
-                  {features.map((item, index) => (
-                    <li 
-                      key={index} 
-                      className="flex items-center gap-2"
-                      onClick={() => handleFeatureView(item.feature, item.ourProduct)}
-                    >
-                      <CheckCircle2 
-                        className="h-5 w-5 shrink-0 text-emerald-700" 
-                        aria-hidden="true"
-                      />
-                      <span className="text-sm">{item.feature}</span>
-                    </li>
-                  ))}
-                </ul>
+        {/* Comparison Table */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-card border border-border/50 rounded-3xl shadow-xl overflow-hidden">
+            
+            {/* Header Row */}
+            <div className="grid grid-cols-3 border-b border-border/50">
+              <div className="p-6"></div>
+              
+              {/* Our Product Header */}
+              <div className="p-6 text-center border-l border-border/50 bg-muted/30">
+                <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-primary flex items-center justify-center">
+                  <BarChart3 className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-1">{ourProduct}</h3>
+                <p className="text-sm text-muted-foreground">Modern restaurant operations platform</p>
+              </div>
+              
+              {/* Competitor Header */}
+              <div className="p-6 text-center border-l border-border/50">
+                <div className="w-12 h-12 mx-auto mb-3 rounded-2xl bg-muted-foreground/20 flex items-center justify-center">
+                  <Building className="w-6 h-6 text-muted-foreground" />
+                </div>
+                <h3 className="font-semibold text-muted-foreground mb-1">{competitorProduct}</h3>
+                <p className="text-sm text-muted-foreground">Traditional restaurant systems</p>
               </div>
             </div>
 
-            {/* Competitor Product */}
-            <div className="rounded-xl bg-border/40 p-6">
-              <span className="flex items-center justify-center gap-2 font-medium">
-                <div className="flex size-7 items-center justify-center rounded bg-muted-foreground text-muted text-sm font-bold">
-                  L
+            {/* Feature Rows */}
+            {features.map((item, index) => (
+              <div 
+                key={index} 
+                className={cn(
+                  "grid grid-cols-3 border-b border-border/50 last:border-b-0 hover:bg-muted/20 transition-colors group",
+                  index % 2 === 0 && "bg-muted/10"
+                )}
+              >
+                {/* Feature Name */}
+                <div className="p-6 flex items-center">
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
+                      {index === 0 && <Building className="w-3 h-3 text-primary" />}
+                      {index === 1 && <BarChart3 className="w-3 h-3 text-primary" />}
+                      {index === 2 && <Shield className="w-3 h-3 text-primary" />}
+                      {index === 3 && <Users className="w-3 h-3 text-primary" />}
+                      {index === 4 && <TrendingUp className="w-3 h-3 text-primary" />}
+                    </div>
+                    <span className="font-medium text-foreground">{item.feature}</span>
+                  </div>
                 </div>
-                {competitorProduct}
-              </span>
-              <Separator className="my-6" />
-              <ul className="space-y-2" role="list">
-                {features.map((item, index) => (
-                  <li 
-                    key={index} 
-                    className={cn(
-                      "flex items-center gap-2",
-                      !item.competitor && "text-muted-foreground line-through"
-                    )}
-                    onClick={() => handleFeatureView(item.feature, item.competitor)}
-                  >
-                    {item.competitor ? (
-                      <CheckCircle2 
-                        className="h-5 w-5 shrink-0 text-emerald-700" 
-                        aria-hidden="true"
-                      />
-                    ) : (
-                      <CircleMinus 
-                        className="h-5 w-5 shrink-0 opacity-50" 
-                        aria-hidden="true"
-                      />
-                    )}
-                    <span className="text-sm">{item.feature}</span>
-                  </li>
-                ))}
-              </ul>
+                
+                {/* Our Product Status */}
+                <div className="p-6 flex items-center justify-center border-l border-border/50 bg-muted/30">
+                  {item.ourProduct ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center">
+                        <CheckCircle2 className="w-3 h-3 text-primary" />
+                      </div>
+                      <span className="text-sm font-medium text-primary">
+                        {item.feature === "Real-time HACCP Monitoring" ? "Automated temperature logs & alerts" :
+                         item.feature === "Kitchen Display Systems" ? "Full KDS with order tracking" :
+                         item.feature === "Staff Scheduling & Communication" ? "AI-powered scheduling + team chat" :
+                         item.feature === "Advanced Analytics & Reporting" ? "Real-time P&L, food costs, labor metrics" :
+                         "Seamless integration"}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-muted flex items-center justify-center">
+                        <CircleMinus className="w-3 h-3 text-muted-foreground" />
+                      </div>
+                      <span className="text-sm text-muted-foreground">Coming soon</span>
+                    </div>
+                  )}
+                </div>
+                
+                {/* Competitor Status */}
+                <div className="p-6 flex items-center justify-center border-l border-border/50">
+                  {item.competitor ? (
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-muted flex items-center justify-center">
+                        <CheckCircle2 className="w-3 h-3 text-muted-foreground" />
+                      </div>
+                      <span className="text-sm text-muted-foreground">
+                        {item.feature === "Multi-Location POS Integration" ? "Basic POS connectivity only" :
+                         "Manual processes"}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full bg-muted flex items-center justify-center">
+                        <CircleMinus className="w-3 h-3 text-muted-foreground" />
+                      </div>
+                      <span className="text-sm text-muted-foreground">
+                        {item.feature === "Kitchen Display Systems" ? "Limited KDS options" :
+                         item.feature === "Real-time HACCP Monitoring" ? "Manual compliance tracking" :
+                         item.feature === "Staff Scheduling & Communication" ? "Basic scheduling only" :
+                         item.feature === "Advanced Analytics & Reporting" ? "Basic reports only" :
+                         "Not available"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            ))}
+            
+            {/* CTA Row */}
+            <div className="grid grid-cols-3 bg-muted/30">
+              <div className="p-6"></div>
+              
+              {/* Our Product CTA */}
+              <div className="p-6 text-center border-l border-border/50 bg-primary/5">
+                <Button 
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium"
+                  onClick={() => handleFeatureView("cta_click", true)}
+                >
+                  Try {ourProduct} today
+                </Button>
+              </div>
+              
+              {/* Competitor CTA */}
+              <div className="p-6 text-center border-l border-border/50">
+                <Button 
+                  variant="outline" 
+                  className="w-full text-muted-foreground border-muted-foreground/30"
+                  disabled
+                >
+                  Contact sales
+                </Button>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="mx-auto mt-16 max-w-3xl">
-          <h2 
-            className="mb-4 text-3xl font-semibold"
-            role="heading"
-            aria-level={2}
-          >
-            Who are {competitorProduct} suitable for?
-          </h2>
-          <p className="enterprise-body leading-6 text-muted-foreground md:">
-            {getCompetitorDescription()}
-          </p>
-          
-          <h2 
-            className="mt-16 mb-4 text-3xl font-semibold"
-            role="heading"
-            aria-level={2}
-          >
-            Key Differences and Considerations
-          </h2>
-          <p className="enterprise-body leading-6 text-muted-foreground md:">
-            When choosing between {ourProduct} and {competitorProduct}, consider your 
-            long-term operational needs and growth plans. {ourProduct} offers advanced 
-            restaurant-specific features, better scalability, and comprehensive support 
-            options. While {competitorProduct} might be suitable for basic use cases, 
-            {ourProduct} provides a more comprehensive solution for teams looking to 
-            optimize their {industry === 'general' ? 'operations' : 
-              industry === 'restaurants' ? 'restaurant operations' :
-              industry === 'bars' ? 'bar operations' :
-              industry === 'coffee' ? 'coffee shop operations' :
-              'hospitality operations'} and enhance customer experience.
-          </p>
+        {/* Bottom Stats */}
+        <div className="max-w-4xl mx-auto mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">500+</div>
+              <div className="text-sm text-muted-foreground">Restaurant locations managed</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">99.2%</div>
+              <div className="text-sm text-muted-foreground">Average HACCP compliance</div>
+            </div>
+            <div className="space-y-2">
+              <div className="text-3xl font-bold text-primary">30%</div>
+              <div className="text-sm text-muted-foreground">Reduction in operational costs</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

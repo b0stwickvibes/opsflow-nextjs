@@ -63,6 +63,118 @@ function getValueClasses(variant: StatVariant) {
   }
 }
 
+// Move industryConfig outside component to prevent recreation on every render
+const industryConfig = {
+  restaurants: {
+    title: "We don't just talk, we deliver restaurant results",
+    subtitle: "Real performance improvements from restaurant operations using OpsFlow to optimize their daily workflows and compliance.",
+    color: "oklch(0.70 0.15 25)",
+    finalStats: {
+      monthly: {
+        Revenue: 2.1,
+        Locations: 0.2,
+        Efficiency: 35,
+        Compliance: 99,
+        Savings: 15,
+      },
+      yearly: {
+        Revenue: 24.5,
+        Locations: 2.5,
+        Efficiency: 42,
+        Compliance: 99.8,
+        Savings: 180,
+      },
+    },
+    kpis: [
+      { key: "Locations", label: "Restaurant Locations", suffix: "k+" },
+      { key: "Efficiency", label: "Efficiency Improvement", suffix: "%" },
+      { key: "Compliance", label: "HACCP Compliance Rate", suffix: "%" },
+      { key: "Savings", label: "Cost Savings", prefix: "$", suffix: "K" },
+    ]
+  },
+  bars: {
+    title: "Proven results in bar operations excellence",
+    subtitle: "Real data from bar operations using OpsFlow to streamline inventory, compliance, and staff coordination.",
+    color: "oklch(0.60 0.20 270)",
+    finalStats: {
+      monthly: {
+        Revenue: 1.8,
+        Locations: 0.15,
+        Efficiency: 28,
+        Compliance: 97,
+        Savings: 12,
+      },
+      yearly: {
+        Revenue: 19.2,
+        Locations: 1.8,
+        Efficiency: 35,
+        Compliance: 98.5,
+        Savings: 144,
+      },
+    },
+    kpis: [
+      { key: "Locations", label: "Bar Locations", suffix: "k+" },
+      { key: "Efficiency", label: "Service Efficiency", suffix: "%" },
+      { key: "Compliance", label: "Alcohol Compliance", suffix: "%" },
+      { key: "Savings", label: "Inventory Savings", prefix: "$", suffix: "K" },
+    ]
+  },
+  coffee: {
+    title: "Real results from coffee shop optimization",
+    subtitle: "Performance data from coffee shops using OpsFlow to maintain quality standards and operational efficiency.",
+    color: "oklch(0.65 0.18 80)",
+    finalStats: {
+      monthly: {
+        Revenue: 1.2,
+        Locations: 0.08,
+        Efficiency: 25,
+        Compliance: 95,
+        Savings: 8,
+      },
+      yearly: {
+        Revenue: 14.4,
+        Locations: 0.8,
+        Efficiency: 30,
+        Compliance: 97.5,
+        Savings: 96,
+      },
+    },
+    kpis: [
+      { key: "Locations", label: "Coffee Shops", suffix: "k+" },
+      { key: "Efficiency", label: "Equipment Efficiency", suffix: "%" },
+      { key: "Compliance", label: "Quality Standards", suffix: "%" },
+      { key: "Savings", label: "Waste Reduction", prefix: "$", suffix: "K" },
+    ]
+  },
+  hotels: {
+    title: "Exceptional hotel operations performance",
+    subtitle: "Real metrics from hotel properties using OpsFlow to coordinate departments and enhance guest satisfaction.",
+    color: "oklch(0.55 0.15 210)",
+    finalStats: {
+      monthly: {
+        Revenue: 3.2,
+        Locations: 0.04,
+        Efficiency: 32,
+        Compliance: 96,
+        Savings: 25,
+      },
+      yearly: {
+        Revenue: 38.4,
+        Locations: 0.4,
+        Efficiency: 38,
+        Compliance: 97.2,
+        Savings: 300,
+      },
+    },
+    kpis: [
+      { key: "Locations", label: "Hotel Properties", suffix: "+" },
+      { key: "Efficiency", label: "Operational Efficiency", suffix: "%" },
+      { key: "Compliance", label: "Guest Satisfaction", suffix: "%" },
+      { key: "Savings", label: "Cost Savings", prefix: "$", suffix: "K" },
+    ]
+  }
+};
+
 interface KPIShowcaseProps {
   industry?: "restaurants" | "bars" | "coffee" | "hotels";
   variant?: StatVariant; // default look for non-lead items
@@ -92,119 +204,8 @@ export function KPIShowcase({ industry = "restaurants", variant = 'outline', ene
   const { trackEvent } = useRestaurantAnalytics();
   const ref = useRef(null);
 
-  const industryConfig = {
-    restaurants: {
-      title: "We don't just talk, we deliver restaurant results",
-      subtitle: "Real performance improvements from restaurant operations using OpsFlow to optimize their daily workflows and compliance.",
-      color: "oklch(0.70 0.15 25)",
-      finalStats: {
-        monthly: {
-          Revenue: 2.1,
-          Locations: 0.2,
-          Efficiency: 35,
-          Compliance: 99,
-          Savings: 15,
-        },
-        yearly: {
-          Revenue: 24.5,
-          Locations: 2.5,
-          Efficiency: 42,
-          Compliance: 99.8,
-          Savings: 180,
-        },
-      },
-      kpis: [
-        { key: "Locations", label: "Restaurant Locations", suffix: "k+" },
-        { key: "Efficiency", label: "Efficiency Improvement", suffix: "%" },
-        { key: "Compliance", label: "HACCP Compliance Rate", suffix: "%" },
-        { key: "Savings", label: "Cost Savings", prefix: "$", suffix: "K" },
-      ]
-    },
-    bars: {
-      title: "Proven results in bar operations excellence",
-      subtitle: "Real data from bar operations using OpsFlow to streamline inventory, compliance, and staff coordination.",
-      color: "oklch(0.60 0.20 270)",
-      finalStats: {
-        monthly: {
-          Revenue: 1.8,
-          Locations: 0.15,
-          Efficiency: 28,
-          Compliance: 97,
-          Savings: 12,
-        },
-        yearly: {
-          Revenue: 19.2,
-          Locations: 1.8,
-          Efficiency: 35,
-          Compliance: 98.5,
-          Savings: 144,
-        },
-      },
-      kpis: [
-        { key: "Locations", label: "Bar Locations", suffix: "k+" },
-        { key: "Efficiency", label: "Service Efficiency", suffix: "%" },
-        { key: "Compliance", label: "Alcohol Compliance", suffix: "%" },
-        { key: "Savings", label: "Inventory Savings", prefix: "$", suffix: "K" },
-      ]
-    },
-    coffee: {
-      title: "Real results from coffee shop optimization",
-      subtitle: "Performance data from coffee shops using OpsFlow to maintain quality standards and operational efficiency.",
-      color: "oklch(0.65 0.18 80)",
-      finalStats: {
-        monthly: {
-          Revenue: 1.2,
-          Locations: 0.08,
-          Efficiency: 25,
-          Compliance: 95,
-          Savings: 8,
-        },
-        yearly: {
-          Revenue: 14.4,
-          Locations: 0.8,
-          Efficiency: 30,
-          Compliance: 97.5,
-          Savings: 96,
-        },
-      },
-      kpis: [
-        { key: "Locations", label: "Coffee Shops", suffix: "k+" },
-        { key: "Efficiency", label: "Equipment Efficiency", suffix: "%" },
-        { key: "Compliance", label: "Quality Standards", suffix: "%" },
-        { key: "Savings", label: "Waste Reduction", prefix: "$", suffix: "K" },
-      ]
-    },
-    hotels: {
-      title: "Exceptional hotel operations performance",
-      subtitle: "Real metrics from hotel properties using OpsFlow to coordinate departments and enhance guest satisfaction.",
-      color: "oklch(0.55 0.15 210)",
-      finalStats: {
-        monthly: {
-          Revenue: 3.2,
-          Locations: 0.04,
-          Efficiency: 32,
-          Compliance: 96,
-          Savings: 25,
-        },
-        yearly: {
-          Revenue: 38.4,
-          Locations: 0.4,
-          Efficiency: 38,
-          Compliance: 97.2,
-          Savings: 300,
-        },
-      },
-      kpis: [
-        { key: "Locations", label: "Hotel Properties", suffix: "+" },
-        { key: "Efficiency", label: "Operational Efficiency", suffix: "%" },
-        { key: "Compliance", label: "Guest Satisfaction", suffix: "%" },
-        { key: "Savings", label: "Operational Savings", prefix: "$", suffix: "K" },
-      ]
-    }
-  };
-
   const config = industryConfig[industry];
-  const finalStats = useMemo(() => config.finalStats, [config]);
+  const finalStats = useMemo(() => config.finalStats, [industry]);
 
   useEffect(() => {
     // Simulate intersection observer

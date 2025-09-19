@@ -1,5 +1,6 @@
 "use client";
 
+import { Section, SectionContent } from "@/components/shared/layout";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
 interface MetricsDashboardProps {
@@ -59,15 +60,15 @@ export function MetricsDashboard({ industry = "restaurants" }: MetricsDashboardP
   const config = industryConfig[industry];
 
   return (
-    <section className="section-marketing">
-      <div className="container">
-        <div className="relative isolate overflow-hidden md:border-x md:border-border bg-gradient-to-b from-primary/10 to-transparent">
+    <Section background="muted" padding="xl">
+      <SectionContent maxWidth="6xl">
+        <div className="relative isolate overflow-hidden">
           
           {/* Background Pattern */}
           <div className="absolute right-0 -left-px -z-20 h-full w-full bg-[linear-gradient(90deg,var(--muted-foreground)_1px,transparent_1px)] [mask-image:linear-gradient(transparent_25%,black_25%,black_75%,transparent_75%)] [background-size:calc(100%/16)_100%] [mask-size:100%_16px] opacity-20" />
 
           <div>
-            <h2 className="heading-brand-gradient mb-16 max-w-3xl text-3xl leading-10 font-semibold sm:mb-24 md:mx-10">
+            <h2 className="mb-16 max-w-3xl text-3xl leading-10 font-semibold sm:mb-24">
               {config.title}
               <span className="font-medium opacity-70 ml-2">
                 {config.subtitle}
@@ -109,8 +110,8 @@ export function MetricsDashboard({ industry = "restaurants" }: MetricsDashboardP
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </SectionContent>
+    </Section>
   );
 };
 

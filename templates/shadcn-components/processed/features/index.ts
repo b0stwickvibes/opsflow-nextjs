@@ -11,6 +11,10 @@ export type { StaffManagementFeature, FeatureCardsProps } from "./FeatureCards";
 export { FeatureTabs } from "./FeatureTabs";
 export type { AnalyticsTab, FeatureTabsProps } from "./FeatureTabs";
 
+// Marketing Components
+export { MarketingRollingBlocks } from "@/components/domain/marketing";
+export { FeatureRollingBlocks } from "./FeatureRollingBlocks";
+
 // Comparison & Timeline Components
 
 export { FeatureTimeline } from "./FeatureTimeline";

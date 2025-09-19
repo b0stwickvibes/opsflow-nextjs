@@ -1,1 +1,0 @@
-export { RestaurantTestimonials } from './RestaurantTestimonials';

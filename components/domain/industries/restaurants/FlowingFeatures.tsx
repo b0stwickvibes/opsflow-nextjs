@@ -297,10 +297,10 @@ export default function FlowingFeatures() {
   // Auto-rotate features disabled - manual interaction only
 
   return (
-    <section className="relative py-20 overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white dark:from-gray-950 dark:via-gray-900/30 dark:to-gray-950">
+    <section className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50/30 to-white dark:from-gray-950 dark:via-gray-900/30 dark:to-gray-950">
       <FloatingElements />
       
-      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Hero Header */}
         <motion.div 
           ref={heroRef}

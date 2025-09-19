@@ -1,207 +1,208 @@
 "use client";
 
-import { MoveRight, ChefHat, BarChart3, Clock, TrendingUp, Shield, Utensils } from "lucide-react";
-
-import { AspectRatio } from "@/components/ui/aspect-ratio";
+import { ArrowRight, Eye, Target, Zap, ChefHat, TrendingUp, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-import { 
-  useFeatureFlag, 
-  usePageView, 
-  usePermission 
-} from '@/lib/hooks/restaurant-pages';
-import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 
-// Industry-specific vision content
-const INDUSTRY_VISION_CONTENT = {
+// Restaurant operations vision content
+const INDUSTRY_CONTENT = {
   restaurant: {
-    title: "Uncover our vision for more efficient, profitable restaurants",
-    subtitle: "Be part of our journey to revolutionize restaurant operations with AI-powered solutions that reduce waste, optimize workflows, and enhance customer satisfaction.",
-    cta: "Start Free Trial",
-    images: [
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg", alt: "Kitchen automation dashboard" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg", alt: "Food cost analytics" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg", alt: "Staff scheduling optimization" },
+    badge: "Our Vision",
+    title: "The future of restaurant excellence",
+    highlight: "starts with intelligent operations",
+    subtitle: "We envision a world where restaurant owners focus on creating memorable dining experiences while AI handles the complexity of modern operations.",
+    visionPoints: [
+      {
+        icon: ChefHat,
+        title: "Culinary Focus",
+        description: "Chefs and staff concentrate on what they do best - creating exceptional food and service experiences."
+      },
+      {
+        icon: TrendingUp,
+        title: "Smart Optimization",
+        description: "AI-powered systems automatically optimize inventory, staffing, and operations for maximum efficiency."
+      },
+      {
+        icon: Heart,
+        title: "Guest Delight",
+        description: "Every interaction is personalized and seamless, creating lasting connections with customers."
+      },
     ],
-    icon: ChefHat,
-    color: "orange",
-    bgColor: "bg-orange-50/50 dark:bg-orange-950/10",
+    ctaText: "Join Our Vision",
+    ctaSecondary: "Learn More",
   },
   bar: {
-    title: "Discover our vision for smarter, more profitable bars",
-    subtitle: "Join our mission to transform bar operations with intelligent inventory management, dynamic pricing, and customer analytics that maximize revenue.",
-    cta: "Explore Solutions", 
-    images: [
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg", alt: "Bar inventory dashboard" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg", alt: "Revenue optimization analytics" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg", alt: "Customer behavior insights" },
+    badge: "Future Forward",
+    title: "Reimagining bar hospitality",
+    highlight: "through intelligent systems",
+    subtitle: "Our vision transforms bars into data-driven hospitality experiences where every pour, every interaction, and every moment is optimized for excellence.",
+    visionPoints: [
+      {
+        icon: Target,
+        title: "Precision Service",
+        description: "Every drink crafted to perfection with intelligent inventory and quality management systems."
+      },
+      {
+        icon: TrendingUp,
+        title: "Revenue Intelligence",
+        description: "Dynamic pricing and analytics that maximize profitability while maintaining customer satisfaction."
+      },
+      {
+        icon: Heart,
+        title: "Community Building",
+        description: "Technology that enhances human connection rather than replacing it."
+      },
     ],
-    icon: BarChart3,
-    color: "purple",
-    bgColor: "bg-purple-50/50 dark:bg-purple-950/10",
+    ctaText: "Explore Vision",
+    ctaSecondary: "See Roadmap",
   },
   cafe: {
-    title: "Explore our vision for streamlined, exceptional cafés",
-    subtitle: "Be part of revolutionizing café operations with smart ordering systems, quality consistency tools, and customer experience enhancements.",
-    cta: "Start Journey",
-    images: [
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg", alt: "Coffee quality dashboard" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-2.svg", alt: "Order flow optimization" },
-      { src: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-3.svg", alt: "Customer experience metrics" },
+    badge: "Innovation Path",
+    title: "Crafting the café of tomorrow",
+    highlight: "with thoughtful technology",
+    subtitle: "We're building a future where café owners can focus on their craft while intelligent systems ensure every cup meets the highest standards.",
+    visionPoints: [
+      {
+        icon: Eye,
+        title: "Quality Consistency",
+        description: "Advanced monitoring ensures every beverage meets your exact standards, every single time."
+      },
+      {
+        icon: Zap,
+        title: "Operational Flow",
+        description: "Seamless workflows that eliminate friction and maximize both efficiency and quality."
+      },
+      {
+        icon: Heart,
+        title: "Community Impact",
+        description: "Technology that strengthens the café's role as a community gathering place."
+      },
     ],
-    icon: Clock,
-    color: "amber",
-    bgColor: "bg-amber-50/50 dark:bg-amber-950/10",
+    ctaText: "Start Journey",
+    ctaSecondary: "View Roadmap",
   },
 };
 
 export interface VisionHeroProps {
-  industry: 'restaurant' | 'bar' | 'cafe';
-  role?: 'owner' | 'manager' | 'staff';
-  variant?: 'default' | 'compact' | 'detailed';
+  industry?: 'restaurant' | 'bar' | 'cafe';
+  variant?: 'default' | 'detailed' | 'compact';
+  className?: string;
 }
 
-const VisionHero = ({ 
+export function VisionHero({ 
   industry = 'restaurant', 
-  role = 'owner',
-  variant = 'default'
-}: VisionHeroProps) => {
-  // Feature flags and analytics
-  const showAnimatedCTA = useFeatureFlag('visionHeroAnimatedCTA', true);
-  
-  usePageView(`${industry}_vision_hero`, { 
-    variant,
-    industry,
-    role
-  });
-
-  // Permission checking
-  const canStartTrial = usePermission('TRIAL_START_ACCESS');
-
-  const content = INDUSTRY_VISION_CONTENT[industry];
-  const Icon = content.icon;
-
-  // Industry-specific styling
-  const colorClasses = {
-    orange: {
-      primary: 'text-orange-600 dark:text-orange-400',
-      bg: 'bg-orange-600',
-      hover: 'hover:bg-orange-700',
-      accent: 'bg-orange-100 dark:bg-orange-900/20',
-    },
-    purple: {
-      primary: 'text-purple-600 dark:text-purple-400',
-      bg: 'bg-purple-600',
-      hover: 'hover:bg-purple-700',
-      accent: 'bg-purple-100 dark:bg-purple-900/20',
-    },
-    amber: {
-      primary: 'text-amber-600 dark:text-amber-400',
-      bg: 'bg-amber-600',
-      hover: 'hover:bg-amber-700',
-      accent: 'bg-amber-100 dark:bg-amber-900/20',
-    },
-  };
-
-  const colors = colorClasses[content.color as keyof typeof colorClasses];
+  variant = 'default',
+  className
+}: VisionHeroProps) {
+  const content = INDUSTRY_CONTENT[industry];
 
   return (
-    <section className={cn("py-12 font-sans md:py-20", content.bgColor)}>
-      <div className="container max-w-[87.5rem]">
-        <div className="grid grid-cols-1 gap-[5.625rem] lg:grid-cols-2">
-          {/* Content Section */}
-          <div className="animate-fade-in-up">
-            <div className="flex flex-col gap-12">
-              {/* Industry Badge */}
-              <div className={cn("inline-flex items-center gap-2 self-start px-3 py-1 rounded-full border", colors.primary)}>
-                <Icon className="size-4" />
-                <span className="text-sm font-medium capitalize">{industry} Innovation</span>
-              </div>
+    <section className={cn(
+      "relative overflow-hidden",
+      "bg-gradient-to-br from-background via-background/98 to-secondary/5",
+      className
+    )}>
+      {/* Elegant Background Pattern */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(120,119,198,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,122,1,0.05),transparent_50%)]" />
+      </div>
+      
+      <div className="container relative py-20 lg:py-32">
+        <div className="mx-auto max-w-6xl">
+          {/* Header Section */}
+          <div className="text-center space-y-8 mb-16">
+            {/* Badge with vision icon - only 1 ambient element */}
+            <div className="flex justify-center">
+              <Badge className="clerk-inspired-badge bg-secondary/10 text-secondary border-secondary/20 backdrop-blur-sm">
+                <Eye className="h-3 w-3 mr-2 animate-pulse" />
+                {content.badge}
+              </Badge>
+            </div>
+
+            {/* Vision Heading */}
+            <div className="space-y-6">
+              <h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
+                {content.title}{" "}
+                <br className="hidden sm:block" />
+                <span className="text-brand-gradient">
+                  {content.highlight}
+                </span>
+              </h1>
               
-              <div>
-                <h1 className="mb-6 text-4xl font-bold md:text-5xl lg:text-6xl leading-tight">
-                  {content.title}
-                </h1>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {content.subtitle}
-                </p>
-              </div>
-              
-              {/* CTA Button */}
-              <Button
-                asChild
-                className={cn(
-                  "group flex h-fit w-fit items-center gap-2 rounded-full px-8 py-4 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-200",
-                  colors.bg,
-                  colors.hover,
-                  !canStartTrial && "opacity-75 cursor-not-allowed"
-                )}
-                disabled={!canStartTrial}
-              >
-                <a href="#" aria-label={`${content.cta} for ${industry}`}>
-                  <div>{content.cta}</div>
-                  {showAnimatedCTA ? (
-                    <div className="relative h-6 w-7 overflow-hidden">
-                      <div className="absolute top-0 left-0 flex -translate-x-1/2 items-center transition-all duration-500 group-hover:translate-x-0">
-                        <MoveRight className="h-6 w-6 fill-white px-1" />
-                        <MoveRight className="h-6 w-6 fill-white px-1" />
-                      </div>
-                    </div>
-                  ) : (
-                    <MoveRight className="h-5 w-5" />
-                  )}
-                </a>
-              </Button>
+              <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                {content.subtitle}
+              </p>
             </div>
           </div>
 
-          {/* Visual Grid Section */}
-          <div className="animate-fade-in-up animation-delay-200">
-            <AspectRatio ratio={1.390658174 / 1}>
-              <div className="grid h-full w-full grid-cols-2 grid-rows-2 gap-5 lg:max-w-[38.9375rem] lg:gap-8">
-                {/* Large Image */}
-                <div className="col-[1/2] row-[1/3] animate-scale-in animation-delay-400">
-                  <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <Image
-                      src={content.images[0].src}
-                      alt={content.images[0].alt}
-                      fill
-                      className="object-cover object-center hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
+          {/* Vision Points Grid */}
+          <div className="grid gap-8 lg:grid-cols-3 mb-12">
+            {content.visionPoints.map((point, index) => (
+              <div
+                key={index}
+                className="marketing-card p-8 rounded-2xl text-center space-y-4"
+              >
+                {/* Icon with subtle glow */}
+                <div className="marketing-icon-enhanced mx-auto mb-4">
+                  <point.icon className="h-8 w-8" />
                 </div>
                 
-                {/* Top Right Image */}
-                <div className="col-[2/3] row-[1/2] animate-slide-in-right animation-delay-500">
-                  <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <Image
-                      src={content.images[1].src}
-                      alt={content.images[1].alt}
-                      fill
-                      className="object-cover object-center hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                </div>
+                <h3 className="text-xl font-semibold text-foreground">
+                  {point.title}
+                </h3>
                 
-                {/* Bottom Right Image */}
-                <div className="col-[2/3] row-[2/3] animate-slide-in-right animation-delay-600">
-                  <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl xl:rounded-3xl shadow-lg hover:shadow-xl transition-shadow duration-200">
-                    <Image
-                      src={content.images[2].src}
-                      alt={content.images[2].alt}
-                      fill
-                      className="object-cover object-center hover:scale-105 transition-transform duration-300"
-                    />
+                <p className="text-muted-foreground leading-relaxed">
+                  {point.description}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-2xl font-semibold text-foreground">
+                Ready to be part of the future?
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Join forward-thinking {industry} owners who are already transforming their operations with intelligent technology.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button className="clerk-cta-primary cta-equal" size="lg">
+                {content.ctaText}
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" className="cta-equal" size="lg">
+                {content.ctaSecondary}
+              </Button>
+            </div>
+
+            {/* Progressive Enhancement */}
+            {variant === 'detailed' && (
+              <div className="pt-12 border-t border-border/40">
+                <div className="grid gap-6 md:grid-cols-3 text-center">
+                  <div className="space-y-2">
+                    <div className="text-2xl font-bold text-primary">Q1 2026</div>
+                    <div className="text-sm text-muted-foreground">AI-Powered Forecasting</div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-2xl font-bold text-primary">Q2 2026</div>
+                    <div className="text-sm text-muted-foreground">Advanced Analytics Platform</div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="text-2xl font-bold text-primary">Q3 2026</div>
+                    <div className="text-sm text-muted-foreground">Autonomous Operations</div>
                   </div>
                 </div>
               </div>
-            </AspectRatio>
+            )}
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export { VisionHero };
+}
