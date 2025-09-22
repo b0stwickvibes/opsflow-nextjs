@@ -570,6 +570,109 @@ npm run build                         # Next.js build validation
 
 **File Updates:** When adding new protocols, update this file only. No new .md files.
 
+---
+
+## Seamless Handoff Protocols
+
+### **New Chat Session Initialization**
+When starting a new chat session focused on page creation, immediately establish context:
+
+```bash
+# 1. Current State Verification
+- Visual tokens page: /app/ui-sink/tokens/page.tsx (100+ interactive tokens)
+- Design system: OKLCH-based with click-to-copy functionality
+- Template components: /templates/shadcn-components/processed/
+- Git status: All changes committed (f8092e0e - "Transform tokens page to visual components")
+
+# 2. Key Techniques Established
+- Visual component creation over text-based documentation
+- Click-to-copy functionality for all design elements
+- Surface class replacement (bg-primary-300 vs problematic color-mix)
+- Template component workflow for visual editing
+```
+
+### **Page Creation Priorities (For New Sessions)**
+1. **Updating Template Components**: Modify existing templates for visual refinement
+2. **Adding New Components**: Create reusable components following visual token patterns
+3. **Converting Components**: Transform text-based to visual interfaces when needed
+4. **Copy/Adding to Pages**: Implement template components in production pages
+
+### **Visual Component Standards (Handoff Critical)**
+```typescript
+// ✅ ALWAYS create visual interfaces with these features:
+interface StandardVisualComponent {
+  // 1. Click-to-copy functionality
+  onClick: () => copyToClipboard(cssClass);
+  
+  // 2. Visual preview of the element
+  preview: ReactNode;
+  
+  // 3. Copy feedback UI
+  copyState: boolean;
+  
+  // 4. Hover effects for interaction clarity
+  className: "cursor-pointer hover:scale-105 transition-transform";
+  
+  // 5. Organized by categories
+  categories: "color" | "badge" | "button" | "typography" | "icon" | "surface" | "metric" | "theme";
+}
+
+// Example implementation pattern:
+export function VisualButton({ variant }: { variant: string }) {
+  const [copied, setCopied] = useState(false);
+  
+  return (
+    <div onClick={() => copyClass(`clerk-cta-${variant}`)}>
+      <Button className={`clerk-cta-${variant}`}>
+        {variant} CTA
+      </Button>
+      {copied && <CopyFeedback />}
+    </div>
+  );
+}
+```
+
+### **Development Context (Critical for Continuation)**
+```typescript
+// File structure understanding:
+/app/ui-sink/tokens/page.tsx        // ← Master visual tokens reference
+/templates/shadcn-components/       // ← Template library for components
+/components/shared/                 // ← Production-ready components
+/app/globals.css                    // ← 1604+ lines, OKLCH token definitions
+
+// Established patterns:
+- Visual over textual documentation
+- Interactive preview with click-to-copy
+- Category-based organization (8 major categories)
+- OKLCH color system with bg-primary-* classes
+- Surface class replacement strategy (avoid color-mix)
+```
+
+### **Quality Standards (Non-Negotiable)**
+```bash
+✅ Visual Component Checklist:
+- [ ] Shows actual visual preview (not just text description)
+- [ ] Click-to-copy CSS class functionality implemented  
+- [ ] Hover states and interaction feedback
+- [ ] Uses OKLCH tokens (bg-primary-*, text-*, border-*)
+- [ ] Avoids problematic surface-subtle-* classes
+- [ ] Organized by logical categories
+- [ ] Copy confirmation UI (temporary "Copied!" message)
+- [ ] Mobile-responsive touch targets
+```
+
+### **Git Workflow (For New Sessions)**
+```bash
+# Always check current status first
+git status                          # Verify clean working tree
+git log --oneline -5               # See recent commits
+
+# After making changes
+git add .                          # Stage all changes
+git commit -m "Descriptive message covering all changes"
+git push origin main               # Push to remote repository
+```
+
 ### **Template vs. Shared Component Usage**
 
 **CRITICAL: Template Components for Visual Work**
@@ -602,3 +705,106 @@ import { FeatureBento } from "@/components/shared/features";
 2. **Testing**: Preview changes in `/ui-sink/templates` page
 3. **Production**: Import template components directly in pages for immediate use
 4. **Optional**: Copy to `/components/shared/` when component is stable
+
+---
+
+## Visual Component Creation Standards
+
+### **Design Token Integration (From UI Sink Experience)**
+```typescript
+// ✅ CRITICAL: Create visual, clickable token interfaces
+interface VisualToken {
+  name: string;
+  value: string;
+  category: 'color' | 'badge' | 'button' | 'typography' | 'icon' | 'surface' | 'metric' | 'theme';
+  description: string;
+  cssClass: string;
+  preview?: string;
+}
+
+// Example visual token component with click-to-copy
+export function VisualTokenDisplay({ token }: { token: VisualToken }) {
+  const [copied, setCopied] = useState(false);
+  
+  const handleCopy = async () => {
+    await navigator.clipboard.writeText(token.cssClass);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  return (
+    <div 
+      onClick={handleCopy}
+      className="cursor-pointer hover:scale-105 transition-transform"
+    >
+      <div className={token.cssClass}>
+        {/* Visual representation */}
+      </div>
+      <p className="text-sm font-mono">{token.name}</p>
+      {copied && <span className="text-green-500">Copied!</span>}
+    </div>
+  );
+}
+```
+
+### **Visual Design System Documentation**
+```typescript
+// ✅ Always create visual interfaces for design tokens, not text lists
+// Location: /app/ui-sink/tokens/page.tsx
+// Contains 8 major categories with 100+ visual token examples:
+
+1. Color Scales - OKLCH primary/secondary/accent with visual swatches
+2. Badge System - All badge variants with live previews
+3. CTA Button System - Primary/secondary/ghost with hover states
+4. Typography Scale - Font weights and sizes with examples
+5. Icon Containers - Enterprise icon styling variations
+6. Surface Classes - Background variants (avoid color-mix, use bg-primary-300)
+7. Dashboard Metric Cards - KPI styling for operations dashboards
+8. Industry Accent Themes - Restaurant/bar/coffee/hotel color variations
+```
+
+### **Token System Best Practices**
+```typescript
+// ✅ CORRECT - Use reliable OKLCH classes
+<div className="bg-primary-300">           // ✅ Reliable, consistent
+<div className="bg-secondary-100">         // ✅ Light variation
+<Badge className="badge-accent">           // ✅ Predefined badge class
+
+// ❌ AVOID - CSS color-mix functions (browser compatibility issues)
+<div className="surface-subtle-primary">   // ❌ Shows red background
+<div className="surface-subtle-secondary"> // ❌ Color-mix problems
+
+// 🔧 FIX PROCESS: When surface classes fail
+// 1. Replace with bg-primary-300/secondary-300 first
+// 2. Add variation with bg-primary-100/secondary-100 if needed
+// 3. Test visual consistency across components
+```
+
+### **Click-to-Copy Implementation Pattern**
+```typescript
+// ✅ Standard pattern for all visual documentation
+const [copied, setCopied] = useState(false);
+
+const copyToClipboard = async (text: string) => {
+  try {
+    await navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  } catch (err) {
+    console.error('Failed to copy:', err);
+  }
+};
+
+// Apply to buttons, cards, any design element
+<Button 
+  onClick={() => copyToClipboard('clerk-cta-primary')}
+  className="relative"
+>
+  Primary CTA
+  {copied && (
+    <span className="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-2 py-1 rounded text-xs">
+      Copied!
+    </span>
+  )}
+</Button>
+```

@@ -16,6 +16,13 @@
 - **Homepage** (`/`) - MarketingHero + features + testimonials ✅
 - **Pricing** (`/pricing`) - Professional pricing system with ROI calculator ✅
 
+#### **Development Tools & Documentation**
+- **Design Tokens** (`/ui-sink/tokens`) - Visual token system with click-to-copy functionality ✅
+  - 8 major categories: Color Scales, Badge System, CTA Buttons, Typography, Icons, Surface Classes, Metrics, Industry Themes
+  - 100+ visual design tokens with live previews
+  - Interactive click-to-copy for CSS class names
+  - OKLCH color system integration
+
 #### **Product Pages** (`/product/`)
 - **Features** - Feature showcase with tabs and benefits ✅
 - **Demo** - Interactive demo experience ✅  
@@ -57,10 +64,13 @@
 
 #### **Styling System**
 - **OKLCH token system** implemented in globals.css ✅
+- **Visual design tokens** with interactive documentation ✅
 - **Marketing playbook** compliance (1 ambient per section) ✅
 - **Enterprise card classes** (enterprise-card, feature-tile) ✅
 - **CTA system** (clerk-cta-primary, cta-equal) ✅
 - **Icon system** (enterprise-icon-primary/secondary/accent) ✅
+- **Surface class optimization** (bg-primary-300/secondary-300 replacing color-mix) ✅
+- **Click-to-copy token interface** for development efficiency ✅
 
 #### **Navigation**
 - **Professional navbar** with predictive hover dropdowns ✅
@@ -136,6 +146,12 @@ Need to implement template library for page variety
 
 #### **3. Mobile Optimization**
 Some cards need touch-target optimization for kitchen tablets
+
+#### **4. Surface Class CSS Compatibility**
+- **Issue**: `surface-subtle-primary` and `surface-subtle-secondary` show red backgrounds due to CSS color-mix browser support
+- **Solution**: Use `bg-primary-300/secondary-300` for reliable backgrounds
+- **Variation**: Use `bg-primary-100/secondary-100` for lighter alternatives
+- **Status**: Fixed in tokens page, needs audit across other components
 
 ---
 
