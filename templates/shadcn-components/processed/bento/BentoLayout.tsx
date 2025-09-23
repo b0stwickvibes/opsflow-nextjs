@@ -60,8 +60,8 @@ export function BentoLayout({
       title: "Real-time Analytics",
       description: "Live performance tracking with predictive insights for optimal decision making",
       icon: BarChart3,
-      color: "text-emerald-600 dark:text-emerald-400",
-      bgColor: "bg-emerald-500/10",
+      color: "text-primary",
+      bgColor: "bg-primary/10",
       industrySpecific: {
         bars: { 
           title: "Beverage Analytics", 
@@ -81,8 +81,8 @@ export function BentoLayout({
       title: "Smart Scheduling",
       description: "AI-powered staff optimization with labor cost control and compliance monitoring",
       icon: Clock,
-      color: "text-blue-600 dark:text-blue-400",
-      bgColor: "bg-blue-500/10",
+      color: "text-primary",
+      bgColor: "bg-primary/10",
       industrySpecific: {
         bars: { 
           title: "Peak Hour Staffing", 
@@ -102,8 +102,8 @@ export function BentoLayout({
       title: "Food Safety Control",
       description: "Comprehensive HACCP compliance with automated temperature monitoring",
       icon: Shield,
-      color: "text-red-600 dark:text-red-400",
-      bgColor: "bg-red-500/10",
+      color: "text-primary",
+      bgColor: "bg-primary/10",
       industrySpecific: {
         bars: { 
           title: "Safety Protocols", 
@@ -123,8 +123,8 @@ export function BentoLayout({
       title: "Cost Management",
       description: "Advanced pricing strategies with real-time cost analysis and profit optimization",
       icon: DollarSign,
-      color: "text-yellow-600 dark:text-yellow-400",
-      bgColor: "bg-yellow-500/10",
+      color: "text-secondary",
+      bgColor: "bg-secondary/10",
       industrySpecific: {
         bars: { 
           title: "Beverage Profitability", 
@@ -175,29 +175,25 @@ export function BentoLayout({
   };
 
   return (
-    <section className={cn("overflow-hidden py-32", className)}>
-      <div className="container flex w-full flex-col items-center justify-center px-4">
-        <p className="bg-muted rounded-full px-4 py-1 text-xs uppercase tracking-wide">
+    <section className={cn("py-24", className)}>
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex w-full flex-col items-center justify-center">
+        <div className="clerk-inspired-badge mb-6">
           {badgeText}
-        </p>
-        <h2 
-          className="enterprise-headline relative z-20 py-2 text-center font-sans  font-semibold tracking-tighter md:py-7 lg:text-6xl"
-          role="heading"
-          aria-level={2}
-        >
+        </div>
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 text-center">
           {heading}
         </h2>
-        <p className="enterprise-body text-md text-muted-foreground mx-auto max-w-xl text-center lg:">
+        <p className="enterprise-body max-w-2xl mx-auto text-center text-muted-foreground mb-12">
           {subheading}
         </p>
 
-        <div className="relative mt-10 grid w-full max-w-5xl grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div className="relative grid w-full max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-4">
           {defaultItems.map((item, idx) => {
             const industryItem = getIndustryItem(item);
             return (
               <div
                 key={idx}
-                className="group relative block h-full w-full p-2"
+                className="group relative block h-full w-full"
                 onMouseEnter={() => handleItemHover(idx)}
                 onMouseLeave={() => handleItemHover(null)}
                 role="presentation"
@@ -205,10 +201,7 @@ export function BentoLayout({
                 <AnimatePresence mode="wait" initial={false}>
                   {hoveredIndex === idx && (
                     <motion.span
-                      className={cn(
-                        "absolute inset-0 block h-full w-full rounded-2xl",
-                        industryItem.bgColor,
-                      )}
+                      className="absolute inset-0 block h-full w-full rounded-xl bg-primary/5"
                       layoutId="hoverBackground"
                       key={idx}
                       initial={{ opacity: 0 }}
@@ -227,7 +220,8 @@ export function BentoLayout({
                   ctaText={ctaText}
                   ctaLink={ctaLink}
                   onCtaClick={handleCtaClick}
-                  className="flex flex-col items-center justify-center"
+                  className="flex flex-col items-center justify-center motion-fade-in-up-320"
+                  style={{ animationDelay: `${idx * 100}ms` }}
                 />
               </div>
             );
@@ -247,6 +241,7 @@ const BentoLayoutCard = ({
   ctaText,
   ctaLink,
   onCtaClick,
+  style,
 }: {
   className?: string;
   title: string;
@@ -256,43 +251,44 @@ const BentoLayoutCard = ({
   ctaText: string;
   ctaLink: string;
   onCtaClick: () => void;
+  style?: React.CSSProperties;
 }) => {
   return (
     <div
       className={cn(
-        "bg-muted relative z-20 flex h-full flex-col items-center justify-center gap-2 rounded-3xl p-5 text-center transition-colors hover:bg-muted/80",
+        "clerk-glass-card h-full flex flex-col items-center justify-center gap-4 p-6 text-center hover-scale-103 transition-all duration-300",
         className,
       )}
+      style={style}
       role="article"
       aria-labelledby={`bento-layout-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
     >
-      <div
-        className={cn(
-          "bg-background size-15 mb-4 mt-4 flex items-center justify-center rounded-full p-2",
-          color,
-        )}
-      >
-        <Icon aria-hidden="true" />
+      <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-2">
+        <Icon 
+          className={cn("size-6", color)}
+          aria-hidden="true" 
+        />
       </div>
-      <h1 
+      <h3 
         id={`bento-layout-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
-        className="enterprise-body  font-medium tracking-tight"
+        className="text-lg font-semibold text-foreground mb-2"
       >
         {title}
-      </h1>
-      <p className="text-muted-foreground text-center text-sm leading-relaxed">
+      </h3>
+      <p className="text-muted-foreground text-sm leading-relaxed flex-1">
         {description}
       </p>
 
       <Button
         variant="ghost"
-        className="group/btn mt-8 w-full hover:opacity-50 transition-opacity"
+        className="group/btn mt-4 w-full hover:bg-primary/10 transition-colors text-primary"
         asChild
         onClick={onCtaClick}
       >
         <a 
           href={ctaLink}
           aria-label={`${ctaText} about ${title}`}
+          className="flex items-center justify-center"
         >
           {ctaText}{" "}
           <ArrowRight 

@@ -191,10 +191,10 @@ export function FeatureShowcase2({
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "financial": return "bg-green-100 text-green-800 border-green-200";
-      case "efficiency": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "compliance": return "bg-red-100 text-red-800 border-red-200";
-      case "growth": return "bg-purple-100 text-purple-800 border-purple-200";
+      case "financial": return "bg-primary/10 text-primary border-primary/20";
+      case "efficiency": return "bg-secondary/10 text-secondary border-secondary/20";
+      case "compliance": return "bg-primary/10 text-primary border-primary/20";
+      case "growth": return "bg-purple-100 text-purple-600 border-purple-200";
       default: return "bg-muted text-foreground border-border";
     }
   };
@@ -204,13 +204,13 @@ export function FeatureShowcase2({
       <div className="container relative flex flex-col items-center justify-center">
         {/* Header Section */}
         <div className="mb-16 text-center">
-          <Badge variant="outline" className="mb-4">
+          <div className="clerk-inspired-badge mb-6">
             Proven ROI Metrics
-          </Badge>
-<h1 className="mb-4 text-4xl font-bold tracking-tight text-foreground md:text-5xl lg:text-6xl">
+          </div>
+          <h1 className="mb-4 text-4xl lg:text-5xl font-bold text-foreground">
             Restaurant Operations ROI
           </h1>
-          <p className="enterprise-body text-muted-foreground/70 mx-auto max-w-3xl ">
+          <p className="enterprise-body max-w-2xl mx-auto text-muted-foreground">
             Real results from 500+ restaurants using OpsFlow. See the measurable impact 
             on your bottom line, operations, and customer satisfaction.
           </p>
@@ -241,7 +241,7 @@ export function FeatureShowcase2({
         )}
 
         {/* ROI Metrics Grid */}
-        <div className="grid w-full max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
           {roiMetrics.map((metric, index) => {
             const IconComponent = metric.icon;
             const isSelected = selectedMetric === metric.title;
@@ -250,9 +250,10 @@ export function FeatureShowcase2({
               <div
                 key={index}
                 className={cn(
-                  "group cursor-pointer rounded-2xl border bg-card p-6 transition-all duration-200 tile-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                  "group cursor-pointer clerk-glass-card p-6 hover-scale-103 transition-all duration-300 motion-fade-in-up-320 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
                   isSelected ? "border-primary shadow-lg" : ""
                 )}
+                style={{ animationDelay: `${index * 100}ms` }}
                 onClick={() => handleMetricClick(metric, index)}
               >
                 <div className="flex items-start gap-4">
@@ -262,15 +263,12 @@ export function FeatureShowcase2({
                   
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-2">
-                      <h4 className="enterprise-body  font-semibold group-hover:text-primary transition-colors">
+                      <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
                         {metric.title}
                       </h4>
-                      <Badge 
-                        variant="outline" 
-                        className={`text-xs ${getCategoryColor(metric.category)} capitalize`}
-                      >
+                      <div className={`clerk-inspired-badge ${getCategoryColor(metric.category)} capitalize`}>
                         {metric.category}
-                      </Badge>
+                      </div>
                     </div>
                     
                     <div className="mb-3">
@@ -313,7 +311,9 @@ export function FeatureShowcase2({
                           <div className="space-y-2">
                             {metric.benefitPoints.map((benefit, idx) => (
                               <div key={idx} className="flex items-start gap-2 text-sm">
-                                <CheckCircle className="h-3 w-3 text-green-600 mt-0.5 flex-shrink-0" />
+                                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
+                                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                                </div>
                                 <span className="text-muted-foreground">{benefit}</span>
                               </div>
                             ))}
@@ -348,26 +348,34 @@ export function FeatureShowcase2({
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center p-6 bg-muted/30 rounded-lg">
-              <Trophy className="h-8 w-8 mx-auto text-primary mb-2" />
+            <div className="text-center p-6 clerk-glass-card">
+              <div className="w-8 h-8 mx-auto mb-2 bg-primary/10 rounded-xl flex items-center justify-center">
+                <Trophy className="h-5 w-5 text-primary" />
+              </div>
               <div className="text-2xl font-bold text-primary">$2.4K</div>
               <div className="text-sm text-muted-foreground">Monthly Savings</div>
             </div>
             
-            <div className="text-center p-6 bg-muted/30 rounded-lg">
-              <Target className="h-8 w-8 mx-auto text-green-600 mb-2" />
-              <div className="text-2xl font-bold text-green-600">60 Days</div>
+            <div className="text-center p-6 clerk-glass-card">
+              <div className="w-8 h-8 mx-auto mb-2 bg-primary/10 rounded-xl flex items-center justify-center">
+                <Target className="h-5 w-5 text-primary" />
+              </div>
+              <div className="text-2xl font-bold text-primary">60 Days</div>
               <div className="text-sm text-muted-foreground">Average Payback</div>
             </div>
             
-            <div className="text-center p-6 bg-muted/30 rounded-lg">
-              <Zap className="h-8 w-8 mx-auto text-blue-600 mb-2" />
-              <div className="text-2xl font-bold text-blue-600">94%</div>
+            <div className="text-center p-6 clerk-glass-card">
+              <div className="w-8 h-8 mx-auto mb-2 bg-primary/10 rounded-xl flex items-center justify-center">
+                <Zap className="h-5 w-5 text-primary" />
+              </div>
+              <div className="text-2xl font-bold text-primary">94%</div>
               <div className="text-sm text-muted-foreground">Client Satisfaction</div>
             </div>
             
-            <div className="text-center p-6 bg-muted/30 rounded-lg">
-              <BarChart3 className="h-8 w-8 mx-auto text-purple-600 mb-2" />
+            <div className="text-center p-6 clerk-glass-card">
+              <div className="w-8 h-8 mx-auto mb-2 bg-purple-100 rounded-xl flex items-center justify-center">
+                <BarChart3 className="h-5 w-5 text-purple-600" />
+              </div>
               <div className="text-2xl font-bold text-purple-600">500+</div>
               <div className="text-sm text-muted-foreground">Success Stories</div>
             </div>
@@ -384,26 +392,32 @@ export function FeatureShowcase2({
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-<Button size="lg" onClick={handleGetROIAnalysisClick}>
+              <Button size="lg" className="clerk-cta-primary cta-shimmer hover-scale-103" onClick={handleGetROIAnalysisClick}>
                 Get Free ROI Analysis
                 <DollarSign className="ml-2 h-4 w-4" />
               </Button>
-              <Button variant="outline" size="lg">
+              <Button variant="outline" size="lg" className="cta-equal hover-scale-103">
                 View Client Case Studies
               </Button>
             </div>
 
             <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-1">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                </div>
                 No obligation assessment
               </div>
               <div className="flex items-center gap-1">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                </div>
                 Personalized recommendations
               </div>
               <div className="flex items-center gap-1">
-                <CheckCircle className="h-4 w-4 text-green-600" />
+                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
+                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                </div>
                 Implementation roadmap
               </div>
             </div>

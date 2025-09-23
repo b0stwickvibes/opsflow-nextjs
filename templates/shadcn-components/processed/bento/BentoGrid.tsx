@@ -135,39 +135,30 @@ export function BentoGrid({
   };
 
   const getIndustryAccent = () => {
-    switch (industry) {
-      case 'restaurants': return 'accent-orange';
-      case 'bars': return 'accent-purple';
-      case 'coffee': return 'accent-amber';
-      case 'hotels': return 'accent-blue';
-      default: return '';
-    }
+    // Always use primary tokens - no industry-specific colors
+    return '';
   };
 
   return (
-    <section className={cn("overflow-hidden py-32", getIndustryAccent(), className)}>
-      <div className="container flex w-full flex-col items-center justify-center px-4">
-        <p className="bg-muted rounded-full px-4 py-1 text-xs uppercase tracking-wide">
+    <section className={cn("py-24", className)}>
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex w-full flex-col items-center justify-center">
+        <div className="clerk-inspired-badge mb-6">
           {badgeText}
-        </p>
-        <h2 
-          className="enterprise-headline relative z-20 py-2 text-center font-sans  font-semibold tracking-tighter md:py-7 lg:text-6xl"
-          role="heading"
-          aria-level={2}
-        >
+        </div>
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 text-center">
           {heading}
         </h2>
-        <p className="enterprise-body text-md text-muted-foreground mx-auto max-w-xl text-center lg:">
+        <p className="enterprise-body max-w-2xl mx-auto text-center text-muted-foreground mb-12">
           {subheading}
         </p>
 
-        <div className="relative mt-10 grid w-full max-w-4xl grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        <div className="relative grid w-full max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
           {defaultItems.map((item, idx) => {
             const industryItem = getIndustryItem(item);
             return (
               <div
                 key={idx}
-                className="group relative block h-full w-full p-2"
+                className="group relative block h-full w-full"
                 onMouseEnter={() => handleItemHover(idx)}
                 onMouseLeave={() => handleItemHover(null)}
                 role="presentation"
@@ -175,9 +166,7 @@ export function BentoGrid({
                 <AnimatePresence mode="wait" initial={false}>
                   {hoveredIndex === idx && (
                     <motion.span
-                      className={cn(
-                        "absolute inset-0 block h-full w-full rounded-2xl bg-brand-gradient opacity-20"
-                      )}
+                      className="absolute inset-0 block h-full w-full rounded-xl bg-primary/5"
                       layoutId="hoverBackground"
                       key={idx}
                       initial={{ opacity: 0 }}
@@ -192,7 +181,8 @@ export function BentoGrid({
                   title={industryItem.title}
                   description={industryItem.description}
                   icon={industryItem.icon}
-                  className="flex flex-col items-center justify-center"
+                  className="flex flex-col items-center justify-center motion-fade-in-up-320"
+                  style={{ animationDelay: `${idx * 100}ms` }}
                 />
               </div>
             );
@@ -208,31 +198,36 @@ const BentoCard = ({
   title,
   description,
   icon: Icon,
+  style,
 }: {
   className?: string;
   title: string;
   description: string;
   icon: React.ComponentType<{ className?: string }>;
+  style?: React.CSSProperties;
 }) => {
   return (
     <div
       className={cn(
-        "bg-muted relative z-20 flex h-full flex-col items-center justify-center gap-4 rounded-2xl p-5 text-center transition-colors hover:bg-muted/80",
+        "clerk-glass-card h-full flex flex-col items-center justify-center gap-4 p-6 text-center hover-scale-103 transition-all duration-300",
         className,
       )}
+      style={style}
       role="article"
       aria-labelledby={`bento-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
     >
-      <Icon 
-        className="text-muted-foreground mt-3 size-8 stroke-1" 
-        aria-hidden="true"
-      />
-      <h1 
+      <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-2">
+        <Icon 
+          className="size-6 text-primary" 
+          aria-hidden="true"
+        />
+      </div>
+      <h3 
         id={`bento-title-${title.replace(/\s+/g, '-').toLowerCase()}`}
-        className="text-2xl font-semibold tracking-tight"
+        className="text-lg font-semibold text-foreground mb-2"
       >
         {title}
-      </h1>
+      </h3>
       <p className="text-muted-foreground text-sm leading-relaxed">
         {description}
       </p>

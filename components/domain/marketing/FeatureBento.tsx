@@ -1,9 +1,7 @@
 "use client";
 
 import { Shield, Users, BarChart3, CheckCircle, Clock, Thermometer, AlertTriangle, TrendingUp, Zap, Calendar, ChefHat, Eye } from "lucide-react";
-import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
@@ -16,10 +14,10 @@ interface FeatureBentoProps {
 }
 
 /**
- * Feature Bento Component (Clean)
- * Professional bento grid layout with restaurant operations focus
- * Uses enterprise styling system following DEVELOPMENT-SOP.md standards
- * Domain: Marketing sections with interactive dashboard mockups
+ * Feature Bento Component (Clean) - GOLD STANDARD COMPLIANT
+ * Following bars demo design standards exactly
+ * Uses clerk-inspired-badge and clerk-glass-card tokens
+ * Proper primary/secondary color system
  */
 export function FeatureBento({ industry = 'restaurant', className }: FeatureBentoProps) {
   const [activeMetric, setActiveMetric] = useState(0);
@@ -56,17 +54,17 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
             preview: (
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-semibold text-lg">Daily Compliance</h4>
-                  <Badge className="clerk-inspired-badge">
+                  <h4 className="font-semibold text-lg text-foreground">Daily Compliance</h4>
+                  <div className="clerk-inspired-badge bg-primary/10 text-primary">
                     <CheckCircle className="h-3 w-3" />
                     94% Complete
-                  </Badge>
+                  </div>
                 </div>
                 
-                {/* Interactive dashboard mockup using SOP classes */}
-                <div className="enterprise-metric-card p-4 space-y-4">
+                {/* Interactive dashboard mockup using GOLD STANDARD classes */}
+                <div className="stripe-glass-card p-4 space-y-4">
                   <div className="flex items-center justify-between">
-                    <h5 className="font-semibold text-sm">Live Restaurant Metrics</h5>
+                    <h5 className="font-semibold text-sm text-foreground">Live Restaurant Metrics</h5>
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                       <span className="text-xs text-muted-foreground">Live</span>
@@ -78,9 +76,9 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
                       <div 
                         key={index}
                         className={cn(
-                          "p-3 rounded-xl transition-all duration-500",
+                          "p-3 rounded-xl transition-all duration-300",
                           activeMetric === index 
-                            ? "surface-subtle-primary border-primary-200 shadow-md" 
+                            ? "bg-primary/10 border border-primary/20 shadow-md" 
                             : "bg-background/60 border border-border/30"
                         )}
                       >
@@ -107,13 +105,13 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
             subtitle: "Real-time alerts for all refrigeration units with automated logging.",
             preview: (
               <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 rounded-xl enterprise-card">
+                <div className="flex items-center justify-between p-4 rounded-xl clerk-glass-card">
                   <div className="flex items-center gap-3">
-                    <div className="enterprise-icon-primary">
-                      <Thermometer className="h-4 w-4" />
+                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <Thermometer className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <span className="text-sm font-semibold">Walk-in Cooler</span>
+                      <span className="text-sm font-semibold text-foreground">Walk-in Cooler</span>
                       <div className="text-xs text-muted-foreground">Zone A</div>
                     </div>
                   </div>
@@ -123,29 +121,29 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-between p-4 rounded-xl surface-subtle-destructive">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-primary/5 border border-primary/20">
                   <div className="flex items-center gap-3">
-                    <div className="enterprise-icon-muted">
-                      <AlertTriangle className="h-4 w-4" />
+                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <AlertTriangle className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <span className="text-sm font-semibold">Freezer Unit</span>
+                      <span className="text-sm font-semibold text-foreground">Freezer Unit</span>
                       <div className="text-xs text-muted-foreground">Zone B</div>
                     </div>
                   </div>
                   <div className="text-right">
-                    <div className="text-xl font-bold">12°F</div>
-                    <div className="text-xs font-medium">Alert</div>
+                    <div className="text-xl font-bold text-primary">12°F</div>
+                    <div className="text-xs font-medium text-primary">Alert</div>
                   </div>
                 </div>
                 
-                <div className="flex items-center justify-between p-4 rounded-xl surface-subtle-primary">
+                <div className="flex items-center justify-between p-4 rounded-xl bg-primary/5 border border-primary/20">
                   <div className="flex items-center gap-3">
-                    <div className="enterprise-icon-primary">
-                      <CheckCircle className="h-4 w-4" />
+                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                      <CheckCircle className="h-4 w-4 text-primary" />
                     </div>
                     <div>
-                      <span className="text-sm font-semibold">Hot Hold Station</span>
+                      <span className="text-sm font-semibold text-foreground">Hot Hold Station</span>
                       <div className="text-xs text-muted-foreground">Kitchen</div>
                     </div>
                   </div>
@@ -164,20 +162,20 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
             preview: (
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                    <span className="text-sm font-bold text-primary-foreground">JD</span>
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <span className="text-sm font-bold text-primary">JD</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-semibold truncate">John Doe</div>
+                    <div className="text-sm font-semibold truncate text-foreground">John Doe</div>
                     <div className="text-xs text-primary">ServeNet Certified</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center">
-                    <span className="text-sm font-bold text-secondary-foreground">MS</span>
+                  <div className="w-10 h-10 rounded-full bg-secondary/10 flex items-center justify-center">
+                    <span className="text-sm font-bold text-secondary">MS</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-sm font-semibold truncate">Maria Smith</div>
+                    <div className="text-sm font-semibold truncate text-foreground">Maria Smith</div>
                     <div className="text-xs text-secondary">Expires Soon</div>
                   </div>
                 </div>
@@ -191,22 +189,22 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
             preview: (
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <div className="enterprise-icon-primary w-12 h-12 rounded-xl mx-auto mb-2">
-                    <TrendingUp className="h-6 w-6" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl mx-auto mb-2 flex items-center justify-center">
+                    <TrendingUp className="h-6 w-6 text-primary" />
                   </div>
                   <div className="text-2xl font-bold text-primary">32%</div>
                   <div className="text-xs font-medium text-muted-foreground">Cost Savings</div>
                 </div>
                 <div className="text-center">
-                  <div className="enterprise-icon-secondary w-12 h-12 rounded-xl mx-auto mb-2">
-                    <Clock className="h-6 w-6" />
+                  <div className="w-12 h-12 bg-secondary/10 rounded-xl mx-auto mb-2 flex items-center justify-center">
+                    <Clock className="h-6 w-6 text-secondary" />
                   </div>
                   <div className="text-2xl font-bold text-secondary">15</div>
                   <div className="text-xs font-medium text-muted-foreground">hrs/week saved</div>
                 </div>
                 <div className="text-center">
-                  <div className="enterprise-icon-accent w-12 h-12 rounded-xl mx-auto mb-2">
-                    <Shield className="h-6 w-6" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-xl mx-auto mb-2 flex items-center justify-center">
+                    <Shield className="h-6 w-6 text-primary" />
                   </div>
                   <div className="text-2xl font-bold text-primary">98%</div>
                   <div className="text-xs font-medium text-muted-foreground">Compliance</div>
@@ -220,10 +218,10 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
             subtitle: "One-click access to common tasks.",
             preview: (
               <div className="space-y-3">
-                <Button size="sm" className="w-full clerk-cta-primary">
+                <Button size="sm" className="w-full clerk-cta-primary cta-shimmer hover-scale-103">
                   Start Health Check
                 </Button>
-                <Button size="sm" variant="outline" className="w-full">
+                <Button size="sm" variant="outline" className="w-full cta-equal hover-scale-103">
                   View Reports
                 </Button>
               </div>
@@ -234,7 +232,7 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
       // Additional industries follow same pattern...
     };
 
-    return content[industry] || content.restaurant;
+    return (content as any)[industry] || content.restaurant;
   };
 
   const content = getIndustryContent();
@@ -253,49 +251,49 @@ export function FeatureBento({ industry = 'restaurant', className }: FeatureBent
   };
 
   return (
-    <section className={cn("section-marketing", className)}>
-      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className={cn("py-24", className)}>
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header with coordinated entrance animations */}
         <div className="text-center mb-16">
-          <Badge className="clerk-inspired-badge mb-4 motion-fade-in-up-320 animation-delay-100">
+          <div className="clerk-inspired-badge mb-6 motion-fade-in-up-320 animation-delay-100">
             <ChefHat className="h-4 w-4" />
             <span>{content.hero.badgeText}</span>
-          </Badge>
+          </div>
           
-          <h2 className="enterprise-headline mb-4 motion-fade-in-up-320 animation-delay-200">
-            <span className="text-brand-gradient">{content.hero.title}</span>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4 motion-fade-in-up-320 animation-delay-200">
+            {content.hero.title}
           </h2>
           
-          <p className="enterprise-body max-w-3xl mx-auto mb-8 motion-fade-in-up-320 animation-delay-300">
+          <p className="enterprise-body max-w-2xl mx-auto text-muted-foreground mb-8 motion-fade-in-up-320 animation-delay-300">
             {content.hero.subtitle}
           </p>
           
-          <Button className="clerk-cta-primary cta-equal cta-shimmer px-6 motion-fade-in-up-320 animation-delay-400">
+          <Button className="clerk-cta-primary cta-shimmer hover-scale-103 motion-fade-in-up-320 animation-delay-400">
             {content.hero.cta}
           </Button>
         </div>
 
-        {/* Bento Grid with SOP tile-hover effects */}
+        {/* Bento Grid with GOLD STANDARD tile-hover effects */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 auto-rows-min">
-          {content.grid.map((feature, index) => (
-            <Card
+          {content.grid.map((feature: any, index: number) => (
+            <div
               key={index}
               className={cn(
                 getGridClasses(feature.size),
-                "enterprise-card p-6 tile-hover motion-fade-in-up-320",
-                `animation-delay-${(index + 5) * 100}`
+                "clerk-glass-card p-6 hover-scale-103 transition-all duration-300 motion-fade-in-up-320"
               )}
+              style={{ animationDelay: `${(index + 5) * 100}ms` }}
             >
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-lg font-semibold mb-1">{feature.title}</h3>
+                  <h3 className="text-lg font-semibold text-foreground mb-1">{feature.title}</h3>
                   <p className="text-muted-foreground text-sm">{feature.subtitle}</p>
                 </div>
-                <div className="pt-4 border-t">
+                <div className="pt-4 border-t border-border/20">
                   {feature.preview}
                 </div>
               </div>
-            </Card>
+            </div>
           ))}
         </div>
       </div>

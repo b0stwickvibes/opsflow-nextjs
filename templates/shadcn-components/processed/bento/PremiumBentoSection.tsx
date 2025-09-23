@@ -88,37 +88,36 @@ export function PremiumBentoSection({
   };
 
   return (
-    <section className="dashboard-section-bg section-padding-xl">
-      <div className={cn("content-container", className)}>
+    <section className="py-24">
+      <div className={cn("container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8", className)}>
         {/* Header Section */}
         <div className="text-center space-y-6 mb-16">
-          <Badge className="dashboard-badge-beta">
+          <div className="clerk-inspired-badge">
             <ClipboardCheck className="size-4" />
             {badgeText}
-          </Badge>
+          </div>
 
-          <h1 className="text-display-lg text-foreground">
+          <h1 className="text-4xl lg:text-5xl font-bold text-foreground">
             {heading}
           </h1>
-
-          <p className="text-xl text-muted-foreground content-max-lg mx-auto">
+          <p className="enterprise-body max-w-2xl mx-auto text-muted-foreground">
             {subheading}
           </p>
         </div>
 
         {/* Three Feature Cards */}
-        <div className="dashboard-grid-3 mb-16">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3 mb-16">
           {/* Kitchen Workflows Card */}
-          <div className="dashboard-card-white p-8 dashboard-hover-lift motion-fade-in-up-320">
+          <div className="clerk-glass-card p-8 hover-scale-103 transition-all duration-300 motion-fade-in-up-320">
             <div className="space-y-6">
               {/* Icon */}
-              <div className="enterprise-icon-primary">
-                <ChefHat className="size-8" />
+              <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+                <ChefHat className="size-6 text-primary" />
               </div>
 
               {/* Content */}
               <div>
-                <h3 className="text-display-sm text-foreground mb-3">
+                <h3 className="text-2xl font-bold text-foreground mb-3">
                   Advanced Kitchen Workflows
                 </h3>
                 <p className="text-muted-foreground leading-relaxed mb-6">
@@ -126,25 +125,27 @@ export function PremiumBentoSection({
                 </p>
 
                 {/* Kitchen Tasks Dashboard */}
-                <div className="dashboard-card-white p-4 mb-6">
+                <div className="stripe-glass-card p-4 mb-6">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <span className="dashboard-text-primary text-sm">Kitchen Tasks</span>
-                      <Badge className="dashboard-badge-active text-xs">
+                      <span className="text-primary text-sm font-medium">Kitchen Tasks</span>
+                      <div className="clerk-inspired-badge bg-primary/10 text-primary">
                         On Track
-                      </Badge>
+                      </div>
                     </div>
 
                     <div className="space-y-2">
-                      <div className="flex items-center gap-3 p-2 dashboard-metric-green rounded-lg">
-                        <CheckCircle className="size-4 text-green-600" />
-                        <span className="text-xs dashboard-text-secondary flex-1">Prep station setup complete</span>
-                        <span className="text-xs text-green-600">✓</span>
+                      <div className="flex items-center gap-3 p-2 bg-purple-100 rounded-lg">
+                        <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
+                          <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                        </div>
+                        <span className="text-xs text-muted-foreground flex-1">Prep station setup complete</span>
+                        <span className="text-xs text-purple-600">✓</span>
                       </div>
-                      <div className="flex items-center gap-3 p-2 dashboard-metric-blue rounded-lg">
-                        <Clock className="size-4 text-cyan-700" />
-                        <span className="text-xs dashboard-text-secondary flex-1">Inventory count in progress</span>
-                        <span className="text-xs text-cyan-700">2 min</span>
+                      <div className="flex items-center gap-3 p-2 bg-primary/10 rounded-lg">
+                        <Clock className="size-4 text-primary" />
+                        <span className="text-xs text-muted-foreground flex-1">Inventory count in progress</span>
+                        <span className="text-xs text-primary">2 min</span>
                       </div>
                       <div className="flex items-center gap-3 p-2 bg-muted rounded-lg border border-border">
                         <Timer className="size-4 text-muted-foreground" />
@@ -202,19 +203,21 @@ export function PremiumBentoSection({
                           <Thermometer className="size-4 text-cyan-600" />
                           <span className="text-xs dashboard-text-secondary">Temperature Logs</span>
                         </div>
-                        <span className="text-xs font-medium text-cyan-600">Current</span>
+                        <span className="text-xs font-medium text-primary">Current</span>
                       </div>
-                      <div className="flex items-center justify-between p-2 dashboard-metric-green rounded-lg">
+                      <div className="flex items-center justify-between p-2 bg-purple-100 rounded-lg">
                         <div className="flex items-center gap-2">
-                          <ClipboardCheck className="size-4 text-green-600" />
-                          <span className="text-xs dashboard-text-secondary">Safety Checklists</span>
+                          <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
+                            <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                          </div>
+                          <span className="text-xs text-muted-foreground">Safety Checklists</span>
                         </div>
-                        <span className="text-xs font-medium text-green-600">Complete</span>
+                        <span className="text-xs font-medium text-purple-600">Complete</span>
                       </div>
-                      <div className="flex items-center justify-between p-2 dashboard-metric-blue rounded-lg">
+                      <div className="flex items-center justify-between p-2 bg-primary/10 rounded-lg">
                         <div className="flex items-center gap-2">
-                          <Award className="size-4 text-cyan-700" />
-                          <span className="text-xs dashboard-text-secondary">Audit Trail</span>
+                          <Award className="size-4 text-primary" />
+                          <span className="text-xs text-muted-foreground">Audit Trail</span>
                         </div>
                         <span className="text-xs font-medium text-cyan-700">Secured</span>
                       </div>
@@ -331,17 +334,17 @@ export function PremiumBentoSection({
                   <div className="space-y-3">
                     <div className="dashboard-text-primary text-sm">Task Categories</div>
                     <div className="space-y-2">
-                      <div className="flex items-center gap-2 p-2 dashboard-metric-green rounded-lg">
-                        <Utensils className="size-4 text-green-600" />
-                        <span className="text-xs dashboard-text-secondary">Kitchen Operations</span>
+                      <div className="flex items-center gap-2 p-2 bg-primary/10 rounded-lg">
+                        <Utensils className="size-4 text-primary" />
+                        <span className="text-xs text-muted-foreground">Kitchen Operations</span>
                       </div>
-                      <div className="flex items-center gap-2 p-2 dashboard-metric-purple rounded-lg">
+                      <div className="flex items-center gap-2 p-2 bg-purple-100 rounded-lg">
                         <Users className="size-4 text-purple-600" />
-                        <span className="text-xs dashboard-text-secondary">Front of House</span>
+                        <span className="text-xs text-muted-foreground">Front of House</span>
                       </div>
-                      <div className="flex items-center gap-2 p-2 dashboard-metric-blue rounded-lg">
-                        <Settings className="size-4 text-cyan-700" />
-                        <span className="text-xs dashboard-text-secondary">Maintenance</span>
+                      <div className="flex items-center gap-2 p-2 bg-secondary/10 rounded-lg">
+                        <Settings className="size-4 text-secondary" />
+                        <span className="text-xs text-muted-foreground">Maintenance</span>
                       </div>
                     </div>
                   </div>
@@ -349,17 +352,19 @@ export function PremiumBentoSection({
                   <div className="space-y-3">
                     <div className="dashboard-text-primary text-sm">Automation Rules</div>
                     <div className="space-y-2">
-                      <div className="flex items-center gap-2 p-2 dashboard-metric-cyan rounded-lg">
-                        <Clock className="size-4 text-cyan-600" />
-                        <span className="text-xs dashboard-text-secondary">Time-based triggers</span>
+                      <div className="flex items-center gap-2 p-2 bg-primary/10 rounded-lg">
+                        <Clock className="size-4 text-primary" />
+                        <span className="text-xs text-muted-foreground">Time-based triggers</span>
                       </div>
-                      <div className="flex items-center gap-2 p-2 dashboard-metric-blue rounded-lg">
-                        <Bell className="size-4 text-cyan-700" />
-                        <span className="text-xs dashboard-text-secondary">Smart notifications</span>
+                      <div className="flex items-center gap-2 p-2 bg-secondary/10 rounded-lg">
+                        <Bell className="size-4 text-secondary" />
+                        <span className="text-xs text-muted-foreground">Smart notifications</span>
                       </div>
-                      <div className="flex items-center gap-2 p-2 dashboard-metric-green rounded-lg">
-                        <CheckCircle className="size-4 text-green-600" />
-                        <span className="text-xs dashboard-text-secondary">Auto-completion</span>
+                      <div className="flex items-center gap-2 p-2 bg-purple-100 rounded-lg">
+                        <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
+                          <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                        </div>
+                        <span className="text-xs text-muted-foreground">Auto-completion</span>
                       </div>
                     </div>
                   </div>
@@ -434,10 +439,10 @@ export function PremiumBentoSection({
               ].map((metric, index) => {
                 const getMetricStyles = (index: number, active: boolean) => {
                   const styles = [
-                    { bg: "dashboard-metric-cyan", icon: "text-cyan-600", text: "text-cyan-900", trend: "text-cyan-600" },
-                    { bg: "dashboard-metric-green", icon: "text-green-600", text: "text-green-900", trend: "text-green-600" },
-                    { bg: "dashboard-metric-blue", icon: "text-cyan-700", text: "text-cyan-900", trend: "text-cyan-700" },
-                    { bg: "dashboard-metric-purple", icon: "text-purple-600", text: "text-purple-900", trend: "text-purple-600" }
+                    { bg: "bg-primary/10", icon: "text-primary", text: "text-foreground", trend: "text-primary" },
+                    { bg: "bg-purple-100", icon: "text-purple-600", text: "text-foreground", trend: "text-purple-600" },
+                    { bg: "bg-secondary/10", icon: "text-secondary", text: "text-foreground", trend: "text-secondary" },
+                    { bg: "bg-purple-100", icon: "text-purple-600", text: "text-foreground", trend: "text-purple-600" }
                   ];
                   return active ? styles[index] : { bg: "bg-muted", icon: "text-muted-foreground", text: "text-muted-foreground", trend: "text-muted-foreground" };
                 };

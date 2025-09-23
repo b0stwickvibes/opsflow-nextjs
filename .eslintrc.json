@@ -1,7 +1,8 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "next/typescript"
+    "next/typescript",
+    "plugin:storybook/recommended"
   ],
   "rules": {
     "@typescript-eslint/no-explicit-any": "warn",
@@ -9,10 +10,12 @@
     "react/no-unescaped-entities": "off",
     "prefer-const": "warn",
     "react-hooks/rules-of-hooks": "warn",
-"no-restricted-imports": [
+    "no-restricted-imports": [
       "error",
       {
-        "patterns": ["@/templates/shadcn-components/processed/*"]
+        "patterns": [
+          "@/templates/shadcn-components/processed/*"
+        ]
       }
     ]
   },
@@ -28,7 +31,10 @@
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unused-vars": [
           "warn",
-          { "argsIgnorePattern": "^_", "varsIgnorePattern": "^_" }
+          {
+            "argsIgnorePattern": "^_",
+            "varsIgnorePattern": "^_"
+          }
         ],
         "no-restricted-imports": "off"
       }

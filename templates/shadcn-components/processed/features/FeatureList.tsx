@@ -463,7 +463,7 @@ const getTypeColor = (_type: string) => {
                           <span className="text-muted-foreground">Service Status:</span>
                           <span className={cn(
                             "font-medium",
-                            equipment.status === "maintenance" ? "text-blue-600" : "text-green-600"
+                            equipment.status === "maintenance" ? "text-primary" : "text-primary"
                           )}>
                             {equipment.status === "maintenance" ? "Scheduled" : "Up to date"}
                           </span>

@@ -101,10 +101,10 @@ export function FeatureCards({
 
   const getCategoryColor = (category: string) => {
     switch (category) {
-      case "scheduling": return "bg-blue-100 text-blue-800 border-blue-200";
-      case "training": return "bg-green-100 text-green-800 border-green-200";
-      case "performance": return "bg-purple-100 text-purple-800 border-purple-200";
-      case "compliance": return "bg-red-100 text-red-800 border-red-200";
+      case "scheduling": return "bg-primary/10 text-primary border-primary/20";
+      case "training": return "bg-secondary/10 text-secondary border-secondary/20";
+      case "performance": return "bg-purple-100 text-purple-600 border-purple-200";
+      case "compliance": return "bg-primary/10 text-primary border-primary/20";
       default: return "bg-muted text-foreground border-border";
     }
   };
@@ -112,10 +112,10 @@ export function FeatureCards({
   return (
     <div className={className}>
       <div className="mb-12 text-center">
-        <h2 className="heading-brand-gradient text-display-2xl mb-4 text-3xl font-bold tracking-tight lg:text-4xl">
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
           Staff Management Excellence
         </h2>
-        <p className="enterprise-body text-muted-foreground max-w-3xl mx-auto">
+        <p className="enterprise-body max-w-2xl mx-auto text-muted-foreground">
           Comprehensive workforce management tools designed for restaurant operations with focus on efficiency and compliance
         </p>
       </div>
@@ -124,7 +124,7 @@ export function FeatureCards({
         {filteredFeatures.map((feature, index, arr) => (
           <div
             key={feature.id}
-            className="flex shrink grow basis-full flex-col items-start justify-between p-6 md:basis-1/2 lg:basis-1/4 group cursor-pointer rounded-lg bg-card/70 backdrop-blur-sm border tile-hover"
+            className="flex shrink grow basis-full flex-col items-start justify-between p-6 md:basis-1/2 lg:basis-1/4 group cursor-pointer clerk-glass-card hover-scale-103 transition-all duration-300"
             onClick={() => handleFeatureClick(feature)}
           >
             <div className="w-full">
@@ -133,20 +133,17 @@ export function FeatureCards({
                   <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     {feature.icon}
                   </div>
-                  <Badge 
-                    variant="outline" 
-                    className={`text-xs ${getCategoryColor(feature.category)} capitalize`}
-                  >
+                  <div className={`clerk-inspired-badge ${getCategoryColor(feature.category)} capitalize`}>
                     {feature.category}
-                  </Badge>
+                  </div>
                 </div>
               </div>
                 
-                <h3 className="enterprise-body mb-3  font-semibold group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
                   {feature.title}
                 </h3>
                 
-                <p className="text-sm text-muted-foreground/70 mb-4 leading-relaxed">
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   {feature.description}
                 </p>
 
@@ -162,7 +159,9 @@ export function FeatureCards({
                     <ul className="text-xs text-muted-foreground space-y-1">
                       {feature.benefits.map((benefit, idx) => (
                         <li key={idx} className="flex items-center gap-2">
-                          <div className="w-1 h-1 bg-primary rounded-full" />
+                          <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
+                            <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                          </div>
                           {benefit}
                         </li>
                       ))}

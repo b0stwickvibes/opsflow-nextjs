@@ -9,7 +9,7 @@ import Link from 'next/link';
 interface VisualTokenProps {
   className: string;
   description: string;
-  category: 'color' | 'badge' | 'button' | 'typography' | 'icon' | 'surface';
+  category: 'color' | 'badge' | 'button' | 'typography' | 'icon' | 'surface' | 'industry';
   children?: React.ReactNode;
 }
 
@@ -325,6 +325,7 @@ export default function TokensPage() {
               <VisualToken className="enterprise-card" description="Enterprise Card" category="surface" />
               <VisualToken className="clerk-inspired-card" description="Clerk Inspired Card" category="surface" />
               <VisualToken className="stripe-glass-card" description="Stripe Glass Card" category="surface" />
+              <VisualToken className="clerk-glass-card" description="Clerk Glass Card - Ultra Clean" category="surface" />
               <VisualToken className="dashboard-card-white" description="Dashboard White Card" category="surface" />
               <VisualToken className="platform-card-professional" description="Platform Professional" category="surface" />
               <VisualToken className="bg-primary-300 border border-border" description="Primary 300 Surface" category="surface" />
