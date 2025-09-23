@@ -1,5 +1,5 @@
 // Restaurant Operations Features - Complete Export Index
-// All 14 feature components optimized for restaurant operations with HACCP compliance
+// All feature components optimized for restaurant operations with HACCP compliance
 
 // Core Feature Components
 export { FeatureGrid } from "./FeatureGrid";
@@ -16,15 +16,17 @@ export type { AnalyticsTab, FeatureTabsProps } from "./FeatureTabs";
 export { MarketingRollingBlocks } from "@/components/domain/marketing";
 export { FeatureRollingBlocks } from "./FeatureRollingBlocks";
 
-// Comparison & Timeline Components
+// Stripe-Style Carousel
+export { StripeCarousel } from "./StripeCarousel";
+export type { CarouselCard, StripeCarouselProps } from "./StripeCarousel";
 
+// Comparison & Timeline Components
 export { FeatureTimeline } from "./FeatureTimeline";
 export type { ImplementationPhase, FeatureTimelineProps } from "./FeatureTimeline";
 
 // Specialized Feature Components
 export { FeatureHighlight } from "./FeatureHighlight";
 export type { ROIHighlight, FeatureHighlightProps } from "./FeatureHighlight";
-
 
 export { FeatureCarousel } from "./FeatureCarousel";
 export type { RestaurantLocation, FeatureCarouselProps } from "./FeatureCarousel";
@@ -85,7 +87,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showMetrics: true, variant: "default" }
   },
   
-  
   // Staff Management Cards
   FeatureCards: {
     description: "Staff management features with productivity metrics",
@@ -100,6 +101,12 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showMetrics: true, defaultTab: "operations-dashboard" }
   },
   
+  // Stripe-Style Carousel
+  StripeCarousel: {
+    description: "Horizontal scrolling carousel showcasing platform features with Stripe-inspired design",
+    bestFor: "Feature overview sections, capability showcases",
+    props: { industry: "restaurant" as const }
+  },
   
   // Implementation Timeline
   FeatureTimeline: {
@@ -114,7 +121,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     bestFor: "Landing pages, case study sections",
     props: { showStats: true, variant: "spotlight" }
   },
-  
   
   // Multi-location Carousel
   FeatureCarousel: {
@@ -163,7 +169,7 @@ export const FEATURE_USAGE_EXAMPLES = {
     description: "Interactive sidebar feature selection with hexagonal logo and restaurant operations focus",
     bestFor: "Feature overview pages, workflow demonstration sections",
     props: { industry: "restaurant" as const }
-  }
+  },
 } as const;
 
 // Restaurant Industry Metrics
@@ -179,6 +185,3 @@ export const RESTAURANT_METRICS = {
   AUDIT_PREP_TIME_REDUCTION: "80%",
   TOTAL_RESTAURANTS_SERVED: "500+"
 } as const;
-
-// Feature Component Mapping intentionally omitted here to avoid value re-export issues.
-// Consumers should import specific components directly.

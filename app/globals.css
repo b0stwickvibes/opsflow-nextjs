@@ -526,11 +526,12 @@
   }
 
   .stripe-cta-primary:hover {
-    background: linear-gradient(135deg, oklch(from var(--primary) l c h * 1.1) 0%, oklch(from var(--secondary) l c h * 1.1) 100%);
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--secondary-600) 100%);
     box-shadow: 
       0 8px 25px -3px oklch(from var(--primary) l c h / .5),
       inset 0 1px 0 oklch(from var(--background) l c h / .3);
     transform: translateY(-1px);
+    color: white;
   }
 
   /* Advanced Hover Effects */

@@ -201,16 +201,16 @@ export function FeatureTimeline({
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "completed": return <CheckCircle className="h-5 w-5 text-green-600" />;
-      case "in-progress": return <Clock className="h-5 w-5 text-orange-500" />;
+      case "completed": return <CheckCircle className="h-5 w-5 text-primary" />;
+      case "in-progress": return <Clock className="h-5 w-5 text-secondary" />;
       default: return <div className="h-5 w-5 rounded-full border-2 border-muted-foreground" />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "completed": return "bg-green-100 text-green-800 border-green-200";
-      case "in-progress": return "bg-orange-100 text-orange-800 border-orange-200";
+      case "completed": return "bg-primary-100 text-primary border-primary-200";
+      case "in-progress": return "bg-secondary-100 text-secondary border-secondary-200";
       default: return "bg-muted text-foreground border-border";
     }
   };
@@ -219,6 +219,11 @@ export function FeatureTimeline({
     <section className={`py-24 lg:py-32 ${className}`}>
       <div className="container">
         <div className="mx-auto mb-12 max-w-3xl text-center">
+          <div className="inline-flex mb-6">
+            <div className="badge-subtle-gradient">
+              Implementation Timeline
+            </div>
+          </div>
           <h2 className="enterprise-headline mb-4 text-3xl font-bold lg:">
             Your Implementation Journey
           </h2>
@@ -230,14 +235,14 @@ export function FeatureTimeline({
 
         {/* Progress Bar */}
         {showProgress && (
-          <div className="mb-12 mx-auto max-w-4xl">
+          <div className="mb-12 mx-auto max-w-4xl p-6 clerk-glass-card">
             <div className="flex items-center justify-between mb-4">
               <div className="text-sm font-medium">Implementation Progress</div>
-              <div className="text-sm text-muted-foreground">{completedPhases} of {implementationPhases.length} phases complete</div>
+              <div className="text-sm text-muted-foreground font-medium">{completedPhases} of {implementationPhases.length} phases complete</div>
             </div>
-            <div className="w-full bg-muted rounded-full h-3">
+            <div className="w-full bg-primary-100 rounded-full h-3">
               <div 
-                className="bg-primary h-3 rounded-full transition-all duration-300 ease-in-out"
+                className="bg-primary h-3 rounded-full transition-all duration-500 ease-out shadow-sm"
                 style={{ width: `${progressPercentage}%` }}
               ></div>
             </div>
@@ -251,28 +256,32 @@ export function FeatureTimeline({
               <button
                 key={phase.id}
                 onClick={() => handlePhaseClick(phase.id)}
-                className={`flex flex-col items-center gap-2 p-4 rounded-lg border-2 transition-all min-w-[200px] ${
+                className={`group flex flex-col items-center gap-2 p-4 rounded-xl border transition-all duration-300 min-w-[200px] ${
                   selectedPhase === phase.id
-                    ? "border-primary bg-primary/5"
-                    : "border-border hover:border-primary/20"
+                    ? "border-primary/30 bg-primary-100 shadow-lg shadow-primary/10"
+                    : "border-slate-200/60 bg-white hover:border-primary/20 hover:shadow-md hover:scale-[1.02] hover:-translate-y-1"
                 }`}
               >
                 <div className="flex items-center gap-2">
-                  {getStatusIcon(phase.status)}
+                  <div className="transition-transform duration-300 group-hover:scale-110">
+                    {getStatusIcon(phase.status)}
+                  </div>
                   <Badge 
                     variant="outline" 
-                    className={`text-xs ${getStatusColor(phase.status)} capitalize`}
+                    className={`text-xs ${getStatusColor(phase.status)} capitalize transition-all duration-300 group-hover:scale-105 group-hover:shadow-sm ${
+                      selectedPhase === phase.id ? 'badge-subtle-gradient border-0' : ''
+                    }`}
                   >
                     {phase.status.replace("-", " ")}
                   </Badge>
                 </div>
                 
                 <div className="text-center">
-                  <div className="text-sm font-semibold">Phase {phase.phase}</div>
-                  <div className="text-xs text-muted-foreground">{phase.duration}</div>
+                  <div className="text-sm font-semibold group-hover:text-primary transition-colors duration-300">Phase {phase.phase}</div>
+                  <div className="text-xs text-muted-foreground group-hover:text-primary/70 transition-colors duration-300">{phase.duration}</div>
                 </div>
                 
-                <h3 className="text-sm font-medium text-center">{phase.title}</h3>
+                <h3 className="text-sm font-medium text-center group-hover:text-primary transition-colors duration-300">{phase.title}</h3>
               </button>
             ))}
           </div>
@@ -284,7 +293,7 @@ export function FeatureTimeline({
           <div className="space-y-6">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-3 rounded-lg bg-primary/10">
+                <div className="p-3 rounded-xl bg-primary-100 transition-all duration-300 hover:scale-110 hover:bg-primary-200">
                   {selectedPhaseData.icon}
                 </div>
                 <div>
@@ -292,11 +301,11 @@ export function FeatureTimeline({
                   <div className="flex items-center gap-2 mt-1">
                     <Badge 
                       variant="outline" 
-                      className={`text-xs ${getStatusColor(selectedPhaseData.status)}`}
+                      className={`text-xs ${getStatusColor(selectedPhaseData.status)} transition-all duration-300 hover:scale-105`}
                     >
                       {selectedPhaseData.status.replace("-", " ")}
                     </Badge>
-                    <span className="text-sm text-muted-foreground">{selectedPhaseData.duration}</span>
+                    <span className="text-sm text-muted-foreground font-medium">{selectedPhaseData.duration}</span>
                   </div>
                 </div>
               </div>
@@ -311,7 +320,7 @@ export function FeatureTimeline({
               <div className="space-y-2">
                 {selectedPhaseData.deliverables.map((deliverable, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <CheckCircle className="h-4 w-4 text-green-600 flex-shrink-0" />
+                    <CheckCircle className="h-4 w-4 text-primary flex-shrink-0" />
                     <span className="text-sm">{deliverable}</span>
                   </div>
                 ))}
@@ -333,7 +342,7 @@ export function FeatureTimeline({
 
           {/* Visual Demo */}
           <div className="space-y-4">
-            <div className="p-6 bg-muted/30 rounded-lg">
+            <div className="p-6 clerk-glass-card transition-all duration-300 hover:shadow-lg">
               <div className="mb-4">
                 <h4 className="font-semibold mb-2">Phase {selectedPhaseData.phase} Overview</h4>
                 <div className="h-32 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-4">
@@ -360,9 +369,9 @@ export function FeatureTimeline({
               </div>
             </div>
 
-            <div className="p-4 bg-primary/5 rounded-lg border border-primary/20">
+            <div className="p-4 bg-primary-100 border border-primary/20 rounded-xl transition-all duration-300 hover:border-primary/30 hover:shadow-md">
               <div className="flex items-start gap-3">
-                <div className="p-2 bg-primary/10 rounded-lg">
+                <div className="p-2 bg-primary-100 rounded-lg">
                   <Clock className="h-4 w-4 text-primary" />
                 </div>
                 <div>
@@ -377,16 +386,21 @@ export function FeatureTimeline({
         </div>
 
         {/* CTA Section */}
-        <div className="text-center p-8 bg-muted/30 rounded-lg">
-          <h3 className="enterprise-body  font-bold mb-2">Ready to Start Your Implementation?</h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+        <div className="text-center p-8 clerk-glass-card">
+          <div className="inline-flex mb-4">
+            <div className="badge-subtle-gradient">
+              Ready to Begin?
+            </div>
+          </div>
+          <h3 className="enterprise-body font-bold mb-2">Ready to Start Your Implementation?</h3>
+          <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
             Join 500+ restaurants that have successfully implemented OpsFlow. Our implementation team 
             will work closely with you to ensure a smooth transition and rapid ROI.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button size="lg" onClick={handleGetStartedClick}>
+          <div className="flex flex-col items-center gap-4">
+            <Button size="lg" onClick={handleGetStartedClick} className="stripe-cta-primary px-8 py-4">
               Schedule Implementation Call
-              <ArrowRight className="ml-2 h-4 w-4" />
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Button>
             <div className="text-sm text-muted-foreground">
               Free consultation • No setup fees • 30-day guarantee

@@ -9,7 +9,7 @@ import { NightlifeHero } from "@/components/shared/heroes/NightlifeHero";
 import { PlatformFeaturesGrid } from "@/components/shared/features/PlatformFeaturesGrid";
 import { PricingComparison } from "@/templates/shadcn-components/processed/pricing";
 import { ContactForm, LeadCapture } from "@/templates/shadcn-components/processed/contact";
-import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, Feature169Restaurant, FeatureShowcase } from "@/templates/shadcn-components/processed/features";
+import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, Feature169Restaurant, FeatureShowcase, StripeCarousel } from "@/templates/shadcn-components/processed/features";
 import { FeatureBento as CleanFeatureBento } from "@/components/domain/marketing/FeatureBento";
 import { KPIShowcase, StatsDisplay, MetricsDashboard } from "@/templates/shadcn-components/processed/stats";
 import { CallToAction, DemoRequest, TrialSignup } from "@/templates/shadcn-components/processed/ctas";
@@ -96,6 +96,7 @@ export default function TemplateCatalogPage() {
     { id: 42, title: "Feature Rolling Blocks", category: "feature", component: FeatureRollingBlocks, props: {}, description: "Rolling blocks for marketing/operations features" },
     { id: 43, title: "Feature169 Restaurant", category: "feature", component: Feature169Restaurant, props: { industry: 'restaurant' as const }, description: "Converted shadcn Feature169 with tabs interface, restaurant operations focus, and BARS-DEMO-DESIGN-STANDARDS compliance (clerk-inspired-badge, primary colors, purple checkboxes)" },
     { id: 44, title: "Feature Showcase (Sidebar)", category: "feature", component: FeatureShowcase, props: { industry: 'restaurant' as const }, description: "Interactive sidebar feature selection with hexagonal logo, restaurant workflow focus, and full BARS-DEMO-DESIGN-STANDARDS compliance including purple checkboxes, clerk-inspired badges, and professional styling" },
+    { id: 45, title: "Stripe-Style Operations Carousel", category: "feature", component: StripeCarousel, props: { industry: 'restaurant' as const }, description: "Horizontal scrolling carousel showcasing platform features with Stripe-inspired design, OKLCH tokens, enterprise cards, and progress indicators - fully converted to OpsFlow design standards" },
   ];
 
   const categories = ["all", "hero", "feature", "pricing", "contact", "testimonial", "cta", "faq", "about", "bento", "compare"];
