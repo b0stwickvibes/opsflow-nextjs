@@ -1,49 +1,80 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Calendar, BarChart3, Zap, CheckCircle, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
+interface RestaurantFeature {
+  id: string;
+  title: string;
+  description: string;
+  icon: React.ComponentType<{ className?: string }>;
+  details: {
+    title: string;
+    description: string;
+    benefits: string[];
+    integrations?: string[];
+  };
+}
+
 // Restaurant operations data following BARS-DEMO-DESIGN-STANDARDS
-const RESTAURANT_DATA = [
+const RESTAURANT_FEATURES: RestaurantFeature[] = [
   {
+    id: "smart-scheduling",
     title: "Smart Scheduling",
-    description:
-      "Optimize staff schedules with AI-powered demand forecasting and real-time adjustment capabilities for peak efficiency.",
+    description: "Optimize staff schedules with AI-powered demand forecasting and real-time adjustment capabilities for peak efficiency.",
     icon: Calendar,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
-    benefits: [
-      "Reduce labor costs by 15-20%",
-      "Eliminate scheduling conflicts",
-      "Improve staff satisfaction"
-    ]
+    details: {
+      title: "Intelligent Staff Management",
+      description: "Transform your labor management with AI-powered scheduling that predicts demand, optimizes coverage, and reduces costs while improving staff satisfaction.",
+      benefits: [
+        "Reduce labor costs by 15-20%",
+        "Eliminate scheduling conflicts automatically",
+        "Improve staff satisfaction with fair rotations",
+        "Real-time demand forecasting integration",
+        "Mobile staff communication and shift trading"
+      ],
+      integrations: ["Toast POS", "Square", "Deputy", "When I Work", "7shifts", "Homebase"]
+    }
   },
   {
+    id: "revenue-analytics",
     title: "Revenue Analytics", 
-    description:
-      "Track performance with comprehensive analytics covering sales trends, customer insights, and operational metrics.",
+    description: "Track performance with comprehensive analytics covering sales trends, customer insights, and operational metrics.",
     icon: BarChart3,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
-    benefits: [
-      "Increase revenue by 12%",
-      "Real-time performance insights",
-      "Predictive trend analysis"
-    ]
+    details: {
+      title: "Data-Driven Revenue Optimization",
+      description: "Unlock hidden revenue opportunities with comprehensive analytics that track sales patterns, identify top performers, and optimize menu pricing strategies.",
+      benefits: [
+        "Increase revenue by 12% through data insights",
+        "Real-time sales performance tracking",
+        "Menu engineering and pricing optimization",
+        "Customer behavior and preference analysis",
+        "Automated reporting for stakeholders"
+      ],
+      integrations: ["Toast", "Square", "Resy", "OpenTable", "Yelp", "Google Analytics"]
+    }
   },
   {
+    id: "operations-hub",
     title: "Operations Hub",
-    description:
-      "Streamline daily operations with integrated inventory management, order processing, and team coordination tools.",
+    description: "Streamline daily operations with integrated inventory management, order processing, and team coordination tools.",
     icon: Zap,
-    image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
-    benefits: [
-      "Cut operational time by 30%",
-      "Unified command center",
-      "Automated workflow management"
-    ]
-  },
+    details: {
+      title: "Unified Restaurant Command Center",
+      description: "Centralize all restaurant operations in one powerful dashboard that connects inventory, orders, staff, and compliance for seamless daily management.",
+      benefits: [
+        "Cut operational time by 30%",
+        "Unified inventory and order management",
+        "Real-time kitchen coordination tools",
+        "Automated compliance monitoring",
+        "Multi-location management capabilities"
+      ],
+      integrations: ["Toast KDS", "Square KDS", "Sysco", "US Foods", "DoorDash", "Uber Eats"]
+    }
+  }
 ];
 
 interface Feature169RestaurantProps {
@@ -52,21 +83,25 @@ interface Feature169RestaurantProps {
 }
 
 /**
- * Feature169 Restaurant - Converted from shadcn Feature169 following BARS-DEMO-DESIGN-STANDARDS
+ * Feature169 Restaurant - Interactive Feature Selection following BARS-DEMO-DESIGN-STANDARDS
  * 
- * GOLD STANDARD COMPLIANCE:
+ * GOLD STANDARD COMPLIANCE + CLERK/STRIPE ENHANCEMENTS:
+ * - Interactive card selection with state management
  * - clerk-inspired-badge for all badge elements
  * - clerk-glass-card for main content cards
  * - Purple checkboxes (bg-purple-100, text-purple-600) for benefits
  * - Primary/secondary color tokens throughout
- * - Restaurant operations focus with measurable benefits
- * - BARS-DEMO component structure patterns
- * - Motion animations with proper delays
+ * - Restaurant operations focus with POS integrations
+ * - Enhanced interactivity with hover states and selection rings
+ * - Professional integration badges
  */
 const Feature169Restaurant = ({ 
   industry = 'restaurant',
   className = ""
 }: Feature169RestaurantProps) => {
+  const [selectedFeature, setSelectedFeature] = useState<string>("smart-scheduling");
+  const currentFeature = RESTAURANT_FEATURES.find((f) => f.id === selectedFeature);
+
   return (
     <section id="optimized-scheduling" className={cn("section-marketing", className)}>
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -91,80 +126,75 @@ const Feature169Restaurant = ({
           </p>
         </div>
 
-        {/* Tabs System - Enhanced with BARS-DEMO styling */}
-        <div className="motion-fade-in-up-320 animation-delay-300">
-          <Tabs defaultValue={RESTAURANT_DATA[0].title} className="w-full">
+        {/* Interactive Feature Cards - Clerk/Stripe style selection */}
+        <div className="grid md:grid-cols-3 gap-6 mb-12 motion-fade-in-up-320 animation-delay-300">
+          {RESTAURANT_FEATURES.map((feature, index) => {
+            const IconComponent = feature.icon;
+            const isSelected = selectedFeature === feature.id;
             
-            {/* Tab Navigation */}
-            <TabsList className="h-auto w-full bg-transparent p-0 mb-8 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-0">
-              {RESTAURANT_DATA.map((item, index) => (
-                <TabsTrigger
-                  key={item.title}
-                  value={item.title}
-                  className="group relative h-full w-full whitespace-normal rounded-lg lg:rounded-none px-6 py-8 text-start data-[state=active]:shadow-none border lg:border-0 data-[state=active]:bg-card lg:data-[state=active]:bg-transparent hover-scale-103 transition-all duration-300"
-                >
-                  {/* Active indicator - Using primary colors */}
-                  <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-primary via-primary/80 to-transparent transition-all duration-300 group-data-[state=active]:w-full" />
-                  
-                  <div className="flex items-start gap-4">
-                    {/* Icon with BARS-DEMO primary styling */}
-                    <div className="relative w-12 h-12 flex-shrink-0">
-                      <div className="absolute inset-0 rounded-xl bg-primary/10 group-data-[state=active]:bg-primary/20 transition-colors duration-300" />
-                      <div className="absolute inset-2 grid place-items-center rounded-lg bg-background">
-                        <item.icon className="w-5 h-5 text-primary" />
-                      </div>
-                    </div>
-                    
-                    <div className="flex-1 space-y-2">
-                      <h3 className="text-xl font-semibold text-foreground group-data-[state=active]:text-primary transition-colors duration-300">
-                        {item.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground leading-relaxed">
-                        {item.description}
-                      </p>
-                    </div>
+            return (
+              <Card
+                key={feature.id}
+                className={cn(
+                  "cursor-pointer transition-all duration-300 hover:shadow-xl hover-scale-103",
+                  isSelected 
+                    ? "ring-2 ring-primary shadow-xl bg-primary/5" 
+                    : "hover:shadow-lg clerk-glass-card"
+                )}
+                onClick={() => setSelectedFeature(feature.id)}
+                style={{ animationDelay: `${(index + 4) * 100}ms` }}
+              >
+                <CardHeader className="text-center space-y-4 p-6">
+                  {/* Icon with BARS-DEMO styling */}
+                  <div className={cn(
+                    "mx-auto w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-300",
+                    isSelected 
+                      ? "bg-primary text-primary-foreground shadow-lg" 
+                      : "bg-primary/10 text-primary"
+                  )}>
+                    <IconComponent className="w-8 h-8" />
                   </div>
-                </TabsTrigger>
-              ))}
-            </TabsList>
+                  
+                  <div className="space-y-2">
+                    <CardTitle className={cn(
+                      "text-xl transition-colors duration-300",
+                      isSelected ? "text-primary" : "text-foreground"
+                    )}>
+                      {feature.title}
+                    </CardTitle>
+                    <CardDescription className="text-sm leading-relaxed">
+                      {feature.description}
+                    </CardDescription>
+                  </div>
+                </CardHeader>
+              </Card>
+            );
+          })}
+        </div>
 
-            {/* Tab Content */}
-            {RESTAURANT_DATA.map((item, index) => (
-              <TabsContent key={item.title} value={item.title} className="mt-0">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                  
-                  {/* Left: Image with BARS-DEMO clerk-glass-card */}
-                  <div className="order-2 lg:order-1">
-                    <div className="clerk-glass-card p-8 bg-muted/30 hover-scale-103 transition-all duration-300">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto object-contain dark:invert rounded-lg"
-                      />
-                    </div>
+        {/* Feature Showcase - Enhanced with BARS-DEMO styling */}
+        {currentFeature && (
+          <Card className="clerk-glass-card min-h-[500px] motion-fade-in-up-320 animation-delay-700">
+            <CardContent className="p-8 lg:p-12">
+              <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                
+                {/* Left: Content */}
+                <div className="space-y-8">
+                  <div className="space-y-4">
+                    <h3 className="text-3xl font-bold text-foreground">
+                      {currentFeature.details.title}
+                    </h3>
+                    <p className="text-lg text-muted-foreground leading-relaxed">
+                      {currentFeature.details.description}
+                    </p>
                   </div>
-                  
-                  {/* Right: Benefits with purple checkboxes (BARS-DEMO standard) */}
-                  <div className="order-1 lg:order-2 space-y-6">
-                    <div className="space-y-4">
-                      <h4 className="text-2xl font-bold text-foreground">
-                        Key Benefits
-                      </h4>
-                      <p className="text-muted-foreground">
-                        Transform your restaurant operations with measurable results.
-                      </p>
-                    </div>
-                    
-                    {/* Benefits list with BARS-DEMO purple checkboxes */}
-                    <div className="space-y-4">
-                      {item.benefits.map((benefit, benefitIndex) => (
-                        <div 
-                          key={benefitIndex} 
-                          className="flex items-start gap-3 motion-fade-in-up-320"
-                          style={{ animationDelay: `${(benefitIndex + 1) * 100}ms` }}
-                        >
+
+                  {/* Benefits with BARS-DEMO purple checkboxes */}
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-foreground">Key Benefits</h4>
+                    <div className="space-y-3">
+                      {currentFeature.details.benefits.map((benefit, index) => (
+                        <div key={index} className="flex items-start gap-3">
                           {/* Purple checkbox - BARS-DEMO standard */}
                           <div className="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
                             <CheckCircle className="w-3 h-3 text-purple-600" />
@@ -173,34 +203,83 @@ const Feature169Restaurant = ({
                         </div>
                       ))}
                     </div>
-                    
-                    {/* CTA - BARS-DEMO standard clerk-cta-primary */}
-                    <div className="pt-4">
-                      <Button className="clerk-cta-primary cta-shimmer hover-scale-103">
-                        Explore {item.title}
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
+                  </div>
+
+                  {/* Integration badges */}
+                  {currentFeature.details.integrations && (
+                    <div className="space-y-4">
+                      <h4 className="text-xl font-semibold text-foreground">POS & Platform Integrations</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {currentFeature.details.integrations.map((integration) => (
+                          <div key={integration} className="clerk-inspired-badge text-xs">
+                            {integration}
+                          </div>
+                        ))}
+                      </div>
                     </div>
+                  )}
+
+                  {/* CTA - BARS-DEMO standard */}
+                  <div className="pt-4">
+                    <Button className="clerk-cta-primary cta-shimmer hover-scale-103">
+                      Explore {currentFeature.title}
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
                   </div>
                 </div>
-              </TabsContent>
-            ))}
-          </Tabs>
-        </div>
+
+                {/* Right: Restaurant Dashboard Mockup */}
+                <div className="flex items-center justify-center">
+                  <div className="relative p-8">
+                    {/* Restaurant Dashboard Visual */}
+                    <svg 
+                      width="300" 
+                      height="300" 
+                      viewBox="0 0 300 300" 
+                      className="text-primary/20 transition-all duration-500 hover:text-primary/30"
+                      fill="currentColor"
+                    >
+                      {/* Restaurant Dashboard Background */}
+                      <rect x="20" y="20" width="260" height="260" rx="12" fill="currentColor" />
+                      
+                      {/* Dashboard Elements */}
+                      <g fill="white" fillOpacity="0.9">
+                        {/* Header Bar */}
+                        <rect x="40" y="40" width="220" height="8" rx="4" />
+                        
+                        {/* Metric Cards */}
+                        <rect x="40" y="70" width="60" height="40" rx="6" />
+                        <rect x="120" y="70" width="60" height="40" rx="6" />
+                        <rect x="200" y="70" width="60" height="40" rx="6" />
+                        
+                        {/* Chart Area */}
+                        <rect x="40" y="130" width="220" height="100" rx="8" />
+                        
+                        {/* Chart Bars */}
+                        <rect x="60" y="180" width="8" height="30" fill="#10B981" />
+                        <rect x="80" y="170" width="8" height="40" fill="#10B981" />
+                        <rect x="100" y="160" width="8" height="50" fill="#10B981" />
+                        <rect x="120" y="175" width="8" height="35" fill="#10B981" />
+                        <rect x="140" y="165" width="8" height="45" fill="#10B981" />
+                        <rect x="160" y="155" width="8" height="55" fill="#10B981" />
+                        <rect x="180" y="170" width="8" height="40" fill="#10B981" />
+                        <rect x="200" y="160" width="8" height="50" fill="#10B981" />
+                        <rect x="220" y="150" width="8" height="60" fill="#10B981" />
+                        
+                        {/* Status Indicators */}
+                        <circle cx="50" cy="250" r="4" fill="#10B981" />
+                        <circle cx="80" cy="250" r="4" fill="#F59E0B" />
+                        <circle cx="110" cy="250" r="4" fill="#EF4444" />
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </section>
-  );
-};
-
-const Accessory = ({ className }: { className: string }) => {
-  return (
-    <div
-      className={cn(`bg-background w-2 h-2 rounded-[1px]`, className)}
-      style={{
-        boxShadow:
-          "0px 0px 0px 0.1px rgba(0, 0, 0, 0.05), 0px 0.5px 1px 0px rgba(0, 0, 0, 0.25)",
-      }}
-    ></div>
   );
 };
 
