@@ -1,9 +1,10 @@
 "use client";
 
 import React from "react";
-import { Calendar, BarChart3, Zap, CheckCircle } from "lucide-react";
+import { Calendar, BarChart3, Zap, CheckCircle, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Button } from "@/components/ui/button";
 
 // Restaurant operations data following BARS-DEMO-DESIGN-STANDARDS
 const RESTAURANT_DATA = [
@@ -13,13 +14,23 @@ const RESTAURANT_DATA = [
       "Optimize staff schedules with AI-powered demand forecasting and real-time adjustment capabilities for peak efficiency.",
     icon: Calendar,
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg",
+    benefits: [
+      "Reduce labor costs by 15-20%",
+      "Eliminate scheduling conflicts",
+      "Improve staff satisfaction"
+    ]
   },
   {
-    title: "Revenue Analytics",
+    title: "Revenue Analytics", 
     description:
       "Track performance with comprehensive analytics covering sales trends, customer insights, and operational metrics.",
     icon: BarChart3,
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-2.svg",
+    benefits: [
+      "Increase revenue by 12%",
+      "Real-time performance insights",
+      "Predictive trend analysis"
+    ]
   },
   {
     title: "Operations Hub",
@@ -27,6 +38,11 @@ const RESTAURANT_DATA = [
       "Streamline daily operations with integrated inventory management, order processing, and team coordination tools.",
     icon: Zap,
     image: "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-3.svg",
+    benefits: [
+      "Cut operational time by 30%",
+      "Unified command center",
+      "Automated workflow management"
+    ]
   },
 ];
 
@@ -38,101 +54,139 @@ interface Feature169RestaurantProps {
 /**
  * Feature169 Restaurant - Converted from shadcn Feature169 following BARS-DEMO-DESIGN-STANDARDS
  * 
- * Original shadcn structure maintained but with:
- * - clerk-inspired-badge instead of raw Badge
- * - Primary/secondary color tokens instead of hardcoded colors
- * - Purple checkboxes (bg-purple-100, text-purple-600)
- * - Restaurant operations focus
- * - Design token compliance throughout
+ * GOLD STANDARD COMPLIANCE:
+ * - clerk-inspired-badge for all badge elements
+ * - clerk-glass-card for main content cards
+ * - Purple checkboxes (bg-purple-100, text-purple-600) for benefits
+ * - Primary/secondary color tokens throughout
+ * - Restaurant operations focus with measurable benefits
+ * - BARS-DEMO component structure patterns
+ * - Motion animations with proper delays
  */
 const Feature169Restaurant = ({ 
   industry = 'restaurant',
   className = ""
 }: Feature169RestaurantProps) => {
   return (
-    <section id="optimized-scheduling" className={`py-24 ${className}`}>
-      <div className="border-y">
-        <div className="container flex flex-col gap-6 border-x py-4 max-lg:border-x lg:py-8">
-          {/* Badge - Using clerk-inspired-badge instead of raw Badge */}
-          <div className="clerk-inspired-badge w-fit">
+    <section id="optimized-scheduling" className={cn("section-marketing", className)}>
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header Section - Following BARS-DEMO patterns */}
+        <div className="text-center space-y-6 mb-16">
+          {/* Badge - BARS-DEMO standard clerk-inspired-badge */}
+          <div className="clerk-inspired-badge motion-fade-in-up-320">
             <CheckCircle className="w-4 h-4" />
-            <span>Optimize</span>
+            <span>Restaurant Operations</span>
           </div>
           
-          {/* Headline - Following BARS standards */}
-          <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight">
+          {/* Headline - Following BARS typography standards */}
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight motion-fade-in-up-320 animation-delay-100">
             Optimize every aspect of your restaurant
           </h2>
           
-          {/* Description - Using enterprise-body */}
-          <p className="enterprise-body max-w-2xl text-muted-foreground">
+          {/* Description - Using enterprise-body class */}
+          <p className="enterprise-body max-w-2xl mx-auto text-muted-foreground motion-fade-in-up-320 animation-delay-200">
             Achieve seamless productivity with intelligent scheduling,
             insightful analytics, and effortless operational integrations.
           </p>
         </div>
-      </div>
 
-      <div className="container border-x">
-        <Tabs defaultValue={RESTAURANT_DATA[0].title} className="">
-          <TabsList className="h-auto w-full bg-transparent p-0 max-lg:flex-col max-lg:divide-y lg:grid lg:grid-cols-3 lg:divide-x">
-            {RESTAURANT_DATA.map((item, index) => (
-              <TabsTrigger
-                key={item.title}
-                value={item.title}
-                className="last:max-lg:border-b group relative isolate inline-block h-full w-full whitespace-normal rounded-none px-1 py-5 text-start data-[state=active]:shadow-none max-lg:border-x lg:border-b lg:px-8"
-              >
-                {/* Active indicator - Using primary colors */}
-                <div className="absolute bottom-[-1px] left-0 h-[1px] w-0 bg-gradient-to-r from-primary via-primary/80 to-transparent transition-all duration-300 group-data-[state=active]:w-1/2" />
-                
-                {/* Accessory elements */}
-                <Accessory className="absolute left-0 top-0 -translate-x-1/2 -translate-y-1/2" />
-                <Accessory className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2" />
-                {index === RESTAURANT_DATA.length - 1 && (
-                  <>
-                    <Accessory className="absolute right-0 top-0 -translate-y-1/2 translate-x-1/2" />
-                    <Accessory className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2" />
-                  </>
-                )}
-                
-                <div className="flex items-center gap-2 p-4">
-                  <div className="relative w-6 h-6">
-                    {/* Icon background - Using primary colors */}
-                    <div className="absolute inset-0 -rotate-45 rounded-full bg-gradient-to-l from-primary via-primary/80 to-border to-50% transition-all duration-1000 group-data-[state=inactive]:opacity-0" />
-                    <div className="absolute inset-[0.75px] rounded-full bg-background"></div>
-                    <div className="absolute inset-[1.25px] grid place-items-center rounded-full bg-muted">
-                      <item.icon className="w-4 h-4" />
+        {/* Tabs System - Enhanced with BARS-DEMO styling */}
+        <div className="motion-fade-in-up-320 animation-delay-300">
+          <Tabs defaultValue={RESTAURANT_DATA[0].title} className="w-full">
+            
+            {/* Tab Navigation */}
+            <TabsList className="h-auto w-full bg-transparent p-0 mb-8 grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-0">
+              {RESTAURANT_DATA.map((item, index) => (
+                <TabsTrigger
+                  key={item.title}
+                  value={item.title}
+                  className="group relative h-full w-full whitespace-normal rounded-lg lg:rounded-none px-6 py-8 text-start data-[state=active]:shadow-none border lg:border-0 data-[state=active]:bg-card lg:data-[state=active]:bg-transparent hover-scale-103 transition-all duration-300"
+                >
+                  {/* Active indicator - Using primary colors */}
+                  <div className="absolute bottom-0 left-0 h-[2px] w-0 bg-gradient-to-r from-primary via-primary/80 to-transparent transition-all duration-300 group-data-[state=active]:w-full" />
+                  
+                  <div className="flex items-start gap-4">
+                    {/* Icon with BARS-DEMO primary styling */}
+                    <div className="relative w-12 h-12 flex-shrink-0">
+                      <div className="absolute inset-0 rounded-xl bg-primary/10 group-data-[state=active]:bg-primary/20 transition-colors duration-300" />
+                      <div className="absolute inset-2 grid place-items-center rounded-lg bg-background">
+                        <item.icon className="w-5 h-5 text-primary" />
+                      </div>
+                    </div>
+                    
+                    <div className="flex-1 space-y-2">
+                      <h3 className="text-xl font-semibold text-foreground group-data-[state=active]:text-primary transition-colors duration-300">
+                        {item.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">
+                        {item.description}
+                      </p>
                     </div>
                   </div>
-                  <h3 className="text-2xl font-semibold text-foreground tracking-tight">{item.title}</h3>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {/* Tab Content */}
+            {RESTAURANT_DATA.map((item, index) => (
+              <TabsContent key={item.title} value={item.title} className="mt-0">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                  
+                  {/* Left: Image with BARS-DEMO clerk-glass-card */}
+                  <div className="order-2 lg:order-1">
+                    <div className="clerk-glass-card p-8 bg-muted/30 hover-scale-103 transition-all duration-300">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        width={600}
+                        height={400}
+                        className="w-full h-auto object-contain dark:invert rounded-lg"
+                      />
+                    </div>
+                  </div>
+                  
+                  {/* Right: Benefits with purple checkboxes (BARS-DEMO standard) */}
+                  <div className="order-1 lg:order-2 space-y-6">
+                    <div className="space-y-4">
+                      <h4 className="text-2xl font-bold text-foreground">
+                        Key Benefits
+                      </h4>
+                      <p className="text-muted-foreground">
+                        Transform your restaurant operations with measurable results.
+                      </p>
+                    </div>
+                    
+                    {/* Benefits list with BARS-DEMO purple checkboxes */}
+                    <div className="space-y-4">
+                      {item.benefits.map((benefit, benefitIndex) => (
+                        <div 
+                          key={benefitIndex} 
+                          className="flex items-start gap-3 motion-fade-in-up-320"
+                          style={{ animationDelay: `${(benefitIndex + 1) * 100}ms` }}
+                        >
+                          {/* Purple checkbox - BARS-DEMO standard */}
+                          <div className="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <CheckCircle className="w-3 h-3 text-purple-600" />
+                          </div>
+                          <span className="text-foreground font-medium">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* CTA - BARS-DEMO standard clerk-cta-primary */}
+                    <div className="pt-4">
+                      <Button className="clerk-cta-primary cta-shimmer hover-scale-103">
+                        Explore {item.title}
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
                 </div>
-                
-                <p className="text-muted-foreground p-4 pt-2 text-lg leading-relaxed">
-                  {item.description}
-                </p>
-              </TabsTrigger>
+              </TabsContent>
             ))}
-          </TabsList>
-
-          {RESTAURANT_DATA.map((item) => (
-            <TabsContent key={item.title} value={item.title} className="mt-0">
-              <div className="flex flex-1 flex-col p-6 max-lg:border-x lg:p-12">
-                <div className="stripe-glass-card p-8 bg-muted/30">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    width={1312}
-                    height={743.926}
-                    className="w-full h-auto object-contain dark:invert"
-                  />
-                </div>
-              </div>
-            </TabsContent>
-          ))}
-        </Tabs>
-      </div>
-
-      <div className="h-8 w-full border-y md:h-12 lg:h-[112px]">
-        <div className="container h-full w-full border-x"></div>
+          </Tabs>
+        </div>
       </div>
     </section>
   );
