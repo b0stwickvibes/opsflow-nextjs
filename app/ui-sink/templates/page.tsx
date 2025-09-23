@@ -9,7 +9,7 @@ import { NightlifeHero } from "@/components/shared/heroes/NightlifeHero";
 import { PlatformFeaturesGrid } from "@/components/shared/features/PlatformFeaturesGrid";
 import { PricingComparison } from "@/templates/shadcn-components/processed/pricing";
 import { ContactForm, LeadCapture } from "@/templates/shadcn-components/processed/contact";
-import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks } from "@/templates/shadcn-components/processed/features";
+import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, FeatureTabsShowcase } from "@/templates/shadcn-components/processed/features";
 import { FeatureBento as CleanFeatureBento } from "@/components/domain/marketing/FeatureBento";
 import { KPIShowcase, StatsDisplay, MetricsDashboard } from "@/templates/shadcn-components/processed/stats";
 import { CallToAction, DemoRequest, TrialSignup } from "@/templates/shadcn-components/processed/ctas";
@@ -94,6 +94,7 @@ export default function TemplateCatalogPage() {
     { id: 40, title: "Comparison Table", category: "compare", component: ComparisonTable, props: {}, description: "Table for comparing items" },
     { id: 41, title: "Competitor Analysis", category: "compare", component: CompetitorAnalysis, props: {}, description: "Analysis of competitors" },
     { id: 42, title: "Feature Rolling Blocks", category: "feature", component: FeatureRollingBlocks, props: {}, description: "Rolling blocks for marketing/operations features" },
+    { id: 43, title: "Feature Tabs Showcase", category: "feature", component: FeatureTabsShowcase, props: { industry: 'restaurant' as const }, description: "Restaurant operations showcase with tabbed interface, analytics dashboards, and operational tools following BARS-DEMO-DESIGN-STANDARDS" },
   ];
 
   const categories = ["all", "hero", "feature", "pricing", "contact", "testimonial", "cta", "faq", "about", "bento", "compare"];
