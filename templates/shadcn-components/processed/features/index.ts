@@ -45,8 +45,8 @@ export type { EquipmentItem, FeatureListProps } from "./FeatureList";
 export { FeatureShowcase2 } from "./FeatureShowcase2";
 export type { ROIMetric, FeatureShowcase2Props } from "./FeatureShowcase2";
 
-export { FeatureWorkflowShowcase } from "./FeatureWorkflowShowcase";
-export type { WorkflowFeature, FeatureWorkflowShowcaseProps } from "./FeatureWorkflowShowcase";
+export { FeatureShowcase } from "./FeatureShowcase";
+export type { Feature, FeatureShowcaseProps } from "./FeatureShowcase";
 
 // Feature Categories for Restaurant Operations
 export const FEATURE_CATEGORIES = {
@@ -158,9 +158,9 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showSparkles: true, variant: "showcase" }
   },
 
-  // Interactive Workflow Showcase
-  FeatureWorkflowShowcase: {
-    description: "Interactive workflow selection with sidebar navigation and restaurant operations focus",
+  // Interactive Sidebar Showcase
+  FeatureShowcase: {
+    description: "Interactive sidebar feature selection with hexagonal logo and restaurant operations focus",
     bestFor: "Feature overview pages, workflow demonstration sections",
     props: { industry: "restaurant" as const }
   }
