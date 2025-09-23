@@ -4,7 +4,7 @@
 // Core Feature Components
 export { FeatureGrid } from "./FeatureGrid";
 
-export { RestaurantFeatureDeckAlternate } from "./RestaurantFeatureDeckAlternate";
+export { Feature169Restaurant } from "./Feature169Restaurant";
 
 export { FeatureCards } from "./FeatureCards";
 export type { StaffManagementFeature, FeatureCardsProps } from "./FeatureCards";

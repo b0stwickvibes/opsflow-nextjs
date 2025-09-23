@@ -9,7 +9,7 @@ import { NightlifeHero } from "@/components/shared/heroes/NightlifeHero";
 import { PlatformFeaturesGrid } from "@/components/shared/features/PlatformFeaturesGrid";
 import { PricingComparison } from "@/templates/shadcn-components/processed/pricing";
 import { ContactForm, LeadCapture } from "@/templates/shadcn-components/processed/contact";
-import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, RestaurantFeatureDeckAlternate } from "@/templates/shadcn-components/processed/features";
+import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, Feature169Restaurant } from "@/templates/shadcn-components/processed/features";
 import { FeatureBento as CleanFeatureBento } from "@/components/domain/marketing/FeatureBento";
 import { KPIShowcase, StatsDisplay, MetricsDashboard } from "@/templates/shadcn-components/processed/stats";
 import { CallToAction, DemoRequest, TrialSignup } from "@/templates/shadcn-components/processed/ctas";
@@ -94,7 +94,7 @@ export default function TemplateCatalogPage() {
     { id: 40, title: "Comparison Table", category: "compare", component: ComparisonTable, props: {}, description: "Table for comparing items" },
     { id: 41, title: "Competitor Analysis", category: "compare", component: CompetitorAnalysis, props: {}, description: "Analysis of competitors" },
     { id: 42, title: "Feature Rolling Blocks", category: "feature", component: FeatureRollingBlocks, props: {}, description: "Rolling blocks for marketing/operations features" },
-    { id: 43, title: "Restaurant Feature Deck Alternate", category: "feature", component: RestaurantFeatureDeckAlternate, props: { industry: 'restaurant' as const }, description: "Horizontal alternating layout with purple gradients, mock interface elements, and restaurant operations focus following BARS-DEMO-DESIGN-STANDARDS" },
+    { id: 43, title: "Feature169 Restaurant", category: "feature", component: Feature169Restaurant, props: { industry: 'restaurant' as const }, description: "Converted shadcn Feature169 with tabs interface, restaurant operations focus, and BARS-DEMO-DESIGN-STANDARDS compliance (clerk-inspired-badge, primary colors, purple checkboxes)" },
   ];
 
   const categories = ["all", "hero", "feature", "pricing", "contact", "testimonial", "cta", "faq", "about", "bento", "compare"];
