@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
-export interface Feature {
+export interface WorkflowFeature {
   id: string;
   title: string;
   description: string;
@@ -19,7 +19,7 @@ export interface Feature {
 }
 
 // Restaurant workflow data following BARS-DEMO-DESIGN-STANDARDS
-const WORKFLOW_FEATURES: Feature[] = [
+const WORKFLOW_FEATURES: WorkflowFeature[] = [
   {
     id: "workflows",
     title: "Tailored Workflows",
@@ -90,13 +90,13 @@ const WORKFLOW_FEATURES: Feature[] = [
   }
 ];
 
-export interface FeatureShowcaseProps {
+export interface FeatureWorkflowShowcaseProps {
   industry?: 'restaurant' | 'retail' | 'healthcare';
   className?: string;
 }
 
 /**
- * FeatureShowcase - Interactive Workflow Selection following BARS-DEMO-DESIGN-STANDARDS
+ * FeatureWorkflowShowcase - Interactive Workflow Selection following BARS-DEMO-DESIGN-STANDARDS
  * 
  * GOLD STANDARD COMPLIANCE + CLERK/STRIPE ENHANCEMENTS:
  * - Interactive card selection with state management
@@ -108,10 +108,10 @@ export interface FeatureShowcaseProps {
  * - Enhanced interactivity with hover states and selection indicators
  * - Professional integration badges
  */
-export function FeatureShowcase({ 
+export function FeatureWorkflowShowcase({ 
   industry = 'restaurant',
   className = ""
-}: FeatureShowcaseProps) {
+}: FeatureWorkflowShowcaseProps) {
   const [selectedFeature, setSelectedFeature] = useState<string>("workflows");
   const currentFeature = WORKFLOW_FEATURES.find((f) => f.id === selectedFeature) || WORKFLOW_FEATURES[0];
 

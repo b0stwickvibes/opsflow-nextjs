@@ -129,8 +129,10 @@ const FEATURES_CONTENT = {
         }
       }
     ]
-  },
+  }
   // ... Additional variants for bar and cafe can be added later
+};
+
 export interface PlatformFeaturesGridProps {
   variant?: 'restaurant';
   className?: string;
