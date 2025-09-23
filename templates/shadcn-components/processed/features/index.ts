@@ -45,6 +45,9 @@ export type { EquipmentItem, FeatureListProps } from "./FeatureList";
 export { FeatureShowcase2 } from "./FeatureShowcase2";
 export type { ROIMetric, FeatureShowcase2Props } from "./FeatureShowcase2";
 
+export { FeatureShowcase } from "./FeatureShowcase";
+export type { Feature as WorkflowFeature, FeatureShowcaseProps } from "./FeatureShowcase";
+
 // Feature Categories for Restaurant Operations
 export const FEATURE_CATEGORIES = {
   HACCP_COMPLIANCE: "haccp-compliance",
@@ -153,6 +156,13 @@ export const FEATURE_USAGE_EXAMPLES = {
     description: "Comprehensive ROI metrics with sparkle animations",
     bestFor: "Value proposition pages, ROI calculators",
     props: { showSparkles: true, variant: "showcase" }
+  },
+
+  // Interactive Workflow Showcase
+  FeatureShowcase: {
+    description: "Interactive workflow selection with sidebar navigation and restaurant operations focus",
+    bestFor: "Feature overview pages, workflow demonstration sections",
+    props: { industry: "restaurant" as const }
   }
 } as const;
 
