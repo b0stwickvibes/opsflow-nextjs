@@ -18,7 +18,7 @@ export { FeatureRollingBlocks } from "./FeatureRollingBlocks";
 
 // Stripe-Style Carousel
 export { StripeCarousel } from "./StripeCarousel";
-export type { CarouselCard, StripeCarouselProps } from "./StripeCarousel";
+export type { StripeCarouselProps } from "./StripeCarousel";
 
 // Comparison & Timeline Components
 export { FeatureTimeline } from "./FeatureTimeline";
