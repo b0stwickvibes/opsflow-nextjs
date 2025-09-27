@@ -1,4 +1,5 @@
 import "./globals.css"
+import { ClerkProvider } from "@clerk/nextjs"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Navbar } from "@/components/shared/layout"
 import { Footer } from "@/components/shared/layout"
@@ -66,25 +67,27 @@ export default function RootLayout({
         )}
       </head>
       <body className={cn("min-h-screen font-sans bg-background text-foreground")} suppressHydrationWarning>
-        <ErrorBoundary>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            storageKey="theme"
-            disableTransitionOnChange
-          >
-            <GlobalProvider>
-              <Navbar />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-              <BackToTop />
-              <ShadcnToaster />
-            </GlobalProvider>
-          </ThemeProvider>
-        </ErrorBoundary>
+        <ClerkProvider>
+          <ErrorBoundary>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              storageKey="theme"
+              disableTransitionOnChange
+            >
+              <GlobalProvider>
+                <Navbar />
+                <main className="flex-1">
+                  {children}
+                </main>
+                <Footer />
+                <BackToTop />
+                <ShadcnToaster />
+              </GlobalProvider>
+            </ThemeProvider>
+          </ErrorBoundary>
+        </ClerkProvider>
       </body>
     </html>
   )
