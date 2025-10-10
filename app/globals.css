@@ -36,30 +36,30 @@
   /* Gradient/shimmer CTA tuned for conversion */
   .clerk-cta-primary {
     position: relative;
-    border: 1px solid rgba(8, 145, 178, 0.2) !important;
-    background: #0891b2 !important;
+    border: 1px solid color-mix(in oklch, var(--primary) 20%, transparent) !important;
+    background: var(--primary) !important;
     color: white !important;
     box-shadow: 
       0 1px 2px 0 rgba(0, 0, 0, 0.05),
-      0 0 0 1px rgba(8, 145, 178, 0.1);
+      0 0 0 1px color-mix(in oklch, var(--primary) 10%, transparent);
     transition: all 200ms ease;
     font-weight: 500;
     border-radius: 6px;
     font-size: 14px;
   }
   .clerk-cta-primary:hover { 
-    background: #0e7490 !important;
-    border-color: rgba(8, 145, 178, 0.3) !important;
+    background: color-mix(in oklch, var(--primary) 90%, black) !important;
+    border-color: color-mix(in oklch, var(--primary) 30%, transparent) !important;
     box-shadow: 
       0 2px 4px 0 rgba(0, 0, 0, 0.1),
-      0 0 0 1px rgba(8, 145, 178, 0.2);
+      0 0 0 1px color-mix(in oklch, var(--primary) 20%, transparent);
     color: white !important;
   }
   .clerk-cta-primary:active {
-    background: #155e75 !important;
+    background: color-mix(in oklch, var(--primary) 80%, black) !important;
     box-shadow: 
       0 1px 2px 0 rgba(0, 0, 0, 0.1),
-      0 0 0 1px rgba(8, 145, 178, 0.3);
+      0 0 0 1px color-mix(in oklch, var(--primary) 30%, transparent);
   }
   .clerk-cta-primary:active { transform: scale(0.99); }
   .clerk-cta-primary:focus-visible { outline: 2px solid oklch(from var(--color-white) l c h / .0); box-shadow: 0 0 0 3px oklch(from var(--brand-end) l c h / .75); }
@@ -1265,7 +1265,10 @@
 
   /* RESTAURANT INDUSTRY - Deep Blue System */
   .accent-blue { 
-    /* Primary accent - for main CTAs, headings, key elements */
+    /* Override primary color tokens for restaurant theme */
+    --primary: oklch(0.58 0.14 260);
+    --primary-foreground: var(--color-white);
+    /* Keep brand variables for gradient compatibility */
     --brand-start: oklch(0.58 0.14 260);
     --brand-end:   oklch(0.48 0.12 270);
     /* Complementary - for secondary elements, borders, backgrounds */
@@ -1274,20 +1277,29 @@
     --accent-border: oklch(0.85 0.04 265);
   }
 
-  /* BAR INDUSTRY - Warm Purple System */
+  /* BAR INDUSTRY - Radiant Galaxy Purple System */
   .accent-purple { 
-    /* Primary accent - for main CTAs, headings, key elements */
-    --brand-start: oklch(0.65 0.20 300);
-    --brand-end:   oklch(0.55 0.18 290);
-    /* Complementary - for secondary elements, borders, backgrounds */
-    --accent-lighter: oklch(0.80 0.14 295);
-    --accent-subtle: oklch(0.96 0.04 295);
-    --accent-border: oklch(0.88 0.07 295);
+    /* Override primary color tokens for bar theme */
+    --primary: oklch(0.58 0.28 285);
+    --primary-foreground: var(--color-white);
+    /* Keep brand variables for gradient compatibility */
+    --brand-start: oklch(0.58 0.28 285);  /* Deep electric violet */
+    --brand-end:   oklch(0.48 0.26 310);  /* Rich magenta-purple */
+    /* Complementary - ethereal galaxy tones */
+    --accent-lighter: oklch(0.72 0.22 295);  /* Luminous mid-purple */
+    --accent-subtle: oklch(0.94 0.08 295);   /* Soft purple glow */
+    --accent-border: oklch(0.82 0.15 295);   /* Vibrant purple border */
+    /* Galaxy enhancement - additional radiance */
+    --galaxy-glow: oklch(0.65 0.30 290);     /* Intense purple glow */
+    --cosmic-shimmer: oklch(0.75 0.25 280);  /* Electric blue-purple shimmer */
   }
 
   /* COFFEE INDUSTRY - Warm Orange System */
   .accent-orange { 
-    /* Primary accent - for main CTAs, headings, key elements */
+    /* Override primary color tokens for coffee theme */
+    --primary: oklch(0.68 0.18 45);
+    --primary-foreground: var(--color-white);
+    /* Keep brand variables for gradient compatibility */
     --brand-start: oklch(0.68 0.18 45);
     --brand-end:   oklch(0.58 0.16 35);
     /* Complementary - for secondary elements, borders, backgrounds */
@@ -1298,7 +1310,10 @@
 
   /* HOTEL INDUSTRY - Deep Red System */
   .accent-red { 
-    /* Primary accent - for main CTAs, headings, key elements */
+    /* Override primary color tokens for hotel theme */
+    --primary: oklch(0.64 0.22 15);
+    --primary-foreground: var(--color-white);
+    /* Keep brand variables for gradient compatibility */
     --brand-start: oklch(0.64 0.22 15);
     --brand-end:   oklch(0.54 0.18 10);
     /* Complementary - for secondary elements, borders, backgrounds */
@@ -1655,4 +1670,115 @@
 .footer-radial {
   background: var(--background);
   background-image: radial-gradient(125% 125% at 50% 10%, #fff 40%, oklch(from var(--primary-700) l c h / 0.15) 100%);
+}
+
+/* ===== DASHBOARD METRIC CARD SYSTEM (FIXED COLOR CONTRAST) ===== */
+/* Professional metric cards with subtle backgrounds and proper text contrast */
+
+/* Task metrics - Subtle Blue */
+.dashboard-metric-task {
+  background: rgba(59, 130, 246, 0.08) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  color: rgb(30, 64, 175) !important;
+}
+
+/* Team metrics - Subtle Green */
+.dashboard-metric-team {
+  background: rgba(34, 197, 94, 0.08) !important;
+  border: 1px solid rgba(34, 197, 94, 0.15) !important;
+  color: rgb(21, 128, 61) !important;
+}
+
+/* Performance metrics - Subtle Cyan */
+.dashboard-metric-performance {
+  background: rgba(6, 182, 212, 0.08) !important;
+  border: 1px solid rgba(6, 182, 212, 0.15) !important;
+  color: rgb(14, 116, 144) !important;
+}
+
+/* Status metrics - Subtle Purple */
+.dashboard-metric-status {
+  background: rgba(147, 51, 234, 0.08) !important;
+  border: 1px solid rgba(147, 51, 234, 0.15) !important;
+  color: rgb(107, 33, 168) !important;
+}
+
+/* Progress metrics - Subtle Orange */
+.dashboard-metric-progress {
+  background: rgba(249, 115, 22, 0.08) !important;
+  border: 1px solid rgba(249, 115, 22, 0.15) !important;
+  color: rgb(194, 65, 12) !important;
+}
+
+/* Override the old saturated classes */
+.dashboard-metric-blue {
+  background: rgba(6, 182, 212, 0.08) !important;
+  border: 1px solid rgba(6, 182, 212, 0.15) !important;
+  color: rgb(14, 116, 144) !important;
+}
+
+.dashboard-metric-green {
+  background: rgba(34, 197, 94, 0.08) !important;
+  border: 1px solid rgba(34, 197, 94, 0.15) !important;
+  color: rgb(21, 128, 61) !important;
+}
+
+.dashboard-metric-purple {
+  background: rgba(147, 51, 234, 0.08) !important;
+  border: 1px solid rgba(147, 51, 234, 0.15) !important;
+  color: rgb(107, 33, 168) !important;
+}
+
+.dashboard-metric-restaurant {
+  background: rgba(59, 130, 246, 0.08) !important;
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  color: rgb(30, 64, 175) !important;
+}
+
+.dashboard-metric-coffee {
+  background: rgba(249, 115, 22, 0.08) !important;
+  border: 1px solid rgba(249, 115, 22, 0.15) !important;
+  color: rgb(194, 65, 12) !important;
+}
+
+/* Large metric numbers should use darker versions for better contrast */
+.dashboard-metric-task .metric-display-medium {
+  color: rgb(30, 64, 175) !important;
+}
+
+.dashboard-metric-team .metric-display-medium {
+  color: rgb(21, 128, 61) !important;
+}
+
+.dashboard-metric-performance .metric-display-medium {
+  color: rgb(14, 116, 144) !important;
+}
+
+.dashboard-metric-status .metric-display-medium {
+  color: rgb(107, 33, 168) !important;
+}
+
+.dashboard-metric-progress .metric-display-medium {
+  color: rgb(194, 65, 12) !important;
+}
+
+/* Override old classes to ensure consistency */
+.dashboard-metric-blue .metric-display-medium {
+  color: rgb(14, 116, 144) !important;
+}
+
+.dashboard-metric-green .metric-display-medium {
+  color: rgb(21, 128, 61) !important;
+}
+
+.dashboard-metric-purple .metric-display-medium {
+  color: rgb(107, 33, 168) !important;
+}
+
+.dashboard-metric-restaurant .metric-display-medium {
+  color: rgb(30, 64, 175) !important;
+}
+
+.dashboard-metric-coffee .metric-display-medium {
+  color: rgb(194, 65, 12) !important;
 }

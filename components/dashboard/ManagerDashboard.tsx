@@ -99,74 +99,74 @@ export function ManagerDashboard({ className = "" }: ManagerDashboardProps) {
 
       {/* Today's Overview Stats */}
       <div className="mt-8 dashboard-grid-3 lg:grid-cols-5">
-        <Card className="dashboard-metric-restaurant enterprise-metric-card">
+        <Card className="dashboard-metric-task enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Today's Tasks
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-primary">24</div>
-            <p className="text-xs dashboard-text-muted">
+            <div className="metric-display-medium">24</div>
+            <p className="text-xs text-slate-600">
               18 completed
             </p>
           </CardContent>
         </Card>
 
-        <Card className="dashboard-metric-green enterprise-metric-card">
+        <Card className="dashboard-metric-team enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Team Present
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-secondary">12/14</div>
-            <p className="text-xs dashboard-text-muted">
+            <div className="metric-display-medium">12/14</div>
+            <p className="text-xs text-slate-600">
               2 on break
             </p>
           </CardContent>
         </Card>
 
-        <Card className="dashboard-metric-blue enterprise-metric-card">
+        <Card className="dashboard-metric-performance enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Response Time
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-brand-gradient">8 min</div>
-            <p className="text-xs dashboard-text-muted">
+            <div className="metric-display-medium">8 min</div>
+            <p className="text-xs text-slate-600">
               -3 min vs yesterday
             </p>
           </CardContent>
         </Card>
 
-        <Card className="dashboard-metric-purple enterprise-metric-card">
+        <Card className="dashboard-metric-status enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Temperature Status
             </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="flex items-center gap-2">
-              <CheckCircle className="w-5 h-5 text-primary" />
-              <span className="text-sm font-medium dashboard-text-primary">Normal</span>
+              <CheckCircle className="w-5 h-5 text-green-600" />
+              <span className="text-sm font-medium">Normal</span>
             </div>
-            <p className="text-xs dashboard-text-muted">
+            <p className="text-xs text-slate-600">
               All within range
             </p>
           </CardContent>
         </Card>
 
-        <Card className="dashboard-metric-coffee enterprise-metric-card">
+        <Card className="dashboard-metric-progress enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Shift Progress
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-primary">65%</div>
-            <p className="text-xs dashboard-text-muted">
+            <div className="metric-display-medium">65%</div>
+            <p className="text-xs text-slate-600">
               3.5 hours remaining
             </p>
           </CardContent>

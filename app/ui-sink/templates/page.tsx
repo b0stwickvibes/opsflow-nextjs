@@ -3,21 +3,21 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 // Import actual template components
-import { BillingHero, EarningHero, ImpactHero, MarketingStartupHero, WorkflowHero, VisionHero } from "@/templates/shadcn-components/processed/heroes";
+import { BillingHero, EarningHero, ImpactHero, IndustryHero, MarketingStartupHero, WorkflowHero, VisionHero } from "@/templates/shadcn-components/processed/heroes";
 import { RestaurantHero } from "@/components/domain/marketing";
 import { NightlifeHero } from "@/components/shared/heroes/NightlifeHero";
 import { PlatformFeaturesGrid } from "@/components/shared/features/PlatformFeaturesGrid";
 import { PricingComparison } from "@/templates/shadcn-components/processed/pricing";
 import { ContactForm, LeadCapture } from "@/templates/shadcn-components/processed/contact";
-import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, Feature169Restaurant, FeatureShowcase, StripeCarousel } from "@/templates/shadcn-components/processed/features";
+import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, Feature169Restaurant, FeatureShowcase, StripeCarousel, IndustryFeatureDeck } from "@/templates/shadcn-components/processed/features";
 import { FeatureBento as CleanFeatureBento } from "@/components/domain/marketing/FeatureBento";
-import { KPIShowcase, StatsDisplay, MetricsDashboard } from "@/templates/shadcn-components/processed/stats";
-import { CallToAction, DemoRequest, TrialSignup } from "@/templates/shadcn-components/processed/ctas";
+import { KPIShowcase, StatsDisplay, MetricsDashboard, IndustryStats } from "@/templates/shadcn-components/processed/stats";
+import { CallToAction, DemoRequest, TrialSignup, IndustryCTA } from "@/templates/shadcn-components/processed/ctas";
 import { RestaurantCTA, RestaurantTrialCTA, RestaurantDemoCTA } from "@/templates/shadcn-components/processed/ctas";
-import { ComplianceFAQ } from "@/templates/shadcn-components/processed/faqs/ComplianceFAQ";
+import { ComplianceFAQ, IndustryFAQ } from "@/templates/shadcn-components/processed/faqs";
 import { SupportFAQ } from "@/templates/shadcn-components/processed/faqs/SupportFAQ";
 import { FAQSection } from "@/components/shared/data-display/FAQSection";
-import { AboutSection } from "@/templates/shadcn-components/processed/about";
+import { AboutSection, IndustryProcess, IndustryProcessSolutions } from "@/templates/shadcn-components/processed/about";
 import { BentoGrid, BentoLayout, PremiumBentoSection } from "@/templates/shadcn-components/processed/bento";
 import { ComparisonTable, CompetitorAnalysis } from "@/templates/shadcn-components/processed/compare";
 
@@ -97,6 +97,175 @@ export default function TemplateCatalogPage() {
     { id: 43, title: "Feature169 Restaurant", category: "feature", component: Feature169Restaurant, props: { industry: 'restaurant' as const }, description: "Converted shadcn Feature169 with tabs interface, restaurant operations focus, and BARS-DEMO-DESIGN-STANDARDS compliance (clerk-inspired-badge, primary colors, purple checkboxes)" },
     { id: 44, title: "Feature Showcase (Sidebar)", category: "feature", component: FeatureShowcase, props: { industry: 'restaurant' as const }, description: "Interactive sidebar feature selection with hexagonal logo, restaurant workflow focus, and full BARS-DEMO-DESIGN-STANDARDS compliance including purple checkboxes, clerk-inspired badges, and professional styling" },
     { id: 45, title: "Stripe-Style Operations Carousel", category: "feature", component: StripeCarousel, props: { industry: 'restaurant' as const }, description: "Horizontal scrolling carousel showcasing platform features with Stripe-inspired design, OKLCH tokens, enterprise cards, and progress indicators - fully converted to OpsFlow design standards" },
+    
+    // BARS-DEMO Extracted Components - Step 2 Complete
+    { id: 46, title: "Industry Hero (BARS-DEMO)", category: "hero", component: IndustryHero, props: { 
+      industry: "Bar & Nightlife", 
+      headline: "Streamline Your Bar Operations", 
+      subheadline: "From Inventory to Service Excellence", 
+      description: "Complete operational control with real-time analytics, automated inventory management, and compliance monitoring designed specifically for bars and nightlife venues.",
+      primaryCTA: { text: "Start Free Trial", action: () => console.log("Primary CTA") },
+      secondaryCTA: { text: "Watch Demo", action: () => console.log("Secondary CTA") },
+      badge: { text: "✨ BARS-DEMO Standard" },
+      stats: [
+        { value: "23%", label: "Cost Reduction" },
+        { value: "99.7%", label: "Accuracy" },
+        { value: "24/7", label: "Monitoring" }
+      ]
+    }, description: "Professional industry hero with stats, CTAs, and visual elements - extracted from BARS-DEMO gold standard" },
+    
+    { id: 47, title: "Industry Process (BARS-DEMO)", category: "about", component: IndustryProcess, props: {
+      title: "Your Complete Setup Process",
+      description: "Get your bar operations optimized in three simple steps with our proven methodology.",
+      badge: "🚀 Implementation Guide",
+      steps: [
+        {
+          step: 1,
+          title: "System Integration",
+          description: "Connect your existing POS, inventory, and staff systems",
+          icon: () => null,
+          details: ["POS system sync", "Inventory API connection", "Staff schedule import"],
+          timeframe: "1-2 days"
+        },
+        {
+          step: 2,
+          title: "Data Optimization",
+          description: "AI-powered analysis of your operations patterns",
+          icon: () => null,
+          details: ["Historical data analysis", "Peak time identification", "Cost optimization"],
+          timeframe: "3-5 days"
+        },
+        {
+          step: 3,
+          title: "Go Live",
+          description: "Full deployment with staff training and support",
+          icon: () => null,
+          details: ["Staff training sessions", "Live monitoring setup", "24/7 support activation"],
+          timeframe: "1 week"
+        }
+      ]
+    }, description: "Step-by-step process showcase with progress indicators - extracted from BARS-DEMO" },
+    
+    { id: 48, title: "Industry Feature Deck (BARS-DEMO)", category: "feature", component: IndustryFeatureDeck, props: {
+      title: "Platform Capabilities",
+      description: "Comprehensive suite of tools designed for modern bar operations",
+      badge: "🔥 Core Features",
+      features: [
+        {
+          title: "Smart Inventory",
+          description: "Automated tracking with predictive restocking",
+          icon: () => null,
+          benefits: ["Real-time stock levels", "Automatic reorder points", "Waste reduction analytics"]
+        },
+        {
+          title: "POS Integration",
+          description: "Seamless connection with your existing systems",
+          icon: () => null,
+          benefits: ["Sales data sync", "Menu management", "Customer analytics"]
+        },
+        {
+          title: "Compliance Monitoring",
+          description: "Stay compliant with health and safety regulations",
+          icon: () => null,
+          benefits: ["Temperature monitoring", "Cleaning schedules", "Audit reports"]
+        }
+      ]
+    }, description: "Professional feature showcase with benefits and CTA section - extracted from BARS-DEMO" },
+    
+    { id: 49, title: "Industry Process Solutions (BARS-DEMO)", category: "about", component: IndustryProcessSolutions, props: {
+      title: "Solve Your Biggest Operational Challenges",
+      description: "See how our platform addresses the most common pain points in bar operations",
+      badge: "💡 Problem → Solution",
+      processSolutions: [
+        {
+          title: "Inventory Management",
+          description: "Transform chaotic inventory into predictable operations",
+          icon: () => null,
+          solutions: [{
+            problem: "Manual inventory counts are time-consuming and error-prone, leading to stockouts and overordering",
+            solution: "Automated inventory tracking with real-time updates and predictive analytics",
+            benefits: ["95% reduction in stockouts", "30% decrease in inventory costs", "Automated reorder alerts"]
+          }],
+          timeframe: "2 weeks",
+          complexity: "Medium" as const
+        }
+      ]
+    }, description: "Problem/solution showcase with metrics sidebar - extracted from BARS-DEMO" },
+    
+    { id: 50, title: "Industry Stats (BARS-DEMO)", category: "testimonial", component: IndustryStats, props: {
+      title: "Trusted by Industry Leaders",
+      description: "Join hundreds of successful bars and nightlife venues optimizing their operations",
+      stats: [
+        {
+          icon: () => null,
+          value: "500+",
+          label: "Active Venues",
+          description: "Bars and nightlife venues using our platform"
+        },
+        {
+          icon: () => null,
+          value: "23%",
+          label: "Cost Savings",
+          description: "Average reduction in operational costs"
+        },
+        {
+          icon: () => null,
+          value: "99.7%",
+          label: "Uptime",
+          description: "System reliability and availability"
+        },
+        {
+          icon: () => null,
+          value: "24/7",
+          label: "Support",
+          description: "Round-the-clock customer assistance"
+        }
+      ]
+    }, description: "Clean statistical showcase with gradient values - extracted from BARS-DEMO" },
+    
+    { id: 51, title: "Industry FAQ (BARS-DEMO)", category: "faq", component: IndustryFAQ, props: {
+      title: "Frequently Asked Questions",
+      description: "Get answers to common questions about our bar operations platform",
+      badge: "❓ Support Center",
+      faqs: [
+        {
+          question: "How long does implementation take?",
+          answer: "Most bars are fully operational within 2-3 weeks, including staff training and system integration.",
+          category: "setup" as const
+        },
+        {
+          question: "What POS systems do you integrate with?",
+          answer: "We support all major POS systems including Square, Toast, Resy, and custom solutions.",
+          category: "features" as const
+        },
+        {
+          question: "What are your pricing options?",
+          answer: "We offer flexible pricing based on venue size and feature requirements. Contact us for a custom quote.",
+          category: "pricing" as const
+        }
+      ],
+      supportCTA: {
+        title: "Need More Help?",
+        description: "Our team is here to support you every step of the way",
+        primaryAction: { text: "Chat with Support", action: () => console.log("Support chat") },
+        secondaryAction: { text: "Browse Documentation", action: () => console.log("Documentation") }
+      }
+    }, description: "Accordion-style FAQ with support sidebar - extracted from BARS-DEMO" },
+    
+    { id: 52, title: "Industry CTA (BARS-DEMO)", category: "cta", component: IndustryCTA, props: {
+      headline: "Ready to Transform Your Bar Operations?",
+      subheadline: "Join the Modern Bar Revolution",
+      description: "Start your free trial today and see why hundreds of bars trust our platform for their daily operations.",
+      primaryCTA: { text: "Start Free Trial", action: () => console.log("Free trial") },
+      secondaryCTA: { text: "Schedule Demo", action: () => console.log("Schedule demo") },
+      trustIndicators: [
+        { icon: () => null, text: "HACCP Compliant" },
+        { icon: () => null, text: "99.9% Uptime" },
+        { icon: () => null, text: "24/7 Support" },
+        { icon: () => null, text: "SOC 2 Certified" }
+      ],
+      urgencyBadge: "🚀 Limited Time: 30% Off First Year"
+    }, description: "Final conversion section with testimonial support - extracted from BARS-DEMO" },
   ];
 
   const categories = ["all", "hero", "feature", "pricing", "contact", "testimonial", "cta", "faq", "about", "bento", "compare"];

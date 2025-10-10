@@ -94,63 +94,63 @@ export function TeamMemberDashboard({ className = "" }: TeamMemberDashboardProps
 
       {/* Personal Stats */}
       <div className="mt-8 dashboard-grid-3 lg:grid-cols-4">
-        <Card className="dashboard-metric-restaurant enterprise-metric-card">
+        <Card className="dashboard-metric-task enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Tasks Completed Today
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-primary">8/12</div>
+            <div className="metric-display-medium">8/12</div>
             <div className="w-full bg-muted rounded-full h-2 mt-2">
-              <div className="bg-primary h-2 rounded-full" style={{width: "67%"}}></div>
+              <div className="bg-blue-600 h-2 rounded-full" style={{width: "67%"}}></div>
             </div>
-            <p className="text-xs dashboard-text-muted mt-1">
+            <p className="text-xs text-slate-600 mt-1">
               4 tasks remaining
             </p>
           </CardContent>
         </Card>
 
-        <Card className="dashboard-metric-green enterprise-metric-card">
+        <Card className="dashboard-metric-team enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Shift Time
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-secondary">4.2 hrs</div>
-            <p className="text-xs dashboard-text-muted">
+            <div className="metric-display-medium">4.2 hrs</div>
+            <p className="text-xs text-slate-600">
               3.8 hours remaining
             </p>
           </CardContent>
         </Card>
 
-        <Card className="dashboard-metric-blue enterprise-metric-card">
+        <Card className="dashboard-metric-performance enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Performance Score
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-brand-gradient">92%</div>
+            <div className="metric-display-medium">92%</div>
             <div className="flex items-center gap-1 mt-1">
-              <TrendingUp className="w-3 h-3 text-primary" />
-              <p className="text-xs dashboard-text-muted">
+              <TrendingUp className="w-3 h-3 text-cyan-600" />
+              <p className="text-xs text-slate-600">
                 +5% this week
               </p>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="dashboard-metric-purple enterprise-metric-card">
+        <Card className="dashboard-metric-status enterprise-metric-card">
           <CardHeader className="pb-3">
-            <CardTitle className="text-sm font-medium dashboard-text-primary">
+            <CardTitle className="text-sm font-medium">
               Training Progress
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="metric-display-medium text-primary">75%</div>
-            <p className="text-xs dashboard-text-muted">
+            <div className="metric-display-medium">75%</div>
+            <p className="text-xs text-slate-600">
               Food Safety Module
             </p>
           </CardContent>

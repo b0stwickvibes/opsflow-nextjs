@@ -24,6 +24,14 @@ export type { StripeCarouselProps } from "./StripeCarousel";
 export { FeatureTimeline } from "./FeatureTimeline";
 export type { ImplementationPhase, FeatureTimelineProps } from "./FeatureTimeline";
 
+// Platform Features Grid - Interactive Selection
+export { PlatformFeaturesGrid } from "./PlatformFeaturesGrid";
+export type { PlatformFeature, PlatformFeaturesGridProps } from "./PlatformFeaturesGrid";
+
+// Industry Feature Deck - Professional showcase with benefits
+export { IndustryFeatureDeck } from "./IndustryFeatureDeck";
+export type { IndustryFeatureDeckProps, FeatureBenefit, CTASection } from "./IndustryFeatureDeck";
+
 // Specialized Feature Components
 export { FeatureHighlight } from "./FeatureHighlight";
 export type { ROIHighlight, FeatureHighlightProps } from "./FeatureHighlight";
@@ -157,11 +165,11 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showDetails: true, variant: "monitoring" }
   },
   
-  // ROI Metrics Showcase
+  // Feature Metrics Showcase
   FeatureShowcase2: {
-    description: "Comprehensive ROI metrics with sparkle animations",
-    bestFor: "Value proposition pages, ROI calculators",
-    props: { showSparkles: true, variant: "showcase" }
+    description: "Comprehensive feature showcase with detailed capabilities and benefits",
+    bestFor: "Feature overview pages, capability demonstrations, product showcases",
+    props: { variant: "showcase" }
   },
 
   // Interactive Sidebar Showcase

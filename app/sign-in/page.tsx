@@ -15,9 +15,6 @@ export default function SignInPage() {
         </div>
         <div className="enterprise-card p-6">
           <SignIn 
-            routing="path"
-            path="/sign-in"
-            signUpUrl="/sign-up"
             afterSignInUrl="/dashboard"
             appearance={{
               elements: {

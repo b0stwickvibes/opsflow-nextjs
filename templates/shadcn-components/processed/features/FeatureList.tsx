@@ -16,10 +16,13 @@ import {
   Activity,
   Battery,
   Wifi,
+  MapPin,
+  ArrowRight,
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -247,15 +250,21 @@ export function FeatureList({
     });
   };
 
-const getStatusColor = (_status: string) => {
-  return "bg-primary/10 text-primary border-primary/20";
+const getStatusColor = (status: string) => {
+  switch (status) {
+    case "optimal": return "bg-primary/10 text-primary border-primary/20";
+    case "warning": return "bg-secondary/10 text-secondary border-secondary/20";
+    case "critical": return "bg-destructive/10 text-destructive border-destructive/20";
+    case "maintenance": return "bg-primary/10 text-primary border-primary/20";
+    default: return "bg-primary/10 text-primary border-primary/20";
+  }
 };
 
 const getStatusIcon = (status: string) => {
   switch (status) {
     case "optimal": return <CheckCircle className="h-4 w-4 text-primary" />;
-    case "warning": return <AlertTriangle className="h-4 w-4 text-muted-foreground" />;
-    case "critical": return <AlertTriangle className="h-4 w-4 text-muted-foreground" />;
+    case "warning": return <AlertTriangle className="h-4 w-4 text-secondary" />;
+    case "critical": return <AlertTriangle className="h-4 w-4 text-destructive" />;
     case "maintenance": return <Wrench className="h-4 w-4 text-primary" />;
     default: return <Clock className="h-4 w-4 text-muted-foreground" />;
   }
@@ -264,7 +273,7 @@ const getStatusIcon = (status: string) => {
 const getTrendIcon = (trend: string) => {
   switch (trend) {
     case "up": return <TrendingUp className="h-3 w-3 text-primary" />;
-    case "down": return <TrendingDown className="h-3 w-3 text-primary" />;
+    case "down": return <TrendingDown className="h-3 w-3 text-secondary" />;
     case "stable": return <Minus className="h-3 w-3 text-muted-foreground" />;
     default: return null;
   }
@@ -274,26 +283,35 @@ const getConnectivityIcon = (connectivity: string) => {
   switch (connectivity) {
     case "online": return <Wifi className="h-4 w-4 text-primary" />;
     case "offline": return <Wifi className="h-4 w-4 text-muted-foreground" />;
-    case "weak": return <Wifi className="h-4 w-4 text-muted-foreground" />;
+    case "weak": return <Wifi className="h-4 w-4 text-secondary" />;
     default: return <Wifi className="h-4 w-4 text-muted-foreground" />;
   }
 };
 
-const getTypeColor = (_type: string) => {
-  return "bg-primary/10 text-primary border-primary/20";
+const getTypeColor = (type: string) => {
+  switch (type) {
+    case "refrigeration": return "bg-primary/10 text-primary border-primary/20";
+    case "cooking": return "bg-secondary/10 text-secondary border-secondary/20";
+    case "prep": return "bg-primary/10 text-primary border-primary/20";
+    case "hvac": return "bg-secondary/10 text-secondary border-secondary/20";
+    case "general": return "bg-primary/10 text-primary border-primary/20";
+    default: return "bg-primary/10 text-primary border-primary/20";
+  }
 };
 
   return (
     <section className={`section-marketing ${className}`}>
       <div className="container">
         <div className="mb-12 text-center">
-          <Badge variant="outline" className="mb-4">
+          <div className="clerk-inspired-badge mb-4">
             Equipment Monitoring
-          </Badge>
-          <h2 className="heading-brand-gradient mb-4 font-bold tracking-tight lg:text-6xl">
-            Real-time Equipment Health Monitoring
+          </div>
+          <h2 className="mb-4 text-4xl font-bold tracking-tight text-foreground lg:text-5xl xl:text-6xl">
+            <span className="text-brand-gradient">Real-time Equipment</span>
+            <br />
+            Health Monitoring
           </h2>
-          <p className="enterprise-body text-muted-foreground mx-auto max-w-3xl ">
+          <p className="text-lg text-muted-foreground mx-auto max-w-3xl leading-relaxed">
             Complete visibility into your restaurant equipment performance with IoT sensors, 
             predictive maintenance alerts, and energy optimization recommendations.
           </p>
@@ -337,36 +355,37 @@ const getTypeColor = (_type: string) => {
                 {/* Equipment Info */}
                 <div className="lg:col-span-2 space-y-4">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-muted rounded-lg">
+                    <div className="enterprise-icon-primary">
                       {equipment.icon}
                     </div>
                     
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <h3 className="enterprise-body  font-semibold">{equipment.name}</h3>
+                        <h3 className="text-lg font-semibold text-foreground">{equipment.name}</h3>
                         <Badge 
-                          variant="outline" 
-                          className={`text-xs ${getStatusColor(equipment.status)} capitalize`}
+                          className={`${getStatusColor(equipment.status)} capitalize`}
                         >
                           {getStatusIcon(equipment.status)}
                           <span className="ml-1">{equipment.status}</span>
                         </Badge>
                         <Badge 
-                          variant="outline" 
-                          className={`text-xs ${getTypeColor(equipment.type)} capitalize`}
+                          className={`${getTypeColor(equipment.type)} capitalize`}
                         >
                           {equipment.type}
                         </Badge>
                       </div>
                       
                       <div className="flex items-center gap-4 text-sm text-muted-foreground">
-                        <span>📍 {equipment.location}</span>
+                        <span className="flex items-center gap-1">
+                          <MapPin className="h-4 w-4" />
+                          {equipment.location}
+                        </span>
                         <span className="flex items-center gap-1">
                           {getConnectivityIcon(equipment.connectivity)}
                           {equipment.connectivity}
                         </span>
-{equipment.alerts > 0 && (
-                          <span className="flex items-center gap-1 text-primary">
+                        {equipment.alerts > 0 && (
+                          <span className="flex items-center gap-1 text-destructive">
                             <AlertTriangle className="h-4 w-4" />
                             {equipment.alerts} alerts
                           </span>
@@ -479,41 +498,50 @@ const getTypeColor = (_type: string) => {
 
         {/* Summary Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-<CheckCircle className="h-8 w-8 mx-auto text-primary mb-2" />
+          <Card className="text-center p-6 clerk-glass-card">
+            <div className="mb-4">
+              <CheckCircle className="h-8 w-8 mx-auto text-primary" />
+            </div>
             <div className="text-2xl font-bold text-primary">
               {equipmentList.filter(item => item.status === "optimal").length}
             </div>
             <div className="text-sm text-muted-foreground">Optimal Status</div>
-          </div>
+          </Card>
           
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-<AlertTriangle className="h-8 w-8 mx-auto text-primary mb-2" />
+          <Card className="text-center p-6 clerk-glass-card">
+            <div className="mb-4">
+              <AlertTriangle className="h-8 w-8 mx-auto text-primary" />
+            </div>
             <div className="text-2xl font-bold text-primary">
               {equipmentList.filter(item => item.status === "warning").length}
             </div>
             <div className="text-sm text-muted-foreground">Need Attention</div>
-          </div>
+          </Card>
           
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-            <Activity className="h-8 w-8 mx-auto text-primary mb-2" />
+          <Card className="text-center p-6 clerk-glass-card">
+            <div className="mb-4">
+              <Activity className="h-8 w-8 mx-auto text-primary" />
+            </div>
             <div className="text-2xl font-bold text-primary">
               {Math.round(equipmentList.reduce((sum, item) => sum + item.efficiency, 0) / equipmentList.filter(item => item.efficiency > 0).length)}%
             </div>
             <div className="text-sm text-muted-foreground">Avg Efficiency</div>
-          </div>
+          </Card>
           
-          <div className="text-center p-6 bg-muted/30 rounded-lg">
-<Zap className="h-8 w-8 mx-auto text-primary mb-2" />
+          <Card className="text-center p-6 clerk-glass-card">
+            <div className="mb-4">
+              <Zap className="h-8 w-8 mx-auto text-primary" />
+            </div>
             <div className="text-2xl font-bold text-primary">24/7</div>
             <div className="text-sm text-muted-foreground">Live Monitoring</div>
-          </div>
+          </Card>
         </div>
 
         {/* CTA Section */}
         <div className="mt-16 text-center">
-          <Button size="lg" onClick={handleViewAllClick}>
+          <Button size="lg" onClick={handleViewAllClick} className="clerk-cta-primary">
             View Full Equipment Dashboard
+            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
           </Button>
           <p className="mt-3 text-sm text-muted-foreground">
             Get complete equipment insights with predictive maintenance and energy optimization

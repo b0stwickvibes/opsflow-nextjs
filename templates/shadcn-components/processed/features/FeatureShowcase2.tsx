@@ -12,12 +12,14 @@ import {
   Target,
   ArrowRight,
   CheckCircle,
+  Star,
+  Award,
 } from "lucide-react";
 import React, { useState } from "react";
 
-import { SparklesCore } from "@/components/aceternity/sparkles";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { useRestaurantAnalytics } from "@/lib/hooks/restaurant-pages";
 
@@ -162,266 +164,219 @@ const roiMetrics: ROIMetric[] = [
 
 interface FeatureShowcase2Props {
   className?: string;
-  showSparkles?: boolean;
+  onGetStartedClick?: () => void;
   variant?: "showcase" | "grid" | "detailed";
 }
 
 export function FeatureShowcase2({
   className = "",
-  showSparkles = false,
+  onGetStartedClick,
   variant = "showcase"
 }: FeatureShowcase2Props) {
-  const [selectedMetric, setSelectedMetric] = useState<string | null>(null);
   const { trackFeatureEngagement } = useRestaurantAnalytics();
-
-  const handleMetricClick = (metric: ROIMetric, index: number) => {
-    setSelectedMetric(selectedMetric === metric.title ? null : metric.title);
-    trackFeatureEngagement("roi_metric_click", {
-      metric_title: metric.title,
-      category: metric.category,
-      position: index,
-    });
-  };
 
   const handleGetROIAnalysisClick = () => {
     trackFeatureEngagement("cta_click", {
       source: "roi_metrics_showcase",
     });
+    onGetStartedClick?.();
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "financial": return "bg-primary/10 text-primary border-primary/20";
-      case "efficiency": return "bg-secondary/10 text-secondary border-secondary/20";
-      case "compliance": return "bg-primary/10 text-primary border-primary/20";
-      case "growth": return "bg-purple-100 text-purple-600 border-purple-200";
-      default: return "bg-muted text-foreground border-border";
-    }
-  };
+
 
   return (
-    <section className={`section-marketing relative w-full overflow-hidden ${className}`}>
-      <div className="container relative flex flex-col items-center justify-center">
+    <section className={`py-24 lg:py-32 ${className}`}>
+      <div className="container max-w-7xl">
         {/* Header Section */}
-        <div className="mb-16 text-center">
-          <div className="clerk-inspired-badge mb-6">
-            Proven ROI Metrics
+        <div className="mb-20 text-center">
+          <div className="inline-flex mb-6">
+            <Badge variant="outline" className="clerk-inspired-badge">
+              <Award className="w-3 h-3 mr-1.5" />
+              Feature Showcase
+            </Badge>
           </div>
-          <h1 className="mb-4 text-4xl lg:text-5xl font-bold text-foreground">
-            Restaurant Operations ROI
-          </h1>
-          <p className="enterprise-body max-w-2xl mx-auto text-muted-foreground">
-            Real results from 500+ restaurants using OpsFlow. See the measurable impact 
-            on your bottom line, operations, and customer satisfaction.
+          <h2 className="mb-6 text-4xl font-bold tracking-tight text-foreground lg:text-5xl xl:text-6xl">
+            Powerful 
+            <span className="block text-primary">Restaurant Features</span>
+          </h2>
+          <p className="text-lg text-muted-foreground mx-auto max-w-3xl leading-relaxed">
+            Comprehensive feature set designed for modern restaurant operations. 
+            Each capability is built to drive measurable improvements in efficiency, 
+            compliance, and customer satisfaction.
           </p>
         </div>
 
-        {/* Sparkles Animation */}
-        {showSparkles && (
-          <div className="relative mb-12 h-40 w-full max-w-2xl">
-            {/* Gradients */}
-            <div className="absolute inset-x-20 top-0 h-[2px] w-3/4 bg-gradient-to-r from-transparent via-primary to-transparent blur-sm" />
-            <div className="absolute inset-x-20 top-0 h-px w-3/4 bg-gradient-to-r from-transparent via-primary to-transparent" />
-            <div className="absolute inset-x-60 top-0 h-[5px] w-1/4 bg-gradient-to-r from-transparent via-primary/60 to-transparent blur-sm" />
-            <div className="absolute inset-x-60 top-0 h-px w-1/4 bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-
-            {/* Sparkles */}
-<SparklesCore
-              background="transparent"
-              minSize={0.4}
-              maxSize={1}
-              particleDensity={120}
-              className="h-full w-full"
-              particleColor="hsl(var(--primary))"
-            />
-
-            {/* Radial Gradient */}
-            <div className="absolute inset-0 h-full w-full bg-background [mask-image:radial-gradient(350px_130px_at_top,transparent_20%,white)]"></div>
-          </div>
-        )}
-
         {/* ROI Metrics Grid */}
-        <div className="grid w-full max-w-6xl grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3">
-          {roiMetrics.map((metric, index) => {
-            const IconComponent = metric.icon;
-            const isSelected = selectedMetric === metric.title;
-            
-            return (
-              <div
-                key={index}
-                className={cn(
-                  "group cursor-pointer clerk-glass-card p-6 hover-scale-103 transition-all duration-300 motion-fade-in-up-320 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
-                  isSelected ? "border-primary shadow-lg" : ""
-                )}
-                style={{ animationDelay: `${index * 100}ms` }}
-                onClick={() => handleMetricClick(metric, index)}
-              >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-xl bg-primary/10 group-hover:bg-primary/15 transition-colors">
-                    <IconComponent className="h-6 w-6 text-primary" />
+        <div className="mb-20">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+            {roiMetrics.map((metric, index) => {
+              const IconComponent = metric.icon;
+              
+              return (
+                <Card
+                  key={index}
+                  className="group relative p-6 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 border-border/50 hover:border-primary/30 bg-background/60 backdrop-blur-sm hover:scale-[1.02] flex flex-col"
+                >
+                  {/* Category Badge */}
+                  <div className="absolute top-4 right-4">
+                    <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20">
+                      {metric.category}
+                    </Badge>
                   </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex items-center gap-2 mb-2">
-                      <h4 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                        {metric.title}
-                      </h4>
-                      <div className={`clerk-inspired-badge ${getCategoryColor(metric.category)} capitalize`}>
-                        {metric.category}
+
+                  {/* Icon */}
+                  <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 group-hover:bg-primary/25 transition-colors duration-300">
+                    <IconComponent className="h-6 w-6 text-secondary-500" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="mb-2 text-xl font-semibold tracking-tight text-foreground group-hover:text-primary transition-colors">
+                    {metric.title}
+                  </h3>
+
+                  {/* Primary Metric */}
+                  <div className="mb-3">
+                    <div className="text-3xl font-bold text-primary tabular-nums mb-1">
+                      {metric.value}
+                    </div>
+                    <div className="text-sm text-muted-foreground">
+                      {metric.period}
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-grow">
+                    {metric.description}
+                  </p>
+
+                  {/* Key Details - Always Visible */}
+                  <div className="space-y-4 mt-auto">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="p-3 bg-muted/20 rounded-lg border border-border/30">
+                        <div className="text-xs font-medium text-primary mb-1">Timeline</div>
+                        <div className="text-sm text-foreground font-semibold">{metric.details.timeToROI}</div>
+                      </div>
+                      <div className="p-3 bg-muted/20 rounded-lg border border-border/30">
+                        <div className="text-xs font-medium text-primary mb-1">Success Rate</div>
+                        <div className="text-sm text-foreground font-semibold">{metric.details.confidenceLevel.split(' ')[0]}</div>
                       </div>
                     </div>
                     
-                    <div className="mb-3">
-                      <div className="text-3xl font-bold text-primary mb-1">
-                        {metric.value}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {metric.period}
-                      </div>
-                    </div>
-                    
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
-                      {metric.description}
-                    </p>
-
-                    {/* Expanded Details */}
-                    {isSelected && (
-                      <div className="space-y-4 pt-4 border-t">
-                        <div className="grid grid-cols-2 gap-4 text-sm">
-                          <div>
-                            <div className="font-medium text-primary mb-1">Baseline</div>
-                            <div className="text-muted-foreground">{metric.details.baseline}</div>
+                    <div className="space-y-2 min-h-[72px]">
+                      {metric.benefitPoints.slice(0, 3).map((benefit, idx) => (
+                        <div key={idx} className="flex items-start gap-2 text-xs">
+                          <div className="enterprise-icon-primary" style={{ width: '12px', height: '12px', marginTop: '2px' }}>
+                            <CheckCircle className="w-3 h-3" />
                           </div>
-                          <div>
-                            <div className="font-medium text-primary mb-1">Improvement</div>
-                            <div className="text-muted-foreground">{metric.details.improvement}</div>
-                          </div>
-                          <div>
-                            <div className="font-medium text-primary mb-1">Time to ROI</div>
-                            <div className="text-muted-foreground">{metric.details.timeToROI}</div>
-                          </div>
-                          <div>
-                            <div className="font-medium text-primary mb-1">Success Rate</div>
-                            <div className="text-muted-foreground">{metric.details.confidenceLevel}</div>
-                          </div>
+                          <span className="text-muted-foreground leading-tight">{benefit}</span>
                         </div>
-
-                        <div>
-                          <div className="font-medium text-primary mb-2">Key Benefits:</div>
-                          <div className="space-y-2">
-                            {metric.benefitPoints.map((benefit, idx) => (
-                              <div key={idx} className="flex items-start gap-2 text-sm">
-                                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center mt-0.5 flex-shrink-0">
-                                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
-                                </div>
-                                <span className="text-muted-foreground">{benefit}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    <div className="flex items-center justify-between mt-4">
-                      <div className="text-xs text-muted-foreground">
-                        Click for details
-                      </div>
-                      <ArrowRight className={cn(
-                        "h-4 w-4 transition-transform",
-                        isSelected ? "rotate-90" : "group-hover:translate-x-1"
-                      )} />
+                      ))}
                     </div>
                   </div>
-                </div>
-              </div>
-            );
-          })}
+
+                  {/* Gradient underline accent appears on hover */}
+                  <span className="absolute left-6 right-6 bottom-3 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent scale-x-0 origin-center transition-transform duration-500 group-hover:scale-x-100" />
+                </Card>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Bottom Stats Summary */}
-        <div className="mt-16 w-full max-w-4xl">
+        {/* Platform Statistics */}
+        <Card className="mb-20 p-8 bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-border/50">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold mb-2">Average Client Results</h3>
-            <p className="text-muted-foreground">
-              Based on analysis of 500+ restaurants using OpsFlow for 12+ months
+            <div className="flex items-center justify-center gap-2 mb-4">
+              <Star className="h-5 w-5 text-yellow-500 fill-current" />
+              <Star className="h-5 w-5 text-yellow-500 fill-current" />
+              <Star className="h-5 w-5 text-yellow-500 fill-current" />
+              <Star className="h-5 w-5 text-yellow-500 fill-current" />
+              <Star className="h-5 w-5 text-yellow-500 fill-current" />
+            </div>
+            <h3 className="text-3xl font-bold mb-2 text-foreground">Trusted by Industry Leaders</h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Join hundreds of restaurants already using these powerful features to 
+              streamline operations and drive growth.
             </p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="text-center p-6 clerk-glass-card">
-              <div className="w-8 h-8 mx-auto mb-2 bg-primary/10 rounded-xl flex items-center justify-center">
-                <Trophy className="h-5 w-5 text-primary" />
+            <div className="text-center group">
+              <div className="w-12 h-12 mx-auto mb-3 bg-primary/15 rounded-xl flex items-center justify-center group-hover:bg-primary/25 transition-colors">
+                <Users className="h-6 w-6 text-secondary-500" />
               </div>
-              <div className="text-2xl font-bold text-primary">$2.4K</div>
-              <div className="text-sm text-muted-foreground">Monthly Savings</div>
+              <div className="text-3xl font-bold text-primary tabular-nums mb-1">500+</div>
+              <div className="text-sm text-muted-foreground font-medium">Active Restaurants</div>
             </div>
             
-            <div className="text-center p-6 clerk-glass-card">
-              <div className="w-8 h-8 mx-auto mb-2 bg-primary/10 rounded-xl flex items-center justify-center">
-                <Target className="h-5 w-5 text-primary" />
+            <div className="text-center group">
+              <div className="w-12 h-12 mx-auto mb-3 bg-primary/15 rounded-xl flex items-center justify-center group-hover:bg-primary/25 transition-colors">
+                <Zap className="h-6 w-6 text-secondary-500" />
               </div>
-              <div className="text-2xl font-bold text-primary">60 Days</div>
-              <div className="text-sm text-muted-foreground">Average Payback</div>
+              <div className="text-3xl font-bold text-primary tabular-nums mb-1">24/7</div>
+              <div className="text-sm text-muted-foreground font-medium">System Uptime</div>
             </div>
             
-            <div className="text-center p-6 clerk-glass-card">
-              <div className="w-8 h-8 mx-auto mb-2 bg-primary/10 rounded-xl flex items-center justify-center">
-                <Zap className="h-5 w-5 text-primary" />
+            <div className="text-center group">
+              <div className="w-12 h-12 mx-auto mb-3 bg-primary/15 rounded-xl flex items-center justify-center group-hover:bg-primary/25 transition-colors">
+                <Award className="h-6 w-6 text-secondary-500" />
               </div>
-              <div className="text-2xl font-bold text-primary">94%</div>
-              <div className="text-sm text-muted-foreground">Client Satisfaction</div>
+              <div className="text-3xl font-bold text-primary tabular-nums mb-1">98%</div>
+              <div className="text-sm text-muted-foreground font-medium">Client Satisfaction</div>
             </div>
             
-            <div className="text-center p-6 clerk-glass-card">
-              <div className="w-8 h-8 mx-auto mb-2 bg-purple-100 rounded-xl flex items-center justify-center">
-                <BarChart3 className="h-5 w-5 text-purple-600" />
+            <div className="text-center group">
+              <div className="w-12 h-12 mx-auto mb-3 bg-primary/15 rounded-xl flex items-center justify-center group-hover:bg-primary/25 transition-colors">
+                <BarChart3 className="h-6 w-6 text-secondary-500" />
               </div>
-              <div className="text-2xl font-bold text-purple-600">500+</div>
-              <div className="text-sm text-muted-foreground">Success Stories</div>
+              <div className="text-3xl font-bold text-primary tabular-nums mb-1">50+</div>
+              <div className="text-sm text-muted-foreground font-medium">Feature Modules</div>
             </div>
           </div>
-        </div>
+        </Card>
 
         {/* CTA Section */}
-        <div className="mt-16 text-center">
-          <div className="p-8 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl max-w-4xl">
-            <h3 className="text-2xl font-bold mb-4">Calculate Your Restaurant's ROI</h3>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              Get a personalized ROI analysis based on your restaurant's current operations. 
-              See exactly how much you could save with OpsFlow.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Button size="lg" className="clerk-cta-primary cta-shimmer hover-scale-103" onClick={handleGetROIAnalysisClick}>
-                Get Free ROI Analysis
-                <DollarSign className="ml-2 h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="lg" className="cta-equal hover-scale-103">
-                View Client Case Studies
-              </Button>
-            </div>
+        <div className="text-center">
+          <Card className="p-12 bg-gradient-to-br from-primary/5 via-background to-secondary/5 border-border/50 max-w-4xl mx-auto">
+            <div className="max-w-2xl mx-auto">
+              <h3 className="text-3xl font-bold mb-4">Ready to Transform Your Operations?</h3>
+              <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                Experience these powerful features firsthand. Start your journey toward 
+                more efficient, compliant, and profitable restaurant operations.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <Button size="lg" onClick={handleGetROIAnalysisClick} className="stripe-cta-primary px-8 py-4 text-base">
+                  Start Free Trial
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <Button variant="outline" size="lg" className="clerk-cta-secondary px-8 py-4 text-base">
+                  Schedule Demo
+                  <Target className="ml-2 h-4 w-4" />
+                </Button>
+              </div>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
+              <div className="flex flex-wrap justify-center gap-8 text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <div className="enterprise-icon-primary" style={{ width: '16px', height: '16px' }}>
+                    <CheckCircle className="h-4 w-4" />
+                  </div>
+                  30-day free trial
                 </div>
-                No obligation assessment
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                <div className="flex items-center gap-2">
+                  <div className="enterprise-icon-primary" style={{ width: '16px', height: '16px' }}>
+                    <CheckCircle className="h-4 w-4" />
+                  </div>
+                  Expert onboarding support
                 </div>
-                Personalized recommendations
-              </div>
-              <div className="flex items-center gap-1">
-                <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full" />
+                <div className="flex items-center gap-2">
+                  <div className="enterprise-icon-primary" style={{ width: '16px', height: '16px' }}>
+                    <CheckCircle className="h-4 w-4" />
+                  </div>
+                  No setup fees
                 </div>
-                Implementation roadmap
               </div>
             </div>
-          </div>
+          </Card>
         </div>
       </div>
     </section>

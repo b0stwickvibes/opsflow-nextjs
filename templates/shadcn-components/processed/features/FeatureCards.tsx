@@ -99,15 +99,7 @@ export function FeatureCards({
     });
   };
 
-  const getCategoryColor = (category: string) => {
-    switch (category) {
-      case "scheduling": return "bg-primary/10 text-primary border-primary/20";
-      case "training": return "bg-secondary/10 text-secondary border-secondary/20";
-      case "performance": return "bg-purple-100 text-purple-600 border-purple-200";
-      case "compliance": return "bg-primary/10 text-primary border-primary/20";
-      default: return "bg-muted text-foreground border-border";
-    }
-  };
+
 
   return (
     <div className={className}>
@@ -120,55 +112,57 @@ export function FeatureCards({
         </p>
       </div>
 
-      <div className="flex flex-wrap items-start justify-between">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
         {filteredFeatures.map((feature, index, arr) => (
           <div
             key={feature.id}
-            className="flex shrink grow basis-full flex-col items-start justify-between p-6 md:basis-1/2 lg:basis-1/4 group cursor-pointer clerk-glass-card hover-scale-103 transition-all duration-300"
+            className="flex flex-col p-6 group cursor-pointer clerk-glass-card hover-scale-103 transition-all duration-300 h-full"
             onClick={() => handleFeatureClick(feature)}
           >
-            <div className="w-full">
-              <div className="mb-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    {feature.icon}
-                  </div>
-                  <div className={`clerk-inspired-badge ${getCategoryColor(feature.category)} capitalize`}>
-                    {feature.category}
-                  </div>
+            {/* Header with Icon and Badge */}
+            <div className="mb-4 flex items-center justify-between">
+              <div className="p-2 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                {feature.icon}
+              </div>
+              <Badge variant="outline" className="text-xs bg-primary/10 text-primary border-primary/20 capitalize">
+                {feature.category}
+              </Badge>
+            </div>
+                
+            {/* Title */}
+            <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+              {feature.title}
+            </h3>
+            
+            {/* Description - Flex grow to fill space */}
+            <p className="text-sm text-muted-foreground mb-4 leading-relaxed flex-grow">
+              {feature.description}
+            </p>
+
+            {/* Metrics - Always at bottom */}
+            <div className="mt-auto space-y-4">
+              {showMetrics && feature.metrics && (
+                <div className="px-3 py-2 bg-muted/50 rounded-md">
+                  <p className="text-sm font-medium text-primary">{feature.metrics}</p>
                 </div>
-              </div>
-                
-                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {feature.title}
-                </h3>
-                
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
-                  {feature.description}
-                </p>
+              )}
 
-                {showMetrics && feature.metrics && (
-                  <div className="mb-4 px-3 py-2 bg-muted/50 rounded-md">
-                    <p className="text-sm font-medium text-primary">{feature.metrics}</p>
-                  </div>
-                )}
-
-                {variant === "detailed" && (
-                  <div className="space-y-2">
-                    <h4 className="text-sm font-medium text-foreground">Key Benefits:</h4>
-                    <ul className="text-xs text-muted-foreground space-y-1">
-                      {feature.benefits.map((benefit, idx) => (
-                        <li key={idx} className="flex items-center gap-2">
-                          <div className="w-4 h-4 bg-purple-100 rounded-full flex items-center justify-center">
-                            <div className="w-2 h-2 bg-purple-600 rounded-full" />
-                          </div>
-                          {benefit}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+              {variant === "detailed" && (
+                <div className="space-y-2">
+                  <h4 className="text-sm font-medium text-foreground">Key Benefits:</h4>
+                  <ul className="text-xs text-muted-foreground space-y-1">
+                    {feature.benefits.map((benefit, idx) => (
+                      <li key={idx} className="flex items-center gap-2">
+                        <div className="w-4 h-4 bg-primary/10 rounded-full flex items-center justify-center">
+                          <div className="w-2 h-2 bg-primary rounded-full" />
+                        </div>
+                        {benefit}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
 
               {arr.length - 1 === index && (
                 <button className="mt-5 w-auto cursor-pointer border-b border-primary text-sm text-primary hover:border-primary/60 transition-colors">
