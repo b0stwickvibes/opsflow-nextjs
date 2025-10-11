@@ -41,7 +41,7 @@ export function CoffeeProcess({
             {badge}
           </Badge>
         )}
-        <h2 className="enterprise-headline mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
           {title}
         </h2>
         <p className="dashboard-text-secondary mx-auto max-w-2xl text-lg">
@@ -81,7 +81,7 @@ export function CoffeeProcess({
                       <span className="dashboard-text-muted mb-2 block text-sm font-medium">
                         Step {step.step}
                       </span>
-                      <h3 className="dashboard-text-primary mb-2 text-xl font-semibold">
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
                         {step.title}
                       </h3>
                     </div>

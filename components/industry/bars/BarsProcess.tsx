@@ -55,7 +55,7 @@ export function BarsProcess({
         <div className="clerk-inspired-badge mb-8">
           {badge}
         </div>
-        <h2 className="text-display-lg mb-8">
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-8">
           {title}
         </h2>
         <p className="enterprise-body max-w-3xl mx-auto">
@@ -110,7 +110,7 @@ export function BarsProcess({
                     {/* Header */}
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-display-sm dashboard-text-primary">
+                        <h3 className="text-2xl font-bold text-foreground">
                           {step.title}
                         </h3>
                         <div className="clerk-inspired-badge text-xs">
@@ -171,7 +171,7 @@ export function BarsProcess({
       {/* Bottom summary */}
       <div className="mt-24 text-center">
         <div className="enterprise-metric-card p-12 max-w-2xl mx-auto">
-          <h3 className="text-display-sm mb-4">
+          <h3 className="text-2xl font-bold text-foreground mb-4">
             Complete Setup in Under 30 Minutes
           </h3>
           <p className="enterprise-body mb-6">
