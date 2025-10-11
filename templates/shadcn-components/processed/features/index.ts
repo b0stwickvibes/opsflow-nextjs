@@ -1,6 +1,10 @@
 // Restaurant Operations Features - Complete Export Index
 // All feature components optimized for restaurant operations with HACCP compliance
 
+// Zippay template features (converted to OpsFlow standards)
+export { default as ZippayFeatureOne } from "./Zippay_feature_one";
+export { default as ZippayFeatureTwo } from "./Zippay_feature_two";
+
 // Core Feature Components
 export { FeatureGrid } from "./FeatureGrid";
 

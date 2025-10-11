@@ -3,21 +3,21 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 // Import actual template components
-import { BillingHero, EarningHero, ImpactHero, IndustryHero, MarketingStartupHero, WorkflowHero, VisionHero } from "@/templates/shadcn-components/processed/heroes";
+import { BillingHero, EarningHero, ImpactHero, IndustryHero, MarketingStartupHero, WorkflowHero, VisionHero, ZippayHeroOne, ZippayHeroTwo } from "@/templates/shadcn-components/processed/heroes";
 import { RestaurantHero } from "@/components/domain/marketing";
 import { NightlifeHero } from "@/components/shared/heroes/NightlifeHero";
 import { PlatformFeaturesGrid } from "@/components/shared/features/PlatformFeaturesGrid";
 import { PricingComparison } from "@/templates/shadcn-components/processed/pricing";
 import { ContactForm, LeadCapture } from "@/templates/shadcn-components/processed/contact";
-import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, Feature169Restaurant, FeatureShowcase, StripeCarousel, IndustryFeatureDeck } from "@/templates/shadcn-components/processed/features";
+import { FeatureGrid, FeatureAccordion, FeatureCards, FeatureCarousel, FeatureHighlight, FeatureList, FeatureShowcase2, FeatureSplit, FeatureTabs, FeatureTimeline, FeatureRollingBlocks, Feature169Restaurant, FeatureShowcase, StripeCarousel, IndustryFeatureDeck, ZippayFeatureOne, ZippayFeatureTwo } from "@/templates/shadcn-components/processed/features";
 import { FeatureBento as CleanFeatureBento } from "@/components/domain/marketing/FeatureBento";
 import { KPIShowcase, StatsDisplay, MetricsDashboard, IndustryStats } from "@/templates/shadcn-components/processed/stats";
-import { CallToAction, DemoRequest, TrialSignup, IndustryCTA } from "@/templates/shadcn-components/processed/ctas";
+import { CallToAction, DemoRequest, TrialSignup, IndustryCTA, ZippayCtaOne, ZippayCtaTwo } from "@/templates/shadcn-components/processed/ctas";
 import { RestaurantCTA, RestaurantTrialCTA, RestaurantDemoCTA } from "@/templates/shadcn-components/processed/ctas";
-import { ComplianceFAQ, IndustryFAQ } from "@/templates/shadcn-components/processed/faqs";
+import { ComplianceFAQ, IndustryFAQ, ZippayFaqOne } from "@/templates/shadcn-components/processed/faqs";
 import { SupportFAQ } from "@/templates/shadcn-components/processed/faqs/SupportFAQ";
 import { FAQSection } from "@/components/shared/data-display/FAQSection";
-import { AboutSection, IndustryProcess, IndustryProcessSolutions } from "@/templates/shadcn-components/processed/about";
+import { AboutSection, IndustryProcess, IndustryProcessSolutions, ZippayAboutOne } from "@/templates/shadcn-components/processed/about";
 import { BentoGrid, BentoLayout, PremiumBentoSection } from "@/templates/shadcn-components/processed/bento";
 import { ComparisonTable, CompetitorAnalysis } from "@/templates/shadcn-components/processed/compare";
 
@@ -52,6 +52,17 @@ export default function TemplateCatalogPage() {
 
   // Template registry with actual components and their props
   const templates = [
+    // ZIPPAY TEMPLATE COMPONENTS (Converted to OpsFlow Standards)
+    { id: 1001, title: "Zippay Hero One", category: "hero", component: ZippayHeroOne, props: {}, description: "Financial management hero with card mockup, logos, and dual CTAs - converted from Zippay template to OpsFlow standards" },
+    { id: 1002, title: "Zippay Hero Two", category: "hero", component: ZippayHeroTwo, props: {}, description: "Features-focused hero section - converted from Zippay template to OpsFlow standards" },
+    { id: 1003, title: "Zippay Feature One", category: "feature", component: ZippayFeatureOne, props: {}, description: "Feature bullets with image showcase - converted from Zippay template to OpsFlow standards" },
+    { id: 1004, title: "Zippay Feature Two", category: "feature", component: ZippayFeatureTwo, props: {}, description: "Tabbed features showcase - converted from Zippay template to OpsFlow standards" },
+    { id: 1005, title: "Zippay CTA One", category: "cta", component: ZippayCtaOne, props: {}, description: "Full-width CTA section with pattern background - converted from Zippay template to OpsFlow standards" },
+    { id: 1006, title: "Zippay CTA Two", category: "cta", component: ZippayCtaTwo, props: {}, description: "Card-style CTA component - converted from Zippay template to OpsFlow standards" },
+    { id: 1007, title: "Zippay FAQ One", category: "faq", component: ZippayFaqOne, props: {}, description: "Accordion FAQ section - converted from Zippay template to OpsFlow standards" },
+    { id: 1008, title: "Zippay About One (Core Values)", category: "about", component: ZippayAboutOne, props: {}, description: "6-card core values grid - converted from Zippay template to OpsFlow standards" },
+
+    // ORIGINAL OPSFLOW COMPONENTS
     { id: 1, title: "Premium Restaurant Hero", category: "hero", component: RestaurantHero, props: { onNavigate: (page: string) => console.log(`Navigate: ${page}`) }, description: "Enhanced restaurant hero with Stripe/Clerk premium styling, interactive dashboard mockups, and coordinated animations" },
     { id: 2, title: "Billing Hero", category: "hero", component: BillingHero, props: { industry: 'restaurant' as const }, description: "Restaurant billing hero section" },
     { id: 3, title: "Earning Hero", category: "hero", component: EarningHero, props: { industry: 'restaurant' as const }, description: "Restaurant earnings hero section" },
