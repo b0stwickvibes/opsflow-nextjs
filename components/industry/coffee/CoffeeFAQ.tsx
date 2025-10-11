@@ -57,14 +57,9 @@ export function CoffeeFAQ({
     );
   };
 
-  const getCategoryColor = (category?: string) => {
-    switch (category) {
-      case "setup": return "bg-blue-50 text-blue-700 border-blue-200";
-      case "features": return "bg-green-50 text-green-700 border-green-200";
-      case "pricing": return "bg-orange-50 text-orange-700 border-orange-200";
-      case "support": return "bg-amber-50 text-amber-700 border-amber-200";
-      default: return "bg-slate-50 text-slate-600 border-slate-200";
-    }
+  // All badges use consistent Clerk-style neutral color
+  const getCategoryBadgeClass = () => {
+    return "bg-slate-50/80 text-slate-600 border-slate-200/60";
   };
 
   return (
@@ -102,7 +97,7 @@ export function CoffeeFAQ({
                 >
                   <div className="flex items-center justify-between gap-4">
                     <div className="flex items-start gap-4 flex-1">
-                      <div className={`px-3 py-1 text-xs font-medium rounded-full border ${getCategoryColor(faq.category)}`}>
+                      <div className={`px-3 py-1 text-xs font-medium rounded-full border ${getCategoryBadgeClass()}`}>
                         {faq.category}
                       </div>
                       <h3 className="font-semibold text-foreground text-left group-hover:text-primary transition-colors">
