@@ -130,7 +130,7 @@ export function CoffeeFAQ({
 
           {/* Support CTA Sidebar */}
           <div className="space-y-6 motion-fade-in-up-320 animation-delay-300">
-            <div className="bg-white border border-slate-200/60 rounded-3xl p-8 sticky top-24">
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-8">
               <div className="space-y-6">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-4">
