@@ -1,30 +1,24 @@
-/**
- * Coffee CTA Component
- *
- * Final call-to-action section for coffee shop solution page.
- * Professional conversion-focused design.
- */
-
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { LucideIcon } from "lucide-react";
+import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import { ArrowRight, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
-interface TrustIndicator {
-  icon: LucideIcon;
-  text: string;
-}
+/**
+ * CoffeeCTA Component
+ * 
+ * Final conversion-focused CTA with testimonial and trust indicators.
+ * Features clean styling with urgency badge and orange accents.
+ * Adapts to parent accent theme (radiant galaxy orange for coffee via .accent-orange wrapper)
+ * 
+ * Used in: /app/solutions/coffee
+ * Domain: Coffee & Coffee Shop Industry  
+ * Design: Stripe/Clerk ultra-clean style with adaptive accent theming
+ */
 
-interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-}
-
-interface CoffeeCTAProps {
-  urgencyBadge?: string;
+export interface CoffeeCTAProps {
   headline: string;
   subheadline: string;
   description: string;
@@ -32,110 +26,120 @@ interface CoffeeCTAProps {
     text: string;
     action: () => void;
   };
-  secondaryCTA?: {
+  secondaryCTA: {
     text: string;
     action: () => void;
   };
-  trustIndicators?: TrustIndicator[];
-  testimonial?: Testimonial;
+  trustIndicators: {
+    icon: LucideIcon;
+    text: string;
+  }[];
+  urgencyBadge?: string;
+  testimonial?: {
+    quote: string;
+    author: string;
+    role: string;
+    company: string;
+  };
 }
 
 export function CoffeeCTA({
-  urgencyBadge,
   headline,
   subheadline,
   description,
   primaryCTA,
   secondaryCTA,
   trustIndicators,
+  urgencyBadge,
   testimonial
 }: CoffeeCTAProps) {
   return (
-    <div className="w-full">
-      <div className="enterprise-card relative overflow-hidden rounded-2xl border p-8 sm:p-12 lg:p-16">
-        {/* Optional Urgency Badge */}
-        {urgencyBadge && (
-          <div className="mb-6 flex justify-center">
-            <Badge
-              variant="secondary"
-              className="bg-orange-600/10 px-4 py-1.5 text-sm font-medium text-orange-600 dark:bg-orange-400/10 dark:text-orange-400"
-            >
-              {urgencyBadge}
-            </Badge>
-          </div>
-        )}
-
-        {/* Main Content */}
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400">
-            {subheadline}
-          </p>
-
-          <h2 className="enterprise-headline mb-6 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
-            {headline}
-          </h2>
-
-          <p className="dashboard-text-secondary mx-auto mb-10 max-w-2xl text-lg leading-relaxed">
-            {description}
-          </p>
-
-          {/* CTA Buttons */}
-          <div className="mb-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              onClick={primaryCTA.action}
-              size="lg"
-              className="clerk-cta-primary min-w-[200px] px-8 py-6 text-base font-semibold"
-            >
-              {primaryCTA.text}
-            </Button>
-            {secondaryCTA && (
-              <Button
-                onClick={secondaryCTA.action}
-                variant="outline"
-                size="lg"
-                className="clerk-cta-ghost min-w-[200px] px-8 py-6 text-base font-semibold"
-              >
-                {secondaryCTA.text}
-              </Button>
-            )}
-          </div>
-
-          {/* Trust Indicators */}
-          {trustIndicators && trustIndicators.length > 0 && (
-            <div className="mb-12 flex flex-wrap items-center justify-center gap-6">
-              {trustIndicators.map((indicator, index) => {
-                const Icon = indicator.icon;
-                return (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 text-sm text-muted-foreground"
-                  >
-                    <Icon className="h-4 w-4 text-orange-600 dark:text-orange-400" />
-                    <span>{indicator.text}</span>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* Testimonial */}
-          {testimonial && (
-            <div className="mx-auto max-w-2xl rounded-xl border bg-muted/30 p-8">
-              <blockquote className="dashboard-text-secondary mb-6 text-base italic leading-relaxed">
-                "{testimonial.quote}"
-              </blockquote>
-              <div className="flex flex-col items-center">
-                <div className="dashboard-text-primary font-semibold">
-                  {testimonial.author}
-                </div>
-                <div className="dashboard-text-muted text-sm">
-                  {testimonial.role}, {testimonial.company}
-                </div>
+    <section className="section-marketing hero-ambient energy-balanced">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-4xl mx-auto text-center space-y-12">
+          {/* Urgency Badge */}
+          {urgencyBadge && (
+            <div className="motion-fade-in-up-320">
+              <div className="clerk-inspired-badge px-4 py-2 text-sm">
+                {urgencyBadge}
               </div>
             </div>
           )}
+
+          {/* Headlines */}
+          <div className="space-y-6 motion-fade-in-up-320 animation-delay-100">
+            <h2 className="enterprise-headline">
+              {headline}
+            </h2>
+            <h3 className="text-display-md heading-brand-gradient">
+              {subheadline}
+            </h3>
+            <p className="enterprise-body max-w-3xl mx-auto">
+              {description}
+            </p>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row gap-6 justify-center motion-fade-in-up-320 animation-delay-200">
+            <Button
+              size="lg"
+              className="clerk-cta-primary cta-shimmer hover-scale-103 cta-equal group"
+              onClick={primaryCTA.action}
+            >
+              {primaryCTA.text}
+              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="cta-equal hover-scale-103"
+              onClick={secondaryCTA.action}
+            >
+              {secondaryCTA.text}
+            </Button>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12">
+            {trustIndicators.map((indicator, index) => (
+              <div key={index} className="flex items-center gap-3 justify-center">
+                <indicator.icon className="w-5 h-5 text-primary" />
+                <span className="text-sm font-medium dashboard-text-muted">
+                  {indicator.text}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* Testimonial */}
+          {testimonial && (
+            <Card className="enterprise-card max-w-3xl mx-auto mt-16">
+              <CardContent className="p-8">
+                <div className="space-y-6">
+                  <div className="flex justify-center">
+                    <div className="flex gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
+                      ))}
+                    </div>
+                  </div>
+                  <blockquote className="text-lg dashboard-text-primary italic">
+                    "{testimonial.quote}"
+                  </blockquote>
+                  <div className="text-center">
+                    <div className="font-semibold dashboard-text-primary">
+                      {testimonial.author}
+                    </div>
+                    <div className="text-sm dashboard-text-muted">
+                      {testimonial.role}, {testimonial.company}
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

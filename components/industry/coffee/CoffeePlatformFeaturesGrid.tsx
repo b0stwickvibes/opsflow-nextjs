@@ -1,186 +1,214 @@
-/**
- * Coffee Platform Features Grid Component
- *
- * Technical platform capabilities showcase for coffee shops.
- * Enterprise infrastructure features with detailed modals.
- */
-
 "use client";
 
-import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { LucideIcon, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import React, { useState } from 'react';
+import type { LucideIcon } from 'lucide-react';
+import { CheckCircle, ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
-interface FeatureDetail {
-  title: string;
-  description: string;
-  benefits: string[];
-  integrations?: string[];
-}
+/**
+ * BarPlatformFeaturesGrid Component
+ * 
+ * Interactive feature grid with selectable cards and detailed showcase.
+ * Features orange checkbox accents and bar operations dashboard mockup.
+ * Adapts to parent accent theme (radiant galaxy orange for coffee via .accent-orange wrapper)
+ * 
+ * Used in: /app/solutions/coffee
+ * Domain: Coffee & Coffee Shop Industry  
+ * Design: Stripe/Clerk ultra-clean style with adaptive accent theming
+ */
 
-interface Feature {
+export interface BarPlatformFeature {
   id: string;
-  type: "infrastructure" | "security" | "connectivity" | "scalability" | "reliability";
-  icon: LucideIcon;
+  type: string;
   title: string;
   description: string;
-  stats: {
-    primary: string;
-    label: string;
+  icon: LucideIcon;
+  stats: { primary: string; label: string };
+  details: {
+    title: string;
+    description: string;
+    benefits: string[];
+    integrations?: string[];
   };
-  details: FeatureDetail;
 }
 
-interface CoffeePlatformFeaturesGridProps {
-  badge?: string;
+export interface BarPlatformFeaturesGridProps {
+  badge: string;
   title: string;
   subtitle: string;
-  features: Feature[];
+  features: BarPlatformFeature[];
 }
 
-export function CoffeePlatformFeaturesGrid({
+export function BarPlatformFeaturesGrid({
   badge,
   title,
   subtitle,
   features
-}: CoffeePlatformFeaturesGridProps) {
-  const [selectedFeature, setSelectedFeature] = useState<Feature | null>(null);
+}: BarPlatformFeaturesGridProps) {
+  const [selectedFeature, setSelectedFeature] = useState<string>(features[0]?.id || '');
+  const currentFeature = features.find((f) => f.id === selectedFeature);
 
   return (
-    <div className="w-full">
-      {/* Header */}
-      <div className="mb-16 text-center">
-        {badge && (
-          <Badge variant="outline" className="clerk-inspired-badge mb-4 px-3 py-1">
-            {badge}
-          </Badge>
-        )}
-        <h2 className="enterprise-headline mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-          {title}
-        </h2>
-        <p className="dashboard-text-secondary mx-auto max-w-3xl text-lg">
-          {subtitle}
-        </p>
-      </div>
+    <section className="section-marketing py-24 bg-gradient-to-b from-slate-50/30 to-white">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Header */}
+        <div className="text-center space-y-6 mb-16">
+          <div className="clerk-inspired-badge motion-fade-in-up-320">
+            <CheckCircle className="w-4 h-4" />
+            <span>{badge}</span>
+          </div>
+          
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight tracking-tight motion-fade-in-up-320 animation-delay-100">
+            {title}
+          </h2>
+          
+          <p className="enterprise-body max-w-2xl mx-auto text-muted-foreground motion-fade-in-up-320 animation-delay-200">
+            {subtitle}
+          </p>
+        </div>
 
-      {/* Features Grid */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {features.map((feature) => {
-          const Icon = feature.icon;
-          return (
-            <button
-              key={feature.id}
-              onClick={() => setSelectedFeature(feature)}
-              className="enterprise-card group relative overflow-hidden rounded-xl border p-6 text-left transition-all hover:border-orange-200 hover:shadow-lg dark:hover:border-orange-800"
-            >
-              {/* Icon & Stats */}
-              <div className="mb-4 flex items-start justify-between">
-                <div className="enterprise-icon-primary flex h-12 w-12 items-center justify-center rounded-lg bg-orange-600/10 text-orange-600 dark:bg-orange-400/10 dark:text-orange-400">
-                  <Icon className="h-6 w-6" />
-                </div>
-                <div className="text-right">
-                  <div className="text-xl font-bold text-orange-600 dark:text-orange-400">
-                    {feature.stats.primary}
-                  </div>
-                  <div className="dashboard-text-muted text-xs">
-                    {feature.stats.label}
-                  </div>
-                </div>
-              </div>
-
-              {/* Title & Description */}
-              <h3 className="dashboard-text-primary mb-2 text-lg font-semibold">
-                {feature.title}
-              </h3>
-              <p className="dashboard-text-muted text-sm leading-relaxed">
-                {feature.description}
-              </p>
-
-              {/* Hover Indicator */}
-              <div className="mt-4 text-sm font-medium text-orange-600 opacity-0 transition-opacity group-hover:opacity-100 dark:text-orange-400">
-                Learn more →
-              </div>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Detail Modal */}
-      {selectedFeature && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-          <div className="enterprise-card relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-2xl border p-8">
-            {/* Close Button */}
-            <button
-              onClick={() => setSelectedFeature(null)}
-              className="absolute right-4 top-4 rounded-lg p-2 transition-colors hover:bg-muted"
-            >
-              <X className="h-5 w-5" />
-            </button>
-
-            {/* Icon */}
-            <div className="enterprise-icon-primary mb-6 inline-flex h-16 w-16 items-center justify-center rounded-xl bg-orange-600/10 text-orange-600 dark:bg-orange-400/10 dark:text-orange-400">
-              {(() => {
-                const Icon = selectedFeature.icon;
-                return <Icon className="h-8 w-8" />;
-              })()}
-            </div>
-
-            {/* Title & Description */}
-            <h3 className="enterprise-headline mb-4 text-2xl font-bold">
-              {selectedFeature.details.title}
-            </h3>
-            <p className="dashboard-text-secondary mb-6 text-lg leading-relaxed">
-              {selectedFeature.details.description}
-            </p>
-
-            {/* Benefits */}
-            <div className="mb-6">
-              <h4 className="dashboard-text-primary mb-4 text-sm font-semibold uppercase tracking-wider">
-                Key Benefits
-              </h4>
-              <ul className="space-y-3">
-                {selectedFeature.details.benefits.map((benefit, index) => (
-                  <li
-                    key={index}
-                    className="dashboard-text-secondary flex items-start gap-3"
-                  >
-                    <span className="mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-600 dark:bg-orange-400" />
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Integrations */}
-            {selectedFeature.details.integrations && (
-              <div>
-                <h4 className="dashboard-text-primary mb-4 text-sm font-semibold uppercase tracking-wider">
-                  Integrations
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedFeature.details.integrations.map((integration, index) => (
-                    <Badge key={index} variant="secondary" className="px-3 py-1">
-                      {integration}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Close Button */}
-            <div className="mt-8">
-              <Button
-                onClick={() => setSelectedFeature(null)}
-                variant="outline"
-                className="w-full"
+        {/* Interactive Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-12 motion-fade-in-up-320 animation-delay-300">
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
+            const isSelected = selectedFeature === feature.id;
+            
+            return (
+              <div
+                key={feature.id}
+                className={`cursor-pointer transition-all duration-300 hover:shadow-xl p-6 rounded-lg border ${
+                  isSelected 
+                    ? "ring-2 ring-primary shadow-xl bg-primary/5 border-primary" 
+                    : "hover:shadow-lg clerk-glass-card border-border"
+                }`}
+                onClick={() => setSelectedFeature(feature.id)}
+                style={{ animationDelay: `${(index + 4) * 100}ms` }}
               >
-                Close
-              </Button>
+                <div className="text-center space-y-4">
+                  <div className={`mx-auto w-16 h-16 rounded-xl flex items-center justify-center transition-all duration-300 ${
+                    isSelected 
+                      ? "bg-primary text-primary-foreground shadow-lg" 
+                      : "bg-primary/10 text-primary"
+                  }`}>
+                    <IconComponent className="w-8 h-8" />
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <h3 className={`text-lg font-semibold transition-colors duration-300 ${
+                      isSelected ? "text-primary" : "text-foreground"
+                    }`}>
+                      {feature.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {feature.description}
+                    </p>
+                  </div>
+
+                  <div className="flex items-center justify-between p-3 bg-muted/30 rounded-lg">
+                    <div className="text-xl font-bold text-primary">{feature.stats.primary}</div>
+                    <div className="text-xs text-muted-foreground">{feature.stats.label}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Feature Showcase */}
+        {currentFeature && (
+          <div className="clerk-glass-card min-h-[500px] motion-fade-in-up-320 animation-delay-700 p-8 lg:p-12 rounded-lg border">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+              
+              {/* Content */}
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h3 className="text-3xl font-bold text-foreground">
+                    {currentFeature.details.title}
+                  </h3>
+                  <p className="text-lg text-muted-foreground leading-relaxed">
+                    {currentFeature.details.description}
+                  </p>
+                </div>
+
+                <div className="space-y-4">
+                  <h4 className="text-xl font-semibold text-foreground">Key Benefits</h4>
+                  <div className="space-y-3">
+                    {currentFeature.details.benefits.map((benefit, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <div className="w-5 h-5 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                          <CheckCircle className="w-3 h-3 text-orange-600" />
+                        </div>
+                        <span className="text-foreground font-medium">{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {currentFeature.details.integrations && (
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-semibold text-foreground">Platform Integrations</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {currentFeature.details.integrations.map((integration) => (
+                        <div key={integration} className="clerk-inspired-badge text-xs">
+                          {integration}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                <div className="pt-4">
+                  <Button className="clerk-cta-primary group">
+                    Explore {currentFeature.title}
+                    <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* Visual */}
+              <div className="flex items-center justify-center">
+                <div className="relative p-8">
+                  <svg 
+                    width="350" 
+                    height="350" 
+                    viewBox="0 0 350 350" 
+                    className="text-primary/20 transition-all duration-500 hover:text-primary/30"
+                    fill="currentColor"
+                  >
+                    <rect x="25" y="25" width="300" height="300" rx="16" fill="currentColor" />
+                    <g fill="white" fillOpacity="0.9">
+                      <rect x="50" y="50" width="250" height="12" rx="6" />
+                      <rect x="50" y="80" width="70" height="50" rx="8" />
+                      <rect x="140" y="80" width="70" height="50" rx="8" />
+                      <rect x="230" y="80" width="70" height="50" rx="8" />
+                      <rect x="50" y="150" width="70" height="50" rx="8" />
+                      <rect x="140" y="150" width="70" height="50" rx="8" />
+                      <rect x="230" y="150" width="70" height="50" rx="8" />
+                      <rect x="50" y="220" width="250" height="80" rx="12" />
+                      <circle cx="85" cy="105" r="8" fill="#10B981" />
+                      <circle cx="175" cy="105" r="8" fill="#10B981" />
+                      <circle cx="265" cy="105" r="8" fill="#F59E0B" />
+                      <circle cx="85" cy="175" r="8" fill="#10B981" />
+                      <circle cx="175" cy="175" r="8" fill="#EF4444" />
+                      <circle cx="265" cy="175" r="8" fill="#10B981" />
+                      <circle cx="70" cy="260" r="6" fill="#10B981" />
+                      <circle cx="90" cy="260" r="6" fill="#10B981" />
+                      <circle cx="110" cy="260" r="6" fill="#F59E0B" />
+                      <circle cx="130" cy="260" r="6" fill="#10B981" />
+                      <circle cx="150" cy="260" r="6" fill="#10B981" />
+                      <rect x="200" y="240" width="8" height="40" rx="2" fill="#3B82F6" />
+                      <rect x="220" y="250" width="8" height="30" rx="2" fill="#8B5CF6" />
+                      <rect x="240" y="235" width="8" height="45" rx="2" fill="#10B981" />
+                      <rect x="260" y="245" width="8" height="35" rx="2" fill="#F59E0B" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </section>
   );
 }

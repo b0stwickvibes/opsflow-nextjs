@@ -5,13 +5,13 @@ import { MessageCircle, ExternalLink, ChevronDown } from 'lucide-react';
 
 /**
  * CoffeeFAQ Component
- *
+ * 
  * FAQ accordion with category badges and support sidebar.
  * Features clean Clerk.com styling with orange accents.
- * Adapts to parent accent theme (orange for coffee via .accent-orange wrapper)
- *
+ * Adapts to parent accent theme (radiant galaxy orange for coffee via .accent-orange wrapper)
+ * 
  * Used in: /app/solutions/coffee
- * Domain: Coffee Shops Industry
+ * Domain: Coffee & Coffee Shop Industry  
  * Design: Stripe/Clerk ultra-clean style with adaptive accent theming
  */
 
@@ -50,8 +50,8 @@ export function CoffeeFAQ({
   const [openItems, setOpenItems] = useState<number[]>([0]);
 
   const toggleItem = (index: number) => {
-    setOpenItems(prev =>
-      prev.includes(index)
+    setOpenItems(prev => 
+      prev.includes(index) 
         ? prev.filter(i => i !== index)
         : [...prev, index]
     );
@@ -65,7 +65,7 @@ export function CoffeeFAQ({
   return (
     <section className="py-24 bg-gradient-to-b from-white to-slate-50/30">
       <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
+        
         {/* Header */}
         <div className="text-center mb-16 motion-fade-in-up-320">
           <div className="clerk-inspired-badge mb-8">
@@ -81,12 +81,12 @@ export function CoffeeFAQ({
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12">
-
+          
           {/* FAQ List */}
           <div className="lg:col-span-2 space-y-4 relative z-0">
             {faqs.map((faq, index) => (
-              <div
-                key={index}
+              <div 
+                key={index} 
                 className={`bg-white border border-slate-200/60 rounded-2xl overflow-hidden motion-fade-in-up-320 animation-delay-${(index + 1) * 50} transition-all duration-300 relative ${
                   openItems.includes(index) ? 'border-primary/20 shadow-lg shadow-primary/5 z-10' : 'hover:border-slate-300 z-0'
                 }`}
@@ -109,7 +109,7 @@ export function CoffeeFAQ({
                     }`} />
                   </div>
                 </button>
-
+                
                 {openItems.includes(index) && (
                   <div className="border-t border-slate-200/60 bg-slate-50/30">
                     <div className="px-6 py-4">
@@ -138,9 +138,9 @@ export function CoffeeFAQ({
                     {supportCTA.description}
                   </p>
                 </div>
-
+                
                 <div className="space-y-3">
-                  <button
+                  <button 
                     className="w-full px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
                     onClick={supportCTA.primaryAction.action}
                   >
@@ -149,8 +149,8 @@ export function CoffeeFAQ({
                       {supportCTA.primaryAction.text}
                     </span>
                   </button>
-
-                  <button
+                  
+                  <button 
                     className="w-full px-6 py-3 bg-white border border-slate-200 text-foreground rounded-xl font-medium hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
                     onClick={supportCTA.secondaryAction.action}
                   >
@@ -206,7 +206,7 @@ export function CoffeeFAQ({
         <div className="mt-16 pt-8 border-t border-slate-200/60 motion-fade-in-up-320 animation-delay-400">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1">97%</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1">98%</div>
               <div className="text-sm dashboard-text-muted">Questions resolved instantly</div>
             </div>
             <div>
@@ -218,8 +218,8 @@ export function CoffeeFAQ({
               <div className="text-sm dashboard-text-muted">Support availability</div>
             </div>
             <div>
-              <div className="text-2xl font-bold text-gradient mb-1">600+</div>
-              <div className="text-sm dashboard-text-muted">Satisfied cafés</div>
+              <div className="text-2xl font-bold text-gradient mb-1">1000+</div>
+              <div className="text-sm dashboard-text-muted">Satisfied customers</div>
             </div>
           </div>
         </div>

@@ -1,16 +1,30 @@
-/**
- * Coffee Process Component
- *
- * Onboarding process visualization for coffee shop setup.
- * Clean, professional step-by-step presentation.
- */
-
 "use client";
 
-import { Badge } from "@/components/ui/badge";
-import { LucideIcon } from "lucide-react";
+import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import { ArrowRight, CheckCircle } from 'lucide-react';
 
-interface ProcessStep {
+/**
+ * CoffeeProcess Component
+ * 
+ * Displays the 3-step implementation process for coffee & coffee shop operations.
+ * Features stepped progression with clean Clerk.com styling and PURPLE checkboxes.
+ * 
+ * ENTERPRISE DESIGN STANDARDS:
+ * - Section-compatible: No internal section/container wrappers
+ * - Uses OKLCH color tokens + orange checkboxes for coffee theme
+ * - Icon containers: primary (cyan), roi (orange center), secondary (cyan)
+ * - Adapts to parent accent theme (galaxy orange for coffee via .accent-orange)
+ * 
+ * USAGE:
+ * <Section background="default" padding="lg">
+ *   <SectionContent maxWidth="6xl">
+ *     <CoffeeProcess {...props} />
+ *   </SectionContent>
+ * </Section>
+ */
+
+export interface ProcessStep {
   step: number;
   title: string;
   description: string;
@@ -19,99 +33,160 @@ interface ProcessStep {
   timeframe: string;
 }
 
-interface CoffeeProcessProps {
+export interface CoffeeProcessProps {
   title: string;
   description: string;
-  badge?: string;
+  badge: string;
   steps: ProcessStep[];
+  className?: string;
 }
 
 export function CoffeeProcess({
   title,
   description,
   badge,
-  steps
+  steps,
+  className = ""
 }: CoffeeProcessProps) {
   return (
-    <div className="w-full">
+    <div className={className}>
       {/* Header */}
-      <div className="mb-16 text-center">
-        {badge && (
-          <Badge variant="outline" className="clerk-inspired-badge mb-4 px-3 py-1">
-            {badge}
-          </Badge>
-        )}
-        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
+      <div className="text-center mb-20">
+        <div className="clerk-inspired-badge mb-8">
+          {badge}
+        </div>
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-8">
           {title}
         </h2>
-        <p className="dashboard-text-secondary mx-auto max-w-2xl text-lg">
+        <p className="enterprise-body max-w-3xl mx-auto">
           {description}
         </p>
       </div>
 
       {/* Process Steps */}
       <div className="relative">
-        {/* Connection Line - Subtle visual guide */}
-        <div className="absolute left-8 top-16 hidden h-[calc(100%-8rem)] w-0.5 bg-gradient-to-b from-orange-200 via-orange-300 to-orange-200 dark:from-orange-800 dark:via-orange-700 dark:to-orange-800 lg:block" />
+        {/* Connection line for desktop */}
+        <div className="hidden lg:block absolute top-20 left-1/2 transform -translate-x-1/2 w-full max-w-4xl">
+          <div className="h-0.5 bg-gradient-to-r from-primary/20 via-primary/60 to-primary/20" />
+        </div>
 
-        <div className="space-y-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-20">
           {steps.map((step, index) => {
-            const Icon = step.icon;
+            const IconComponent = step.icon;
+            const isCenter = index === 1;
+            
             return (
-              <div
-                key={index}
-                className="relative flex flex-col gap-6 lg:flex-row lg:items-start"
+              <div 
+                key={step.step}
+                className={`relative ${
+                  isCenter ? 'lg:mt-12' : ''
+                }`}
               >
-                {/* Step Number & Icon */}
-                <div className="flex items-start gap-4 lg:w-64">
-                  <div className="enterprise-icon-primary relative z-10 flex h-16 w-16 flex-shrink-0 items-center justify-center rounded-xl bg-orange-600/10 text-orange-600 dark:bg-orange-400/10 dark:text-orange-400">
-                    <Icon className="h-8 w-8" />
+                {/* Step indicator with proper icon-container classes */}
+                <div className="relative mb-16">
+                  <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto relative z-10 ${
+                    isCenter 
+                      ? 'icon-container-roi' 
+                      : index % 2 === 0 
+                        ? 'icon-container-primary' 
+                        : 'icon-container-secondary'
+                  }`}>
+                    <IconComponent className="w-10 h-10 text-white" />
                   </div>
-                  <div className="lg:hidden">
-                    <span className="dashboard-text-muted text-sm font-medium">
-                      Step {step.step}
-                    </span>
+                  
+                  {/* Step number - properly centered below */}
+                  <div className="flex justify-center mt-4">
+                    <div className="w-10 h-10 bg-background border-2 border-primary rounded-full flex items-center justify-center shadow-lg">
+                      <span className="text-sm font-bold text-primary">
+                        {step.step}
+                      </span>
+                    </div>
                   </div>
                 </div>
 
                 {/* Content */}
-                <div className="enterprise-card flex-1 rounded-xl border p-8">
-                  <div className="mb-4 flex items-start justify-between">
-                    <div>
-                      <span className="dashboard-text-muted mb-2 block text-sm font-medium">
-                        Step {step.step}
-                      </span>
-                      <h3 className="text-2xl font-bold text-foreground mb-2">
-                        {step.title}
-                      </h3>
+                <div className="clerk-glass-card p-10 h-full">
+                  <div className="space-y-8">
+                    {/* Header */}
+                    <div className="space-y-4">
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-2xl font-bold text-foreground">
+                          {step.title}
+                        </h3>
+                        <div className="clerk-inspired-badge text-xs">
+                          {step.timeframe}
+                        </div>
+                      </div>
+                      <p className="enterprise-body">
+                        {step.description}
+                      </p>
                     </div>
-                    <Badge
-                      variant="secondary"
-                      className="ml-4 flex-shrink-0 px-3 py-1"
-                    >
-                      {step.timeframe}
-                    </Badge>
+
+                    {/* Details list with PURPLE checkboxes (coffee theme) */}
+                    <div className="space-y-4">
+                      {step.details.slice(0, 3).map((detail, detailIndex) => (
+                        <div key={detailIndex} className="flex items-start gap-3">
+                          {/* PURPLE checkbox - signature coffee theme element */}
+                          <div className="w-5 h-5 mt-0.5 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                            <CheckCircle className="w-3 h-3 text-orange-600" />
+                          </div>
+                          <span className="text-sm dashboard-text-muted">
+                            {detail}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Progress indicator */}
+                    <div className="pt-6 border-t border-border/50">
+                      <div className="flex items-center justify-between text-xs dashboard-text-muted">
+                        <span>Step {step.step} of {steps.length}</span>
+                        <div className="flex gap-1">
+                          {Array.from({ length: steps.length }).map((_, i) => (
+                            <div 
+                              key={i}
+                              className={`w-2 h-2 rounded-full ${
+                                i <= index ? 'bg-primary' : 'bg-muted'
+                              }`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-
-                  <p className="dashboard-text-secondary mb-6 leading-relaxed">
-                    {step.description}
-                  </p>
-
-                  <ul className="space-y-3">
-                    {step.details.map((detail, detailIndex) => (
-                      <li
-                        key={detailIndex}
-                        className="dashboard-text-muted flex items-start gap-3 text-sm"
-                      >
-                        <span className="mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-600 dark:bg-orange-400" />
-                        <span>{detail}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
+
+                {/* Arrow connector (mobile) */}
+                {index < steps.length - 1 && (
+                  <div className="lg:hidden flex justify-center mt-8 mb-4">
+                    <ArrowRight className="w-6 h-6 text-primary" />
+                  </div>
+                )}
               </div>
             );
           })}
+        </div>
+      </div>
+
+      {/* Bottom summary */}
+      <div className="mt-24 text-center">
+        <div className="enterprise-metric-card p-12 max-w-2xl mx-auto">
+          <h3 className="text-2xl font-bold text-foreground mb-4">
+            Complete Setup in Under 30 Minutes
+          </h3>
+          <p className="enterprise-body mb-6">
+            Our streamlined onboarding process gets your bar operations optimized quickly with minimal disruption to your workflow.
+          </p>
+          <div className="flex justify-center items-center gap-6 text-sm dashboard-text-muted">
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-primary" />
+              No technical expertise required
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle className="w-4 h-4 text-primary" />
+              White-glove onboarding included
+            </div>
+          </div>
         </div>
       </div>
     </div>

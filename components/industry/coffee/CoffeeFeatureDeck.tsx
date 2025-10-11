@@ -1,151 +1,214 @@
-/**
- * Coffee Feature Deck Component
- *
- * Core coffee shop management features presentation.
- * Professional feature cards with benefits and CTAs.
- */
-
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { LucideIcon, ArrowRight } from "lucide-react";
+import React from 'react';
+import type { LucideIcon } from 'lucide-react';
+import { ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
 
-interface Feature {
+/**
+ * CoffeeFeatureDeck Component
+ * 
+ * Displays core bar management features in a 3-column grid layout.
+ * Features clean Clerk.com styling with PURPLE checkbox accents (coffee theme).
+ * 
+ * ENTERPRISE DESIGN STANDARDS:
+ * - Section-compatible: No internal section/container wrappers
+ * - Uses OKLCH color tokens with orange checkboxes for coffee theme
+ * - Beautiful hover effects with shadow transitions
+ * - Adapts to parent accent theme (galaxy orange for coffee via .accent-orange)
+ * 
+ * USAGE:
+ * <Section background="muted" padding="lg">
+ *   <SectionContent maxWidth="5xl">
+ *     <CoffeeFeatureDeck {...props} />
+ *   </SectionContent>
+ * </Section>
+ */
+
+export interface Feature {
   icon: LucideIcon;
   title: string;
   description: string;
   benefits: string[];
+  badge?: string;
   link?: {
     text: string;
     action: () => void;
   };
 }
 
-interface CTASection {
-  title: string;
-  description: string;
-  primaryCTA: {
-    text: string;
-    action: () => void;
-  };
-  secondaryCTA?: {
-    text: string;
-    action: () => void;
-  };
-}
-
-interface CoffeeFeatureDeckProps {
+export interface CoffeeFeatureDeckProps {
   title: string;
   description: string;
   badge?: string;
   features: Feature[];
-  ctaSection?: CTASection;
+  layout?: "grid" | "carousel";
+  ctaSection?: {
+    title: string;
+    description: string;
+    primaryCTA: {
+      text: string;
+      action: () => void;
+    };
+    secondaryCTA?: {
+      text: string;
+      action: () => void;
+    };
+  };
+  className?: string;
 }
 
-export function CoffeeFeatureDeck({
-  title,
-  description,
-  badge,
-  features,
-  ctaSection
+export function CoffeeFeatureDeck({ 
+  title, 
+  description, 
+  badge, 
+  features, 
+  layout = "grid",
+  ctaSection,
+  className = ""
 }: CoffeeFeatureDeckProps) {
   return (
-    <div className="w-full">
-      {/* Header */}
-      <div className="mb-16 text-center">
+    <div className={className}>
+      {/* Header - Ultra Clean */}
+      <div className="text-center mb-20 motion-fade-in-up-320">
         {badge && (
-          <Badge variant="outline" className="clerk-inspired-badge mb-4 px-3 py-1">
+          <div className="clerk-inspired-badge mb-8">
             {badge}
-          </Badge>
+          </div>
         )}
-        <h2 className="enterprise-headline mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
+        <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
           {title}
         </h2>
-        <p className="dashboard-text-secondary mx-auto max-w-2xl text-lg">
+        <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
           {description}
         </p>
       </div>
 
-      {/* Features Grid */}
-      <div className="mb-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
+      {/* Features Grid - Clerk.com Clean Style with PURPLE checkboxes */}
+      <div className={`grid gap-8 ${
+        layout === "grid" 
+          ? "grid-cols-1 lg:grid-cols-2 xl:grid-cols-3" 
+          : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+      }`}>
         {features.map((feature, index) => {
-          const Icon = feature.icon;
+          const IconComponent = feature.icon;
+          
           return (
-            <div
+            <div 
               key={index}
-              className="enterprise-card group relative overflow-hidden rounded-xl border p-8 transition-all hover:border-orange-200 dark:hover:border-orange-800"
+              className={`motion-fade-in-up-320 animation-delay-${(index + 1) * 100}`}
             >
-              {/* Icon */}
-              <div className="enterprise-icon-primary mb-6 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-orange-600/10 text-orange-600 dark:bg-orange-400/10 dark:text-orange-400">
-                <Icon className="h-6 w-6" />
+              <div className="bg-background border border-border rounded-3xl p-8 h-full group hover:border-primary/20 hover:shadow-xl hover:shadow-primary/5 transition-all duration-500">
+                
+                {/* Header Section - Clean Layout */}
+                <div className="flex items-start justify-between mb-6">
+                  <div className="w-14 h-14 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center group-hover:from-primary/15 group-hover:to-primary/8 transition-all duration-300">
+                    <IconComponent className="w-7 h-7 text-primary" />
+                  </div>
+                  
+                  {feature.badge && (
+                    <div className="clerk-inspired-badge text-xs">
+                      {feature.badge}
+                    </div>
+                  )}
+                </div>
+                
+                {/* Content */}
+                <div className="space-y-4 mb-6">
+                  <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {feature.description}
+                  </p>
+                </div>
+
+                {/* Benefits - Clean List with PURPLE checkboxes (coffee theme) */}
+                <div className="space-y-3 mb-6">
+                  {feature.benefits.slice(0, 3).map((benefit, benefitIndex) => (
+                    <div key={benefitIndex} className="flex items-start gap-3">
+                      {/* PURPLE checkbox - signature coffee theme element */}
+                      <div className="w-5 h-5 mt-0.5 bg-orange-100 rounded-full flex items-center justify-center flex-shrink-0">
+                        <CheckCircle className="w-3 h-3 text-orange-600" />
+                      </div>
+                      <span className="text-sm text-muted-foreground leading-relaxed">
+                        {benefit}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Link - Minimal Style */}
+                {feature.link && (
+                  <div className="pt-4 border-t border-border">
+                    <button 
+                      className="group/link inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
+                      onClick={feature.link.action}
+                    >
+                      {feature.link.text}
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                    </button>
+                  </div>
+                )}
               </div>
-
-              {/* Title */}
-              <h3 className="dashboard-text-primary mb-3 text-xl font-semibold">
-                {feature.title}
-              </h3>
-
-              {/* Description */}
-              <p className="dashboard-text-secondary mb-6 leading-relaxed">
-                {feature.description}
-              </p>
-
-              {/* Benefits */}
-              <ul className="mb-6 space-y-3">
-                {feature.benefits.map((benefit, benefitIndex) => (
-                  <li
-                    key={benefitIndex}
-                    className="dashboard-text-muted flex items-start gap-3 text-sm"
-                  >
-                    <span className="mt-0.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-orange-600 dark:bg-orange-400" />
-                    <span>{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Optional Link */}
-              {feature.link && (
-                <button
-                  onClick={feature.link.action}
-                  className="group/link flex items-center gap-2 text-sm font-medium text-orange-600 transition-colors hover:text-orange-700 dark:text-orange-400 dark:hover:text-orange-300"
-                >
-                  {feature.link.text}
-                  <ArrowRight className="h-4 w-4 transition-transform group-hover/link:translate-x-1" />
-                </button>
-              )}
             </div>
           );
         })}
       </div>
 
-      {/* CTA Section */}
+      {/* CTA Section - Ultra Clean */}
       {ctaSection && (
-        <div className="enterprise-card rounded-2xl border p-8 text-center sm:p-12">
-          <h3 className="enterprise-headline mb-4 text-2xl font-bold sm:text-3xl">
-            {ctaSection.title}
-          </h3>
-          <p className="dashboard-text-secondary mx-auto mb-8 max-w-2xl text-lg">
-            {ctaSection.description}
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              onClick={ctaSection.primaryCTA.action}
-              size="lg"
-              className="clerk-cta-primary min-w-[200px] px-8 py-6"
-            >
-              {ctaSection.primaryCTA.text}
-            </Button>
-            {ctaSection.secondaryCTA && (
-              <Button
-                onClick={ctaSection.secondaryCTA.action}
-                variant="outline"
-                size="lg"
-                className="clerk-cta-ghost min-w-[200px] px-8 py-6"
-              >
-                {ctaSection.secondaryCTA.text}
-              </Button>
-            )}
+        <div className="mt-20 motion-fade-in-up-320 animation-delay-500">
+          <div className="bg-gradient-to-br from-muted to-background border border-border rounded-3xl p-12 text-center max-w-4xl mx-auto">
+            <div className="space-y-8">
+              <div className="space-y-4">
+                <h3 className="text-3xl font-bold text-foreground">
+                  {ctaSection.title}
+                </h3>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                  {ctaSection.description}
+                </p>
+              </div>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button 
+                  className="px-8 py-4 bg-primary text-primary-foreground rounded-2xl font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+                  onClick={ctaSection.primaryCTA.action}
+                >
+                  <span className="flex items-center gap-2">
+                    {ctaSection.primaryCTA.text}
+                    <ArrowRight className="w-4 h-4" />
+                  </span>
+                </button>
+                
+                {ctaSection.secondaryCTA && (
+                  <button 
+                    className="px-8 py-4 bg-background border border-border text-foreground rounded-2xl font-medium hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                    onClick={ctaSection.secondaryCTA.action}
+                  >
+                    <span className="flex items-center gap-2">
+                      <ExternalLink className="w-4 h-4" />
+                      {ctaSection.secondaryCTA.text}
+                    </span>
+                  </button>
+                )}
+              </div>
+              
+              {/* Trust indicators - Minimal */}
+              <div className="flex justify-center items-center gap-8 pt-6 border-t border-border text-sm text-muted-foreground">
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-green-500 rounded-full" />
+                  99.9% uptime guarantee
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                  HACCP compliant
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+                  24/7 support
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       )}
