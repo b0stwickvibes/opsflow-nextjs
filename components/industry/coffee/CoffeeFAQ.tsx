@@ -1,42 +1,43 @@
-/**
- * Coffee FAQ Component
- *
- * Frequently Asked Questions for coffee shop operations.
- * Accordion-style presentation with support CTA.
- */
-
 "use client";
 
-import { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
+import React, { useState } from 'react';
+import { MessageCircle, ExternalLink, ChevronDown } from 'lucide-react';
 
-interface FAQ {
+/**
+ * CoffeeFAQ Component
+ *
+ * FAQ accordion with category badges and support sidebar.
+ * Features clean Clerk.com styling with orange accents.
+ * Adapts to parent accent theme (orange for coffee via .accent-orange wrapper)
+ *
+ * Used in: /app/solutions/coffee
+ * Domain: Coffee Shops Industry
+ * Design: Stripe/Clerk ultra-clean style with adaptive accent theming
+ */
+
+export interface FAQItem {
   question: string;
   answer: string;
-  category: "setup" | "features" | "pricing" | "support";
+  category: 'setup' | 'features' | 'pricing' | 'support';
 }
 
-interface SupportCTA {
+export interface CoffeeFAQProps {
   title: string;
   description: string;
-  primaryAction: {
-    text: string;
-    action: () => void;
+  badge: string;
+  faqs: FAQItem[];
+  supportCTA: {
+    title: string;
+    description: string;
+    primaryAction: {
+      text: string;
+      action: () => void;
+    };
+    secondaryAction: {
+      text: string;
+      action: () => void;
+    };
   };
-  secondaryAction?: {
-    text: string;
-    action: () => void;
-  };
-}
-
-interface CoffeeFAQProps {
-  title: string;
-  description: string;
-  badge?: string;
-  faqs: FAQ[];
-  supportCTA?: SupportCTA;
 }
 
 export function CoffeeFAQ({
@@ -46,89 +47,188 @@ export function CoffeeFAQ({
   faqs,
   supportCTA
 }: CoffeeFAQProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openItems, setOpenItems] = useState<number[]>([0]);
+
+  const toggleItem = (index: number) => {
+    setOpenItems(prev =>
+      prev.includes(index)
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
+
+  const getCategoryColor = (category?: string) => {
+    switch (category) {
+      case "setup": return "bg-blue-50 text-blue-700 border-blue-200";
+      case "features": return "bg-green-50 text-green-700 border-green-200";
+      case "pricing": return "bg-orange-50 text-orange-700 border-orange-200";
+      case "support": return "bg-amber-50 text-amber-700 border-amber-200";
+      default: return "bg-slate-50 text-slate-600 border-slate-200";
+    }
+  };
 
   return (
-    <div className="w-full">
-      {/* Header */}
-      <div className="mb-12 text-center">
-        {badge && (
-          <Badge variant="outline" className="clerk-inspired-badge mb-4 px-3 py-1">
-            {badge}
-          </Badge>
-        )}
-        <h2 className="enterprise-headline mb-4 text-3xl font-bold tracking-tight sm:text-4xl">
-          {title}
-        </h2>
-        <p className="dashboard-text-secondary mx-auto max-w-2xl text-lg">
-          {description}
-        </p>
-      </div>
+    <section className="py-24 bg-gradient-to-b from-white to-slate-50/30">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-      {/* FAQ Accordion */}
-      <div className="mx-auto max-w-3xl space-y-4">
-        {faqs.map((faq, index) => {
-          const isOpen = openIndex === index;
-          return (
-            <div
-              key={index}
-              className="enterprise-card overflow-hidden rounded-xl border transition-all"
-            >
-              <button
-                onClick={() => setOpenIndex(isOpen ? null : index)}
-                className="flex w-full items-start justify-between gap-4 p-6 text-left transition-colors hover:bg-muted/50"
+        {/* Header */}
+        <div className="text-center mb-16 motion-fade-in-up-320">
+          <div className="clerk-inspired-badge mb-8">
+            <MessageCircle className="w-4 h-4 mr-2" />
+            {badge}
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-6">
+            {title}
+          </h2>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            {description}
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-12">
+
+          {/* FAQ List */}
+          <div className="lg:col-span-2 space-y-4 relative z-0">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className={`bg-white border border-slate-200/60 rounded-2xl overflow-hidden motion-fade-in-up-320 animation-delay-${(index + 1) * 50} transition-all duration-300 relative ${
+                  openItems.includes(index) ? 'border-primary/20 shadow-lg shadow-primary/5 z-10' : 'hover:border-slate-300 z-0'
+                }`}
               >
-                <span className="dashboard-text-primary flex-1 font-semibold">
-                  {faq.question}
-                </span>
-                <ChevronDown
-                  className={`h-5 w-5 flex-shrink-0 text-orange-600 transition-transform dark:text-orange-400 ${
-                    isOpen ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-              {isOpen && (
-                <div className="border-t bg-muted/20 p-6">
-                  <p className="dashboard-text-secondary leading-relaxed">
-                    {faq.answer}
+                <button
+                  onClick={() => toggleItem(index)}
+                  className="w-full p-6 cursor-pointer hover:bg-slate-50/50 group transition-all duration-200"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-start gap-4 flex-1">
+                      <div className={`px-3 py-1 text-xs font-medium rounded-full border ${getCategoryColor(faq.category)}`}>
+                        {faq.category}
+                      </div>
+                      <h3 className="font-semibold text-foreground text-left group-hover:text-primary transition-colors">
+                        {faq.question}
+                      </h3>
+                    </div>
+                    <ChevronDown className={`w-5 h-5 text-muted-foreground transition-transform duration-200 ${
+                      openItems.includes(index) ? 'rotate-180 text-primary' : ''
+                    }`} />
+                  </div>
+                </button>
+
+                {openItems.includes(index) && (
+                  <div className="border-t border-slate-200/60 bg-slate-50/30">
+                    <div className="px-6 py-4">
+                      <p className="text-muted-foreground leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Support CTA Sidebar */}
+          <div className="space-y-6 motion-fade-in-up-320 animation-delay-300">
+            <div className="bg-white border border-slate-200/60 rounded-3xl p-8 sticky top-24">
+              <div className="space-y-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <MessageCircle className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-foreground mb-3">
+                    {supportCTA.title}
+                  </h3>
+                  <p className="text-muted-foreground">
+                    {supportCTA.description}
                   </p>
                 </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
 
-      {/* Support CTA */}
-      {supportCTA && (
-        <div className="enterprise-card mx-auto mt-12 max-w-3xl rounded-2xl border p-8 text-center">
-          <h3 className="enterprise-headline mb-3 text-xl font-bold">
-            {supportCTA.title}
-          </h3>
-          <p className="dashboard-text-secondary mb-6">
-            {supportCTA.description}
-          </p>
-          <div className="flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button
-              onClick={supportCTA.primaryAction.action}
-              size="lg"
-              className="clerk-cta-primary min-w-[180px]"
-            >
-              {supportCTA.primaryAction.text}
-            </Button>
-            {supportCTA.secondaryAction && (
-              <Button
-                onClick={supportCTA.secondaryAction.action}
-                variant="outline"
-                size="lg"
-                className="clerk-cta-ghost min-w-[180px]"
-              >
-                {supportCTA.secondaryAction.text}
-              </Button>
-            )}
+                <div className="space-y-3">
+                  <button
+                    className="w-full px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"
+                    onClick={supportCTA.primaryAction.action}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <MessageCircle className="w-4 h-4" />
+                      {supportCTA.primaryAction.text}
+                    </span>
+                  </button>
+
+                  <button
+                    className="w-full px-6 py-3 bg-white border border-slate-200 text-foreground rounded-xl font-medium hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                    onClick={supportCTA.secondaryAction.action}
+                  >
+                    <span className="flex items-center justify-center gap-2">
+                      <ExternalLink className="w-4 h-4" />
+                      {supportCTA.secondaryAction.text}
+                    </span>
+                  </button>
+                </div>
+
+                {/* Support features */}
+                <div className="pt-6 border-t border-slate-200/60 space-y-3">
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <div className="w-2 h-2 bg-green-500 rounded-full" />
+                    24/7 live chat support
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                    Average response: 2 minutes
+                  </div>
+                  <div className="flex items-center gap-3 text-sm text-muted-foreground">
+                    <div className="w-2 h-2 bg-orange-500 rounded-full" />
+                    Free setup assistance
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Knowledge base card */}
+            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-200/60 rounded-2xl p-6">
+              <h4 className="font-semibold text-foreground mb-4">
+                Additional Resources
+              </h4>
+              <div className="space-y-3">
+                <button className="w-full flex items-center gap-3 p-3 text-left text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-200">
+                  <ExternalLink className="w-4 h-4" />
+                  Documentation Center
+                </button>
+                <button className="w-full flex items-center gap-3 p-3 text-left text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-200">
+                  <ExternalLink className="w-4 h-4" />
+                  Video Tutorials
+                </button>
+                <button className="w-full flex items-center gap-3 p-3 text-left text-sm text-muted-foreground hover:text-primary hover:bg-primary/5 rounded-xl transition-all duration-200">
+                  <ExternalLink className="w-4 h-4" />
+                  Community Forum
+                </button>
+              </div>
+            </div>
           </div>
         </div>
-      )}
-    </div>
+
+        {/* Bottom stats */}
+        <div className="mt-16 pt-8 border-t border-slate-200/60 motion-fade-in-up-320 animation-delay-400">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent mb-1">97%</div>
+              <div className="text-sm dashboard-text-muted">Questions resolved instantly</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-gradient mb-1">2min</div>
+              <div className="text-sm dashboard-text-muted">Average response time</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-gradient mb-1">24/7</div>
+              <div className="text-sm dashboard-text-muted">Support availability</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-gradient mb-1">600+</div>
+              <div className="text-sm dashboard-text-muted">Satisfied cafés</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
