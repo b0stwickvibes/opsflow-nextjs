@@ -85,10 +85,9 @@ export function BarsProcess({
                 {/* Step indicator with theme-adaptive gradient */}
                 <div className="relative mb-16">
                   <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto relative z-10 shadow-lg ${
-                    isCenter 
+                    isCenter
                       ? 'bg-gradient-to-br from-primary to-secondary shadow-primary/30'
-                      : index % 2 === 0 
-                        ? 'bg-gradient-to-br from-primary to-primary/80 shadow-primary/25'
+                      : 'bg-gradient-to-br from-primary to-primary/80 shadow-primary/25'
                   }`}>
                     <IconComponent className="w-10 h-10 text-white" />
                   </div>
