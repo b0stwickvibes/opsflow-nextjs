@@ -43,18 +43,16 @@ export interface CoffeeProcessSolutionsProps {
   };
 }
 
-export function CoffeeProcessSolutions({ 
-  title, 
-  description, 
-  badge, 
+export function CoffeeProcessSolutions({
+  title,
+  description,
+  badge,
   processSolutions,
-  bottomCTA 
+  bottomCTA
 }: CoffeeProcessSolutionsProps) {
   return (
-    <section className="section-marketing bg-background">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
+    <>
+      {/* Header */}
         <div className="text-center mb-20 motion-fade-in-up-320">
           <div className="clerk-inspired-badge mb-6">
             {badge}
@@ -299,7 +297,6 @@ export function CoffeeProcessSolutions({
             </div>
           </div>
         )}
-      </div>
-    </section>
+    </>
   );
 }

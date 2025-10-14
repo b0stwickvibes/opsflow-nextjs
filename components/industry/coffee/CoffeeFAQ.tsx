@@ -63,10 +63,8 @@ export function CoffeeFAQ({
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50/30">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
+    <>
+      {/* Header */}
         <div className="text-center mb-16 motion-fade-in-up-320">
           <div className="clerk-inspired-badge mb-8">
             <MessageCircle className="w-4 h-4 mr-2" />
@@ -223,7 +221,6 @@ export function CoffeeFAQ({
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </>
   );
 }

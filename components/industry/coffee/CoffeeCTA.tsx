@@ -54,9 +54,7 @@ export function CoffeeCTA({
   testimonial
 }: CoffeeCTAProps) {
   return (
-    <section className="section-marketing hero-ambient energy-balanced">
-      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center space-y-12">
+    <div className="max-w-4xl mx-auto text-center space-y-12">
           {/* Urgency Badge */}
           {urgencyBadge && (
             <div className="motion-fade-in-up-320">
@@ -138,8 +136,6 @@ export function CoffeeCTA({
               </CardContent>
             </Card>
           )}
-        </div>
-      </div>
-    </section>
+    </div>
   );
 }
