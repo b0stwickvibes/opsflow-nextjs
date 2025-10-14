@@ -13,7 +13,7 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
  * ENTERPRISE DESIGN STANDARDS:
  * - Section-compatible: No internal section/container wrappers
  * - Uses OKLCH color tokens + orange checkboxes for coffee theme
- * - Icon containers: primary (cyan), roi (orange center), secondary (cyan)
+ * - Icon containers use primary gradient (adapts to industry theme via .accent-orange)
  * - Adapts to parent accent theme (galaxy orange for coffee via .accent-orange)
  * 
  * USAGE:
@@ -82,14 +82,12 @@ export function CoffeeProcess({
                   isCenter ? 'lg:mt-12' : ''
                 }`}
               >
-                {/* Step indicator with proper icon-container classes */}
+                {/* Step indicator with theme-adaptive gradient */}
                 <div className="relative mb-16">
-                  <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto relative z-10 ${
-                    isCenter 
-                      ? 'icon-container-roi' 
-                      : index % 2 === 0 
-                        ? 'icon-container-primary' 
-                        : 'icon-container-secondary'
+                  <div className={`w-20 h-20 rounded-2xl flex items-center justify-center mx-auto relative z-10 shadow-lg ${
+                    isCenter
+                      ? 'bg-gradient-to-br from-primary to-secondary shadow-primary/30'
+                      : 'bg-gradient-to-br from-primary to-primary/80 shadow-primary/25'
                   }`}>
                     <IconComponent className="w-10 h-10 text-white" />
                   </div>
