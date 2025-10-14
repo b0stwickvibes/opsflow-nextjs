@@ -98,5 +98,4 @@ export function CoffeeStats({
   );
 }
 
-export default CoffeeStats;
 export type { CoffeeStatsProps };

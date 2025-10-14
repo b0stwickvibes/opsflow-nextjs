@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 /**
  * CoffeeFeatureDeckAlternate Component - Stripe-Style Carousel
  * 
- * Premium carousel showcasing advanced bar features with smooth horizontal scrolling.
+ * Premium carousel showcasing advanced coffee shop features with smooth horizontal scrolling.
  * Inspired by Stripe.com carousel patterns with Clerk.com styling.
  * Adapts to parent accent theme (radiant galaxy orange for coffee via .accent-orange wrapper)
  * 
@@ -223,7 +223,7 @@ export function CoffeeFeatureDeckAlternate({
                   Ready to Scale Your Analytics?
                 </h3>
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-                  Advanced analytics and growth tools designed for serious bar operators.
+                  Advanced analytics and growth tools designed for serious coffee shop operators.
                 </p>
               </div>
               

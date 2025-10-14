@@ -175,7 +175,7 @@ export function CoffeeProcess({
             Complete Setup in Under 30 Minutes
           </h3>
           <p className="enterprise-body mb-6">
-            Our streamlined onboarding process gets your bar operations optimized quickly with minimal disruption to your workflow.
+            Our streamlined onboarding process gets your coffee shop operations optimized quickly with minimal disruption to your workflow.
           </p>
           <div className="flex justify-center items-center gap-6 text-sm dashboard-text-muted">
             <div className="flex items-center gap-2">

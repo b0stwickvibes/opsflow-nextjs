@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { CheckCircle, Settings, Users, Shield, BarChart3, Calendar, ExternalLink, ChevronDown, MessageCircle, Wine, Clock } from "lucide-react"
+import { CheckCircle, Settings, Users, Shield, BarChart3, Calendar, ExternalLink, ChevronDown, MessageCircle, Wine, Clock, DollarSign, Target, TrendingUp, UserCheck, Smartphone, Zap } from "lucide-react"
 
 export default function BarsDemo() {
   // Hero component data - converted to your design system

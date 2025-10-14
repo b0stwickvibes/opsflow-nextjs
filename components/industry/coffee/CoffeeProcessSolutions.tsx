@@ -254,7 +254,7 @@ export function CoffeeProcessSolutions({
                 Ready to Get Started?
               </h4>
               <p className="text-sm text-muted-foreground mb-6">
-                See these improvements in your bar within the first month
+                See these improvements in your coffee shop within the first month
               </p>
               <button 
                 className="w-full px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-primary/90 transition-all duration-300 hover:shadow-lg hover:shadow-primary/25"

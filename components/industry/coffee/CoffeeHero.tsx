@@ -24,7 +24,7 @@ interface CoffeeHeroProps {
  * - Section-compatible: No internal section/container wrappers
  * - Uses OKLCH color tokens exclusively (no hardcoded colors)
  * - Purple accent theme inherited from parent .accent-orange
- * - Bar-specific terminology and metrics
+ * - Coffee shop-specific terminology and metrics
  * - Enterprise-grade accessibility and responsive design
  * - Professional motion animations and interactions
  * 
@@ -172,5 +172,4 @@ export function CoffeeHero({
   );
 }
 
-export default CoffeeHero;
 export type { CoffeeHeroProps };

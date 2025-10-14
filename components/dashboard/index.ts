@@ -1,1 +1,33 @@
-/**\n * OpsFlow Dashboard Components\n * \n * Role-based dashboard system following OpsFlow SOPs\n * Uses OKLCH tokens, enterprise styling, and restaurant operations context\n */\n\nexport { DashboardRouter } from \"./DashboardRouter\";\nexport { AdminDashboard } from \"./AdminDashboard\";\nexport { ManagerDashboard } from \"./ManagerDashboard\";\nexport { TeamMemberDashboard } from \"./TeamMemberDashboard\";\n\n// Widget exports\nexport { OrganizationOverview } from \"./widgets/OrganizationOverview\";\nexport { ComplianceStatus } from \"./widgets/ComplianceStatus\";\nexport { SystemAlerts } from \"./widgets/SystemAlerts\";\nexport { QuickActions } from \"./widgets/QuickActions\";\nexport { MyTasks } from \"./widgets/MyTasks\";\n\n// Placeholder widgets (can be replaced with real implementations)\nexport {\n  TeamPerformance,\n  RevenueMetrics,\n  TodaysTasks,\n  TeamStatus,\n  ShiftSchedule,\n  PerformanceMetrics,\n  UrgentAlerts,\n  MySchedule,\n  TrainingProgress,\n  Announcements,\n  PersonalMetrics\n} from \"./widgets/PlaceholderWidgets\";\n
+/**
+ * OpsFlow Dashboard Components
+ *
+ * Role-based dashboard system following OpsFlow SOPs
+ * Uses OKLCH tokens, enterprise styling, and restaurant operations context
+ */
+
+export { DashboardRouter } from "./DashboardRouter";
+export { AdminDashboard } from "./AdminDashboard";
+export { ManagerDashboard } from "./ManagerDashboard";
+export { TeamMemberDashboard } from "./TeamMemberDashboard";
+
+// Widget exports
+export { OrganizationOverview } from "./widgets/OrganizationOverview";
+export { ComplianceStatus } from "./widgets/ComplianceStatus";
+export { SystemAlerts } from "./widgets/SystemAlerts";
+export { QuickActions } from "./widgets/QuickActions";
+export { MyTasks } from "./widgets/MyTasks";
+
+// Placeholder widgets (can be replaced with real implementations)
+export {
+  TeamPerformance,
+  RevenueMetrics,
+  TodaysTasks,
+  TeamStatus,
+  ShiftSchedule,
+  PerformanceMetrics,
+  UrgentAlerts,
+  MySchedule,
+  TrainingProgress,
+  Announcements,
+  PersonalMetrics
+} from "./widgets/PlaceholderWidgets";

@@ -6,18 +6,18 @@ import { CheckCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 /**
- * BarPlatformFeaturesGrid Component
- * 
+ * CoffeePlatformFeaturesGrid Component
+ *
  * Interactive feature grid with selectable cards and detailed showcase.
- * Features orange checkbox accents and bar operations dashboard mockup.
+ * Features orange checkbox accents and coffee shop operations dashboard mockup.
  * Adapts to parent accent theme (radiant galaxy orange for coffee via .accent-orange wrapper)
- * 
+ *
  * Used in: /app/solutions/coffee
- * Domain: Coffee & Coffee Shop Industry  
+ * Domain: Coffee & Coffee Shop Industry
  * Design: Stripe/Clerk ultra-clean style with adaptive accent theming
  */
 
-export interface BarPlatformFeature {
+export interface CoffeePlatformFeature {
   id: string;
   type: string;
   title: string;
@@ -32,19 +32,19 @@ export interface BarPlatformFeature {
   };
 }
 
-export interface BarPlatformFeaturesGridProps {
+export interface CoffeePlatformFeaturesGridProps {
   badge: string;
   title: string;
   subtitle: string;
-  features: BarPlatformFeature[];
+  features: CoffeePlatformFeature[];
 }
 
-export function BarPlatformFeaturesGrid({
+export function CoffeePlatformFeaturesGrid({
   badge,
   title,
   subtitle,
   features
-}: BarPlatformFeaturesGridProps) {
+}: CoffeePlatformFeaturesGridProps) {
   const [selectedFeature, setSelectedFeature] = useState<string>(features[0]?.id || '');
   const currentFeature = features.find((f) => f.id === selectedFeature);
 

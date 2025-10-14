@@ -7,7 +7,7 @@ import { ArrowRight, CheckCircle, ExternalLink } from 'lucide-react';
 /**
  * CoffeeFeatureDeck Component
  * 
- * Displays core bar management features in a 3-column grid layout.
+ * Displays core coffee shop management features in a 3-column grid layout.
  * Features clean Clerk.com styling with PURPLE checkbox accents (coffee theme).
  * 
  * ENTERPRISE DESIGN STANDARDS:
