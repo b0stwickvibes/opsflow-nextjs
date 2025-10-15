@@ -41,6 +41,9 @@ import {
   Activity
 } from 'lucide-react';
 
+// Showcase components
+import { DiagonalSplitHero, BrokenGridFeature, ImmersiveScrollFeature } from '@/components/showcase';
+
 // Inline UI Components
 const Button = React.forwardRef<
   HTMLButtonElement,
@@ -2270,6 +2273,160 @@ function BarsDemo() {
       role: "Owner",
       company: "Sunset Rooftop Bar"
     }
+  };
+
+
+  // ========================================
+  // SHOWCASE SECTION - Ultra-Premium Components
+  // ========================================
+
+  const showcaseHeroData = {
+    badge: "✨ Next-Gen Bar Management",
+    headline: "Transform Your Venue",
+    subheadline: "With AI-Powered Intelligence",
+    description: "Experience the future of bar operations with real-time analytics, predictive inventory, and automated compliance monitoring. Built for the modern nightlife industry.",
+    primaryCTA: {
+      text: "Start Free Trial",
+      action: () => handleNavigate('demo')
+    },
+    secondaryCTA: {
+      text: "Watch Demo",
+      action: () => handleNavigate('contact')
+    },
+    metrics: [
+      { value: "28%", label: "Cost Reduction", change: "+12%" },
+      { value: "99.7%", label: "Uptime", change: "+0.2%" },
+      { value: "3.2x", label: "ROI", change: "+45%" }
+    ]
+  };
+
+  const showcaseEssentialFeatures = {
+    badge: "🎯 Essential Features",
+    title: "Everything You Need",
+    subtitle: "Powerful tools designed specifically for bars and nightlife venues. No complexity, just results.",
+    features: [
+      {
+        title: "Real-Time Inventory",
+        description: "Track every bottle, keg, and ingredient with precision. Get instant alerts when stock runs low.",
+        icon: Wine,
+        visual: 'dashboard' as const,
+        accent: 'primary' as const,
+        size: 'large' as const
+      },
+      {
+        title: "Staff Performance",
+        description: "Monitor service quality, sales metrics, and efficiency in real-time.",
+        icon: Users,
+        visual: 'chart' as const,
+        accent: 'secondary' as const
+      },
+      {
+        title: "Compliance Tracking",
+        description: "Automated TABC compliance monitoring and reporting.",
+        icon: Shield,
+        visual: 'pulse' as const,
+        accent: 'success' as const
+      },
+      {
+        title: "Peak Hour Analytics",
+        description: "Identify busy periods and optimize staffing automatically.",
+        icon: Clock,
+        visual: 'grid' as const,
+        accent: 'primary' as const
+      },
+      {
+        title: "Profit Optimization",
+        description: "AI-powered insights to maximize margins on every pour.",
+        icon: TrendingUp,
+        visual: 'wave' as const,
+        accent: 'warning' as const,
+        size: 'medium' as const
+      }
+    ]
+  };
+
+  const showcaseAdvancedFeatures = {
+    headline: "Advanced Capabilities",
+    subheadline: "Unlock enterprise-grade features that scale with your business",
+    badge: "🚀 Pro Features",
+    panels: [
+      {
+        title: "Predictive Inventory",
+        description: "AI analyzes your sales patterns, events, and seasonality to predict exactly what you'll need, when you'll need it.",
+        icon: Target,
+        benefits: [
+          "Reduce waste by 35% with accurate demand forecasting",
+          "Never run out during peak hours",
+          "Automatic supplier integration and ordering",
+          "Real-time pricing optimization"
+        ],
+        visual: {
+          type: 'dashboard' as const,
+          color: '#8b5cf6'
+        },
+        stat: {
+          value: "35%",
+          label: "Less Waste"
+        }
+      },
+      {
+        title: "Multi-Venue Management",
+        description: "Manage multiple locations from a single dashboard. Compare performance, share inventory, and maintain consistency across all venues.",
+        icon: MapPin,
+        benefits: [
+          "Centralized control across all locations",
+          "Cross-location inventory transfers",
+          "Unified reporting and analytics",
+          "Consistent pricing and promotions"
+        ],
+        visual: {
+          type: 'network' as const,
+          color: '#3b82f6'
+        },
+        stat: {
+          value: "10+",
+          label: "Venues Managed"
+        }
+      },
+      {
+        title: "Customer Intelligence",
+        description: "Understand your customers like never before. Track preferences, spending patterns, and loyalty metrics automatically.",
+        icon: Activity,
+        benefits: [
+          "Personalized recommendations for regulars",
+          "Automated loyalty programs",
+          "VIP identification and alerts",
+          "Targeted promotions based on behavior"
+        ],
+        visual: {
+          type: 'heatmap' as const,
+          color: '#10b981'
+        },
+        stat: {
+          value: "2.3x",
+          label: "Repeat Rate"
+        }
+      },
+      {
+        title: "Smart Compliance",
+        description: "Stay ahead of regulations with automated monitoring, instant alerts, and audit-ready reports.",
+        icon: Shield,
+        benefits: [
+          "Real-time health code compliance",
+          "Automatic temperature monitoring",
+          "Digital audit trails",
+          "Instant violation alerts"
+        ],
+        visual: {
+          type: 'chart' as const,
+          color: '#f59e0b'
+        },
+        stat: {
+          value: "100%",
+          label: "Compliant"
+        }
+      }
+    ]
   };
 
   return (
