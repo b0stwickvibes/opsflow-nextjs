@@ -63,8 +63,7 @@ export function BarsFAQ({
   };
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50/30">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
         
         {/* Header */}
         <div className="text-center mb-16 motion-fade-in-up-320">
@@ -223,7 +222,6 @@ export function BarsFAQ({
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </>
   );
 }

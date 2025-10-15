@@ -51,8 +51,7 @@ export function HotelsProcessSolutions({
   bottomCTA
 }: HotelsProcessSolutionsProps) {
   return (
-    <section className="section-marketing bg-background">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
 
         {/* Header */}
         <div className="text-center mb-20 motion-fade-in-up-320">
@@ -299,7 +298,6 @@ export function HotelsProcessSolutions({
             </div>
           </div>
         )}
-      </div>
-    </section>
+    </>
   );
 }

@@ -66,8 +66,7 @@ export function HotelsFeatureDeckAlternate({
   };
 
   return (
-    <section className="py-24 bg-background">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
 
         {/* Header */}
         <div className="space-y-6 mb-16 motion-fade-in-up-320">
@@ -256,7 +255,6 @@ export function HotelsFeatureDeckAlternate({
             </div>
           </div>
         </div>
-      </div>
-    </section>
+    </>
   );
 }

@@ -49,8 +49,7 @@ export function RestaurantPlatformFeaturesGrid({
   const currentFeature = features.find((f) => f.id === selectedFeature);
 
   return (
-    <section className="section-marketing py-24 bg-gradient-to-b from-slate-50/30 to-white">
-      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <>
 
         {/* Header */}
         <div className="text-center space-y-6 mb-16">
@@ -208,7 +207,6 @@ export function RestaurantPlatformFeaturesGrid({
             </div>
           </div>
         )}
-      </div>
-    </section>
+    </>
   );
 }
