@@ -2439,6 +2439,24 @@ function BarsDemo() {
       <BarPlatformFeaturesGrid />
       <IndustryFAQ {...faqData} />
       <IndustryCTA {...ctaData} />
+
+      {/* ========================================
+          SHOWCASE SECTION - Ultra-Premium Components
+          ======================================== */}
+      <div className="my-32 space-y-0">
+        <div className="text-center mb-16 py-16">
+          <h2 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+            Ultra-Premium Showcase
+          </h2>
+          <p className="text-xl text-muted-foreground">
+            Experience next-generation component design
+          </p>
+        </div>
+
+        <DiagonalSplitHero {...showcaseHeroData} />
+        <BrokenGridFeature {...showcaseEssentialFeatures} />
+        <ImmersiveScrollFeature {...showcaseAdvancedFeatures} />
+      </div>
     </div>
   );
 }
