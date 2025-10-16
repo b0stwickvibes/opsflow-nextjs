@@ -42,7 +42,6 @@ import {
 } from 'lucide-react';
 
 // Showcase components
-import { DiagonalSplitHero, BrokenGridFeature, ImmersiveScrollFeature } from '@/components/showcase';
 
 // Inline UI Components
 const Button = React.forwardRef<
