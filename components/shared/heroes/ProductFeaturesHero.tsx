@@ -100,7 +100,7 @@ export function ProductFeaturesHero({
           <div className="space-y-8">
             {/* Badge with subtle glow - only 1 ambient element */}
             <div className="flex">
-              <Badge className="clerk-inspired-badge bg-primary/10 text-primary border-primary/20 backdrop-blur-sm">
+              <Badge className="badge-subtle-gradient">
                 <div className="h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
                 {content.badge}
               </Badge>
@@ -148,11 +148,11 @@ export function ProductFeaturesHero({
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="clerk-cta-primary cta-equal" size="lg">
+              <Button className="clerk-cta-primary group min-w-[200px]" size="lg">
                 {content.ctaText}
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" className="cta-equal" size="lg">
+              <Button variant="outline" className="clerk-cta-ghost min-w-[200px]" size="lg">
                 {content.ctaSecondary}
               </Button>
             </div>

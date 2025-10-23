@@ -262,7 +262,7 @@ export function PlatformFeaturesGrid({
   const [selectedFeature, setSelectedFeature] = useState<string>(
     variant === 'bar' ? 'draft-management' : 'smart-automation'
   );
-  const content = FEATURES_CONTENT[variant];
+  const content = FEATURES_CONTENT[variant as keyof typeof FEATURES_CONTENT];
   const currentFeature = content.features.find((f) => f.id === selectedFeature);
 
   return (

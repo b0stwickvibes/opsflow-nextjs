@@ -1,5 +1,5 @@
 // Restaurant Operations Features - Complete Export Index
-// All 14 feature components optimized for restaurant operations with HACCP compliance
+// All feature components optimized for restaurant operations with HACCP compliance
 
 // Core Feature Components
 export { FeatureGrid } from "./FeatureGrid";
@@ -46,6 +46,16 @@ export type { EquipmentItem, FeatureListProps } from "./FeatureList";
 
 export { FeatureShowcaseTwo } from "./FeatureShowcaseTwo";
 export type { ROIMetric, FeatureShowcaseTwoProps } from "./FeatureShowcaseTwo";
+
+// New Product Features Page Components
+export { FeatureCategoriesGrid } from "./FeatureCategoriesGrid";
+export { InteractiveFeatureShowcase } from "./InteractiveFeatureShowcase";
+export { FeatureComparisonSection } from "./FeatureComparisonSection";
+export { FeaturesCTA } from "./FeaturesCTA";
+
+// Stripe/Clerk Style Components
+export { StripeFeatureSection, CompactFeatureList } from "./StripeFeatureSection";
+export { StripePlatformOverview } from "./StripePlatformOverview";
 
 // Feature Categories for Restaurant Operations
 export const FEATURE_CATEGORIES = {

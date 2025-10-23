@@ -41,6 +41,9 @@ import {
   Activity
 } from 'lucide-react';
 
+// Test: Enhanced Hero Component
+import { IndustryHeroEnhanced } from '@/templates/shadcn-components/processed/heroes';
+
 // Showcase components
 
 // Inline UI Components
@@ -2430,7 +2433,7 @@ function BarsDemo() {
 
   return (
     <div className="min-h-screen bg-background">
-      <IndustryHero {...heroData} />
+      <IndustryHeroEnhanced {...heroData} />
       <IndustryProcess {...processData} />
       <IndustryFeatureDeck {...featureDeck1Data} />
       <IndustryProcessSolutions {...processSolutionsData} />
