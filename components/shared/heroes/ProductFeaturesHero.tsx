@@ -148,11 +148,11 @@ export function ProductFeaturesHero({
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button className="clerk-cta-primary group min-w-[200px]" size="lg">
+              <Button className="clerk-cta-primary group sm:min-w-[200px]" size="lg">
                 {content.ctaText}
                 <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" className="clerk-cta-ghost min-w-[200px]" size="lg">
+              <Button variant="outline" className="clerk-cta-ghost sm:min-w-[200px]" size="lg">
                 {content.ctaSecondary}
               </Button>
             </div>
