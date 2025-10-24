@@ -5,9 +5,6 @@
 export { FeatureGrid } from "./FeatureGrid";
 export type { RestaurantFeature, FeatureGridProps } from "./FeatureGrid";
 
-export { FeatureShowcase } from "./FeatureShowcase";
-export type { KitchenOperation, FeatureShowcaseProps } from "./FeatureShowcase";
-
 export { FeatureCards } from "./FeatureCards";
 export type { StaffManagementFeature, FeatureCardsProps } from "./FeatureCards";
 
@@ -15,8 +12,6 @@ export { FeatureTabs } from "./FeatureTabs";
 export type { AnalyticsTab, FeatureTabsProps } from "./FeatureTabs";
 
 // Comparison & Timeline Components
-export { FeatureComparison } from "./FeatureComparison";
-export type { CompetitorFeature, CompetitionCard, FeatureComparisonProps } from "./FeatureComparison";
 
 export { FeatureTimeline } from "./FeatureTimeline";
 export type { ImplementationPhase, FeatureTimelineProps } from "./FeatureTimeline";
@@ -44,18 +39,14 @@ export type { ComplianceProcedure, FeatureAccordionProps } from "./FeatureAccord
 export { FeatureList } from "./FeatureList";
 export type { EquipmentItem, FeatureListProps } from "./FeatureList";
 
-export { FeatureShowcaseTwo } from "./FeatureShowcaseTwo";
-export type { ROIMetric, FeatureShowcaseTwoProps } from "./FeatureShowcaseTwo";
-
 // New Product Features Page Components
-export { FeatureCategoriesGrid } from "./FeatureCategoriesGrid";
 export { InteractiveFeatureShowcase } from "./InteractiveFeatureShowcase";
 export { FeatureComparisonSection } from "./FeatureComparisonSection";
 export { FeaturesCTA } from "./FeaturesCTA";
 
 // Stripe/Clerk Style Components
 export { StripeFeatureSection, CompactFeatureList } from "./StripeFeatureSection";
-export { StripePlatformOverview } from "./StripePlatformOverview";
+export { StripePlatformOverviewEnhanced } from "./StripePlatformOverviewEnhanced";
 
 // Feature Categories for Restaurant Operations
 export const FEATURE_CATEGORIES = {
@@ -94,13 +85,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showMetrics: true, variant: "default" }
   },
   
-  // Kitchen Operations Showcase
-  FeatureShowcase: {
-    description: "Interactive carousel showcasing kitchen operation solutions",
-    bestFor: "Product pages, kitchen management sections",
-    props: { showMetrics: true, variant: "carousel" }
-  },
-  
   // Staff Management Cards
   FeatureCards: {
     description: "Staff management features with productivity metrics",
@@ -113,13 +97,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     description: "Interactive analytics dashboard with multiple data views",
     bestFor: "Analytics pages, reporting dashboards",
     props: { showMetrics: true, defaultTab: "operations-dashboard" }
-  },
-  
-  // Competitor Comparison
-  FeatureComparison: {
-    description: "Detailed comparison with JOLT and Xenia.Teams",
-    bestFor: "Competitive analysis pages, sales materials",
-    props: { showPricing: true, variant: "cards" }
   },
   
   // Implementation Timeline
@@ -178,12 +155,6 @@ export const FEATURE_USAGE_EXAMPLES = {
     props: { showDetails: true, variant: "monitoring" }
   },
   
-  // ROI Metrics Showcase
-  FeatureShowcaseTwo: {
-    description: "Comprehensive ROI metrics with sparkle animations",
-    bestFor: "Value proposition pages, ROI calculators",
-    props: { showSparkles: true, variant: "showcase" }
-  }
 } as const;
 
 // Restaurant Industry Metrics

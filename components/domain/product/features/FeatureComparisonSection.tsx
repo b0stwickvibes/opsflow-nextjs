@@ -1,267 +1,331 @@
 "use client";
 
-import React from "react";
-import { Check, X, Minus } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Check, X, Minus, Info } from "lucide-react";
 
 /**
  * FeatureComparisonSection - Compare feature availability across plans
- * 
+ *
  * DESIGN STANDARDS:
  * - Uses OKLCH color tokens exclusively
- * - Professional table styling
- * - BARS-DEMO card standards
+ * - Professional table styling with pricing cards
+ * - Framer Motion animations
  * - Enterprise comparison layout
  * - Restaurant operations focus
  */
 
 const plans = [
   {
+    id: "starter",
     name: "Starter",
-    badge: "Small Teams",
+    price: 49,
+    description: "Perfect for small teams getting started",
+    popular: false,
+    cta: "Get Started",
     features: {
-      taskManagement: "basic",
-      temperatureMonitoring: true,
-      haccpCompliance: "basic",
-      teamManagement: true,
-      analytics: "basic",
-      mobileApps: true,
-      multiLocation: false,
-      integrations: "limited",
-      advancedReporting: false,
-      aiInsights: false,
-      dedicatedSupport: false,
-      customBranding: false
-    }
+      "Task Management & Checklists": "limited",
+      "Temperature Monitoring": true,
+      "HACCP Compliance": "limited",
+      "Team & Staff Management": true,
+      "Analytics Dashboard": "limited",
+      "Advanced Reporting": false,
+      "AI-Powered Insights": false,
+      "Mobile Apps (iOS & Android)": true,
+      "Multi-Location Management": false,
+      "Integrations & API": "limited",
+      "Dedicated Account Manager": false,
+      "Custom Branding": false,
+    },
   },
   {
+    id: "professional",
     name: "Professional",
-    badge: "Most Popular",
+    price: 149,
+    description: "For growing businesses that need more",
     popular: true,
+    cta: "Get Started",
     features: {
-      taskManagement: true,
-      temperatureMonitoring: true,
-      haccpCompliance: true,
-      teamManagement: true,
-      analytics: true,
-      mobileApps: true,
-      multiLocation: "up to 5",
-      integrations: true,
-      advancedReporting: true,
-      aiInsights: "basic",
-      dedicatedSupport: false,
-      customBranding: false
-    }
+      "Task Management & Checklists": true,
+      "Temperature Monitoring": true,
+      "HACCP Compliance": true,
+      "Team & Staff Management": true,
+      "Analytics Dashboard": true,
+      "Advanced Reporting": true,
+      "AI-Powered Insights": "limited",
+      "Mobile Apps (iOS & Android)": true,
+      "Multi-Location Management": "up to 5",
+      "Integrations & API": true,
+      "Dedicated Account Manager": false,
+      "Custom Branding": false,
+    },
   },
   {
+    id: "enterprise",
     name: "Enterprise",
-    badge: "Full Platform",
+    price: null,
+    priceLabel: "Custom",
+    description: "Advanced features for large organizations",
+    popular: false,
+    cta: "Get Started",
     features: {
-      taskManagement: true,
-      temperatureMonitoring: true,
-      haccpCompliance: true,
-      teamManagement: true,
-      analytics: true,
-      mobileApps: true,
-      multiLocation: "unlimited",
-      integrations: true,
-      advancedReporting: true,
-      aiInsights: true,
-      dedicatedSupport: true,
-      customBranding: true
-    }
-  }
+      "Task Management & Checklists": true,
+      "Temperature Monitoring": true,
+      "HACCP Compliance": true,
+      "Team & Staff Management": true,
+      "Analytics Dashboard": true,
+      "Advanced Reporting": true,
+      "AI-Powered Insights": true,
+      "Mobile Apps (iOS & Android)": true,
+      "Multi-Location Management": "unlimited",
+      "Integrations & API": true,
+      "Dedicated Account Manager": true,
+      "Custom Branding": true,
+    },
+  },
 ];
 
-const featureRows = [
-  {
-    category: "Core Operations",
-    features: [
-      { key: "taskManagement", name: "Task Management & Checklists", description: "Custom templates, assignments, tracking" },
-      { key: "temperatureMonitoring", name: "Temperature Monitoring", description: "Bluetooth sensors, alerts, logs" },
-      { key: "haccpCompliance", name: "HACCP Compliance Tools", description: "Digital audits, corrective actions" },
-      { key: "teamManagement", name: "Team & Staff Management", description: "Scheduling, training, communication" }
-    ]
-  },
-  {
-    category: "Analytics & Insights",
-    features: [
-      { key: "analytics", name: "Analytics Dashboard", description: "Real-time metrics and KPIs" },
-      { key: "advancedReporting", name: "Advanced Reporting", description: "Custom reports, exports, scheduling" },
-      { key: "aiInsights", name: "AI-Powered Insights", description: "Predictive analytics and recommendations" }
-    ]
-  },
-  {
-    category: "Platform & Access",
-    features: [
-      { key: "mobileApps", name: "Mobile Apps (iOS & Android)", description: "Full-featured native apps" },
-      { key: "multiLocation", name: "Multi-Location Management", description: "Central dashboard for multiple sites" },
-      { key: "integrations", name: "Integrations & API", description: "POS, inventory, HR systems" }
-    ]
-  },
-  {
-    category: "Support & Customization",
-    features: [
-      { key: "dedicatedSupport", name: "Dedicated Account Manager", description: "Priority support and onboarding" },
-      { key: "customBranding", name: "Custom Branding", description: "White-label options" }
-    ]
-  }
-];
-
-function FeatureCell({ value }: { value: boolean | string }) {
-  if (value === true) {
-    return (
-      <div className="flex justify-center">
-        <div className="w-6 h-6 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center">
-          <Check className="w-4 h-4 text-secondary" />
-        </div>
-      </div>
-    );
-  }
-  
-  if (value === false) {
-    return (
-      <div className="flex justify-center">
-        <div className="w-6 h-6 rounded-full bg-muted/50 flex items-center justify-center">
-          <X className="w-4 h-4 text-muted-foreground/40" />
-        </div>
-      </div>
-    );
-  }
-  
-  if (value === "basic" || value === "limited") {
-    return (
-      <div className="flex justify-center">
-        <div className="w-6 h-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-          <Minus className="w-4 h-4 text-primary" />
-        </div>
-      </div>
-    );
-  }
-  
-  // String values (like "up to 5", "unlimited")
-  return (
-    <div className="text-center text-sm text-foreground font-medium">
-      {value}
-    </div>
-  );
-}
+const featureDescriptions: Record<string, string> = {
+  "Task Management & Checklists": "Create and manage tasks with smart checklists and automated scheduling",
+  "Temperature Monitoring": "Real-time temperature monitoring with Bluetooth sensors and alerts",
+  "HACCP Compliance": "Digital audits and automated compliance tracking for food safety",
+  "Team & Staff Management": "Scheduling, training tracking, and real-time team communication",
+  "Analytics Dashboard": "Live dashboards with custom reports and AI-powered insights",
+  "Advanced Reporting": "Detailed analytics with custom report builder and data exports",
+  "AI-Powered Insights": "Predictive analytics and intelligent recommendations",
+  "Mobile Apps (iOS & Android)": "Native mobile apps with offline mode and push notifications",
+  "Multi-Location Management": "Centralized oversight with location-specific controls",
+  "Integrations & API": "Connect with POS, inventory, HR, and accounting systems",
+  "Dedicated Account Manager": "Personal support with priority response times",
+  "Custom Branding": "White-label solution with your brand identity",
+};
 
 export function FeatureComparisonSection() {
+  const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
+  const headerRef = useRef(null);
+  const plansRef = useRef(null);
+  const featuresRef = useRef(null);
+
+  const headerInView = useInView(headerRef, { once: true, margin: "-100px" });
+  const plansInView = useInView(plansRef, { once: true, margin: "-100px" });
+  const featuresInView = useInView(featuresRef, { once: true, margin: "-50px" });
+
+  const featureNames = Object.keys(plans[0].features);
+
+  const renderFeatureValue = (value: boolean | string) => {
+    if (value === true) {
+      return (
+        <div className="flex justify-center">
+          <div className="h-5 w-5 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+            <Check className="h-3.5 w-3.5 text-secondary" strokeWidth={3} />
+          </div>
+        </div>
+      );
+    }
+    if (value === false) {
+      return (
+        <div className="flex justify-center">
+          <div className="h-5 w-5 rounded-full bg-muted/50 flex items-center justify-center">
+            <X className="h-3.5 w-3.5 text-muted-foreground/40" strokeWidth={2.5} />
+          </div>
+        </div>
+      );
+    }
+    if (value === "limited") {
+      return (
+        <div className="flex justify-center">
+          <div className="h-5 w-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+            <Minus className="h-3.5 w-3.5 text-primary" strokeWidth={3} />
+          </div>
+        </div>
+      );
+    }
+    return <div className="text-center text-sm font-medium text-foreground">{value}</div>;
+  };
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
       {/* Header */}
-      <div className="text-center space-y-4 max-w-3xl mx-auto">
-        <div className="inline-flex">
-          <div className="clerk-inspired-badge">
+      <motion.div
+        ref={headerRef}
+        initial={{ opacity: 0, y: 20 }}
+        animate={headerInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+        transition={{ duration: 0.6 }}
+        className="text-center"
+      >
+        <div className="inline-flex mb-4">
+          <Badge variant="secondary" className="badge-subtle-gradient">
             Plan Comparison
-          </div>
+          </Badge>
         </div>
-        <h2 className="enterprise-headline">
-          Choose the Right Plan
-          <span className="block heading-brand-gradient mt-2">
-            For Your Restaurant
-          </span>
+        <h2 className="enterprise-headline mb-4">
+          Choose Your Plan
         </h2>
-        <p className="enterprise-body">
-          All plans include core features. Upgrade for advanced analytics, 
-          multi-location management, and dedicated support.
+        <p className="enterprise-body max-w-2xl mx-auto">
+          All plans include core features. Scale as you grow.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Comparison Table */}
-      <div className="overflow-x-auto">
-        <div className="inline-block min-w-full align-middle">
-          <div className="overflow-hidden border border-border rounded-xl">
-            <table className="min-w-full divide-y divide-border">
-              {/* Table Header */}
-              <thead className="bg-muted/30">
-                <tr>
-                  <th scope="col" className="py-6 pl-6 pr-3 text-left text-sm font-semibold text-foreground w-2/5">
-                    Features
-                  </th>
-                  {plans.map((plan) => (
-                    <th key={plan.name} scope="col" className="px-3 py-6 text-center w-1/5">
-                      <div className="space-y-2">
-                        <div className="text-lg font-bold text-foreground">
-                          {plan.name}
-                        </div>
-                        <div className="flex justify-center">
-                          <Badge 
-                            variant={plan.popular ? "default" : "secondary"}
-                            className="text-xs"
-                          >
-                            {plan.badge}
-                          </Badge>
-                        </div>
-                      </div>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
+      {/* Pricing Cards */}
+      <motion.div
+        ref={plansRef}
+        initial={{ opacity: 0, y: 30 }}
+        animate={plansInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="grid md:grid-cols-3 gap-6"
+      >
+        {plans.map((plan, index) => (
+          <motion.div
+            key={plan.id}
+            initial={{ opacity: 0, y: 20 }}
+            animate={plansInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+            className={`relative rounded-2xl p-8 transition-all duration-300 ${
+              plan.popular
+                ? "clerk-glass-card border-primary/20 shadow-xl scale-105"
+                : "clerk-glass-card hover:shadow-xl hover:border-border"
+            }`}
+            onMouseEnter={() => setSelectedPlan(plan.id)}
+            onMouseLeave={() => setSelectedPlan(null)}
+          >
+            {plan.popular && (
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                <Badge className="bg-primary text-primary-foreground px-4 py-1 shadow-lg">
+                  Most Popular
+                </Badge>
+              </div>
+            )}
 
-              {/* Table Body */}
-              <tbody className="divide-y divide-border bg-background">
-                {featureRows.map((section, sectionIdx) => (
-                  <React.Fragment key={sectionIdx}>
-                    {/* Category Header */}
-                    <tr className="bg-muted/10">
-                      <td colSpan={4} className="py-3 pl-6 pr-3">
-                        <div className="text-sm font-semibold text-foreground/80 uppercase tracking-wide">
-                          {section.category}
-                        </div>
-                      </td>
-                    </tr>
-                    
-                    {/* Feature Rows */}
-                    {section.features.map((feature, featureIdx) => (
-                      <tr key={featureIdx} className="hover:bg-muted/5 transition-colors">
-                        <td className="py-4 pl-6 pr-3">
-                          <div className="space-y-1">
-                            <div className="text-sm font-medium text-foreground">
-                              {feature.name}
-                            </div>
-                            <div className="text-xs text-muted-foreground">
-                              {feature.description}
-                            </div>
-                          </div>
-                        </td>
-                        {plans.map((plan) => (
-                          <td key={plan.name} className="px-3 py-4">
-                            <FeatureCell value={plan.features[feature.key as keyof typeof plan.features]} />
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
-          </div>
+            <div className="text-center space-y-6">
+              <div>
+                <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
+                <p className="text-sm text-muted-foreground">{plan.description}</p>
+              </div>
+
+              <div>
+                {plan.price ? (
+                  <div className="flex items-baseline justify-center gap-1">
+                    <span className="text-5xl font-bold text-foreground">${plan.price}</span>
+                    <span className="text-muted-foreground">/month</span>
+                  </div>
+                ) : (
+                  <div className="text-4xl font-bold text-foreground">{plan.priceLabel}</div>
+                )}
+              </div>
+
+              <Button
+                className={`w-full ${plan.popular ? "clerk-cta-primary" : "clerk-cta-ghost"}`}
+                size="lg"
+              >
+                {plan.cta}
+              </Button>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Feature Comparison Table */}
+      <motion.div
+        ref={featuresRef}
+        initial={{ opacity: 0, y: 30 }}
+        animate={featuresInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="clerk-glass-card overflow-hidden"
+      >
+        {/* Table Header */}
+        <div className="grid grid-cols-4 gap-4 p-6 bg-muted/30 border-b border-border">
+          <div className="font-semibold text-foreground">Features</div>
+          {plans.map((plan) => (
+            <div key={plan.id} className="text-center font-semibold text-foreground">
+              {plan.name}
+            </div>
+          ))}
         </div>
-      </div>
+
+        {/* Feature Rows */}
+        <div className="divide-y divide-border">
+          {featureNames.map((featureName, index) => (
+            <motion.div
+              key={featureName}
+              initial={{ opacity: 0, x: -20 }}
+              animate={featuresInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{ duration: 0.4, delay: 0.5 + index * 0.05 }}
+              className={`grid grid-cols-4 gap-4 p-6 transition-colors ${
+                hoveredFeature === featureName ? "bg-muted/50" : "bg-background"
+              }`}
+              onMouseEnter={() => setHoveredFeature(featureName)}
+              onMouseLeave={() => setHoveredFeature(null)}
+            >
+              <div className="flex items-center gap-2 group">
+                <span className="font-medium text-foreground">{featureName}</span>
+                <div className="relative">
+                  <Info className="h-4 w-4 text-muted-foreground cursor-help" />
+                  {hoveredFeature === featureName && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="absolute left-0 top-6 z-10 w-64 p-3 bg-foreground text-background text-xs rounded-lg shadow-xl"
+                    >
+                      {featureDescriptions[featureName]}
+                      <div className="absolute -top-1 left-4 w-2 h-2 bg-foreground rotate-45" />
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+              {plans.map((plan) => (
+                <div key={plan.id} className="flex items-center justify-center">
+                  {renderFeatureValue(plan.features[featureName])}
+                </div>
+              ))}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom CTA Row */}
+        <div className="grid grid-cols-4 gap-4 p-6 bg-muted/30 border-t border-border">
+          <div className="flex items-center font-semibold text-foreground">Ready to start?</div>
+          {plans.map((plan) => (
+            <div key={plan.id} className="flex justify-center">
+              <Button
+                variant={plan.popular ? "default" : "outline"}
+                className={plan.popular ? "clerk-cta-primary" : ""}
+              >
+                Select {plan.name}
+              </Button>
+            </div>
+          ))}
+        </div>
+      </motion.div>
 
       {/* Legend */}
-      <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={featuresInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.6, delay: 0.8 }}
+        className="flex items-center justify-center gap-8 text-sm text-muted-foreground"
+      >
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center">
-            <Check className="w-4 h-4 text-secondary" />
+          <div className="h-5 w-5 rounded-full bg-secondary/10 border border-secondary/20 flex items-center justify-center">
+            <Check className="h-3.5 w-3.5 text-secondary" strokeWidth={3} />
           </div>
           <span>Included</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
-            <Minus className="w-4 h-4 text-primary" />
+          <div className="h-5 w-5 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center">
+            <Minus className="h-3.5 w-3.5 text-primary" strokeWidth={3} />
           </div>
           <span>Limited</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-6 h-6 rounded-full bg-muted/50 flex items-center justify-center">
-            <X className="w-4 h-4 text-muted-foreground/40" />
+          <div className="h-5 w-5 rounded-full bg-muted/50 flex items-center justify-center">
+            <X className="h-3.5 w-3.5 text-muted-foreground/40" strokeWidth={2.5} />
           </div>
-          <span>Not included</span>
+          <span>Not available</span>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }

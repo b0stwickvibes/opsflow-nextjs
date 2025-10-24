@@ -8,7 +8,7 @@ import {
   TeamAndLocationsSection
 } from "@/components/domain/product/features/RestaurantFeaturesPageSections";
 import {
-  StripePlatformOverview,
+  StripePlatformOverviewEnhanced,
   InteractiveFeatureShowcase,
   FeatureComparisonSection,
   FeaturesCTA
@@ -41,7 +41,7 @@ export default function ProductFeaturesPage() {
       {/* Feature Categories Overview */}
       <Section background="muted" padding="lg">
         <SectionContent maxWidth="6xl">
-          <StripePlatformOverview />
+          <StripePlatformOverviewEnhanced />
         </SectionContent>
       </Section>
 

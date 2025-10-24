@@ -228,36 +228,6 @@ CREATE POLICY tenant_isolation ON organizations
 
 ## 🔄 **Component Development Workflow**
 
-### **Product Features Components (Template Library)**
-**Location:** `components/domain/product/features/`
-
-**Enterprise-Grade Components (Use as templates for other pages):**
-1. **StripeFeatureSection** - Two-column feature sections with detailed descriptions
-2. **StripePlatformOverview** - 12-card grid with colorful icons
-3. **InteractiveFeatureShowcase** - Tabbed interface with live metrics
-4. **FeatureComparisonSection** - Professional comparison tables
-5. **FeaturesCTA** - Final call-to-action sections
-
-**Usage Pattern:**
-```tsx
-<Section background="muted" padding="lg">
-  <SectionContent maxWidth="6xl">
-    <StripeFeatureSection
-      badge="Category"
-      title="Main Heading"
-      subtitle="Supporting text"
-      description="Overview..."
-      features={[
-        {
-          title: "Feature Name",
-          description: "50-100 word benefit-focused description..."
-        }
-      ]}
-    />
-  </SectionContent>
-</Section>
-```
-
 ### **Creating New Components**
 1. **Start with TypeScript interface** - Define props and data structures
 2. **Use OpsFlow design tokens** - Never hardcode colors or spacing

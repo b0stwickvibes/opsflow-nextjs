@@ -66,7 +66,7 @@ export default function RootLayout({
           </>
         )}
       </head>
-      <body className={cn("min-h-screen font-sans bg-background text-foreground overflow-x-hidden")} suppressHydrationWarning>
+      <body className={cn("min-h-screen font-sans bg-background text-foreground")} suppressHydrationWarning>
         <ClerkProvider>
           <ErrorBoundary>
             <ThemeProvider
