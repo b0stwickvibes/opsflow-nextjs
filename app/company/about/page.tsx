@@ -1,12 +1,10 @@
-import { AboutSection } from "@/components/shared/sections";
+import { AboutSection } from "@/components/domain/company/AboutSection";
 
 export default function AboutPage() {
   return (
     <AboutSection 
-      industry="general"
+      industry="restaurants"
       showJoinTeam={true}
-      customTitle="Transforming Operations Across Hospitality"
-      customDescription="We make food safety simple, compliance effortless, and operations intelligent through automation that works for restaurants, bars, coffee shops, and hotels."
     />
   );
 }

@@ -113,7 +113,7 @@ export function FeatureComparisonSection() {
   const plansInView = useInView(plansRef, { once: true, margin: "-100px" });
   const featuresInView = useInView(featuresRef, { once: true, margin: "-50px" });
 
-  const featureNames = Object.keys(plans[0].features);
+  const featureNames = Object.keys(plans[0].features) as Array<keyof typeof plans[0]['features']>;
 
   const renderFeatureValue = (value: boolean | string) => {
     if (value === true) {

@@ -62,6 +62,7 @@ const nextConfig = {
       { protocol: 'https', hostname: 'deifkwefumgah.cloudfront.net', pathname: '/**' },
       { protocol: 'https', hostname: 'html.tailus.io', pathname: '/**' },
       { protocol: 'https', hostname: 'ik.imagekit.io', pathname: '/**' },
+      { protocol: 'https', hostname: 'images.unsplash.com', pathname: '/**' },
     ],
     dangerouslyAllowSVG: true,
     contentDispositionType: 'attachment',
