@@ -1547,33 +1547,62 @@
     box-shadow: 0 2px 8px -4px oklch(from var(--brand-start) l c h / 0.4);
   }
 
-  /* Enhanced clerk-inspired-badge - Consistent sizing and styling */
+  /* Enhanced clerk-inspired-badge - Enterprise-Grade Design
+   * Matches the clean "Enterprise-Grade Platform" aesthetic
+   * Features: Checkmark icon, clean border, subtle background, professional spacing
+   * Use this consistently across ALL hero sections for brand consistency
+   */
   .clerk-inspired-badge {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.5rem 1rem; /* Increased for better symmetry */
+    padding: 0.5rem 1rem;
     border-radius: 9999px;
-    font-size: 0.875rem; /* Slightly larger for better readability */
+    font-size: 0.875rem;
     font-weight: 500;
-    border: 1px solid oklch(from var(--border) l c h / .7);
-    background: oklch(from var(--background) l c h / .95);
-    color: oklch(from var(--foreground) l c h / .75);
-    backdrop-filter: blur(4px);
+    border: 1px solid oklch(from var(--border) l c h / .5);
+    background: oklch(from var(--background) l c h / .98);
+    color: oklch(from var(--foreground) l c h / .85);
+    backdrop-filter: blur(8px);
     transition: all 200ms ease;
+    box-shadow:
+      0 1px 2px 0 rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
   }
 
   .clerk-inspired-badge:hover {
-    border-color: oklch(from var(--primary) l c h / .3);
-    background: oklch(from var(--background) l c h / .98);
+    border-color: oklch(from var(--primary) l c h / .25);
+    background: oklch(from var(--background) l c h / 1);
     transform: translateY(-1px);
+    box-shadow:
+      0 2px 4px 0 rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 0 rgba(255, 255, 255, 0.15);
   }
 
-  /* Icon support for badges */
+  /* Icon support for badges - checkmark or any lucide icon */
   .clerk-inspired-badge svg {
     width: 1rem;
     height: 1rem;
     flex-shrink: 0;
+    color: oklch(from var(--primary) l c h / .8);
+  }
+
+  /* Checkmark circle variant for hero badges */
+  .clerk-inspired-badge .badge-checkmark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 50%;
+    background: oklch(from var(--primary) l c h / .1);
+    border: 1px solid oklch(from var(--primary) l c h / .2);
+  }
+
+  .clerk-inspired-badge .badge-checkmark svg {
+    width: 0.75rem;
+    height: 0.75rem;
+    color: oklch(from var(--primary) l c h / 1);
   }
 
   /* Additional CTA variants for token page */

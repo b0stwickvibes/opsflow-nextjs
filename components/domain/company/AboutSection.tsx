@@ -100,7 +100,7 @@ export function AboutSection({
   };
 
   return (
-    <section className="relative px-6 py-16 md:px-10 md:py-24">
+    <section className="relative">
       {/* Background wash */}
       <div className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute inset-x-0 top-0 h-64 bg-gradient-to-b from-primary/5 to-transparent" />
@@ -110,11 +110,11 @@ export function AboutSection({
         {/* Hero: headline left, stacked accent cards right */}
         <div className="grid gap-8 md:grid-cols-2 md:items-start">
           <div className="space-y-6">
-            {/* Badges */}
+            {/* Badge - Enterprise design */}
             <div className="flex flex-wrap gap-3">
-              <div className="inline-flex items-center gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm shadow-sm">
-                <CheckCircle className="h-4 w-4 text-primary" />
-                <span className="font-medium text-foreground">Enterprise-Grade Platform</span>
+              <div className="clerk-inspired-badge">
+                <CheckCircle className="h-4 w-4" />
+                <span>Enterprise-Grade Platform</span>
               </div>
             </div>
             

@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Check, Shield, Zap, BarChart3, Users, Clock, Target } from "lucide-react";
+import { ArrowRight, Check, Shield, Zap, BarChart3, Users, Clock, Target, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -94,16 +94,16 @@ export function ProductFeaturesHero({
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 dark:bg-grid-slate-900/20 [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)] opacity-30" />
       
-      <div className="container relative py-20 lg:py-32">
-        <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-center">
+      <div className="container relative">
+        <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center pb-16 md:pb-20">
           {/* Content Column */}
           <div className="space-y-8">
-            {/* Badge with subtle glow - only 1 ambient element */}
+            {/* Badge with checkmark icon - enterprise-grade design */}
             <div className="flex">
-              <Badge className="badge-subtle-gradient">
-                <div className="h-2 w-2 rounded-full bg-primary mr-2 animate-pulse" />
+              <div className="clerk-inspired-badge">
+                <CheckCircle className="h-4 w-4" />
                 {content.badge}
-              </Badge>
+              </div>
             </div>
 
             {/* Heading with text gradient */}
@@ -115,7 +115,7 @@ export function ProductFeaturesHero({
                   {content.highlight}
                 </span>
               </h1>
-              
+
               <p className="text-xl text-muted-foreground leading-relaxed max-w-lg">
                 {content.subtitle}
               </p>
@@ -159,32 +159,28 @@ export function ProductFeaturesHero({
           </div>
 
           {/* Capabilities Column */}
-          <div className="space-y-6">
+          <div className="grid gap-4">
             {/* Capability Cards */}
-            <div className="grid gap-4">
-              {content.capabilities.map((capability, index) => (
-                <div
-                  key={index}
-                  className="enterprise-metric-card p-6 rounded-xl border bg-card/50 backdrop-blur-sm"
-                >
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="text-3xl font-bold text-foreground">
-                        {capability.value}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {capability.label}
-                      </div>
+            {content.capabilities.map((capability, index) => (
+              <div
+                key={index}
+                className="enterprise-metric-card p-6 rounded-xl border bg-card/50 backdrop-blur-sm"
+              >
+                <div className="flex items-center justify-between">
+                  <div>
+                    <div className="text-3xl font-bold text-foreground">
+                      {capability.value}
                     </div>
-                    <div className="enterprise-icon-primary">
-                      <capability.icon className="h-6 w-6" />
+                    <div className="text-sm text-muted-foreground">
+                      {capability.label}
                     </div>
                   </div>
+                  <div className="enterprise-icon-primary">
+                    <capability.icon className="h-6 w-6" />
+                  </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Platform Highlights - REMOVED: Repetitive content */}
+              </div>
+            ))}
           </div>
         </div>
       </div>

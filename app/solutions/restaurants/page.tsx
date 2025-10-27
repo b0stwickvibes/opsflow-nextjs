@@ -69,8 +69,8 @@ export default function RestaurantsPage() {
 
   return (
     <div className="accent-blue">
-      {/* Hero Section */}
-      <Section background="gradient" padding="xl" className="hero-ambient">
+      {/* Hero Section - Consistent Stripe-like spacing */}
+      <Section background="gradient" heroOffset={true} className="hero-ambient">
         <SectionContent maxWidth="6xl">
           <RestaurantsHero
             industry="Restaurants"

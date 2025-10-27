@@ -226,6 +226,172 @@ CREATE POLICY tenant_isolation ON organizations
 
 ---
 
+## 📏 **Page Spacing & Layout Standards**
+
+### **Hero Section Spacing (CRITICAL - STRIPE-INSPIRED)**
+
+**UNIVERSAL STANDARD: All hero sections MUST use 72px total padding from top of viewport**
+
+```typescript
+// ✅ CORRECT - Use heroOffset prop on Section component
+<Section background="gradient" heroOffset={true} className="hero-ambient">
+  <SectionContent maxWidth="6xl">
+    <RestaurantsHero {...props} />
+  </SectionContent>
+</Section>
+```
+
+**Spacing Calculation:**
+- Navbar height: 64px (`h-16` Tailwind class)
+- Hero offset: 72px total padding-top (`pt-[72px]`)
+- Space from navbar to content: 72px - 64px = **8px gap**
+
+**Implementation Details:**
+```typescript
+// Section.tsx - heroOffset configuration
+const heroOffsetClass = "pt-[72px] pb-16 md:pb-20";
+
+// Hero components MUST have ZERO internal vertical padding
+// Section controls ALL vertical spacing via heroOffset prop
+```
+
+### **Hero Component Internal Spacing Rules**
+
+**CRITICAL RULE: Hero components control internal spacing ONLY, NOT top/bottom padding**
+
+```typescript
+// ✅ CORRECT - Hero component structure
+export function IndustryHero() {
+  return (
+    <div className="container relative">
+      <div className="grid gap-12 lg:grid-cols-2 pb-16 md:pb-20">
+        {/* Content column with space-y-8 for internal spacing */}
+        <div className="space-y-8">
+          {/* Badge - first element, no top margin */}
+          <div className="clerk-inspired-badge">...</div>
+
+          {/* Heading section */}
+          <div className="space-y-4">
+            <h1>...</h1>
+            <p>...</p>
+          </div>
+
+          {/* Other sections follow with space-y-8 controlling gaps */}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ❌ WRONG - Do NOT add padding to hero wrapper
+export function IndustryHero() {
+  return (
+    <div className="py-20 lg:py-32"> {/* ❌ NEVER DO THIS */}
+      <div className="container">...</div>
+    </div>
+  );
+}
+```
+
+### **Pages Using heroOffset Standard**
+
+All pages below have been updated to use the 72px heroOffset standard:
+
+1. **Homepage** (`/`) - RestaurantHomeHero
+2. **Features** (`/product/features`) - ProductFeaturesHero
+3. **About** (`/company/about`) - AboutSection
+4. **Restaurants** (`/solutions/restaurants`) - RestaurantsHero
+5. **Bars** (`/solutions/bars`) - BarsHero
+6. **Coffee** (`/solutions/coffee`) - CoffeeHero
+7. **Hotels** (`/solutions/hotels`) - HotelsHero
+
+### **Section Component Usage Patterns**
+
+```typescript
+// Hero sections - Use heroOffset
+<Section background="gradient" heroOffset={true}>
+  <SectionContent maxWidth="6xl">
+    <YourHeroComponent />
+  </SectionContent>
+</Section>
+
+// Regular sections - Use standard padding
+<Section background="muted" padding="lg">
+  <SectionContent maxWidth="4xl">
+    <YourContent />
+  </SectionContent>
+</Section>
+
+// Section dividers for visual separation
+<SectionDivider variant="subtle" />
+```
+
+### **Responsive Spacing Standards**
+
+```typescript
+// Padding options for non-hero sections
+const paddingClasses = {
+  sm: "py-12 md:py-16",
+  md: "py-16 md:py-20",
+  lg: "py-20 md:py-24",
+  xl: "py-24 md:py-32",
+  none: "",
+};
+
+// Hero offset (consistent across all breakpoints)
+const heroOffsetClass = "pt-[72px] pb-16 md:pb-20";
+```
+
+### **Common Spacing Mistakes to Avoid**
+
+```typescript
+// ❌ MISTAKE 1: Adding padding to hero component
+<section className="py-20 lg:py-32">
+  <HeroContent />
+</section>
+
+// ✅ CORRECT: Let Section handle padding via heroOffset
+<Section heroOffset={true}>
+  <HeroContent />
+</Section>
+
+// ❌ MISTAKE 2: Mixing heroOffset with padding prop
+<Section heroOffset={true} padding="xl"> {/* Wrong - conflicting spacing */}
+
+// ✅ CORRECT: Use heroOffset OR padding, never both
+<Section heroOffset={true}>  {/* For hero sections */}
+<Section padding="lg">       {/* For regular sections */}
+
+// ❌ MISTAKE 3: Using arbitrary padding values
+<Section className="pt-24 pb-20"> {/* Inconsistent with standard */}
+
+// ✅ CORRECT: Use standard heroOffset or padding props
+<Section heroOffset={true}>     {/* 72px standard */}
+<Section padding="lg">          {/* 80px/96px standard */}
+```
+
+### **Testing Hero Spacing**
+
+**Visual Verification Checklist:**
+1. [ ] Measure from bottom of navbar (64px height) to first content element
+2. [ ] Should see exactly 8px gap on all pages with heroOffset
+3. [ ] Badge/first element should align consistently across all hero sections
+4. [ ] Mobile spacing should maintain same proportions
+5. [ ] No excessive whitespace above hero content
+
+**Browser DevTools Check:**
+```javascript
+// Console command to verify spacing
+const navbar = document.querySelector('nav');
+const heroContent = document.querySelector('.clerk-inspired-badge'); // Or first hero element
+const navbarBottom = navbar.getBoundingClientRect().bottom;
+const contentTop = heroContent.getBoundingClientRect().top;
+const gap = contentTop - navbarBottom;
+console.log(`Gap: ${gap}px`); // Should be ~8px
+```
+
+---
+
 ## 🔄 **Component Development Workflow**
 
 ### **Creating New Components**

@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ChefHat, BarChart3, ArrowRight, Play } from "lucide-react";
+import { ChefHat, BarChart3, ArrowRight, Play, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface RestaurantsHeroProps {
@@ -56,6 +56,7 @@ export function RestaurantsHero({
           {/* Badge */}
           <div className="inline-flex">
             <div className="clerk-inspired-badge">
+              <CheckCircle className="h-4 w-4" />
               {badge.text}
             </div>
           </div>

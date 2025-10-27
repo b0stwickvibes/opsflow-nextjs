@@ -56,8 +56,8 @@ export default function HotelsPage() {
 
   return (
     <div className="accent-red">
-      {/* Hero Section */}
-      <Section background="gradient" padding="xl" className="hero-ambient">
+      {/* Hero Section - Standard 72px hero offset (8px from navbar) */}
+      <Section background="gradient" heroOffset={true} className="hero-ambient">
         <SectionContent maxWidth="6xl">
           <HotelsHero
             industry="Hotels & Hospitality"

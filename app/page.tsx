@@ -13,8 +13,8 @@ import { Section, SectionContent, SectionDivider, RadialBackground } from "@/com
 export default function HomePage() {
   return (
     <RadialBackground intensity="subtle" position="top" color="primary">
-      {/* Hero Section - Full width background with navbar spacing */}
-      <Section background="none" padding="none" className="relative pt-16">
+      {/* Hero Section - Consistent hero spacing (Stripe-inspired 100-116px offset) */}
+      <Section background="none" heroOffset={true}>
         <RestaurantHomeHero />
       </Section>
 

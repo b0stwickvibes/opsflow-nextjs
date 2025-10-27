@@ -25,13 +25,12 @@ export const metadata: Metadata = {
 export default function ProductFeaturesPage() {
   return (
     <>
-      {/* Hero Section */}
-      <Section background="gradient" padding="xl" className="hero-ambient">
+      {/* Hero Section - Consistent hero spacing (Stripe-inspired 100-116px offset) */}
+      <Section background="gradient" heroOffset={true} className="hero-ambient">
         <SectionContent maxWidth="full">
-          <ProductFeaturesHero 
-            industry="restaurant" 
-            variant="default" 
-            className="pt-0"
+          <ProductFeaturesHero
+            industry="restaurant"
+            variant="default"
           />
         </SectionContent>
       </Section>

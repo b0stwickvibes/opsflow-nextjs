@@ -14,6 +14,11 @@ interface SectionProps {
   background?: "default" | "muted" | "accent" | "gradient" | "radial" | "radial-footer" | "none";
   padding?: "sm" | "md" | "lg" | "xl" | "none";
   as?: "section" | "div" | "main" | "article";
+  /**
+   * Hero offset adds consistent top spacing for hero sections (inspired by Stripe's 100-116px standard)
+   * This ensures all hero sections across the site start at the same vertical position
+   */
+  heroOffset?: boolean;
 }
 
 const backgroundClasses = {
@@ -34,6 +39,11 @@ const paddingClasses = {
   none: "",
 };
 
+// STANDARD HERO OFFSET: 72px total padding-top for all hero sections
+// Navbar = 64px (h-16), so 72px - 64px = 8px from navbar bottom to first content
+// Hero components MUST have NO internal padding - Section controls ALL spacing
+const heroOffsetClass = "pt-[72px] pb-16 md:pb-20";
+
 export function Section({
   children,
   className,
@@ -41,12 +51,16 @@ export function Section({
   background = "default",
   padding = "md",
   as: Component = "section",
+  heroOffset = false,
 }: SectionProps) {
   const isRadial = background === "radial";
   const isRadialFooter = background === "radial-footer";
 
+  // Use heroOffset for consistent spacing, otherwise use standard padding
+  const spacingClass = heroOffset ? heroOffsetClass : paddingClasses[padding];
+
   return (
-    <Component className={cn(backgroundClasses[background], paddingClasses[padding], className)}>
+    <Component className={cn(backgroundClasses[background], spacingClass, className)}>
       {(isRadial || isRadialFooter) && (
         <div
           className="absolute inset-0 z-0"

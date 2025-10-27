@@ -67,8 +67,8 @@ export default function BarsPage() {
 
   return (
     <div className="accent-purple">
-      {/* Hero Section */}
-      <Section background="gradient" padding="xl" className="hero-ambient">
+      {/* Hero Section - Exactly 100px from navbar bottom */}
+      <Section background="gradient" heroOffset={true} className="hero-ambient">
         <SectionContent maxWidth="6xl">
           <BarsHero
             industry="Bars & Nightlife"
