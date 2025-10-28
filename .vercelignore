@@ -1,0 +1,15 @@
+# Storybook
+.storybook/
+storybook-static/
+stories/
+
+# Testing
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+__tests__/
+
+# Development
+.vscode/
+*.log
